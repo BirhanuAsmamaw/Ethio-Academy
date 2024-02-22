@@ -2,19 +2,28 @@
 import toast from 'react-hot-toast';
 import {signOut} from 'next-auth/react'
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 interface LogoutClientProps{
   user:any;
 }
 const LogoutClient:React.FC<LogoutClientProps> = ({user}) => {
   const router=useRouter();
-  if (!user) {
-    router.push('/');
-    return null;
-  }
+  
+    useEffect(()=>{
+
+      if (!user) {
+
+        router.push('/')
+      }
+    },[user]);
+    
+  
+
+  
  
   const onLogout =()=>{
     signOut();
-     router.push('/');
+    router.push('/');
     router.refresh();
     toast.success("Your Account Logout Successfully!");
   
