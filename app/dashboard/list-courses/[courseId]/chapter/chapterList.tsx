@@ -13,13 +13,15 @@ const ChapterList = ({course}:{course:CourseType}) => {
     return <div>No Chapter!</div>
   }
 
-  return (<div className="flex gap-20 ">
+  return (<div className="flex flex-col p-2 gap-10 ">
      <h1 className="text-lg font-semibold">Course Lists</h1>
       <Accordion type="single" collapsible className="w-full">
  {course.chapters.map((chapter:any)=>{
   return  <AccordionItem key={chapter.id} value="item-1">
-  <AccordionTrigger>{chapter.title}</AccordionTrigger>
+  <AccordionTrigger><h5 className="text-[14px] text-gray-700 dark:text-gray-400">{chapter.title}</h5></AccordionTrigger>
   <AccordionContent>
+    <p>list of lessons</p>
+    <p>list of lessons</p>
     <p>list of lessons</p>
   </AccordionContent>
 </AccordionItem>

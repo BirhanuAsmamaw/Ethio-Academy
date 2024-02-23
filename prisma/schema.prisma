@@ -87,6 +87,8 @@ model Lesson{
    chapter Chapter @relation(fields: [chapterId], references: [id])
    chapterId String @db.ObjectId
    title String
+   videoUrl String?
+   videoThumbnail String?
    content String
    questions Question []
 
