@@ -15,7 +15,15 @@ import { NextRequest, NextResponse } from 'next/server';
    
     id:id,
   },
-  include:{chapters:true,
+  include:{chapters:{
+    include:{
+      lessons:{
+        include:{
+          questions:true
+        }
+      }
+    }
+  },
     reviews:{
       include:{
         customer:true

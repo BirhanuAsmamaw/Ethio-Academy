@@ -33,7 +33,7 @@ const ChapterList = ({courseId}:{courseId:string}) => {
   }
 
   return ( <Accordion type="single" collapsible className="w-full">
- {course.chapter.map((chapter:any)=>{
+ {course.chapters.map((chapter:any)=>{
   return  <AccordionItem key={chapter.id} value="item-1">
   <AccordionTrigger>{chapter.title}</AccordionTrigger>
   <AccordionContent>
