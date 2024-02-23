@@ -6,29 +6,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { CourseType } from "@/types";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
-const ChapterList = ({courseId}:{courseId:string}) => {
-  const [course,setCourse]=useState<CourseType|any>()
-
-
-  useEffect(()=>{
-    async function fetchData() {
-      try{
-        const response=await axios.get(`/api/course/${courseId}`)
-        setCourse(response.data);
-      }
-
-      catch(error){
-
-      }
-    }
-    fetchData();
-    
-  },[courseId])
-
-  if (!course.chapter){
+const ChapterList = ({course}:{course:CourseType}) => {
+  
+  if (!course.chapters){
     return <div>No Chapter!</div>
   }
 

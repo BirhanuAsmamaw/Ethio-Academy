@@ -6,7 +6,8 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { IoIosSend } from "react-icons/io";
 import ChapterList from "./chapterList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { CourseType } from "@/types";
 
 interface IParams{
   courseId: string;
@@ -23,6 +24,24 @@ const {register,handleSubmit,reset,formState:{errors}}=useForm<FieldValues>({
   
 });
 
+
+const [course,setCourse]=useState<CourseType|any>()
+
+
+  useEffect(()=>{
+    async function fetchData() {
+      try{
+        const response=await axios.get(`/api/course/${params.courseId}`)
+        setCourse(response.data);
+      }
+
+      catch(error){
+
+      }
+    }
+    fetchData();
+    
+  },[params.courseId])
 
 
 
@@ -62,9 +81,13 @@ const {register,handleSubmit,reset,formState:{errors}}=useForm<FieldValues>({
 
 
 
+
+
+
+
    {/* chapter lists */}
    <div className="">
-  <ChapterList courseId={params.courseId}/>
+  <ChapterList course={course}/>
    </div>
   </div> );
 }
