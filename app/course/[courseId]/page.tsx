@@ -6,14 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 interface IPrams{
   courseId:string;
 }
-type Course={
-  title:string;
-  cover:string;
-  video:string;
-  description:any;
-  requiremnts:any;
-  reviews:any;}
-  
+
 
 const Course = ({params}:{params:IPrams}) => {
 

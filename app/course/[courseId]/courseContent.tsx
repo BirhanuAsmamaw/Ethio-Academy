@@ -5,12 +5,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { coursesContents } from "@/lib/courseContent"
+
+import { CourseType } from "@/types";
 import { useRouter } from "next/navigation"
 interface courseContentProps{
-  courseId: string;
+  course: CourseType;
 }
-const  CourseContent:React.FC<courseContentProps>=({courseId})=> {
+const  CourseContent:React.FC<courseContentProps>=({course})=> {
 const router=useRouter();
   const onLessonRouter=(courseId:string,chapterId:string,lessonId:string)=>{
 router.push(`/course/${courseId}/${chapterId}/${lessonId}`)
@@ -19,18 +20,18 @@ router.refresh()
   return (
     <Accordion type="single" collapsible className="w-full p-1" >
 
-      {coursesContents.map((courseContent,index) =>{
+      {course.chapters.map((chapter,index) =>{
         return <AccordionItem key={index} value={`${index}`}className="border border-slate-200 dark:border-gray-600 px-2 md:px-6 m-2 rounded-[6px] ">
-        <AccordionTrigger ><div className="flex gap-1 md:gap-4 text-md text-captalize  ">
-         <p className="text-base text-rose-600 dark:text-teal-400">Chapter:{courseContent.chapter}</p>
-         <p className="text-base">{courseContent.title}</p>
+        <AccordionTrigger ><div className="flex gap-2  text-captalize  ">
+         <p className="h-4 w-4 rounded-full bg-green text-black items-center text-center text-base text-rose-600 dark:text-teal-400">{index+1}</p>
+         <p className="text-base">{chapter.title}</p>
           </div></AccordionTrigger>
         <AccordionContent className="bg-background">
           <ul className="">
-            {courseContent.lessons.map((lesson,ind)=>{
-return <li onClick={()=>onLessonRouter(courseId,`${index+1}`,`${ind+1}`)} className="flex text-sm gap-2  hover:underline  hover:text-teal-500  transition duration-300" key={ind}>
+            {chapter.lessons.map((lesson:any,ind:number)=>{
+return <li onClick={()=>onLessonRouter(course.id,`${chapter.id}`,`${lesson.id}`)} className="flex text-sm gap-2  hover:underline  hover:text-teal-500  transition duration-300" key={ind}>
   <p>Lesson:{ind+1}</p>
-  <p>{lesson}</p>
+  <p>{lesson.title}</p>
 </li>
             })}
           </ul>
