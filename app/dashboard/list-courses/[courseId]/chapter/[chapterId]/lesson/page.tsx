@@ -33,7 +33,7 @@ const Lesson = () => {
 
   const handleImageChange = useCallback((acceptedFiles:any)=> {
     setImage(acceptedFiles[0])
-    // setValue('cover','cover')
+   
   }, []) 
 
 
@@ -41,7 +41,7 @@ const Lesson = () => {
   const handleVideoChange = useCallback((acceptedFiles:any)=> {
     // Do something with the files
     setVideo(acceptedFiles[0])
-    // setValue('cover','cover')
+    
   }, []) 
 
 
@@ -188,7 +188,7 @@ const Lesson = () => {
             <FileInput
           onDrop={handleImageChange}
               register={register}
-              id="cover" 
+              id="videoThumbnail" 
               errors={errors}/>
         </div>
 
