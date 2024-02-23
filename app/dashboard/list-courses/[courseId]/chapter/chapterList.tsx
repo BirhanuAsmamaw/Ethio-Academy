@@ -48,8 +48,13 @@ text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
     </div>
 
 
-  
-     <Link className="no-underline 
+  {chapter.lessons?<div>
+        {chapter.lessons.map((lesson:any)=>{
+          return <Link
+          className="px-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+           href={`course/${course.id}/${lesson.id}`} key={lesson.id} >{lesson.title}</Link>
+        })}
+      </div>:<Link className="no-underline 
     border
     text-sm
      rounded-[10px] 
@@ -60,13 +65,7 @@ text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
      text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
      "
       href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}>Add Lesson</Link>
-      <div>
-        {chapter.lessons.map((lesson:any)=>{
-          return <Link
-          className="px-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-           href={`course/${course.id}/${lesson.id}`} key={lesson.id} >{lesson.title}</Link>
-        })}
-      </div>
+ }
       
   
   </AccordionContent>
