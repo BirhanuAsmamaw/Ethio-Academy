@@ -18,8 +18,8 @@ const ChapterList = ({course}:{course:CourseType}) => {
      <h1 className="text-lg font-semibold">Course Lists</h1>
       <Accordion type="single" collapsible className="w-full">
  {course.chapters.map((chapter:any)=>{
-  return  <AccordionItem key={chapter.id} value={`${chapter.id}`}>
-  <AccordionTrigger><h5 className="text-[14px] text-gray-700 dark:text-gray-400">{chapter.title}</h5></AccordionTrigger>
+  return  <AccordionItem className="border-none" key={chapter.id} value={`${chapter.id}`}>
+  <AccordionTrigger className="hover:no-underline"><h5 className="text-[14px] text-gray-700 dark:text-gray-400 font-normal">{chapter.title}</h5></AccordionTrigger>
   <AccordionContent>
     <div className="flex justify-end gap-2">
     <Link className="no-underline 
