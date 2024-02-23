@@ -60,7 +60,7 @@ const [course,setCourse]=useState<CourseType|any>()
    
   
   }
-  return ( <div className="pt-10 flex gap-10 min-h-screen w-full">
+  return ( <div className="pt-10 flex flex-col gap-10 min-h-screen w-full">
     <div className="flex w-full gap-1">
    <div className="w-8/12">
    <Input
