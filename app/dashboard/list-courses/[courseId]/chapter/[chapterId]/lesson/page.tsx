@@ -28,7 +28,7 @@ const Lesson = ({params}:{params:IParams}) => {
   useEffect(() =>{
     setValue('content',description)
     setValue("videoUrl",video);
-  },[description,image,video]);
+  },[description,video]);
 
 
 
@@ -167,11 +167,6 @@ const Lesson = ({params}:{params:IParams}) => {
     });
 
   }
-
-
-
-  
-
 
 
 
