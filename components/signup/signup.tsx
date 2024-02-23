@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import {signIn} from 'next-auth/react'
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import Button from "../button/button";
 interface SignupProps{
   user:any;
 }
@@ -119,7 +120,11 @@ return null;
   />
 </div>
 <div className="mt-4 flex justify-end w-full">
-  <button disabled={Loading} className="text-white bg-blue-600 border border-gray-200 dark:border-gray-600 shadow-md hover:border-rose-600  hover:dark:border-green-400 shadow-blue-200 dark:shadow-blue-800 rounded-[5px] hover:dark:bg-gray-800 transition duration-300 px-2 py-1 text-center " onClick={handleSubmit(onSubmit)}>{Loading? "Loading...":"Signup"}</button>
+<Button 
+  isDisabled={Loading}
+  title={Loading? "Loading...":"Signup"}
+  className="transition duration-300  text-center " 
+  onClick={handleSubmit(onSubmit)}/>
 </div>
 <p className="text-sm text-gray-500 dark:text-gray-400">Already have an account?<Link href="/login"> Log in</Link> to stay connected with our community!</p>
 

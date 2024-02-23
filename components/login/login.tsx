@@ -7,6 +7,7 @@ import {signIn} from 'next-auth/react'
 import { useRouter } from "next/navigation";
 import toast from 'react-hot-toast';
 import Link from "next/link";
+import Button from "../button/button";
 
 interface LoginProps{
   user:any;
@@ -102,7 +103,11 @@ return null;
   />
 </div>
 <div className="mt-4 flex justify-end w-full">
-  <button disabled={Loading} className="text-white bg-blue-600 border border-gray-200 dark:border-gray-600 shadow-md hover:border-rose-600  hover:dark:border-green-400 shadow-blue-200 dark:shadow-blue-800 rounded-[5px] hover:dark:bg-gray-800 transition duration-300 px-2 py-1 text-center " onClick={handleSubmit(onSubmit)}>{Loading? "Loading...":"Login"}</button>
+  <Button 
+  isDisabled={Loading}
+  title={Loading? "Loading...":"Login"}
+  className="transition duration-300  text-center " 
+  onClick={handleSubmit(onSubmit)}/>
 </div>
 <p className="text-sm text-gray-500 dark:text-gray-400">Don&lsquo;t have an account? Join our community by <Link href="/register">signup</Link>!</p>
 
