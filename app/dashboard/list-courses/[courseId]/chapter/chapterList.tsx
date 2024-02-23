@@ -30,8 +30,7 @@ const ChapterList = ({course}:{course:CourseType}) => {
      px-3 py-1 
      border-gray-200
      dark:border-gray-700
-     hover:bg-gray-200
-     hover:dark:bg-gray-600
+     
      "
       href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/edit`}>Edit</Link>
 
@@ -43,8 +42,7 @@ text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
      px-3 py-1 
      border-gray-200
      dark:border-gray-700
-     hover:bg-gray-200
-     hover:dark:bg-gray-600
+   
      "
       href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/delete`}>Delete</Link>
     </div>
@@ -58,8 +56,7 @@ text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
      px-3 py-1 
      border-gray-200
      dark:border-gray-700
-     hover:bg-gray-200
-     hover:dark:bg-gray-600
+    
      text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
      "
       href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}>Add Lesson</Link>:
