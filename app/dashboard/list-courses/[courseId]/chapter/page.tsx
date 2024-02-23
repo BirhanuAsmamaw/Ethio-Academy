@@ -1,9 +1,73 @@
+"use client"
+import Input from "@/components/input/input";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { IoIosSend } from "react-icons/io";
+import ChapterList from "./chapterList";
+import { useState } from "react";
+
 interface IParams{
   courseId: string;
 }
 
 const Chapter = ({params}:{params:IParams}) => {
-  return ( <div className="pt-10 min-h-screen w-full">Chapter list of course id:{params.courseId}</div> );
+ const [isLoading,setLoading]=useState(false)
+  const router=useRouter();
+const {register,handleSubmit,reset,formState:{errors}}=useForm<FieldValues>({
+  defaultValues:{
+    title:"",
+    courseId:params.courseId,
+  }
+  
+});
+
+
+
+
+
+  const onSubmit:SubmitHandler<FieldValues>=(data)=>{
+    setLoading(true);
+    axios.post('/api/course/data',data).then(()=>{
+      toast.success("Review  created  successfully")
+      router.refresh()
+      reset();
+    }).catch((errors)=>{
+      toast.error("something went wrong");
+    }).finally(()=>{
+      setLoading(false);
+    });
+   
+  
+  }
+  return ( <div className="pt-10 flex gap-10 min-h-screen w-full">
+    <div className="flex w-full gap-1">
+   <div className="w-11/12">
+   <Input
+   
+   id="comment"
+   label="Write Your Comment"
+   required
+   register={register}
+   errors={errors}
+   disabled={isLoading}
+   type="text"
+   />
+   </div>
+    <div className="flex pt-4 justify-center  items-center">
+   <button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>
+    </div>
+   </div>
+
+
+
+   {/* chapter lists */}
+   <div className="">
+  <ChapterList courseId={params.courseId}/>
+   </div>
+  </div> );
 }
  
 export default Chapter;
+

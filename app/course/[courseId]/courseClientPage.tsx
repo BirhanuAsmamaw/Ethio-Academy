@@ -10,22 +10,16 @@ import Reviews from "./reviews";
 import CourseContentList from "./course-content-list";
 import CourseContent from "./courseContent";
 import CourseSceleton from "./[chapterId]/courseSceleton";
+import { CourseType } from "@/types";
 
 interface ICourseId{
   courseId:string;
 }
-type Course={
-  title:string;
-  cover:string;
-  video:string;
-  description:any;
-  requiremnts:any;
-  reviews:any;}
-  
+
 
 const CourseClientPage:React.FC<ICourseId> = ({courseId}) => {
 
-  const [course,setCourse]=useState<Course|any>(null)
+  const [course,setCourse]=useState<CourseType|any>(null)
   useEffect(()=>{
     async function fetchData() {
       try{
