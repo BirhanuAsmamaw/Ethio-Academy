@@ -24,7 +24,6 @@ const Lesson = () => {
 
   useEffect(() =>{
     setValue('content',description)
-    setValue("videoThumbnail",image);
     setValue("videoUrl",video);
   },[description,image,video]);
 
