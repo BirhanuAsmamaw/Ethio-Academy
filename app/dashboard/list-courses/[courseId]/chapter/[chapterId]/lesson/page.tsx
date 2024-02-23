@@ -175,7 +175,7 @@ const Lesson = () => {
 
 
 
-  return ( <div className="min-h-screen flex items-center gap-6">
+  return ( <div className="min-h-screen flex flex-col items-center gap-6">
          <div className="w-full p-4">
           <Input type={"text"} label={"title"} 
           register={register}
