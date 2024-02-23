@@ -33,6 +33,7 @@ const router=useRouter();
      password: data.password,
      redirect:false,
     }).then((callback)=>{
+    
       if (callback?.ok){
         router.push('/')
         router.refresh()
