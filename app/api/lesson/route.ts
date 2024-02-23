@@ -15,7 +15,7 @@ export async function POST(req:Request) {
       });
      }
 
-     const newLesson=await prisma.lesson.create({
+     const newLesson= await prisma.lesson.create({
       data:{
         chapterId:chapterId, 
         title:title,
