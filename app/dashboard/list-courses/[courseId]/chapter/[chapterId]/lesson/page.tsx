@@ -10,15 +10,18 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler,  useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-
-const Lesson = () => {
+interface IParams{
+  chapterId: string;
+}
+const Lesson = ({params}:{params:IParams}) => {
   const [image,setImage]=useState<File|null>(null)
   const [video,setVideo]=useState<File|null>(null)
   const [description, setDescription]=useState("")
   const [isLoading,setLoading]=useState(false);
   const {register,handleSubmit,setValue,formState:{errors}}=useForm<FieldValues>({
     defaultValues:{
-      title:""
+      title:"",
+      chapterId:params.chapterId
     }
   })
 
