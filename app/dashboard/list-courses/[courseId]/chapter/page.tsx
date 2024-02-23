@@ -29,7 +29,7 @@ const {register,handleSubmit,reset,formState:{errors}}=useForm<FieldValues>({
 
   const onSubmit:SubmitHandler<FieldValues>=(data)=>{
     setLoading(true);
-    axios.post('/api/course/data',data).then(()=>{
+    axios.post('/api/chapter',data).then(()=>{
       toast.success("Review  created  successfully")
       router.refresh()
       reset();
