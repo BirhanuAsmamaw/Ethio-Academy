@@ -39,6 +39,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import Link from "next/link"
 
 
 interface CourseListprops{
@@ -173,7 +174,7 @@ export const columns: ColumnDef<CourseType>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original
+      const course = row.original
 
       return (
         <DropdownMenu>
@@ -183,17 +184,27 @@ export const columns: ColumnDef<CourseType>[] = [
               <DotsHorizontalIcon className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
+
           <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
+            <DropdownMenuItem>
+             <Link 
+             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
+             href={`/dashboard/list-courses/${course.id}/chapter`}>Chapter</Link>
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem> 
+              <Link
+               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
+               href={`/dashboard/list-courses/${course.id}/edit`}>Edit</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem> 
+              <Link 
+              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
+              href={`/dashboard/list-courses/${course.id}/delete`}>Delete</Link>
+              </DropdownMenuItem>
           </DropdownMenuContent>
+
+
         </DropdownMenu>
       )
     },
