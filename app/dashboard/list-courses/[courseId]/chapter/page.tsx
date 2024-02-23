@@ -62,11 +62,11 @@ const [course,setCourse]=useState<CourseType|any>()
   }
   return ( <div className="pt-10 flex gap-10 min-h-screen w-full">
     <div className="flex w-full gap-1">
-   <div className="w-11/12">
+   <div className="w-8/12">
    <Input
    
-   id="comment"
-   label="Write Your Comment"
+   id="title"
+   label="Add Chapter Title"
    required
    register={register}
    errors={errors}

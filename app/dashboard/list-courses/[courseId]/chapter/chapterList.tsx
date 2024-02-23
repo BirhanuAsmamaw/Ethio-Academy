@@ -13,7 +13,9 @@ const ChapterList = ({course}:{course:CourseType}) => {
     return <div>No Chapter!</div>
   }
 
-  return ( <Accordion type="single" collapsible className="w-full">
+  return (<div className="flex gap-20 ">
+     <h1 className="text-lg font-semibold">Course Lists</h1>
+      <Accordion type="single" collapsible className="w-full">
  {course.chapters.map((chapter:any)=>{
   return  <AccordionItem key={chapter.id} value="item-1">
   <AccordionTrigger>{chapter.title}</AccordionTrigger>
@@ -23,7 +25,7 @@ const ChapterList = ({course}:{course:CourseType}) => {
 </AccordionItem>
  })}
 
-</Accordion> );
+</Accordion></div> );
 }
  
 export default ChapterList;
