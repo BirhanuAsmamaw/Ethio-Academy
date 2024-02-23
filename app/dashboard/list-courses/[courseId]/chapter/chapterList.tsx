@@ -9,7 +9,7 @@ import { CourseType } from "@/types";
 
 const ChapterList = ({course}:{course:CourseType}) => {
   
-  if (!course.chapters){
+  if (!course){
     return <div>No Chapter!</div>
   }
 
