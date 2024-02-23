@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { CourseType } from "@/types";
+import Link from "next/link";
 
 const ChapterList = ({course}:{course:CourseType}) => {
   
@@ -20,9 +21,46 @@ const ChapterList = ({course}:{course:CourseType}) => {
   return  <AccordionItem key={chapter.id} value="item-1">
   <AccordionTrigger><h5 className="text-[14px] text-gray-700 dark:text-gray-400">{chapter.title}</h5></AccordionTrigger>
   <AccordionContent>
-    <p>list of lessons</p>
-    <p>list of lessons</p>
-    <p>list of lessons</p>
+    <div className="flex justify-end gap-2">
+    <Link className="no-underline 
+    border
+    text-sm
+     rounded-[10px] 
+     px-3 py-1 
+     border-gray-200
+     dark:border-gray-700
+     hover:bg-gray-200
+     hover:dark:bg-gray-600
+     "
+      href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/edit`}>Edit</Link>
+
+<Link className="no-underline 
+    border
+    text-sm
+     rounded-[10px] 
+     px-3 py-1 
+     border-gray-200
+     dark:border-gray-700
+     hover:bg-gray-200
+     hover:dark:bg-gray-600
+     "
+      href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/delete`}>Delete</Link>
+    </div>
+
+
+   <div className="">
+    { <Link className="no-underline 
+    border
+    text-sm
+     rounded-[10px] 
+     px-3 py-1 
+     border-gray-200
+     dark:border-gray-700
+     hover:bg-gray-200
+     hover:dark:bg-gray-600
+     "
+      href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}>Add Lesson</Link>}
+   </div>
   </AccordionContent>
 </AccordionItem>
  })}
