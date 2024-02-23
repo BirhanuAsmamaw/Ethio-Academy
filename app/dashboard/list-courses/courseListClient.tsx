@@ -129,21 +129,7 @@ export const columns: ColumnDef<CourseType>[] = [
     cell: ({ row }) => <div className="lowercase">{row.getValue("category")}</div>,
   },
 
-  {
-    accessorKey: "createdAt",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Created Date
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("createdAt")}</div>,
-  },
+ 
 
 {
     accessorKey: "rating",

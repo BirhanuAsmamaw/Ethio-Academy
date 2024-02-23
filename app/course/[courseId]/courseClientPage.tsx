@@ -9,6 +9,7 @@ import AddReviews from "./addReview";
 import Reviews from "./reviews";
 import CourseContentList from "./course-content-list";
 import CourseContent from "./courseContent";
+import CourseSceleton from "./[chapterId]/courseSceleton";
 
 interface ICourseId{
   courseId:string;
@@ -40,9 +41,16 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId}) => {
     
   },[courseId])
   if(!course){
-    return ( <div> no Course</div>)
+    return ( <div className="flex h-screen justify-center py-10 px-2">
+      <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
+        <CourseSceleton/>
+        </div> 
+
+    </div>)
   }
 
+
+  
   return ( <>
   <div className="flex justify-center py-10 px-2">
 
