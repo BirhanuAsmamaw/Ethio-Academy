@@ -18,11 +18,12 @@ const ChapterList = ({course}:{course:CourseType}) => {
      <h1 className="text-lg font-semibold">Course Lists</h1>
       <Accordion type="single" collapsible className="w-full">
  {course.chapters.map((chapter:any)=>{
-  return  <AccordionItem key={chapter.id} value="item-1">
+  return  <AccordionItem key={chapter.id} value={`${chapter.id}`}>
   <AccordionTrigger><h5 className="text-[14px] text-gray-700 dark:text-gray-400">{chapter.title}</h5></AccordionTrigger>
   <AccordionContent>
     <div className="flex justify-end gap-2">
     <Link className="no-underline 
+    text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
     border
     text-sm
      rounded-[10px] 
@@ -35,6 +36,7 @@ const ChapterList = ({course}:{course:CourseType}) => {
       href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/edit`}>Edit</Link>
 
 <Link className="no-underline 
+text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
     border
     text-sm
      rounded-[10px] 
@@ -49,7 +51,7 @@ const ChapterList = ({course}:{course:CourseType}) => {
 
 
    <div className="">
-    { <Link className="no-underline 
+    {chapter.lessons? <Link className="no-underline 
     border
     text-sm
      rounded-[10px] 
@@ -58,8 +60,17 @@ const ChapterList = ({course}:{course:CourseType}) => {
      dark:border-gray-700
      hover:bg-gray-200
      hover:dark:bg-gray-600
+     text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
      "
-      href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}>Add Lesson</Link>}
+      href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}>Add Lesson</Link>:
+      <div>
+        {chapter.lessons.map((lesson:any)=>{
+          return <Link
+          className="px-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+           href={`course/${course.id}/${lesson.id}`} key={lesson.id} >{lesson.title}</Link>
+        })}
+      </div>
+      }
    </div>
   </AccordionContent>
 </AccordionItem>
