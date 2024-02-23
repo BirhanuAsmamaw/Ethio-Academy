@@ -75,7 +75,7 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId}) => {
 <Container
   childern={
     <div className="p-4">
-      <CourseContent courseId={course}/>
+      <CourseContent course={course}/>
       </div>
   }
   />

@@ -12,6 +12,9 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { lessons } from "@/lib/lessons";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import CourseSceleton from "../courseSceleton";
+import axios from "axios";
+import { CourseType } from "@/types";
 
 
 
@@ -45,6 +48,40 @@ const choice1 = useRef<HTMLLIElement>(document.createElement('li'));
   const [lesson,setLesson]=useState<any>(null);
   const [lessonsData,setLessons]=useState<any>(null);
   const[showSubmit, setShowSubmit] = useState(false);
+
+
+
+
+
+
+
+
+
+  const [course,setCourse]=useState<CourseType|any>(null)
+  useEffect(()=>{
+    async function fetchData() {
+      try{
+        const response=await axios.get(`/api/course/${params.chapterId}`)
+        setCourse(response.data);
+      }
+
+      catch(error){
+
+      }
+    }
+    fetchData();
+    
+  },[params.chapterId])
+  
+
+
+
+
+
+
+
+
+
 
   const handleOptionClick = (e:any,ans:number,index:number) => {
    const isCorrect=e.target.value==ans;
@@ -153,6 +190,25 @@ const [currentLesson, setCurrentLesson] = useState(parseInt(params.lessonId) || 
 const onsubmit = () => {
   alert("score:"+`${score}/${questions.length}`);
 }
+
+
+
+if(!course){
+  return ( <div className="flex h-screen justify-center py-10 px-2">
+    <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
+      <CourseSceleton/>
+      </div> 
+
+  </div>)
+}
+
+
+
+
+
+
+
+
 
   return ( <div className="flex flex-col gap-20 font-serif text-[18px]">
     <Navbar/>
@@ -264,7 +320,7 @@ const onsubmit = () => {
    </div>
    <div className="w-full mt-6 lg:m-0 lg:w-3/12 flex h-full justify-center lg:p-4">
     <Container
-    childern={<CourseContent courseId={params.id}/>}
+    childern={<CourseContent course={course}/>}
     />
    </div>
   </div>
