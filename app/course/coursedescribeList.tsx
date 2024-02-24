@@ -88,7 +88,7 @@ const onPayment=()=>{
         duration-300"
       >Buy</button>
     </div>
-  <h5 className="px-2 text-lg text-gray-500 dark:text-gray-400">Course Content</h5>
+  <h5 className="px-2 text-lg font-medium text-gray-500 dark:text-gray-400">Course Content</h5>
  <div className="flex flex-col  ">
 
   <ContentList

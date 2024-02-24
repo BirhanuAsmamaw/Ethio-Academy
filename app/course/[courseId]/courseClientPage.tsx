@@ -7,10 +7,10 @@ import React, { useState, useEffect } from "react";
 import RatingPage from "./rating";
 import AddReviews from "./addReview";
 import Reviews from "./reviews";
-import CourseContentList from "./course-content-list";
 import CourseContent from "./courseContent";
 import CourseSceleton from "./[chapterId]/courseSceleton";
 import { CourseType } from "@/types";
+import CourseDescribeList from "../coursedescribeList";
 
 interface ICourseId{
   courseId:string;
@@ -83,7 +83,7 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 
 
 <div className=" lg:hidden">
-<CourseContentList/>
+<CourseDescribeList course={course}/>
 </div>
 
 
@@ -119,7 +119,7 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 
 {/* course contents lits for above md */}
 <div className="hidden lg:block fixed right-20 top-48 w-[300px] hidden md:block">
-  <CourseContentList/>
+  <CourseDescribeList course={course}/>
 
 </div>
 

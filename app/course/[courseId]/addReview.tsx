@@ -79,7 +79,7 @@ const onSubmit:SubmitHandler<FieldValues>=(data)=>{
 if (!course){
   return null;
 }
-  return (<Container childern={
+  return (<>{!isRewiew&&<Container childern={
      <div className="p-4">
     <Heading title="Rating This Course" />
     <div className="flex flex-col mt-4 gap-2">
@@ -105,17 +105,17 @@ if (!course){
    type="text"
    />
    </div>
-    {!isRewiew&&<div className="flex pt-4 justify-center  items-center">
+   <div className="flex pt-4 justify-center  items-center">
    {customer?<button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>:
    <button onClick={()=>router.push("/login")} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>
    }
-    </div>}
+    </div>
    </div>:""}
   
 
     
   </div>
-  </div>}/> );
+  </div>}/> }</>);
 }
  
 export default AddReviews;
