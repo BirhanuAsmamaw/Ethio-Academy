@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb"
 import { NextResponse } from "next/server";
 
-export async function GET({ params }: { params: { lessonId: string } }){
+export async function GET(req:Request, { params }: { params: { lessonId: string } }){
 
   const lessonId=params.lessonId;
 
