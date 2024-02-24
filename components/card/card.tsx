@@ -12,19 +12,26 @@ interface CardProps{
   category: string;
   cover: any; // Assuming cover is the path to the image
   price: number;
-  // users: string[]; // Assuming users are identified by strings
-  // reviews: string[]; // Assuming reviews are identified by strings
+
   rating: number;
-  // description: string;
+  
 }
 
 
 const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating}) => {
-  return ( <div className="w-full md:w-72 h-auto  bg-white dark:bg-gray-800 ">
+  return ( <div className="
+  group
+  w-full 
+  md:w-72
+   h-auto  
+  bg-white border
+   border-gray-200 
+   dark:border-gray-700
+   dark:bg-gray-800 ">
   <Link href={`/course/${id}`} className="no-underline w-full ">
     <Image src={cover} alt={subject} height={200} width={200} 
     className=" w-full rounded-t-[5px]
-     hover:scale-105
+     group-hover:scale-105
      transition 
      duration-300
      "/>
@@ -38,11 +45,16 @@ const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating}) => {
       <h1 className="hidden md:block text-lg font-semibold p-1">{subject.length>21? subject.substring(0,19)+"...":subject}</h1>
       <h1 className=" md:hidden text-lg font-semibold p-1">{subject.length>30? subject.substring(0,30)+"...":subject}</h1>
     </div>
-    <div className="flex justify-center"><Rating readOnly value={rating} size="small"/></div>
+    <div className="flex justify-center">
+      <Rating precision={0.5} readOnly value={rating} size="small"/>
+      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">4.95</p>
+    <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">out of</p>
+    <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
+    </div>
 
   </div>
   <div className="m-3">
-  <Link href={`/course/${id}`} className="no-underline w-full flex justify-center border border-gray-200  dark:border-gray-600 hover:bg-opacity-70  rounded  duration-300 p-2">
+  <Link href={`/course/${id}`} className="no-underline w-full flex justify-center border border-gray-200  dark:border-gray-600 hover:bg-gray-200  hover:dark:bg-gray-700  rounded  duration-300 p-2">
     <p className="text-base font-medium ">Get started</p>
   </Link>
   </div>
