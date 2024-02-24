@@ -1,4 +1,5 @@
 import { getLessonById } from "@/actions/getLessonById";
+import LessonClient from "./lessonClient";
 
 interface IParams{
   lessonId: string
@@ -6,14 +7,14 @@ interface IParams{
 const LessonPage = async({params}:{params:IParams}) => {
 
   const lesson=await getLessonById('65d8fffe01b63e703e31e17a');
-  console.log("lesson:-",lesson)
+  
 
   if(!lesson){
     return <div className="">No lesson </div>
   }
 
   return ( <div className="">
-    <h1> {lesson.title}</h1>
+    <LessonClient lesson={lesson}/>
   </div> );
 }
  
