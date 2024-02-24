@@ -9,7 +9,7 @@ import {
 import { CourseType } from "@/types";
 import { useRouter } from "next/navigation"
 interface courseContentProps{
-  course: CourseType;
+  course: any|null;
 }
 const  CourseContent:React.FC<courseContentProps>=({course})=> {
 const router=useRouter();
@@ -17,10 +17,14 @@ const router=useRouter();
 router.push(`/course/${courseId}/${chapterId}/${lessonId}`)
 router.refresh()
   }
+
+  if(!course){
+    return null
+  }
   return (
     <Accordion type="single" collapsible className="w-full p-1" >
 
-      {course.chapters.map((chapter,index) =>{
+      {course.chapters.map((chapter:any,index:number) =>{
         return <AccordionItem key={index} value={`${index}`}className="border   border-slate-200 dark:border-gray-600 px-2 md:px-6 m-2 rounded-[6px] ">
         <AccordionTrigger className="hover:no-underline" ><div className="flex gap-2  text-captalize  ">
          <p className="h-6 w-6 rounded-full bg-green-400  items-center text-center text-sm text-black">{index+1}</p>

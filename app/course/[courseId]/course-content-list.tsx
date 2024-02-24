@@ -7,8 +7,8 @@ import Container from "@/components/container/container";
 import Heading from "@/components/Heading/Heading";
 
 const CourseContentList = () => {
-  return ( <Container childern={<div className="p-3">
-    <h5 className="text-[12px] font-normal">This Course includes</h5>
+  return ( <Container childern={<div className="p-1">
+    <h5 className="text-[14px] font-medium">This Course includes</h5>
       <div className=" md:px-2 md:px-10  ">
 
       <div className="

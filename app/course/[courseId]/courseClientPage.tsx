@@ -72,16 +72,17 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId}) => {
 
 
 {/* course contents or modules */}
-<Container
+{course.chapters&&<Container
   childern={
     <div className="p-4">
       <CourseContent course={course}/>
       </div>
   }
-  />
+  />}
 
 
-<div className=" md:hidden">
+
+<div className=" lg:hidden">
 <CourseContentList/>
 </div>
 
@@ -117,7 +118,7 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId}) => {
 
 
 {/* course contents lits for above md */}
-<div className="fixed right-20 top-30 w-md hidden md:block">
+<div className="hidden lg:block fixed right-20 top-30 w-md hidden md:block">
   <CourseContentList/>
 
 </div>
