@@ -72,13 +72,13 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 
 
 {/* course contents or modules */}
-{course.chapters.length&&<Container
+{course.chapters.length?<Container
   childern={
     <div className="p-4">
       <CourseContent course={course}/>
       </div>
   }
-  />}
+  />:""}
 
 
 
@@ -109,7 +109,7 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 
 <RatingPage course={course}/>
 <AddReviews course={course} customer={customer}/>
-{course.reviews.length&&<Reviews reviews={course.reviews}/>}
+{course.reviews.length?<Reviews reviews={course.reviews}/>:""}
 
 
 </div>

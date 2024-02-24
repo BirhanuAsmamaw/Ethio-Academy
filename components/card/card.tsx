@@ -53,7 +53,7 @@ rounded-[5px]
       <h1 className="hidden md:block text-lg font-semibold p-1">{subject.length>21? subject.substring(0,19)+"...":subject}</h1>
       <h1 className=" md:hidden text-lg font-semibold p-1">{subject.length>30? subject.substring(0,30)+"...":subject}</h1>
     </div>
-    <div className="flex justify-center">
+    {rating?<div className="flex justify-center">
       <Rating 
       precision={0.5} 
       readOnly value={rating} 
@@ -62,10 +62,9 @@ rounded-[5px]
         <StarOutlined fontSize="inherit" className="text-gray-100 dark:text-gray-600" />
       }
       />
-      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">4.95</p>
-    <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">out of</p>
-    <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
-    </div>
+      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">4 reviews</p>
+   
+    </div>:""}
 
   </div>
   <div className="m-3">
