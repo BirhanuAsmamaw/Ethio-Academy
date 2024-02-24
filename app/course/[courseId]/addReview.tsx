@@ -25,6 +25,7 @@ const AddReviews:React.FC<AddReviewsProps> = ({course,customer}) => {
   const [isLoading,setLoading] =useState(false);
   const [isvalue,setIsValue] = useState(0)
   const [newrate,setNewRate] = useState(course.rating)
+  const [isRewiew,setReview] = useState();
 const {register,handleSubmit,reset,setValue,formState:{errors}}=useForm<FieldValues>({
   defaultValues:{
     comment:"",
@@ -40,14 +41,22 @@ const setCostume=(id:string,value:any)=>{
 
 
 
-const isUserReviewed=course.reviews.some((review:any)=>review.customer.id===customer.id)
+useEffect(()=>{
+  if( customer){
+    const isUserReviewed=course.reviews.some((review:any)=>review.customer.id===customer.id)
+    setReview(isUserReviewed)
+  }
+},[ customer])
+
+
+
 useEffect(()=>{
   setNewRate((prev:number)=>(prev+isvalue)/(course.reviews.length))
 },[isvalue]);
 
 
 const onSubmit:SubmitHandler<FieldValues>=(data)=>{
-  if(!isUserReviewed){
+  if(!isRewiew){
   setLoading(true);
   axios.post('/api/reviews',data).then(()=>{
     toast.success("Review  created  successfully")
@@ -96,7 +105,7 @@ if (!course){
    type="text"
    />
    </div>
-    {!isUserReviewed&&<div className="flex pt-4 justify-center  items-center">
+    {!isRewiew&&<div className="flex pt-4 justify-center  items-center">
    {customer?<button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>:
    <button onClick={()=>router.push("/login")} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>
    }

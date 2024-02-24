@@ -44,7 +44,7 @@ const LogoutClient:React.FC<LogoutClientProps> = ({user}) => {
       <h5 className="text-[20px] font-normal text-rose-400 ">Are Sure To Logout?</h5>
       <Button 
   isDisabled={Loading}
-  title={Loading? "Loading...":"Login"}
+  title={Loading? "Loading...":"Logout"}
   className="transition duration-300  text-center " 
   onClick={onLogout}/>
     </div>
