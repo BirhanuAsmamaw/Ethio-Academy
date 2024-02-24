@@ -9,7 +9,9 @@ import { BsExclamationLg } from "react-icons/bs";
 
 const Hero = () => {
   
-  return ( <div className="w-full flex min-h-screen justify-center md:justify-around items-center flex-wrap px-4 items-center">
+  return ( <div className="w-full flex min-h-screen justify-center md:justify-around items-center flex-wrap px-4 items-center
+    dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center"
+  >
     {/* content */}
     <div className="pt-10 md:pt-0 flex flex-col gap-20 justify-center items-center  md:w-2/3">
       <div className="flex flex-col gap-6">
