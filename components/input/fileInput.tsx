@@ -36,7 +36,7 @@ const FileInput:React.FC<InputFileProps> = ({register,required,errors,id,disable
 
 
 {file&&(fileType==='video')&&<div className="relative top-4 right-4">
-    <button onClick={onCancel} className=" absolute text-rose-400 hover:text-rose-500 transition"><MdDelete size={24}/></button>
+    <button onClick={onCancel} className=" absolute z-50 text-rose-400 hover:text-rose-500 transition"><MdDelete size={24}/></button>
     <video
         className="w-full rounded-lg shadow-lg"
         controls
