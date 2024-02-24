@@ -1,4 +1,5 @@
 
+import { getCurrentUser } from "@/actions/currentUser";
 import CourseClientPage from "./courseClientPage";
 import Navbar from "@/components/navbar/Navbar";
 
@@ -8,12 +9,14 @@ interface IPrams{
 }
 
 
-const Course = ({params}:{params:IPrams}) => {
+const Course = async({params}:{params:IPrams}) => {
+
+  const user=await getCurrentUser();
 
   
   return ( <>
   <Navbar/>
-<CourseClientPage courseId={params.courseId}/>
+<CourseClientPage courseId={params.courseId} customer={user}/>
  </>);
 }
  

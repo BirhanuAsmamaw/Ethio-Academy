@@ -17,8 +17,10 @@ import Button from "@/components/button/button";
 import StarOutlined from "@mui/icons-material/StarOutlined";
 interface AddReviewsProps{
   course:any|null;
+  customer:any;
+
 }
-const AddReviews:React.FC<AddReviewsProps> = ({course}) => {
+const AddReviews:React.FC<AddReviewsProps> = ({course,customer}) => {
   const router=useRouter();
   const [isLoading,setLoading] =useState(false);
   const [isvalue,setIsValue] = useState(0)
@@ -37,12 +39,15 @@ const setCostume=(id:string,value:any)=>{
 }
 
 
+
+const isUserReviewed=course.reviews.some((review:any)=>review.customer.id===customer.id)
 useEffect(()=>{
-  setNewRate((prev:number)=>(prev+isvalue)/2)
+  setNewRate((prev:number)=>(prev+isvalue)/(course.reviews.length))
 },[isvalue]);
 
 
 const onSubmit:SubmitHandler<FieldValues>=(data)=>{
+  if(!isUserReviewed){
   setLoading(true);
   axios.post('/api/reviews',data).then(()=>{
     toast.success("Review  created  successfully")
@@ -58,7 +63,7 @@ const onSubmit:SubmitHandler<FieldValues>=(data)=>{
   axios.put(`/api/course/${course.id}/update/rate`,{rating:newrate}).then(()=>{
     router.refresh()
     reset();});
-  console.log(data);
+  }
 
 }
 
@@ -91,9 +96,11 @@ if (!course){
    type="text"
    />
    </div>
-    <div className="flex pt-4 justify-center  items-center">
-   <button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>
-    </div>
+    {!isUserReviewed&&<div className="flex pt-4 justify-center  items-center">
+   {customer?<button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>:
+   <button onClick={()=>router.push("/login")} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>
+   }
+    </div>}
    </div>:""}
   
 

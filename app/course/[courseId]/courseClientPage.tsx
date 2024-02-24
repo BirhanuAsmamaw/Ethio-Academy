@@ -14,10 +14,10 @@ import { CourseType } from "@/types";
 
 interface ICourseId{
   courseId:string;
+  customer:any;
 }
 
-
-const CourseClientPage:React.FC<ICourseId> = ({courseId}) => {
+const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 
   const [course,setCourse]=useState<CourseType|any>(null)
   useEffect(()=>{
@@ -108,7 +108,7 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId}) => {
 
 
 <RatingPage/>
-<AddReviews course={course}/>
+<AddReviews course={course} customer={customer}/>
 {course.reviews&&<Reviews reviews={course.reviews}/>}
 
 
