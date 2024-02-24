@@ -51,7 +51,7 @@ useEffect(()=>{
 
 
 useEffect(()=>{
-  setNewRate((prev:number)=>(prev+isvalue)/(course.reviews.length))
+  setNewRate((prev:number)=>prev?(prev+isvalue)/(course.reviews.length):isvalue)
 },[isvalue]);
 
 
