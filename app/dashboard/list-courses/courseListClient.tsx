@@ -355,7 +355,7 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
 
 
       <div className="rounded-[5px] border border-gray-200 dark:border-gray-700">
-        <Table>
+        <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow 

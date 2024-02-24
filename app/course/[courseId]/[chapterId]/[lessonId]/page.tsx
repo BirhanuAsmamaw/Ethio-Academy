@@ -1,30 +1,16 @@
-"use client"
-import axios from "axios"
-import { useEffect, useState } from "react"
+import { getLessonById } from "@/actions/getLessonById";
 
 interface IParams{
   lessonId: string
 }
-const LessonPage = ({params}:{params:IParams}) => {
+const LessonPage = async({params}:{params:IParams}) => {
 
-
-  const [lesson,setLesson]=useState<any>(null)
-  useEffect(()=>{
-    async function fetchData() {
-      try{
-        const response=await axios.get(`/api/lesson/${params.lessonId}`)
-        setLesson(response.data);
-      }
-
-      catch(error){
-
-      }
-    }
-    fetchData();
-    
-  },[params.lessonId])
-  
+  const lesson=await getLessonById(params.lessonId);
   console.log("lesson:-",lesson)
+
+  if(!lesson){
+    return <div className="">No lesson </div>
+  }
 
   return ( <div className="">
     <h1>{lesson.title}</h1>
