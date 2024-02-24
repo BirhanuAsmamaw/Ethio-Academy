@@ -208,7 +208,7 @@ if(!lesson){
 
   return ( <div className="flex flex-col gap-20 font-serif text-[18px]">
     <Navbar/>
-    <div className="lg:flex w-full justify-center gap-20 p-2 md:px-6 lg:px-0">
+    <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
    <div className="flex flex-col w-full lg:w-7/12"> 
    
    
@@ -234,21 +234,22 @@ if(!lesson){
     </div>
    <div className="p-2 flex flex-col justify-between lg:flex-row dark:text-300"> 
    <Heading title={lesson.title}/>
-   <p className=" text-slate-400  ">Lesson:{lesson.id}</p>
       </div>
 
    
-     
+      <div>
+    <video
+        className="w-full rounded-lg shadow-lg"
+        controls
+        poster={lesson.videoThumbnail}
+      >
+        <source src={lesson.videoUrl} type="video/mp4"  />
+        Your browser does not support the video tag.
+      </video></div>
        
-      <div className="" dangerouslySetInnerHTML={{ __html: lesson.content}}></div>
+     
+      <div className="p-2" dangerouslySetInnerHTML={{ __html: lesson.content}}></div>
       
-      
-      
-       {/* <div className=" flex flex-col text-slate-600 dark:text-gray-400 font-serif gap-2">
-       <h1 className="font-semibold mt-2 text-lg">Conclusions</h1>
-       <p>{lesson[0].summary}</p>
-
-       </div> */}
       
 {/* questions */}
 <div className="lg:p-4">
@@ -309,14 +310,14 @@ if(!lesson){
    </div>
    <div className="w-full mt-6 lg:m-0 lg:w-3/12 flex h-full justify-center lg:p-4">
     <Container
-    childern={<CourseContent course={lesson.course}/>}
+    childern={<CourseContent course={lesson.chapter.course}/>}
     />
    </div>
   </div>
   <div className="flex flex-col p-3 gap-4">
     <Heading title="Related Courses"/>
 
-  <div className='flex justify-center flex-wrap gap-8 lg:px-10'>
+  {/* <div className='flex justify-center flex-wrap gap-8 lg:px-10'>
 
         {courses.map((course,index)=>{
           return <Card
@@ -331,7 +332,7 @@ if(!lesson){
         })}
 
 
-      </div>
+      </div> */}
 
       </div>
  
