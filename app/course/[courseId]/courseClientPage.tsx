@@ -117,7 +117,7 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId}) => {
 
 
 {/* course contents lits for above md */}
-<div className="fixed right-10 top-10 w-md hidden md:block">
+<div className="fixed right-20 top-30 w-md hidden md:block">
   <CourseContentList/>
 
 </div>

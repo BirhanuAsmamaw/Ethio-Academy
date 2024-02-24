@@ -7,8 +7,8 @@ import Container from "@/components/container/container";
 import Heading from "@/components/Heading/Heading";
 
 const CourseContentList = () => {
-  return ( <Container childern={<>
-    <Heading title="This Course includes " />
+  return ( <Container childern={<div className="p-3">
+    <h5 className="text-[12px] font-normal">This Course includes</h5>
       <div className=" md:px-2 md:px-10  ">
 
       <div className="
@@ -70,7 +70,7 @@ const CourseContentList = () => {
       </div>
     
       
-      </>}/>);
+      </div>}/>);
 }
  
 export default CourseContentList;

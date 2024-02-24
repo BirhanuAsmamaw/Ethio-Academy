@@ -17,7 +17,7 @@ const LessonPage = async({params}:{params:IParams}) => {
 
   return (<>
   <Navbar/>
-   <div className="flex py-10 ">
+   <div className="flex flex-col gap-10 py-10 ">
    <h1 className="text-lg font-medium">{lesson.title}</h1>
    <div>
     <video
