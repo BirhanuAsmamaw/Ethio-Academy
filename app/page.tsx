@@ -43,11 +43,13 @@ const courses=await getCourses()
           return <Card
           key={course.id}
               id={course.id}
+              no_reviews={course.reviews.length}
               category={course.category}
               price={course.price}
               subject={course.subject}
               rating={course?.rating}
-              cover={course.cover}  />
+              cover={course.cover} 
+               />
       
         })}
 

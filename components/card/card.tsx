@@ -13,13 +13,13 @@ interface CardProps{
   category: string;
   cover: any; // Assuming cover is the path to the image
   price: number;
-
+no_reviews?:number; // Assuming
   rating: number;
   
 }
 
 
-const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating}) => {
+const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating,no_reviews}) => {
   return ( <div className="
   group
   w-full 
@@ -62,7 +62,7 @@ rounded-[5px]
         <StarOutlined fontSize="inherit" className="text-gray-100 dark:text-gray-600" />
       }
       />
-      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">4 reviews</p>
+      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{no_reviews} reviews</p>
    
     </div>:""}
 
