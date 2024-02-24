@@ -25,6 +25,8 @@ const [isnext, setIsNext]=useState(false)
 const [image,setImage]=useState<File|null>(null)
 const [video,setVideo]=useState<File|null>(null)
 const [isLoading, setIsLoading]=useState(false)
+const [selectedImage, setSelectedImage] = useState<any>();
+const [selectedVideo, setSelectedVideo] = useState<any>();
 
 
 
@@ -58,7 +60,7 @@ const [isLoading, setIsLoading]=useState(false)
 
   const handleImageChange = useCallback((acceptedFiles:any)=> {
     setImage(acceptedFiles[0])
-    // setValue('cover','cover')
+    setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
   }, []) 
 
 
@@ -66,6 +68,7 @@ const [isLoading, setIsLoading]=useState(false)
   const handleVideoChange = useCallback((acceptedFiles:any)=> {
     // Do something with the files
     setVideo(acceptedFiles[0])
+    setSelectedVideo(URL.createObjectURL(acceptedFiles[0]));
     // setValue('cover','cover')
   }, []) 
 
@@ -213,6 +216,8 @@ const [isLoading, setIsLoading]=useState(false)
           <div className="w-full  lg:w-8/12 flex flex-col gap-1">
           <Heading small title="Upload Course Cover"/>
             <FileInput
+            file={selectedImage}
+            fileType="image"
           onDrop={handleImageChange}
               register={register}
               id="cover" 
@@ -224,6 +229,8 @@ const [isLoading, setIsLoading]=useState(false)
         <div className="w-full  lg:w-8/12 flex flex-col gap-1">
           <Heading small title="Upload Course Video"/>
             <FileInput
+            file={selectedVideo}
+            fileType="video"
           onDrop={handleVideoChange}
               register={register}
               id="videoUrl" 

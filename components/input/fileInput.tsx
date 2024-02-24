@@ -3,27 +3,50 @@
 import { useCallback } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import {useDropzone} from 'react-dropzone'
+import Image from "next/image";
 
 
 interface InputFileProps{
   
     disabled?:boolean;
     required?:boolean;
-   
+    file?:any;
     register:UseFormRegister<FieldValues>;
     errors:FieldErrors;
+    fileType?:string;
     id:string;
     onDrop:(file:any) => any;
   
   }
 
-const FileInput:React.FC<InputFileProps> = ({register,required,errors,id,disabled,onDrop}) => {
+const FileInput:React.FC<InputFileProps> = ({register,required,errors,id,disabled,file,fileType,onDrop}) => {
     
       const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
     
   return ( 
-    <div {...getRootProps()} className="flex items-center justify-center w-full">
+    <div className="">
+
+        {file&&(fileType==='image')&&<div className="overflow-hidden">
+                <Image height={400}  width={370} src={file} alt="image"/>
+            </div>
+        }
+
+
+{file&&(fileType==='video')&&<div>
+    <video
+        className="w-full rounded-lg shadow-lg"
+        controls
+       
+      >
+        <source src={file} type="video/mp4"  />
+        Your browser does not support the video tag.
+      </video></div>}
+
+
+
+
+   {!file&&<div {...getRootProps()} className="flex items-center justify-center w-full">
         <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
                 <svg className="w-4 h-4 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -34,7 +57,7 @@ const FileInput:React.FC<InputFileProps> = ({register,required,errors,id,disable
             </div>
             <input {...getInputProps()} id={id}  type="file" className={` ${errors[id]? "border border-rose-400":""}`} {...register(id,{required})}/>
         </label>
-    </div> 
+    </div>} </div>
      );
 }
  
