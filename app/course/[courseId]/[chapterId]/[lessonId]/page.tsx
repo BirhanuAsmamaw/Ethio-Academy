@@ -5,7 +5,7 @@ interface IParams{
 }
 const LessonPage = async({params}:{params:IParams}) => {
 
-  const lesson=await getLessonById(params.lessonId);
+  const lesson=await getLessonById('65d8fffe01b63e703e31e17a');
   console.log("lesson:-",lesson)
 
   if(!lesson){
