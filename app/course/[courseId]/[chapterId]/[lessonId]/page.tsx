@@ -46,7 +46,7 @@ dark:border-gray-700
     
   </div>
   {/* course contents lits for above md */}
-{lesson.chapter&&<div className="lg:fixed w-full lg:w-72 right-20 flex lg:h-screen items-center justify-center  ">
+{lesson.chapter&&<div className="lg:fixed w-full  right-20 flex lg:h-screen items-center justify-center  ">
 <Container childern={
   <div className="p-2 w-full">
     <CourseContent course={lesson.chapter.course}/>
