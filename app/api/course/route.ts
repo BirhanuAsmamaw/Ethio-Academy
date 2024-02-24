@@ -1,34 +1,44 @@
-// pages/api/yourApiRouteName.ts
-import prisma from '@/lib/prismadb';
+import { getCurrentUser } from "@/actions/currentUser";
+import { NextResponse } from "next/server";
+import prisma from "@/lib/prismadb";
+export async function POST(req:Request){
+  const body = await req.json();
 
-
-import {  NextResponse } from 'next/server';
-
-  export async function GET(req:Request, { params }: { params: { lessonId: string } } ) {
-    try{
-
-      const lessonId = params.lessonId;
-
-     
-  const lesson = await prisma.lesson.findUnique({
-  where:{
-   
-    id:lessonId,
-  },
-  include:{
-    questions:true,
-    chapter:{
-    include:{
-      course:true
-    }
-  },},
-  
-});
-
-return NextResponse.json(lesson);
-
-    }
-    catch(err){
-      console.log(err);
-    }
+  const user =await getCurrentUser();
+  if (!user){
+    return NextResponse.json({status:false, message:"unauthorized"});
   }
+
+  if (user.role!=="ADMIN"){
+    return NextResponse.json({status:false, message:"unauthorized"});
+
+  }
+
+  const {
+    subject,
+    category,
+     cover,
+     videoUrl,
+     price,
+     descriptions,
+     requirements,
+     whoShouldTake,
+  }=body;
+
+  const newCourse=await prisma.course.create({
+    data:{
+      creatorId:user.id,
+      subject:subject,
+      category:category,
+      videoUrl:videoUrl,
+      cover:cover,
+      price:parseFloat(price),
+      rating:0,
+      descriptions:descriptions,
+      requirements:requirements,
+      whoShouldTake:whoShouldTake
+    }
+  })
+
+  return NextResponse.json(newCourse);
+}
