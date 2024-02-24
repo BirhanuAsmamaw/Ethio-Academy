@@ -4,7 +4,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { IoIosSend } from "react-icons/io";
 import { Rating } from "@mui/material";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import axios from "axios";
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
@@ -22,6 +22,7 @@ const AddReviews:React.FC<AddReviewsProps> = ({course}) => {
   const router=useRouter();
   const [isLoading,setLoading] =useState(false);
   const [isvalue,setIsValue] = useState(0)
+  const [newrate,setNewRate] = useState(course.rating)
 const {register,handleSubmit,reset,setValue,formState:{errors}}=useForm<FieldValues>({
   defaultValues:{
     comment:"",
@@ -35,6 +36,12 @@ const setCostume=(id:string,value:any)=>{
 
 }
 
+
+useEffect(()=>{
+  setNewRate((prev:number)=>(prev+isvalue)/2)
+},[isvalue]);
+
+
 const onSubmit:SubmitHandler<FieldValues>=(data)=>{
   setLoading(true);
   axios.post('/api/reviews',data).then(()=>{
@@ -46,6 +53,11 @@ const onSubmit:SubmitHandler<FieldValues>=(data)=>{
   }).finally(()=>{
     setLoading(false);
   });
+
+
+  axios.put(`/api/course/${course.id}/update/rate`,{rating:newrate}).then(()=>{
+    router.refresh()
+    reset();});
   console.log(data);
 
 }
