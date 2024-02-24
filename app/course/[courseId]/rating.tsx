@@ -12,7 +12,7 @@ const RatingPage:React.FC<RatingPageProps> = ({course}) => {
     ]
   return (<Container childern={
     <div className="flex gap-10 flex-col md:flex-row justify-center ">
-      <div className="flex flex-col justify-center gap-4 border-r border-gray-200 dark:border-gray-700  p-4 items-center">
+     {course.rating&&<div className="flex flex-col justify-center gap-4 border-r border-gray-200 dark:border-gray-700  p-4 items-center">
         <h1 className="text-6xl font-bold text-center text-yellow-500">{course.rating}</h1>
         <Rating readOnly  value={course.rating} precision={0.5} 
         emptyIcon={
@@ -21,7 +21,7 @@ const RatingPage:React.FC<RatingPageProps> = ({course}) => {
 
 
 
-      </div>
+      </div>}
 
       <div className="flex-col justify-center w-full p-6">
         {
