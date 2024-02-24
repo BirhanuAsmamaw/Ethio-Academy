@@ -35,9 +35,9 @@ const [progress, setProgress] = useState(0)
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
      
-      subject:"",
-      price:0.00,
-      category:""}})
+      subject:null,
+      price:0,
+      category:null}})
 
 
 
@@ -184,6 +184,10 @@ const [progress, setProgress] = useState(0)
 
   }
   await handleImageUpload();
+  
+  if(!imageCoverUrl || !videoUrl){
+throw new Error("course cover and video not empty!!")
+  }
 
   const course={...data,cover:imageCoverUrl,videoUrl:videoUrl}
     axios.post('/api/course',course).then(()=>{
@@ -208,8 +212,10 @@ const onCancelImage = () => {
 };
 
 
+
+// set total progress
 useEffect(()=>{
-  setProgress((imageProgress+videoProgress)/2)
+  setProgress(Math.floor((imageProgress+videoProgress)/2))
 },[imageProgress,videoProgress]);
 
   
