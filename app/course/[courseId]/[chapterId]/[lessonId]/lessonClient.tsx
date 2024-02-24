@@ -3,27 +3,23 @@ import Container from "@/components/container/container";
 import CourseContent from "../../courseContent";
 import Heading from "@/components/Heading/Heading";
 import Navbar from "@/components/navbar/Navbar";
-import { courses } from "@/lib/courses";
-import Card from "@/components/card/card";
 import { questions } from "@/lib/questions";
 import { useEffect, useRef, useState } from "react";
-
 import { useRouter } from "next/navigation";
-import { lessons } from "@/lib/lessons";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import CourseSceleton from "../courseSceleton";
-import axios from "axios";
-import { CourseType } from "@/types";
 
 
 
 
 
-interface IParams{
-  lessonId: string;
+
+
+interface LessonClientProps{
+  lesson: any;
 }
 
-const LessonClient = ({params}:{params:IParams}) => {
+const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
 const router=useRouter();
 
 
@@ -42,34 +38,7 @@ const choice1 = useRef<HTMLLIElement>(document.createElement('li'));
   const [indexQuestion ,setIndexQuestion] = useState(0);
   const [question, setQuestion] = useState(questions[indexQuestion]);
   const [disabled, setDisabled] = useState(false);
-  const [lessonsData,setLessons]=useState<any>(null);
   const[showSubmit, setShowSubmit] = useState(false);
-
-
-
-
-
-
-
-
-
-  const [lesson,setLesson]=useState<any>(null)
-  useEffect(()=>{
-    async function fetchData() {
-      try{
-        const response=await axios.get(`/api/lesson/${params.lessonId}`)
-        setLesson(response.data);
-      }
-
-      catch(error){
-
-      }
-    }
-    fetchData();
-    
-  },[params.lessonId])
-  
-
 
 
 
@@ -149,7 +118,7 @@ const choice1 = useRef<HTMLLIElement>(document.createElement('li'));
 
   
 
-const [currentLesson, setCurrentLesson] = useState(parseInt(params.lessonId) || 1);
+const [currentLesson, setCurrentLesson] = useState(parseInt(lesson.id) || 1);
 
   const onPrevChange = () => {
     if (currentLesson > 1) {
