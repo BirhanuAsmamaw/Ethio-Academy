@@ -7,7 +7,15 @@ export async function getLessonById(lessonId:string){
       include:{
         chapter:{
           include:{
-            course:true
+            course:{
+              include:{
+                chapters:{
+                  include:{
+                    lessons:true
+                  }
+                }
+              }
+            }
           }
         },
         questions:true

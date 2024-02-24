@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
-import { CourseType } from "@/types";
+
 import { useRouter } from "next/navigation"
 interface courseContentProps{
   course: any|null;
