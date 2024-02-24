@@ -1,7 +1,6 @@
 "use client"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import LessonClient from "./lessonClient"
 
 interface IParams{
   lessonId: string
@@ -25,9 +24,10 @@ const LessonPage = ({params}:{params:IParams}) => {
     
   },[params.lessonId])
   
+  console.log("lesson:-",lesson)
 
   return ( <div className="">
-    <LessonClient lesson={lesson}/>
+    <h1>{lesson.title}</h1>
   </div> );
 }
  
