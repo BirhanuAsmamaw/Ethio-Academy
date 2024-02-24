@@ -2,7 +2,6 @@
 import Container from "@/components/container/container";
 import CourseContent from "../../courseContent";
 import Heading from "@/components/Heading/Heading";
-import Footer from "@/components/footer/footer";
 import Navbar from "@/components/navbar/Navbar";
 import { courses } from "@/lib/courses";
 import Card from "@/components/card/card";
@@ -21,9 +20,7 @@ import { CourseType } from "@/types";
 
 
 interface IParams{
-  chapterId: string;
   lessonId: string;
-  id:string;
 }
 
 const CourseLesson = ({params}:{params:IParams}) => {
@@ -45,7 +42,6 @@ const choice1 = useRef<HTMLLIElement>(document.createElement('li'));
   const [indexQuestion ,setIndexQuestion] = useState(0);
   const [question, setQuestion] = useState(questions[indexQuestion]);
   const [disabled, setDisabled] = useState(false);
-  const [lesson,setLesson]=useState<any>(null);
   const [lessonsData,setLessons]=useState<any>(null);
   const[showSubmit, setShowSubmit] = useState(false);
 
@@ -57,12 +53,12 @@ const choice1 = useRef<HTMLLIElement>(document.createElement('li'));
 
 
 
-  const [course,setCourse]=useState<CourseType|any>(null)
+  const [lesson,setLesson]=useState<any>(null)
   useEffect(()=>{
     async function fetchData() {
       try{
-        const response=await axios.get(`/api/course/${params.chapterId}`)
-        setCourse(response.data);
+        const response=await axios.get(`/api/lesson/${params.lessonId}`)
+        setLesson(response.data);
       }
 
       catch(error){
@@ -71,7 +67,7 @@ const choice1 = useRef<HTMLLIElement>(document.createElement('li'));
     }
     fetchData();
     
-  },[params.chapterId])
+  },[params.lessonId])
   
 
 
@@ -139,12 +135,12 @@ const choice1 = useRef<HTMLLIElement>(document.createElement('li'));
   }
   
   useEffect(() => { setQuestion(questions[indexQuestion])},[questions,indexQuestion]);
-  useEffect(() => {
-    const  lessonsData=lessons.filter((ls:any)=>ls.chapterId===params.chapterId)
-    const lessonData=lessonsData.filter((ls:any)=>ls.lessonId===params.lessonId)
-    setLesson(lessonData)
-    setLessons(lessonsData)
-   },[]);
+  // useEffect(() => {
+  //   const  lessonsData=lessons.filter((ls:any)=>ls.chapterId===params.chapterId)
+  //   const lessonData=lessonsData.filter((ls:any)=>ls.lessonId===params.lessonId)
+  //   setLesson(lessonData)
+  //   setLessons(lessonsData)
+  //  },[]);
 
 
 
@@ -158,13 +154,13 @@ const [currentLesson, setCurrentLesson] = useState(parseInt(params.lessonId) || 
   const onPrevChange = () => {
     if (currentLesson > 1) {
       const newLessonId = currentLesson - 1;
-      router.push(`/course/${params.id}/${params.chapterId}/${newLessonId}`);
+      // router.push(`/course/${params.id}/${params.chapterId}/${newLessonId}`);
       
 
       setCurrentLesson(newLessonId);
     }
     else{
-      router.push(`/course/${params.id}/${params.chapterId}/${lessonsData.length}`);
+      // router.push(`/course/${params.id}/${params.chapterId}/${lessonsData.length}`);
 
     }
     router.refresh();
@@ -173,14 +169,14 @@ const [currentLesson, setCurrentLesson] = useState(parseInt(params.lessonId) || 
   const onNextChange = () => {
     // You should check whether the next lesson exists based on your logic
     
-    if(currentLesson<lessonsData.length){
-      const newLessonId = currentLesson + 1;
-    router.push(`/course/${params.id}/${params.chapterId}/${newLessonId}`);
-    setCurrentLesson(newLessonId);
-    }
-    else{
-      router.push(`/course/${params.id}/${params.chapterId}/1`);
-    }
+    // if(currentLesson<lessonsData.length){
+    //   const newLessonId = currentLesson + 1;
+    // router.push(`/course/${params.id}/${params.chapterId}/${newLessonId}`);
+    // setCurrentLesson(newLessonId);
+    // }
+    // else{
+    //   router.push(`/course/${params.id}/${params.chapterId}/1`);
+    // }
     
       router.refresh();
     
@@ -193,7 +189,7 @@ const onsubmit = () => {
 
 
 
-if(!course){
+if(!lesson){
   return ( <div className="flex h-screen justify-center py-10 px-2">
     <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
       <CourseSceleton/>
@@ -220,8 +216,8 @@ if(!course){
    <Container
    childern={lesson&&<div className="flex flex-col gap-4 p-2 md:p-6 md:px-4 lg:px-4">
     <div className="flex justify-between p-2 flex-wrap">
-    <p className="text-sm text-slate-400 ">Biology</p>
-      <p className="text-sm text-slate-400  ">Chapter:One <span>Bacteria</span></p>
+    <p className="text-sm text-slate-400 ">{lesson.chapter.course.subject}</p>
+      <p className="text-sm text-slate-400  ">Chapter:One <span>{lesson.chapter.title}</span></p>
     </div>
     <div className="flex justify-between p-2 flex-wrap">
    <button onClick={()=>onPrevChange()}
@@ -237,34 +233,27 @@ if(!course){
      
     </div>
    <div className="p-2 flex flex-col justify-between lg:flex-row dark:text-300"> 
-   <Heading title={lesson[0].title}/>
-   <p className=" text-slate-400  ">Lesson:{lesson[0].lessonId}</p>
+   <Heading title={lesson.title}/>
+   <p className=" text-slate-400  ">Lesson:{lesson.id}</p>
       </div>
-      <p className="bg-teal-100 dark:bg-gray-700 p-3 rounded-[5px]">{lesson[0].introduction}</p>
 
-    <div className="">
-      {lesson[0].contents.map((content:string,index:number)=><p key={index} className="p-2">{content}</p>)}
-    </div>
-      
-       <div className="bg-sky-200 flex flex-col gap-2 p-3 rounded-[5px] border-l-[3px] border-sky-600 dark:border-gray-900 dark:bg-gray-700">
-        <h1 className="text-sky-600 dark:text-white font-medium text-lg">Remark</h1>
-       <p>{lesson[0].remark}</p>
-       </div>
+   
+     
        
+      <div className="" dangerouslySetInnerHTML={{ __html: lesson.content}}></div>
       
       
       
-      
-       <div className=" flex flex-col text-slate-600 dark:text-gray-400 font-serif gap-2">
+       {/* <div className=" flex flex-col text-slate-600 dark:text-gray-400 font-serif gap-2">
        <h1 className="font-semibold mt-2 text-lg">Conclusions</h1>
        <p>{lesson[0].summary}</p>
 
-       </div>
+       </div> */}
       
 {/* questions */}
 <div className="lg:p-4">
       <div className="flex flex-col lg:flex-row justify-between md:px-10 py-2">
-      <h1 className="text-lg font-medium">{lesson[0].title} Quizzes</h1>
+      <h1 className="text-lg font-medium">{lesson.title} Quizzes</h1>
       <h2 className="text-sm">score:{score}</h2>
       <p className="text-slate-600">{indexQuestion+1} out of {questions.length}</p>
       </div>
@@ -320,7 +309,7 @@ if(!course){
    </div>
    <div className="w-full mt-6 lg:m-0 lg:w-3/12 flex h-full justify-center lg:p-4">
     <Container
-    childern={<CourseContent course={course}/>}
+    childern={<CourseContent course={lesson.course}/>}
     />
    </div>
   </div>
