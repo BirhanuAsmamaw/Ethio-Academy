@@ -212,12 +212,14 @@ const onCancelImage = () => {
   
   return ( <div className="flex flex-col w-full  ">
    
-    <div className="flex flex-col gap-20 w-full pb-16 mb-16">
-      <Heading title="Create Courses"/>
+    <div className="flex flex-col gap-10 w-full pb-6 mb-10">
+      
       {!isnext&&<Container
       childern={
         <div className="flex flex-col gap-10 w-full  lg:mt-20   justify-center items-center p-2">
-       
+       <div className="py-5">
+       <Heading title="Create Courses"/>
+       </div>
           <div className="w-full  lg:w-8/12"><Select
           id="category"
           register={register}
