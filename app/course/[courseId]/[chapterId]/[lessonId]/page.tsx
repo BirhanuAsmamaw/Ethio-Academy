@@ -11,7 +11,7 @@ const LessonPage = async({params}:{params:IParams}) => {
 
   const lesson=await getLessonById(params.lessonId);
   
-
+console.log("lessons data",lesson);
   if(!lesson){
     return <div className=""><CourseSceleton/> </div>
   }
