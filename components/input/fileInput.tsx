@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback } from "react";
+import { MdDelete } from "react-icons/md";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import {useDropzone} from 'react-dropzone'
 import Image from "next/image";
@@ -16,10 +16,11 @@ interface InputFileProps{
     fileType?:string;
     id:string;
     onDrop:(file:any) => any;
+    onCancel?:() => any;
   
   }
 
-const FileInput:React.FC<InputFileProps> = ({register,required,errors,id,disabled,file,fileType,onDrop}) => {
+const FileInput:React.FC<InputFileProps> = ({register,required,errors,id,disabled,file,fileType,onDrop,onCancel}) => {
     
       const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
@@ -27,13 +28,15 @@ const FileInput:React.FC<InputFileProps> = ({register,required,errors,id,disable
   return ( 
     <div className="">
 
-        {file&&(fileType==='image')&&<div className="overflow-hidden">
+        {file&&(fileType==='image')&&<div className="overflow-hidden relative top-4 right-4">
+        <button onClick={onCancel} className="absolute text-rose-400 hover:text-rose-500 transition"><MdDelete size={24}/></button>
                 <Image height={400}  width={370} src={file} alt="image"/>
             </div>
         }
 
 
-{file&&(fileType==='video')&&<div>
+{file&&(fileType==='video')&&<div className="relative top-4 right-4">
+    <button onClick={onCancel} className=" absolute text-rose-400 hover:text-rose-500 transition"><MdDelete size={24}/></button>
     <video
         className="w-full rounded-lg shadow-lg"
         controls

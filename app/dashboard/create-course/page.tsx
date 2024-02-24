@@ -25,8 +25,8 @@ const [isnext, setIsNext]=useState(false)
 const [image,setImage]=useState<File|null>(null)
 const [video,setVideo]=useState<File|null>(null)
 const [isLoading, setIsLoading]=useState(false)
-const [selectedImage, setSelectedImage] = useState<any>();
-const [selectedVideo, setSelectedVideo] = useState<any>();
+const [selectedImage, setSelectedImage] = useState<any>(null);
+const [selectedVideo, setSelectedVideo] = useState<any>(null);
 
 
 
@@ -193,6 +193,15 @@ const [selectedVideo, setSelectedVideo] = useState<any>();
   }
 
 
+//on cancel file
+const onCancelVideo = () => {
+  setSelectedVideo(null);
+};
+const onCancelImage = () => {
+  setSelectedImage(null);
+};
+
+
 
   
   return ( <div className="flex flex-col w-full  ">
@@ -216,6 +225,7 @@ const [selectedVideo, setSelectedVideo] = useState<any>();
           <div className="w-full  lg:w-8/12 flex flex-col gap-1">
           <Heading small title="Upload Course Cover"/>
             <FileInput
+            onCancel={onCancelImage}
             file={selectedImage}
             fileType="image"
           onDrop={handleImageChange}
@@ -229,6 +239,7 @@ const [selectedVideo, setSelectedVideo] = useState<any>();
         <div className="w-full  lg:w-8/12 flex flex-col gap-1">
           <Heading small title="Upload Course Video"/>
             <FileInput
+            onCancel={onCancelVideo}
             file={selectedVideo}
             fileType="video"
           onDrop={handleVideoChange}
