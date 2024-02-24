@@ -1,8 +1,8 @@
 import { getLessonById } from "@/actions/getLessonById";
-import LessonClient from "./lessonClient";
+
 import CourseSceleton from "../courseSceleton";
 import Navbar from "@/components/navbar/Navbar";
-import CourseContent from "../../courseContent";
+
 
 interface IParams{
   lessonId: string
@@ -38,10 +38,10 @@ const LessonPage = async({params}:{params:IParams}) => {
       </div>
   </div>
   {/* course contents lits for above md */}
-{lesson.chapter&&<div className="lg:fixed right-20 flex lg:h-screen items-center justify-center  ">
+{/* {lesson.chapter&&<div className="lg:fixed right-20 flex lg:h-screen items-center justify-center  ">
 <CourseContent course={lesson.chapter.course}/>
 
-</div>}
+</div>} */}
 
   
   </div></> );
