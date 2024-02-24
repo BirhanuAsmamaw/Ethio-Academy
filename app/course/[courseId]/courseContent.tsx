@@ -27,7 +27,7 @@ router.refresh()
       {course.chapters.map((chapter:any,index:number) =>{
         return <AccordionItem key={index} value={`${index}`}className="border   border-slate-200 dark:border-gray-600 px-2 md:px-6 m-2 rounded-[6px] ">
         <AccordionTrigger className="hover:no-underline" ><div className="flex gap-2  text-captalize  ">
-         <p className="h-6 w-6 rounded-full bg-green-400  items-center text-center text-sm text-black">{index+1}</p>
+         <p className="h-5 w-5 rounded-full bg-green-400  items-center text-center text-sm text-black">{index+1}</p>
          <p className="text-base">{chapter.title}</p>
           </div></AccordionTrigger>
         <AccordionContent className="bg-background">

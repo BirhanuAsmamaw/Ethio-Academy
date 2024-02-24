@@ -20,7 +20,7 @@ console.log("lessons data",lesson);
 
   return (<>
   <Navbar/>
-  <div className="flex flex-col lg:flex-row gap-10 justify-center py-10 px-2">
+  <div className="flex flex-col lg:flex-row gap-10 justify-center py-10 px-2 w-full">
 
 <div className="px-2 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10 
 border-x-[1.5px]
@@ -46,7 +46,7 @@ dark:border-gray-700
     
   </div>
   {/* course contents lits for above md */}
-{lesson.chapter&&<div className="lg:fixed w-[300px]  right-20 flex lg:h-screen items-center justify-center  ">
+{lesson.chapter&&<div className="lg:fixed w-[300px]  right-20 lg:flex lg:h-screen items-center justify-center  ">
 <Container childern={
   <div className="p-2 w-full">
     <CourseContent course={lesson.chapter.course}/>
