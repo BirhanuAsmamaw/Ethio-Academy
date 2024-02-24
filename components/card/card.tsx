@@ -27,7 +27,14 @@ const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating}) => {
   bg-white border
    border-gray-200 
    dark:border-gray-700
-   dark:bg-gray-800 ">
+   dark:bg-gray-800 
+
+   hover:dark:border-x-yellow-400 
+   hover:dark:border-y-green-400 
+   hover:dark:bg-gray-700
+   shadow 
+   
+   ">
   <Link href={`/course/${id}`} className="no-underline w-full ">
     <Image src={cover} alt={subject} height={200} width={200} 
     className=" w-full rounded-t-[5px]
