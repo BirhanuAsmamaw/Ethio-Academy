@@ -2,6 +2,7 @@ import { Rating } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "../container/container";
+import StarOutlined from "@mui/icons-material/StarOutlined";
 
 
 
@@ -28,7 +29,7 @@ const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating}) => {
    border-gray-200 
    dark:border-gray-700
    dark:bg-gray-800 
-
+rounded-[5px]
    hover:dark:border-x-yellow-400 
    hover:dark:border-y-green-400 
    hover:dark:bg-gray-700
@@ -53,7 +54,14 @@ const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating}) => {
       <h1 className=" md:hidden text-lg font-semibold p-1">{subject.length>30? subject.substring(0,30)+"...":subject}</h1>
     </div>
     <div className="flex justify-center">
-      <Rating precision={0.5} readOnly value={rating} size="small"/>
+      <Rating 
+      precision={0.5} 
+      readOnly value={rating} 
+      size="small"
+      emptyIcon={
+        <StarOutlined fontSize="inherit" className="text-gray-100 dark:text-gray-600" />
+      }
+      />
       <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">4.95</p>
     <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">out of</p>
     <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
@@ -61,7 +69,7 @@ const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating}) => {
 
   </div>
   <div className="m-3">
-  <Link href={`/course/${id}`} className="no-underline w-full flex justify-center border border-gray-200  dark:border-gray-600 hover:bg-gray-200  hover:dark:bg-gray-700  rounded  duration-300 p-2">
+  <Link href={`/course/${id}`} className="no-underline w-full flex justify-center border border-gray-200  dark:border-gray-600 hover:bg-gray-200  hover:dark:bg-gray-600  rounded  duration-300 p-2">
     <p className="text-base font-medium ">Get started</p>
   </Link>
   </div>
