@@ -27,7 +27,9 @@ const [video,setVideo]=useState<File|null>(null)
 const [isLoading, setIsLoading]=useState(false)
 const [selectedImage, setSelectedImage] = useState<any>(null);
 const [selectedVideo, setSelectedVideo] = useState<any>(null);
-
+const [imageProgress, setImageProgress] = useState(0)
+const [videoProgress, setVideoProgress] = useState(0)
+const [progress, setProgress] = useState(0)
 
 
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
@@ -94,6 +96,7 @@ const [selectedVideo, setSelectedVideo] = useState<any>(null);
             uploadTask.on('state_changed',
             (snapshot)=>{
               const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
+              setVideoProgress(progress)
             
               switch(snapshot.state){
                    case "paused":
@@ -136,6 +139,7 @@ const [selectedVideo, setSelectedVideo] = useState<any>(null);
           uploadTask.on('state_changed',
           (snapshot)=>{
             const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
+            setImageProgress(progress)
            
             switch(snapshot.state){
                  case "paused":
@@ -167,6 +171,8 @@ const [selectedVideo, setSelectedVideo] = useState<any>(null);
         })
 
       }
+
+      setProgress((imageProgress+videoProgress)/2)
     
     } catch(error) {
 
@@ -314,6 +320,16 @@ const onCancelImage = () => {
 <Button className="bg-teal-400 text-sm  hover:bg-teal-500"  onClick={onNextButton} title="Back"/>
 <Button className="bg-teal-400 text-sm  hover:bg-teal-500"  onClick={handleSubmit(onSubmit)} title={isLoading? "Loading...":"Submit"}/>
 </div>
+
+
+{isLoading&&<div className="py-4"><div className="flex justify-between mb-1">
+  <span className="text-base font-medium text-blue-700 dark:text-white">Uploading...</span>
+  <span className="text-sm font-medium text-blue-700 dark:text-white">{progress}%</span>
+</div>
+<div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+  <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
+</div></div>}
+
           </div>
 
         </div>
