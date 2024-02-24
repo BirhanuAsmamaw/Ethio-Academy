@@ -172,7 +172,7 @@ const [progress, setProgress] = useState(0)
 
       }
 
-      setProgress((imageProgress+videoProgress)/2)
+      
     
     } catch(error) {
 
@@ -208,6 +208,9 @@ const onCancelImage = () => {
 };
 
 
+useEffect(()=>{
+  setProgress((imageProgress+videoProgress)/2)
+},[imageProgress,videoProgress]);
 
   
   return ( <div className="flex flex-col w-full  ">
@@ -321,10 +324,10 @@ const onCancelImage = () => {
 
 <Button className="bg-teal-400 text-sm  hover:bg-teal-500"  onClick={onNextButton} title="Back"/>
 <Button className="bg-teal-400 text-sm  hover:bg-teal-500"  onClick={handleSubmit(onSubmit)} title={isLoading? "Loading...":"Submit"}/>
-</div>
+</div> </div>
 
 
-{isLoading&&<div className="py-4"><div className="flex justify-between mb-1">
+{isLoading&&<div className="p-4 w-full"><div className="flex justify-between mb-1">
   <span className="text-base font-medium text-blue-700 dark:text-white">Uploading...</span>
   <span className="text-sm font-medium text-blue-700 dark:text-white">{progress}%</span>
 </div>
@@ -332,7 +335,6 @@ const onCancelImage = () => {
   <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
 </div></div>}
 
-          </div>
 
         </div>
       }
