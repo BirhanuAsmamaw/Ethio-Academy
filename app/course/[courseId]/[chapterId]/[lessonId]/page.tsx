@@ -6,7 +6,7 @@ interface IParams{
 }
 const LessonPage = async({params}:{params:IParams}) => {
 
-  const lesson=await getLessonById('65d8fffe01b63e703e31e17a');
+  const lesson=await getLessonById(params.lessonId);
   
 
   if(!lesson){
@@ -14,7 +14,7 @@ const LessonPage = async({params}:{params:IParams}) => {
   }
 
   return ( <div className="">
-    <LessonClient lesson={lesson}/>
+   <h1 className="text-lg font-medium">{lesson.title}</h1>
   </div> );
 }
  
