@@ -5,13 +5,13 @@ import { IoIosPhonePortrait } from "react-icons/io";
 import { GoQuestion } from "react-icons/go";
 import { useCart } from "@/hooks/use.cart";
 import { useRouter } from "next/navigation";
-import { courses } from "@/lib/courses";
 import { IconType } from "react-icons";
-import { CourseType } from "@/components/search/types/course.type";
+import { CiCircleQuestion } from "react-icons/ci";
 
 interface ContentListProps{
   icon:IconType;
   title:string;
+  content?:string;
   } 
   
 
@@ -19,12 +19,14 @@ interface ContentListProps{
     course:any[];
   }
 
-const ContentList:React.FC<ContentListProps>=({icon:Icon,title})=>{
+const ContentList:React.FC<ContentListProps>=({icon:Icon,title,content})=>{
   
   return(
-    <div className="flex gap-4 px-2   text-base text-gray-500 dark:text-gray-400  border-y border-gray-200 dark:border-gray-700 mx-2 py-2">
-      <Icon size={24}/>
-      <p>{title}</p>
+    <div className="flex gap-4 px-2 justify-between  text-base text-gray-500 dark:text-gray-400  border-y border-gray-200 dark:border-gray-700  px-2 mx-2 py-2">
+      <div className="flex gap-2"><Icon size={24}/>
+      <p>{title}</p></div>
+      <p className="font-medium text-rose-600 dark:text-green-400 ">{content}</p>
+
     </div>
   )
 }
@@ -92,24 +94,24 @@ const onPayment=()=>{
  <div className="flex flex-col  ">
 
   <ContentList
-  title="Level:Beginner"
-  icon={BsBarChart}
+  title="Exam Questions"
+  icon={CiCircleQuestion}
+  content="3000"
   />
 
 <ContentList
-  title="Resourses:2"
+  title="Resourses"
   icon={SiLibreoffice}
+  content="2"
   />
 
 <ContentList
-  title="Lessons:20"
+  title="Lessons"
   icon={BsBarChart}
+  content="20"
   />
 
-<ContentList
-  title="Questions and Exams:3000"
-  icon={GoQuestion}
-  />
+
 <ContentList
   title="Accessed by Laptop,desktop,Mobile,Tablet and etc..."
   icon={IoIosPhonePortrait}

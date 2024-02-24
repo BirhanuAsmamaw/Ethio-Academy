@@ -107,7 +107,7 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 
 
 
-<RatingPage/>
+<RatingPage course={course}/>
 <AddReviews course={course} customer={customer}/>
 {course.reviews&&<Reviews reviews={course.reviews}/>}
 
@@ -118,7 +118,7 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 
 
 {/* course contents lits for above md */}
-<div className="hidden lg:block fixed right-20 top-48 w-[300px] hidden md:block">
+<div className="hidden lg:block fixed right-20 top-28 w-[300px] hidden md:block">
   <CourseDescribeList course={course}/>
 
 </div>
