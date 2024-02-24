@@ -13,7 +13,7 @@ const LessonPage = async({params}:{params:IParams}) => {
   }
 
   return ( <div className="">
-    <h1>lesson id {params.lessonId}</h1>
+    <h1> {lesson.title}</h1>
   </div> );
 }
  
