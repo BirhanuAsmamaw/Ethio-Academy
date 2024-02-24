@@ -46,14 +46,14 @@ useEffect(()=>{
     const isUserReviewed=course.reviews.some((review:any)=>review.customer.id===customer.id)
     setReview(isUserReviewed)
   }
-},[ customer])
+},[ customer,course])
 
 
 
 useEffect(()=>{
   setNewRate((prev:number)=>prev?(prev+isvalue)/(course.reviews.length):isvalue)
   router.refresh();
-},[isvalue]);
+},[course.reviews.length, isvalue, router]);
 
 
 const onSubmit:SubmitHandler<FieldValues>=(data)=>{
@@ -62,7 +62,7 @@ const onSubmit:SubmitHandler<FieldValues>=(data)=>{
   axios.post('/api/reviews',data).then(()=>{
     toast.success("Review  created  successfully")
     router.refresh()
-    
+    reset();
   }).catch((errors)=>{
     toast.error("something went wrong");
   }).finally(()=>{
@@ -72,6 +72,7 @@ const onSubmit:SubmitHandler<FieldValues>=(data)=>{
 
   axios.put(`/api/course/${course.id}/update/rate`,{rating:newrate}).then(()=>{
     router.refresh()
+    reset();
     });
   }
 
