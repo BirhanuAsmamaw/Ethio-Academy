@@ -9,7 +9,7 @@ const Search = () => {
    </div>
    <div className="md:hidden relative">
     <button><CiSearch size={30} className=""/></button>
-    <div className="absolute top-13 w-full">
+    <div className="absolute top-13 w-full right-2 left-2">
     <div className=" dark:border-gray-800 bg-white dark:bg-gray-700  shadow-lg flex w-[300px]  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
     <input type="search" 
