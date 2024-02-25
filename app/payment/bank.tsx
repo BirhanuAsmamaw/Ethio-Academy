@@ -21,7 +21,7 @@ const Bank:React.FC<BankProps>  = ({bank_name,name,account_no,image}) => {
 
       <div className="flex flex-col text-gray-500 dark:text-gray-400">
         <p>{name}</p>
-        <p>{account_no}</p>
+        <p className="lining-nums">{account_no}</p>
       </div>
 
     </div>
