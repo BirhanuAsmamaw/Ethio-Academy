@@ -17,7 +17,7 @@ export async function getCurrentUser() {
     where:{email:session.user.email},
     include:{
       createdCourses:true,
-      myLearning:true,
+     payedCourses:true
     }
   })
   if(!currentUser){
