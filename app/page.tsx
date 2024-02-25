@@ -7,6 +7,10 @@ import React from "react";
 import Header from '@/components/Header'
 import { getCourses } from '@/actions/getCourses'
 import { BackgroundBeams } from '@/components/ui/background-beams';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { AboutAcademy } from '@/lib/aboutAcademy';
+
+
 
 
 export default async function Home() {
@@ -34,7 +38,7 @@ const courses=await getCourses()
    
     <main className='md:flex md:justify-center w-full pb-10 overflow-hidden'>
     <div id="courseslist" className="flex flex-col gap-10 overflow-hidden">
-      <h1 className='w-full text-xl md:text-4xl font-semibold border-b border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
+      <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
 
   
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-8 p-4 md:px-10'>
@@ -55,6 +59,34 @@ const courses=await getCourses()
 
 
       </div>
+
+      <div className="py-20 flex justify-center w-full">
+<div className="w-full md:w-11/12 lg:w-8/12 xl:w-6/12 flex flex-col gap-4">
+<h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>What to expect from Ethio Exams Academy courses</h1>
+
+
+<Accordion type="single" collapsible className="w-full p-1" >
+
+      {AboutAcademy.map((about:any,index:number) =>{
+        return <AccordionItem key={index} value={`${index}`}className="border   border-slate-200 dark:border-gray-600 px-2 md:px-6 m-2 rounded-[6px] ">
+        <AccordionTrigger className="hover:no-underline" ><div className="flex gap-2  text-captalize  ">
+         <p className="h-5 w-5 rounded-full bg-green-400  items-center text-center text-sm text-black">{index+1}</p>
+         <p className="text-base">{about.title}</p>
+          </div></AccordionTrigger>
+        <AccordionContent className="bg-background">
+          <p className='text-sm text-wrap'>{about.content}</p>
+        </AccordionContent>
+      </AccordionItem>
+      })}
+
+
+     
+      
+    </Accordion>
+
+</div>
+     
+      </div>
       
 
 
@@ -66,7 +98,7 @@ const courses=await getCourses()
 
 
 
-    <h1 className='w-full text-xl md:text-4xl font-semibold border-b border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming  Courses</h1>
+    <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming  Courses</h1>
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-8 p-4 md:px-10'>
 
         {courses?.map((course,index)=>{
