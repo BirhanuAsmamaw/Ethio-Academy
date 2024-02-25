@@ -51,7 +51,9 @@ const {carts}=useCart()
      </h1></Link>
 
      
+       <div className="hidden md:block">
        <Search/>
+       </div>
     
      <div className="flex   justify-center">
     <div className=" hidden md:block">
@@ -71,7 +73,9 @@ const {carts}=useCart()
       
     </div></div>
    
-
+    <div className="md:hidden">
+       <Search/>
+       </div>
     {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <Profile user={user}/>
       </div>}
