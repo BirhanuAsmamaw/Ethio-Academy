@@ -61,7 +61,8 @@ interface Payment {
   status: boolean;
   transaction: string;
   bank: string;
-  customer:any;
+  name: string;
+  email: string;
   createdAt:any;
   courses : Course[];
 }
@@ -116,7 +117,7 @@ export const columns: ColumnDef<Payment>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("customer.name")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
   },
 
 
@@ -134,11 +135,37 @@ export const columns: ColumnDef<Payment>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("customer.email")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
 
 
  
+  {
+    accessorKey: "courses",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Email
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">
+      
+      <ul className="max-w-md text-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+{(row.getValue("courses") as Course[])?.map((course:Course) => {
+  return <li key={course.id}>
+  {course.subject}
+</li>
+})}
+   
+</ul>
+    </div>,
+  },
+
 
 
 
@@ -214,7 +241,12 @@ export const ApprovedCoursesClient:React.FC<ApprovedCoursesClientProps>=({course
 
 
 
-  const data:Payment[]=coursePayments
+  const data:Payment[]=coursePayments.map(payment =>{
+    return {...payment,
+       name:payment.customer.name,
+       email:payment.customer.email
+    }
+  })
   
      
   
