@@ -12,7 +12,7 @@ import { useCart } from "@/hooks/use.cart";
 import Profile from "../Profile";
 import MobileSidebar from "./mobileMenu";
 import CategorCDrobDown from "../dropdown/CourseCategory";
-
+import { IoMdNotificationsOutline } from "react-icons/io";
 interface NavbarClientProps{
   user:any;
 }
@@ -65,6 +65,10 @@ const {carts}=useCart()
 
       
     </div></div>
+    {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        <IoMdNotificationsOutline size={24}/>
+      </div>}
+
     {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <Profile user={user}/>
       </div>}
