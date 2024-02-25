@@ -8,13 +8,20 @@ import { IoMdNotificationsOutline } from "react-icons/io";
   } 
 const NotificationDropDown:React.FC<NotificationDropDownProps> = ({notifications}) => {
 
+  const unreadNotifications=notifications.filter(notification =>!notification.isRead)
+
   return (  <CDropDown large title={
-    <IoMdNotificationsOutline size={24} />
+    <div>
+<IoMdNotificationsOutline size={24} />
+<div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
+    </div>
+    
+    
   } body={<div>
 
     {notifications?.length?<div>
       {notifications?.map((notification)=>{
-        return <div key={notification.id} id="alert-additional-content-3" className="p-4 mb-4 text-green-800 border border-green-300 rounded-[5px] bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
+        return <div key={notification.id} id="alert-additional-content-3" className="p-4 max-h-[800px] overflow-y-auto mb-4 text-green-800 border border-green-300 rounded-[5px] bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
         <div className="flex items-center">
           
           <h3 className="text-base font-medium">{notification.title}</h3>

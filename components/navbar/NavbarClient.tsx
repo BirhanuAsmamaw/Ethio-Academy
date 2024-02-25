@@ -77,7 +77,7 @@ const {carts}=useCart()
       href="/cart" 
       className="p-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium relative ">
         <IoCartOutline size={24}/>
-        {carts&&<div className="absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-400"><p className="text-[10px]">{carts&&`(${carts.length})`}</p></div>}
+       <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-blue-500 ${carts?.length? 'block':'hidden'}`}><p className="text-[10px]">{carts?.length?`${carts?.length}`:''}</p></div>
         </Link>
 
         {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
