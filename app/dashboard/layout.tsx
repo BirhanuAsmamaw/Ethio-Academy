@@ -1,4 +1,5 @@
 
+import { getCurrentUser } from "@/actions/currentUser";
 import Navbar from "@/components/navbar/Navbar";
 
 import Sidebar from "@/components/sidebar/sidebar";
@@ -9,6 +10,7 @@ interface DashboardLayoutProbs{
 }
 
 const DashboardLayout:React.FC<DashboardLayoutProbs> = ({children}) => {
+  
   return ( <div className="">
    <Navbar/>
     <div className="lg:px-10 flex gap-10 justify-center pt-10 w-full">

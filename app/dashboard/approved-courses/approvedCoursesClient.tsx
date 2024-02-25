@@ -145,7 +145,7 @@ export const columns: ColumnDef<Payment>[] = [
 
 
   {
-    accessorKey: "price",
+    accessorKey: "totalPrice",
     header: ({ column }) => {
       return (
         <Button
