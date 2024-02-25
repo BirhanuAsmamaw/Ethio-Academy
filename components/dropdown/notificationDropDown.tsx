@@ -6,12 +6,12 @@ import { getCurrentUser } from "@/actions/currentUser";
 const NotificationDropDown = async() => {
   const notifications = await getAllNotifications();
   const user=await getCurrentUser();
-  const notificationSelected=notifications?.filter((n)=>n.customers.some((c)=>c.id === user?.id))
+  const notificationSelected=notifications?.length? notifications?.filter((n)=>n.customers.some((c)=>c.id === user?.id)):[]
   return (  <CDropDown chevron title={
     <IoMdNotificationsOutline size={24} />
   } body={<div>
 
-    {notificationSelected?<div>
+    {notificationSelected?.length?<div>
       {notificationSelected?.map((notification)=>{
         return <div key={notification.id} id="alert-additional-content-3" className="p-4 mb-4 text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
         <div className="flex items-center">
