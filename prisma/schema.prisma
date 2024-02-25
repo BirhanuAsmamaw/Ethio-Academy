@@ -64,7 +64,7 @@ model Course{
    creator       User      @relation("createdCourses", fields: [creatorId], references: [id])
    creatorId String @db.ObjectId
    reviews  Review[]
-   customers Payment[]
+   
 
 }
 
@@ -142,13 +142,19 @@ model Payment{
    recit       String?
    bank        String
    transaction String      @unique
-   price       Float
-   course Course @relation(fields: [courseId], references: [id])
-   courseId String @db.ObjectId
+   totalPrice       Float
+   courses   PaymentCourse[]
    customer User@relation(fields: [customerId], references: [id])
    customerId String @db.ObjectId
 }
 
+type PaymentCourse{
+  id String
+  subject String
+  price Float
+
+
+}
 
 model Notification{
    id            String    @id @default(auto()) @map("_id") @db.ObjectId

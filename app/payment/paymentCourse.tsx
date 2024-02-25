@@ -1,7 +1,4 @@
 "use client"
-
-import Image from "next/image";
-import Biology from "../../public/biology.png"
 import { useCart } from "@/hooks/use.cart";
 import Link from "next/link";
 
