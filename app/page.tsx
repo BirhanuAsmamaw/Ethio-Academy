@@ -60,12 +60,39 @@ const courses=await getCourses()
 
       </div>
 
+     
+
+
+
+    <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming  Courses</h1>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-8 p-4 md:px-10'>
+
+        {courses?.map((course,index)=>{
+          return <Card
+          key={index}
+              id={course.id}
+              category={course.category}
+              price={course.price}
+              subject={course.subject}
+              rating={course?.rating??0}
+              cover={course.cover}  />
+      
+        })}
+
+
+      </div>
+
+
+
+
+
+
       <div className="py-20 flex justify-center w-full">
 <div className="w-full md:w-11/12 lg:w-8/12 xl:w-6/12 flex flex-col gap-4">
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>What to expect from Ethio Exams Academy courses</h1>
 
 
-<Accordion type="single" collapsible className="w-full p-1" >
+<Accordion type="single" collapsible className="w-full p-1 bg-white dark:bg-gray-800" >
 
       {AboutAcademy.map((about:any,index:number) =>{
         return <AccordionItem key={index} value={`${index}`}className="border   border-slate-200 dark:border-gray-600 px-2 md:px-6 m-2 rounded-[6px] ">
@@ -95,26 +122,6 @@ const courses=await getCourses()
 
 
 
-
-
-
-    <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming  Courses</h1>
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-8 p-4 md:px-10'>
-
-        {courses?.map((course,index)=>{
-          return <Card
-          key={index}
-              id={course.id}
-              category={course.category}
-              price={course.price}
-              subject={course.subject}
-              rating={course?.rating??0}
-              cover={course.cover}  />
-      
-        })}
-
-
-      </div>
 
     </div>
 
