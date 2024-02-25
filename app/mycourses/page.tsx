@@ -1,8 +1,10 @@
 import Navbar from "@/components/navbar/Navbar";
 import MyCourseClient from "./mycourse";
 import UserProfile from "@/components/userprofile/userProfile";
+import { getCurrentUser } from "@/actions/currentUser";
 
-const MyCourses = () => {
+const MyCourses = async() => {
+  const user=await getCurrentUser();
   return ( <>
   <Navbar/>
   <div className="min-h-screen flex flex-col justify-center ">

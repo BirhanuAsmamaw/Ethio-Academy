@@ -39,14 +39,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { usersData } from "@/lib/users"
-import Image from "next/image"
-import { courses } from "@/lib/courses"
-import { coursePayments } from "@/lib/course_payment"
 
 
 
 
+
+interface ApprovedCoursesClientProps{
+  coursePayments:any[];
+}
 
 type Course={
   id: string,
@@ -56,45 +56,20 @@ type Course={
 
 interface Payment {
   id: string;
-  price: number;
-  transactionId: string;
-  bankType: string;
-  name?: string;
-  email?: string;
-  phone?: string;
-  courses: Course[];
+  recit:any;
+  totalPrice : number;
+  status: boolean;
+  transaction: string;
+  bank: string;
+  customer:any;
+  createdAt:any;
+  courses : Course[];
 }
 
 
 
 
 
-const data:Payment[]=coursePayments.map((payment)=>{
-  const user=usersData.find((u)=>u.id===payment.userId)
-
-   
-  let coursesData:any[]=[]
-  payment.courses.forEach((c)=>{
-    const course = courses.filter((cs)=>cs.id===c.courseId)
-    coursesData.push(...course)
-  });
-
- 
- 
-  return {
-    id:payment.id,
-    price:payment.price,
-    transactionId:payment.transactionId,
-    bankType:payment.bankType,
-
-    
-     name:user?.name,
-     email:user?.email,
-      phone:user?.phone,
-      courses:coursesData,
-      
-      }
-})
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -141,7 +116,7 @@ export const columns: ColumnDef<Payment>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("customer.name")}</div>,
   },
 
 
@@ -159,64 +134,13 @@ export const columns: ColumnDef<Payment>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
-  },
-
-
-
-  {
-    accessorKey: "phone",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Phone
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("phone")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("customer.email")}</div>,
   },
 
 
  
 
 
-
-//   {
-//     accessorKey: "courses",
-//     header: ({ column }) => {
-//       return (
-//         <Button
-//           variant="ghost"
-//           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-//         >
-//           Courses
-//           <CaretSortIcon className="ml-2 h-4 w-4" />
-//         </Button>
-//       )
-//     },
-//     cell: ({ row }) => <ul className="lowercase max-w-md divide-y divide-gray-200 dark:divide-gray-700">
-//     {row.getValue("courses").map((c,ind)=>
-//    <li key={ind} class="text-sm text-gray-500 truncate dark:text-gray-400">
-  
-      
-      
-//          <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-//            {c.subject}
-//          </p>
-        
-     
-//       <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-//         {c.price}ETB
-//       </div>
-  
-// </li>
-//     )}
-//   </ul>,
-//   },
 
 
 
@@ -233,7 +157,7 @@ export const columns: ColumnDef<Payment>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("price")}
+    cell: ({ row }) => <div className="lowercase">{row.getValue("totalPrice")}
     
     </div>,
   },
@@ -286,7 +210,16 @@ export const columns: ColumnDef<Payment>[] = [
 
 
 
-export function ApprovedCoursesClient() {
+export const ApprovedCoursesClient:React.FC<ApprovedCoursesClientProps>=({coursePayments})=> {
+
+
+
+  const data:Payment[]=coursePayments
+  
+     
+  
+
+
   
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -438,3 +371,5 @@ export function ApprovedCoursesClient() {
     </div>
   )
 }
+
+export default ApprovedCoursesClient;

@@ -4,7 +4,7 @@ import { IoBookOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
 import CDropDown from "./dropdown/CustomeDropdown/CDropDown";
 interface UserProfileProps{
@@ -32,7 +32,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
            <p className="text-gray-500 dark:text-gray-400 text-xs">{user.email}</p>
          </div>
          <div className="flex flex-col">
-         <Link href="/logout" className="flex no-underline text-sm gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+         <Link href="/mycourses" className="flex no-underline text-sm gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
           <IoBookOutline className="pt-1" size={20}/> <p>My Courses</p>
          </Link>
              <Link href="/logout" className="flex text-sm no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">

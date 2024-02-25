@@ -1,8 +1,11 @@
+import { getAllPayments } from "@/actions/getAllPayments";
 import { ApprovedCoursesClient } from "./approvedCoursesClient";
 
-const ApprovedCourses = () => {
+const ApprovedCourses = async() => {
+  const approvedCourses=await getAllPayments();
+
   return ( <div className="">
-   <ApprovedCoursesClient/>
+   <ApprovedCoursesClient coursePayments={approvedCourses||[]}/>
   </div> );
 }
  
