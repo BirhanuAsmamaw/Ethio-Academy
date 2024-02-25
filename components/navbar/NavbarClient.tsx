@@ -51,7 +51,7 @@ const {carts}=useCart()
      </h1></Link>
 
      
-       <div className="hidden md:block">
+       <div className="hidden pb-1 md:block">
        <Search/>
        </div>
     
