@@ -138,8 +138,8 @@ const courses=carts?.map((course)=>{
 alert(data)
 alert(notificationData);
   const payment={...data,recit:receiptUrl}
-    axios.post('/api/payment',payment).then(async()=>{
-    await  axios.post('/api/notification',notificationData);
+    axios.post('/api/payment',payment).then(()=>{
+  
       toast.success("Thank you! Paid successfully")
     })
     .catch((error)=>{
@@ -148,6 +148,7 @@ alert(notificationData);
     }).finally(()=>{
       setIsLoading(false)
     });
+    axios.post('/api/notification',notificationData);
 
    
     
