@@ -14,6 +14,7 @@ import MobileSidebar from "./mobileMenu";
 import CategorCDrobDown from "../dropdown/CourseCategory";
 
 import NotificationDropDown from "../dropdown/notificationDropDown";
+import Search from "../search/search";
 interface NavbarClientProps{
   user:any;
   notifications:any[];
@@ -49,7 +50,9 @@ const {carts}=useCart()
     <span className="text-teal-600"> Academy</span>
      </h1></Link>
 
-
+     <div className=" mx-2 md:m-4">
+       <Search/>
+      </div>
      <div className="flex   justify-center">
     <div className=" hidden md:block">
       <div className="flex ">

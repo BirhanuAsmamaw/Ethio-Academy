@@ -27,9 +27,7 @@ const Hero = () => {
       </div>
     
 
-      <div className="w-full md:w-2/3 mx-2 md:m-4">
-       <Search/>
-      </div>
+      
       <div className="flex "> <AvatarGroup
   renderSurplus={(surplus) => <span className="overflow-hidden">+{surplus.toString()[0]}k</span>}
   total={4251}
