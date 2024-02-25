@@ -11,7 +11,12 @@ const Payment = async() => {
   const user=await getCurrentUser();
   const users=await getAllUsers();
 
-  const admins=users?.filter((u)=>u.role ==='ADMIN')
+  const admins=users?.filter((u)=>u.role ==='ADMIN').map((a)=>{
+    return {
+      id:a.id,
+     name:a.name,
+    }
+  });
   return ( <>
   <Navbar/>
   <div className="p-2 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-10 w-full justify-around  pb-20">
