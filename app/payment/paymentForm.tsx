@@ -136,10 +136,12 @@ const courses=carts?.map((course)=>{
     customers:admins
 };
 alert(data)
-console.log(data);
+
 console.log(notificationData)
 alert(notificationData);
-  const payment={...data,recit:receiptUrl}
+  const payment={...data,recit:receiptUrl, bank:selectedBank,
+    courses:courses,}
+    console.log(payment);
     axios.post('/api/payment',payment).then(()=>{
   
       toast.success("Thank you! Paid successfully")
