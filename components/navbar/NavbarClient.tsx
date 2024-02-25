@@ -12,7 +12,8 @@ import { useCart } from "@/hooks/use.cart";
 import Profile from "../Profile";
 import MobileSidebar from "./mobileMenu";
 import CategorCDrobDown from "../dropdown/CourseCategory";
-import { IoMdNotificationsOutline } from "react-icons/io";
+
+import NotificationDropDown from "../dropdown/notificationDropDown";
 interface NavbarClientProps{
   user:any;
 }
@@ -65,9 +66,7 @@ const {carts}=useCart()
 
       
     </div></div>
-    {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
-        <IoMdNotificationsOutline size={24}/>
-      </div>}
+   
 
     {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <Profile user={user}/>
@@ -79,6 +78,10 @@ const {carts}=useCart()
         <IoCartOutline size={24}/>
         {carts&&<div className="absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-400"><p className="text-[10px]">{carts&&`(${carts.length})`}</p></div>}
         </Link>
+
+        {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        <NotificationDropDown/>
+      </div>}
     <div className="  p-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium ">
     <button className="dark:hidden px-1" onClick={()=>setTheme('dark')}>
 
