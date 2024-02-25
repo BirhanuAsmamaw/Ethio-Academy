@@ -123,13 +123,13 @@ const courses=carts?.map((course)=>{
   }
   await handleImageUpload();
   
-  if(!receiptUrl ||!data.courses.length || !data.transaction || !data.bank|| !data.totalPrice ) {  
- toast.error("payment data is not valid!!")
-  }
-  if(data.totalPrice!=totalPrice){
+//   if(!receiptUrl ||!data.courses.length || !data.transaction || !data.bank|| !data.totalPrice ) {  
+//  toast.error("payment data is not valid!!")
+//   }
+//   if(data.totalPrice!=totalPrice){
 
-    toast.error("The Price not much The course price ")
-  }
+//     toast.error("The Price not much The course price ")
+//   }
   const notificationData = {
     title: `🌟 Payment Success!`,
     message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:0} exciting courses.`,
