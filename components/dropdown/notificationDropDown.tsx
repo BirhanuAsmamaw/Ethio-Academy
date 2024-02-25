@@ -1,7 +1,7 @@
-import { getAllNotifications } from "@/actions/getAllNotifications";
+"use client"
 import CDropDown from "./CustomeDropdown/CDropDown";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { getCurrentUser } from "@/actions/currentUser";
+
   interface NotificationDropDownProps{
     notifications:any[];
  
