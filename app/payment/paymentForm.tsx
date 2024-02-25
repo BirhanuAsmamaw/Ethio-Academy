@@ -198,7 +198,7 @@ const onCancelReceipt = () => {
             required
             onCancel={onCancelReceipt}
             file={selectedReceipt}
-            fileType="Receipt"
+            fileType="image"
           onDrop={handlePaymentReceipt}
               register={register}
               id="recit" 
