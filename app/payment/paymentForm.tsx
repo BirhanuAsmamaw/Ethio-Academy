@@ -9,7 +9,6 @@ import { bank_accounts } from "@/lib/bank_account";
 import firebaseApp from "@/lib/firebasedb";
 import axios from "axios";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import image from "next/image";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -34,7 +33,7 @@ const courses=carts?.map((course)=>{
     price:course.price,}
 })
 
-  const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
+  const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
      recit:null,
      bank:selectedBank,
@@ -133,12 +132,12 @@ const courses=carts?.map((course)=>{
   }
   const notificationData = {
     title: `🌟 Payment Success!`,
-    message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:'no'} exciting courses.`,
+    message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:0} exciting courses.`,
     customers:admins
 };
   const payment={...data,recit:receiptUrl}
-    axios.post('/api/payment',payment).then(()=>{
-      axios.post('/api/notification',notificationData);
+    axios.post('/api/payment',payment).then(async()=>{
+    await  axios.post('/api/notification',notificationData);
       toast.success("Thank you! Paid successfully")
     })
     .catch((error)=>{
@@ -194,7 +193,7 @@ const onCancelReceipt = () => {
 
 
 <div className="relative z-0 w-full mb-5 group">
-          <Heading small title="Upload Course Receipt"/>
+          <Heading small title="Upload Payment Receipt"/>
             <FileInput
             required
             onCancel={onCancelReceipt}
@@ -230,11 +229,10 @@ const onCancelReceipt = () => {
     </div>
 
     <div className="relative z-0 w-full mb-5 group">
-          <Input register={register} errors={errors} label="Price" type="number" id="transaction" required/>
+          <Input register={register} errors={errors} label="Bank Transaction Id" type="number" id="transaction" required/>
     </div>
   </div>
-  
-  <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+
   <Button onClick={handleSubmit(onSubmit)} isDisabled={Loading} title={Loading? "Loading...":"Submit"}/>
 </form>
 
