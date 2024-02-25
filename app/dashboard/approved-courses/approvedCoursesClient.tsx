@@ -220,7 +220,7 @@ export const columns: ColumnDef<Payment>[] = [
             <DropdownMenuItem>
             <Link 
              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/approved-courses-courses/${payment.id}/`}>View Detail</Link>
+             href={`/dashboard/approved-courses/${payment.id}/`}>View Detail</Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
