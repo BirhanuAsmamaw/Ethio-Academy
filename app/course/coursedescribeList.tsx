@@ -2,7 +2,6 @@ import { BsBarChart } from "react-icons/bs";
 import { SiLibreoffice } from "react-icons/si";
 import { IoPeopleOutline } from "react-icons/io5";
 import { IoIosPhonePortrait } from "react-icons/io";
-import { GoQuestion } from "react-icons/go";
 import { useCart } from "@/hooks/use.cart";
 import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
@@ -16,7 +15,7 @@ interface ContentListProps{
   
 
   interface CourseDescriptionListprops{
-    course:any[];
+    course:any;
   }
 
 const ContentList:React.FC<ContentListProps>=({icon:Icon,title,content})=>{
@@ -30,6 +29,18 @@ const ContentList:React.FC<ContentListProps>=({icon:Icon,title,content})=>{
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
 const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
 
   const router=useRouter()
@@ -38,12 +49,12 @@ const {addToCart}=useCart();
 
 
 const onAddToCart=()=>{
-  addToCart(course[0])
+  addToCart(course)
   router.push('/cart')
 }
 
 const onPayment=()=>{
-  addToCart(course[0])
+  addToCart(course)
   router.push('/payment')
 }
   return ( <div className="
