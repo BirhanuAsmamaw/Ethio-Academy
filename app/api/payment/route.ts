@@ -38,7 +38,7 @@ const newPayment = await prisma.payment.create({
   data:{
     recit: recit,
     transaction: transaction,
-    totalPrice: totalPrice,
+    totalPrice: parseFloat(totalPrice),
     bank:bank,
     courses: courses,
     customerId:user.id
