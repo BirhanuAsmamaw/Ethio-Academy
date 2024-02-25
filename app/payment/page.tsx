@@ -3,8 +3,15 @@ import Bank from "./bank";
 import PaymentForm from "./paymentForm";
 import PaymentCourse from "./paymentCourse";
 import Navbar from "@/components/navbar/Navbar";
+import { getCurrentUser } from "@/actions/currentUser";
+import { getAllUsers } from "@/actions/getAllUsers";
 
-const Payment = () => {
+const Payment = async() => {
+
+  const user=await getCurrentUser();
+  const users=await getAllUsers();
+
+  const admins=users?.filter((u)=>u.role ==='ADMIN')
   return ( <>
   <Navbar/>
   <div className="p-2 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-10 w-full justify-around  pb-20">
@@ -32,7 +39,7 @@ const Payment = () => {
     <div className="w-full mt-10 md:mt-20 flex justify-center">
       <div className="flex flex-col gap-10">
         <PaymentCourse/>
-      <PaymentForm/>
+      <PaymentForm admins={admins||[]} user={user}/>
       </div>
     </div>
   </div> </>);

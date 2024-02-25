@@ -1,19 +1,20 @@
 import { getCurrentUser } from "@/actions/currentUser";
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
-import { GetCourseById } from "@/actions/getCourseById";
+
 export async function POST(req:Request){
 const body=await req.json();
 
 const {
-  courseId,
+ 
   recit,
    bank,
+   courses,
    transaction,
-   price 
+   totalPrice,
 }=body;
 
-if (!transaction || !bank || !price ||  !recit || !courseId){
+if (!transaction || !bank || !totalPrice ||  !recit || !courses.length ){
   return NextResponse.json({
     status: false,
     message:"Invalid payment parameters"
@@ -31,22 +32,15 @@ if (!user){
 }
 
 
-const course=await GetCourseById(courseId)
 
-if (!course){
-  return NextResponse.json({
-    status: false,
-    message:"course not found"
-  })
-}
 
 const newPayment = await prisma.payment.create({
   data:{
     recit: recit,
     transaction: transaction,
-    price: price,
+    totalPrice: totalPrice,
     bank:bank,
-    courseId:course.id,
+    courses: courses,
     customerId:user.id
 
   }
