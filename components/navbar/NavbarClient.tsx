@@ -16,8 +16,9 @@ import CategorCDrobDown from "../dropdown/CourseCategory";
 import NotificationDropDown from "../dropdown/notificationDropDown";
 interface NavbarClientProps{
   user:any;
+  notifications:any[];
 }
-const NavbarClient:React.FC<NavbarClientProps> = ({user}) => {
+const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications}) => {
   const [isScroll,setScroll] =useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -80,7 +81,7 @@ const {carts}=useCart()
         </Link>
 
         {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
-        <NotificationDropDown/>
+        <NotificationDropDown notifications={notifications}/>
       </div>}
     <div className="  p-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium ">
     <button className="dark:hidden px-1" onClick={()=>setTheme('dark')}>
