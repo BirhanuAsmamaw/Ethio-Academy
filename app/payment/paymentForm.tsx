@@ -136,6 +136,8 @@ const courses=carts?.map((course)=>{
     customers:admins
 };
 alert(data)
+console.log(data);
+console.log(notificationData)
 alert(notificationData);
   const payment={...data,recit:receiptUrl}
     axios.post('/api/payment',payment).then(()=>{

@@ -35,7 +35,8 @@ const newNotification= await prisma.notification.create({
     message: message,
     customers: customers,
 
-  }
+  },
+  
 })
 
 return NextResponse.json(newNotification);
