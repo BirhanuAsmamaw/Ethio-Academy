@@ -229,7 +229,7 @@ const onCancelReceipt = () => {
     </div>
 
     <div className="relative z-0 w-full mb-5 group">
-          <Input register={register} errors={errors} label="Bank Transaction Id" type="number" id="transaction" required/>
+          <Input register={register} errors={errors} label="Bank Transaction Id"  id="transaction" required/>
     </div>
   </div>
 
