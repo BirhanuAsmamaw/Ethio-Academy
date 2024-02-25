@@ -242,6 +242,7 @@ useEffect(()=>{
           <div className="w-full  lg:w-8/12 flex flex-col gap-1">
           <Heading small title="Upload Course Cover"/>
             <FileInput
+            required
             onCancel={onCancelImage}
             file={selectedImage}
             fileType="image"
@@ -256,6 +257,7 @@ useEffect(()=>{
         <div className="w-full  lg:w-8/12 flex flex-col gap-1">
           <Heading small title="Upload Course Video"/>
             <FileInput
+            required
             onCancel={onCancelVideo}
             file={selectedVideo}
             fileType="video"
