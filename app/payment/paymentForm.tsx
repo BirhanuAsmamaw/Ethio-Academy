@@ -135,6 +135,8 @@ const courses=carts?.map((course)=>{
     message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:0} exciting courses.`,
     customers:admins
 };
+alert(data)
+alert(notificationData);
   const payment={...data,recit:receiptUrl}
     axios.post('/api/payment',payment).then(async()=>{
     await  axios.post('/api/notification',notificationData);
@@ -229,7 +231,7 @@ const onCancelReceipt = () => {
     </div>
 
     <div className="relative z-0 w-full mb-5 group">
-          <Input register={register} errors={errors} label="Bank Transaction Id"  id="transaction" required/>
+          <Input register={register} errors={errors} label="Bank Transaction Id" type="text"  id="transaction" required/>
     </div>
   </div>
 
