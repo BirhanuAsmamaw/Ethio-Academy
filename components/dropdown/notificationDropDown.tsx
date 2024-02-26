@@ -4,6 +4,7 @@ import CDropDown from "./CustomeDropdown/CDropDown";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useEffect } from "react";
 
   interface NotificationDropDownProps{
     notifications:any[];
@@ -15,19 +16,22 @@ const router=useRouter();
   const unreadNotifications=notifications.filter(notification =>!notification.isRead)
 
   const onRead=() => {
-    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/editread`));
+    notifications.forEach(notification =>axios.delete(`/api/notification/${notification.id}/editread`));
     router.refresh();
   };
 
   const onClearAll=() => {
-    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/delete`));
+    notifications.forEach(notification =>axios.delete(`/api/notification/${notification.id}/delete`));
     router.refresh();
+    
   };
 
   const onClearOne=(notificationId:string) => {
    axios.put(`/api/notification/${notificationId}/delete`);
     router.refresh();
   };
+
+  
   return (  <CDropDown large title={
     <div onClick={onRead}>
 <IoMdNotificationsOutline size={24} />
