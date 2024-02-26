@@ -1,17 +1,25 @@
 "use client"
+import axios from "axios";
 import CDropDown from "./CustomeDropdown/CDropDown";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
   interface NotificationDropDownProps{
     notifications:any[];
+
  
   } 
 const NotificationDropDown:React.FC<NotificationDropDownProps> = ({notifications}) => {
-
+const router=useRouter();
   const unreadNotifications=notifications.filter(notification =>!notification.isRead)
 
+  const onRead=() => {
+    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/editread`));
+    router.refresh();
+  };
+
   return (  <CDropDown large title={
-    <div>
+    <div onClick={onRead}>
 <IoMdNotificationsOutline size={24} />
 <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
     </div>

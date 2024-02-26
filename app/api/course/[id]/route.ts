@@ -36,6 +36,6 @@ return NextResponse.json(course);
 
     }
     catch(err){
-      console.log(err);
+     
     }
   }
