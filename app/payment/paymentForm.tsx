@@ -10,7 +10,7 @@ import firebaseApp from "@/lib/firebasedb";
 import axios from "axios";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -60,7 +60,9 @@ const courses=carts?.map((course)=>{
 
 
 
-
+useEffect(()=>{
+ router.prefetch('/mycourses');
+},[router])
 
 
 
