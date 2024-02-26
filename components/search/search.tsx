@@ -29,6 +29,7 @@ const Search:React.FC<SearchProps> = ({courses}) => {
       shadow-xl
        rounded-b-[10px]
       shadow-gray-100
+      dark:shadow-gray-900
       ${!searchQuery&&'hidden'}
       `}>
 
@@ -45,7 +46,7 @@ const Search:React.FC<SearchProps> = ({courses}) => {
    </div>
    <div className="md:hidden   w-full">
     <button><CiSearch size={30} className="pt-2 text-gray-500 dark:text-gray-400"/></button>
-    <div className="absolute top-13 w-full left-2 right-2 bg-rose-350">
+    <div className="absolute top-14 w-11/12 p-2 left-2 right-2 bg-rose-350">
     <div  className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
     <input  onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
