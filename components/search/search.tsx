@@ -22,9 +22,9 @@ const Search = () => {
      <CiSearch size={30} className="pt-1"/> 
      <input value={searchQuery} onChange={(event)=>setSearchQuery(event.target.value)} type="search" className="bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/></form>
    </div>
-   <div className="md:hidden relative">
+   <div className="md:hidden relative w-full">
     <button><CiSearch size={30} className="pt-2 text-gray-500 dark:text-gray-400"/></button>
-    <div className="absolute top-13 w-[300px] left-4 right-4 ">
+    <div className="absolute top-13 w-[200px] left-4 right-10 ">
     <form onSubmit={onSearchSubmit} className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
     <input value={searchQuery} onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
