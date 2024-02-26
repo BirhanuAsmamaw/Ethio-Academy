@@ -17,8 +17,8 @@ const Search = () => {
      <CiSearch size={30} className="pt-1"/> 
      <input onChange={(event)=>setSearchQuery(event.target.value)} type="search" className="focus:shadow-md bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
      </div>
-     <div className="absolute top-13 w-full ">
-      <div className="flex flex-col w-full gap-2">
+     <div className="absolute top-13 w-full bg-white dark:bg-gray-800">
+      <div className="flex flex-col w-full gap-2 p-2">
         <p className="text-xs">Biology Grade 12</p>
         <p className="text-xs">Biology Grade 12</p>
         <p className="text-xs">Biology Grade 12</p>
