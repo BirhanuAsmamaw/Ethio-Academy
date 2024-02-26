@@ -36,6 +36,7 @@ const Search = () => {
       </div>
      </div>
    </div>
+   </div>
    <div className="md:hidden   w-full">
     <button><CiSearch size={30} className="pt-2 text-gray-500 dark:text-gray-400"/></button>
     <div className="absolute top-16 w-[300px] left-2 right-2 bg-rose-350">
