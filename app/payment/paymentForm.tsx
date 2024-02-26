@@ -17,8 +17,9 @@ interface FormProps{
   admins:any[];
   user:any;
 }
+
 const PaymentForm:React.FC<FormProps> = ({admins,user}) => {
-  const {carts,totalPrice}=useCart();
+  const {carts,totalPrice,addToCart}=useCart();
   const [selectedBank, setSelectedBank] = useState('');
   const [receipt,setReceipt]=useState<File|null>(null);
   const [selectedReceipt,setSelectedReceipt]=useState<any>(null);
@@ -136,7 +137,7 @@ const courses=carts?.map((course)=>{
     courses:courses,}
    
     axios.post('/api/payment',payment).then(()=>{
-  
+      addToCart(null)
       toast.success("Thank you! Paid successfully")
     })
     .catch((error)=>{

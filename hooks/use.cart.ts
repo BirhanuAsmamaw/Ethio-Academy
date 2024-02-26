@@ -7,7 +7,7 @@ import { createContext, useContext } from "react";
 interface CartProps{
   carts: CourseType[]|null;
   totalPrice: number;
-  addToCart:(data:CourseType) => void;
+  addToCart:(data:CourseType|null) => void;
   removeFromCart:(courseId:string) => void;
   
 }
