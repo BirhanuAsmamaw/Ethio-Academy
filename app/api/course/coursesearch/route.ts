@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prismadb';
 import { NextResponse } from 'next/server';
 
-export default async function GET(req: NextApiRequest, res: NextApiResponse) {
+export  async function GET(req: NextApiRequest, res: NextApiResponse) {
   try {
     // Extract the subject from the query parameters
     const { subject } = req.query;
