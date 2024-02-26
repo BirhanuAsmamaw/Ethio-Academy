@@ -36,7 +36,7 @@ const courses=await getCourses()
     <Navbar/>
     <Hero/>
    
-    <main className='md:flex md:justify-center w-full pb-10 overflow-hidden'>
+    <main className='md:flex md:justify-center w-full py-20 overflow-hidden'>
     <div id="courseslist" className="flex flex-col gap-10 overflow-hidden">
       <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
 
