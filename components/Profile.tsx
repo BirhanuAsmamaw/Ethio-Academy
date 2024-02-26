@@ -35,7 +35,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
          <Link href="/mycourses" className="flex no-underline text-sm gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
           <IoBookOutline className="pt-1" size={20}/> <p>My Courses</p>
          </Link>
-             <Link href="/logout" className="flex text-sm no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+             <Link href="/settings" className="flex text-sm no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
           <CiSettings className="pt-1" size={20}/> <p>Settings</p>
          </Link>
          {user&&(user.role==='ADMIN')&&<Link href="/dashboard" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
