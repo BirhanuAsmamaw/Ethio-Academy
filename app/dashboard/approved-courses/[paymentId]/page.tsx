@@ -21,10 +21,10 @@ const PaymentDetail = async({params}:{params:{paymentId:string}}) => {
 
 <div id="detailed-pricing" className="w-full pb-10 flex justify-center overflow-x-auto">
     <div className="overflow-hidden min-w-max">
-    <h5 className="text-lg font-medium">{payment.customer.name} has bought the following {payment.courses.length} courses</h5>
-    <ul className="ps-5 mt-2 space-y-1 list-disc list-inside">
+    <h5 className="text-base text-gray-500 dark:text-gray-400 font-semibold "><span className="text-rose-500 dark:text-green-400">{payment.customer.name} </span>has bought the following <span className="text-rose-500 dark:text-green-400">{payment.courses.length} </span>courses</h5>
+    <ul className=" ps-5 mt-2 space-y-1 list-disc list-inside pb-10">
          {payment.courses.map((course)=>{
-            return <li key={course.id} className="flex gap-4 p-1 border-b border-gray-200 dark:border-gray-700">
+            return <li key={course.id} className="text-gray-500 dark:text-gray-400 text-sm flex gap-4 p-1 border-b border-gray-200 dark:border-gray-700">
                 <p>{course.subject}</p>
                 <p className="text-rose-500 dark:text-green-400">{course.price}</p>
                 </li>
