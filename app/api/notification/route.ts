@@ -5,6 +5,8 @@ export async function POST(req:Request){
 const body=await req.json();
 
 const {
+  url,
+  type,
   title ,
    message ,
    customers
@@ -34,6 +36,8 @@ const newNotification= await prisma.notification.create({
     title: title,
     message: message,
     customers: customers,
+    url:url,
+    type: type,
 
   },
   

@@ -24,6 +24,7 @@ const PaymentForm:React.FC<FormProps> = ({admins,user}) => {
   const [receipt,setReceipt]=useState<File|null>(null);
   const [selectedReceipt,setSelectedReceipt]=useState<any>(null);
   const [Loading,setIsLoading]=useState(false);
+  const [paymentData,setPaymentData]=useState<any>();
   const handleSelectChange = (e:any) => {
     setSelectedBank(e.target.value);
   };
@@ -128,6 +129,8 @@ const courses=carts?.map((course)=>{
   
  
   const notificationData = {
+    url:`/dashboard/approved-courses/${paymentData.id}`,
+    type:'Success',
     title: `🌟 Payment Success!`,
     message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:0} exciting courses.`,
     customers:admins
@@ -136,7 +139,8 @@ const courses=carts?.map((course)=>{
   const payment={...data,recit:receiptUrl, bank:selectedBank,
     courses:courses,}
    
-    axios.post('/api/payment',payment).then(()=>{
+    axios.post('/api/payment',payment).then((response)=>{
+      setPaymentData(response.data)
       removeAllFromCart()
       toast.success("Thank you! Paid successfully")
     })
