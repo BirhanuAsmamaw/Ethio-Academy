@@ -19,6 +19,7 @@ const Search = () => {
      </div>
      <div className="absolute top-13 w-full bg-white dark:bg-gray-800">
       <div className="flex flex-col w-full gap-2 p-2 shadow-xl rounded-b-[10px] shadow-gray-100">
+      <div className="flex flex-col w-full gap-2 p-2 shadow-xl rounded-b-[10px] shadow-gray-100 dark:shadow-gray-900 ">
         <p className="text-xs">Biology Grade 12</p>
         <p className="text-xs">Biology Grade 12</p>
         <p className="text-xs">Biology Grade 12</p>
@@ -30,7 +31,7 @@ const Search = () => {
    </div>
    <div className="md:hidden  relative w-full">
     <button><CiSearch size={30} className="pt-2 text-gray-500 dark:text-gray-400"/></button>
-    <div className="absolute top-16 w-[300px] left-0 right-10 bg-rose-400">
+    <div className="absolute top-16 w-[300px] -left-10 right-10 bg-rose-350">
     <div  className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
     <input  onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
