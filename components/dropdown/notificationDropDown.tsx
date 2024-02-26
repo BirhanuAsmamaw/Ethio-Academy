@@ -18,6 +18,15 @@ const router=useRouter();
     router.refresh();
   };
 
+  const onClearAll=() => {
+    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/delete`));
+    router.refresh();
+  };
+
+  const onClearOne=(notificationId:string) => {
+   axios.put(`/api/notification/${notificationId}/delete`);
+    router.refresh();
+  };
   return (  <CDropDown large title={
     <div onClick={onRead}>
 <IoMdNotificationsOutline size={24} />
@@ -44,8 +53,8 @@ const router=useRouter();
             </svg>
             View more
           </button>
-          <button type="button" className="text-green-800 bg-transparent border border-green-800 hover:bg-green-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-[10px] text-xs px-2 py-1 text-center dark:hover:bg-green-600 dark:border-green-600 dark:text-green-400 dark:hover:text-white dark:focus:ring-green-800" data-dismiss-target="#alert-additional-content-3" aria-label="Close">
-            Dismiss
+          <button onClick={()=>onClearOne(notification.id)} type="button" className="text-green-800 bg-transparent border border-green-800 hover:bg-green-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-[10px] text-xs px-2 py-1 text-center dark:hover:bg-green-600 dark:border-green-600 dark:text-green-400 dark:hover:text-white dark:focus:ring-green-800" data-dismiss-target="#alert-additional-content-3" aria-label="Close">
+            Clear
           </button>
         </div>
       </div>
@@ -60,6 +69,10 @@ const router=useRouter();
 
 
       }
+
+      <div className="flex flex-end w-full">
+        <button onClick={onClearAll} className="border border-red-300  hover:border-red-400  bg-opacity-40 hover:bg-opacity-60 rounded-[10px] bg-red-600 text-sm text-red-600 dark:text-red-400">Clear All</button>
+      </div>
   </div>}/> );
 }
  
