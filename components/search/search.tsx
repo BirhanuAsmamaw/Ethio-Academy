@@ -30,7 +30,7 @@ const Search = () => {
    </div>
    <div className="md:hidden  bg-blue-600 relative w-full">
     <button><CiSearch size={30} className="pt-2 text-gray-500 dark:text-gray-400"/></button>
-    <div className="absolute top-13 w-[400px] left-2 right-10 ">
+    <div className="absolute top-16 w-[400px] left-2 right-10 ">
     <div  className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
     <input  onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
