@@ -9,6 +9,7 @@ import { bank_accounts } from "@/lib/bank_account";
 import firebaseApp from "@/lib/firebasedb";
 import axios from "axios";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -19,6 +20,7 @@ interface FormProps{
 }
 
 const PaymentForm:React.FC<FormProps> = ({admins,user}) => {
+  const router=useRouter();
   const {carts,totalPrice,removeAllFromCart}=useCart();
   const [selectedBank, setSelectedBank] = useState('');
   const [receipt,setReceipt]=useState<File|null>(null);
@@ -149,6 +151,7 @@ const courses=carts?.map((course)=>{
     });
     removeAllFromCart()
     axios.post('/api/notification',notificationData);
+    router.push('/mycourses')
 
    
     
