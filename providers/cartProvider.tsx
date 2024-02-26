@@ -83,10 +83,16 @@ setCarts([...carts,data]);
     }
   };
 
+  const removeAllFromCart = () => {
+   
+      setCarts(null);
+      setTotalPrice(0);
+  };
 
 
 
-  return <Cart.Provider value={{carts,totalPrice,addToCart,removeFromCart}}>
+
+  return <Cart.Provider value={{carts,totalPrice,addToCart,removeFromCart,removeAllFromCart}}>
 {children}
   </Cart.Provider>;
 }
