@@ -141,7 +141,6 @@ const courses=carts?.map((course)=>{
    
     axios.post('/api/payment',payment).then((response)=>{
       setPaymentData(response.data)
-      removeAllFromCart()
       toast.success("Thank you! Paid successfully")
     })
     .catch((error)=>{
@@ -150,6 +149,7 @@ const courses=carts?.map((course)=>{
     }).finally(()=>{
       setIsLoading(false)
     });
+    removeAllFromCart()
     axios.post('/api/notification',notificationData);
 
    
