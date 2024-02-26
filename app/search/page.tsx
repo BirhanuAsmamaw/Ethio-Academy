@@ -9,9 +9,9 @@ const SearchPage = () => {
   const searchParam=useSearchParams();
 const searchQueryData=searchParam? searchParam.get("q"):null;
 
-  return (<Suspense>
+  return (<Suspense fallback={<div>Loading...</div>}>
 <div className="">
-<h1>{searchQueryData}</h1>
+<h1>search Data</h1>
 </div>
   </Suspense> );
 }
