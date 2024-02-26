@@ -1,14 +1,8 @@
-
-"use client"
-
-import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import SearchClient from "./searchClient";
 
 const SearchPage = () => {
-  const searchData=useSearchParams();
-  
-  return ( <div className="">
-    <h1>search page</h1>
-  </div> );
+  return (<Suspense><SearchClient/></Suspense> );
 }
  
 export default SearchPage;
