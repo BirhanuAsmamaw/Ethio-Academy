@@ -29,15 +29,16 @@ const Hero = () => {
 
       
       <div className="flex "> <AvatarGroup
+        className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
   renderSurplus={(surplus) => <span className="overflow-hidden">+{surplus.toString()[0]}k</span>}
   total={4251}
 >
-  {students.map((student,index) =>{return  <Avatar key={index} alt={student.name} src={`${student.image}`} 
+  {students.map((student,index) =>{return  <Avatar sizes="large" key={index} alt={student.name} src={`${student.image}`} 
   className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"/>
    
   })}
  
-</AvatarGroup> <h1 className="p-2 text-lg text-gray-500 dark:text-gray-400">+20k students trust us.</h1></div>
+</AvatarGroup> <h1 className="p-2 text-lg text-blue-500 dark:text-green-400 "> students trust us.</h1></div>
     </div>
 
     
