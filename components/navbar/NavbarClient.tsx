@@ -15,11 +15,13 @@ import CategorCDrobDown from "../dropdown/CourseCategory";
 
 import NotificationDropDown from "../dropdown/notificationDropDown";
 import Search from "../search/search";
+import { CourseType } from "@/types";
 interface NavbarClientProps{
   user:any;
   notifications:any[];
+  courses:CourseType[]|any[];
 }
-const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications}) => {
+const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,courses}) => {
   const [isScroll,setScroll] =useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +54,7 @@ const {carts}=useCart()
 
      
        <div className="hidden pb-2 md:block w-md">
-       <Search/>
+       <Search courses={courses}/>
        </div>
     
      <div className="flex   justify-center">
@@ -74,7 +76,7 @@ const {carts}=useCart()
     </div></div>
    
     <div className="md:hidden">
-       <Search/>
+       <Search courses={courses}/>
        </div>
     {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <Profile user={user}/>

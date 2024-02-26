@@ -1,15 +1,20 @@
 "use client"
 
+import { CourseType } from "@/types";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+
+import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
+interface SearchProps{
+  courses:CourseType[] | any[];
+}
+const Search:React.FC<SearchProps> = ({courses}) => {
 
-const Search = () => {
-
-  const router=useRouter();
+  
 
   const [searchQuery,setSearchQuery] = useState<string|null>(null);
+
+  const filteredcourse=courses.filter((course)=>course.subject.includes(searchQuery||''))
 
   
   return ( <>
@@ -18,22 +23,23 @@ const Search = () => {
      <CiSearch size={30} className="pt-1"/> 
      <input onChange={(event)=>setSearchQuery(event.target.value)} type="search" className="focus:shadow-md bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
      </div>
-     <div className="absolute top-13 w-full bg-white dark:bg-gray-800 shadow-xl rounded-b-[10px] shadow-gray-100">
+     <div className={`absolute top-13
+      w-full bg-white
+       dark:bg-gray-800 
+      shadow-xl
+       rounded-b-[10px]
+      shadow-gray-100
+      ${!searchQuery&&'hidden'}
+      `}>
+
       <div className="flex flex-col w-full gap-2 p-2">
-    
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-        <Link href="/" className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">Biology Grade 12</Link>
-     
+     {
+      filteredcourse.map((c) =>{
+        return <Link key={c.id} href={`/course/${c.id}`} className="no-underline p-1 hover:bg-gray-100  hover:dark:bg-gray-700 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition ">
+          {c.subject}
+          </Link>
+      })
+     }
      </div>
    </div>
    </div>
