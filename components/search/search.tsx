@@ -2,7 +2,7 @@
 
 import { CourseType } from "@/types";
 import Link from "next/link";
-
+import { IoIosSearch } from "react-icons/io";
 import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 interface SearchProps{
@@ -45,7 +45,7 @@ const Search:React.FC<SearchProps> = ({courses}) => {
    </div>
    </div>
    <div className="md:hidden   w-full">
-    <button><CiSearch size={30}  className="pt-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium"/></button>
+    <button><IoIosSearch size={30}  className="pt-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium"/></button>
     <div className="absolute  mt-1 top-13 w-11/12 p-2 left-2 right-2 bg-rose-350">
     <div  className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
