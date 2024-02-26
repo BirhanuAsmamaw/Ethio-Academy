@@ -55,7 +55,7 @@ const router=useRouter();
   const signInWithGoogle=()=>{
     signIn('google',{redirect:false}).then((callback)=>{
        if (callback?.ok){
-         router.push('/')
+         router.back()
          router.refresh()
          
          toast.success("account logged in successfully")
@@ -71,7 +71,7 @@ const router=useRouter();
 
 
 if (user){
-router.push('/')
+router.back()
 return null;
 }
 
