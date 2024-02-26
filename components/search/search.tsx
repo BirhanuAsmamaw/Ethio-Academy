@@ -8,28 +8,34 @@ const Search = () => {
 
   const router=useRouter();
 
-  const [searchQuery,setSearchQuery] = useState("");
+  const [searchQuery,setSearchQuery] = useState<string|null>(null);
 
-  const onSearchSubmit = (event:React.FormEvent) => {
-    event.preventDefault();
-    const encodedSearch=encodeURI(searchQuery)
-    router.push(`/search?q=${encodedSearch}`)
-
-  };
+  
   return ( <>
-    <div className="hidden md:block w-full ">
-   <form onSubmit={onSearchSubmit} className="flex w-full  bg-white dark:bg-gray-800  border rounded-[8px] border-gray-200 dark:border-gray-700 overflow-hidden ">
+    <div className="hidden md:block w-full relative ">
+   <div  className="flex w-full  bg-white dark:bg-gray-800  border rounded-[8px] border-gray-200 dark:border-gray-700 overflow-hidden ">
      <CiSearch size={30} className="pt-1"/> 
-     <input value={searchQuery} onChange={(event)=>setSearchQuery(event.target.value)} type="search" className="bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/></form>
+     <input onChange={(event)=>setSearchQuery(event.target.value)} type="search" className="focus:shadow-md bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
+     </div>
+     <div className="absolute top-13 w-full ">
+      <div className="flex flex-col w-full gap-2">
+        <p className="text-xs">Biology Grade 12</p>
+        <p className="text-xs">Biology Grade 12</p>
+        <p className="text-xs">Biology Grade 12</p>
+        <p className="text-xs">Biology Grade 12</p>
+        <p className="text-xs">Biology Grade 12</p>
+        <p className="text-xs">Biology Grade 12</p>
+      </div>
+     </div>
    </div>
    <div className="md:hidden relative w-full">
     <button><CiSearch size={30} className="pt-2 text-gray-500 dark:text-gray-400"/></button>
     <div className="absolute top-13 w-[200px] left-4 right-10 ">
-    <form onSubmit={onSearchSubmit} className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
+    <div  className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
-    <input value={searchQuery} onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
+    <input  onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
     className=" bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
-   </form>
+   </div>
     </div>
    </div>
    </>
