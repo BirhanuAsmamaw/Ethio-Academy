@@ -3,6 +3,7 @@ import axios from "axios";
 import CDropDown from "./CustomeDropdown/CDropDown";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
   interface NotificationDropDownProps{
     notifications:any[];
@@ -47,12 +48,12 @@ const router=useRouter();
          {notification.message}
         </div>
         <div className="flex">
-          <button type="button" className="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-[5px] text-xs px-2 py-1 me-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+          {notification.url&&<Link href={notification.url} className="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-[5px] text-xs px-2 py-1 me-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
             <svg className="me-2 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
               <path d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/>
             </svg>
             View more
-          </button>
+          </Link>}
           <button onClick={()=>onClearOne(notification.id)} type="button" className="text-green-800 bg-transparent border border-green-800 hover:bg-green-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-[10px] text-xs px-2 py-1 text-center dark:hover:bg-green-600 dark:border-green-600 dark:text-green-400 dark:hover:text-white dark:focus:ring-green-800" data-dismiss-target="#alert-additional-content-3" aria-label="Close">
             Clear
           </button>
@@ -70,8 +71,12 @@ const router=useRouter();
 
       }
 
-      <div className="flex flex-end w-full">
-        <button onClick={onClearAll} className="border border-red-300  hover:border-red-400  bg-opacity-40 hover:bg-opacity-60 rounded-[10px] bg-red-600 text-sm text-red-600 dark:text-red-400">Clear All</button>
+      <div className="flex justify-end w-full py-2 px-4">
+      <button onClick={onClearAll} type="button" className="text-rose-800 bg-transparent border border-rose-800 hover:bg-rose-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-[10px] text-xs px-2 py-1 text-center dark:hover:bg-rose-600 dark:border-rose-600 dark:text-rose-400 dark:hover:text-white dark:focus:ring-rose-800" data-dismiss-target="#alert-additional-content-3" aria-label="Close">
+            Clear All
+          </button>
+         
+      
       </div>
   </div>}/> );
 }
