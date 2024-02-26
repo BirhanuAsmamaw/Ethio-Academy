@@ -1,7 +1,8 @@
 
 "use client"
-import { CourseType } from "@/components/search/types/course.type";
+
 import { Cart } from "@/hooks/use.cart";
+import { CourseType } from "@/types";
 import { ReactNode, useEffect, useState } from "react";
 interface CartProviderProps{
   children:ReactNode

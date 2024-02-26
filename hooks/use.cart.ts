@@ -1,6 +1,7 @@
 "use client"
 
-import { CourseType } from "@/components/search/types/course.type";
+
+import { CourseType } from "@/types";
 import { createContext, useContext } from "react";
 
 
