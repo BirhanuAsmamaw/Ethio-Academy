@@ -16,7 +16,7 @@ const router=useRouter();
   const unreadNotifications=notifications.filter(notification =>!notification.isRead)
 
   const onRead=() => {
-    notifications.forEach(notification =>axios.delete(`/api/notification/${notification.id}/editread`));
+    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/editread`));
     router.refresh();
   };
 
@@ -27,7 +27,7 @@ const router=useRouter();
   };
 
   const onClearOne=(notificationId:string) => {
-   axios.put(`/api/notification/${notificationId}/delete`);
+   axios.delete(`/api/notification/${notificationId}/delete`);
     router.refresh();
   };
 
