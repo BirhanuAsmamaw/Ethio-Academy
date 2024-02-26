@@ -6,7 +6,7 @@ import React from "react";
 
 import Header from '@/components/Header'
 import { getCourses } from '@/actions/getCourses'
-import { BackgroundBeams } from '@/components/ui/background-beams';
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { AboutAcademy } from '@/lib/aboutAcademy';
 
@@ -32,7 +32,7 @@ const courses=await getCourses()
     <div className=" fixed bg-blue-200 dark:bg-slate-600 blur-3xl bottom-0 -left-4 h-20 h-40 rounded-full  w-40"></div>
     <div className=" fixed bg-blue-200 dark:bg-slate-600 blur-3xl bottom-0  -right-4  h-40 rounded-full  w-40"></div>
     
-    <BackgroundBeams />
+    
     <Navbar/>
     <Hero/>
    
