@@ -4,6 +4,9 @@ export async function getPaymentById(PaymentId:string){
   try{
     const payment = await prisma.payment.findUnique({
       where:{id:PaymentId},
+      include:{
+        customer:true
+      }
       
       
       
