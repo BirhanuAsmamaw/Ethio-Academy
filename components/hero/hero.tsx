@@ -16,11 +16,11 @@ const Hero = () => {
     <div className="pt-10 md:pt-0 flex flex-col gap-20 justify-center items-center  md:w-2/3">
       <div className="flex flex-col gap-6">
       <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold items-center justify-center text-center overflow-hidden">Alpha Academy, where heroes are born and excellence reigns supreme <span className="font-bold text-rose-600 dark:text-yellow-400 text-3xl md:text-5xl">!</span></h1>
-      <div className="font-medium md:text-lg flex flex-col gap-1 md:mx-10 justify-center items-center">
-      <p className="text-md px-4 font-medium dark:text-gray-400 text-slate-600 flex flex-col xl:flex-row"> 
+      <div className="font-medium md:text-lg flex flex-col gap-1 md:mx-10 ">
+      <p className="text-md px-4 font-medium dark:text-gray-400 text-slate-600 flex flex-col "> 
       <span className="text-rose-700 dark:text-yellow-300">🌟 Ignite Your Brilliance:</span> 
       <span className="pl-6 md:pl-2">Join a community of trailblazers where every individual is a beacon of inspiration.</span></p>
-      <p className="text-md px-4 font-semibold dark:text-gray-400  text-slate-600 flex flex-col xl:flex-row"> 
+      <p className="text-md px-4 font-medium dark:text-gray-400  text-slate-600 flex flex-col "> 
       <span className="text-rose-700 dark:text-yellow-300">💡 Alpha Academy:</span> 
       <span className="pl-6 md:pl-2">Is not just a school; its a launchpad for greatness.</span></p>
       </div>
