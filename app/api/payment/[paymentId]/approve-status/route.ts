@@ -24,7 +24,7 @@ export async function PUT(req: Request, {params}:{params:{paymentId:string}}){
     }
 
     const approvePayment=await prisma.payment.update({
-      where: {id:payment.id},
+      where: {id:paymentId},
       data:{status:true}
     })
     return NextResponse.json(approvePayment);
