@@ -19,13 +19,17 @@ const [Loading,setIsLoading]=useState(false);
     return <div>No Payment details</div>
   }
 
+const customer={
+    id:payment.customer.id,
+   name:payment.customer.name,
+  }
 
   const notificationSuccess = {
     url:`/dashboard/approved-courses}`,
     type:'Success',
     title: `🌟 Your Course approved Succeffully!`,
     message: `🎉 ${payment.customer.name}; please start learning Your Course!`,
-    customers:[payment.customer]
+    customers:[customer]
 };
 
 const notificationReject= {
@@ -33,7 +37,7 @@ const notificationReject= {
     type:'Danger',
     title: `Sorry!!, Your Course not approved`,
     message: `🎉 ${payment.customer.name};your payment is not correct; please call me at 0930793119`,
-    customers:[{...payment.customer}]
+    customers:[customer]
 };
 
 
@@ -58,9 +62,9 @@ const onApproved=()=>{
     
 }
 
-const onReject=async()=>{
+const onReject=()=>{
     toast.success("You successfully Reject the Payment")
-    await axios.post('/api/notification',notificationReject).then(()=>{
+   axios.post('/api/notification',notificationReject).then(()=>{
       router.push('/dashboard/approved-courses') 
     }); 
    
