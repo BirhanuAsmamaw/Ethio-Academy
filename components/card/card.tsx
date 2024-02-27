@@ -36,11 +36,14 @@ rounded-[5px]
    shadow 
    
    ">
-  <Link href={`/course/${id}`} className="no-underline w-full h-[200px] overflow-hidden">
-    <Image src={cover} alt={subject} fill
+  <Link href={`/course/${id}`} className="no-underline  overflow-hidden">
+    <Image src={cover} alt={subject} 
+    height={200}
+    width={200}
     className=" w-full rounded-t-[5px]
      group-hover:scale-105
      transition 
+     object-contain
      duration-300
      "/>
   </Link>
