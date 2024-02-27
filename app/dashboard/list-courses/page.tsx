@@ -1,4 +1,5 @@
-import { getCourses } from "@/actions/getCourses";
+
+import { getCourses } from "@/actions/courses/getCourses";
 import { CourseListClient } from "./courseListClient";
 
 const ListCourses = async() => {

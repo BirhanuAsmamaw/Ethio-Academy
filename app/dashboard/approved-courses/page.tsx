@@ -1,4 +1,5 @@
-import { getAllPayments } from "@/actions/getAllPayments";
+
+import { getAllPayments } from "@/actions/payments/getAllPayments";
 import { ApprovedCoursesClient } from "./approvedCoursesClient";
 
 const ApprovedCourses = async() => {
