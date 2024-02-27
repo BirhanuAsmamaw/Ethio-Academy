@@ -19,7 +19,8 @@ export  async function GET(req: Request, res:NextResponse) {
     const courses = await prisma.course.findMany({
       where: {
         subject:{
-          contains:subject
+          contains:subject,
+          mode:'insensitive'
         }
       
       },
