@@ -6,16 +6,9 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 
 const MyCourses = async() => {
   const user=await getCurrentUser();
-  console.log(user?.payedCourses);
 
-  const myCourse=user?.payedCourses.map((payedCourse) =>{
-    const course=payedCourse.courses;
-    return [...course ,]
-  })
-  const myData={
-    name:user?.name,
-    email:user?.email,
-    courses:myCourse};
+
+ 
   return ( <>
   <Navbar/>
   <div className="min-h-screen py-10 flex flex-col justify-center ">
@@ -24,7 +17,7 @@ const MyCourses = async() => {
   <div className="">
     <UserProfile user={user}/>
   </div>
-  <div className="overflow-x-auto p-2"><MyCourseClient user={myData}/></div>
+  <div className="overflow-x-auto p-2"><MyCourseClient user={user}/></div>
 </div>
     </div>
   </> );
