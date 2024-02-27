@@ -30,14 +30,25 @@ const Hero = () => {
       
       <div className="flex "> <div className="flex -space-x-4">
   <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
-    <Image height={60} width={60} src="https://avatars.githubusercontent.com/u/739986?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
+    <Image height={60} width={60} src="https://avatars.githubusercontent.com/u/739966?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
+  </div>
+  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
+    <Image height={60} width={60} src="https://avatars.githubusercontent.com/u/739994?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
+  </div>
+  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
+    <Image height={60} width={60} src="https://avatars.githubusercontent.com/u/739684?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
+  </div>
+
+  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
+    <Image height={60} width={60} src="https://avatars.githubusercontent.com/u/739976?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
   </div>
   <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
     <Image height={60} width={60} src="https://avatars.githubusercontent.com/u/739984?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
   </div>
   <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
-    <Image height={60} width={60} src="https://avatars.githubusercontent.com/u/739684?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
-  </div></div>
+    <Image height={60} width={60} src="https://avatars.githubusercontent.com/u/739884?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
+  </div>
+  </div>
   <h1 className="p-2 text-lg text-blue-500 dark:text-green-400 "> students trust us.</h1></div>
     </div>
 

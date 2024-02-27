@@ -19,10 +19,10 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
   if(user&& user.role=="ADMIN"){
   return ( <div className="">
    <Navbar/>
-    <div className="lg:px-10 flex gap-10 justify-center pt-10 w-full">
+    <div className=" flex gap-10 justify-center pt-10 w-full">
       
-          <div className="hidden lg:block w-48 ">
-          <div className="fixed bg-white dark:bg-gray-800 shadow-lg shadow-gray-300 dark-shadow-black left-10 h-screen w-48 overflow-y-auto"><Sidebar/></div>
+          <div className="hidden  lg:block w-48  bg-white dark:bg-gray-800 shadow-lg shadow-gray-300 dark:shadow-black">
+          <div className="fixed lg:p-10 left-10 h-screen  bg-white dark:bg-gray-800 w-48 overflow-y-auto"><Sidebar/></div>
           </div>
 
 
