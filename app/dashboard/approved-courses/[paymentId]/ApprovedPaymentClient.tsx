@@ -3,10 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-//  interface ApprovedPaymentClientProps{
-//   payment:any;
-//  }
-const ApprovedPaymentClient = () => {
+ interface ApprovedPaymentClientProps{
+  payment:any;
+ }
+const ApprovedPaymentClient:React.FC<ApprovedPaymentClientProps> = ({payment}) => {
 
 const router=useRouter();
 const [Loading,setIsLoading]=useState(false);
