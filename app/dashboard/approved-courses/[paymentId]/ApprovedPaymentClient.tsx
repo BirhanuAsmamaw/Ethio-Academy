@@ -25,7 +25,7 @@ const customer={
   }
 
   const notificationSuccess = {
-    url:`/dashboard/approved-courses}`,
+    url:`/mycourses`,
     type:'Success',
     title: `🌟 Your Course approved Succeffully!`,
     message: `🎉 ${payment.customer.name}; please start learning Your Course!`,
@@ -33,7 +33,7 @@ const customer={
 };
 
 const notificationReject= {
-    url:`/dashboard/approved-courses}`,
+    url:`/mycourses`,
     type:'Danger',
     title: `Sorry!!, Your Course not approved`,
     message: `🎉 ${payment.customer.name};your payment is not correct; please call me at 0930793119`,
