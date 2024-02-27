@@ -18,15 +18,10 @@ export  async function GET(req: Request, res:NextResponse) {
     // Search courses by subject
     const courses = await prisma.course.findMany({
       where: {
-        OR: [
-{subject:{
-  contains: subject,
-  mode:'insensitive'
-}}
-        ],
-        subject: {
-          equals: subject.toString(), // Convert subject to string
-        },
+        subject:{
+          contains:subject
+        }
+      
       },
     });
 
