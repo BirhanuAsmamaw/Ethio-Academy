@@ -40,26 +40,26 @@ const notificationReject= {
 const onApproved=()=>{
 
 
-      axios.put(`/api/payment${payment.id}/approve-status`).then(()=>{
-        toast.success("You successfully Approved the Payment")
-      })
-      .catch((error)=>{
-        toast.error(error.message)
+      // axios.put(`/api/payment${payment.id}/approve-status`).then(()=>{
+      //   toast.success("You successfully Approved the Payment")
+      // })
+      // .catch((error)=>{
+      //   toast.error(error.message)
       
-      }).finally(()=>{
-        setIsLoading(false)
-      });
+      // }).finally(()=>{
+      //   setIsLoading(false)
+      // });
     
-      axios.post('/api/notification',notificationSuccess);
-      router.push('/dashboard/approved-courses')
+      // axios.post('/api/notification',notificationSuccess);
+      // router.push('/dashboard/approved-courses')
 
     
 }
 
 const onReject=()=>{
-    toast.success("You successfully Reject the Payment")
-    axios.post('/api/notification',notificationReject); 
-    router.push('/dashboard/approved-courses') 
+    // toast.success("You successfully Reject the Payment")
+    // axios.post('/api/notification',notificationReject); 
+    // router.push('/dashboard/approved-courses') 
 }
 
   return ( <div className="w-full flex flex-col justify-center items-center gap-10">
