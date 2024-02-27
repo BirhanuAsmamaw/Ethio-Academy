@@ -58,7 +58,8 @@ const onApproved=()=>{
 
 const onReject=()=>{
     toast.success("You successfully Reject the Payment")
-    axios.post('/api/notification',notificationReject);  
+    axios.post('/api/notification',notificationReject); 
+    router.push('/dashboard/approved-courses') 
 }
 
   return ( <div className="w-full flex flex-col justify-center items-center gap-10">
@@ -125,7 +126,7 @@ const onReject=()=>{
             </div>
             <div>
             <Button 
-            onClick={onApproved}
+            onClick={onReject}
                 isDisabled={Loading}
                 className="text-white block w-full
                    bg-red-600 hover:bg-red-700 focus:ring-4 
