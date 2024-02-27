@@ -15,7 +15,27 @@ const user=await getCurrentUser();
   <Navbar/>
  <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-20">
 
-<div className="w-64 h-72 border rounded-[10px]"></div>
+<div className="
+w-64 h-72 border 
+rounded-[10px] flex flex-col
+ p-2 justify-center
+  items-center
+   bg-white 
+   shadow 
+   dark:bg-gray-800
+   border-gray-200
+   dark:border-gray-700
+   text-center
+   space-y-2
+   ">
+    <div className="p-2 h-28 w-28 rounded-full bg-gray-400 text-center">image</div>
+    <h5 className="font-semibold text-lg ">{user?.name}</h5>
+    <p className="
+    text-gray-500 
+    dark:text-gray-400
+    text-xs
+    ">{user?.email}</p>
+   </div>
 
 
   <div className="overflow-x-auto p-2 ">
