@@ -1,9 +1,10 @@
-import { getLessonById } from "@/actions/getLessonById";
+
 
 import CourseSceleton from "../courseSceleton";
 import Navbar from "@/components/navbar/Navbar";
 import CourseContent from "../../courseContent";
 import Container from "@/components/container/container";
+import { getLessonById } from "@/actions/lessons/getLessonById";
 
 
 interface IParams{

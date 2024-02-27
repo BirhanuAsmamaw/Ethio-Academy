@@ -5,10 +5,11 @@ import Navbar from '@/components/navbar/Navbar'
 import React from "react";
 
 import Header from '@/components/Header'
-import { getCourses } from '@/actions/getCourses'
+
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { AboutAcademy } from '@/lib/aboutAcademy';
+import { getCourses } from '@/actions/courses/getCourses';
 
 
 

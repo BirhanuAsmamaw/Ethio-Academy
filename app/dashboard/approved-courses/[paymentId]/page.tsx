@@ -1,5 +1,9 @@
-import { getPaymentById } from "@/actions/getPaymentById";
+
+import { getPaymentById } from "@/actions/payments/getPaymentById";
+import { UpdatedPaymentStatusById } from "@/actions/payments/updatedpaymentStatusById";
+import axios from "axios";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 const PaymentDetail = async({params}:{params:{paymentId:string}}) => {
 
@@ -8,6 +12,39 @@ const PaymentDetail = async({params}:{params:{paymentId:string}}) => {
   if(!payment){
     return <div>No Payment details</div>
   }
+
+
+  const notificationSuccess = {
+    url:`/dashboard/approved-courses}`,
+    type:'Success',
+    title: `🌟 Your Course approved Succeffully!`,
+    message: `🎉 ${payment.customer.name}; please start learning Your Course!`,
+    customers:[payment.customer]
+};
+
+const notificationReject= {
+    url:`/dashboard/approved-courses}`,
+    type:'Danger',
+    title: `Sorry!!, Your Course not approved`,
+    message: `🎉 ${payment.customer.name};your payment is not correct; please call me at 0930793119`,
+    customers:[payment.customer]
+};
+
+
+
+const onApproved=async()=>{
+    await UpdatedPaymentStatusById(payment.id)
+    toast.success("You successfully Approved the Payment")
+      axios.post('/api/notification',notificationSuccess);
+
+    
+}
+
+const onReject=()=>{
+    toast.success("You successfully Reject the Payment")
+    axios.post('/api/notification',notificationReject);  
+}
+
   return ( <div className="w-full flex flex-col justify-center items-center gap-10">
 
           <div className="">
@@ -63,10 +100,10 @@ const PaymentDetail = async({params}:{params:{paymentId:string}}) => {
         <div className="grid grid-cols-4 px-4 py-5 text-sm text-gray-700 border-b border-gray-200 gap-x-16 dark:border-gray-700">
          
             <div>
-                <button  className="rounded-[10px] text-white block w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium text-sm px-4 py-2.5 text-center dark:focus:ring-blue-900">Approved</button>
+                <button onClick={onApproved}   className="rounded-[10px] text-white block w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium text-sm px-4 py-2.5 text-center dark:focus:ring-blue-900">Approved</button>
             </div>
             <div>
-                <button className="text-white block w-full bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-200 font-medium rounded-[10px] text-sm px-4 py-2.5 text-center dark:focus:ring-red-900">Reject</button>
+                <button onClick={onReject}  className="text-white block w-full bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-200 font-medium rounded-[10px] text-sm px-4 py-2.5 text-center dark:focus:ring-red-900">Reject</button>
             </div>
             
         </div>

@@ -1,8 +1,11 @@
 
-import { getCurrentUser } from "@/actions/currentUser";
+
+import { getCourses } from "@/actions/courses/getCourses";
+import { getAllNotifications } from "@/actions/notifications/getAllNotifications";
+import { getCurrentUser } from "@/actions/users/currentUser";
 import NavbarClient from "./NavbarClient";
-import { getAllNotifications } from "@/actions/getAllNotifications";
-import { getCourses } from "@/actions/getCourses";
+
+
 
 const Navbar =async () => {
   const currentUser = await getCurrentUser();

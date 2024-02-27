@@ -1,5 +1,6 @@
 
-import { getCurrentUser } from "@/actions/currentUser";
+
+import { getCurrentUser } from "@/actions/users/currentUser";
 import CourseClientPage from "./courseClientPage";
 import Navbar from "@/components/navbar/Navbar";
 

@@ -1,7 +1,8 @@
 import Navbar from "@/components/navbar/Navbar";
 import MyCourseClient from "./mycourse";
 import UserProfile from "@/components/userprofile/userProfile";
-import { getCurrentUser } from "@/actions/currentUser";
+import { getCurrentUser } from "@/actions/users/currentUser";
+
 
 const MyCourses = async() => {
   const user=await getCurrentUser();

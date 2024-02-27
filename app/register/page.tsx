@@ -1,4 +1,5 @@
-import { getCurrentUser } from "@/actions/currentUser";
+
+import { getCurrentUser } from "@/actions/users/currentUser";
 import Navbar from "@/components/navbar/Navbar";
 import Signup from "@/components/signup/signup";
 

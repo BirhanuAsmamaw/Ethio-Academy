@@ -1,4 +1,5 @@
-import { getCurrentUser } from "@/actions/currentUser";
+
+import { getCurrentUser } from "@/actions/users/currentUser";
 import LogoutClient from "./LogoutClient";
 import Navbar from "@/components/navbar/Navbar";
 

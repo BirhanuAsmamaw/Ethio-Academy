@@ -3,8 +3,8 @@ import Bank from "./bank";
 import PaymentForm from "./paymentForm";
 import PaymentCourse from "./paymentCourse";
 import Navbar from "@/components/navbar/Navbar";
-import { getCurrentUser } from "@/actions/currentUser";
-import { getAllUsers } from "@/actions/getAllUsers";
+import { getCurrentUser } from "@/actions/users/currentUser";
+import { getAllUsers } from "@/actions/users/getAllUsers";
 
 const Payment = async() => {
 
