@@ -13,7 +13,7 @@ const user=await getCurrentUser();
  
   return ( <>
   <Navbar/>
- <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-20">
+ <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-20">
 
 <div className="
 w-64 h-72 border 
