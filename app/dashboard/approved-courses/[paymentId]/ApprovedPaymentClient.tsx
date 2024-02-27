@@ -1,39 +1,36 @@
 "use client"
 
-import Button from "@/components/button/button";
-import axios from "axios";
-import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import toast from "react-hot-toast";
- interface ApprovedPaymentClientProps{
-  payment:any;
- }
-const ApprovedPaymentClient:React.FC<ApprovedPaymentClientProps> = ({payment}) => {
+
+//  interface ApprovedPaymentClientProps{
+//   payment:any;
+//  }
+const ApprovedPaymentClient = () => {
 
 const router=useRouter();
 const [Loading,setIsLoading]=useState(false);
 
-  if(!payment){
-    return <div>No Payment details</div>
-  }
+  // if(!payment){
+  //   return <div>No Payment details</div>
+  // }
 
 
-  const notificationSuccess = {
-    url:`/dashboard/approved-courses}`,
-    type:'Success',
-    title: `🌟 Your Course approved Succeffully!`,
-    message: `🎉 ${payment.customer.name}; please start learning Your Course!`,
-    customers:[payment.customer]
-};
+//   const notificationSuccess = {
+//     url:`/dashboard/approved-courses}`,
+//     type:'Success',
+//     title: `🌟 Your Course approved Succeffully!`,
+//     message: `🎉 ${payment.customer.name}; please start learning Your Course!`,
+//     customers:[payment.customer]
+// };
 
-const notificationReject= {
-    url:`/dashboard/approved-courses}`,
-    type:'Danger',
-    title: `Sorry!!, Your Course not approved`,
-    message: `🎉 ${payment.customer.name};your payment is not correct; please call me at 0930793119`,
-    customers:[payment.customer]
-};
+// const notificationReject= {
+//     url:`/dashboard/approved-courses}`,
+//     type:'Danger',
+//     title: `Sorry!!, Your Course not approved`,
+//     message: `🎉 ${payment.customer.name};your payment is not correct; please call me at 0930793119`,
+//     customers:[payment.customer]
+// };
 
 
 
