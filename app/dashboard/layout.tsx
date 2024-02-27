@@ -1,5 +1,7 @@
 
 
+import { getCurrentUser } from "@/actions/users/currentUser";
+import Redirect from "@/components/Redirect";
 import Navbar from "@/components/navbar/Navbar";
 
 import Sidebar from "@/components/sidebar/sidebar";
@@ -9,8 +11,12 @@ interface DashboardLayoutProbs{
   children: ReactNode
 }
 
-const DashboardLayout:React.FC<DashboardLayoutProbs> = ({children}) => {
+const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
+
+  const user=await getCurrentUser();
+
   
+  if(user&& user.role=="ADMIN"){
   return ( <div className="">
    <Navbar/>
     <div className="lg:px-10 flex gap-10 justify-center pt-10 w-full">
@@ -26,7 +32,12 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> = ({children}) => {
       </div>
     </div>
 
-  </div> );
+  </div> );}
+
+
+else{
+return <Redirect/>
+}
 }
  
 export default DashboardLayout;
