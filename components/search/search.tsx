@@ -38,9 +38,9 @@ const onSearchOpen=()=>{
     {isSearchOpen? <IoMdClose size={24}/>:<IoIosSearch size={24}/>}
     </button>
     <div className={`absolute  z-20 mt-1 top-13 w-11/12 p-3 left-2 right-2 ${!isSearchOpen?'bg-opacity-0 -translate-y-[200%]':'bg-opacity-100 translate-y-0'} transition duration-300`}>
-    <form className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
+    <form onSubmit={onHandleSubmit} className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
-    <input onSubmit={onHandleSubmit}  onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
+    <input   onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
     className=" bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
    </form>
     </div>
