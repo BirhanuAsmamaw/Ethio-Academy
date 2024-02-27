@@ -7,13 +7,13 @@ const UserProfile:React.FC<UserProfileProps> = ({user}) => {
   return ( 
     <div className="w-72 p-2 border-[1.5px] bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 relative rounded-[5px]">
     
-      <Image
+      {/* <Image
       height={100}
       width={100}
       className="absolute left-[32%] -top-16 rounded-full border-[1.5px] border-white dark:border-gray-900"
-       src={`${user.image? user.image:"https://avatars.githubusercontent.com/u/739984?v=4"}`}
+       src={`${user?.image? user?.image:"https://avatars.githubusercontent.com/u/739984?v=4"}`}
        alt="user profile"
-      />
+      /> */}
    
     <div className="flex  flex-col  items-center mt-10">
       <h4 className="text-lg">{user.name}</h4>
