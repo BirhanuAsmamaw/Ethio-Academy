@@ -41,7 +41,7 @@ const notificationReject= {
 const onApproved=()=>{
 
 
-      axios.put(`/api/payment${payment.id}/approve-status`).then(()=>{
+      axios.put(`/api/payment/${payment.id}/approve-status`).then(()=>{
         toast.success("You successfully Approved the Payment")
       })
       .catch((error)=>{
