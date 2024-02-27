@@ -1,5 +1,5 @@
 import Navbar from "@/components/navbar/Navbar";
-import MyCourseClient from "./mycourse";
+
 
 import { getCurrentUser } from "@/actions/users/currentUser";
 
@@ -16,8 +16,9 @@ const MyCourses = async() => {
 <div className="flex gap-10 flex-wrap  justify-center">
   {/* <div className="">
     <UserProfile user={user}/>
+    deribew
   </div> */}
-  <div className="overflow-x-auto p-2"><MyCourseClient user={user}/></div>
+  <div className="overflow-x-auto p-2">my courses</div>
 </div>
     </div>
   </> );
