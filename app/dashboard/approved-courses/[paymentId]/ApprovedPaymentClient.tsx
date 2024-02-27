@@ -13,7 +13,8 @@ import toast from "react-hot-toast";
 const ApprovedPaymentClient:React.FC<ApprovedPaymentClientProps> = ({payment}) => {
 
 const router=useRouter();
-const [Loading,setIsLoading]=useState(false);
+const [LoadingApprove,setIsLoadingApprove]=useState(false);
+const [LoadingReject,setIsLoadingReject]=useState(false);
 
   if(!payment){
     return <div>No Payment details</div>
@@ -44,7 +45,7 @@ const notificationReject= {
 
 const onApproved=()=>{
 
-setIsLoading(true);
+setIsLoadingApprove(true);
       axios.put(`/api/payment/${payment.id}/approve-status`).then(()=>{
         toast.success("You successfully Approved the Payment")
         router.push('/dashboard/approved-courses')
@@ -53,7 +54,7 @@ setIsLoading(true);
         toast.error(error.message)
       
       }).finally(()=>{
-        setIsLoading(false)
+        setIsLoadingApprove(false)
       });
     
       axios.post('/api/notification',notificationSuccess);
@@ -63,12 +64,12 @@ setIsLoading(true);
 }
 
 const onReject=()=>{
-  setIsLoading(true);
+  setIsLoadingReject(true);
     toast.success("You successfully Reject the Payment")
    axios.post('/api/notification',notificationReject).then(()=>{
       router.push('/dashboard/approved-courses') 
     }).catch((error)=>{}).finally(()=>{
-      setIsLoading(false)}); 
+      setIsLoadingReject(false)}); 
    
 }
 
@@ -89,7 +90,7 @@ const onReject=()=>{
   
   
   
-  <div className="flow-root w-full flex-center">
+  <div className="flow-root w-full flex-center md:p-10">
   <dl className="-my-3 divide-y divide-gray-300 text-sm dark:divide-gray-700">
     <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt className="font-medium text-gray-900 dark:text-white">Subjects</dt>
@@ -115,7 +116,7 @@ const onReject=()=>{
     </div>
     <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt className="font-medium text-gray-900 dark:text-white">Transaction Id</dt>
-      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment.Transaction}</dd>
+      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment.transaction}</dd>
     </div>
 
     <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
@@ -127,18 +128,16 @@ const onReject=()=>{
       <dt className="font-medium text-gray-900 dark:text-white">
          <Button 
         onClick={onApproved}
-        isDisabled={Loading}
-        title={Loading? "Loading..":"Approve"}
+        isDisabled={LoadingApprove}
+        title={LoadingApprove? "Loading..":"Approve"}
         />   </dt>
       <dt className="font-medium text-gray-900 dark:text-white">
       <Button 
     onClick={onReject}
-        isDisabled={Loading}
-        className="text-white block w-full
-           bg-red-600 hover:bg-red-700 focus:ring-4 
-           focus:ring-red-200 font-medium rounded-[10px]
-            text-sm px-4 py-2.5 text-center dark:focus:ring-red-900"
-        title={Loading? "Loading..":"Reject"}
+        isDisabled={LoadingReject}
+        className="
+           bg-red-600  text-center dark:bg-red-600 hover:bg-red-700 dark:focus:ring-red-900"
+        title={LoadingReject? "Loading..":"Reject"}
         />  
       </dt>
     </div>
