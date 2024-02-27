@@ -1,15 +1,12 @@
 "use client"
 
-import { CourseType } from "@/types";
-import Link from "next/link";
+
 import { IoIosSearch, IoMdClose } from "react-icons/io";
 import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useRouter } from "next/navigation";
-interface SearchProps{
-  courses:CourseType[] | any[];
-}
-const Search:React.FC<SearchProps> = ({courses}) => {
+
+const Search= () => {
 
   const router=useRouter();
   const [isSearchOpen,setSearchOpen] =useState(false);
@@ -26,14 +23,14 @@ const onSearchOpen=()=>{
 }
   
   return ( <>
-    <div className="hidden md:block w-full relative ">
+    <div className="hidden lg:block w-full relative ">
    <form onSubmit={onHandleSubmit}  className="flex w-full  bg-white dark:bg-gray-800  border rounded-[8px] border-gray-200 dark:border-gray-700 overflow-hidden ">
      <CiSearch size={30} className="pt-1"/> 
      <input value={searchQuery||''} onChange={(event)=>setSearchQuery(event.target.value)} type="search" className="focus:shadow-md bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
      </form>
    
    </div>
-   <div className="md:hidden   w-full">
+   <div className="lg:hidden   w-full">
     <button onClick={onSearchOpen} className="pt-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium" >
     {isSearchOpen? <IoMdClose size={24}/>:<IoIosSearch size={24}/>}
     </button>
