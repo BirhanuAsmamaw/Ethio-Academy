@@ -39,12 +39,12 @@ const router=useRouter();
     </div>
     
     
-  } body={<div className=" overflow-y-auto">
+  } body={<div className="max-h-screen overflow-y-auto">
 
     {notifications?.length?<div>
       {notifications?.map((notification)=>{
         return <div key={notification.id} id="alert-additional-content-3"
-         className={`p-4 max-h-[800px] overflow-y-auto mb-4 border rounded-[5px]  dark:bg-gray-800 
+         className={`p-4  mb-4 border rounded-[5px]  dark:bg-gray-800 
          ${notification.type==="Success"&&`
          dark:text-green-400 
          dark:border-green-800
