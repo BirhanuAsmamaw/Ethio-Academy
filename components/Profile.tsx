@@ -22,7 +22,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
   <CDropDown
   title={<><Image width={30} height={30} className={`${!user?.image&&'hidden'} bg-gray-600 rounded-full `}   src={user?.image? user?.image:"/"} alt="Rounded avatar"/>
 
-  <div className={`${user?.image&&'hidden'} relative inline-flex items-center justify-center w-7 h-7 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}>
+  <div className={`${user?.image&&'hidden'} relative inline-flex items-center justify-center w-7 h-7 overflow-hidden bg-gray-200 rounded-full dark:bg-gray-600`}>
       <span className="font-medium text-gray-600 dark:text-gray-300">{user.name[0]}</span>
   </div></>}
   body={
