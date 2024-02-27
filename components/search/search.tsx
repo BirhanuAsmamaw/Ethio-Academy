@@ -37,12 +37,12 @@ const onSearchOpen=()=>{
     <button onClick={onSearchOpen} className="pt-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium" >
     {isSearchOpen? <IoMdClose size={24}/>:<IoIosSearch size={24}/>}
     </button>
-    <div className={`absolute  mt-1 top-13 w-11/12 p-2 left-2 right-2 ${!isSearchOpen?'bg-opacity-0 translate-y-[100%]':'bg-opacity-100 translate-y-0'} transition duration-300`}>
-    <div  className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
+    <div className={`absolute  mt-1 top-13 w-11/12 p-3 left-2 right-2 ${!isSearchOpen?'bg-opacity-0 translate-y-[100%]':'bg-opacity-100 translate-y-0'} transition duration-300`}>
+    <form className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
-    <input  onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
+    <input onSubmit={onHandleSubmit}  onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
     className=" bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
-   </div>
+   </form>
     </div>
    </div>
    </>
