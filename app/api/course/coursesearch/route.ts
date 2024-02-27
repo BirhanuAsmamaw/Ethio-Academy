@@ -21,9 +21,15 @@ export  async function GET(req: Request, res:NextResponse) {
         subject:{
           contains:subject,
           mode:'insensitive'
-        }
+        },
       
       },
+
+include:{
+  reviews:true
+}
+
+
     });
 
     return NextResponse.json(courses);
