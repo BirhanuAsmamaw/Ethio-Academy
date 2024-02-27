@@ -1,11 +1,13 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/lib/prismadb';
-import { NextResponse } from 'next/server';
 
-export  async function GET(req: NextApiRequest, res: NextApiResponse) {
+import prisma from '@/lib/prismadb';
+import {  NextResponse } from 'next/server';
+
+export  async function GET(req: Request, res:NextResponse) {
   try {
-    // Extract the subject from the query parameters
-    const { subject } = req.query;
+    
+    const { searchParams } = new URL(req.url);
+    const subject = searchParams.get("subject") || "";
+    
 
     if (!subject) {
       return NextResponse.json({ error: 'Subject is required' }, { status: 400 });
@@ -16,6 +18,12 @@ export  async function GET(req: NextApiRequest, res: NextApiResponse) {
     // Search courses by subject
     const courses = await prisma.course.findMany({
       where: {
+        OR: [
+{subject:{
+  contains: subject,
+  mode:'insensitive'
+}}
+        ],
         subject: {
           equals: subject.toString(), // Convert subject to string
         },
