@@ -1,9 +1,11 @@
 "use client"
 
 import Button from "@/components/button/button";
+import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
  interface ApprovedPaymentClientProps{
   payment:any;
@@ -13,52 +15,52 @@ const ApprovedPaymentClient:React.FC<ApprovedPaymentClientProps> = ({payment}) =
 const router=useRouter();
 const [Loading,setIsLoading]=useState(false);
 
-  // if(!payment){
-  //   return <div>No Payment details</div>
-  // }
+  if(!payment){
+    return <div>No Payment details</div>
+  }
 
 
-//   const notificationSuccess = {
-//     url:`/dashboard/approved-courses}`,
-//     type:'Success',
-//     title: `🌟 Your Course approved Succeffully!`,
-//     message: `🎉 ${payment.customer.name}; please start learning Your Course!`,
-//     customers:[payment.customer]
-// };
+  const notificationSuccess = {
+    url:`/dashboard/approved-courses}`,
+    type:'Success',
+    title: `🌟 Your Course approved Succeffully!`,
+    message: `🎉 ${payment.customer.name}; please start learning Your Course!`,
+    customers:[payment.customer]
+};
 
-// const notificationReject= {
-//     url:`/dashboard/approved-courses}`,
-//     type:'Danger',
-//     title: `Sorry!!, Your Course not approved`,
-//     message: `🎉 ${payment.customer.name};your payment is not correct; please call me at 0930793119`,
-//     customers:[payment.customer]
-// };
+const notificationReject= {
+    url:`/dashboard/approved-courses}`,
+    type:'Danger',
+    title: `Sorry!!, Your Course not approved`,
+    message: `🎉 ${payment.customer.name};your payment is not correct; please call me at 0930793119`,
+    customers:[payment.customer]
+};
 
 
 
 const onApproved=()=>{
 
 
-      // axios.put(`/api/payment${payment.id}/approve-status`).then(()=>{
-      //   toast.success("You successfully Approved the Payment")
-      // })
-      // .catch((error)=>{
-      //   toast.error(error.message)
+      axios.put(`/api/payment${payment.id}/approve-status`).then(()=>{
+        toast.success("You successfully Approved the Payment")
+      })
+      .catch((error)=>{
+        toast.error(error.message)
       
-      // }).finally(()=>{
-      //   setIsLoading(false)
-      // });
+      }).finally(()=>{
+        setIsLoading(false)
+      });
     
-      // axios.post('/api/notification',notificationSuccess);
-      // router.push('/dashboard/approved-courses')
+      axios.post('/api/notification',notificationSuccess);
+      router.push('/dashboard/approved-courses')
 
     
 }
 
 const onReject=()=>{
-    // toast.success("You successfully Reject the Payment")
-    // axios.post('/api/notification',notificationReject); 
-    // router.push('/dashboard/approved-courses') 
+    toast.success("You successfully Reject the Payment")
+    axios.post('/api/notification',notificationReject); 
+    router.push('/dashboard/approved-courses') 
 }
 
   return (<div className="w-full flex flex-col justify-center items-center gap-10">
@@ -73,7 +75,7 @@ const onReject=()=>{
   
   
   <div id="detailed-pricing" className="w-full pb-10 flex justify-center overflow-x-auto">
-  <div className="overflow-hidden min-w-max">
+  <div className="overflow-auto w-full flex flex-col items-center justify-center">
   <h5 className="text-base text-gray-500 dark:text-gray-400 font-semibold "><span className="text-rose-500 dark:text-green-400">{payment.customer.name} </span>has bought the following <span className="text-rose-500 dark:text-green-400">{payment.courses.length} </span>courses</h5>
   <ul className=" ps-5 mt-2 space-y-1 list-disc list-inside pb-10">
   {payment.courses.map((course:any)=>{
