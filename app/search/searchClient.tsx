@@ -1,4 +1,5 @@
 "use client"
+import Card from "@/components/card/card";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -25,10 +26,21 @@ const SearchClient = () => {
     }
   }, [searchQueryData]);
 
-  return <div className="">
-    {courses.map((course) =>{
-      return <div key={course.id}>{course.subject}</div>
-    })}
+  return <div className="min-h-screen w-full flex justify-center items-center">
+       <div className="w-full md:w-10/12 lg:w-8/12 xl:w-6/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center">
+        {courses.map((course) =>{
+          return <Card
+          key={course.id}
+              id={course.id}
+              no_reviews={course.reviews.length}
+              category={course.category}
+              price={course.price}
+              subject={course.subject}
+              rating={course?.rating}
+              cover={course.cover} 
+               />
+        })}
+       </div>
   </div>;
 };
 

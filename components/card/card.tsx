@@ -41,8 +41,7 @@ rounded-[5px]
     height={200}
     width={200}
     className=" w-full rounded-t-[5px]
-     group-hover:scale-105
-     transition 
+    
      object-contain
      duration-300
      "/>
