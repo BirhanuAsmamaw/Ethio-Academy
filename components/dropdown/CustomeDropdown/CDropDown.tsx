@@ -24,7 +24,7 @@ setDropdown((prev)=>!prev)
        </button>
      </div>
 
-     <div className={`absolute z-20 right-0  ${large? 'w-64':'w-48'} max-h-[500px] top-12 rounded-b-[10px] rounded-tl-[10px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-2 ${!dropDownOpen? '-translate-y-[200%]  bg-white opacity-0':'translate-y-0 opacity-1'} transition duration-300 ease-in-out`}>
+     <div className={`absolute z-20 right-0  ${large? 'w-64':'w-48'} top-12 rounded-b-[10px] rounded-tl-[10px] border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-2 ${!dropDownOpen? '-translate-y-[200%]  bg-white opacity-0':'translate-y-0 opacity-1'} transition duration-300 ease-in-out`}>
        {body}
      </div>
 

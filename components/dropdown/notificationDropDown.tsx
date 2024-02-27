@@ -33,13 +33,13 @@ const router=useRouter();
 
   
   return (  <CDropDown large title={
-    <div onClick={onRead}>
+    <div onClick={onRead} >
 <IoMdNotificationsOutline size={24} />
 <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
     </div>
     
     
-  } body={<div>
+  } body={<div className="max-h-[800px] overflow-y-auto">
 
     {notifications?.length?<div>
       {notifications?.map((notification)=>{
