@@ -33,7 +33,7 @@ const notificationReject= {
     type:'Danger',
     title: `Sorry!!, Your Course not approved`,
     message: `🎉 ${payment.customer.name};your payment is not correct; please call me at 0930793119`,
-    customers:[payment.customer]
+    customers:[{...payment.customer}]
 };
 
 
@@ -58,9 +58,9 @@ const onApproved=()=>{
     
 }
 
-const onReject=()=>{
+const onReject=async()=>{
     toast.success("You successfully Reject the Payment")
-    axios.post('/api/notification',notificationReject).then(()=>{
+    await axios.post('/api/notification',notificationReject).then(()=>{
       router.push('/dashboard/approved-courses') 
     }); 
    
