@@ -2,7 +2,7 @@
 "use client"
 
 
-import  "react-quill/dist/quill.snow.css";
+import  "react-quill/dist/quill.bubble.css";
 import './editor.css'
 import dynamic from "next/dynamic";
 
@@ -50,7 +50,7 @@ const formats = [
     return (
         
           <div className="">
-            <ReactQuill className="dark:bg-gray-700 text-black  dark:text-gray-200   " modules={modules} formats={formats} theme="snow" onChange={setValue} placeholder="The content starts here..." />
+            <ReactQuill className="dark:bg-gray-700 text-black  dark:text-gray-200   " modules={modules} formats={formats} theme="bubble" onChange={setValue} placeholder="The content starts here..." />
           </div>
        
       );

@@ -1,5 +1,5 @@
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; 
+import 'react-quill/dist/quill.bubble.css'; 
 interface  QuillEditorProps{
   value: string;
   onChange:(value:any) => void;
@@ -36,7 +36,7 @@ const modules = {
 const QuillEditor:React.FC<QuillEditorProps> = ({ value, onChange }) => {
 
   return (  <ReactQuill
-    theme="snow"
+    theme="bubble"
     placeholder="Type here"
     value={value}
     onChange={onChange}
