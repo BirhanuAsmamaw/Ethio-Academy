@@ -62,7 +62,7 @@ const onReject=()=>{
     // router.push('/dashboard/approved-courses') 
 }
 
-  return ( <div className="">{payment.bank}</div> );
+  return ( <div className="">Addis ababa</div> );
 }
  
 export default ApprovedPaymentClient;
