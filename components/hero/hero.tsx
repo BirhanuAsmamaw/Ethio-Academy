@@ -28,7 +28,7 @@ const Hero = () => {
     
 
       
-      <div className="flex "> <div className="flex -space-x-4">
+      <div className="flex justify-center flex-wrap "> <div className="flex -space-x-4">
   <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
     <Image height={60} width={60} src="https://avatars.githubusercontent.com/u/739966?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
   </div>
