@@ -12,7 +12,7 @@ const user=await getCurrentUser();
   return ( <>
   <Navbar/>
  
-  <div className="overflow-x-auto p-2">my courses deri</div>
+  <div className="overflow-x-auto p-2">my courses {user?.name}</div>
 
     
   </> );
