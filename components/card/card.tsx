@@ -38,7 +38,7 @@ rounded-[5px]
    ">
   <Link href={`/course/${id}`} className="no-underline  overflow-hidden">
     <Image src={cover} alt={subject} 
-    height={200}
+    height={100}
     width={200}
     className=" w-full rounded-t-[5px]
     
