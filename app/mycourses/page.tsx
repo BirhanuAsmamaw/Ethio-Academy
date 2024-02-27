@@ -1,10 +1,13 @@
 import Navbar from "@/components/navbar/Navbar";
 
 
-const MyCourses = () => {
+import { getCurrentUser } from "@/actions/users/currentUser";
 
 
+const MyCourses = async() => {
 
+
+const user=getCurrentUser();
  
   return ( <>
   <Navbar/>
