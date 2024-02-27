@@ -39,7 +39,7 @@ const router=useRouter();
     </div>
     
     
-  } body={<div className="max-h-[800px] overflow-y-auto">
+  } body={<div className=" overflow-y-auto">
 
     {notifications?.length?<div>
       {notifications?.map((notification)=>{
