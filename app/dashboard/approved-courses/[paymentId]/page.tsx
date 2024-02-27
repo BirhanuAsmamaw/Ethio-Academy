@@ -4,7 +4,9 @@ import ApprovedPaymentClient from "./ApprovedPaymentClient";
 const PaymentDetail = async({params}:{params:{paymentId:string}}) => {
 
     const payment=await getPaymentById(params.paymentId);
-    return ( <ApprovedPaymentClient payment={payment}/> );
+    return (<div className="min-h-screen ">
+        <h1>Payment details {payment?.bank}</h1>
+    </div> );
 }
  
 export default PaymentDetail;
