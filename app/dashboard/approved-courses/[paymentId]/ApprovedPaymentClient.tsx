@@ -44,7 +44,7 @@ const notificationReject= {
 
 const onApproved=()=>{
 
-
+setIsLoading(true);
       axios.put(`/api/payment/${payment.id}/approve-status`).then(()=>{
         toast.success("You successfully Approved the Payment")
         router.push('/dashboard/approved-courses')
@@ -63,10 +63,12 @@ const onApproved=()=>{
 }
 
 const onReject=()=>{
+  setIsLoading(true);
     toast.success("You successfully Reject the Payment")
    axios.post('/api/notification',notificationReject).then(()=>{
       router.push('/dashboard/approved-courses') 
-    }); 
+    }).catch((error)=>{}).finally(()=>{
+      setIsLoading(false)}); 
    
 }
 
@@ -83,57 +85,49 @@ const onReject=()=>{
   
   <div id="detailed-pricing" className="w-full pb-10 flex justify-center overflow-x-auto">
   <div className="overflow-auto w-full flex flex-col items-center justify-center">
-  <h5 className="text-base text-gray-500 dark:text-gray-400 font-semibold "><span className="text-rose-500 dark:text-green-400">{payment.customer.name} </span>has bought the following <span className="text-rose-500 dark:text-green-400">{payment.courses.length} </span>courses</h5>
-  <ul className=" ps-5 mt-2 space-y-1 list-disc list-inside pb-10">
+ 
+  
+  
+  
+  <div className="flow-root">
+  <dl className="-my-3 divide-y divide-gray-100 text-sm dark:divide-gray-700">
+    <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+      <dt className="font-medium text-gray-900 dark:text-white">Subjects</dt>
+      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200"><ul className=" ps-5 mt-2 space-y-1 list-disc list-inside pb-10">
   {payment.courses.map((course:any)=>{
     return <li key={course.id} className="text-gray-500 dark:text-gray-400 text-sm flex gap-4 p-1 border-b border-gray-200 dark:border-gray-700">
         <p>{course.subject}</p>
-        <p className="text-rose-500 dark:text-green-400">{course.price}</p>
+        <p className="text-rose-500 dark:text-green-400">{course.price}ETB</p>
         </li>
   })}
   
-  </ul>
-  
-  
-  <div className="grid grid-cols-2 gap-10 w-full">
-  <div className="grid grid-cols-2 px-4 py-5 text-sm text-gray-700 border-b border-gray-200 gap-x-16 dark:border-gray-700">
-    <div className="text-gray-500 dark:text-gray-400">Bank</div>
-    <div className="text-rose-500 dark:text-green-400">
-        {payment.bank}
+  </ul></dd>
     </div>
-   
-  </div>
-  
-  <div className="grid grid-cols-2 px-4 py-5 text-sm text-gray-700 border-b border-gray-200 gap-x-16 dark:border-gray-700">
-    <div className="text-gray-500 dark:text-gray-400">Transaction Id</div>
-    <div className="text-rose-500 dark:text-green-400">
-        {payment.transaction}
+
+    <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+      <dt className="font-medium text-gray-900 dark:text-white">Name</dt>
+      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment.customer.name}</dd>
     </div>
-  </div>
-  </div>
-  
-  
-  <div className="grid grid-cols-2 px-4 py-5 text-sm text-gray-700 border-b border-gray-200 gap-x-16 dark:border-gray-700">
-    <div className="text-gray-500 dark:text-gray-400">Price</div>
-    <div className="text-rose-500 dark:text-green-400">
-        {payment.totalPrice}
+
+    <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+      <dt className="font-medium text-gray-900 dark:text-white">Bank</dt>
+      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment.bank}</dd>
     </div>
-    
-  </div>
-  
-  
-  <div className="grid grid-cols-4 px-4 py-5 text-sm text-gray-700 border-b border-gray-200 gap-x-16 dark:border-gray-700">
-  
-    <div>
-        <Button 
+
+    <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+      <dt className="font-medium text-gray-900 dark:text-white">Price</dt>
+      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment.totalPrice}ETB</dd>
+    </div>
+
+    <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+      <dt className="font-medium text-gray-900 dark:text-white">
+         <Button 
         onClick={onApproved}
         isDisabled={Loading}
         title={Loading? "Loading..":"Approve"}
-        />   
-  
-    </div>
-    <div>
-    <Button 
+        />   </dt>
+      <dt className="text-gray-700 sm:col-span-2 dark:text-gray-200">
+      <Button 
     onClick={onReject}
         isDisabled={Loading}
         className="text-white block w-full
@@ -142,10 +136,12 @@ const onReject=()=>{
             text-sm px-4 py-2.5 text-center dark:focus:ring-red-900"
         title={Loading? "Loading..":"Reject"}
         />  
-       
+      </dt>
     </div>
-    
-  </div>
+  </dl>
+</div>
+
+  
   </div>
   </div>
   
