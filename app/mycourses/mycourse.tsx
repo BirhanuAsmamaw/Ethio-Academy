@@ -5,10 +5,7 @@ interface MyCourseClientProps{
     user:any;
 }
 const MyCourseClient:React.FC<MyCourseClientProps> = ({user}) => {
-    const myCourse=user?.payedCourses.map((payedCourse:any) =>{
-        const course=payedCourse.courses;
-        return [...course ,]
-      })
+    
      
 
   return ( 
@@ -29,10 +26,10 @@ const MyCourseClient:React.FC<MyCourseClientProps> = ({user}) => {
             <tbody>
                
 
-{myCourse.map((course:any)=>{
+{user.payedCourses.map((course:any)=>{
     return <tr key={course.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-       {course.subject}
+       {course.bank}
     </th>
     
     <td className="px-6 py-4 text-right">
