@@ -1,6 +1,6 @@
 import Navbar from "@/components/navbar/Navbar";
 import MyCourseClient from "./mycourse";
-import UserProfile from "@/components/userprofile/userProfile";
+
 import { getCurrentUser } from "@/actions/users/currentUser";
 
 
@@ -14,9 +14,9 @@ const MyCourses = async() => {
   <div className="min-h-screen py-10 flex flex-col justify-center ">
     
 <div className="flex gap-10 flex-wrap  justify-center">
-  <div className="">
+  {/* <div className="">
     <UserProfile user={user}/>
-  </div>
+  </div> */}
   <div className="overflow-x-auto p-2"><MyCourseClient user={user}/></div>
 </div>
     </div>
