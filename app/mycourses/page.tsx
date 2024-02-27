@@ -6,6 +6,7 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 
 const MyCourses = async() => {
   const user=await getCurrentUser();
+  console.log(user?.payedCourses);
   return ( <>
   <Navbar/>
   <div className="min-h-screen flex flex-col justify-center ">
