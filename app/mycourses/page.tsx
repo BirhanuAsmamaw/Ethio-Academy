@@ -13,6 +13,7 @@ const user=await getCurrentUser();
  
   return ( <>
   <Navbar/>
+  <div className="flex justify-center p-4">
  <div className="grid grid-cols-1 md:grid-cols-4 justify-center gap-20">
 
 <div className="
@@ -56,15 +57,19 @@ rounded-[10px] flex flex-col
                
 
 {user?.payedCourses.map((course)=>{
-    return <tr key={course.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-       {course.bank}
-    </th>
-    
-    <td className="px-6 py-4 text-right">
-        <Link href={`/course/${course.id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Start</Link>
-    </td>
-</tr>
+    return (<>{ course.courses.map((c)=>{
+        return<tr key={c.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+           {c.subject}
+        </th>
+        
+        <td className="px-6 py-4 text-right">
+            <Link href={`/course/${c.id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Start</Link>
+        </td>
+    </tr>
+      })
+    }
+    </>)
 
 })}
                 
@@ -73,7 +78,7 @@ rounded-[10px] flex flex-col
     </div>
   </div>
   </div>
-    
+  </div> 
   </> );
 }
  
