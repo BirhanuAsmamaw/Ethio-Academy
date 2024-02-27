@@ -89,8 +89,8 @@ const onReject=()=>{
   
   
   
-  <div className="flow-root">
-  <dl className="-my-3 divide-y divide-gray-100 text-sm dark:divide-gray-700">
+  <div className="flow-root w-full flex-center">
+  <dl className="-my-3 divide-y divide-gray-300 text-sm dark:divide-gray-700">
     <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt className="font-medium text-gray-900 dark:text-white">Subjects</dt>
       <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200"><ul className=" ps-5 mt-2 space-y-1 list-disc list-inside pb-10">
@@ -113,20 +113,24 @@ const onReject=()=>{
       <dt className="font-medium text-gray-900 dark:text-white">Bank</dt>
       <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment.bank}</dd>
     </div>
+    <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+      <dt className="font-medium text-gray-900 dark:text-white">Transaction Id</dt>
+      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment.Transaction}</dd>
+    </div>
 
     <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt className="font-medium text-gray-900 dark:text-white">Price</dt>
       <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment.totalPrice}ETB</dd>
     </div>
 
-    <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+    <div className="grid grid-cols-2 gap-1 py-4 px-2  sm:gap-4">
       <dt className="font-medium text-gray-900 dark:text-white">
          <Button 
         onClick={onApproved}
         isDisabled={Loading}
         title={Loading? "Loading..":"Approve"}
         />   </dt>
-      <dt className="text-gray-700 sm:col-span-2 dark:text-gray-200">
+      <dt className="font-medium text-gray-900 dark:text-white">
       <Button 
     onClick={onReject}
         isDisabled={Loading}
