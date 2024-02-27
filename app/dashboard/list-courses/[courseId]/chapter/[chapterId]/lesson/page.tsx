@@ -18,6 +18,10 @@ const Lesson = ({params}:{params:IParams}) => {
   const [video,setVideo]=useState<File|null>(null)
   const [description, setDescription]=useState("")
   const [isLoading,setLoading]=useState(false);
+  const [selectedImage, setSelectedImage] = useState<any>(null);
+const [selectedVideo, setSelectedVideo] = useState<any>(null);
+const [imageProgress, setImageProgress] = useState(0)
+const [videoProgress, setVideoProgress] = useState(0)
   const {register,handleSubmit,setValue,formState:{errors}}=useForm<FieldValues>({
     defaultValues:{
       title:"",
@@ -36,6 +40,7 @@ const Lesson = ({params}:{params:IParams}) => {
 
   const handleImageChange = useCallback((acceptedFiles:any)=> {
     setImage(acceptedFiles[0])
+    setSelectedImage(acceptedFiles[0]);
    
   }, []) 
 
@@ -44,6 +49,7 @@ const Lesson = ({params}:{params:IParams}) => {
   const handleVideoChange = useCallback((acceptedFiles:any)=> {
     // Do something with the files
     setVideo(acceptedFiles[0])
+    setSelectedVideo(acceptedFiles[0])
     
   }, []) 
 
@@ -170,11 +176,19 @@ const Lesson = ({params}:{params:IParams}) => {
 
 
 
-
+//on cancel file
+const onCancelVideo = () => {
+  setSelectedVideo(null);
+};
+const onCancelImage = () => {
+  setSelectedImage(null);
+};
 
   return ( <div className="min-h-screen flex flex-col items-center gap-6">
          <div className="w-full p-4">
-          <Input type={"text"} label={"title"} 
+          <Input 
+          
+          type={"text"} label={"title"} 
           register={register}
            errors={errors}
             id={"title"}/>
@@ -184,6 +198,8 @@ const Lesson = ({params}:{params:IParams}) => {
          <div className="w-full  lg:w-8/12 flex flex-col gap-1 p-4">
           <Heading small title="Upload Video  Thumbnail"/>
             <FileInput
+            file={selectedImage}
+            fileType="image"
           onDrop={handleImageChange}
               register={register}
               id="videoThumbnail" 
@@ -194,6 +210,8 @@ const Lesson = ({params}:{params:IParams}) => {
         <div className="w-full  lg:w-8/12 flex flex-col gap-1">
           <Heading small title="Upload  Video"/>
             <FileInput
+            file={selectedVideo}
+            fileType="video"
           onDrop={handleVideoChange}
               register={register}
               id="videoUrl" 
