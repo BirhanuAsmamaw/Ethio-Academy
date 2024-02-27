@@ -59,7 +59,19 @@ const onReject=()=>{
     // router.push('/dashboard/approved-courses') 
 }
 
-  return ( <div className="">Addis ababa {payment.bank}</div> );
+  return ( <div className="">Addis ababa {payment.bank}
+  <div className="">
+  <ul className=" ps-5 mt-2 space-y-1 list-disc list-inside pb-10">
+{payment.courses.map((course:any)=>{
+  return <li key={course.id} className="text-gray-500 dark:text-gray-400 text-sm flex gap-4 p-1 border-b border-gray-200 dark:border-gray-700">
+      <p>{course.subject}</p>
+      <p className="text-rose-500 dark:text-green-400">{course.price}</p>
+      </li>
+})}
+
+</ul>
+  </div>
+  </div> );
 }
  
 export default ApprovedPaymentClient;
