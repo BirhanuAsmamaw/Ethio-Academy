@@ -27,7 +27,7 @@ const SearchClient = () => {
   }, [searchQueryData]);
 
   return <div className="min-h-screen w-full flex justify-center items-center">
-       <div className="w-full md:w-10/12 lg:w-8/12 xl:w-6/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center">
+       <div className="w-full md:w-10/12  xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-6 justify-center">
         {courses.map((course) =>{
           return <Card
           key={course.id}
