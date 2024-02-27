@@ -2,7 +2,7 @@
 
 import { CourseType } from "@/types";
 import Link from "next/link";
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch, IoMdClose } from "react-icons/io";
 import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useRouter } from "next/navigation";
@@ -12,7 +12,7 @@ interface SearchProps{
 const Search:React.FC<SearchProps> = ({courses}) => {
 
   const router=useRouter();
-
+  const [isSearchOpen,setSearchOpen] =useState(false);
   const [searchQuery,setSearchQuery] = useState<string|null>(null);
   const encodedSearchQuery=encodeURIComponent(searchQuery||"");
   const onHandleSubmit = (event:React.FormEvent)=>{
@@ -21,7 +21,9 @@ const Search:React.FC<SearchProps> = ({courses}) => {
     router.push(`/search?q=${encodedSearchQuery}`);
 
   }
-
+const onSearchOpen=()=>{
+  setSearchOpen((prev)=>!prev)
+}
   
   return ( <>
     <div className="hidden md:block w-full relative ">
@@ -32,8 +34,10 @@ const Search:React.FC<SearchProps> = ({courses}) => {
    
    </div>
    <div className="md:hidden   w-full">
-    <button><IoIosSearch size={30}  className="pt-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium"/></button>
-    <div className="absolute  mt-1 top-13 w-11/12 p-2 left-2 right-2 bg-rose-350">
+    <button onClick={onSearchOpen} className="pt-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium" >
+    {isSearchOpen? <IoMdClose size={24}/>:<IoIosSearch size={24}/>}
+    </button>
+    <div className={`absolute  mt-1 top-13 w-11/12 p-2 left-2 right-2 ${!isSearchOpen?'bg-opacity-0 translate-y-[100%]':'bg-opacity-100 translate-y-0'} transition duration-300`}>
     <div  className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
     <input  onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
