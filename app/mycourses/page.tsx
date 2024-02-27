@@ -18,7 +18,7 @@ const MyCourses = async() => {
     courses:myCourse};
   return ( <>
   <Navbar/>
-  <div className="min-h-screen flex flex-col justify-center ">
+  <div className="min-h-screen py-10 flex flex-col justify-center ">
     
 <div className="flex gap-10 flex-wrap  justify-center">
   <div className="">
