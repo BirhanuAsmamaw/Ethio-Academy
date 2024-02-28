@@ -60,11 +60,18 @@ const [course,setCourse]=useState<CourseType|any>(null)
    
   
   }
-  return ( <div className="pt-10 flex flex-col gap-10 min-h-screen w-full">
-    <div className="flex w-full justify-center gap-1">
-      <div className="w-full flex justify-center py-4">
+  return ( <div className="pt-10 flex bg-white dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
+
+
+
+<div className="w-full flex justify-center py-4">
         <h1 className="text-xl font-bold">{course?.subject}</h1>
       </div>
+
+
+      
+    <div className="flex flex-col w-full justify-center gap-1">
+      
    <div className="w-8/12">
    <Input
    

@@ -49,7 +49,13 @@ const formats = [
     return (
         
           <div className="">
-            <ReactQuill className="dark:bg-gray-700 text-black  dark:text-white  w-full " modules={modules} formats={formats} theme="bubble" onChange={setValue} placeholder="The content starts here..." />
+            <ReactQuill className="border-dotted border-2 
+            border-gray-200
+            dark:border-gray-700
+            rounded-[10px] p-4
+            hover:border-sky-500 
+            dark:hover:border-sky-400 
+            dark:bg-gray-700 text-black  dark:text-white  w-full " modules={modules} formats={formats} theme="bubble" onChange={setValue} placeholder="The content starts here..." />
           </div>
        
       );

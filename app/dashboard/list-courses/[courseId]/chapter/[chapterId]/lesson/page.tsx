@@ -184,7 +184,7 @@ const onCancelImage = () => {
   setSelectedImage(null);
 };
 
-  return ( <div className="min-h-screen flex flex-col items-center gap-6">
+  return ( <div className="min-h-screen flex flex-col items-center gap-6 w-full">
          <div className="w-full p-4">
           <Input 
           
@@ -195,7 +195,7 @@ const onCancelImage = () => {
          </div>
 
          
-         <div className="w-full  lg:w-8/12 flex flex-col gap-1 p-4">
+         <div className="w-full   flex flex-col gap-1 p-4">
           <Heading small title="Upload Video  Thumbnail"/>
             <FileInput
             file={selectedImage}
