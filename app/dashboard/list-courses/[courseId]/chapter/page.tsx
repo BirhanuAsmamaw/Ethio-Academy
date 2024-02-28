@@ -60,7 +60,7 @@ const [course,setCourse]=useState<CourseType|any>(null)
    
   
   }
-  return ( <div className="pt-10 flex bg-white dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
+  return ( <div className="py-10 flex bg-white dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
 
 
 
