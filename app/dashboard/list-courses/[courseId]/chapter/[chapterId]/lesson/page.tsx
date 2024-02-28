@@ -14,6 +14,8 @@ interface IParams{
   chapterId: string;
 }
 const Lesson = ({params}:{params:IParams}) => {
+  const [isNext,setNext]=useState(false);
+  const [isDisabled,setDisabled]=useState(true);
   const [image,setImage]=useState<File|null>(null)
   const [video,setVideo]=useState<File|null>(null)
   const [description, setDescription]=useState("")
@@ -37,6 +39,8 @@ const [videoProgress, setVideoProgress] = useState(0)
 
 
 
+ ;
+
 
   const handleImageChange = useCallback((acceptedFiles:any)=> {
     setImage(acceptedFiles[0])
@@ -46,8 +50,17 @@ const [videoProgress, setVideoProgress] = useState(0)
 
 
 
+const dataValue=getValues();
 
-  console.log("values",getValues())
+
+  useEffect(() =>{
+    if(!dataValue.title || !dataValue.content || !dataValue.chapterId || !dataValue.videoUrl || !dataValue.videoThumbnail ){
+      setDisabled(true);
+    }
+    else{
+      setDisabled(false);
+    }
+  },[dataValue.title,dataValue.content,dataValue.chapterId,dataValue.videoUrl,dataValue.videoThumbnail])
 
   const handleVideoChange = useCallback((acceptedFiles:any)=> {
     // Do something with the files
@@ -187,7 +200,12 @@ const onCancelImage = () => {
   setSelectedImage(null);
 };
 
-  return ( <div className="min-h-screen flex flex-col items-center gap-6 w-full">
+
+const onNext=()=>{
+  setNext((prev)=>!prev)
+
+}
+  return ( <><div className={`min-h-screen flex flex-col items-center gap-6 w-full ${isNext? 'opacity-0 -translate-x-[300%]':'translate-x-0 opacity-100' } transition duration-300`}>
          <div className="w-full p-4">
           <Input 
           
@@ -205,6 +223,7 @@ const onCancelImage = () => {
             fileType="image"
           onDrop={handleImageChange}
               register={register}
+              onCancel={onCancelImage}
               id="videoThumbnail" 
               errors={errors}/>
         </div>
@@ -215,6 +234,7 @@ const onCancelImage = () => {
             <FileInput
             file={selectedVideo}
             fileType="video"
+            onCancel={onCancelVideo}
           onDrop={handleVideoChange}
               register={register}
               id="videoUrl" 
@@ -228,15 +248,39 @@ const onCancelImage = () => {
           <TextEditor value={description} setValue={setDescription}/>
           </div>
 
+
           <div className="w-full py-10 px-4 flex justify-end">
+
+<button onClick={onNext} type="button" className="text-white bg-blue-700 hover:bg-blue-800 
+focus:ring-4 focus:outline-none focus:ring-blue-300 
+disabled:bg-blue-400 disabled:dark:bg-blue-500 disabled:cursor-not-allowed
+ font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
+disabled={isDisabled}
+>Next</button>
+
+</div>
+
+          
+
+  </div>:
+<div className={`min-h-screen flex flex-col items-center gap-6 w-full ${isNext? 'translate-x-0 opacity-100':'opacity-0 translate-x-[300%]' }`}>
+  <div className="p-4">
+    <h1 className="font-bold text-lg">{dataValue.title}</h1>
+  </div>
+
+  <div className="p-4" dangerouslySetInnerHTML={{__html:dataValue.content}}>
+  </div>
+<div className="w-full py-10 px-4 flex justify-end">
             <Button 
             isDisabled={isLoading}
             onClick={handleSubmit(onSubmit)}
             title={isLoading ? "Loading..." : "Submit"}
             />
           </div>
+</div>
 
-  </div> );
+
+   </>);
 }
  
 export default Lesson;

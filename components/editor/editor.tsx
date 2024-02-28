@@ -57,6 +57,7 @@ const formats = [
             dark:hover:border-sky-400 
             dark:bg-gray-800 text-black 
             text-base
+            bg-white
             transition
             duration-300
              dark:text-white  w-full "
