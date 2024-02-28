@@ -266,7 +266,7 @@ disabled={isDisabled}
           
 
   </div>:
-<div className={`bg-white dark:bg-gray-800 min-h-screen flex flex-col items-center gap-6 w-full ${isNext? 'translate-x-0 opacity-100':'opacity-0 hidden translate-x-[100%]' }`}>
+<div className={`bg-white dark:bg-gray-800 pb-10 min-h-screen flex flex-col items-center gap-6 w-full ${isNext? 'translate-x-0 opacity-100':'opacity-0 hidden translate-x-[100%]' }`}>
   <div className="p-4">
     <h1 className="font-bold text-lg">{dataValue.title}</h1>
   </div>
