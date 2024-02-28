@@ -98,25 +98,25 @@ rows={4}
    <ChooseForm 
     onChange={(event) => setQuestion({ ...question, A:{ ...question.A,text: event.target.value } })} 
     label="A"
-    onAnswer={(event) => setQuestion({ ...question, A: {...question.A, isAnswer: event.target.value } })} />
+    onAnswer={(event) => setQuestion({ ...question, A: {...question.A, isAnswer: Boolean(event.target.value ) } })} />
 
    <ChooseForm 
     label="B"
    onChange={(event)=>setQuestion({...question,B:{...question.B,text:event.target.value}})}
-   onAnswer={(event) => setQuestion({ ...question, B: { ...question.B,isAnswer: event.target.value } })} 
+   onAnswer={(event) => setQuestion({ ...question, B: { ...question.B,isAnswer: Boolean(event.target.value )} })} 
    />
    
 
    <ChooseForm 
     label="C"
    onChange={(event)=>setQuestion({...question,C:{...question.C,text:event.target.value}})}
-   onAnswer={(event) => setQuestion({ ...question, C: {...question.C, isAnswer: event.target.value} })} 
+   onAnswer={(event) => setQuestion({ ...question, C: {...question.C, isAnswer:  Boolean(event.target.value )} })} 
    />
 
    <ChooseForm 
    label="D"
    onChange={(event)=>setQuestion({...question,D:{...question.D,text:event.target.value}})}
-   onAnswer={(event) => setQuestion({ ...question, D: {...question.D, isAnswer: event.target.value } })} 
+   onAnswer={(event) => setQuestion({ ...question, D: {...question.D, isAnswer:  Boolean(event.target.value )} })} 
    />
    
    <div className="w-full flex justify-end px-2 py-4">
