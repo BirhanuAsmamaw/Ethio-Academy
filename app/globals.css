@@ -47,20 +47,3 @@ a{
   @apply text-blue-500;
   text-decoration: underline; 
 }
-.ql-container {
-  @apply min-h-[10em] dark:bg-teal-800 dark:border-gray-800;
- 
-}
-.ql-snow{
-  @apply dark:bg-gray-800/10 dark:border-teal-800 ;
- 
-}
-.ql-toolbar {
-  @apply dark:text-white dark:bg-teal-600;
-  
-}
-
-
-.ql-toolbar {
-  border-bottom: 1px solid red;
-}

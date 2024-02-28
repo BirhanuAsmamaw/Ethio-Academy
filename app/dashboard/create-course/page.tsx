@@ -280,18 +280,18 @@ useEffect(()=>{
        
         
           
-          <div className="flex flex-col gap-1 my-4">
+          <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Add Course Description"/>
           <TextEditor value={description} setValue={setDescription}/>
           </div>
 
-          <div className="flex flex-col  gap-1 my-4">
+          <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Add Course Requiremnts"/>
           <TextEditor value={requirement} setValue={setRequirement}/>
           </div>
         
 
-          <div className="flex flex-col  gap-1  pt-2 my-4">
+          <div className="flex flex-col px-4 w-full  gap-1  pt-2 my-4">
             <Heading small title="Add who use This Course"/>
           <TextEditor value={courseUsers} setValue={setCourseUsers}/>
           </div>

@@ -23,7 +23,7 @@ const TextEditor:React.FC<EditorProps> = ({value,setValue}) => {
         [{ script:  "sub" }, { script:  "super" }],
         ["blockquote", "code-block"],
         [{ list:  "ordered" }, { list:  "bullet" }],
-        ["link", "image", "video"],
+        ["link"],
         ["clean"],
     ],
 };
@@ -45,12 +45,11 @@ const formats = [
   ];
   
 
-    console.log(value);
 
     return (
         
           <div className="">
-            <ReactQuill className="dark:bg-gray-700 text-black  dark:text-gray-200   " modules={modules} formats={formats} theme="bubble" onChange={setValue} placeholder="The content starts here..." />
+            <ReactQuill className="dark:bg-gray-700 text-black  dark:text-white  w-full " modules={modules} formats={formats} theme="bubble" onChange={setValue} placeholder="The content starts here..." />
           </div>
        
       );
