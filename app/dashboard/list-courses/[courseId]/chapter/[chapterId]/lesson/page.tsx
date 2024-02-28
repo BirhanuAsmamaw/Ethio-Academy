@@ -44,7 +44,7 @@ const [videoProgress, setVideoProgress] = useState(0)
 
   const handleImageChange = useCallback((acceptedFiles:any)=> {
     setImage(acceptedFiles[0])
-    setSelectedImage(acceptedFiles[0]);
+    setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
    
   }, []) 
 
@@ -65,7 +65,7 @@ const dataValue=getValues();
   const handleVideoChange = useCallback((acceptedFiles:any)=> {
     // Do something with the files
     setVideo(acceptedFiles[0])
-    setSelectedVideo(acceptedFiles[0])
+    setSelectedVideo(URL.createObjectURL(acceptedFiles[0]));
     
   }, []) 
 
@@ -177,7 +177,7 @@ const dataValue=getValues();
   await handleImageUpload();
 
   const lessonData={...data,videoThumbnail:imageCoverUrl,videoUrl:videoUrl}
-  console.log("lessonData: " ,lessonData);
+ 
     axios.post('/api/lesson',lessonData).then(()=>{
       toast.success("Course created successfully")
     })
@@ -270,6 +270,20 @@ disabled={isDisabled}
   <div className="p-4">
     <h1 className="font-bold text-lg">{dataValue.title}</h1>
   </div>
+
+  <div>
+    <video
+        className="w-full rounded-lg shadow-lg"
+        controls
+        poster={selectedImage}
+      >
+        <source src={selectedVideo} type="video/mp4"  />
+        Your browser does not support the video tag.
+      </video></div>
+
+
+
+
 
   <div className="p-4" dangerouslySetInnerHTML={{__html:dataValue.content}}>
   </div>
