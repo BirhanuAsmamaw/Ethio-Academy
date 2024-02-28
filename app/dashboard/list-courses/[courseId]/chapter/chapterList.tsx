@@ -48,27 +48,34 @@ text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
 
     </div>
 
-<div className="py-4">
 
   {chapter.lessons.length?<div>
-
-    <Link  href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
- className=" no-underline relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-[10px] group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+    <div className="py-4">
+<Link  href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
+ className="no-underline relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-[10px] group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
 Add Lesson
 </span>
 </Link>
+
+
+</div>
+    
         {chapter.lessons.map((lesson:any)=>{
           return <Link
           className="px-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
            href={`course/${course.id}/${lesson.id}`} key={lesson.id} >{lesson.title}</Link>
         })}
-      </div>:<Link  href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
- className="relative inline-flex items-center  no-underline justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-[10px] group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+      </div>:<div className="py-4">
+<Link  href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
+ className=" no-underline relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-[10px] group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
 Add Lesson
 </span>
 </Link>
+
+
+</div>
  }
       
   
