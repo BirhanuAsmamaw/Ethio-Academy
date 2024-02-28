@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { AiOutlineSave } from "react-icons/ai";
 import ChooseForm from "./chooseForm";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 interface QuestionsClientProps{
   lesson:any;
@@ -11,32 +13,46 @@ interface QuestionsClientProps{
 
 const QuestionsClient:React.FC<QuestionsClientProps> = ({lesson}) => {
 
- 
+   const [isLoading,setLoading]=useState(false);
     const [question,setQuestion]=useState<any>(
         {Q:"",
 A:{
-    choose:"",
+    text:"",
     isAnswer:false,
 },
 B:{
-    choose:"",
+    text:"",
     isAnswer:false,
 },
 
 C:{
-    choose:"",
+    text:"",
     isAnswer:false,
 },
 D:{
-    choose:"",
+    text:"",
     isAnswer:false,
 },
 });
 
 
+const qData={
+  year:"2015",
+  title:question.Q,
+  chooses:[question.A,question.B,question.C,question.D]
+
+}
 const onAddQuestion=() => {
+  setLoading(true);
+  axios.post('/api/question',qData).then(()=>{
+    toast.success("Question created successfully")
+  }).catch((error:any)=>{
+    toast.error(error.message)
+  }).finally(()=>{
+    setLoading(false);
+  })
     
- console.log("onAddQuestion",question);
+ console.log("onAddQuestion",qData);
  
 };
   return (  <div className={`bg-white dark:bg-gray-800 pb-10  mb-10 min-h-screen flex flex-col items-center gap-6 w-full`}>
@@ -57,7 +73,7 @@ text-sm
 text-gray-900 
 bg-gray-50 
 
-rounded-lg 
+rounded-[10px]
 border 
 border-gray-300
  focus:ring-blue-500 
@@ -77,26 +93,26 @@ rows={4}
 <div className={`p-4 flex flex-col gap-2 ${question.Q!==""? 'block':'hidden'}`}>
 
    <ChooseForm 
-    onChange={(event) => setQuestion({ ...question, A:{ ...question.A,choose: event.target.value } })} 
+    onChange={(event) => setQuestion({ ...question, A:{ ...question.A,text: event.target.value } })} 
     label="A"
     onAnswer={(event) => setQuestion({ ...question, A: {...question.A, isAnswer: event.target.value } })} />
 
    <ChooseForm 
     label="B"
-   onChange={(event)=>setQuestion({...question,B:{...question.B,choose:event.target.value}})}
+   onChange={(event)=>setQuestion({...question,B:{...question.B,text:event.target.value}})}
    onAnswer={(event) => setQuestion({ ...question, B: { ...question.B,isAnswer: event.target.value } })} 
    />
    
 
    <ChooseForm 
     label="C"
-   onChange={(event)=>setQuestion({...question,C:{...question.C,choose:event.target.value}})}
+   onChange={(event)=>setQuestion({...question,C:{...question.C,text:event.target.value}})}
    onAnswer={(event) => setQuestion({ ...question, C: {...question.C, isAnswer: event.target.value} })} 
    />
 
    <ChooseForm 
    label="D"
-   onChange={(event)=>setQuestion({...question,D:{...question.D,choose:event.target.value}})}
+   onChange={(event)=>setQuestion({...question,D:{...question.D,text:event.target.value}})}
    onAnswer={(event) => setQuestion({ ...question, D: {...question.D, isAnswer: event.target.value } })} 
    />
    

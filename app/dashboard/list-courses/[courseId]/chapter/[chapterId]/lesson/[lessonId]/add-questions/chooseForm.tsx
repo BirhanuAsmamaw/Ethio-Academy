@@ -18,7 +18,7 @@ const ChooseForm:React.FC<ChooseFormProps> = ({onChange,label,onAnswer}) => {
   text-gray-900 
   bg-gray-50 
   
-  rounded-lg 
+  rounded-[10px]
   border 
   border-gray-300
    focus:ring-blue-500 
