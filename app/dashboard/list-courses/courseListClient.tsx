@@ -103,7 +103,7 @@ export const columns: ColumnDef<CourseType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-         Full Name
+         Courses
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -185,7 +185,7 @@ export const columns: ColumnDef<CourseType>[] = [
           </DropdownMenuTrigger>
 
           <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          
             <DropdownMenuItem>
              <Link 
              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 

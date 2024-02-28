@@ -22,7 +22,7 @@ const Lesson = ({params}:{params:IParams}) => {
 const [selectedVideo, setSelectedVideo] = useState<any>(null);
 const [imageProgress, setImageProgress] = useState(0)
 const [videoProgress, setVideoProgress] = useState(0)
-  const {register,handleSubmit,setValue,formState:{errors}}=useForm<FieldValues>({
+  const {register,handleSubmit,setValue,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues:{
       title:"",
       chapterId:params.chapterId
@@ -45,6 +45,9 @@ const [videoProgress, setVideoProgress] = useState(0)
   }, []) 
 
 
+
+
+  console.log("values",getValues())
 
   const handleVideoChange = useCallback((acceptedFiles:any)=> {
     // Do something with the files
@@ -195,7 +198,7 @@ const onCancelImage = () => {
          </div>
 
          
-         <div className="w-full   flex flex-col gap-1 p-4">
+         <div className="w-full  lg:w-8/12 flex flex-col gap-1">
           <Heading small title="Upload Video  Thumbnail"/>
             <FileInput
             file={selectedImage}
@@ -220,7 +223,7 @@ const onCancelImage = () => {
         </div>
 
 
-         <div className="flex flex-col gap-1 p-4">
+         <div className="flex flex-col px-4 w-full  gap-1  pt-2 my-4">
             <Heading small title="Write Lesson Content"/>
           <TextEditor value={description} setValue={setDescription}/>
           </div>

@@ -14,12 +14,12 @@ interface EditorProps{
 const TextEditor:React.FC<EditorProps> = ({value,setValue}) => {
   const  modules  = {
     toolbar: [
-        [{ font: [] }],
+        
         [  { 'size': ['small', false, 'large', 'huge'] }],
         [{ header: [1, 2, 3, 4, 5, 6, false] }],
         ["bold", "italic", "underline", "strike"],
        
-        [{ color: [] }, { background: [] }],
+     
         [{ script:  "sub" }, { script:  "super" }],
         ["blockquote", "code-block"],
         [{ list:  "ordered" }, { list:  "bullet" }],
@@ -51,11 +51,16 @@ const formats = [
           <div className="">
             <ReactQuill className="border-dotted border-2 
             border-gray-200
-            dark:border-gray-700
+            dark:border-gray-600
             rounded-[10px] p-4
             hover:border-sky-500 
             dark:hover:border-sky-400 
-            dark:bg-gray-700 text-black  dark:text-white  w-full " modules={modules} formats={formats} theme="bubble" onChange={setValue} placeholder="The content starts here..." />
+            dark:bg-gray-800 text-black 
+            text-base
+            transition
+            duration-300
+             dark:text-white  w-full "
+              modules={modules} formats={formats} theme="bubble" onChange={setValue} placeholder="The content starts here..." />
           </div>
        
       );
