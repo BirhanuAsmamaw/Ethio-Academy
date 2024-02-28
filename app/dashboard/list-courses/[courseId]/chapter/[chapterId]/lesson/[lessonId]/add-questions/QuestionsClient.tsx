@@ -5,6 +5,8 @@ import { AiOutlineSave } from "react-icons/ai";
 import ChooseForm from "./chooseForm";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { lessons } from "@/lib/lessons";
+import Button from "@/components/button/button";
 
 interface QuestionsClientProps{
   lesson:any;
@@ -37,6 +39,7 @@ D:{
 
 
 const qData={
+  lessonId:lesson.id,
   year:"2015",
   title:question.Q,
   chooses:[question.A,question.B,question.C,question.D]
@@ -52,7 +55,7 @@ const onAddQuestion=() => {
     setLoading(false);
   })
     
- console.log("onAddQuestion",qData);
+ console.log("Question",qData);
  
 };
   return (  <div className={`bg-white dark:bg-gray-800 pb-10  mb-10 min-h-screen flex flex-col items-center gap-6 w-full`}>
@@ -117,21 +120,11 @@ rows={4}
    />
    
    <div className="w-full flex justify-end px-2 py-4">
-    <button 
+    <Button
+    isDisabled={isLoading}
+    title={isLoading ? 'Loading...':'Submit'}
     onClick={onAddQuestion}
-    className="
-    flex gap-1 
-    text-sm 
-    text-gray-600
-     bg-gray-200 
-     border 
-     border-gray-300 
-     rounded-[10px]
-     hover:bg-gray-600
-     hover:text-white
-     font-medium
-
-     px-2 py-1"><AiOutlineSave className="mt-1"/> <p>save</p></button>
+  />
    </div>
 </div>
   </div>
