@@ -216,16 +216,19 @@ const onNext=()=>{
          </div>
 
          
+         
          <div className="w-full  lg:w-8/12 flex flex-col gap-1">
-          <Heading small title="Upload Video  Thumbnail"/>
+          <Heading small title="Upload Video Thumbnail"/>
             <FileInput
+            required
+            onCancel={onCancelImage}
             file={selectedImage}
             fileType="image"
           onDrop={handleImageChange}
               register={register}
-              onCancel={onCancelImage}
               id="videoThumbnail" 
-              errors={errors}/>
+              errors={errors}          
+          />
         </div>
 
 
