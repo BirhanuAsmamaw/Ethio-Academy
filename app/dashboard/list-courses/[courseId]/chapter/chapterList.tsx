@@ -62,9 +62,13 @@ Add Lesson
 </div>
     
         {chapter.lessons.map((lesson:any)=>{
-          return <Link
+          return <div key={lesson.id} className="flex flex-col gap-1">
+          <Link 
+                className="px-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+          href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/add-questions`}>Questions list</Link>
+          <Link
           className="px-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-           href={`course/${course.id}/${lesson.id}`} key={lesson.id} >{lesson.title}</Link>
+           href={`course/${course.id}/${lesson.id}`}  >{lesson.title}</Link></div>
         })}
       </div>:<div className="py-4">
 <Link  href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
