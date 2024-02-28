@@ -202,7 +202,12 @@ const onCancelImage = () => {
 
 
 const onNext=()=>{
-  setNext((prev)=>!prev)
+  setNext(true)
+
+}
+
+const onBack=()=>{
+  setNext(false)
 
 }
   return ( <><div className={`min-h-screen flex flex-col items-center gap-6 w-full ${isNext? 'opacity-0 -translate-x-[100%] hidden':'translate-x-0 opacity-100' } transition duration-300`}>
@@ -289,8 +294,9 @@ disabled={isDisabled}
   </div>
 <div className="w-full py-10 px-4 gap-4 flex justify-end">
 
-<button onClick={onNext} type="button" className="text-white bg-blue-700 hover:bg-blue-800 
+<button onClick={onBack} type="button" className="text-white bg-blue-700 hover:bg-blue-800 
 focus:ring-4 focus:outline-none focus:ring-blue-300 
+rounded-[10px]
 disabled:bg-blue-400 disabled:dark:bg-blue-500 disabled:cursor-not-allowed
  font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
 disabled={isDisabled}
