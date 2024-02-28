@@ -25,7 +25,7 @@ const {register,handleSubmit,reset,formState:{errors}}=useForm<FieldValues>({
 });
 
 
-const [course,setCourse]=useState<CourseType|any>()
+const [course,setCourse]=useState<CourseType|any>(null)
 
 
   useEffect(()=>{
@@ -63,7 +63,7 @@ const [course,setCourse]=useState<CourseType|any>()
   return ( <div className="pt-10 flex flex-col gap-10 min-h-screen w-full">
     <div className="flex w-full justify-center gap-1">
       <div className="w-full flex justify-center py-4">
-        <h1 className="text-xl font-bold">{course.subject}</h1>
+        <h1 className="text-xl font-bold">{course?.subject}</h1>
       </div>
    <div className="w-8/12">
    <Input
