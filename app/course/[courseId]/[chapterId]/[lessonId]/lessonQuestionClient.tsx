@@ -107,7 +107,7 @@ const onSubmit=()=>{
   (selectedChoices[index+1] && feedbackVisible) || isSelectedAll ? (
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value="item-1" className="border-none">
-        <AccordionTrigger className="hover:no-underline">Explanation</AccordionTrigger>
+        <AccordionTrigger className="hover:no-underline"><p className="text-md">Explanation</p></AccordionTrigger>
         <AccordionContent>
           <div className="p-2 bg-green-50 bg-gray-700">
             <p>{question.explanation}</p>
