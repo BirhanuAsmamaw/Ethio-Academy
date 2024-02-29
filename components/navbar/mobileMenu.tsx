@@ -62,9 +62,7 @@ const MobileSidebar:React.FC<MobileSidebarProps>= ({user}) => {
       <Link href="/logout" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
           <SiCoursera className="pt-1" size={20}/>  <p>Courses</p>
          </Link>
-         <Link href="/logout" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-          <BiCategory className="pt-1" size={20}/>  <p>Category</p>
-         </Link>
+        
 
          <Accordion type="single" collapsible className="w-full  ">
       <AccordionItem value="item-3" className="hover:no-underline border-none">
