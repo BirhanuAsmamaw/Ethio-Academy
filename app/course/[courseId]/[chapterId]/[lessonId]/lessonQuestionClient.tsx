@@ -185,7 +185,7 @@ if(!lesson){
       <h2 className="text-lg">{question.question}</h2>
     </div>
     <ul>
-      {question.choices.map((option:any, index:number) => (
+      {question.chooses.map((option:any, index:number) => (
         <li ref={choice_array[index]} key={index} className='flex gap-2 p-2'>
           <input disabled={disabled} type="radio" name="0" value={option.isAnswer} onChange={()=>handleOptionClick(event,question,index)}/>
           <label>{option.text}</label>
