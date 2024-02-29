@@ -182,7 +182,7 @@ if(!lesson){
      
         <div className="text-center w-6 h-6 text-lg font-semibold  bg-teal-200 dark:bg-gray-700 rounded-full ">{question.id}</div>
    
-      <h2 className="text-lg">{question.question}</h2>
+      <h2 className="text-lg">{question.title}</h2>
     </div>
     <ul>
       {question.chooses.map((option:any, index:number) => (
