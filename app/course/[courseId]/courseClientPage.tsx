@@ -11,6 +11,8 @@ import CourseContent from "./courseContent";
 import CourseSceleton from "./[chapterId]/courseSceleton";
 import { CourseType } from "@/types";
 import CourseDescribeList from "../coursedescribeList";
+import MainLayout from "@/components/layouts/mainLayout";
+import SubLayout from "@/components/layouts/subLayout";
 
 interface ICourseId{
   courseId:string;
@@ -46,9 +48,10 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 
   
   return ( <>
-  <div className="flex justify-center py-10 px-2">
+ 
+<MainLayout>
 
-<div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
+  <SubLayout>
 
   <h1 className="text-xl  font-semibold">{course.subject}</h1>
   <div>
@@ -112,13 +115,13 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 {course.reviews.length?<Reviews reviews={course.reviews}/>:""}
 
 
-</div>
+</SubLayout>
 
 
 
 
 {/* course contents lits for above md */}
-<div className="hidden lg:block fixed right-20 top-28 w-[300px] ">
+<div className="hidden lg:block fixed right-10 top-28 w-[300px] ">
   <CourseDescribeList course={course}/>
 
 </div>
@@ -127,8 +130,8 @@ const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
 
 
 
-
-  </div></>);
+</MainLayout>
+  </>);
 }
  
 export default CourseClientPage;

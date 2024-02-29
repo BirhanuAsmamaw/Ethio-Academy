@@ -31,7 +31,7 @@ console.log("lessons data",lesson);
       <p className="text-sm md:text-lg font-bold text-green-500 ">content</p>
     </div>
 
-<SubLayout>
+<SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300">
 <LessonClient lesson={lesson}/>
 <QuizClient lesson={lesson}/>
       </SubLayout>
