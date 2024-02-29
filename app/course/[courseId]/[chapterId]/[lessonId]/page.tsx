@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 import CourseContent from "../../courseContent";
 import Container from "@/components/container/container";
 import { getLessonById } from "@/actions/lessons/getLessonById";
+import LessonQuestionClient from "./lessonQuestionClient";
 
 
 interface IParams{
@@ -44,8 +45,16 @@ dark:border-gray-700
       <div className="p-4">
       <div className="" dangerouslySetInnerHTML={{ __html: lesson.content}}></div>
       </div>
+
+
+      <div className="py-10 w-full">
+        <LessonQuestionClient lesson={lesson}/>
+      </div>
     
   </div>
+
+
+
   {/* course contents lits for above md */}
 {lesson.chapter&&<div className="lg:fixed w-full lg:w-[300px]  lg:right-20 lg:flex lg:top-32 items-center justify-center  ">
 <div className="w-full">
