@@ -180,7 +180,7 @@ if(!lesson){
   <div className="mt-4">
     <div className="flex gap-1 py-2 w-full">
      
-        <div className="text-center w-6 h-6 text-lg font-semibold  bg-teal-200 dark:bg-gray-700 rounded-full ">{question.id}</div>
+        <div className="text-center w-6 h-6 text-lg font-semibold  bg-teal-200 dark:bg-gray-700 rounded-full ">{indexQuestion+1}</div>
    
       <h2 className="text-lg">{question.title}</h2>
     </div>
