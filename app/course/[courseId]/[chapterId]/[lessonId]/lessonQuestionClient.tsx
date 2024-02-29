@@ -89,10 +89,10 @@ const onSubmit=()=>{
         choice.isAnswer
       );
     }}
-    className={`h-4 w-4 disabled:cursor-not-allowed disabled:outline-blue-400  outline outline-2 border-2 border-white outline-blue-500 rounded-full  ${
+    className={`h-4 w-4 disabled:cursor-not-allowed disabled:outline-blue-400 disabled:dark:outline-blue-500 outline outline-2 border-2  dark:border-gray-700 border-white dark:outline-blue-600 outline-blue-500 rounded-full  ${
       selectedChoices[index+1]?.choiceIndex === ind.toString()
-        ? 'bg-blue-400 disabled:bg-blue-300'
-        : 'bg-white'
+        ? 'bg-blue-400 dark:bg-blue-600 disabled:dark:bg-blue-400 disabled:bg-blue-300'
+        : 'bg-white dark:bg-gray-700'
     }`}
   >
     
