@@ -50,6 +50,7 @@ const onAddQuestion=() => {
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
   }).catch((error:any)=>{
+    console.log(error);
     toast.error(error.message)
   }).finally(()=>{
     setLoading(false);
