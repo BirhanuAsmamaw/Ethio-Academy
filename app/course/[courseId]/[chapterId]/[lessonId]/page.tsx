@@ -2,10 +2,14 @@
 
 import CourseSceleton from "../courseSceleton";
 import Navbar from "@/components/navbar/Navbar";
-import CourseContent from "../../courseContent";
-import Container from "@/components/container/container";
+
 import { getLessonById } from "@/actions/lessons/getLessonById";
-import LessonQuestionClient from "./lessonQuestionClient";
+
+import QuizClient from "./lessonQuestionClient";
+import LessonClient from "./LessonClient";
+import MainLayout from "@/components/layouts/mainLayout";
+import SubLayout from "@/components/layouts/subLayout";
+import CourseContent from "../../courseContent";
 
 
 interface IParams{
@@ -22,53 +26,20 @@ console.log("lessons data",lesson);
 
   return (<>
   <Navbar/>
-  <div className="flex flex-col lg:flex-row gap-10 justify-center py-10 px-2 w-full">
+  <MainLayout>
+    <div className="lg:hidden fixed right-0 top-14 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-xl z-50 p-1 md:p-2 rounded-l-full border-l-2 ">
+      <p className="text-sm md:text-lg font-bold text-green-500 ">content</p>
+    </div>
 
-<div className="px-2 w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10 
-border-x-[1.5px]
-bg-white 
-dark:bg-gray-800
-dark:border-gray-700
- border-gray-200">
-   <h1 className="text-lg md:xl lg:2xl font-medium md:font-semibold lg:font-bold">{lesson.title}</h1>
-   <div>
-    <video
-        className="w-full rounded-lg shadow-lg"
-        controls
-        poster={lesson.videoThumbnail || ''}
-      >
-        <source src={lesson.videoUrl || ''} type="video/mp4"  />
-        Your browser does not support the video tag.
-      </video></div>
+<SubLayout>
+<LessonClient lesson={lesson}/>
+<QuizClient lesson={lesson}/>
+      </SubLayout>
 
-
-      <div className="p-4">
-      <div className="" dangerouslySetInnerHTML={{ __html: lesson.content}}></div>
-      </div>
-
-
-      <div className="py-10 w-full">
-        <LessonQuestionClient lesson={lesson}/>
-      </div>
-    
-  </div>
-
-
-
-  {/* course contents lits for above md */}
-{lesson.chapter&&<div className="lg:fixed w-full lg:w-[300px]  lg:right-20 lg:flex lg:top-32 items-center justify-center  ">
-<div className="w-full">
-<Container childern={
-  <div className="p-2 w-full">
-    <CourseContent course={lesson.chapter.course}/>
-  </div>
-}/>
-</div>
-
-</div>}
-
-  
-  </div></> );
+    <div className="fixed w-[400px]  hidden lg:block top-20 right-4">
+      <CourseContent course={lesson.chapter.course}/>
+    </div>
+    </MainLayout></> );
 }
  
 export default LessonPage;

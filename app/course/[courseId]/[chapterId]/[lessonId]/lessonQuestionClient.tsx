@@ -1,227 +1,188 @@
 "use client"
-import { useEffect, useRef, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
+import { useState } from "react";
+
 import { useRouter } from "next/navigation";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import CourseSceleton from "../courseSceleton";
 
-
-
-
-
-
-
-interface LessonQuestionClientProps{
-  lesson: any;
+interface QuizClientProps{
+  lesson:any;
 }
-
-const LessonQuestionClient:React.FC<LessonQuestionClientProps> = ({lesson}) => {
-const router=useRouter();
-
-
-  
-
-
-const choice1 = useRef<HTMLLIElement>(document.createElement('li'));
-  const choice2 = useRef<HTMLLIElement>(document.createElement('li'));
-  const choice3 = useRef<HTMLLIElement>(document.createElement('li'));
-  const choice4 = useRef<HTMLLIElement>(document.createElement('li'));
-  const choice_array=[choice1, choice2, choice3, choice4]
- 
-
-  
+const QuizClient:React.FC<QuizClientProps> = ({lesson}) => {
+  const router=useRouter();
+  const [feedbackVisible, setFeedbackVisible] = useState(false);
+  const [isSelectedAll,setSelectedAll]=useState(false);
   const [score, setScore] = useState(0);
-  const [indexQuestion ,setIndexQuestion] = useState(0);
-  const [question, setQuestion] = useState(lesson.questions[indexQuestion]);
-  const [disabled, setDisabled] = useState(false);
-  const[showSubmit, setShowSubmit] = useState(false);
+  const [showQuiz,setShowQuiz] = useState(false);
+const [selectedChoices, setSelectedChoices] = useState<any>({});
 
-
-
-
-
-
-
-
-
-  const handleOptionClick = (e:any,ans:number,index:number) => {
-   const isCorrect=e.target.value==ans;
-   setDisabled(e.target.checked)
-   if (isCorrect){
-    e.target.parentElement.classList.add("bg-teal-200");
-    e.target.parentElement.classList.add("dark:bg-teal-600");
-    setScore((prev)=>prev+1)
-    
-
-   }else{
-    if (choice_array[ans]?.current) {
-      choice_array[ans].current.classList.add("bg-teal-200");
-      choice_array[ans].current.classList.add("dark:bg-teal-600");
-    }
-    e.target.parentElement.classList.add("bg-rose-200");
-    e.target.parentElement.classList.add("dark:bg-rose-600");
-
-   }
-   
+const onSelectionChanged = (questionId:number, choiceIndex:string, isAnswer:boolean) => {
+  const updatedChoices = {
+    ...selectedChoices,
+    [questionId]: {
+      choiceIndex,
+      isCorrect: isAnswer,
+    },
   };
-
+  setSelectedChoices(updatedChoices);
+ 
   
 
+  // Calculate score
+  const newScore = Object.values(updatedChoices).reduce(
+    (acc:number, choice:any) => (choice.isCorrect ? acc + 1 : acc),
+    0
+  );
+  setScore(newScore);
+};
 
-  const onNextChangeQuestion = ()=>{
-    if(indexQuestion<lesson.questions.length-1){
-      setIndexQuestion((prev)=>prev+=1)
-      choice_array.map((option)=>{
-        option.current.classList.remove("bg-teal-200");
-        option.current.classList.remove("dark:bg-teal-600");
-        option.current.classList.remove("bg-rose-200");
-        option.current.classList.remove("dark:bg-rose-600");
-      })
-      setDisabled(false);
-     
-      
-    }
-    else{
-      setShowSubmit(true);
-        
-    }
-   
-    
-  }
-  const onPrevChangeQuestion  = ()=>{
-    if(indexQuestion>0){
-      setIndexQuestion((prev)=>prev-=1)
-      
-     
-      
-    }
-   
-    
-  }
-  
-  useEffect(() => { setQuestion(lesson.questions[indexQuestion])},[lesson.questions,indexQuestion]);
-  // useEffect(() => {
-  //   const  lessonsData=lessons.filter((ls:any)=>ls.chapterId===params.chapterId)
-  //   const lessonData=lessonsData.filter((ls:any)=>ls.lessonId===params.lessonId)
-  //   setLesson(lessonData)
-  //   setLessons(lessonsData)
-  //  },[]);
-
-
-
-
-
-
-  
-
-const [currentLesson, setCurrentLesson] = useState(parseInt(lesson.id) || 1);
-
-  const onPrevChange = () => {
-    if (currentLesson > 1) {
-      const newLessonId = currentLesson - 1;
-      // router.push(`/course/${params.id}/${params.chapterId}/${newLessonId}`);
-      
-
-      setCurrentLesson(newLessonId);
-    }
-    else{
-      // router.push(`/course/${params.id}/${params.chapterId}/${lessonsData.length}`);
-
-    }
-    router.refresh();
-  };
-
-  const onNextChange = () => {
-    // You should check whether the next lesson exists based on your logic
-    
-    // if(currentLesson<lessonsData.length){
-    //   const newLessonId = currentLesson + 1;
-    // router.push(`/course/${params.id}/${params.chapterId}/${newLessonId}`);
-    // setCurrentLesson(newLessonId);
-    // }
-    // else{
-    //   router.push(`/course/${params.id}/${params.chapterId}/1`);
-    // }
-    
-      router.refresh();
-    
-  };
-
-
-const onsubmit = () => {
-  alert("score:"+`${score}/${lesson.questions.length}`);
+const onSubmit=()=>{
+  setFeedbackVisible(true);
+  setSelectedAll(true);
 }
 
+  return ( <>
+ 
+  {showQuiz?<div className="pt-10" id="quiz">
+    <div className="p-2 py-10">
+      <h4 className="text-lg font-bold border-b-2 border-dashed">Quizzes of Indroduction of Biology</h4>
+    </div>
+      {
+        lesson.questions.map((question:any,index:number)=>{
+        return <div key={index} className="">
 
-
-if(!lesson){
-  return ( <div className="flex h-screen justify-center py-10 px-2">
-    <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
-      <CourseSceleton/>
-      </div> 
-
-  </div>)
+<div className="flex border-b border-double border-green-600 justify-between">
+        <p className="text-xl font-bold">{index+1}</p>
+        <p className="text-gray-500  dark:text-gray-400 text-sm">{question.year}</p>
+      </div>
+      <p className="p-2">{question.title}</p>
+      <div className="p-2 space-y-2">
+        {
+          question.chooses.map((choice:any,ind:number) =>{
+            return <div key={ind}   
+            className={`flex gap-2 p-2 ${
+              (feedbackVisible&&selectedChoices[index+1]&& choice.isAnswer)&&'dark:bg-green-400  bg-green-200'||isSelectedAll&& choice.isAnswer&&'dark:bg-green-400  bg-green-200'
+            } ${
+              selectedChoices[(index+1)]?.choiceIndex === ind.toString() &&feedbackVisible&&
+              selectedChoices[(index+1)]?.isCorrect
+                ? 'dark:bg-green-400 bg-green-200'
+                : feedbackVisible&&selectedChoices[(index+1)]?.choiceIndex === ind.toString()
+                ? 'dark:bg-red-400 bg-red-200'
+                : ''
+            }`}>
+             <button
+             disabled={(selectedChoices[index+1]&&feedbackVisible)||isSelectedAll}
+    onClick={() => {
+      onSelectionChanged(
+       index+1,
+        ind.toString(),
+        choice.isAnswer
+      );
+    }}
+    className={`h-4 w-4 disabled:cursor-not-allowed disabled:outline-blue-400  outline outline-2 border-2 border-white outline-blue-500 rounded-full  ${
+      selectedChoices[index+1]?.choiceIndex === ind.toString()
+        ? 'bg-blue-400 disabled:bg-blue-300'
+        : 'bg-white'
+    }`}
+  >
+    
+  </button>
+            <p>{choice.text}</p>
+          </div>
+          })
+        }
+       
+      </div>
+      {
+  (selectedChoices[index+1] && feedbackVisible) || isSelectedAll ? (
+    <Accordion type="single" collapsible className="w-full">
+      <AccordionItem value="item-1" className="border-none">
+        <AccordionTrigger className="hover:no-underline">Explanation</AccordionTrigger>
+        <AccordionContent>
+          <div className="p-2 bg-green-50 bg-gray-700">
+            <p>{question.explanation}</p>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ) : (
+    ''
+  )
 }
 
 
 
 
+        </div>
+        })
+      }
 
 
-
-
-
-  return ( <div className="lg:p-4">
-  <div className="flex flex-col lg:flex-row justify-between md:px-10 py-2">
-  <h1 className="text-lg font-medium">{lesson.title} Quizzes</h1>
-  <h2 className="text-sm">score:{score}</h2>
-  <p className="text-slate-600">{indexQuestion+1} out of {lesson.questions.length}</p>
-  </div>
-  <hr className="h-[2px] w-full bg-slate-200"/>
-  <div className="mt-4">
-    <div className="flex gap-1 py-2 w-full">
+      <div className="flex justify-end p-4 ">
      
-        <div className="text-center w-6 h-6 text-lg font-semibold  bg-teal-200 dark:bg-gray-700 rounded-full ">{indexQuestion+1}</div>
-   
-      <h2 className="text-lg">{question.title}</h2>
-    </div>
-    <ul>
-      {question.chooses.map((option:any, index:number) => (
-        <li ref={choice_array[index]} key={index} className='flex gap-2 p-2'>
-          <input disabled={disabled} type="radio" name="0" value={option.isAnswer} onChange={()=>handleOptionClick(event,question,index)}/>
-          <label>{option.text}</label>
-        </li>
-      ))}
-    </ul>
-    <div className="mt-6 ">{
-
-    disabled&&<Accordion type="single" collapsible className="border-none" >
-
-<AccordionItem  value={`${question.id}`}className="border-none">
-<AccordionTrigger ><div className="text-lg text-captalize">
-<h5 className="text-lg">Explanation</h5>
-
-</div></AccordionTrigger>
-<AccordionContent className="bg-teal-100 dark:bg-gray-700  p-2">
-<p>{question.explanation}</p>
-</AccordionContent>
-</AccordionItem>
+     <Dialog>
+      <DialogTrigger> <button 
+      onClick={onSubmit}
+       className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit
+       </button></DialogTrigger>
+       <DialogContent>
+        <div className="flex justify-center w-full">
+        <div className="w-48 h-48 flex justify-center items-center rounded-full border-2">
+          <p className="text-2xl font-bold">{score}/{lesson.questions.length}</p>
+        </div>
+        </div>
+       </DialogContent>
+     </Dialog>
 
 
-
-
-
-</Accordion>
-
-     } </div>
-   <div className="flex justify-end px-10 mt-10"> 
-    {showSubmit? <button className="dark:bg-gray-700 dark:hover:bg-gray-600 border-none bg-teal-300 hover:teal-400 rounded-[5px] px-2 py-1"  onClick={onsubmit}>
-      submit
-    </button>:<button className="dark:bg-gray-700 dark:hover:bg-gray-600 border-none bg-teal-300 hover:teal-400 rounded-[5px] px-2 py-1"  onClick={onNextChangeQuestion}>
-      Next Question
-    </button>}
-    </div>
-  </div>
-</div> );
+      </div></div>:
+      <div className="flex justify-center w-full p-10">
+      
+<Dialog>
+  <DialogTrigger>
+  <div 
+  className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+   Start Quizzess</div>
+  </DialogTrigger>
+  <DialogContent>
+  <div className="p-10 flex flex-col gap-4">
+        <button
+          onClick={()=>{
+            setFeedbackVisible(true);
+            setShowQuiz(true);
+            router.push("/question#quiz")
+         }}
+          className="text-white bg-green-500 px-4 py-2 rounded-md mr-2 hover:bg-green-600 focus:outline-none"
+        >
+          Check Right Answer Now!
+        </button>
+        <button
+          onClick={()=>{
+            setFeedbackVisible(false);
+            setShowQuiz(true);
+            router.push("/question#quiz")
+          }}
+          className="text-white bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+        >
+          Show Answers After Quiz
+        </button>
+      </div>
+  </DialogContent>
+</Dialog>
+      </div>
+      }
+      
+  </> );
 }
  
-export default LessonQuestionClient;
+export default QuizClient;
