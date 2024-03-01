@@ -162,7 +162,7 @@ console.log("Question",questions);
         <SelectGroup>
           <SelectLabel>Select a Quizzes Year</SelectLabel>
          {examsYears.map((year,index) =>{
-         return  <SelectItem  key={index} value={year}>{year}</SelectItem >
+         return  <SelectItem className="w-full hover:bg-gray-200  hover:dark:bg-gray-600" key={index} value={year}>{year}</SelectItem >
          })}
           
         </SelectGroup>
