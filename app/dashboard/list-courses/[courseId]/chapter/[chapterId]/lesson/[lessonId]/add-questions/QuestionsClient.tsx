@@ -98,7 +98,7 @@ const onSubmit=() => {
 
   setQuestions((prev:any)=>prev? [...prev,qData]:[qData])
 
-
+  console.log("Question",questions);
 
   setQuestion( {
     Q:"",
@@ -133,9 +133,10 @@ const onSubmit=() => {
     setLoading(false);
   })
     
- console.log("Question",questions);
+
  
 };
+console.log("Question",questions);
   return (  <div className={`bg-white dark:bg-gray-800 pb-10 px-3 mb-10 min-h-screen flex flex-col items-center gap-6 w-full`}>
   
      <div className="p-4">
@@ -158,11 +159,7 @@ const onSubmit=() => {
         <SelectValue  placeholder="Select a Quizzes Year" />
       </SelectTrigger>
       <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
-        <SelectGroup onChange={
-          ()=>{
-            console.log('changed')
-          }
-        } >
+        <SelectGroup>
           <SelectLabel>Select a Quizzes Year</SelectLabel>
          {examsYears.map((year,index) =>{
          return  <SelectItem  key={index} value={year}>{year}</SelectItem >
