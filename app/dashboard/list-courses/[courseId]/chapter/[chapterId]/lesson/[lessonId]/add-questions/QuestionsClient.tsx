@@ -177,7 +177,8 @@ const onSubmit=() => {
 
 <textarea
 onChange={(event)=>setQuestion({...question,Q:event.target.value})}
-className="block 
+className={`
+block 
 p-2.5 w-full 
 text-sm 
 text-gray-900 
@@ -194,7 +195,9 @@ border-gray-300
  dark:text-white 
  dark:focus:ring-blue-500 
 dark:focus:border-blue-500
-"
+
+${question.year!==""? 'block':'hidden'}
+`}
 rows={4}
 ></textarea>
 
