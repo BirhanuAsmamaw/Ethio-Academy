@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import ChooseForm from "./chooseForm";
 import axios from "axios";
@@ -76,7 +76,7 @@ const onSubmit=() => {
     toast.success("Question created successfully")
     router.refresh();
   }).catch((error:any)=>{
-    console.log("Error",error);
+   
     
   }).finally(()=>{
     setLoading(false);
