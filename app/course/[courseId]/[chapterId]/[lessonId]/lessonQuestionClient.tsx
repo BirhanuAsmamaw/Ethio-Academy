@@ -55,11 +55,11 @@ const onSubmit=()=>{
  
   {showQuiz?<div className="pt-10" id="quiz">
     <div className="p-2 py-10">
-      <h4 className="text-lg font-bold border-b-2 border-dashed">Quizzes of Indroduction of Biology</h4>
+      <h4 className="text-lg font-bold border-b p-1">Quizzes of Indroduction of Biology</h4>
     </div>
       {
         lesson.questions.map((question:any,index:number)=>{
-        return <div key={index} className="">
+        return <div key={index} className="py-2">
 
 <div className="flex border-b border-double border-green-600 justify-between">
         <p className="text-xl font-bold">{index+1}</p>
@@ -109,8 +109,8 @@ const onSubmit=()=>{
       <AccordionItem value="item-1" className="border-none">
         <AccordionTrigger className="hover:no-underline"><p className="text-lg">Explanation</p></AccordionTrigger>
         <AccordionContent>
-          <div className="p-2 bg-green-50 bg-gray-700">
-            <p>{question.explanation}</p>
+          <div className="p-2 bg-green-50 dark:bg-gray-700">
+            <div dangerouslySetInnerHTML={{__html:question.explanation}}></div>
           </div>
         </AccordionContent>
       </AccordionItem>
