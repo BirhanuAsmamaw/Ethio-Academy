@@ -52,6 +52,8 @@ D:{
 });
 
 
+
+
 const qData={
   lessonId:lesson.id,
   year:question.year,
@@ -129,7 +131,7 @@ const onSubmit=() => {
   axios.post('/api/question',{questions}).then(()=>{
     toast.success("Question created successfully")
   }).catch((error:any)=>{
-    
+    console.log("Error",error);
     toast.error(error.message)
   }).finally(()=>{
     setLoading(false);

@@ -3,6 +3,7 @@ import prisma from "@/lib/prismadb"
 export async function POST(req:Request) {
   const body=await req.json();
   const {questions} =body;
+  try{
 
     if(!questions.length) {
       return NextResponse.json({
@@ -15,5 +16,8 @@ export async function POST(req:Request) {
       data:questions
      })
      return NextResponse.json(newQuestions);
-  
+    }
+    catch(err) {
+      console.log(err);
+    }
 }
