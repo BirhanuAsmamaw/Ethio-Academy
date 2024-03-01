@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ChooseForm from "./chooseForm";
 import axios from "axios";
@@ -18,6 +18,7 @@ import Button from "@/components/button/button";
 import { examsYears } from "@/lib/examsYear";
 import Heading from "@/components/Heading/Heading";
 import TextEditor from "@/components/editor/editor";
+import { useRouter } from "next/navigation";
 
 interface QuestionsClientProps{
   lesson:any;
@@ -25,7 +26,7 @@ interface QuestionsClientProps{
 
 
 const QuestionsClient:React.FC<QuestionsClientProps> = ({lesson}) => {
-  const [questions,setQuestions]=useState<any[]>([])
+const router=useRouter();
    const [isLoading,setLoading]=useState(false);
    const [explanation,setExplanation]=useState("")
     const [question,setQuestion]=useState<any>(
@@ -63,84 +64,49 @@ const qData={
 
 }
 
-
-const onAddQuestion=() => {
-  
-    
-        setQuestions((prev:any)=>prev? [...prev,qData]:[qData])
-
-
-
-        setQuestion( {
-          Q:"",
-        year:"",
-        explanation:"",
-        A:{
-            choose:"",
-            isAnswer:false,
-        },
-        B:{
-            choose:"",
-            isAnswer:false,
-        },
-        
-        C:{
-            choose:"",
-            isAnswer:false,
-        },
-        D:{
-            choose:"",
-            isAnswer:false,
-        },
-        })
-      };
 const onSubmit=() => {
 
 
   setLoading(true);
 
-
-  setQuestions((prev:any)=>prev? [...prev,qData]:[qData])
-
-  console.log("Question",questions);
-
-  setQuestion( {
-    Q:"",
-  year:"",
-  explanation:"",
-  A:{
-      choose:"",
-      isAnswer:false,
-  },
-  B:{
-      choose:"",
-      isAnswer:false,
-  },
   
-  C:{
-      choose:"",
-      isAnswer:false,
-  },
-  D:{
-      choose:"",
-      isAnswer:false,
-  },
-  })
 
 
-  axios.post('/api/question',{questions}).then(()=>{
+  axios.post('/api/question',{qData}).then(()=>{
     toast.success("Question created successfully")
+    router.refresh();
   }).catch((error:any)=>{
     console.log("Error",error);
-    toast.error(error.message)
+    
   }).finally(()=>{
     setLoading(false);
+    setQuestion({Q:"",
+    year:"",
+    explanation:"",
+A:{
+text:"",
+isAnswer:false,
+},
+B:{
+text:"",
+isAnswer:false,
+},
+
+C:{
+text:"",
+isAnswer:false,
+},
+D:{
+text:"",
+isAnswer:false,
+},
+})
   })
     
 
  
 };
-console.log("Question",questions);
+
   return (  <div className={`bg-white dark:bg-gray-800 pb-10 px-3 mb-10 min-h-screen flex flex-col items-center gap-6 w-full`}>
   
      <div className="p-4">
@@ -236,11 +202,7 @@ rows={4}
           </div>
    <div className="w-full flex justify-end  gap-4 px-2 py-4">
 
-   <Button
-    isDisabled={isLoading}
-    title={isLoading ? 'Loading...':'Add'}
-    onClick={onAddQuestion}
-  /> 
+   
     <Button
     isDisabled={isLoading}
     title={isLoading ? 'Loading...':'Submit'}
