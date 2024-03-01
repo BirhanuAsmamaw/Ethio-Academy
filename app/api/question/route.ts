@@ -13,7 +13,10 @@ export async function POST(req:Request) {
      }
 
      const newQuestions= await prisma.question.createMany({
-      data:[...questions]
+       data: questions.map((question:any) => ({
+       
+        ...question,
+      })),
      })
      return NextResponse.json(newQuestions);
     }
