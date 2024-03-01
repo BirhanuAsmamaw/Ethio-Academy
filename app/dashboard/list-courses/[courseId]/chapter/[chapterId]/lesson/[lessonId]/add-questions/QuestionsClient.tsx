@@ -107,6 +107,7 @@ isAnswer:false,
  
 };
 
+console.log("data",qData);
   return (  <div className={`bg-white dark:bg-gray-800 pb-10 px-3 mb-10 min-h-screen flex flex-col items-center gap-6 w-full`}>
   
      <div className="p-4">
