@@ -30,6 +30,8 @@ const QuestionsClient:React.FC<QuestionsClientProps> = ({lesson}) => {
    const [explanation,setExplanation]=useState("")
     const [question,setQuestion]=useState<any>(
         {Q:"",
+        year:"",
+        explanation:"",
 A:{
     text:"",
     isAnswer:false,
