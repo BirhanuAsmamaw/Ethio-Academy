@@ -72,7 +72,7 @@ const onSubmit=() => {
   
 
 
-  axios.post('/api/question',{qData}).then(()=>{
+  axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
     router.refresh();
   }).catch((error:any)=>{
