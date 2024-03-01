@@ -2,25 +2,17 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 export async function POST(req:Request) {
   const body=await req.json();
-  const {title,
-    lessonId,
-    chooses,
-    year} =body;
+  const {questions} =body;
 
-    if(!lessonId|| !chooses.length ||  !title || !year) {
+    if(!questions.length) {
       return NextResponse.json({
         status: false,
         message:"Invalid  parameters"
       });
      }
 
-     const newQuestions= await prisma.question.create({
-      data:{
-        lessonId:lessonId, 
-        title:title,
-         chooses:chooses,
-       year:year, 
-         }
+     const newQuestions= await prisma.question.createMany({
+      data:questions
      })
      return NextResponse.json(newQuestions);
   

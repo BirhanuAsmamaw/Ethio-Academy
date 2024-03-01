@@ -1,12 +1,23 @@
 "use client"
-
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { useState } from "react";
-import { AiOutlineSave } from "react-icons/ai";
+
 import ChooseForm from "./chooseForm";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { lessons } from "@/lib/lessons";
+
 import Button from "@/components/button/button";
+import { examsYears } from "@/lib/examsYear";
+import Heading from "@/components/Heading/Heading";
+import TextEditor from "@/components/editor/editor";
 
 interface QuestionsClientProps{
   lesson:any;
@@ -14,8 +25,9 @@ interface QuestionsClientProps{
 
 
 const QuestionsClient:React.FC<QuestionsClientProps> = ({lesson}) => {
-
+  const [questions,setQuestions]=useState<any[]>([])
    const [isLoading,setLoading]=useState(false);
+   const [explanation,setExplanation]=useState("")
     const [question,setQuestion]=useState<any>(
         {Q:"",
 A:{
@@ -40,14 +52,79 @@ D:{
 
 const qData={
   lessonId:lesson.id,
-  year:"2015",
+  year:question.year,
+  explanation:explanation,
   title:question.Q,
   chooses:[question.A,question.B,question.C,question.D]
 
 }
+
+
 const onAddQuestion=() => {
+  
+    
+        setQuestions((prev:any)=>prev? [...prev,qData]:[qData])
+
+
+
+        setQuestion( {
+          Q:"",
+        year:"",
+        explanation:"",
+        A:{
+            choose:"",
+            isAnswer:false,
+        },
+        B:{
+            choose:"",
+            isAnswer:false,
+        },
+        
+        C:{
+            choose:"",
+            isAnswer:false,
+        },
+        D:{
+            choose:"",
+            isAnswer:false,
+        },
+        })
+      };
+const onSubmit=() => {
+
+
   setLoading(true);
-  axios.post('/api/question',qData).then(()=>{
+
+
+  setQuestions((prev:any)=>prev? [...prev,qData]:[qData])
+
+
+
+  setQuestion( {
+    Q:"",
+  year:"",
+  explanation:"",
+  A:{
+      choose:"",
+      isAnswer:false,
+  },
+  B:{
+      choose:"",
+      isAnswer:false,
+  },
+  
+  C:{
+      choose:"",
+      isAnswer:false,
+  },
+  D:{
+      choose:"",
+      isAnswer:false,
+  },
+  })
+
+
+  axios.post('/api/question',{questions}).then(()=>{
     toast.success("Question created successfully")
   }).catch((error:any)=>{
     
@@ -56,7 +133,7 @@ const onAddQuestion=() => {
     setLoading(false);
   })
     
- console.log("Question",qData);
+ console.log("Question",questions);
  
 };
   return (  <div className={`bg-white dark:bg-gray-800 pb-10  mb-10 min-h-screen flex flex-col items-center gap-6 w-full`}>
@@ -69,6 +146,35 @@ const onAddQuestion=() => {
 
 
      <div className="w-full pt-10">
+
+
+
+          <div className="p-4">
+          <Select onValueChange={
+            (value)=>setQuestion({...question,year:value})
+          }>
+      <SelectTrigger  className="w-[180px]">
+        <SelectValue  placeholder="Select a Quizzes Year" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup onChange={
+          ()=>{
+            console.log('changed')
+          }
+        } >
+          <SelectLabel>Select a Quizzes Year</SelectLabel>
+         {examsYears.map((year,index) =>{
+         return  <SelectItem  key={index} value={year}>{year}</SelectItem >
+         })}
+          
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+          </div>
+
+
+
+
 <textarea
 onChange={(event)=>setQuestion({...question,Q:event.target.value})}
 className="block 
@@ -119,12 +225,21 @@ rows={4}
    onChange={(event)=>setQuestion({...question,D:{...question.D,text:event.target.value}})}
    onAnswer={(event) => setQuestion({ ...question, D: {...question.D, isAnswer:  Boolean(event.target.value )} })} 
    />
-   
-   <div className="w-full flex justify-end px-2 py-4">
+   <div className="flex flex-col px-4 w-full gap-1 my-4">
+            <Heading small title="Write Answer Explanation"/>
+          <TextEditor value={explanation} setValue={setExplanation}/>
+          </div>
+   <div className="w-full flex justify-end  gap-4 px-2 py-4">
+
+   <Button
+    isDisabled={isLoading}
+    title={isLoading ? 'Loading...':'Add'}
+    onClick={onAddQuestion}
+  /> 
     <Button
     isDisabled={isLoading}
     title={isLoading ? 'Loading...':'Submit'}
-    onClick={onAddQuestion}
+    onClick={onSubmit}
   />
    </div>
 </div>
