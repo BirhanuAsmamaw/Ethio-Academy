@@ -150,13 +150,14 @@ const onSubmit=() => {
 
 
           <div className="p-4">
-          <Select onValueChange={
+          <Select
+           onValueChange={
             (value)=>setQuestion({...question,year:value})
           }>
-      <SelectTrigger  className="w-[180px]">
+      <SelectTrigger  className="w-[180px] bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
         <SelectValue  placeholder="Select a Quizzes Year" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
         <SelectGroup onChange={
           ()=>{
             console.log('changed')
