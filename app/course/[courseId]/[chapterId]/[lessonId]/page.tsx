@@ -33,7 +33,7 @@ console.log("lessons data",lesson);
 
 <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
 <LessonClient lesson={lesson}/>
-<hr  className="border-y-2 py-10 border-dashed dark:border-gray-600"/>
+<hr  className="border-y-2 py-4 border-dashed dark:border-gray-600"/>
 <QuizClient lesson={lesson}/>
       </SubLayout>
 

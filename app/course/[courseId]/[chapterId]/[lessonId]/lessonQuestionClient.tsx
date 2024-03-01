@@ -53,8 +53,8 @@ const onSubmit=()=>{
 
   return ( <>
  
-  {showQuiz?<div className="pt-10" id="quiz">
-    <div className="p-2 py-10">
+  {showQuiz?<div className="py-10" id="quiz">
+    <div className="p-2 ">
       <h4 className="text-lg font-bold border-b p-1">Quizzes of Indroduction of Biology</h4>
     </div>
       {
