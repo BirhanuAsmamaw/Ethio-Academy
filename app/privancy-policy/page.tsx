@@ -1,5 +1,12 @@
+import Header from "@/components/Header";
+
 const PrivancyPolicy = () => {
   return ( <>
+  <Header
+    title='Ethio Exams Academy || Privancy Policy'
+    description='Unlock Your Potential with Ethio Exams Academy - Where Learning Meets Success!'
+    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+/>
   <h1>Privacy Policy of Ethio  Exams Academy</h1>
 
 <p>Ethio  Exams Academy operates the https://ethio-exams-academy.vercel.app/ website, which provides the SERVICE.</p>
