@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  
   LinkedinShareButton,
   LinkedinIcon,
   TwitterIcon,
@@ -14,7 +15,7 @@ import {
 import { HiOutlineShare } from "react-icons/hi";
 
 
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
+import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
 
 interface CustomShareButtonProps {
   url: string;
@@ -26,13 +27,13 @@ const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
   
   return (
     <div>
-     <Dialog>
+     <Dialog >
       <DialogTrigger asChild>
-        <div className="hover:dark:bg-700 bg-white dark:bg-gray-700 p-4 hover:bg-gry-200 font-bold rounded-[10px]">
+        <div className="hover:dark:bg-700 hover:bg-gray-200 ">
           <HiOutlineShare size={30}/>
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[325px]">
+      <DialogContent className="sm:max-w-[325px] bg-white dark:bg-gray-700 p-2 font-bold rounded-[10px]">
         <div className="flex flex-col gap-2 ">
         <TelegramShareButton url={url}>
         <TelegramIcon size={40} round={true} />
