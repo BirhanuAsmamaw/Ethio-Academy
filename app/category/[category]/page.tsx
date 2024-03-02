@@ -1,14 +1,24 @@
+import { getCourses } from "@/actions/courses/getCourses";
 import Card from "@/components/card/card";
-import Footer from "@/components/footer/footer";
+
 import Navbar from "@/components/navbar/Navbar";
-import { courses } from "@/lib/courses";
+import Spinning from "@/components/spinning";
+
 
 
 interface IPrams{
   category: string;
 }
-const Category = ({params}:{params:IPrams}) => {
-  const filterdata=courses.filter((course)=>course.category===params.category)
+const Category =async ({params}:{params:IPrams}) => {
+  
+
+  const courses=await getCourses();
+  const selectedCourses=courses?.filter((course)=>course.category===params.category);
+  if(!courses){
+    return <div className="w-full h-screen flex justify-center items-center">
+      <Spinning/>
+    </div>
+  }
   return (<><Navbar/> <div className="flex pb-20">
 <div className="flex flex-col gap-10 w-full items-center">
 
@@ -26,23 +36,19 @@ const Category = ({params}:{params:IPrams}) => {
     </div>
 
 
-    <h1 className='
-    w-full
-     text-2xl
-      md:text-4xl
-      font-semibold
-       border-b mt-10
-     pl-4'>New Coming  {params.category} Courses</h1>
+   
+
+    <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming {params.category}   Courses</h1>
     <div className='flex justify-center flex-wrap gap-8 md:px-10 '>
 
-{filterdata.map((course,index)=>{
+{selectedCourses?.map((course,index)=>{
   return <Card
   key={index}
       id={course.id}
       category={course.category}
       price={course.price}
       subject={course.subject}
-      rating={course.rating}
+      rating={course.rating??0}
       cover={course.cover}  />
 
 })}
