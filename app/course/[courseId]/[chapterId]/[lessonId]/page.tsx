@@ -28,7 +28,7 @@ console.log("lessons data",lesson);
   return (<>
   <Navbar/>
   <Header
-    title={`${lesson.title[20]}|| ${lesson.chapter.title[20]}||${lesson.chapter.course?.subject[20]}`}
+    title={`${lesson.title}`}
     description={`${lesson.title}`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
