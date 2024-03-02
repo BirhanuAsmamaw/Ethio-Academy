@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 
 import Sidebar from "@/components/sidebar/sidebar";
 import { ReactNode } from "react";
+import DashboardSheet from "./dashboardSheet";
 
 interface DashboardLayoutProbs{
   children: ReactNode
@@ -19,18 +20,34 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
   if(user&& user.role=="ADMIN"){
   return ( <div className="">
    <Navbar/>
-    <div className=" flex gap-10 justify-center pt-10 w-full">
-      
-
-          <div className="hidden lg:p-10 w-64 lg:block fixed lg:p-10 left-0 h-screen  bg-white dark:bg-gray-800 w-48 overflow-y-auto"><Sidebar/></div>
-         
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-20">
 
 
-          <div className="w-full  px-2 l lg:w-8/12 xl:w-7/12 flex justify-center pt-10 border-x border-gray-200 dark:border-gray-700">
-    
-    {children}
-      </div>
+      <DashboardSheet/>
+  
+    <div className="hidden lg:block  lg:col-span-3  xl:col-span-2 relative">
+      <div 
+      className="fixed mt-12 
+       h-screen
+        bg-white
+        dark:bg-gray-800
+         shadow
+         dark:shadow-black
+          p-4
+          lg:4/12 xl:w-2/12 
+          overflow-y-auto 
+          flex 
+          flex-col 
+          gap-10">
+       
+        <Sidebar/>
+        </div>
     </div>
+
+
+
+    <div className="px-6 lg:col-span-9 xl:col-span-10 ">{children}</div>
+  </div>
 
   </div> );}
 
@@ -41,3 +58,5 @@ return <Redirect/>
 }
  
 export default DashboardLayout;
+
+

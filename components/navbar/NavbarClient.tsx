@@ -45,7 +45,7 @@ const {setTheme}=useTheme();
 
 const {carts}=useCart()
 
-  return ( <div className={` w-full px-2 z-50 h-12 items-center   flex justify-between flex-wrap  ${isScroll? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-slate-100 dark:bg-gray-900  ":""} duration-300 z-50`}>
+  return ( <div className={` w-full px-2 z-50 h-12 items-center   flex justify-between flex-wrap  ${isScroll? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-white dark:bg-gray-900  ":"bg-stone-200 dark:bg-gray-900 "} duration-300 z-50`}>
     <Link href="/" className="no-underline flex gap-2"><Image src={Logo} alt="logo" className="w-10 h-10 rounded-full" height={30} width={30}/>
      <h1 className="hidden md:block font-semibold text-xl md:text-2xl py-2 overflow-hidden">
       <span className="text-blue-600">Alpha</span>
