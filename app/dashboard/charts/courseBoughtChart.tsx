@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, CartesianGrid, Tooltip, Legend, YAxis, XAxis, Rectangle, ResponsiveContainer } from 'recharts';
 
