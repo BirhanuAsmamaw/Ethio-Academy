@@ -20,11 +20,12 @@ const courses=await getCourses()
 
   return (
     <>
-    <Header
-    title='Alpha Online Academy'
-    description='Empowering Minds, Shaping Futures: Unlock your potential with Alpha, the pinnacle of online education. As the premier academy, we offer a transformative learning experience that goes beyond traditional boundaries. Our meticulously crafted courses cover a spectrum of subjects, including programming, high school courses, freshman essentials, entrance exams preparation, and expert guidance for exit exams. At Alpha, we believe in nurturing excellence and fostering a community of lifelong learners. Join us on a journey of academic excellence and personal growth.'
+   <Header
+    title='Ethio Exams Academy'
+    description='Unlock Your Potential with Ethio Exams Academy - Where Learning Meets Success!'
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
+
 
    <div className="flex flex-col overflow-hidden">
    <div className=" fixed bg-blue-200 dark:bg-slate-600 blur-3xl top-[100px] -right-4 h-40 rounded-full  w-40"></div>

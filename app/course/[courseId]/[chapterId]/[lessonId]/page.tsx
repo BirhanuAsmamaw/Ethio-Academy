@@ -10,6 +10,7 @@ import LessonClient from "./LessonClient";
 import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
 import CourseContent from "../../courseContent";
+import Header from "@/components/Header";
 
 
 interface IParams{
@@ -26,6 +27,11 @@ console.log("lessons data",lesson);
 
   return (<>
   <Navbar/>
+  <Header
+    title={`${lesson.title[20]}|| ${lesson.chapter.title[20]}||${lesson.chapter.course?.subject[20]}`}
+    description={`${lesson.title}`}
+    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+/>
   <MainLayout>
     <div className="lg:hidden fixed right-0 top-14 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-xl z-50 p-1 md:p-2 rounded-l-full border-l-2 ">
       <p className="text-sm md:text-lg font-bold text-green-500 ">content</p>

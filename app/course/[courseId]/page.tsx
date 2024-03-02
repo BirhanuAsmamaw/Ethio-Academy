@@ -3,6 +3,8 @@
 import { getCurrentUser } from "@/actions/users/currentUser";
 import CourseClientPage from "./courseClientPage";
 import Navbar from "@/components/navbar/Navbar";
+import Header from "@/components/Header";
+import { GetCourseById } from "@/actions/courses/getCourseById";
 
 
 interface IPrams{
@@ -10,18 +12,25 @@ interface IPrams{
 }
 
 
-const Course = async({params}:{params:IPrams}) => {
+const CoursePage = async({params}:{params:IPrams}) => {
 
   const user=await getCurrentUser();
+  const course=await GetCourseById(params.courseId);
 
   
   return ( <>
   <Navbar/>
-<CourseClientPage courseId={params.courseId} customer={user}/>
+  <Header
+    title={`EEA || ${course?.subject}`}
+    description={`${course?.descriptions}`}
+    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+/>
+
+<CourseClientPage course={course} customer={user}/>
  </>);
 }
  
-export default Course;
+export default CoursePage;
 
 
 

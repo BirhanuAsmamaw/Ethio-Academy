@@ -2,40 +2,26 @@
 
 import Heading from "@/components/Heading/Heading";
 import Container from "@/components/container/container";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+
+import React from "react";
 import RatingPage from "./rating";
 import AddReviews from "./addReview";
 import Reviews from "./reviews";
 import CourseContent from "./courseContent";
 import CourseSceleton from "./[chapterId]/courseSceleton";
-import { CourseType } from "@/types";
+
 import CourseDescribeList from "../coursedescribeList";
 import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
 
 interface ICourseId{
-  courseId:string;
+  course:any;
   customer:any;
 }
 
-const CourseClientPage:React.FC<ICourseId> = ({courseId,customer}) => {
+const CourseClientPage:React.FC<ICourseId> = ({course,customer}) => {
 
-  const [course,setCourse]=useState<CourseType|any>(null)
-  useEffect(()=>{
-    async function fetchData() {
-      try{
-        const response=await axios.get(`/api/course/${courseId}`)
-        setCourse(response.data);
-      }
-
-      catch(error){
-
-      }
-    }
-    fetchData();
-    
-  },[courseId])
+  
   if(!course){
     return ( <div className="flex h-screen justify-center py-10 px-2">
       <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
