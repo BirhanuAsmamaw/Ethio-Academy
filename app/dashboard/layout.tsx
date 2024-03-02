@@ -29,7 +29,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
   
     <div className="hidden lg:block  lg:col-span-3  xl:col-span-2 relative">
       <div 
-      className="fixed mt-12 
+      className="fixed 
        h-screen
         bg-white
         dark:bg-gray-800
