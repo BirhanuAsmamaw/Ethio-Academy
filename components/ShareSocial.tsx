@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+  TwitterIcon,
+  TwitterShareButton,
   TelegramIcon,
   TelegramShareButton,
   FacebookShareButton,
@@ -7,41 +9,54 @@ import {
   WhatsappIcon,
   FacebookIcon,
 } from 'react-share';
+import { HiOutlineShare } from "react-icons/hi";
+
+
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 
 interface CustomShareButtonProps {
   url: string;
-  quote: string;
-  hashtag: string;
+  
 }
 
-const ShareSocialMedia = () => {
-  const shareUrl = 'https://www.pakkamarwadi.tk/';
-  const commonProps: CustomShareButtonProps = {
-    url: shareUrl,
-    quote: 'Title or jo bhi aapko likhna ho',
-    hashtag: '#portfolio...',
-  };
-
+const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
+ 
+  
   return (
-    <div
-      style={{
-        background: '#0000',
-        height: '100vh',
-        width: '100%',
-      }}
-    >
-      <h1 className='text-lg'>I hope you like it</h1>
-      <TelegramShareButton {...commonProps}>
+    <div>
+     <Dialog>
+      <DialogTrigger asChild>
+        <div className="hover:dark:bg-700 hover:bg-gry-200 font-bold p-2">
+          <HiOutlineShare size={30}/>
+        </div>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[325px]">
+        <div className="flex flex-col gap-2 ">
+        <TelegramShareButton url={url}>
         <TelegramIcon size={40} round={true} />
       </TelegramShareButton>
 
-      <FacebookShareButton {...commonProps}>
+      <FacebookShareButton url={url}>
         <FacebookIcon size={40} round={true} />
       </FacebookShareButton>
 
-      <WhatsappShareButton {...commonProps}>
+      <TwitterShareButton url={url}>
+        <TwitterIcon size={40} round={true} />
+      </TwitterShareButton>
+
+
+      <WhatsappShareButton url={url}>
         <WhatsappIcon size={40} round={true} />
       </WhatsappShareButton>
+
+        </div>
+        
+      </DialogContent>
+    </Dialog>
+
+
+    
+      
     </div>
   );
 };

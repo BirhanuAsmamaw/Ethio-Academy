@@ -101,6 +101,10 @@ const onPayment=()=>{
        hover:dark:text-green-400 transition
         duration-300"
       >Buy</button>
+
+
+
+<ShareSocialMedia url={`https://ethio-exams-academy.vercel.app/course/${course.id}`}/>
     </div>
   <h5 className="px-2 text-lg font-medium text-gray-500 dark:text-gray-400">Course Content</h5>
  <div className="flex flex-col  ">
@@ -134,9 +138,7 @@ const onPayment=()=>{
   />
  </div> 
   
- <div className="py-10">
-  <ShareSocialMedia/>
- </div>
+
  
   </div> );
 }
