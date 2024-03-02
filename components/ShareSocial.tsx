@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+  LinkedinShareButton,
+  LinkedinIcon,
   TwitterIcon,
   TwitterShareButton,
   TelegramIcon,
@@ -26,7 +28,7 @@ const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
     <div>
      <Dialog>
       <DialogTrigger asChild>
-        <div className="hover:dark:bg-700 hover:bg-gry-200 font-bold p-2">
+        <div className="hover:dark:bg-700 bg-white dark:bg-gray-700 p-4 hover:bg-gry-200 font-bold rounded-[10px]">
           <HiOutlineShare size={30}/>
         </div>
       </DialogTrigger>
@@ -39,6 +41,10 @@ const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
       <FacebookShareButton url={url}>
         <FacebookIcon size={40} round={true} />
       </FacebookShareButton>
+      <LinkedinShareButton url={url}>
+        <LinkedinIcon size={40} round={true} />
+      </LinkedinShareButton>
+
 
       <TwitterShareButton url={url}>
         <TwitterIcon size={40} round={true} />
