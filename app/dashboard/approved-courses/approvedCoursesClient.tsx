@@ -79,13 +79,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "name",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-         Full Name
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div>Full Name</div>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
@@ -97,13 +91,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "email",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div>Email</div>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
@@ -114,13 +102,10 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "courses",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
+        <div>
           Courses
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        </div>
+
       )
     },
     cell: ({ row }) => <div className="lowercase">
@@ -145,13 +130,9 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "totalPrice",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-         Price(ETB)
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+       <div className="">
+        Price(ETB)
+       </div>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("totalPrice")}
@@ -163,13 +144,7 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "status",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-         Status
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="">Status</div>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("status")? <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Approved</span>:
