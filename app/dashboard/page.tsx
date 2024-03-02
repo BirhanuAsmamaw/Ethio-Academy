@@ -27,7 +27,7 @@ const Dashboard = async() => {
   <div className="flex flex-col gap-6">
       <h1 className="text-2xl font-medium"> Courses Bought in Months</h1>
 
-<div className=" overflow-x-auto  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full ">
+<div className=" overflow-x-auto scroll-x-auto  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full ">
  
 <CoursesBoughtChart coursesData={courses}/>
 </div>
@@ -39,7 +39,7 @@ const Dashboard = async() => {
     <div className="flex flex-col gap-6">
       <h1 className="text-2xl font-medium">Total Prices of Courses Bought  in Months</h1>
 
-<div className=" overflow-x-auto  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full ">
+<div className=" overflow-x-auto scroll-x-auto  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full ">
  
 <TotalPricesInMonth coursesData={courses}/>
 </div>
