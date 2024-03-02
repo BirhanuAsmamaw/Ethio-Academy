@@ -18,9 +18,9 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
 
   
   if(user&& user.role=="ADMIN"){
-  return ( <div className="">
+  return ( <>
    <Navbar/>
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-20">
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-20 w-full">
 
 
       <DashboardSheet/>
@@ -49,7 +49,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
     <div className="px-6 lg:col-span-9 xl:col-span-10 ">{children}</div>
   </div>
 
-  </div> );}
+  </> );}
 
 
 else{

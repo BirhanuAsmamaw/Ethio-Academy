@@ -4,12 +4,7 @@
  
 
 
-.correct{
-  background-color: aquamarine;
-}
-.wrong{
-  background-color: red;
-}
+
 
 ul {
   @apply list-disc pl-4 list-inside; /* Example: Apply Tailwind styles to ul */
