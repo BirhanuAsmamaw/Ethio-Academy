@@ -6,6 +6,7 @@ import { useCart } from "@/hooks/use.cart";
 import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
 import { CiCircleQuestion } from "react-icons/ci";
+import ShareSocialMedia from "@/components/ShareSocial";
 
 interface ContentListProps{
   icon:IconType;
@@ -133,7 +134,9 @@ const onPayment=()=>{
   />
  </div> 
   
- 
+ <div className="py-10">
+  <ShareSocialMedia/>
+ </div>
  
   </div> );
 }
