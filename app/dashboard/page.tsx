@@ -13,7 +13,7 @@ const Dashboard = async() => {
   const users=await getAllUsers();
   const courses=await getCourses();
   const boughtCourses=await getAllPayments();
-  return ( <div className="pt-20 flex flex-col items-center gap-20 w-full">
+  return ( <div className="py-20 flex flex-col items-center gap-20 w-full">
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 items-center text-center gap-4 justify-center w-full">
     <DashboardCard icon={BsPeople} content={`${users?.length ||0 }`} label="Students"/>
     <DashboardCard icon={SiCoursera} content={`${courses?.length ||0 }`} label="courses"/>
@@ -39,7 +39,7 @@ const Dashboard = async() => {
     <div className="flex flex-col gap-6">
       <h1 className="text-2xl font-medium">Total Prices of Courses Bought  in Months</h1>
 
-<div className=" overflow-x-auto  p-6 bg-gray-800 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-700 w-full ">
+<div className=" overflow-x-auto  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-700 w-full ">
  
 <TotalPricesInMonth coursesData={courses}/>
 </div>
