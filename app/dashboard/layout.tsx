@@ -23,7 +23,9 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
     <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-20 w-full">
 
 
-      <DashboardSheet/>
+     <div className="lg:hidden">
+     <DashboardSheet/>
+     </div>
   
     <div className="hidden lg:block  lg:col-span-3  xl:col-span-2 relative">
       <div 
