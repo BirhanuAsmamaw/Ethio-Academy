@@ -24,7 +24,7 @@ export async function DELETE(req: Request, {params}:{params:{id:string}}){
     }
 
    const dCourse=await prisma.course.delete({
-      where: {id:id},
+      where: {id:"65d9f76eb5de2b6ec95b4beb"},
       
     })
     return NextResponse.json(dCourse);
