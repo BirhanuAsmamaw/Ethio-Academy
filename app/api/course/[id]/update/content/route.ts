@@ -21,6 +21,9 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
     if(!user){
       return NextResponse.json({status:false, message:"unathorized"});
     }
+    if(user.role!=="ADMIN"){
+      return NextResponse.json({status:false, message:"unathorized"});
+    }
 
     const course=await prisma.course.findUnique({
       where: {id:id}
