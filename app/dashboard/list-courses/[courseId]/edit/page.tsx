@@ -1,11 +1,14 @@
+import { GetCourseById } from "@/actions/courses/getCourseById";
+import EditCourseClient from "./editCourseClient";
+
 interface IParams{
   courseId: string;
 }
 
-const EditCourse = ({params}:{params:IParams}) => {
-  return ( <div className="pt-10 min-h-screen w-full">
-    edit course id :{params.courseId}
-  </div> );
+const EditCourse = async({params}:{params:IParams}) => {
+
+  const course=await GetCourseById(params.courseId);
+  return (<EditCourseClient course={course}/> );
 }
  
 export default EditCourse;
