@@ -11,16 +11,18 @@ interface InputProps{
   errors:FieldErrors;
   id:string;
   userFrom?:boolean;
+  value?:string;
 
 }
 
-const Input:React.FC<InputProps> = ({userFrom,type,label,disabled,required,id,register,placehoder,errors}) => {
+const Input:React.FC<InputProps> = ({value,userFrom,type,label,disabled,required,id,register,placehoder,errors}) => {
   return (  <div>
     <label htmlFor="first_name" className={`
     block mb-2 text-sm font-medium text-gray-900 dark:text-white 
     
     `}>{label}</label>
     <input type={type} 
+    defaultValue={value}
     disabled={disabled}
     autoComplete="off"
      id={id}

@@ -18,7 +18,7 @@ const Dashboard = async() => {
     <DashboardCard icon={BsPeople} content={`${users?.length ||0 }`} label="Students"/>
     <DashboardCard icon={SiCoursera} content={`${courses?.length ||0 }`} label="courses"/>
     <DashboardCard  icon={FaBuyNLarge} content={`${boughtCourses?.length ||0 }`} label="Payed Courses"/>
-    <DashboardCard  icon={IoIosPricetags} content="64,3234" label="Total Price(ETB)"/>
+    <DashboardCard  icon={IoIosPricetags} content="64,000" label="Total Price(ETB)"/>
 
     
   </div>
