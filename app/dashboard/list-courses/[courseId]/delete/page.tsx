@@ -12,20 +12,20 @@ interface IParams{
 const DeleteCourse = ({params}:{params:IParams}) => {
   const router=useRouter();
   const [isLoading,setLoading]=useState(false);
-  const onDelete=async()=>{
+  const onDelete = async () => {
     setLoading(true);
-   await axios.delete(`/api/course/${params.courseId}/delete`).then(()=>{
+    try {
+      await axios.delete(`/api/course/${params.courseId}/delete`);
       toast.success(`Course deleted successfully`);
       router.push(`/dashboard/list-courses`);
-      router.refresh();
-    }).catch((error)=>{
-      console.log(error);
-      toast.error(error.message);
-    }).finally(()=>{
+    } catch (error) {
+      console.error("Delete failed:", error);
+      toast.error("Failed to delete course. Please try again.");
+    } finally {
       setLoading(false);
-    });
+    }
+  };
 
-  }
   return (<DeleteComponent isLoading={isLoading} onDelete={onDelete} title="Delete this Course" label="Delete" />);
 }
  
