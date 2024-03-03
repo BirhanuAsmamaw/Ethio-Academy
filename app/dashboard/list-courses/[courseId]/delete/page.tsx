@@ -12,9 +12,9 @@ interface IParams{
 const DeleteCourse = ({params}:{params:IParams}) => {
   const router=useRouter();
   const [isLoading,setLoading]=useState(false);
-  const onDelete=()=>{
+  const onDelete=async()=>{
     setLoading(true);
-    axios.delete(`/api/course/${params.courseId}/delete`).then(()=>{
+   await axios.delete(`/api/course/${params.courseId}/delete`).then(()=>{
       toast.success(`Course deleted successfully`);
       router.push(`/dashboard/list-courses`);
       router.refresh();
