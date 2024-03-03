@@ -32,5 +32,7 @@ export async function DELETE(req: Request, {params}:{params:{id:string}}){
       message:"course deleted successfully"
     });
   }
-  catch(err){}
+  catch(err){
+    console.log(err);
+  }
 }
