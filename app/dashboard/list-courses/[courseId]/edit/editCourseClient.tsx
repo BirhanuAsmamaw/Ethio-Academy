@@ -241,7 +241,8 @@ useEffect(()=>{
           errors={errors}
 
           /></div>
-          <div className="w-full  lg:w-8/12"><Input id="subject" register={register} errors={errors}  label="Subject" type="text" required/></div>
+          <div className="w-full  lg:w-8/12">
+            <Input id="subject" value={course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
 
 
 
@@ -279,7 +280,9 @@ useEffect(()=>{
 
         
         <div className="lg:w-8/12">
-          <Input register={register} errors={errors} label="Price" type="number" id="price" required/>
+          <Input 
+          value={`${course.price}`}
+          register={register} errors={errors} label="Price" type="number" id="price" required/>
           </div>
           
          
