@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
-export async function Delete(req: Request, {params}:{params:{id:string}}){
+export async function DELETE(req: Request, {params}:{params:{id:string}}){
   const id=params.id;
  
 
