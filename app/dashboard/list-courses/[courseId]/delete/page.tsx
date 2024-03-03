@@ -19,6 +19,7 @@ const DeleteCourse = ({params}:{params:IParams}) => {
       router.push(`/dashboard/list-courses`);
       router.refresh();
     }).catch((error)=>{
+      console.log(error);
       toast.error(error.message);
     }).finally(()=>{
       setLoading(false);
