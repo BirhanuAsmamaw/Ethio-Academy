@@ -1,5 +1,6 @@
 "use client"
 
+import { DeleteCourseById } from "@/actions/courses/deleteCoureById";
 import DeleteComponent from "@/components/deleteComponent";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -15,7 +16,7 @@ const DeleteCourse = ({params}:{params:IParams}) => {
   const onDelete = async () => {
     setLoading(true);
     try {
-      await axios.delete(`/api/course/${params.courseId}/delete`);
+      await DeleteCourseById(params.courseId);
       toast.success(`Course deleted successfully`);
       router.push(`/dashboard/list-courses`);
     } catch (error) {
