@@ -21,10 +21,11 @@ const Input:React.FC<InputProps> = ({value,userFrom,type,label,disabled,required
     block mb-2 text-sm font-medium text-gray-900 dark:text-white 
     
     `}>{label}</label>
-    <input type={type} 
-    defaultValue={value}
+    <input type={type}
+    
+    value={value}
     disabled={disabled}
-    autoComplete="off"
+    
      id={id}
      {...register(id,{required})}
      required={required}

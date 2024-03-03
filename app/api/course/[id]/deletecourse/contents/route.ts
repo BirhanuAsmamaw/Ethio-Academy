@@ -23,7 +23,7 @@ export async function DELETE(req: Request, {params}:{params:{id:string}}){
       return NextResponse.json({status:false, message:"course not found"});
     }
 
-   const dCourse=await prisma.course.delete({
+   const dCourse= await prisma.course.delete({
       where: {id:"65d9f76eb5de2b6ec95b4beb"},
       
     })

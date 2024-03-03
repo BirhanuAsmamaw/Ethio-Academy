@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import Link from "next/link";
-import { IconBase, IconBaseProps } from "react-icons";
+
 interface SideBarItemsPops{
   sidebarData:any[];
 }
@@ -18,7 +18,7 @@ const SideBarItems:React.FC<SideBarItemsPops> = ({sidebarData}) => {
       return <AccordionItem className="border-none" key={index} value={`${index}`}>
       <AccordionTrigger className="hover:no-underline">
         <div 
-      className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2">
+      className="  text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2">
         <p> {<sidebar.icon size={20}/>}</p> 
         <p>{sidebar.title}</p>
         </div>
