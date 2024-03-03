@@ -17,6 +17,9 @@ export async function GetCourseById(courseId: string){
         }
       },
         reviews:{
+          orderBy:{
+            createdAt:"desc"
+          },
           include:{
             customer:true
           }
