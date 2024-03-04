@@ -30,7 +30,7 @@ const TextEditor:React.FC<EditorProps> = ({value,setValue}) => {
 const formats = [
     "header",
     "font",
-    "size",
+    "size", 
     "bold",
     "italic",
     "underline",
@@ -61,7 +61,12 @@ const formats = [
             transition
             duration-300
              dark:text-white  w-full "
-              modules={modules} formats={formats} theme="bubble" onChange={setValue} placeholder="The content starts here..." />
+              modules={modules} 
+              formats={formats} 
+               theme="bubble"
+                onChange={setValue} 
+                value={value}
+               placeholder="The content starts here..." />
           </div>
        
       );
