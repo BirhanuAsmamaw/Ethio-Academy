@@ -204,10 +204,24 @@ const [progress, setProgress] = useState(0)
     try{
      
       const previousVideoRef = ref(storage, course.videoUrl);
-      await deleteObject(previousVideoRef);
+      await deleteObject(previousVideoRef).then(() => {
+        console.log("Video File deleted successfully!")
+      }).catch((error) => {
+        // Do something if error occured.
+        if (error.code == 'storage/object-not-found') {
+            console.log('Object not found!')
+        }
+      });
       const previousImageRef = ref(storage, course.cover);
     
-      await deleteObject(previousImageRef);
+      await deleteObject(previousImageRef).then(() => {
+        console.log("Image File deleted successfully!")
+      }).catch((error:any) => {
+        // Do something if error occured.
+        if (error.code == 'storage/object-not-found') {
+            console.log('Object not found!')
+        }
+      });
     }
     catch(error) {
       console.log("errpr delete",error);
