@@ -9,7 +9,7 @@ import FileInput from "@/components/input/fileInput";
 import Input from "@/components/input/input";
 import Select from "@/components/input/select";
 import axios from "axios";
-import {getDownloadURL,getStorage,ref,uploadBytesResumable} from 'firebase/storage'
+import {deleteObject, getDownloadURL,getStorage,ref,uploadBytesResumable} from 'firebase/storage'
 import firebaseApp from "@/lib/firebasedb";
 import { useCallback, useEffect, useState } from "react";
 import { FieldValues, useForm ,SubmitHandler} from "react-hook-form";
@@ -94,6 +94,8 @@ const [progress, setProgress] = useState(0)
         if(video){
           const videoName=new Date().getTime()+"-"+video.name;
           const videoStorageRef=ref(storage,`course/videos/${videoName}`);
+          const previousVideoRef = ref(storage, `course/videos/${course.videoUrl}`);
+          await deleteObject(previousVideoRef);
           const uploadTask=uploadBytesResumable(videoStorageRef,video);
 
           await new Promise<void>((resolve,reject)=>{
@@ -138,6 +140,8 @@ const [progress, setProgress] = useState(0)
         const fileName=new Date().getTime()+"-"+image.name;
 
         const imageStorageRef=ref(storage,`course/cover/${fileName}`);
+        const previousImageRef = ref(storage, `course/cover/${course.cover}`);
+          await deleteObject(previousImageRef);
         const uploadTask=uploadBytesResumable(imageStorageRef,image);
         await new Promise<void>((resolve,reject)=>{
           uploadTask.on('state_changed',
