@@ -94,8 +94,8 @@ const [progress, setProgress] = useState(0)
         if(video){
           const existingVideoName = course.videoUrl.split('/').pop()?.split("?")[0].split("%2F").pop();
           const previousVideoRef = ref(storage, `course/videos/${existingVideoName}`);
-          await deleteObject(previousVideoRef);
           
+
           const videoName=new Date().getTime()+"-"+video.name;
           const videoStorageRef=ref(storage,`course/videos/${videoName}`);
           const uploadTask=uploadBytesResumable(videoStorageRef,video);
@@ -120,7 +120,8 @@ const [progress, setProgress] = useState(0)
               reject(error);
             },
             ()=>{
-              //succesful upload image
+              deleteObject(previousVideoRef);
+              //succesful upload video
               getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
                 videoUrl=downloadUrl
               
@@ -143,7 +144,7 @@ const [progress, setProgress] = useState(0)
 
         const existingCoverName = course.cover.split('/').pop()?.split("?")[0].split("%2F").pop();
         const previousImageRef = ref(storage, `course/cover/${existingCoverName}`);
-          await deleteObject(previousImageRef);
+         
 
 
 
@@ -152,6 +153,8 @@ const [progress, setProgress] = useState(0)
         const imageStorageRef=ref(storage,`course/cover/${fileName}`);
         
         const uploadTask=uploadBytesResumable(imageStorageRef,image);
+
+
         await new Promise<void>((resolve,reject)=>{
           uploadTask.on('state_changed',
           (snapshot)=>{
@@ -172,6 +175,7 @@ const [progress, setProgress] = useState(0)
             reject(error);
           },
           ()=>{
+            deleteObject(previousImageRef);
             //succesful upload image
             getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
               imageCoverUrl=downloadUrl
