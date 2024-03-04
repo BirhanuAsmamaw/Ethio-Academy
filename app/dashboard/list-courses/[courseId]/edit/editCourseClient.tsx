@@ -292,20 +292,18 @@ useEffect(()=>{
           
           <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Update Course Description"/>
-            <div className="p-4" dangerouslySetInnerHTML={{__html:course.descriptions}}></div>
+       
           <TextEditor  value={description? description:course.descriptions} setValue={setDescription}/>
           </div>
 
           <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Update Course Requiremnts"/>
-            <div className="p-4" dangerouslySetInnerHTML={{__html:course.requirements}}></div>
           <TextEditor value={requirement? requirement:course.requirements} setValue={setRequirement}/>
           </div>
         
 
           <div className="flex flex-col px-4 w-full  gap-1  pt-2 my-4">
             <Heading small title="Update who use This Course"/>
-            <div className="p-4" dangerouslySetInnerHTML={{__html:course.whoShouldTake}}></div>
           <TextEditor value={courseUsers? courseUsers:course.whoShouldTake} setValue={setCourseUsers}/>
           </div>
 
