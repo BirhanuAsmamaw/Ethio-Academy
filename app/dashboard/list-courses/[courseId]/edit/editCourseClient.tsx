@@ -92,11 +92,12 @@ const [progress, setProgress] = useState(0)
       try{
         const storage=getStorage(firebaseApp);
         if(video){
-          const videoName=new Date().getTime()+"-"+video.name;
-          const videoStorageRef=ref(storage,`course/videos/${videoName}`);
           const existingVideoName = course.videoUrl.split('/').pop()?.split("?")[0].split("%2F").pop();
           const previousVideoRef = ref(storage, `course/videos/${existingVideoName}`);
           await deleteObject(previousVideoRef);
+          
+          const videoName=new Date().getTime()+"-"+video.name;
+          const videoStorageRef=ref(storage,`course/videos/${videoName}`);
           const uploadTask=uploadBytesResumable(videoStorageRef,video);
 
           await new Promise<void>((resolve,reject)=>{
@@ -138,12 +139,18 @@ const [progress, setProgress] = useState(0)
 
 
       if(image){
-        const fileName=new Date().getTime()+"-"+image.name;
 
-        const imageStorageRef=ref(storage,`course/cover/${fileName}`);
+
         const existingCoverName = course.cover.split('/').pop()?.split("?")[0].split("%2F").pop();
         const previousImageRef = ref(storage, `course/cover/${existingCoverName}`);
           await deleteObject(previousImageRef);
+
+
+
+        const fileName=new Date().getTime()+"-"+image.name;
+
+        const imageStorageRef=ref(storage,`course/cover/${fileName}`);
+        
         const uploadTask=uploadBytesResumable(imageStorageRef,image);
         await new Promise<void>((resolve,reject)=>{
           uploadTask.on('state_changed',
