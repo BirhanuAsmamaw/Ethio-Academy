@@ -235,14 +235,14 @@ useEffect(()=>{
        </div>
           <div className="w-full  lg:w-8/12">
             <Select
-          value={ courseData.category? courseData.category:course.category}
+          defaultValue={ courseData.category? courseData.category:course.category}
           id="category"
           register={register}
           errors={errors}
 
           /></div>
           <div className="w-full  lg:w-8/12">
-            <Input id="subject" value={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
+            <Input id="subject" defaultValue={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
 
 
 
@@ -281,7 +281,7 @@ useEffect(()=>{
         
         <div className="lg:w-8/12">
           <Input 
-          value={`${courseData.price? courseData.price:course.price}`}
+          defaultValue={`${courseData.price? courseData.price:course.price}`}
           register={register} errors={errors} label="Price" type="number" id="price" required/>
           </div>
           
