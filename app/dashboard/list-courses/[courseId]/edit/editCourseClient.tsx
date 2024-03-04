@@ -198,6 +198,7 @@ throw new Error("course cover and video not empty!!")
       toast.success("Course updated successfully")
     })
     .catch((error)=>{
+      console.log(error)
       toast.error(error.message)
     
     }).finally(()=>{
