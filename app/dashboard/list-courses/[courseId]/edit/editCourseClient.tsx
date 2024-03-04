@@ -39,9 +39,9 @@ const [progress, setProgress] = useState(0)
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
      
-      subject:null,
-      price:0,
-      category:null}})
+      subject:course.subject,
+      price:course.price,
+      category:course.category,}})
 
 
 
@@ -242,7 +242,7 @@ useEffect(()=>{
 
           /></div>
           <div className="w-full  lg:w-8/12">
-            <Input id="subject" defaultValue={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
+            <Input id="subject"  defaultValue={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
 
 
 
