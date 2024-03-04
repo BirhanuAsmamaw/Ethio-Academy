@@ -202,17 +202,23 @@ const [progress, setProgress] = useState(0)
   const handleImageAndVideoDelete=async()=>{
     const storage=getStorage(firebaseApp);
     try{
+
+      if(course?.videoUrl){
+        const previousVideoRef = ref(storage, course.videoUrl);
+        await deleteObject(previousVideoRef).then(() => {
+          console.log("Video File deleted successfully!")
+        }).catch((error) => {
+          // Do something if error occured.
+          if (error.code == 'storage/object-not-found') {
+              console.log('Object not found!')
+          }
+        });
+
+      }
      
-      const previousVideoRef = ref(storage, course.videoUrl);
-      await deleteObject(previousVideoRef).then(() => {
-        console.log("Video File deleted successfully!")
-      }).catch((error) => {
-        // Do something if error occured.
-        if (error.code == 'storage/object-not-found') {
-            console.log('Object not found!')
-        }
-      });
-      const previousImageRef = ref(storage, course.cover);
+    
+      if(course?.cover){
+        const previousImageRef = ref(storage, course.cover);
     
       await deleteObject(previousImageRef).then(() => {
         console.log("Image File deleted successfully!")
@@ -222,6 +228,7 @@ const [progress, setProgress] = useState(0)
             console.log('Object not found!')
         }
       });
+      }
     }
     catch(error) {
       console.log("errpr delete",error);
