@@ -10,7 +10,7 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
      cover,
      videoUrl,
      price,
-     videoThumbnail,
+     
      descriptions,
      requirements,
      whoShouldTake,} = body;
@@ -38,7 +38,7 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
         subject:subject,
         category:category,
         cover:cover,
-        videoThumbnail:videoThumbnail,
+       
         videoUrl:videoUrl,
         price:price,
         descriptions:descriptions,
