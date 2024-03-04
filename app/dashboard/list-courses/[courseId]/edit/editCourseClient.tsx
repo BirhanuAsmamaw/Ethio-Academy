@@ -92,7 +92,7 @@ const [progress, setProgress] = useState(0)
       try{
         const storage=getStorage(firebaseApp);
         if(video){
-          const existingVideoName = course.videoUrl.split('/').pop()?.split("?")[0].split("%2F").pop();
+          const existingVideoName = course.videoUrl.split('/').pop().split('?')[0];
           const previousVideoRef = ref(storage, `course/videos/${existingVideoName}`);
           
 
@@ -142,7 +142,7 @@ const [progress, setProgress] = useState(0)
       if(image){
 
 
-        const existingCoverName = course.cover.split('/').pop()?.split("?")[0].split("%2F").pop();
+        const existingCoverName = course.cover.split('/').pop().split('?')[0];
         const previousImageRef = ref(storage, `course/cover/${existingCoverName}`);
          
 
