@@ -194,7 +194,7 @@ throw new Error("course cover and video not empty!!")
   }
 
   const courseData={...data,cover:imageCoverUrl,videoUrl:videoUrl}
-    axios.post(`/api/course/${course.id}/update/content`,courseData).then(()=>{
+    axios.put(`/api/course/${course.id}/update/content`,courseData).then(()=>{
       toast.success("Course updated successfully")
     })
     .catch((error)=>{
