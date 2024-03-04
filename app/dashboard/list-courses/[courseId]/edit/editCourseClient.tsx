@@ -29,8 +29,8 @@ const [isnext, setIsNext]=useState(false)
 const [image,setImage]=useState<File|null>(null)
 const [video,setVideo]=useState<File|null>(null)
 const [isLoading, setIsLoading]=useState(false)
-const [selectedImage, setSelectedImage] = useState<any>(null);
-const [selectedVideo, setSelectedVideo] = useState<any>(null);
+const [selectedImage, setSelectedImage] = useState<any>('image');
+const [selectedVideo, setSelectedVideo] = useState<any>('video');
 const [imageProgress, setImageProgress] = useState(0)
 const [videoProgress, setVideoProgress] = useState(0)
 const [progress, setProgress] = useState(0)
@@ -252,7 +252,7 @@ useEffect(()=>{
 
             required
             onCancel={onCancelImage}
-            file={selectedImage? selectedImage:course.cover}
+            file={selectedImage==='image'? course.cover:selectedImage}
             fileType="image"
           onDrop={handleImageChange}
               register={register}
@@ -267,7 +267,7 @@ useEffect(()=>{
             <FileInput
             required
             onCancel={onCancelVideo}
-            file={selectedVideo? selectedVideo:course.videoUrl}
+            file={selectedVideo==='video'? course.videoUrl:selectedVideo}
             fileType="video"
           onDrop={handleVideoChange}
               register={register}
