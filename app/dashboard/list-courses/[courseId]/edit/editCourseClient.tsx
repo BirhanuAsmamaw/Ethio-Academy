@@ -88,14 +88,13 @@ const [progress, setProgress] = useState(0)
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
-    const storage=getStorage(firebaseApp);
+   
     const handleImageUpload = async() =>{
+      const storage=getStorage(firebaseApp);
       try{
        
         if(video){
-          const existingVideoName = course.videoUrl.split('/').pop().split('?')[0];
-         
-
+          
           const videoName=new Date().getTime()+"-"+video.name;
           const videoStorageRef=ref(storage,`course/videos/${videoName}`);
           const uploadTask=uploadBytesResumable(videoStorageRef,video);
@@ -140,11 +139,6 @@ const [progress, setProgress] = useState(0)
 
 
       if(image){
-
-
-        const existingCoverName = course.cover.split('/').pop().split('?')[0];
-        
-         
 
 
 
@@ -204,12 +198,26 @@ const [progress, setProgress] = useState(0)
 
 
   }
-  await handleImageUpload();
-  const previousVideoRef = ref(storage, course.videoUrl);
-  await deleteObject(previousVideoRef);
-  const previousImageRef = ref(storage, course.cover);
 
-  await deleteObject(previousImageRef);
+  const handleImageAndVideoDelete=async()=>{
+    const storage=getStorage(firebaseApp);
+    try{
+     
+      const previousVideoRef = ref(storage, course.videoUrl);
+      await deleteObject(previousVideoRef);
+      const previousImageRef = ref(storage, course.cover);
+    
+      await deleteObject(previousImageRef);
+    }
+    catch(error) {
+      console.log("errpr delete",error);
+    }
+  }
+ 
+  await handleImageUpload();
+  await handleImageAndVideoDelete();
+
+
   
   if(!imageCoverUrl || !videoUrl){
 throw new Error("course cover and video not empty!!")
