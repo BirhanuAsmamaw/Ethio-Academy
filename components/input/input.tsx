@@ -23,7 +23,7 @@ const Input:React.FC<InputProps> = ({value,userFrom,type,label,disabled,required
     `}>{label}</label>
     <input type={type}
     
-    value={value}
+    defaultValue={value}
     disabled={disabled}
     
      id={id}

@@ -22,9 +22,9 @@ interface  EditCourseClientProps{
 }
 
 const EditCourseClient:React.FC<EditCourseClientProps>= ({course}) => {
-const [requirement, setRequirement]=useState("")
-const [description, setDescription]=useState("")
-const [courseUsers, setCourseUsers]=useState("")
+const [requirement, setRequirement]=useState<string|null>(null)
+const [description, setDescription]=useState<string|null>(null)
+const [courseUsers, setCourseUsers]=useState<string|null>(null)
 const [isnext, setIsNext]=useState(false)
 const [image,setImage]=useState<File|null>(null)
 const [video,setVideo]=useState<File|null>(null)
@@ -281,7 +281,7 @@ useEffect(()=>{
         
         <div className="lg:w-8/12">
           <Input 
-          value={`${courseData.price?courseData.price:course.price}`}
+          value={`${courseData.price? courseData.price:course.price}`}
           register={register} errors={errors} label="Price" type="number" id="price" required/>
           </div>
           
