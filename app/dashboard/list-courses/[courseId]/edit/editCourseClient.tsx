@@ -235,14 +235,14 @@ useEffect(()=>{
        </div>
           <div className="w-full  lg:w-8/12">
             <Select
-          value={course.category}
+          value={ courseData.category? courseData.category:course.category}
           id="category"
           register={register}
           errors={errors}
 
           /></div>
           <div className="w-full  lg:w-8/12">
-            <Input id="subject" value={course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
+            <Input id="subject" value={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
 
 
 
@@ -281,7 +281,7 @@ useEffect(()=>{
         
         <div className="lg:w-8/12">
           <Input 
-          value={`${course.price}`}
+          value={`${courseData.price?courseData.price:course.price}`}
           register={register} errors={errors} label="Price" type="number" id="price" required/>
           </div>
           
@@ -292,18 +292,18 @@ useEffect(()=>{
           
           <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Add Course Description"/>
-          <TextEditor  value={course.descriptions} setValue={setDescription}/>
+          <TextEditor  value={courseData.descriptions? courseData.descriptions:course.descriptions} setValue={setDescription}/>
           </div>
 
           <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Add Course Requiremnts"/>
-          <TextEditor value={course.requirements} setValue={setRequirement}/>
+          <TextEditor value={courseData.requirements? courseData.requirements:course.requirements} setValue={setRequirement}/>
           </div>
         
 
           <div className="flex flex-col px-4 w-full  gap-1  pt-2 my-4">
             <Heading small title="Add who use This Course"/>
-          <TextEditor value={course.whoShouldTake} setValue={setCourseUsers}/>
+          <TextEditor value={courseData.whoShouldTake? courseData.whoShouldTake:course.whoShouldTake} setValue={setCourseUsers}/>
           </div>
 
           <div className="p2 flex justify-end  mx-20 lg:p-20">
