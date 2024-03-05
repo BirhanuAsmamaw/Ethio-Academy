@@ -11,6 +11,7 @@ import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
 import CourseContent from "../../courseContent";
 import Header from "@/components/Header";
+import CustomeSheet from "@/components/customSheet";
 
 
 interface IParams{
@@ -33,9 +34,15 @@ console.log("lessons data",lesson);
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
   <MainLayout>
-    <div className="lg:hidden fixed right-0 top-14 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-xl z-50 p-1 md:p-2 rounded-l-full border-l-2 ">
-      <p className="text-sm md:text-lg font-bold text-green-500 ">content</p>
-    </div>
+   
+      <CustomeSheet selectedLabel={<></>} unselectedLabel={<div  className="lg:hidden fixed right-0 top-14 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-xl z-50 p-1 md:p-2 rounded-l-full border-l-2 ">
+        <p className=" font-semibold">Content</p>
+      </div>}>
+        <div className="space-y-2">
+        <CourseContent course={lesson.chapter.course}/>
+        </div>
+      </CustomeSheet>
+    
 
 <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
 <LessonClient lesson={lesson}/>
