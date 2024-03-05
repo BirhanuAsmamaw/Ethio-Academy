@@ -97,13 +97,7 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: "name",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-         Full Name
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="">Full Name</div>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
@@ -115,13 +109,7 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: "email",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="">Email</div>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
@@ -134,13 +122,7 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: "role",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Role
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="">Role</div>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("role")}</div>,
@@ -152,13 +134,7 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: "courses",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Courses
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="">Courses</div>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("courses")}</div>,
@@ -170,13 +146,7 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: "price",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-         Price(ETB)
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="">Price(ETB)</div>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("price")}</div>,
