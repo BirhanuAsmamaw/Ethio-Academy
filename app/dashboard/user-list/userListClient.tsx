@@ -20,7 +20,7 @@ import {
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -39,7 +39,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-
+import { FaRegUserCircle } from "react-icons/fa";
 import Image from "next/image"
 
 
@@ -65,39 +65,14 @@ courses:number
 
 
 export const columns: ColumnDef<UserType>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${row.getIsSelected()? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-
+  
 
 
 
 
 
   {
-    accessorKey: "avatar",
+    accessorKey: "image",
     header: "Avatar",
     cell: ({ row }) => (
       <>{
@@ -110,7 +85,7 @@ export const columns: ColumnDef<UserType>[] = [
       className="rounded-full"
       />
       </div>:<div className="h-30 w-30 rounded-full flex items-center justify-center">
-        <p className="text-3xl font-bold">No</p>
+       <FaRegUserCircle size={30}/>
 
       </div>
       }</>
