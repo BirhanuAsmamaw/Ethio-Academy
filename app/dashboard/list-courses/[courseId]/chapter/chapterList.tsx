@@ -8,7 +8,7 @@ import {
 import { CourseType } from "@/types";
 import Link from "next/link";
 
-const ChapterList = ({course}:{course:CourseType}) => {
+const ChapterList = ({course}:{course:CourseType|any}) => {
   
   if (!course){
     return <div className="p-4 font-bold text-xl">No Chapter!</div>

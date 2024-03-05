@@ -1,65 +1,30 @@
-"use client"
-import Input from "@/components/input/input";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import { IoIosSend } from "react-icons/io";
+
+
+
+import { GetCourseById } from "@/actions/courses/getCourseById";
 import ChapterList from "./chapterList";
-import { useEffect, useState } from "react";
-import { CourseType } from "@/types";
+
+import CreateChapter from "./create";
+import Spinning from "@/components/spinning";
 
 interface IParams{
   courseId: string;
 }
 
-const Chapter = ({params}:{params:IParams}) => {
- const [isLoading,setLoading]=useState(false)
-  const router=useRouter();
-const {register,handleSubmit,reset,formState:{errors}}=useForm<FieldValues>({
-  defaultValues:{
-    title:"",
-    courseId:params.courseId,
-  }
-  
-});
+const Chapter = async({params}:{params:IParams}) => {
+
+  const course= await GetCourseById(params.courseId);
+ 
 
 
-const [course,setCourse]=useState<CourseType|any>(null)
+ if(!course){
+  <div className="flex h-screen w-full justify-center items-center">
+    <Spinning/>
+  </div>
+
+ }
 
 
-  useEffect(()=>{
-    async function fetchData() {
-      try{
-        const response=await axios.get(`/api/course/${params.courseId}`)
-        setCourse(response.data);
-      }
-
-      catch(error){
-
-      }
-    }
-    fetchData();
-    
-  },[params.courseId])
-
-
-
-
-  const onSubmit:SubmitHandler<FieldValues>=(data)=>{
-    setLoading(true);
-    axios.post('/api/chapter',data).then(()=>{
-      toast.success("Course Chapter  created  successfully")
-      router.refresh()
-      reset();
-    }).catch((errors)=>{
-      toast.error("something went wrong");
-    }).finally(()=>{
-      setLoading(false);
-    });
-   
-  
-  }
   return ( <div className="py-10 flex bg-white dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
 
 
@@ -70,28 +35,7 @@ const [course,setCourse]=useState<CourseType|any>(null)
 
 
 
-    <div className="flex w-full justify-center gap-1">
-      
-   <div className="w-8/12">
-   <Input
-   
-   id="title"
-   label="Add Chapter Title"
-   required
-   register={register}
-   errors={errors}
-   disabled={isLoading}
-   type="text"
-   />
-   </div>
-    <div className="flex pt-4 justify-center  items-center">
-   <button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>
-    </div>
-   </div>
-
-
-
-
+    <CreateChapter courseId={params.courseId}/>
 
 
 
