@@ -312,7 +312,7 @@ const UserListClient:React.FC<UserListProps>=({users})=>{
       </div>
 
 
-      <div className="rounded-[5px] border border-gray-200 dark:border-gray-700">
+      <div className="rounded-[5px] border border-gray-200 dark:border-gray-700 overflow-x-auto p-2">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
