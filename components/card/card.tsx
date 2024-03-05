@@ -22,6 +22,7 @@ no_reviews?:number; // Assuming
 const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating,no_reviews}) => {
   return ( <div className="
   group
+  z-50 
   w-full 
   md:w-72
    h-auto  
