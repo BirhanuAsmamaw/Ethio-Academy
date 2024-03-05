@@ -29,7 +29,7 @@ const CustomeSheet:React.FC<CustomeSheetProps>= ({children,selectedLabel,unselec
   {isOpen? <>{selectedLabel}</>:<>{unselectedLabel}</>}
   </button>
   <div className={`fixed  right-0  h-full bg-white dark:bg-gray-800 shadow-xl top-10 z-50 ${!isOpen?'bg-opacity-0 translate-x-[100%]':'w-[70%] bg-opacity-100 translate-x-0'} transition duration-300 ease-in-out`}>
-      <div className=" px-4 pt-10 w-full space-y-4">
+      <div className="  pt-10 w-full space-y-4 overflow-y-auto">
       
       {children}
    

@@ -38,7 +38,7 @@ console.log("lessons data",lesson);
       <CustomeSheet selectedLabel={<></>} unselectedLabel={<div  className="lg:hidden fixed right-0 top-14 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-xl z-50 p-1 md:p-2 rounded-l-full border-l-2 ">
         <p className=" font-semibold">Content</p>
       </div>}>
-        <div className="space-y-2">
+        <div className="space-y-2 w-full overflow-y-auto">
         <CourseContent course={lesson.chapter.course}/>
         </div>
       </CustomeSheet>
