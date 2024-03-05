@@ -11,7 +11,7 @@ import Link from "next/link";
 const ChapterList = ({course}:{course:CourseType}) => {
   
   if (!course){
-    return <div>No Chapter!</div>
+    return <div className="p-4 font-bold text-xl">No Chapter!</div>
   }
 
   return (<div className="flex flex-col p-2 gap-10 ">
