@@ -39,56 +39,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { usersData } from "@/lib/users"
+
 import Image from "next/image"
-import { courses } from "@/lib/courses"
 
-const datar: Payment[] = [
-  {
-    id: "m5gr84i9",
-    amount: 316,
-    status: "success",
-    email: "ken99@yahoo.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "derv1ws0",
-    amount: 837,
-    status: "processing",
-    email: "Monserrat44@gmail.com",
-  },
-  {
-    id: "5kma53ae",
-    amount: 874,
-    status: "success",
-    email: "Silas22@gmail.com",
-  },
-  {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
-  },
-]
 
-export type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
+interface UserListProps{
+  users:any[];
 }
-
 
 type UserType={
  id:string, 
-avatar:string,
+image:string,
 name: string,
-phone: string,
+price:number;
+
 email: string,
 
 role: string,
@@ -98,24 +62,7 @@ courses:number
 }
 
 
-const data:UserType[]=usersData.map((user)=>{
 
-  const course_no=user.enrolledCourses.length;
-  
-  let price=0
- user.enrolledCourses.forEach((c)=>{
-
-    const coursesdata=courses.find((course)=>course.id==c.courseId)
-
-    if (coursesdata){
-      price=price+coursesdata.price
-    }
-
-    
-
-  })
-  return {id:user.id,avatar:user.avatar, name:user.name,email:user.email, phone:user.phone,courses:course_no,price:price, role:user.role}
-})
 
 export const columns: ColumnDef<UserType>[] = [
   {
@@ -153,15 +100,20 @@ export const columns: ColumnDef<UserType>[] = [
     accessorKey: "avatar",
     header: "Avatar",
     cell: ({ row }) => (
-      <div className="capitalize">
+      <>{
+        row.getValue("image")?<div className="capitalize">
       <Image
       height={30}
       width={30}
-      src={row.getValue("avatar")}
+      src={row.getValue("image")}
       alt={row.getValue("name")}
       className="rounded-full"
       />
+      </div>:<div className="h-30 w-30 rounded-full flex items-center justify-center">
+        <p className="text-3xl font-bold">No</p>
+
       </div>
+      }</>
     ),
   },
 
@@ -201,22 +153,6 @@ export const columns: ColumnDef<UserType>[] = [
   },
 
 
-
-  {
-    accessorKey: "phone",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Phone
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("phone")}</div>,
-  },
 
 
   {
@@ -318,7 +254,7 @@ export const columns: ColumnDef<UserType>[] = [
 
 
 
-export function UserListClient() {
+const UserListClient:React.FC<UserListProps>=({users})=>{
   
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -327,6 +263,19 @@ export function UserListClient() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+
+  const data=users.map(user =>{
+    let courses_no=0;
+    let price=0;
+   user.payedCourses.forEach((courses:any)=>{
+    courses_no+=courses.courses.length;
+    price+=courses.totalPrice
+
+
+
+    })
+    return {...user, courses:courses_no,price:price}
+  })
 
   const table = useReactTable({
     data,
@@ -468,3 +417,6 @@ export function UserListClient() {
     </div>
   )
 }
+
+
+export default UserListClient;
