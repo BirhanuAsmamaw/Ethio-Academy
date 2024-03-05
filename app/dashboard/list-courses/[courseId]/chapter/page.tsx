@@ -49,7 +49,7 @@ const [course,setCourse]=useState<CourseType|any>(null)
   const onSubmit:SubmitHandler<FieldValues>=(data)=>{
     setLoading(true);
     axios.post('/api/chapter',data).then(()=>{
-      toast.success("Review  created  successfully")
+      toast.success("Course Chapter  created  successfully")
       router.refresh()
       reset();
     }).catch((errors)=>{
