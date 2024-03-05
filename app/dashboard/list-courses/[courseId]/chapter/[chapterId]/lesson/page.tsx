@@ -4,9 +4,11 @@ import Button from "@/components/button/button";
 import TextEditor from "@/components/editor/editor";
 import FileInput from "@/components/input/fileInput";
 import Input from "@/components/input/input";
+import CustomeProgress from "@/components/progress";
 import firebaseApp from "@/lib/firebasedb";
 import axios from "axios";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler,  useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -24,6 +26,10 @@ const Lesson = ({params}:{params:IParams}) => {
 const [selectedVideo, setSelectedVideo] = useState<any>(null);
 const [imageProgress, setImageProgress] = useState(0)
 const [videoProgress, setVideoProgress] = useState(0)
+const [progress, setProgress] = useState(0)
+
+
+const router=useRouter();
   const {register,handleSubmit,setValue,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues:{
       title:"",
@@ -91,6 +97,7 @@ const dataValue=getValues();
             uploadTask.on('state_changed',
             (snapshot)=>{
               const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
+             setVideoProgress(progress)
             
               switch(snapshot.state){
                    case "paused":
@@ -133,6 +140,7 @@ const dataValue=getValues();
           uploadTask.on('state_changed',
           (snapshot)=>{
             const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
+            setImageProgress(progress)
            
             switch(snapshot.state){
                  case "paused":
@@ -180,6 +188,8 @@ const dataValue=getValues();
  
     axios.post('/api/lesson',lessonData).then(()=>{
       toast.success("Course created successfully")
+      router.push(`dashboard/list-courses`)
+      router.refresh();
     })
     .catch((error)=>{
       toast.error(error.message)
@@ -210,6 +220,18 @@ const onBack=()=>{
   setNext(false)
 
 }
+
+
+
+
+
+// set total progress
+useEffect(()=>{
+  setProgress(Math.floor((imageProgress+videoProgress)/2))
+},[imageProgress,videoProgress]);
+
+
+
   return ( <><div className={`min-h-screen flex flex-col items-center gap-6 w-full ${isNext? 'opacity-0 -translate-x-[100%] hidden':'translate-x-0 opacity-100' } transition duration-300`}>
          <div className="w-full p-4">
           <Input 
@@ -292,6 +314,8 @@ disabled={isDisabled}
 
   <div className="p-4" dangerouslySetInnerHTML={{__html:dataValue.content}}>
   </div>
+
+  {isLoading&&<CustomeProgress progress={progress} title={"Uploading"}/>}
 <div className="w-full py-10 px-4 gap-4 flex justify-end">
 
 <button onClick={onBack} type="button" className="text-white bg-blue-700 hover:bg-blue-800 

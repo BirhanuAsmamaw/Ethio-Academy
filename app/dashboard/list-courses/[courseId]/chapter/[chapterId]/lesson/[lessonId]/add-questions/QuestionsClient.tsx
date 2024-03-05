@@ -74,6 +74,7 @@ const onSubmit=() => {
 
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
+    router.push(`dashboard/list-courses/${lesson.chapter.course.id}/chapter/${lesson.chapter.id}/lesson/${lesson.id}/add-questions`)
     router.refresh();
   }).catch((error:any)=>{
    

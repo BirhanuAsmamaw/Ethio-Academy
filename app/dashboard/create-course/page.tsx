@@ -12,6 +12,7 @@ import firebaseApp from "@/lib/firebasedb";
 import { useCallback, useEffect, useState } from "react";
 import { FieldValues, useForm ,SubmitHandler} from "react-hook-form";
 import toast from "react-hot-toast";
+import CustomeProgress from "@/components/progress";
 
 
 
@@ -328,6 +329,8 @@ useEffect(()=>{
  <div className="pl-2" dangerouslySetInnerHTML={{ __html: courseData.whoShouldTake}}></div>
 
  </div>
+ 
+ {isLoading&&<CustomeProgress progress={progress} title={"Uploading"}/>}
 
  <div className="p-4 flex justify-end  mx-20 lg:p-20">
 <div className="flex gap-2">
@@ -337,13 +340,7 @@ useEffect(()=>{
 </div> </div>
 
 
-{isLoading&&<div className="p-4 w-full"><div className="flex justify-between mb-1">
-  <span className="text-base font-medium text-blue-700 dark:text-white">Uploading...</span>
-  <span className="text-sm font-medium text-blue-700 dark:text-white">{progress}%</span>
-</div>
-<div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-  <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
-</div></div>}
+
 
 
         </div>
