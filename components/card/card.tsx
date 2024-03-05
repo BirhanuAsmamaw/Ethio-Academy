@@ -49,7 +49,7 @@ rounded-[5px]
   <div className="flex flex-col p-3 gap-4">
     <div className="flex justify-between px-2">
       <Link href={`/category/${category}`} className=" no-underline bg-gray-200 dark:bg-gray-700 hover:text-blue-500 hover:underline transition py-1 px-2 cursor-pointer rounded-full items-center text-center text-sm">{category}</Link>
-      <div  className="py-1 px-2   bg-teal-200 dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price}ETB</div>
+      <div  className="py-1 px-2   bg-teal-200 dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
     </div>
     <div className="flex justify-center">
       <h1 className="hidden md:block text-lg font-semibold p-1">{subject.length>21? subject.substring(0,19)+"...":subject}</h1>
