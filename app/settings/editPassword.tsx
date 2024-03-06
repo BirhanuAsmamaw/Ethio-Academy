@@ -25,7 +25,7 @@ const EditPassword= () => {
       setloading(false);
     }
 
-  return ( <div className="p-2 shadow-lg dark:shadow-black border dark:border-gray-700 rounded-[10px]  flex flex-col gap-4 w-full">
+  return ( <div className="p-2 flex flex-col gap-4 w-full">
   <h1 className="text-lg font-semibold">Edit Your Password</h1>
   <div className="p-2 space-y-3">
     <Input type="password" label="Old Password" register={register} errors={errors} id="oldPassword"/>

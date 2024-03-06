@@ -27,7 +27,7 @@ const SettingsClient:React.FC<SettingsClientProps> = ({user}) => {
   
 
 
-  return ( <Tabs defaultValue="account" className="min-w-[350px] max-w-[600px] bg-white dark:bg-gray-800">
+  return ( <Tabs defaultValue="account" className=" shadow-lg dark:shadow-black border dark:border-gray-700 rounded-[10px] min-w-[350px] max-w-[600px] bg-white dark:bg-gray-800">
   <TabsList className="grid w-full grid-cols-2">
     <TabsTrigger value="account">Account</TabsTrigger>
     <TabsTrigger value="password">Password</TabsTrigger>
