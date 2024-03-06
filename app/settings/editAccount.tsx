@@ -6,8 +6,9 @@ import Input from "@/components/input/input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
-import { useForm, FieldValues, SubmitHandler, RegisterOptions, UseFormRegisterReturn } from "react-hook-form";
+import { useForm, FieldValues, SubmitHandler} from "react-hook-form";
 import toast from "react-hot-toast";
+import {signIn} from 'next-auth/react'
 interface EditAccountProps{
   user:any;
 }
@@ -39,8 +40,23 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
       setloading(true);
       axios.put('/api/user/updateprofile', data).then(() => {
         toast.success("Your profile has been updated successfully")
-        router.push("/mycourses")
-        router.refresh();
+      
+        signIn('credentials',{
+          email: data.email,
+          password: user.hash,
+          redirect:false,
+         }).then((callback)=>{
+           if (callback?.ok){
+            router.push("/mycourses")
+            router.refresh();
+             
+             toast.success("account logged in successfully")
+             
+           }
+           if (callback?.error){
+             toast.error(callback.error)
+           }
+         })  
       }).catch((error)=>{
         toast.error(error.message)
       }).finally(() => {
