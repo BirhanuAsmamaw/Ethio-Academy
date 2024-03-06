@@ -32,7 +32,7 @@ rounded-[10px] flex flex-col
    ">
    <Avatar>
       <AvatarImage src={user?.image || ""} alt={user?.name || ''} />
-      <AvatarFallback>{user?.name[0]}</AvatarFallback>
+      <AvatarFallback>{user?.name|| 'profile'}</AvatarFallback>
     </Avatar>
     <h5 className="font-semibold text-lg ">{user?.name}</h5>
     <p className="
