@@ -24,6 +24,15 @@ export async function PUT(req: Request, res: Response){
       })
     }
 
+
+    if (user.email===email){
+      return  NextResponse.json({
+        status: false,
+        message:"email already exists"
+      })
+    }
+    
+
     // update profile
     const updatedprofile=await prisma.user.update({
       where: {id:user.id},
