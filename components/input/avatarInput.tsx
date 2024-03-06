@@ -30,7 +30,7 @@ const AvatarInput:React.FC<AvatarInputProps> = ({register,required,errors,id,dis
     <div className="">
 
         {file&&<div className=" relative top-4 right-4 ">
-        <button onClick={onCancel} className="absolute text-rose-400 hover:text-rose-500 transition"><MdDelete size={24}/></button>
+        <button onClick={onCancel} className="absolute z-40 text-rose-400 hover:text-rose-500 transition"><MdDelete size={24}/></button>
         <Avatar>
       <AvatarImage src={file} alt="image" />
       <AvatarFallback>Image</AvatarFallback>
