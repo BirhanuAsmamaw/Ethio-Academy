@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar/Navbar";
 import { getCurrentUser } from "@/actions/users/currentUser";
 
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 
 const MyCourses = async() => {
@@ -29,12 +30,15 @@ rounded-[10px] flex flex-col
    text-center
    space-y-2
    ">
-    <div className="p-2 h-28 w-28 rounded-full bg-gray-400 text-center">image</div>
+   <Avatar>
+      <AvatarImage src={user?.image || ""} alt={user?.name || ''} />
+      <AvatarFallback>{user?.name[0]}</AvatarFallback>
+    </Avatar>
     <h5 className="font-semibold text-lg ">{user?.name}</h5>
     <p className="
     text-gray-500 
     dark:text-gray-400
-    text-xs
+    text-sm
     ">{user?.email}</p>
    </div>
 
