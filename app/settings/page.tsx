@@ -1,11 +1,14 @@
 
 
+import Navbar from "@/components/navbar/Navbar";
 import SettingsClient from "./settingsClient";
 
 const SettingPage = () => {
-  return ( <div className="min-h-screen w-full flex justify-center items-center">
+  return ( <>
+  <Navbar/>
+  <div className="min-h-screen w-full flex justify-center items-center">
     <SettingsClient/>
-  </div> );
+  </div></> );
 }
  
 export default SettingPage;
