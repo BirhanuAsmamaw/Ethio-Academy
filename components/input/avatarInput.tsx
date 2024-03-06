@@ -3,7 +3,8 @@
 import { MdDelete } from "react-icons/md";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import {useDropzone} from 'react-dropzone'
-import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 
 interface AvatarInputProps{
@@ -30,7 +31,10 @@ const AvatarInput:React.FC<AvatarInputProps> = ({register,required,errors,id,dis
 
         {file&&<div className=" relative top-4 right-4 ">
         <button onClick={onCancel} className="absolute text-rose-400 hover:text-rose-500 transition"><MdDelete size={24}/></button>
-                <Image height={100}  width={100} src={file} alt="image" className="rounded-full object-contain"/>
+        <Avatar>
+      <AvatarImage src={file} alt="image" />
+      <AvatarFallback>Image</AvatarFallback>
+    </Avatar>
             </div>
         }
 
