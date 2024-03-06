@@ -26,7 +26,7 @@ const AvatarInput:React.FC<AvatarInputProps> = ({register,required,errors,id,dis
 
     
   return ( 
-    <div className="">
+    <div className="w-full">
 
         {file&&<div className="overflow-hidden relative top-4 right-4 ">
         <button onClick={onCancel} className="absolute text-rose-400 hover:text-rose-500 transition"><MdDelete size={24}/></button>
