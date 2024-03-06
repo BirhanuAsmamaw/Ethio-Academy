@@ -4,8 +4,15 @@ import Button from "@/components/button/button";
 import Input from "@/components/input/input";
 import { useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
-
-const EditPassword= () => {
+import {signIn} from 'next-auth/react'
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import axios from "axios";
+interface EditPasswordProps{
+  user:any;
+}
+const EditPassword:React.FC<EditPasswordProps>= ({user}) => {
+  const router=useRouter();
 
   const [isLoading,setloading] =useState(false);
 
@@ -21,9 +28,35 @@ const EditPassword= () => {
 
     const onSubmit:SubmitHandler<FieldValues> = (data) => {
       setloading(true);
-      console.log(data);
-      setloading(false);
+      axios.put('/api/user/updatepassword', data).then(() => {
+        toast.success("Your profile has been updated successfully")
+      
+        signIn('credentials',{
+          email: user.email,
+          password: data.newPassword,
+          redirect:false,
+         }).then((callback)=>{
+           if (callback?.ok){
+            router.push("/mycourses")
+            router.refresh();
+             
+             toast.success("account logged in successfully")
+             
+           }
+           if (callback?.error){
+             toast.error(callback.error)
+           }
+         })  
+      }).catch((error)=>{
+        toast.error(error.message)
+      }).finally(() => {
+        setloading(false);
+      });
+     
+      
     }
+
+    
 
   return ( <div className="p-2 flex flex-col gap-4 w-full">
   <h1 className="text-lg font-semibold">Edit Your Password</h1>

@@ -40,7 +40,7 @@ const SettingsClient:React.FC<SettingsClientProps> = ({user}) => {
 
 
   <TabsContent value="password">
-  <EditPassword/>
+  <EditPassword user={user}/>
   </TabsContent>
 
 
