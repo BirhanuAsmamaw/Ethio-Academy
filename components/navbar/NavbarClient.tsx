@@ -15,7 +15,7 @@ import CategorCDrobDown from "../dropdown/CourseCategory";
 
 import NotificationDropDown from "../dropdown/notificationDropDown";
 import Search from "../search/search";
-import { CourseType } from "@/types";
+
 interface NavbarClientProps{
   user:any;
   notifications:any[];
