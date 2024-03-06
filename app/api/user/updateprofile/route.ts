@@ -25,12 +25,6 @@ export async function PUT(req: Request, res: Response){
     }
 
 
-    if (user.email===email){
-      return  NextResponse.json({
-        status: false,
-        message:"email already exists"
-      })
-    }
     
 
     // update profile
