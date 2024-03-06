@@ -55,7 +55,7 @@ const onSubmit=()=>{
  
   {showQuiz?<div className="py-10" id="quiz">
     <div className="p-2 ">
-      <h4 className="text-lg font-bold border-b p-1">Quizzes of Indroduction of Biology</h4>
+      <h4 className="text-lg font-bold border-b p-1">Quizzes of {lesson.title}</h4>
     </div>
       {
         lesson.questions.map((question:any,index:number)=>{
