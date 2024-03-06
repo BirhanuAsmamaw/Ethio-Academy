@@ -43,7 +43,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
       
         signIn('credentials',{
           email: data.email,
-          password: user.hash,
+         
           redirect:false,
          }).then((callback)=>{
            if (callback?.ok){
