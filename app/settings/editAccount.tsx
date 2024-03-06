@@ -3,8 +3,11 @@
 import Button from "@/components/button/button";
 import AvatarInput from "@/components/input/avatarInput";
 import Input from "@/components/input/input";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { useForm, FieldValues, SubmitHandler, RegisterOptions, UseFormRegisterReturn } from "react-hook-form";
+import toast from "react-hot-toast";
 interface EditAccountProps{
   user:any;
 }
@@ -12,6 +15,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
   const [isLoading,setloading] =useState(false);
   const [image,setImage]=useState<File|null>(null)
   const [selectedImage, setSelectedImage] = useState<any>(null);
+  const router=useRouter();
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
   
     defaultValues:{
@@ -23,6 +27,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
     }})
 
 
+
     const handleImageChange = useCallback((acceptedFiles:any)=> {
       setImage(acceptedFiles[0])
       setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
@@ -32,8 +37,17 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
     
     const onSubmit:SubmitHandler<FieldValues> = (data) => {
       setloading(true);
-      console.log(data);
-      setloading(false);
+      axios.put('/api/user/updateprofile', data).then(() => {
+        toast.success("Your profile has been updated successfully")
+        router.push("/mycourses")
+        router.refresh();
+      }).catch((error)=>{
+        toast.error(error.message)
+      }).finally(() => {
+        setloading(false);
+      });
+     
+      
     }
 
     
