@@ -132,7 +132,7 @@ useEffect(()=>{
   
  
   const notificationData = {
-    url:`/dashboard/approved-courses}`,
+    url:`/dashboard/approved-courses`,
     type:'Success',
     title: `🌟 Payment Success!`,
     message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:0} exciting courses.`,
