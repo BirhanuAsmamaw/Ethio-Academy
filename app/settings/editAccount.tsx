@@ -9,13 +9,15 @@ import { useCallback, useState } from "react";
 import { useForm, FieldValues, SubmitHandler} from "react-hook-form";
 import toast from "react-hot-toast";
 import {signIn} from 'next-auth/react'
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
+import firebaseApp from "@/lib/firebasedb";
 interface EditAccountProps{
   user:any;
 }
 const EditAccount:React.FC<EditAccountProps> = ({user}) => {
   const [isLoading,setloading] =useState(false);
   const [image,setImage]=useState<File|null>(null)
-  const [selectedImage, setSelectedImage] = useState<any>(null);
+  const [selectedImage, setSelectedImage] = useState<any>('image');
   const router=useRouter();
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
   
@@ -35,10 +37,69 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
     }, [])
 
 
-    
-    const onSubmit:SubmitHandler<FieldValues> = (data) => {
+    let imageUrl="";
+    const onSubmit:SubmitHandler<FieldValues> =async (data) => {
       setloading(true);
-      axios.put('/api/user/updateprofile', data).then(() => {
+      const handleImageUpload = async() =>{
+        try{
+          const storage=getStorage(firebaseApp);
+  
+        if(image){
+          const fileName=new Date().getTime()+"-"+image.name;
+  
+          const imageStorageRef=ref(storage,`avatar/${fileName}`);
+          const uploadTask=uploadBytesResumable(imageStorageRef,image);
+          await new Promise<void>((resolve,reject)=>{
+            uploadTask.on('state_changed',
+            (snapshot)=>{
+              const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
+            
+             
+              switch(snapshot.state){
+                   case "paused":
+                   
+                     break;
+                   case "running":
+                    
+                     break;
+              }
+            },
+            (error)=>{
+             
+              reject(error);
+            },
+            ()=>{
+              //succesful upload image
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
+                imageUrl=downloadUrl
+               
+                resolve();
+              }).catch((error)=>{
+                
+                reject(error);
+              });
+            }
+  
+            )
+  
+          })
+  
+        }
+  
+        
+      
+      } catch(error) {
+  
+      }
+  
+      
+      
+  
+  
+    }
+    await handleImageUpload();
+
+      axios.put('/api/user/updateprofile', {...data,image:imageUrl}).then(() => {
         toast.success("Your profile has been updated successfully")
       
         signIn('credentials',{
@@ -82,7 +143,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
       id="image"
       onCancel={onCancelImage}
       
-      file={selectedImage}
+      file={selectedImage==='image'?user?.image:selectedImage}
       onDrop={handleImageChange}/>
     </div>
     <Input defaultValue={user.name} type="text" label="Edit Your Name" register={register} errors={errors} id="name"/>
