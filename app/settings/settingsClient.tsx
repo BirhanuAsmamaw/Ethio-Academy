@@ -1,9 +1,8 @@
 "use client"
 
-import Input from "@/components/input/input";
+
 import Spinning from "@/components/spinning";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FieldValues, RegisterOptions, UseFormRegisterReturn, useForm } from "react-hook-form";
 import EditAccount from "./editAccount";
 import EditPassword from "./editPassword";
 

@@ -5,7 +5,7 @@ import SettingsClient from "./settingsClient";
 import { getCurrentUser } from "@/actions/users/currentUser";
 
 const SettingPage = async() => {
-  const user=getCurrentUser();
+  const user=await getCurrentUser();
   return ( <>
   <Navbar/>
   <div className="min-h-screen w-full flex justify-center items-center">
