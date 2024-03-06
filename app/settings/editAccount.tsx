@@ -25,7 +25,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
       setloading(false);
     }
     
-  return ( <div className="p-1 flex flex-col gap-4 w-full">
+  return ( <div className="p-2 shadow-lg dark:shadow-black border dark:border-gray-700 rounded-[10px] flex flex-col gap-4 w-full">
   <h1 className="text-lg font-semibold">Edit Your Account</h1>
   <div className="p-2 space-y-3">
     <Input type="text" label="Edit Your Name" register={register} errors={errors} id="name"/>
