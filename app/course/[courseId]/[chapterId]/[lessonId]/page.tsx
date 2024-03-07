@@ -70,7 +70,7 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 
 
 <Tabs defaultValue="notes" className="w-full">
-  <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 gap-4">
+  <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-4">
     <TabsTrigger className=" rounded-full" value="notes">Notes</TabsTrigger>
     <TabsTrigger  className=" rounded-full" value="exam">Exam</TabsTrigger>
     <TabsTrigger  className=" rounded-full" value="handout">handout</TabsTrigger>
