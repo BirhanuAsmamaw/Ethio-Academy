@@ -25,7 +25,7 @@ const LessonClientPage:React.FC<LessonClientPageProps> = ({lesson}) => {
     // Set a timeout to reload the page after 1 minute (60,000 milliseconds)
     const timeoutId = setTimeout(() => {
       setReloadPage(true);
-    }, 60000);
+    }, 5000);
 
     // Cleanup the timeout when the component unmounts
     return () => clearTimeout(timeoutId);
@@ -40,6 +40,10 @@ if(reloadPage){
 
   
  else{
+
+  if(!lesson){
+    return <div className=""><CourseSceleton/> </div>
+  }
 
   return (<>
   <Navbar/>
