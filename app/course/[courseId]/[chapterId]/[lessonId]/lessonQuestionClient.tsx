@@ -71,13 +71,13 @@ const onSubmit=()=>{
           question.chooses.map((choice:any,ind:number) =>{
             return <div key={ind}   
             className={`flex gap-2 p-2 ${
-              (feedbackVisible&&selectedChoices[index+1]&& choice.isAnswer)&&'dark:bg-green-400  bg-green-200'||isSelectedAll&& choice.isAnswer&&'dark:bg-green-400  bg-green-200'
+              (feedbackVisible&&selectedChoices[index+1]&& choice.isAnswer)&&'dark:bg-green-700  bg-green-200'||isSelectedAll&& choice.isAnswer&&'dark:bg-green-700  bg-green-200'
             } ${
               selectedChoices[(index+1)]?.choiceIndex === ind.toString() &&feedbackVisible&&
               selectedChoices[(index+1)]?.isCorrect
-                ? 'dark:bg-green-400 bg-green-200'
+                ? 'dark:bg-green-700 bg-green-200'
                 : feedbackVisible&&selectedChoices[(index+1)]?.choiceIndex === ind.toString()
-                ? 'dark:bg-red-400 bg-red-200'
+                ? 'dark:bg-red-700 bg-red-200'
                 : ''
             }`}>
              <button
@@ -89,9 +89,9 @@ const onSubmit=()=>{
         choice.isAnswer
       );
     }}
-    className={`h-4 w-4 disabled:cursor-not-allowed disabled:outline-blue-400 disabled:dark:outline-blue-500 outline outline-2 border-2  dark:border-gray-700 border-white dark:outline-blue-600 outline-blue-500 rounded-full  ${
+    className={`h-4 w-4 disabled:cursor-not-allowed disabled:outline-blue-400 disabled:dark:outline-blue-600 outline outline-2 border-2  dark:border-gray-700 border-white dark:outline-blue-700 outline-blue-500 rounded-full  ${
       selectedChoices[index+1]?.choiceIndex === ind.toString()
-        ? 'bg-blue-400 dark:bg-blue-600 disabled:dark:bg-blue-400 disabled:bg-blue-300'
+        ? 'bg-blue-400 dark:bg-blue-800 disabled:dark:bg-blue-700 disabled:bg-blue-300'
         : 'bg-white dark:bg-gray-700'
     }`}
   >
