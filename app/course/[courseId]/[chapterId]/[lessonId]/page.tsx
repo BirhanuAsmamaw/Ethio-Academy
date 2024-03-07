@@ -14,6 +14,7 @@ import Header from "@/components/Header";
 import CustomeSheet from "@/components/customSheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import LessonBlur from "./lessonBlur";
+import { getCurrentUser } from "@/actions/users/currentUser";
 
 
 interface IParams{
@@ -22,15 +23,21 @@ interface IParams{
 const LessonPage = async({params}:{params:IParams}) => {
 
   const lesson=await getLessonById(params.lessonId);
+
+  const user=await getCurrentUser();
   
-console.log("lessons data",lesson);
+const isCoursePayed=user?.payedCourses.some((payedCourse) =>
+payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)
+);
+
+
   if(!lesson){
     return <div className=""><CourseSceleton/> </div>
   }
 
   return (<>
   <Navbar/>
-  <LessonBlur/>
+  {!isCoursePayed&&<LessonBlur/>}
   <Header
     title={`${lesson.title}`}
     description={`${lesson.title}`}
