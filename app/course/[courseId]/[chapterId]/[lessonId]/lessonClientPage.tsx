@@ -48,8 +48,8 @@ if(reloadPage){
   return (<>
   <Navbar/>
   <Header
-    title={`${lesson.title}`}
-    description={`${lesson.title}`}
+    title={`${lesson?.title}`}
+    description={`${lesson?.title}`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
   <MainLayout>
@@ -58,21 +58,21 @@ if(reloadPage){
         <p className=" font-semibold">Content</p>
       </div>}>
         <div className="space-y-2 w-full overflow-y-auto">
-        <CourseContent course={lesson.chapter.course}/>
+        <CourseContent course={lesson?.chapter?.course}/>
         </div>
       </CustomeSheet>
     
 
 <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
-<h1 className="text-lg md:xl lg:2xl font-medium md:font-semibold lg:font-bold">{lesson.title}</h1>
+<h1 className="text-lg md:xl lg:2xl font-medium md:font-semibold lg:font-bold">{lesson?.title}</h1>
 
 <div className="p-2 my-6">
  <video
      className="w-full h-auto max-w-full"
      controls
-     poster={lesson.videoThumbnail || ''}
+     poster={lesson?.videoThumbnail || ''}
    >
-     <source src={lesson.videoUrl || ''} type="video/mp4"  />
+     <source src={lesson?.videoUrl || ''} type="video/mp4"  />
      Your browser does not support the video tag.
    </video></div>
 
@@ -118,7 +118,7 @@ if(reloadPage){
       </SubLayout>
 
     <div className="fixed w-[400px]  hidden lg:block top-20 right-4">
-      <CourseContent course={lesson.chapter.course}/>
+      <CourseContent course={lesson?.chapter?.course}/>
     </div>
     </MainLayout></> );
 }}
