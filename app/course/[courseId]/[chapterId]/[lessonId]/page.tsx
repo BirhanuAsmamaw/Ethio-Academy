@@ -12,6 +12,7 @@ import SubLayout from "@/components/layouts/subLayout";
 import CourseContent from "../../courseContent";
 import Header from "@/components/Header";
 import CustomeSheet from "@/components/customSheet";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 
 interface IParams{
@@ -45,9 +46,49 @@ console.log("lessons data",lesson);
     
 
 <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
-<LessonClient lesson={lesson}/>
-<hr  className="border-y-2 py-4 border-dashed dark:border-gray-600"/>
-<QuizClient lesson={lesson}/>
+<h1 className="text-lg md:xl lg:2xl font-medium md:font-semibold lg:font-bold">{lesson.title}</h1>
+
+<div className="p-2 my-6">
+ <video
+     className="w-full h-auto max-w-full"
+     controls
+     poster={lesson.videoThumbnail || ''}
+   >
+     <source src={lesson.videoUrl || ''} type="video/mp4"  />
+     Your browser does not support the video tag.
+   </video></div>
+
+
+
+<Tabs defaultValue="notes" className=" shadow-lg dark:shadow-black border dark:border-gray-700 rounded-[10px] min-w-[350px] max-w-[600px] bg-white dark:bg-gray-800">
+  <TabsList className="grid w-full grid-cols-2">
+    <TabsTrigger value="notes">Notes</TabsTrigger>
+    <TabsTrigger value="exam">Exam</TabsTrigger>
+    <TabsTrigger value="handout">handout</TabsTrigger>
+    <TabsTrigger value="Q&A">Q&A</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="notes">
+  <LessonClient lesson={lesson}/>
+  </TabsContent>
+
+
+
+  <TabsContent value="exam">
+  <QuizClient lesson={lesson}/>
+  </TabsContent>
+
+  <TabsContent value="handout">
+  <p>handouts  like pdf ppt</p>
+  </TabsContent>
+
+  <TabsContent value="Q&A">
+  <p>Question and Answers</p>
+  </TabsContent>
+</Tabs>
+
+
+
       </SubLayout>
 
     <div className="fixed w-[400px]  hidden lg:block top-20 right-4">

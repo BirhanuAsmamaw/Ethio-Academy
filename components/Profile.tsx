@@ -25,7 +25,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
     className={`
     relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full
   `}>
-      <Image width={10} height={10} className={`${!user?.image&&'hidden'} bg-gray-600 rounded-full aspect-square h-full w-full `}   src={user?.image? user?.image:"/"} alt="Rounded avatar"/>
+      <Image width={7} height={7} className={`${!user?.image&&'hidden'} bg-gray-600 rounded-full object-contain aspect-square h-full w-full `}   src={user?.image? user?.image:"/"} alt="Rounded avatar"/>
   </div>
 
 
