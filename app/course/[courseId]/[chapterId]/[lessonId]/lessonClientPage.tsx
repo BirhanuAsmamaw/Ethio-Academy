@@ -1,4 +1,3 @@
-
 "use client"
 import CourseSceleton from "../courseSceleton";
 import Navbar from "@/components/navbar/Navbar";
