@@ -13,6 +13,7 @@ import CourseContent from "../../courseContent";
 import Header from "@/components/Header";
 import CustomeSheet from "@/components/customSheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import LessonBlur from "./lessonBlur";
 
 
 interface IParams{
@@ -29,6 +30,7 @@ console.log("lessons data",lesson);
 
   return (<>
   <Navbar/>
+  <LessonBlur/>
   <Header
     title={`${lesson.title}`}
     description={`${lesson.title}`}
