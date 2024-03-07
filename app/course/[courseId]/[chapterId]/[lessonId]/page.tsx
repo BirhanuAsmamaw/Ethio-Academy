@@ -37,7 +37,7 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 
   return (<>
   <Navbar/>
-  {!isCoursePayed&&<LessonBlur course={lesson.chapter.course}/>}
+  {!isCoursePayed&&lesson.chapter.course.price&&<LessonBlur course={lesson.chapter.course}/>}
   <Header
     title={`${lesson.title}`}
     description={`${lesson.title}`}
