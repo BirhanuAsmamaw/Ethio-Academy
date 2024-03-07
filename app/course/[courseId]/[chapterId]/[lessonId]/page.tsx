@@ -61,11 +61,11 @@ console.log("lessons data",lesson);
 
 
 <Tabs defaultValue="notes" className="w-full">
-  <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
-    <TabsTrigger className="border dark:border-gray-600 rounded-full" value="notes">Notes</TabsTrigger>
-    <TabsTrigger  className="border dark:border-gray-600 rounded-full" value="exam">Exam</TabsTrigger>
-    <TabsTrigger  className="border dark:border-gray-600 rounded-full" value="handout">handout</TabsTrigger>
-    <TabsTrigger  className="border dark:border-gray-600 rounded-full" value="Q&A">Q&A</TabsTrigger>
+  <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 gap-4">
+    <TabsTrigger className=" rounded-full" value="notes">Notes</TabsTrigger>
+    <TabsTrigger  className=" rounded-full" value="exam">Exam</TabsTrigger>
+    <TabsTrigger  className=" rounded-full" value="handout">handout</TabsTrigger>
+    <TabsTrigger  className=" rounded-full" value="Q&A">Q&A</TabsTrigger>
   </TabsList>
 
   <TabsContent value="notes">
