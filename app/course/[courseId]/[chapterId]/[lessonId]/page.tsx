@@ -50,7 +50,7 @@ console.log("lessons data",lesson);
 <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
 <h1 className="text-lg md:xl lg:2xl font-medium md:font-semibold lg:font-bold">{lesson.title}</h1>
 
-<div className="p-2 my-6">
+<div className=" my-6">
  <video
      className="w-full h-auto max-w-full"
      controls
