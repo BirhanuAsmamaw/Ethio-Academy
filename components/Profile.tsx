@@ -7,6 +7,7 @@ import Image from "next/image";
 import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
 import CDropDown from "./dropdown/CustomeDropdown/CDropDown";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 interface UserProfileProps{
  
   user:any;
@@ -21,12 +22,12 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
     const names=user.name.split(" ")
   return ( 
   <CDropDown
-  title={<><div 
-    className={`
-    relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full
-  `}>
-      <Image width={7} height={7} className={`${!user?.image&&'hidden'} bg-gray-600 rounded-full object-contain aspect-square h-full w-full `}   src={user?.image? user?.image:"/"} alt="Rounded avatar"/>
-  </div>
+  title={<>
+
+  <Avatar className={`${!user?.image&&'hidden'} h-7 w-7`}>
+      <AvatarImage src={user?.image? user?.image:"/"} alt="image" />
+      <AvatarFallback>{names[0]? names[0][0]:''}{names[1]?names[1][0]:''}</AvatarFallback>
+    </Avatar>
 
 
   <div className={`${user?.image&&'hidden'} border border-stone-300 dark:border-gray-700 relative inline-flex items-center justify-center w-7 h-7 overflow-hidden bg-gray-200 rounded-full dark:bg-gray-600`}>
