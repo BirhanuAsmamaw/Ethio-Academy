@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 const LessonBlur = () => {
   const router=useRouter();
-  return ( <div className="flex justify-center items-center h-screen w-full bg-black bg-opacity-30">
+  return ( <div className="fixed flex justify-center items-center h-screen w-full bg-black bg-opacity-30">
     <Container
     childern={
       <div className="p-2 flex flex-col gap-2">
