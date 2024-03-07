@@ -2,10 +2,24 @@
 "use client"
 import Container from "@/components/container/container";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const LessonBlur = () => {
   const router=useRouter();
-  return ( <div className="fixed flex justify-center items-center h-screen w-full bg-black bg-opacity-30">
+  const [reloadPage, setReloadPage] = useState(false);
+
+  useEffect(() => {
+    // Set a timeout to reload the page after 1 minute (60,000 milliseconds)
+    const timeoutId = setTimeout(() => {
+      setReloadPage(true);
+    }, 6000);
+
+    // Cleanup the timeout when the component unmounts
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  
+  return ( <>{reloadPage&&<div className="fixed flex justify-center items-center h-screen w-full bg-black bg-opacity-30">
     <Container
     childern={
       <div className="p-2 flex flex-col gap-2">
@@ -32,7 +46,7 @@ const LessonBlur = () => {
       </div>
     }/>
 
-  </div> );
+  </div>}</> );
 }
  
 export default LessonBlur;
