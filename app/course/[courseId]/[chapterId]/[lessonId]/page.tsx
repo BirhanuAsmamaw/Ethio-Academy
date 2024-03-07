@@ -27,7 +27,7 @@ const LessonPage = async({params}:{params:IParams}) => {
   const user=await getCurrentUser();
   
 const isCoursePayed=user?.payedCourses.some((payedCourse) =>
-payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)
+payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&payedCourse.status
 );
 
 
