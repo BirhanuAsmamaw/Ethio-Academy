@@ -18,7 +18,27 @@ const CategorCDrobDown = () => {
     {
       name: "Development",
       url: "/category/Development"
-    }
+    },
+    {
+      name: "Software and IT",
+      url: "/category/SoftwareAndIT"
+    },
+    {
+      name: "Electrical and Computer Engineering",
+      url: "/category/ElectricalEngineering"
+    },
+    {
+      name: "Mechanical  and Industrial Engineering",
+      url: "/category/MechanicalEngineering"
+    },
+    {
+      name: "Chemical Engineering",
+      url: "/category/ChemicalEngineering"
+    },
+    {
+      name: "Biomedical Engineering",
+      url: "/category/BiomedicalEngineering"
+    },
   ]
   return ( 
     <CDropDown chevron title={
