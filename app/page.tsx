@@ -94,7 +94,7 @@ const courses=await getCourses()
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>What to expect from Ethio Exams Academy courses</h1>
 
 
-<Accordion type="single" collapsible className="w-full p-1 " >
+<Accordion type="single" collapsible className="w-full p-1 z-20 " >
 
       {AboutAcademy.map((about:any,index:number) =>{
         return <AccordionItem key={index} value={`${index}`}className="border bg-white dark:bg-gray-800  border-slate-200 dark:border-gray-600 px-2 md:px-6 m-2 rounded-[6px] ">
