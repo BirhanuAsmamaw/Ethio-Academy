@@ -32,6 +32,11 @@ const LessonClientPage:React.FC<LessonClientPageProps> = ({lesson}) => {
 
 
 
+  // const user=user?.payedCourses.some((payedCourse) =>
+  //   payedCourse.courses.some((course) => course.courseId === courseId)
+  // );
+
+
 if(reloadPage){
   return <LessonBlur/>
 
@@ -47,19 +52,19 @@ if(reloadPage){
   return (<>
   <Navbar/>
   <Header
-    title={`${lesson?.title}`}
-    description={`${lesson?.title}`}
+    title={`${lesson.title}`}
+    description={`${lesson.title}`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
   <MainLayout>
    
-      <CustomeSheet selectedLabel={<></>} unselectedLabel={<div  className="lg:hidden fixed right-0 top-14 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-xl z-50 p-1 md:p-2 rounded-l-full border-l-2 ">
+      {/* <CustomeSheet selectedLabel={<></>} unselectedLabel={<div  className="lg:hidden fixed right-0 top-14 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-xl z-50 p-1 md:p-2 rounded-l-full border-l-2 ">
         <p className=" font-semibold">Content</p>
       </div>}>
         <div className="space-y-2 w-full overflow-y-auto">
         <CourseContent course={lesson?.chapter?.course}/>
         </div>
-      </CustomeSheet>
+      </CustomeSheet> */}
     
 
 <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
@@ -116,9 +121,9 @@ if(reloadPage){
 
       </SubLayout>
 
-    <div className="fixed w-[400px]  hidden lg:block top-20 right-4">
+    {/* <div className="fixed w-[400px]  hidden lg:block top-20 right-4">
       <CourseContent course={lesson?.chapter?.course}/>
-    </div>
+    </div> */}
     </MainLayout></> );
 }}
  
