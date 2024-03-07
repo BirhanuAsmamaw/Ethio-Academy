@@ -69,21 +69,29 @@ console.log("lessons data",lesson);
   </TabsList>
 
   <TabsContent value="notes">
-  <LessonClient lesson={lesson}/>
+ <div className="mt-20">
+ <LessonClient lesson={lesson}/>
+ </div>
   </TabsContent>
 
 
 
   <TabsContent value="exam">
+  <div className="mt-20">
   <QuizClient lesson={lesson}/>
+  </div>
   </TabsContent>
 
   <TabsContent value="handout">
-  <p>handouts  like pdf ppt</p>
+  <div className="mt-20">
+  <p className="text-2xl font-bold p-2">handouts  like pdf ppt</p>
+  </div>
   </TabsContent>
 
   <TabsContent value="Q&A">
+  <div className="mt-20">
   <p>Question and Answers</p>
+  </div>
   </TabsContent>
 </Tabs>
 
