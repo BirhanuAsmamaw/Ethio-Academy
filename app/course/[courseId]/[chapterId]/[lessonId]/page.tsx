@@ -60,7 +60,7 @@ console.log("lessons data",lesson);
 
 
 
-<Tabs defaultValue="notes" className=" shadow-lg dark:shadow-black border dark:border-gray-700 rounded-[10px] min-w-[350px] max-w-[600px] bg-white dark:bg-gray-800">
+<Tabs defaultValue="notes" className="w-full">
   <TabsList className="grid w-full grid-cols-2">
     <TabsTrigger value="notes">Notes</TabsTrigger>
     <TabsTrigger value="exam">Exam</TabsTrigger>
