@@ -4,8 +4,9 @@ import Heading from '@/components/Heading/Heading'
 import Button from '@/components/button/button'
 import Input from '@/components/input/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { useExamId } from '@/hooks/useExamsId'
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
  interface ExamsDepartmentProps{
@@ -22,8 +23,10 @@ const ExamsDepartment:React.FC<ExamsDepartmentProps> = ({examTypes}) => {
     },
   })
   
-
-
+const {onSetExamId}=useExamId()
+useEffect(()=>{
+  onSetExamId(examIdValue)
+},[examIdValue])
 
 
 
