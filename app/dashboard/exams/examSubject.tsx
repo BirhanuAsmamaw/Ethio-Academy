@@ -43,6 +43,7 @@ useEffect(() => {
 
 
 console.log("examsId: ", examId)
+console.log("departments",departments);
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
