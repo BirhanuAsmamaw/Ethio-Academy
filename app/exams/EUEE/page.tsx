@@ -24,7 +24,7 @@ const EUEEPage = () => {
           return  <ExamsCategoryCard
           key={index}
            name={euee.subject}
-           url={euee.url}
+           url={`/exams/EUEE/${euee.url}`}
            image={euee.cover}
            />
          })}
