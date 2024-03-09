@@ -6,6 +6,7 @@ import Input from '@/components/input/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useExamId } from '@/hooks/useExamsId'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
@@ -13,6 +14,7 @@ import toast from 'react-hot-toast'
   examTypes:any[]|null
  }
 const ExamsDepartment:React.FC<ExamsDepartmentProps> = ({examTypes}) => {
+  const router=useRouter()
   const [isLoading, setIsLoading]=useState(false)
   const [examIdValue,setExamIdValue]=useState("")
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
@@ -26,7 +28,8 @@ const ExamsDepartment:React.FC<ExamsDepartmentProps> = ({examTypes}) => {
 const {onSetExamId}=useExamId()
 useEffect(()=>{
   onSetExamId(examIdValue)
-},[examIdValue])
+  router.refresh()
+},[examIdValue,router])
 
 
 
@@ -38,6 +41,7 @@ useEffect(()=>{
     
     axios.post('/api/department',data).then(()=>{
       toast.success("Department created successfully")
+      router.refresh()
     })
     .catch((error)=>{
       toast.error(error.message)
