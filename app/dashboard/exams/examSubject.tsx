@@ -48,7 +48,7 @@ console.log("departments",departments);
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
     
-    axios.post('/api/subject',data).then(()=>{
+    axios.post('/api/subject',{...data,departmentId:departmentIdValue}).then(()=>{
       toast.success("Subject created successfully")
     })
     .catch((error)=>{

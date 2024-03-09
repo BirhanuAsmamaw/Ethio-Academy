@@ -40,7 +40,7 @@ useEffect(()=>{
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
-    console.log("department",{...data,examId:examIdValue})
+   
     
     axios.post('/api/department',{...data,examId:examIdValue}).then(()=>{
       toast.success("Department created successfully")
