@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { ToggleProvider } from "./toggleProvider";
 import { ThemeProvider } from "./themeProvider";
 import CartProvider from "./cartProvider";
+import { ExamsIdProvider } from "./examsIdProvider";
 
 interface AppProviderProps{
   children:ReactNode;
@@ -14,7 +15,7 @@ const AppProvider:React.FC<AppProviderProps> = ({children}) => {
     disableTransitionOnChange
   ><ToggleProvider>
    <CartProvider>
-   {children}
+ <ExamsIdProvider> {children}</ExamsIdProvider>
    </CartProvider>
   </ToggleProvider> </ThemeProvider>);
 }

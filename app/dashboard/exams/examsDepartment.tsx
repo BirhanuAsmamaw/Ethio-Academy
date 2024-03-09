@@ -29,7 +29,7 @@ const {onSetExamId}=useExamId()
 useEffect(()=>{
   onSetExamId(examIdValue)
   router.refresh()
-},[examIdValue,router])
+},[examIdValue])
 
 
 
