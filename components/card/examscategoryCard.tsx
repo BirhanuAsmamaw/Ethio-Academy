@@ -8,7 +8,7 @@ interface ExamsCategoryCardProps{
   image: any;
 }
 const ExamsCategoryCard:React.FC<ExamsCategoryCardProps> = ({name,url,image}) => {
-  return ( <Link href={`/exams/${url}`}  className="no-underline block w-full md:max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+  return ( <Link href={`/exams/${url}`}  className="no-underline block w-full md:max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 group">
     
   <div className="flex justify-around gap-2">
     <div className="w-full">
@@ -16,7 +16,7 @@ const ExamsCategoryCard:React.FC<ExamsCategoryCardProps> = ({name,url,image}) =>
     </div>
     <div className="">
     
-    <p className="font-medium text-base text-gray-700 font-semibold dark:text-gray-400">{name}</p>
+    <p className="font-medium text-base text-gray-700 font-semibold  dark:text-gray-400 group-hover:dark:text-white ">{name} Exams</p>
     </div>
   </div>
     </Link>
