@@ -32,7 +32,7 @@ model Account {
 model User {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?   @unique
+  email         String  @unique
   emailVerified DateTime?
   image         String?
   hash String?
@@ -99,8 +99,10 @@ model Question{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-   lesson Lesson @relation(fields: [lessonId], references: [id])
-   lessonId String @db.ObjectId
+   lesson Lesson? @relation(fields: [lessonId], references: [id])
+   lessonId String? @db.ObjectId
+   department    Department     @relation( fields: [departmentId], references: [id])
+   departmentId String @db.ObjectId
    title String
    chooses Choose[]
    year String
@@ -182,10 +184,36 @@ type Customer{
 
 
 
+model Exam{
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+   examType   String   @unique
+   cover String?
+   departments Department[]
+}
+
+model Department{
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+   exam     Exam     @relation( fields: [examId], references: [id])
+   examId String @db.ObjectId
+   departmentName String   @unique
+   cover String?
+   questions Question[]
+   subject  Subject[]
+}
 
 
-
-
+model Subject{
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+  department    Department     @relation( fields: [departmentId], references: [id])
+   departmentId String @db.ObjectId
+   subjectName  String   @unique
+}
 
 
 

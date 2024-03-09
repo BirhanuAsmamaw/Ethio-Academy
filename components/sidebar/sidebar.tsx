@@ -1,5 +1,5 @@
 "use client"
-
+import { MdOutlineCategory } from "react-icons/md";
 import { sidebarData } from "@/lib/sidebarData";
 import SideBarItems from "./sidebarItems";
 import Link from "next/link";
@@ -15,6 +15,9 @@ const Sidebar = () => {
     <Link className=" flex gap-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           href="/dashboard"> <p><MdOutlineDashboard size={20}/></p><p>Dashbord</p> </Link>
      <SideBarItems sidebarData={sidebarData}/>
+     <Link className=" flex gap-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+          href="/dashboard/exams"> <p><MdOutlineCategory size={20}/></p><p>Exams Category</p> </Link>
+
  </div> );
 }
  
