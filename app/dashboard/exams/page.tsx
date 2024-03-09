@@ -132,7 +132,7 @@ const onCancelImage = () => {
 
 
   
-  return ( <div className="py-10 flex flex-col bg-white dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
+  return ( <div className="py-10 flex flex-col bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
 
 
 
@@ -156,7 +156,10 @@ const onCancelImage = () => {
           />
         </div>
  
+        <div className="pt-10 flex-col items-center justify-center w-full ">
+
         <Input id="examType" register={register} errors={errors}  label="Exams Type" type="text" required/>
+        </div>
       </div>
 
       <div className="w-full mt-10 ">
