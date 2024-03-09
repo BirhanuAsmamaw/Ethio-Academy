@@ -17,6 +17,12 @@ const ExamsDepartment:React.FC<ExamsDepartmentProps> = ({examTypes}) => {
   const router=useRouter()
   const [isLoading, setIsLoading]=useState(false)
   const [examIdValue,setExamIdValue]=useState("")
+
+  const {onSetExamId}=useExamId()
+useEffect(()=>{
+  onSetExamId(examIdValue)
+  router.refresh()
+},[examIdValue])
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
       examId:examIdValue,
@@ -25,11 +31,7 @@ const ExamsDepartment:React.FC<ExamsDepartmentProps> = ({examTypes}) => {
     },
   })
   
-const {onSetExamId}=useExamId()
-useEffect(()=>{
-  onSetExamId(examIdValue)
-  router.refresh()
-},[examIdValue])
+
 
 
 
@@ -38,9 +40,9 @@ useEffect(()=>{
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
-    console.log("department",data)
+    console.log("department",{...data,examId:examIdValue})
     
-    axios.post('/api/department',data).then(()=>{
+    axios.post('/api/department',{...data,examId:examIdValue}).then(()=>{
       toast.success("Department created successfully")
       router.refresh()
     })
