@@ -63,7 +63,7 @@ useEffect(()=>{
             (value)=>setExamIdValue(value)
           }>
       <SelectTrigger  className="w-[180px] bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
-        <SelectValue  placeholder="Select a Quizzes Year" />
+        <SelectValue  placeholder="Select Exam Type" />
       </SelectTrigger>
       <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
         <SelectGroup>

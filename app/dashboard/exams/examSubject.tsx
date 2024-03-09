@@ -42,7 +42,7 @@ useEffect(() => {
 
 
 
-
+console.log("examsId: ", examId)
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
@@ -70,7 +70,7 @@ useEffect(() => {
             (value)=>setDepartmentIdValue(value)
           }>
       <SelectTrigger  className="w-[180px] bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
-        <SelectValue  placeholder="Select a Quizzes Year" />
+        <SelectValue  placeholder="Select Department" />
       </SelectTrigger>
       <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
         <SelectGroup>
