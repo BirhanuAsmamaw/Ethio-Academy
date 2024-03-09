@@ -1,5 +1,6 @@
 "use client"
 import Heading from '@/components/Heading/Heading'
+import Button from '@/components/button/button'
 import FileInput from '@/components/input/fileInput'
 import Input from '@/components/input/input'
 import firebaseApp from '@/lib/firebasedb'
@@ -13,7 +14,7 @@ const ExamsCategory = () => {
   const [image,setImage]=useState<File|null>(null)
 const [isLoading, setIsLoading]=useState(false)
   const [selectedImage, setSelectedImage] = useState<any>(null);
-  const {register,formState:{errors}}=useForm<FieldValues>({
+  const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
       cover:null,
       examType:""
@@ -140,6 +141,7 @@ const onCancelImage = () => {
         <h1 className="text-xl dark:text-white font-bold"> Exams Category</h1>
       </div>
 
+      <div className="w-full">
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between">
         {/* create exams category */}
         <div className="w-full   flex flex-col gap-1">
@@ -160,6 +162,10 @@ const onCancelImage = () => {
 
         <Input id="examType" register={register} errors={errors}  label="Exams Type" type="text" required/>
         </div>
+      </div>
+      <div className="w-full flex justify-end  mt-6 py-6 px-4 ">
+        <Button isDisabled={isLoading} title={isLoading?'Loading...':'Submit'} onClick={handleSubmit(onSubmit)}/>
+      </div>
       </div>
 
       <div className="w-full mt-10 ">
