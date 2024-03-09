@@ -1,12 +1,15 @@
 
 import Banner from '@/components/banner'
 import ExamsCategoryCard from '@/components/card/examscategoryCard'
+import Navbar from '@/components/navbar/Navbar'
 import { eueeSubjects } from '@/lib/eueeSubjects'
 import React from 'react'
 
 const EUEEPage = () => {
   return (
-    <div className='min-h-screen w-full flex flex-col gap-10 '>
+    <>
+    <Navbar/>
+    <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner>
         <div className="flex  justify-center items-center h-[200px]">
@@ -30,6 +33,7 @@ const EUEEPage = () => {
       </div>
 
     </div>
+    </>
   )
 }
 
