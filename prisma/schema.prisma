@@ -107,6 +107,7 @@ model Question{
    chooses Choose[]
    year String
    explanation String?
+   subject String?
 
 }
 

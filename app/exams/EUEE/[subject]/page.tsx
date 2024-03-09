@@ -1,11 +1,13 @@
 import Banner from '@/components/banner'
 import YearExamCard from '@/components/card/yearExamsCard'
+import Navbar from '@/components/navbar/Navbar'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
 
 const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
-  return (
-    <div className='min-h-screen w-full flex flex-col gap-10 '>
+  return (<>
+  <Navbar/>
+  <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner>
         <div className="flex  justify-center items-center h-[200px]">
@@ -24,7 +26,8 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
         </div>
       </div>
 
-    </div>
+    </div></>
+    
   )
 }
 
