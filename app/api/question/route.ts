@@ -3,6 +3,7 @@ import prisma from "@/lib/prismadb"
 export async function POST(req:Request) {
   const body=await req.json();
   const {
+    departmentId,
     lessonId,
     title ,
     chooses ,
@@ -20,6 +21,7 @@ export async function POST(req:Request) {
 
      const newQuestions= await prisma.question.create({
        data:{
+        departmentId: departmentId,
         lessonId:lessonId,
         title:title,
         chooses:chooses,

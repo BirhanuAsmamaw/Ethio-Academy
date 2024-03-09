@@ -101,8 +101,8 @@ model Question{
    updatedAt     DateTime  @updatedAt
    lesson Lesson? @relation(fields: [lessonId], references: [id])
    lessonId String? @db.ObjectId
-   department    Department     @relation( fields: [departmentId], references: [id])
-   departmentId String @db.ObjectId
+   department    Department?     @relation( fields: [departmentId], references: [id])
+   departmentId String? @db.ObjectId
    title String
    chooses Choose[]
    year String
@@ -210,8 +210,8 @@ model Subject{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-  department    Department     @relation( fields: [departmentId], references: [id])
-   departmentId String @db.ObjectId
+  department    Department    @relation( fields: [departmentId], references: [id])
+   departmentId String  @db.ObjectId
    subjectName  String   @unique
 }
 
