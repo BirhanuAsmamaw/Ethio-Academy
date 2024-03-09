@@ -10,6 +10,8 @@ import Header from '@/components/Header'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { AboutAcademy } from '@/lib/aboutAcademy';
 import { getCourses } from '@/actions/courses/getCourses';
+import { getAllExamsCategory } from '@/actions/examsCategory/getAllExamsCategry';
+import ExamsCategoryCard from '@/components/card/examscategoryCard';
 
 
 
@@ -17,6 +19,7 @@ import { getCourses } from '@/actions/courses/getCourses';
 export default async function Home() {
 
 const courses=await getCourses()
+const examsCategory=await getAllExamsCategory();
 
   return (
     <>
@@ -62,7 +65,7 @@ const courses=await getCourses()
 
       </div>
 
-     
+
 
 
 
@@ -83,6 +86,25 @@ const courses=await getCourses()
 
 
       </div>
+
+
+{/* 
+EXAMS CATEGORY */}
+<div className="w-full flex flex-col gap-6 py-10">
+
+<h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Exams</h1>
+
+<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-8 p-4 md:px-10'>
+       {examsCategory?.map((exam)=>{
+        return <ExamsCategoryCard key={exam.id} name={exam.examType} url={exam.examType} image={exam.cover}/>
+       })}
+
+      </div>
+</div>
+      
+
+
+
 
 
 
