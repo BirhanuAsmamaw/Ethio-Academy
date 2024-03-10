@@ -93,7 +93,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
       <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
         <SelectGroup>
           <SelectLabel>Select Subject</SelectLabel>
-         {subjects.subjects?.map((subject:any,index:number) =>{
+         {subjects.subject?.map((subject:any,index:number) =>{
          return  <SelectItem className="w-full hover:bg-gray-200  hover:dark:bg-gray-600" key={index} value={subject.id}>{subject.subjectName}</SelectItem >
          })}
           
