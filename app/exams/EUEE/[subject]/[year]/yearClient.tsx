@@ -159,7 +159,7 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
                 <div className="flex justify-center w-full">
                   <div className="w-48 h-48 flex justify-center items-center rounded-full border-2">
                     <p className="text-2xl font-bold">
-                      {score}/{filteredQuestion.length}
+                      {score}/{Questions.length}
                     </p>
                   </div>
                 </div>
