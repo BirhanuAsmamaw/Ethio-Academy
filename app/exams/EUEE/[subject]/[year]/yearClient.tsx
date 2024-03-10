@@ -94,18 +94,18 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
                           (feedbackVisible &&
                             selectedChoices[index + 1] &&
                             choice.isAnswer &&
-                            "bg-green-200") ||
-                          (isSelectedAll && choice.isAnswer && "bg-green-200")
+                            "bg-green-200 dark:bg-green-700") ||
+                          (isSelectedAll && choice.isAnswer && "bg-green-200 dark:bg-green-700")
                         } ${
                           selectedChoices[index + 1]?.choiceIndex ===
                             ind.toString() &&
                           feedbackVisible &&
                           selectedChoices[index + 1]?.isCorrect
-                            ? "bg-green-200"
+                            ? "bg-green-200 dark:bg-green-700"
                             : feedbackVisible &&
                               selectedChoices[index + 1]?.choiceIndex ===
                                 ind.toString()
-                            ? "bg-red-200"
+                            ? "bg-red-200 dark:bg-red-700"
                             : ""
                         }`}
                       >
@@ -124,8 +124,8 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
                           className={`h-4 w-4 disabled:cursor-not-allowed disabled:outline-blue-400  outline outline-2 border-2 border-white outline-blue-500 rounded-full  ${
                             selectedChoices[index + 1]?.choiceIndex ===
                             ind.toString()
-                              ? "bg-blue-400 disabled:bg-blue-300"
-                              : "bg-white"
+                              ? "bg-blue-400  dark:bg-blue-800 disabled:dark:bg-blue-700 disabled:bg-blue-300"
+                              : "bg-white dark:bg-gray-700"
                           }`}
                         ></button>
                         <p>{choice.text}</p>
@@ -137,12 +137,15 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
                 isSelectedAll ? (
                   <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value="item-1" className="border-none">
-                      <AccordionTrigger className="hover:no-underline">
+                      <AccordionTrigger className="hover:no-underline justify-start">
+                        
+                        <p className="text-lg">
                         Explanation
+                        </p>
                       </AccordionTrigger>
                       <AccordionContent>
-                        <div className="p-2 bg-green-50">
-                          <p>{question.explanation}</p>
+                        <div className="p-2 bg-green-50 dark:bg-gray-700">
+                        <div dangerouslySetInnerHTML={{__html:question.explanation}}></div>
                         </div>
                       </AccordionContent>
                     </AccordionItem>
