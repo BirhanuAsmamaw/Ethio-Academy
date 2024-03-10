@@ -36,8 +36,8 @@ export const eueeSubjects=[
   },
 
   {
-    subject:"Phyics",
-    url:"Phyics",
+    subject:"Physics",
+    url:"Physics",
     cover:Phyics
   },
   {
