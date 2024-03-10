@@ -4,6 +4,7 @@ export async function POST(req:Request) {
   const body=await req.json();
   const {
     departmentId,
+    subject,
     lessonId,
     title ,
     chooses ,
@@ -12,7 +13,7 @@ export async function POST(req:Request) {
   } =body;
   try{
 
-    if(!lessonId || !title || !chooses.length || !year || !explanation) {
+    if( !title || !chooses.length || !year || !explanation) {
       return NextResponse.json({
         status: false,
         message:"Invalid  parameters"
@@ -21,6 +22,7 @@ export async function POST(req:Request) {
 
      const newQuestions= await prisma.question.create({
        data:{
+        subject:subject,
         departmentId: departmentId,
         lessonId:lessonId,
         title:title,

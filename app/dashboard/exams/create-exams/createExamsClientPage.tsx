@@ -1,8 +1,16 @@
 "use client"
 
 import Heading from '@/components/Heading/Heading'
+import Button from '@/components/button/button';
+import TextEditor from '@/components/editor/editor';
+import ChooseForm from '@/components/questionForm/chooseForm';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { examsYears } from '@/lib/examsYear';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
+
  
 interface  CreateExamsClientProps{
  
@@ -30,6 +38,102 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
     setSubjects(dep[0])}
   },[departments,departmentIdvalue])
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const router=useRouter();
+   const [isLoading,setLoading]=useState(false);
+   const [explanation,setExplanation]=useState("")
+    const [question,setQuestion]=useState<any>(
+        {Q:"",
+        year:"",
+        explanation:"",
+A:{
+    text:"",
+    isAnswer:false,
+},
+B:{
+    text:"",
+    isAnswer:false,
+},
+
+C:{
+    text:"",
+    isAnswer:false,
+},
+D:{
+    text:"",
+    isAnswer:false,
+},
+});
+
+
+
+
+const qData={
+  departmentId:departmentIdvalue,
+  subject:subjectValue,
+  year:question.year,
+  explanation:explanation,
+  title:question.Q,
+  chooses:[question.A,question.B,question.C,question.D]
+
+}
+
+const onSubmit=() => {
+
+
+  setLoading(true);
+
+  
+console.log('questionData',qData)
+
+  axios.post('/api/question',qData).then(()=>{
+    toast.success("Question created successfully")
+    router.refresh();
+  }).catch((error:any)=>{
+   
+    
+  }).finally(()=>{
+    setLoading(false);
+    setQuestion({Q:"",
+    year:"",
+    explanation:"",
+A:{
+text:"",
+isAnswer:false,
+},
+B:{
+text:"",
+isAnswer:false,
+},
+
+C:{
+text:"",
+isAnswer:false,
+},
+D:{
+text:"",
+isAnswer:false,
+},
+})
+  })
+    
+
+ 
+};
 
 
   return (<div className="py-10 flex flex-col bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
@@ -105,7 +209,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
     </div>
     </div>
 {/* add exams question */}
-
+<div className="w-full pt-10">
 
 <div className="p-4">
   <Select
@@ -198,9 +302,10 @@ onClick={onSubmit}
 </div>
 </div>
 </div>
+</div>
 
   </div>
-  </div>
+ 
   )
 }
 
