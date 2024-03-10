@@ -12,7 +12,7 @@ const ExamsCategoryCard:React.FC<ExamsCategoryCardProps> = ({name,url,image}) =>
     
   <div className="flex justify-around gap-2">
     <div className="w-full">
-    <Image height={100} width={100} src={image} alt='euee'/>
+    <Image height={100} width={100} src={image} alt={name}/>
     </div>
     <div className="">
     
