@@ -66,7 +66,7 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
   
   if (!Questions || !Questions.length){
     return (<div className="h-screen w-full flex justify-center items-center">
-      <NoExamNotification notification={`There are No ${subject} in ${year} Exams`} url={`exams/EUEE/${subject}`} label={`Click Here and See ${subject} Exams in Others Years`}/>
+      <NoExamNotification notification={`There are No ${subject} Exams in ${year} Year`} url={`/exams/EUEE/${subject}`} label={`Click Here and See ${subject} Exams in Others Years`}/>
     </div>)
   }
   return (<MainLayout>
