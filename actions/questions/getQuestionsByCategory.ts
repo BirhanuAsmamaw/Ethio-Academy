@@ -19,7 +19,7 @@ export async function getQuestionsByCategory(type: string, department: string, y
 
     if (subject) {
       whereClause.subject = subject;
-      whereClause.lesson.chapter.course.subject = subject;
+      
     }
 
     const selectedQuestion = await prisma.question.findMany({
