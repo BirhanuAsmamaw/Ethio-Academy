@@ -63,8 +63,7 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
 
 
   console.log('questions',Questions);
-  return (
-    <MainLayout>
+  return (<MainLayout>
       <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
         <div className="pt-10" id="quiz">
           <div className="p-2 py-10">

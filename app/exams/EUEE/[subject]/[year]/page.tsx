@@ -13,9 +13,7 @@ const EUEEYearExamsPage = async({params}:{
 
 
   const examQuestions=await getQuestionsByCategory("EUEE","Highschool",params.year,params.subject);
-  return (<>
-  <Navbar/>
-  <EUEEYearExamsClientPage subject={params.subject} year={params.year} Questions={examQuestions}/>
+  return (<><Navbar/><EUEEYearExamsClientPage subject={params.subject} year={params.year} Questions={examQuestions}/>
   </>)
  
 };
