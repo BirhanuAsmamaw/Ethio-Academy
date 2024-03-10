@@ -61,7 +61,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
     </div>
 
 
-    <div className="w-full   flex flex-col gap-1">
+    {departments?<div className="w-full   flex flex-col gap-1">
     <Select
            onValueChange={
             (value)=>setDepartmentIdValue(value)
@@ -72,17 +72,17 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
       <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
         <SelectGroup>
           <SelectLabel>Select Department</SelectLabel>
-         {departments.departments?.map((department:any,index:number) =>{
+         {departments?.departments?.map((department:any,index:number) =>{
          return  <SelectItem className="w-full hover:bg-gray-200  hover:dark:bg-gray-600" key={index} value={department.id}>{department.departmentName}</SelectItem >
          })}
           
         </SelectGroup>
       </SelectContent>
     </Select>
-    </div>
+    </div>:""}
 
 
-    <div className="w-full   flex flex-col gap-1">
+    {subjects?<div className="w-full   flex flex-col gap-1">
     <Select
            onValueChange={
             (value)=>setExamIdValue(value)
@@ -93,7 +93,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
       <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
         <SelectGroup>
           <SelectLabel>Select Subject</SelectLabel>
-         {subjects.subject?.map((subject:any,index:number) =>{
+         {subjects?.subject?.map((subject:any,index:number) =>{
          return  <SelectItem className="w-full hover:bg-gray-200  hover:dark:bg-gray-600" key={index} value={subject.id}>{subject.subjectName}</SelectItem >
          })}
           
@@ -101,7 +101,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
       </SelectContent>
     </Select>
 
-    </div>
+    </div>:""}
   </div>
   </div>
   )
