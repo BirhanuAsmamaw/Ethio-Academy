@@ -10,11 +10,7 @@ export async function getQuestionsByCategory(type: string, department: string, y
           examType: type,
         },
       },
-      lesson: {
-        chapter: {
-          course: {},
-        },
-      },
+      
     };
 
     if (subject) {
