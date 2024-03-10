@@ -8,15 +8,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Questions } from "@/lib/questions";
+
 import { useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
 interface EUEEYearExamsClientPageProps{
   subject:string,
-    year:string
+    year:string,
+    Questions:any[];
 }
-const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject,year}) => {
+const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject,year,Questions}) => {
   const [feedbackVisible, setFeedbackVisible] = useState(false);
   const [isSelectedAll, setSelectedAll] = useState(false);
   const [score, setScore] = useState(0);
@@ -74,7 +75,7 @@ const filteredQuestion=Questions.filter((question:any)=>question.category==="EUE
               {subject} in {year} EUEE Exams
             </h4>
           </div>
-          {filteredQuestion.map((question: any, index) => {
+          {filteredQuestion.map((question: any, index:number) => {
             return (
               <div key={index} className="">
                 <div className="flex border-b border-double border-green-600 justify-between">
