@@ -15,15 +15,17 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
   const [subjects,setSubjects]=useState<any|null>(null)
 
   useEffect(()=>{
+    if(exams){
     const Ex=exams.filter((exam)=>exam.id==examIdvalue)
-    setDepartments(Ex[0])
+    setDepartments(Ex[0])}
   },[exams,examIdvalue])
 
 
 
   useEffect(()=>{
+    if (departments){
     const dep=departments.departments.filter((department:any)=>department.id==departmentIdvalue)
-    setSubjects(dep[0])
+    setSubjects(dep[0])}
   },[departments,departmentIdvalue])
 
 
