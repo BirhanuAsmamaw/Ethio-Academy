@@ -36,7 +36,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
       <Heading title={'Exams Subject'}/>
     </div>
 
-  <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between">
+  <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-between">
     {/* create exams category */}
     <div className="w-full   flex flex-col gap-1">
     <Select
@@ -61,9 +61,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
 
   
    
-
-
-    {departments?<div className="w-full   flex flex-col gap-1">
+<div className="w-full   flex flex-col gap-1">
     <Select
            onValueChange={
             (value)=>setDepartmentIdValue(value)
@@ -81,10 +79,9 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
         </SelectGroup>
       </SelectContent>
     </Select>
-    </div>:""}
+    </div>
 
-
-    {subjects?<div className="w-full   flex flex-col gap-1">
+<div className="w-full   flex flex-col gap-1">
     <Select
            onValueChange={
             (value)=>setExamIdValue(value)
@@ -103,8 +100,13 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
       </SelectContent>
     </Select>
 
-    </div>:""}
     </div>
+    </div>
+{/* add exams question */}
+
+
+
+
   </div>
   </div>
   )
