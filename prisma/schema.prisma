@@ -213,7 +213,7 @@ model Subject{
    updatedAt     DateTime  @updatedAt
   department    Department    @relation( fields: [departmentId], references: [id])
    departmentId String  @db.ObjectId
-   subjectName  String   @unique
+   subjectName  String   
 }
 
 
