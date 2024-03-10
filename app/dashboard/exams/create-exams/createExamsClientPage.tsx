@@ -60,7 +60,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
 
 
   
-    </div>
+   
 
 
     {departments?<div className="w-full   flex flex-col gap-1">
@@ -104,6 +104,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
     </Select>
 
     </div>:""}
+    </div>
   </div>
   </div>
   )
