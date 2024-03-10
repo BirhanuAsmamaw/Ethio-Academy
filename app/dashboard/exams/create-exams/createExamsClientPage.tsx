@@ -13,6 +13,8 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
   const [departmentIdvalue,setDepartmentIdValue]=useState("")
   const [departments,setDepartments]=useState<any|null>(null)
   const [subjects,setSubjects]=useState<any|null>(null)
+  const [subjectValue,setSubjectValue]=useState<string>("")
+
 
   useEffect(()=>{
     if(exams){
@@ -84,7 +86,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
 <div className="w-full   flex flex-col gap-1">
     <Select
            onValueChange={
-            (value)=>setExamIdValue(value)
+            (value)=>setSubjectValue(value)
           }>
       <SelectTrigger  className="w-[180px] bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
         <SelectValue  placeholder="Select Subject" />
@@ -93,7 +95,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
         <SelectGroup>
           <SelectLabel>Select Subject</SelectLabel>
          {subjects?.subject?.map((subject:any,index:number) =>{
-         return  <SelectItem className="w-full hover:bg-gray-200  hover:dark:bg-gray-600" key={index} value={subject.id}>{subject.subjectName}</SelectItem >
+         return  <SelectItem className="w-full hover:bg-gray-200  hover:dark:bg-gray-600" key={index} value={subject.subjectName}>{subject.subjectName}</SelectItem >
          })}
           
         </SelectGroup>
@@ -105,7 +107,97 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
 {/* add exams question */}
 
 
+<div className="p-4">
+  <Select
+   onValueChange={
+    (value)=>setQuestion({...question,year:value})
+  }>
+<SelectTrigger  className="w-[180px] bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
+<SelectValue  placeholder="Select a Quizzes Year" />
+</SelectTrigger>
+<SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
+<SelectGroup>
+  <SelectLabel>Select a Quizzes Year</SelectLabel>
+ {examsYears.map((year,index) =>{
+ return  <SelectItem className="w-full hover:bg-gray-200  hover:dark:bg-gray-600" key={index} value={year}>{year}</SelectItem >
+ })}
+  
+</SelectGroup>
+</SelectContent>
+</Select>
+  </div>
 
+
+
+
+<textarea
+onChange={(event)=>setQuestion({...question,Q:event.target.value})}
+className={`
+block 
+p-2.5 w-full 
+text-sm 
+text-gray-900 
+bg-gray-50 
+
+rounded-[10px]
+border 
+border-gray-300
+focus:ring-blue-500 
+focus:border-blue-500 
+dark:bg-gray-700 
+dark:border-gray-600 
+dark:placeholder-gray-400 
+dark:text-white 
+dark:focus:ring-blue-500 
+dark:focus:border-blue-500
+
+${question.year!==""? 'block':'hidden'}
+`}
+rows={4}
+></textarea>
+
+
+
+<div className={`p-4 flex flex-col gap-2 ${question.Q!==""? 'block':'hidden'}`}>
+
+<ChooseForm 
+onChange={(event) => setQuestion({ ...question, A:{ ...question.A,text: event.target.value } })} 
+label="A"
+onAnswer={(event) => setQuestion({ ...question, A: {...question.A, isAnswer: Boolean(event.target.value ) } })} />
+
+<ChooseForm 
+label="B"
+onChange={(event)=>setQuestion({...question,B:{...question.B,text:event.target.value}})}
+onAnswer={(event) => setQuestion({ ...question, B: { ...question.B,isAnswer: Boolean(event.target.value )} })} 
+/>
+
+
+<ChooseForm 
+label="C"
+onChange={(event)=>setQuestion({...question,C:{...question.C,text:event.target.value}})}
+onAnswer={(event) => setQuestion({ ...question, C: {...question.C, isAnswer:  Boolean(event.target.value )} })} 
+/>
+
+<ChooseForm 
+label="D"
+onChange={(event)=>setQuestion({...question,D:{...question.D,text:event.target.value}})}
+onAnswer={(event) => setQuestion({ ...question, D: {...question.D, isAnswer:  Boolean(event.target.value )} })} 
+/>
+<div className="flex flex-col px-4 w-full gap-1 my-4">
+    <Heading small title="Write Answer Explanation"/>
+  <TextEditor value={explanation} setValue={setExplanation}/>
+  </div>
+<div className="w-full flex justify-end  gap-4 px-2 py-4">
+
+
+<Button
+isDisabled={isLoading}
+title={isLoading ? 'Loading...':'Submit'}
+onClick={onSubmit}
+/>
+</div>
+</div>
+</div>
 
   </div>
   </div>
