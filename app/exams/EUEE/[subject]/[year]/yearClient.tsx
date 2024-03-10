@@ -22,7 +22,7 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
   const [isSelectedAll, setSelectedAll] = useState(false);
   const [score, setScore] = useState(0);
   const [selectedChoices, setSelectedChoices] = useState<any>({});
-  const [mounted, setMounted] = useState(false);
+ 
   const isVisible=useSearchParams();
   const isVisibleFeedBackQuery=isVisible?.get("right")
 
@@ -59,7 +59,7 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
     setSelectedAll(true);
   };
 
-  if (!mounted) return;
+ 
 
 
   console.log('questions',Questions);
