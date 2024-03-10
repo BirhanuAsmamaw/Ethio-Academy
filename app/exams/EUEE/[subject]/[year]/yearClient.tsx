@@ -26,11 +26,6 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
   const isVisible=useSearchParams();
   const isVisibleFeedBackQuery=isVisible?.get("right")
 
-const filteredQuestion=Questions.filter((question:any)=>question.category==="EUEE"&&question.subject===subject&&question.year===year)
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
 
   useEffect(() => {
     setFeedbackVisible(isVisibleFeedBackQuery? true: false)
@@ -75,7 +70,7 @@ const filteredQuestion=Questions.filter((question:any)=>question.category==="EUE
               {subject} in {year} EUEE Exams
             </h4>
           </div>
-          {filteredQuestion.map((question: any, index:number) => {
+          {Questions.map((question: any, index:number) => {
             return (
               <div key={index} className="">
                 <div className="flex border-b border-double border-green-600 justify-between">
