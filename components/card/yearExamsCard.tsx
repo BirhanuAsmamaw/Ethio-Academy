@@ -4,16 +4,16 @@ import { useRouter } from 'next/navigation'
 import StartExamDialogue from '../startExamDialogue';
 interface YearExamCardProps{
   year: string;
-  subject: string;
+  url: string;
 }
-const YearExamCard:React.FC<YearExamCardProps> = ({year,subject}) => {
+const YearExamCard:React.FC<YearExamCardProps> = ({year,url}) => {
   const router=useRouter();
   const onCheckRight=()=>{
     
-    router.push(`/exams/EUEE/${subject}/${year}?right=${true}`)
+    router.push(`/exams/${url}?right=${true}`)
   }
 
-  const onShowAnswer=()=>{router.push(`/exams/EUEE/${subject}/${year}`)}
+  const onShowAnswer=()=>{router.push(`/exams/${url}`)}
   return (
     <div  className="no-underline block w-full md:max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
      <div className="flex flex-col gap-4 justify-center items-center p-2">
