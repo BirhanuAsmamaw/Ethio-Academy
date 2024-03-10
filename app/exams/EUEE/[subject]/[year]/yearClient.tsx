@@ -1,6 +1,7 @@
 "use client";
 import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
+import NoExamNotification from "@/components/notification/noExamNotification";
 import {
   Accordion,
   AccordionContent,
@@ -62,7 +63,12 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
  
 
 
-  console.log('questions',Questions);
+  
+  if (!Questions || !Questions.length){
+    return (<div className="h-screen w-full flex justify-center items-center">
+      <NoExamNotification notification={`There are No ${subject} in ${year} Exams`} url={`exams/EUEE/${subject}`} label={`Click Here and See ${subject} Exams in Others Years`}/>
+    </div>)
+  }
   return (<MainLayout>
       <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
         <div className="pt-10" id="quiz">
