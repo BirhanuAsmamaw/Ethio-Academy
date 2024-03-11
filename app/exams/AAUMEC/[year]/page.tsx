@@ -15,7 +15,7 @@ const AAUMECYearExamsPage = async({params}:{
   
 
   const user=await getCurrentUser();
-  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName==="Highschool"&&payedCourse?.status);
+  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName==="AAUMEC"&&payedCourse?.status);
 
 const department=await getDepartmentByName("AAUMEC")
   const examQuestions=await getQuestionsByCategory("AAU  Medicine Entrance COC","AAUMEC",params.year);
