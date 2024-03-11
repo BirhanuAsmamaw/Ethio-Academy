@@ -133,7 +133,7 @@ useEffect(()=>{
   
   let notificationData = {}
 
-  if (data.courses.length) {
+  if (data.courses) {
   notificationData = {
     url:`/dashboard/approved-courses`,
     type:'Success',
@@ -153,7 +153,7 @@ if (data.department) {
 };}
 
 
-if (data.department&&data.courses.length) {
+if (data.department&&data.courses) {
   notificationData = {
     url:`/dashboard/approved-courses`,
     type:'Success',
