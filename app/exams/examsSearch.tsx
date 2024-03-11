@@ -32,7 +32,7 @@ const router=useRouter();
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild >
-        <div className="flex w-full   md:min-w-[500px] max-w-[800px] shadow-md  bg-white text-black rounded-[5px] overflow-hidden">
+        <div className="flex w-full   md:min-w-[500px] max-w-[800px] shadow-md dark:shadow-black bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] overflow-hidden">
         <Button
           variant="ghost"
           role="combobox"
