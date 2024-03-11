@@ -4,6 +4,9 @@ export async function getDepartmentByName(name: string){
 const department = await prisma.department.findUnique({
   where:{
     departmentName: name
+  },
+  include:{
+    exam: true
   }
 })
 

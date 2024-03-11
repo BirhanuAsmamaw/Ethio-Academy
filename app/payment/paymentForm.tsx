@@ -21,7 +21,7 @@ interface FormProps{
 
 const PaymentForm:React.FC<FormProps> = ({admins,user}) => {
   const router=useRouter();
-  const {carts,totalPrice,removeAllFromCart}=useCart();
+  const {carts,department,removeAllFromCart}=useCart();
   const [selectedBank, setSelectedBank] = useState('');
   const [receipt,setReceipt]=useState<File|null>(null);
   const [selectedReceipt,setSelectedReceipt]=useState<any>(null);
@@ -40,6 +40,9 @@ const courses=carts?.map((course)=>{
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
+      department:{id:department.id,
+        departmentName:department.departmentName,
+        price:department.price},
      recit:null,
      bank:selectedBank,
      courses:courses,

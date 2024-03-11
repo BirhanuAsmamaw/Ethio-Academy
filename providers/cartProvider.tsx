@@ -17,6 +17,7 @@ const CartProvider:React.FC<CartProviderProps> = ({children}) => {
 
   const [carts,setCarts]=useState<any[]|null>(null)
   const [totalPrice,setTotalPrice]=useState<number>(0)
+  const [department,setDepartment]=useState<any|null>(null)
 
 
 
@@ -91,9 +92,11 @@ setCarts([...carts,data]);
   };
 
 
+const addDepartment=(data:any) => {
+  setDepartment(data);
+}
 
-
-  return <Cart.Provider value={{carts,totalPrice,addToCart,removeFromCart,removeAllFromCart}}>
+  return <Cart.Provider value={{department,addDepartment,carts,totalPrice,addToCart,removeFromCart,removeAllFromCart}}>
 {children}
   </Cart.Provider>;
 }

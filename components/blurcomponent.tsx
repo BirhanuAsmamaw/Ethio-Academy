@@ -6,15 +6,15 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Login from "./login/login";
 interface BlurProps{
-  course:any;
+  department:any;
   user:any;
   buyLabel:string;
   trayLabel:string;
 }
-const BlurComponent:React.FC<BlurProps> = ({course,user,buyLabel,trayLabel}) => {
+const BlurComponent:React.FC<BlurProps> = ({department,user,buyLabel,trayLabel}) => {
   const router=useRouter();
   const [reloadPage, setReloadPage] = useState(false);
-  const {addToCart}=useCart();
+  const {addDepartment}=useCart();
   useEffect(() => {
     // Set a timeout to reload the page after 1 minute (60,000 milliseconds)
     const timeoutId = setTimeout(() => {
@@ -26,7 +26,7 @@ const BlurComponent:React.FC<BlurProps> = ({course,user,buyLabel,trayLabel}) => 
   }, []);
 
   const onPayment=()=>{
-    addToCart(course)
+    addDepartment({...department,price:100})
     router.push('/payment')
   }
 

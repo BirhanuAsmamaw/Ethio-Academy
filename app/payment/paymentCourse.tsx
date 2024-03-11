@@ -4,13 +4,13 @@ import Link from "next/link";
 
 const PaymentCourse = () => {
 
-  const {carts,totalPrice}=useCart();
+  const {carts,totalPrice,department}=useCart();
 
-  if (!carts){
+  if (!carts || !department){
     return (
       <div className="flex justify-center">
         <div className="flex flex-col">
-          <h5 className="text-xl font-bold">There no Courses You Selected to Buy! </h5>
+          <h5 className="text-xl font-bold">There no Courses or Exams You Selected to Buy! </h5>
           <p className="text-lg text-500 dark:text-gray-400">please Select <Link href="/#courseslist">Courses</Link> to Buy!</p>
         </div>
       </div>
@@ -18,11 +18,24 @@ const PaymentCourse = () => {
 
   }
   else{
-  return (<>{carts&& <div className=" max-w-lg flex flex-col gap-2 border-y-2  rounded-[10px] border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+  return (<>
+   <div className=" max-w-lg flex flex-col gap-2 border-y-2  rounded-[10px] border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
 
    
-<div className="flex flex-col p-2">
-  <div className=" flex justify-between">
+<div className="flex flex-col gap-4 p-2">
+{department?<p className="text-gray-500 dark:text-gray-400 font-semibold py-2">
+  <span>Buy All</span>
+  <span>{department.exam.examType}</span>
+  <span>Exams By</span>
+  <span className="text-lg font-bold text-rose-600 dark:text-green-400">{department.price} ETB</span>
+  <span>Only!!!</span>
+
+
+
+</p>:""}
+
+
+  {carts?<div className=" flex justify-between">
   <div className="">
 
   <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Courses:</h2>
@@ -34,12 +47,16 @@ const PaymentCourse = () => {
 })}
    
 </ul>
+
+
+
   </div>
   <p className="text-xl font-bold text-rose-600 dark:text-green-400">{totalPrice} ETB</p>
-  </div>
+  </div>:""}
+
   <div className="p-2">
 
-<h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">To Buy These Courses:</h2>
+<h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">To Buy These {carts?'Courses':''},{department?`${department.exam.examType} Exams`:''}:</h2>
 <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
 <li>
         Make payment to any account listed above.
@@ -60,7 +77,7 @@ const PaymentCourse = () => {
 </div>
   
 
-  </div> }</>);}
+  </div> </>);}
 }
  
 export default PaymentCourse;
