@@ -24,9 +24,10 @@ import { useState } from "react";
 
 interface ExamsSearchProps{
   departments:any[];
+  examType:string;
 }
 
- const ExamsSearch:React.FC<ExamsSearchProps>=({departments}) =>{
+ const ExamsSearch:React.FC<ExamsSearchProps>=({examType,departments}) =>{
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [departmentId, setDepartmentId] = useState("");
@@ -47,7 +48,7 @@ const router=useRouter();
  
         </Button>
       </PopoverTrigger>
-      <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/Exit/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
+      <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/${examType}/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
       </div>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black">

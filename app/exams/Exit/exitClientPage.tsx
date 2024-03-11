@@ -20,7 +20,7 @@ const ExitClientPage:React.FC<ExitClientPageProps> = ({departments}) => {
 
 
 <div className="flex justify-center m-4">
- <ExamsSearch departments={departments}/>
+ <ExamsSearch examType='Exit' departments={departments}/>
 </div>
 
 

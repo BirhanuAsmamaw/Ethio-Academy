@@ -20,7 +20,7 @@ const GATClientPage:React.FC<GATClientPageProps> = ({departments}) => {
 
 
 <div className="flex justify-center m-4">
- <ExamsSearch departments={departments}/>
+ <ExamsSearch examType='GAT' departments={departments}/>
 </div>
 
 
