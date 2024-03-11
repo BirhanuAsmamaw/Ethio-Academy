@@ -6,7 +6,7 @@ const PaymentCourse = () => {
 
   const {carts,totalPrice,department}=useCart();
 
-  if (!carts || !department){
+  if (!carts&&!department){
     return (
       <div className="flex justify-center">
         <div className="flex flex-col">
