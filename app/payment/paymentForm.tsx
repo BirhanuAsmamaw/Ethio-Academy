@@ -133,17 +133,44 @@ useEffect(()=>{
   }
   await handleImageUpload();
   
- 
-  const notificationData = {
+  let notificationData = {}
+
+  if (data.courses.length) {
+  notificationData = {
     url:`/dashboard/approved-courses`,
     type:'Success',
     title: `🌟 Payment Success!`,
     message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:0} exciting courses.`,
     customers:admins
-};
+};}
 
+
+if (data.department) {
+  notificationData = {
+    url:`/dashboard/approved-courses`,
+    type:'Success',
+    title: `🌟 Payment Success!`,
+    message: `🎉 ${user.name} has successfully purchased all ${department.exam.examType} exams.`,
+    customers:admins
+};}
+
+
+if (data.department&&data.courses.length) {
+  notificationData = {
+    url:`/dashboard/approved-courses`,
+    type:'Success',
+    title: `🌟 Payment Success!`,
+    message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:0} courses and all ${department.exam.examType} exams.`,
+    customers:admins
+};}
+const departmentData={
+  id:department.id,
+  departmentName :department.name,
+  price:department.price
+  
+}
   const payment={...data,recit:receiptUrl, bank:selectedBank,
-    courses:courses,}
+    courses:courses,department:departmentData}
    
     axios.post('/api/payment',payment).then(()=>{
       toast.success("Thank you! Paid successfully")

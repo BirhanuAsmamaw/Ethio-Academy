@@ -7,7 +7,7 @@ export async function POST(req:Request){
 const body=await req.json();
 
 const {
- 
+  department,
   recit,
    bank,
    courses,
@@ -15,7 +15,7 @@ const {
    totalPrice,
 }=body;
 
-if (!transaction || !bank || !totalPrice ||  !recit || !courses.length ){
+if (!transaction || !bank || !totalPrice ||  !recit ){
   return NextResponse.json({
     status: false,
     message:"Invalid payment parameters"
@@ -42,7 +42,8 @@ const newPayment = await prisma.payment.create({
     totalPrice: parseFloat(totalPrice),
     bank:bank,
     courses: courses,
-    customerId:user.id
+    customerId:user.id,
+    department:department
 
   }
 })
