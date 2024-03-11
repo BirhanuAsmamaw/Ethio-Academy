@@ -51,7 +51,7 @@ const router=useRouter();
       <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/${examType}/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
       </div>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
-        <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black">
+        <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
           <CommandInput  placeholder="Search your department..." />
           <CommandList>
             <CommandEmpty>No Departments found.</CommandEmpty>
