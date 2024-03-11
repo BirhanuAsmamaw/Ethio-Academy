@@ -31,10 +31,9 @@ interface ExamsSearchProps{
   const [value, setValue] = useState("");
   const [departmentId, setDepartmentId] = useState("");
 const router=useRouter();
-  return (<form onSubmit={()=>{router.push(`/exams/Exit/${departmentId}`)}}>
-    <Popover open={open} onOpenChange={setOpen}>
+  return (<Popover open={open} onOpenChange={setOpen}>
+    <div className="flex w-full   md:min-w-[500px] max-w-[800px] shadow-md dark:shadow-black bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] overflow-hidden">
       <PopoverTrigger asChild >
-        <div className="flex w-full   md:min-w-[500px] max-w-[800px] shadow-md dark:shadow-black bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] overflow-hidden">
         <Button
           variant="ghost"
           role="combobox"
@@ -47,9 +46,9 @@ const router=useRouter();
             : "Select your department..."}
  
         </Button>
-        <button type="submit" className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/Exit/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
-        </div>
       </PopoverTrigger>
+      <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/Exit/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
+      </div>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black">
           <CommandInput  placeholder="Search your department..." />
@@ -80,7 +79,6 @@ const router=useRouter();
         </Command>
       </PopoverContent>
     </Popover>
-    </form>
   );
 }
 
