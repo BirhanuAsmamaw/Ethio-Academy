@@ -6,18 +6,6 @@ const PaymentCourse = () => {
 
   const {carts,totalPrice,department}=useCart();
 
-  if (!carts&&!department){
-    return (
-      <div className="flex justify-center">
-        <div className="flex flex-col">
-          <h5 className="text-xl font-bold">There no Courses or Exams You Selected to Buy! </h5>
-          <p className="text-lg text-500 dark:text-gray-400">please Select <Link href="/#courseslist">Courses</Link> to Buy!</p>
-        </div>
-      </div>
-    )
-
-  }
-  else{
   return (<>
    <div className=" max-w-lg flex flex-col gap-2 border-y-2  rounded-[10px] border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
 
@@ -78,6 +66,6 @@ const PaymentCourse = () => {
   
 
   </div> </>);}
-}
+
  
 export default PaymentCourse;
