@@ -1,6 +1,5 @@
 import Banner from '@/components/banner'
 import YearExamCard from '@/components/card/yearExamsCard'
-import Navbar from '@/components/navbar/Navbar'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
 interface ExitDepartmentClientProps{
@@ -8,7 +7,6 @@ interface ExitDepartmentClientProps{
 }
 const ExitDepartmentClient:React.FC<ExitDepartmentClientProps> = ({department}) => {
   return (<>
-  <Navbar/>
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner>
