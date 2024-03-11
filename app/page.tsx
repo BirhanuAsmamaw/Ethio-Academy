@@ -43,10 +43,13 @@ const examsCategory=await getAllExamsCategory();
    
     <main className='md:flex md:justify-center w-full py-20 overflow-hidden'>
     <div id="courseslist" className="flex flex-col gap-10 overflow-hidden">
-      <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
 
+
+    <div className="flex justify-center">
+    <div className="w-full md:10/12 lg:8/12 xl:7/12 2xl:6/12 space-y-4">
+      <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
   
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-8 p-4 md:px-10'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
         {courses?.map((course:any)=>{
           return <Card
@@ -64,13 +67,16 @@ const examsCategory=await getAllExamsCategory();
 
 
       </div>
+</div>
+</div>
 
 
 
 
-
+   <div className="flex justify-center">
+    <div className="w-full md:10/12 lg:8/12 xl:7/12 2xl:6/12 space-y-4">
     <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming  Courses</h1>
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-8 p-4 md:px-10'>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
         {courses?.map((course,index)=>{
           return <Card
@@ -86,21 +92,25 @@ const examsCategory=await getAllExamsCategory();
 
 
       </div>
+    </div>
+   </div>
 
 
 {/* 
 EXAMS CATEGORY */}
-<div className="w-full flex flex-col gap-6 py-10">
+  <div className="flex justify-center pt-10">
+    <div className="w-full md:10/12 lg:8/12 xl:7/12 2xl:6/12 space-y-4">
 
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Exams</h1>
 
-<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-8 p-4 md:px-10'>
+<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
        {examsCategory?.map((exam)=>{
         return <ExamsCategoryCard key={exam.id} name={exam.examType} 
         url={`/exams/${exam.examType==="AAU  Medicine Entrance COC"? `AAUMEC`:`${exam.examType==="St.Paul's Hospital Millennium Medicine Entrance COC"? `SPHMMEC`:`${exam.examType}`}`}`} 
         image={exam.cover}/>
        })}
 
+      </div>
       </div>
 </div>
       
