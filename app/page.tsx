@@ -124,7 +124,7 @@ EXAMS CATEGORY */}
 
 
       <div className="py-20 flex justify-center w-full">
-<div className="w-full lg:w-10/12  xl:w-11/12  flex flex-col gap-4">
+<div className="w-full lg:w-8/12  xl:w-6/12  flex flex-col gap-4">
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>What to expect from Ethio Exams Academy courses</h1>
 
 
