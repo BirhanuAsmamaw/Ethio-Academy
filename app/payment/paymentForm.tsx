@@ -40,9 +40,7 @@ const courses=carts?.map((course)=>{
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-      department:{
-        
-       },
+      department:{},
      recit:null,
      bank:selectedBank,
      courses:courses,
@@ -185,7 +183,7 @@ const departmentData={
     axios.post('/api/notification',notificationData);
     router.push('/mycourses')
 
-   
+    console.log("Payments data",payment);
     
   
 
