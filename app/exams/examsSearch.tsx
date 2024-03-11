@@ -31,7 +31,7 @@ interface ExamsSearchProps{
   const [value, setValue] = useState("");
   const [departmentId, setDepartmentId] = useState("");
 const router=useRouter();
-  return (
+  return (<form onSubmit={()=>{router.push(`/exams/Exit/${departmentId}`)}}>
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild >
         <div className="flex w-full   md:min-w-[500px] max-w-[800px] shadow-md dark:shadow-black bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] overflow-hidden">
@@ -47,7 +47,7 @@ const router=useRouter();
             : "Select your department..."}
  
         </Button>
-        <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/Exit/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
+        <button type="submit" className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/Exit/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
         </div>
       </PopoverTrigger>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
@@ -80,6 +80,7 @@ const router=useRouter();
         </Command>
       </PopoverContent>
     </Popover>
+    </form>
   );
 }
 
