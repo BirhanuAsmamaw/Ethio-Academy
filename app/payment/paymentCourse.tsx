@@ -1,6 +1,6 @@
 "use client"
 import { useCart } from "@/hooks/use.cart";
-import Link from "next/link";
+
 
 const PaymentCourse = () => {
 
@@ -23,12 +23,12 @@ const PaymentCourse = () => {
 </p>:""}
 
 
-  {carts.length?<div className=" flex justify-between">
+  {carts?.length?<div className=" flex justify-between">
   <div className="">
 
   <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Courses:</h2>
   <ul className="max-w-md text-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
-{carts.map((cart:any,index) => {
+{carts?.map((cart:any,index) => {
   return <li key={index}>
   {cart.subject}
 </li>
@@ -44,7 +44,7 @@ const PaymentCourse = () => {
 
   <div className="p-2">
 
-<h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">To Buy These {carts.length?'Courses':''},{department?`${department.exam.examType} Exams`:''}:</h2>
+<h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">To Buy These {carts?.length?'Courses':''},{department?`${department.exam.examType} Exams`:''}:</h2>
 <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
 <li>
         Make payment to any account listed above.
