@@ -148,7 +148,9 @@ model Payment{
    bank        String
    transaction String      @unique
    totalPrice       Float
-   courses   PaymentCourse[]
+   department    PaymentDepartmentExam?
+
+  courses      PaymentCourse[] 
    customer User@relation(fields: [customerId], references: [id])
    customerId String @db.ObjectId
    status  Boolean  @default(false)
@@ -157,6 +159,14 @@ model Payment{
 type PaymentCourse{
   id String
   subject String
+  price Float
+
+
+}
+
+type PaymentDepartmentExam{
+  id String
+  departmentName String
   price Float
 
 
