@@ -41,7 +41,7 @@ const router=useRouter();
           className=" w-full   md:min-w-[500px] max-w-[800px] justify-between"
         >
           {value
-            ? departments.find((department) => department.id === value)?.departmentName
+            ? departments.find((department) => department.departmentName.toLowerCase()=== value)?.departmentName
             : "Select your department..."}
  
         </Button>
@@ -50,14 +50,14 @@ const router=useRouter();
       </PopoverTrigger>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black">
-          <CommandInput placeholder="Search your department..." />
+          <CommandInput  placeholder="Search your department..." />
           <CommandList>
             <CommandEmpty>No Departments found.</CommandEmpty>
             <CommandGroup>
               {departments.map((department) => (
                 <CommandItem
                   key={department.id}
-                  value={department.id}
+                  value={department.departmentName.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setOpen(false);
@@ -66,7 +66,7 @@ const router=useRouter();
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === department.id ? "opacity-100" : "opacity-0"
+                      value === department.departmentName.toLowerCase()? "opacity-100" : "opacity-0"
                     )}
                   />
                   {department.departmentName}
