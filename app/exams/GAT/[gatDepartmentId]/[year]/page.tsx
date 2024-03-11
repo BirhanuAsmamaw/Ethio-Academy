@@ -17,7 +17,7 @@ const GATYearExamsPage = async({params}:{
   const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===params.gatDepartmentId&&payedCourse?.status);
 
 const department=await getDepartmentById(params.gatDepartmentId)
-  const examQuestions=await getQuestionsByCategory("GAT",params.gatDepartmentId,params.year);
+  const examQuestions=await getQuestionsByCategory("GAT",department?.departmentName||"",params.year);
   return (<><Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All GAT Exam Now!"} trayLabel={"See Tray Exams"}/>}
   <GATYearExamsClientPage department={department} year={params.year} Questions={examQuestions}/>

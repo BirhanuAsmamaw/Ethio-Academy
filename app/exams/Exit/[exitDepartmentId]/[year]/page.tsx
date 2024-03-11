@@ -17,7 +17,7 @@ const ExitYearExamsPage = async({params}:{
   const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===params.exitDepartmentId&&payedCourse?.status);
 
 const department=await getDepartmentById(params.exitDepartmentId)
-  const examQuestions=await getQuestionsByCategory("Exit",params.exitDepartmentId,params.year);
+  const examQuestions=await getQuestionsByCategory("Exit",department?.departmentName||"",params.year);
   return (<><Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Exit Exam Now!"} trayLabel={"See Tray Exams"}/>}
   <ExitYearExamsClientPage department={department} year={params.year} Questions={examQuestions}/>
