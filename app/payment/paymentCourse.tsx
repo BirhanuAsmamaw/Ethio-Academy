@@ -23,11 +23,11 @@ const PaymentCourse = () => {
 
    
 <div className="flex flex-col gap-4 p-2">
-{department?<p className="text-gray-500 dark:text-gray-400 font-semibold py-2">
-  <span>Buy All</span>
-  <span>{department.exam.examType}</span>
-  <span>Exams By</span>
-  <span className="text-lg font-bold text-rose-600 dark:text-green-400">{department.price} ETB</span>
+{department?<p className="text-gray-500 dark:text-gray-400 font-medium py-2">
+  <span>Buy All </span>
+  <span className="text-black dark:text-white font-semibold bold "> {department.exam.examType}</span>
+  <span>Exams By </span>
+  <span className="font-semibold text-rose-600 dark:text-green-400">{department.price} ETB</span>
   <span>Only!!!</span>
 
 
@@ -35,7 +35,7 @@ const PaymentCourse = () => {
 </p>:""}
 
 
-  {carts?<div className=" flex justify-between">
+  {carts.length?<div className=" flex justify-between">
   <div className="">
 
   <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Courses:</h2>
