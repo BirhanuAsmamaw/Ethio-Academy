@@ -41,7 +41,7 @@ const courses=carts?.map((course)=>{
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
       department:{
-        departmentName:department.departmentName
+        
        },
      recit:null,
      bank:selectedBank,
