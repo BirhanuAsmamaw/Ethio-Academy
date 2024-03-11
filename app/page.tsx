@@ -45,8 +45,8 @@ const examsCategory=await getAllExamsCategory();
     <div id="courseslist" className="flex flex-col gap-10 overflow-hidden">
 
 
-    <div className="flex justify-center">
-    <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 space-y-4">
+    <div className="flex justify-center w-full">
+    <div className="w-full md:w-11/12 xl:w-8/12 space-y-4">
       <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
   
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
@@ -73,8 +73,8 @@ const examsCategory=await getAllExamsCategory();
 
 
 
-   <div className="flex justify-center">
-    <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 space-y-4">
+   <div className="flex justify-center w-full ">
+    <div className="w-full md:w-11/12 xl:w-8/12 space-y-4">
     <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming  Courses</h1>
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
@@ -98,8 +98,8 @@ const examsCategory=await getAllExamsCategory();
 
 {/* 
 EXAMS CATEGORY */}
-  <div className="flex justify-center pt-10">
-    <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 space-y-4">
+  <div className="flex justify-center w-full pt-10">
+    <div className="w-full md:w-11/12 xl:w-8/12 space-y-4">
 
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Exams</h1>
 
