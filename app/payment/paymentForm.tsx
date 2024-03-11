@@ -165,13 +165,13 @@ if (data.department&&data.courses.length) {
 };}
 const departmentData={
   id:department.id,
-  departmentName :department.name,
+  departmentName :department.departmentName,
   price:department.price
   
 }
   const payment={...data,recit:receiptUrl, bank:selectedBank,
     courses:courses,department:departmentData}
-   
+   console.log("Payments data",payment);
     axios.post('/api/payment',payment).then(()=>{
       toast.success("Thank you! Paid successfully")
     })
