@@ -26,9 +26,9 @@ const PaymentCourse = () => {
 {department?<p className="text-gray-500 dark:text-gray-400 font-medium py-2">
   <span>Buy All </span>
   <span className="text-black dark:text-white font-semibold bold "> {department.exam.examType}</span>
-  <span>Exams By </span>
+  <span> Exams By </span>
   <span className="font-semibold text-rose-600 dark:text-green-400">{department.price} ETB</span>
-  <span>Only!!!</span>
+  <span> Only!!!</span>
 
 
 
