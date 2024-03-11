@@ -20,14 +20,16 @@ import {
 } from "@/components/ui/popover";
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface ExamsSearchProps{
   departments:any[];
 }
 
  const ExamsSearch:React.FC<ExamsSearchProps>=({departments}) =>{
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [departmentId, setDepartmentId] = useState("");
 const router=useRouter();
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -45,7 +47,7 @@ const router=useRouter();
             : "Select your department..."}
  
         </Button>
-        <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/Exit/${value}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
+        <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/Exit/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
         </div>
       </PopoverTrigger>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
@@ -60,6 +62,7 @@ const router=useRouter();
                   value={department.departmentName.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
+                    setDepartmentId(department.id);
                     setOpen(false);
                   }}
                 >
