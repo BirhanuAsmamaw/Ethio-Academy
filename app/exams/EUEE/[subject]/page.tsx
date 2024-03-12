@@ -11,15 +11,10 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
   <Navbar/>
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
-     <Banner>
-        <div className="flex  justify-center items-center h-[200px] lg:h-[400px]">
-          <h1 className=' text-xl md:text-2xl lg:text-4xl xl:text-6xl text-green-500 
-          dark:text-white font-bold xl:font-extra-bold'>{params.subject} Entrance Exams</h1>
-        </div>
-      </Banner>
+     <Banner title={`${params.subject} Entrance Exams`}/>
      </div>
 
-     
+
      <Tabs defaultValue="EUEE" className="w-full ">
  <div className="flex w-fulll justify-center">
  <TabsList className="grid w-full md:w-10/12 lg:w-8/12 xl:w-6/12 grid-cols-2 gap-4">
