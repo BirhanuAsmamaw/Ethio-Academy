@@ -13,16 +13,18 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner>
         <div className="flex  justify-center items-center h-[200px] lg:h-[400px]">
-          <h1 className=' text-xl md:text-2xl lg:text-4xl xl:text-6xl text-black 
+          <h1 className=' text-xl md:text-2xl lg:text-4xl xl:text-6xl text-green-500 
           dark:text-white font-bold xl:font-extra-bold'>{params.subject} Entrance Exams</h1>
         </div>
       </Banner>
      </div>
+
+     
      <Tabs defaultValue="EUEE" className="w-full ">
  <div className="flex w-fulll justify-center">
  <TabsList className="grid w-full md:w-10/12 lg:w-8/12 xl:w-6/12 grid-cols-2 gap-4">
-    <TabsTrigger className=" rounded-full border-gray-300" value="EUEE">EUEE</TabsTrigger>
-    <TabsTrigger  className=" rounded-full border-gray-300" value="model">Model Exams</TabsTrigger>
+    <TabsTrigger className=" rounded-full border-gray-600" value="EUEE">EUEE</TabsTrigger>
+    <TabsTrigger  className=" rounded-full border-gray-600" value="model">Model Exams</TabsTrigger>
   </TabsList>
  </div>
 
