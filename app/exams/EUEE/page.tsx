@@ -12,8 +12,8 @@ const EUEEPage = () => {
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner>
-        <div className="flex  justify-center items-center h-[200px]">
-          <h1 className='text-2xl text-white  font-bold'>Ethiopian University Entrance Exams</h1>
+        <div className="flex  justify-center items-center h-[200px] lg:h-[400px]">
+          <h1 className='p-4'>Ethiopian University Entrance Exams</h1>
         </div>
       </Banner>
      </div>
