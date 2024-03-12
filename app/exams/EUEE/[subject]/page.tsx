@@ -12,7 +12,7 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner>
-        <div className="flex  justify-center items-center h-[200px]">
+        <div className="flex  justify-center items-center h-[200px] lg:h-[400px]">
           <h1 className=' text-xl md:2xl lg:4xl font-bold'>{params.subject} Entrance Exams</h1>
         </div>
       </Banner>
