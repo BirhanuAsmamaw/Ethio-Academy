@@ -1,6 +1,8 @@
+
 import Banner from '@/components/banner'
 import YearExamCard from '@/components/card/yearExamsCard'
 import Navbar from '@/components/navbar/Navbar'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
 
@@ -15,8 +17,14 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
         </div>
       </Banner>
      </div>
+     <Tabs defaultValue="EUEE" className="w-full">
+  <TabsList className="grid w-full grid-cols-2 gap-4">
+    <TabsTrigger className=" rounded-full" value="EUEE">EUEE</TabsTrigger>
+    <TabsTrigger  className=" rounded-full" value="model">Model Exams</TabsTrigger>
+  </TabsList>
 
-      <div className="flex justify-center p-4 py-10">
+  <TabsContent value="EUEE">
+  <div className="flex justify-center p-4 py-10">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
           return <YearExamCard key={index} year={year} url={`/EUEE/${params.subject}/${year}`}/>
@@ -25,6 +33,27 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
           
         </div>
       </div>
+  </TabsContent>
+
+
+
+  <TabsContent value="model">
+  <div className="flex justify-center p-4 py-10">
+        <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+         {examsYears.map((year,index)=>{
+          return <YearExamCard key={index} year={year} url={`/EUEE/${params.subject}/${year}`}/>
+         })}
+         
+          
+        </div>
+      </div>
+  </TabsContent>
+
+ 
+</Tabs>
+
+
+     
 
     </div></>
     
