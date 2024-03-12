@@ -42,3 +42,10 @@ a{
   @apply text-blue-500;
   text-decoration: underline; 
 }
+
+.dark-banner{
+  background-image: url("../public/darkBanner.png");
+}
+.light-banner{
+  background-image: url("../public//lightBanner.png");
+}
