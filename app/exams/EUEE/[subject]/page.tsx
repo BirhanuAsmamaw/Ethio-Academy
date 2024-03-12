@@ -19,8 +19,8 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
      </div>
      <Tabs defaultValue="EUEE" className="w-full ">
   <TabsList className="grid w-full md:w-10/12 lg:w-8/12 xl:w-6/12 grid-cols-2 gap-4">
-    <TabsTrigger className=" rounded-full" value="EUEE">EUEE</TabsTrigger>
-    <TabsTrigger  className=" rounded-full" value="model">Model Exams</TabsTrigger>
+    <TabsTrigger className=" rounded-full border-white" value="EUEE">EUEE</TabsTrigger>
+    <TabsTrigger  className=" rounded-full border-white" value="model">Model Exams</TabsTrigger>
   </TabsList>
 
   <TabsContent value="EUEE">
