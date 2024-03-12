@@ -13,18 +13,21 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner>
         <div className="flex  justify-center items-center h-[200px] lg:h-[400px]">
-          <h1 className=' text-xl md:2xl lg:4xl font-bold'>{params.subject} Entrance Exams</h1>
+          <h1 className=' text-xl md:text-2xl lg:text-4xl xl:text-6xl text-black 
+          dark:text-white font-bold xl:font-extra-bold'>{params.subject} Entrance Exams</h1>
         </div>
       </Banner>
      </div>
      <Tabs defaultValue="EUEE" className="w-full ">
-  <TabsList className="grid w-full md:w-10/12 lg:w-8/12 xl:w-6/12 grid-cols-2 gap-4">
+ <div className="flex w-fulll justify-center">
+ <TabsList className="grid w-full md:w-10/12 lg:w-8/12 xl:w-6/12 grid-cols-2 gap-4">
     <TabsTrigger className=" rounded-full border-white" value="EUEE">EUEE</TabsTrigger>
     <TabsTrigger  className=" rounded-full border-white" value="model">Model Exams</TabsTrigger>
   </TabsList>
+ </div>
 
   <TabsContent value="EUEE">
-  <div className="flex justify-center p-4 py-10">
+  <div className="flex justify-center p-4 py-20">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
           return <YearExamCard key={index} year={year} url={`/EUEE/${params.subject}/${year}`}/>
@@ -38,7 +41,7 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
 
 
   <TabsContent value="model">
-  <div className="flex justify-center p-4 py-10">
+  <div className="flex justify-center p-4 py-20">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
           return <YearExamCard key={index} year={year} url={`/EUEE/${params.subject}/${year}`}/>
