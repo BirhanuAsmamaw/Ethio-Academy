@@ -14,11 +14,14 @@ import { useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
 interface QuestionComponentProps{
-    year:string,
+    notificationTitle:string,
+    notificationUrl:string,
+    notificationLabel:string,
+    examsTitle:string,
     Questions:any[];
-    
+
 }
-const QuestionComponent:React.FC<QuestionComponentProps> = ({year,Questions}) => {
+const QuestionComponent:React.FC<QuestionComponentProps> = ({Questions,notificationTitle,notificationUrl,examsTitle,notificationLabel}) => {
   const [feedbackVisible, setFeedbackVisible] = useState(false);
   const [isSelectedAll, setSelectedAll] = useState(false);
   const [score, setScore] = useState(0);
@@ -66,7 +69,7 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({year,Questions}) =>
   
   if (!Questions || !Questions.length){
     return (<div className="h-screen  p-4 w-full flex justify-center items-center">
-      <NoExamNotification notification={`There are No COC Exams in ${year} Year`} url={`/exams/SPHMMEC/`} label={`Click Here and See COC Exams in Others Years`}/>
+      <NoExamNotification notification={notificationTitle} url={notificationUrl} label={notificationLabel}/>
     </div>)
   }
   return (<MainLayout>
@@ -74,7 +77,7 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({year,Questions}) =>
         <div className="pt-10" id="quiz">
           <div className="p-2 py-10">
             <h4 className="text-lg font-semibold border-b-2 border-dashed">
-            COC  Exams in {year} 
+           {examsTitle}
             </h4>
           </div>
           {Questions.map((question: any, index:number) => {

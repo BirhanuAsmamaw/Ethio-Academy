@@ -9,7 +9,7 @@ interface SPHMMECClientPageProps{
 const SPHMMECClientPage:React.FC<SPHMMECClientPageProps> = ({year,Questions}) => {
   
 
-  return <QuestionComponent year={year} Questions={Questions}/>
+  return <QuestionComponent  Questions={Questions} notificationTitle={`There is No COC Exams in ${year} Year`} notificationUrl={"/exams/SPHMMEC"} notificationLabel={"Click Here and See COC Exams in Others Years"} examsTitle={`COC Exams in ${year} Year`}/>
          
 
 };
