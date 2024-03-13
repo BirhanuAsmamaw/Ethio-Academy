@@ -9,8 +9,8 @@ const Hero = () => {
   const users=[
     "https://avatars.githubusercontent.com/u/739984?v=4",
     "https://avatars.githubusercontent.com/u/739985?v=4",
-    "https://avatars.githubusercontent.com/u/739986?v=4",
-    "https://avatars.githubusercontent.com/u/739983?v=4",
+    "https://avatars.githubusercontent.com/u/739989?v=4",
+    "https://avatars.githubusercontent.com/u/739981?v=4",
     "https://avatars.githubusercontent.com/u/739987?v=4"
 
 
