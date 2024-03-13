@@ -27,7 +27,7 @@ const Hero = () => {
     
 
       
-      <div className="flex justify-start flex-wrap "> <div className="flex -space-x-4">
+      <div className="flex justify-start flex-wrap w-full"> <div className="flex -space-x-4">
   <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
     <Image height={50} width={50} src="https://avatars.githubusercontent.com/u/739966?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
   </div>
@@ -44,7 +44,7 @@ const Hero = () => {
   <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
     <Image height={50} width={50} src="https://avatars.githubusercontent.com/u/739984?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
   </div>
-  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
+  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold  dark:bg-gray-800 uppercase text-slate-800 dark:text-gray-400 h-14 w-14 rounded-full ring ring-white dark:ring-gray-600">
 <span className="text-lg font-bold">10k+</span>
   </div>
   </div>
