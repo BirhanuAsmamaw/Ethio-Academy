@@ -26,7 +26,7 @@ const onSearchOpen=()=>{
     <div className="hidden lg:block w-full relative ">
    <form onSubmit={onHandleSubmit}  className="flex w-full  bg-white dark:bg-gray-800  border rounded-[8px] border-gray-200 dark:border-gray-700 overflow-hidden ">
      <CiSearch size={30} className="pt-1"/> 
-     <input value={searchQuery||''} onChange={(event)=>setSearchQuery(event.target.value)} placeholder="search copurses..." type="search" className="focus:shadow-md bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
+     <input value={searchQuery||''} onChange={(event)=>setSearchQuery(event.target.value)} placeholder="search courses..." type="search" className="focus:shadow-md bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
      </form>
    
    </div>
