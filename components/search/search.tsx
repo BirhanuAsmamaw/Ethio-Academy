@@ -38,6 +38,7 @@ const onSearchOpen=()=>{
     <form onSubmit={onHandleSubmit} className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
     <input   onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
+    placeholder="search courses..."
     className=" bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
    </form>
     </div>
