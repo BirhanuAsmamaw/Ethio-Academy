@@ -5,15 +5,21 @@ import Navbar from '@/components/navbar/Navbar'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
 import BuyExamButton from '../buyExamButton'
+import { getCurrentUser } from '@/actions/users/currentUser'
+import { getDepartmentByName } from '@/actions/departments/getDepartmentByName'
 
-const AAUMECPage = () => {
+const AAUMECPage = async() => {
+  const user=await getCurrentUser();
+  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName==="AAUMEC"&&payedCourse?.status);
+
+const department=await getDepartmentByName("AAUMEC")
   return (
     <>
     <Navbar/>
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title='Addis Ababa University  Medicine Entrance COC Exams'>
-   <BuyExamButton/>
+     {isCoursePDepartment? <></>:<BuyExamButton department={department} trayUrl='/exams/AAUMEC/tray'/>}
      </Banner>
     
     

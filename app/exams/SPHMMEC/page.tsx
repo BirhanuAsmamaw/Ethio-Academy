@@ -5,15 +5,20 @@ import Navbar from '@/components/navbar/Navbar'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
 import BuyExamButton from '../buyExamButton'
+import { getDepartmentByName } from '@/actions/departments/getDepartmentByName'
+import { getCurrentUser } from '@/actions/users/currentUser'
 
-const SPHMMECPage = () => {
+const SPHMMECPage = async() => {
+  const department=await getDepartmentByName("SPHMMEC")
+  const user=await getCurrentUser();
+  const isCourseDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===department?.departmentName&&payedCourse?.status);
   return (
     <>
     <Navbar/>
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title="St.Paul's Hospital Millennium Medicine Entrance COC Exams<">
-      <BuyExamButton/>
+      {isCourseDepartment? <></>: <BuyExamButton department={department} trayUrl={'/exams/SPHMMEC/tray'}/>}
       </Banner>
      </div>
 

@@ -5,13 +5,18 @@ import Navbar from '@/components/navbar/Navbar'
 import { remedialSubjects } from '@/lib/remedialSubjects'
 import React from 'react'
 import BuyExamButton from '../buyExamButton'
+import { getDepartmentByName } from '@/actions/departments/getDepartmentByName'
+import { getCurrentUser } from '@/actions/users/currentUser'
 
-const RemedialExamPage = () => {
+const RemedialExamPage = async() => {
+  const department=await getDepartmentByName("Freshman")
+  const user=await getCurrentUser();
+  const isCourseDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===department?.departmentName&&payedCourse?.status);
   return (<><Navbar/>
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title='Ethiopian University  Remedial Students  Exams'>
-    <BuyExamButton/>
+    {isCourseDepartment? <></>: <BuyExamButton department={department} trayUrl='/exams/Remedial/tray'/>}
       </Banner>
      </div>
 

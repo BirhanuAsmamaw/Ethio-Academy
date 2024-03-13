@@ -6,13 +6,14 @@ import React from 'react'
 import BuyExamButton from '../../buyExamButton';
 interface ExitDepartmentClientProps{
   department:any;
+  isCourseDepartment:any;
 }
-const ExitDepartmentClient:React.FC<ExitDepartmentClientProps> = ({department}) => {
+const ExitDepartmentClient:React.FC<ExitDepartmentClientProps> = ({department,isCourseDepartment}) => {
   return (<>
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title={`${department.departmentName}  Exit Exams`}>
-     <BuyExamButton/>
+     {isCourseDepartment? <></>:<BuyExamButton department={department} trayUrl='/exams/Exit/tray'/>}
      </Banner>
    
      </div>

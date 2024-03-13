@@ -2,15 +2,18 @@ import Banner from '@/components/banner'
 import YearExamCard from '@/components/card/yearExamsCard'
 import { exitExamYears } from '@/lib/examsYear';
 import React from 'react'
+import BuyExamButton from '../../buyExamButton';
 interface GATDepartmentClientProps{
   department:any;
+  isCourseDepartment:any
 }
-const GATDepartmentClient:React.FC<GATDepartmentClientProps> = ({department}) => {
+const GATDepartmentClient:React.FC<GATDepartmentClientProps> = ({department,isCourseDepartment}) => {
   return (<>
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title={`${department.departmentName}  GAT Exams`}>
-      <></>
+    
+     {isCourseDepartment? <></>: <BuyExamButton department={department} trayUrl='/exams/GAT/tray'/>}
       </Banner>
      </div>
 

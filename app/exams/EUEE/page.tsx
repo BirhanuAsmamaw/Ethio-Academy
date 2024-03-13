@@ -5,16 +5,21 @@ import Navbar from '@/components/navbar/Navbar'
 import { eueeSubjects } from '@/lib/eueeSubjects'
 import React from 'react'
 import BuyExamButton from '../buyExamButton'
+import { getCurrentUser } from '@/actions/users/currentUser'
+import { getDepartmentByName } from '@/actions/departments/getDepartmentByName'
 
-const EUEEPage = () => {
+const EUEEPage = async() => {
+  const user=await getCurrentUser();
+  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName==="Highschool"&&payedCourse?.status);
+
+const department=await getDepartmentByName("Highschool")
   return (
     <>
     <Navbar/>
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10 pb-20'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title="Ethiopian University Entrance Exams">
-        
-     <BuyExamButton/>
+     {isCoursePDepartment? <></>:<BuyExamButton department={department} trayUrl='/exams/EUEE/tray'/>}
      </Banner>
      </div>
 
