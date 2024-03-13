@@ -11,7 +11,7 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
   <Navbar/>
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
-     <Banner title={`${params.subject} Entrance Exams`}/>
+     <Banner title={`${params.subject} Entrance Exams`}><></></Banner>
      </div>
 
 

@@ -9,10 +9,8 @@ const RemedialExamSubjectPage = ({params}:{params:{subject:string}}) => {
   <Navbar/>
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
-     <Banner>
-        <div className="flex  justify-center items-center h-[200px]">
-          <h1 className='text-2xl  text-white font-bold'>{params.subject} Remedial Students  Exams</h1>
-        </div>
+     <Banner title={`${params.subject} Remedial Students  Exams`}>
+       <></>
       </Banner>
      </div>
 

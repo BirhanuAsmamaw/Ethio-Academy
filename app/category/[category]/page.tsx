@@ -1,4 +1,5 @@
 import { getCourses } from "@/actions/courses/getCourses";
+import Banner from "@/components/banner";
 import Card from "@/components/card/card";
 
 import Navbar from "@/components/navbar/Navbar";
@@ -23,18 +24,13 @@ const Category =async ({params}:{params:IPrams}) => {
 <div className="flex flex-col gap-10 w-full items-center">
 
 
-<div className="flex 
- bg-teal-500
- dark:bg-gray-800
-  w-[90%]
-   m-10
-    h-72 
-    flex
-     justify-center 
-     items-center">
-      <h1 className="text-3xl md:5xl font-bold text-white ">{params.category} Courses</h1>
-    </div>
 
+<div className="p-4 md:p-6 lg:p-10 xl:p-20">
+     <Banner title={`${params.category} Courses`}>
+        
+    <></>
+     </Banner>
+     </div>
 
    
 
