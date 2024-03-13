@@ -6,6 +6,15 @@ import Banner from "../../public/banner.png"
 
 
 const Hero = () => {
+  const users=[
+    "https://avatars.githubusercontent.com/u/739984?v=4",
+    "https://avatars.githubusercontent.com/u/739985?v=4",
+    "https://avatars.githubusercontent.com/u/739986?v=4",
+    "https://avatars.githubusercontent.com/u/739983?v=4",
+    "https://avatars.githubusercontent.com/u/739987?v=4"
+
+
+  ]
   
   return ( <div className="w-full flex min-h-screen justify-center md:justify-around items-center flex-wrap px-4 items-center
     dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center"
@@ -28,22 +37,10 @@ const Hero = () => {
 
       
       <div className="flex justify-start flex-wrap w-full md:px-10"> <div className="flex -space-x-4">
-  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
-    <Image height={50} width={50} src="https://avatars.githubusercontent.com/u/739966?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
-  </div>
-  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
-    <Image height={50} width={50} src="https://avatars.githubusercontent.com/u/739994?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
-  </div>
-  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
-    <Image height={50} width={50} src="https://avatars.githubusercontent.com/u/739684?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
-  </div>
-
-  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
-    <Image height={50} width={50} src="https://avatars.githubusercontent.com/u/739976?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
-  </div>
-  <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold uppercase text-slate-800 h-14 w-14 text-base rounded-full ring ring-white">
-    <Image height={50} width={50} src="https://avatars.githubusercontent.com/u/739984?v=4" className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
-  </div>
+ 
+  {users.map((user,index) =><div key={index} className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold  dark:bg-gray-800 uppercase text-slate-800 dark:text-gray-400 h-14 w-14 rounded-full ring ring-white dark:ring-gray-600">
+    <Image height={50} width={50} src={user} className="rounded-full h-full w-full object-cover object-center" alt="Avatar" loading="lazy"/>
+  </div>)}
   <div className="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-bold  dark:bg-gray-800 uppercase text-slate-800 dark:text-gray-400 h-14 w-14 rounded-full ring ring-white dark:ring-gray-600">
 <span className="text-lg font-bold">10k+</span>
   </div>
