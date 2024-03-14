@@ -11,7 +11,7 @@ interface EUEEYearExamsClientPageProps{
 const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject,year,Questions}) => {
    return  <>
    <Header
-    title={`${subject} Entrance Exams in ${year} Year`}
+    title={`${subject}  Exam in ${year} Year`}
     description={` ${subject} Entrance Exams in ${year} Year  || All ${subject} Exams in in ${year} Year  With Answer and  Detail Exaplanations!`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
