@@ -108,6 +108,7 @@ model Question{
    year String
    explanation String?
    subject String?
+   isModel Boolean @default(false)
 
 }
 

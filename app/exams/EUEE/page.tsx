@@ -7,6 +7,7 @@ import React from 'react'
 import BuyExamButton from '../buyExamButton'
 import { getCurrentUser } from '@/actions/users/currentUser'
 import { getDepartmentByName } from '@/actions/departments/getDepartmentByName'
+import Header from '@/components/Header'
 
 const EUEEPage = async() => {
   const user=await getCurrentUser();
@@ -15,6 +16,11 @@ const EUEEPage = async() => {
 const department=await getDepartmentByName("Highschool")
   return (
     <>
+    <Header
+    title='Ethiopian University Entrance Exams'
+    description='Ethiopian University Entrance Exams || All Exams With Answer and  Detail Exaplanations!'
+    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+/>
     <Navbar/>
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10 pb-20'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">

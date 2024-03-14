@@ -1,4 +1,5 @@
 
+import Header from '@/components/Header'
 import Banner from '@/components/banner'
 import YearExamCard from '@/components/card/yearExamsCard'
 import Navbar from '@/components/navbar/Navbar'
@@ -8,6 +9,11 @@ import React from 'react'
 
 const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
   return (<>
+  <Header
+    title={`${params.subject} Entrance Exams`}
+    description={` ${params.subject} Entrance Exams || All ${params.subject} Exams With Answer and  Detail Exaplanations!`}
+    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+/>
   <Navbar/>
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
