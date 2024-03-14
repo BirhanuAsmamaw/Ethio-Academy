@@ -3,6 +3,7 @@ import ExitDepartmentClient from './extiDepartmentClient'
 import { getDepartmentById } from '@/actions/departments/getDepartmentById'
 import Navbar from '@/components/navbar/Navbar'
 import { getCurrentUser } from '@/actions/users/currentUser'
+import Header from '@/components/Header'
 
 const ExitExamDepartment = async({params}:{params:{exitDepartmentId:string}}) => {
   const department=await getDepartmentById(params.exitDepartmentId)
@@ -11,6 +12,11 @@ const ExitExamDepartment = async({params}:{params:{exitDepartmentId:string}}) =>
 
 
   return (<>
+   <Header
+    title={`${department} Exit Exams`}
+    description={` ${department} Exit  Exams  || All ${department}  Exit  Exams   With Answer and  Detail Exaplanations!`}
+    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+/>
   <Navbar/>
   <ExitDepartmentClient department={department} isCourseDepartment={isCourseDepartment}/>
   </>

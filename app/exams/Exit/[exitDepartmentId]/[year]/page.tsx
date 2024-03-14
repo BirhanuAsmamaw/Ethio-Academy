@@ -4,6 +4,7 @@ import { getQuestionsByCategory } from "@/actions/questions/getQuestionsByCatego
 import { getCurrentUser } from "@/actions/users/currentUser";
 import BlurComponent from "@/components/blurcomponent";
 import { getDepartmentById } from "@/actions/departments/getDepartmentById";
+import Header from "@/components/Header";
 
 
 const ExitYearExamsPage = async({params}:{
@@ -18,7 +19,13 @@ const ExitYearExamsPage = async({params}:{
 
 const department=await getDepartmentById(params.exitDepartmentId)
   const examQuestions=await getQuestionsByCategory("Exit",department?.departmentName||"",params.year);
-  return (<><Navbar/>
+  return (<>
+  <Header
+    title={`${department} Exit Exams in ${params.year} year`}
+    description={` ${department} Exit  Exams  || All ${department}  Exit  Exams  in ${params.year} year  With Answer and  Detail Exaplanations!`}
+    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+/>
+  <Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Exit Exam Now!"} trayLabel={"See Tray Exams"}/>}
   <ExitYearExamsClientPage department={department} year={params.year} Questions={examQuestions}/>
   </>)
