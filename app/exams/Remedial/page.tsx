@@ -7,12 +7,19 @@ import React from 'react'
 import BuyExamButton from '../buyExamButton'
 import { getDepartmentByName } from '@/actions/departments/getDepartmentByName'
 import { getCurrentUser } from '@/actions/users/currentUser'
+import Header from '@/components/Header'
 
 const RemedialExamPage = async() => {
   const department=await getDepartmentByName("Freshman")
   const user=await getCurrentUser();
   const isCourseDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===department?.departmentName&&payedCourse?.status);
-  return (<><Navbar/>
+  return (<>
+  <Header
+    title={`Ethiopian University Remedial Exams`}
+    description={`Remedial  Exams  || All Remedial  Exams   With Answer and  Detail Exaplanations!`}
+    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Remedial Exams, Online Education, Lifelong Learning'
+/>
+  <Navbar/>
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title='Ethiopian University  Remedial Students  Exams'>
