@@ -56,8 +56,8 @@ const router=useRouter();
   const signInWithGoogle=()=>{
     signIn('google',{redirect:false}).then((callback)=>{
        if (callback?.ok){
-         router.back()
-         router.refresh()
+        router.push('/')
+        router.refresh()
          
          toast.success("account logged in successfully")
          
