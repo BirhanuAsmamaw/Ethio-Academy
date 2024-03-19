@@ -43,6 +43,7 @@ const router=useRouter();
         
       }
       if (callback?.error){
+        console.log(callback)
         toast.error(callback.error)
       }
     }).catch((error)=>toast.error('something went wrong')).finally(() => {
