@@ -118,7 +118,7 @@ return null;
   <hr className="absolute right-0  w-6/12 border-[1.5px] border-gray-200 dark:border-gray-500"/>
 </div>
 <div className="w-full flex justify-center">
-<button className="flex gap-2 hover:bg-opacity-80  bg-white text-black w-8/12 mx-2 px-2 py-1 border rounded-full border-gray-400 dark:border-gray-700 transition" onClick={signInWithGoogle}><FcGoogle size={24}/> <p className="text-base">Signin With Google</p></button>
+<button className="flex gap-2 hover:bg-opacity-80  bg-white text-black w-8/12 mx-2 px-2 py-1 border rounded-full border-gray-400 dark:border-gray-700 transition" onClick={()=>{signIn('google')}}><FcGoogle size={24}/> <p className="text-base">Signin With Google</p></button>
 </div>
 </div> 
 
