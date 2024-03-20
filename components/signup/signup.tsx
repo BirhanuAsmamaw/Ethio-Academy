@@ -20,7 +20,8 @@ const router=useRouter();
     defaultValues:{
      name:"",
       email:"",
-      password:""
+      password:"",
+      repeatpassword:""
     }
 
   })
@@ -75,7 +76,7 @@ const router=useRouter();
        if (callback?.error){
          toast.error(callback.error)
        }
-     }).catch((error)=>toast.error('something went wrong')).finally(() => {
+     }).catch((error:any)=>toast.error(error.message)).finally(() => {
              setLoading(false)
      })  
   }
@@ -113,6 +114,16 @@ return null;
 <Input
     id="password"
     label="Password" 
+    type="password" 
+    register={register}
+    errors={errors} 
+    userFrom
+  />
+
+
+<Input
+    id="repeatpassword"
+    label="Confirm Password" 
     type="password" 
     register={register}
     errors={errors} 
