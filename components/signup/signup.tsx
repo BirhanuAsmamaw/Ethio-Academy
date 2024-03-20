@@ -48,12 +48,12 @@ const router=useRouter();
          if (callback?.error){
            toast.error(callback.error)
          }
-       }).catch((error)=>toast.error('something went wrong')).finally(() => {
+       }).catch((error)=>toast.error(error.message)).finally(() => {
                setLoading(false)
        })  
        
-    }).catch((error) => {
-      toast.error("error occured in login")
+    }).catch((error:any) => {
+      toast.error(error.message)
     }).finally(()=>{
       setLoading(false)
       
