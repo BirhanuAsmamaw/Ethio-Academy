@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import toast from 'react-hot-toast';
 import Link from "next/link";
 import Button from "../button/button";
+import RegInput from "../input/regInput";
 
 interface LoginProps{
   user:any;
@@ -103,6 +104,10 @@ return null;
     errors={errors} 
     userFrom
   />
+
+  <RegInput/>
+
+  <RegInput/>
 </div>
 <div className="mt-4 flex justify-end w-full">
   <Button 
