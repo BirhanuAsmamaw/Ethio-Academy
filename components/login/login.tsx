@@ -90,6 +90,7 @@ return null;
     type="email" 
     register={register}
     errors={errors} 
+    required
     userFrom    
   />
 
@@ -98,6 +99,7 @@ return null;
     label="Password" 
     type="password" 
     register={register}
+    required
     errors={errors} 
     userFrom
   />

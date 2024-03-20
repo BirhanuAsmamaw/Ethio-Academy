@@ -100,6 +100,7 @@ return null;
     type="text" 
     register={register}
     errors={errors}   
+    required
     userFrom  
   />  
   <Input
@@ -108,6 +109,7 @@ return null;
     type="email" 
     register={register}
     errors={errors} 
+    required
     userFrom    
   />
 
@@ -116,6 +118,7 @@ return null;
     label="Password" 
     type="password" 
     register={register}
+    required
     errors={errors} 
     userFrom
   />
@@ -127,6 +130,7 @@ return null;
     type="password" 
     register={register}
     errors={errors} 
+    required
     userFrom
   />
 </div>
