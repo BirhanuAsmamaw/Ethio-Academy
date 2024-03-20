@@ -92,7 +92,7 @@ return null;
     register={register}
     errors={errors} 
     required
-    userFrom    
+       
   />
 
 <Input
@@ -102,12 +102,10 @@ return null;
     register={register}
     required
     errors={errors} 
-    userFrom
+   
   />
 
-  <RegInput/>
 
-  <RegInput/>
 </div>
 <div className="mt-4 flex justify-end w-full">
   <Button 
