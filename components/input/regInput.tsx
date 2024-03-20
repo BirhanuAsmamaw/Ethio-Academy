@@ -6,33 +6,33 @@ const RegInput = () => {
     className="peer
      w-full h-full 
      bg-transparent
-      text-blue-gray-700
+      text-gray-700
        font-sans font-normal
         outline 
         outline-0 
         focus:outline-0 
-        disabled:bg-blue-gray-50 
+        disabled:bg-gray-50 
         disabled:border-0 
         transition-all 
         placeholder-shown:border
         placeholder-shown:border-t-transparent
         focus:border-t-transparent
-         placeholder-shown:border-blue-gray-500 
-         placeholder-shown:dark:border-blue-gray-600 
+         placeholder-shown:border-gray-500 
+         placeholder-shown:dark:border-gray-600 
        
          border 
          dark:border-gray-600
          focus:border-2 
           text-base
           px-3 py-2.5 rounded-[7px] 
-          border-blue-gray-400
-           focus:border-blue-600"
+          border-gray-400
+           focus:border-600"
     placeholder=" " /><label
     className="
     flex w-full h-full 
     select-none 
     pointer-events-none absolute left-0 
-    font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 
+    font-normal !overflow-visible truncate peer-placeholder-shown:text-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-gray-500 
     transition-all -top-1.5 
     peer-placeholder-shown:text-sm 
     text-[11px] peer-focus:text-[11px]
@@ -58,10 +58,10 @@ const RegInput = () => {
         dark:text-gray-400
          peer-focus:text-gray-900 
          peer-focus:dark:text-gray-200 
-        before:border-blue-gray-400
+        before:border-gray-400
         before:dark:border-gray-600
          
-         after:border-blue-gray-400 
+         after:border-gray-400 
          after:dark:border-gray-600
          ">Username
   </label>
