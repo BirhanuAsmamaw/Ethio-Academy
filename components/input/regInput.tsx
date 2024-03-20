@@ -16,17 +16,20 @@ const RegInput = () => {
         transition-all 
         placeholder-shown:border
         placeholder-shown:border-t-transparent
+        placeholder-shown:dark:border-t-transparent
         focus:border-t-transparent
          placeholder-shown:border-gray-500 
          placeholder-shown:dark:border-gray-600 
        
          border 
          dark:border-gray-600
-         focus:border-2 
+         focus:border-2
           text-base
-          px-3 py-2.5 rounded-[7px] 
+          px-3
+           py-2.5
+           rounded-[7px] 
           border-gray-400
-           focus:border-600"
+           focus:border-blue-600"
     placeholder=" " /><label
     className="
     flex w-full h-full 
