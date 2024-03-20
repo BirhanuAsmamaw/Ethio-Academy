@@ -15,6 +15,8 @@ const RegInput = () => {
         disabled:border-0 
         transition-all 
         placeholder-shown:border
+        placeholder-shown:border-t-transparent
+        focus:border-t-transparent
          placeholder-shown:border-blue-gray-500 
          placeholder-shown:dark:border-blue-gray-600 
        
@@ -56,10 +58,12 @@ const RegInput = () => {
         dark:text-gray-400
          peer-focus:text-gray-900 
          peer-focus:dark:text-gray-200 
-        before:border-blue-gray-200
+        before:border-blue-gray-400
+        before:dark:border-gray-600
          peer-focus:before:!border-gray-900 
-         after:border-blue-gray-200 
-         peer-focus:after:!border-gray-900">Username
+         after:border-blue-gray-400 
+         after:dark:border-gray-600
+         ">Username
   </label>
 </div>
   )
