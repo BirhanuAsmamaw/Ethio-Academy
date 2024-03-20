@@ -18,7 +18,8 @@ interface InputProps{
 const Input:React.FC<InputProps> = ({defaultValue,userFrom,type,label,disabled,required,id,register,placehoder,errors}) => {
   return (  <div>
     <label htmlFor="first_name" className={`
-    block mb-2 text-sm font-medium text-gray-900 dark:text-white 
+    block mb-2 text-sm font-medium 
+    ${errors[id]? 'text-rose-600':'text-gray-900 dark:text-white '}
     
     `}>{label}</label>
     <input type={type}
