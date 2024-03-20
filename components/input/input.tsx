@@ -78,7 +78,7 @@ peer
 `
 
 
-  return (  <div>
+  return (  <div className={`${userFrom? 'relative w-full min-w-[200px] h-10':''}`}>
     <label htmlFor="first_name" className={`
     
     ${userFrom? labelClass:`block mb-2 text-sm font-medium `}
