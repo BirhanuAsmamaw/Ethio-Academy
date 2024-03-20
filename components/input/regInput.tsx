@@ -14,7 +14,7 @@ const RegInput = () => {
         disabled:bg-gray-50 
         disabled:border-0 
         transition-all 
-        placeholder-shown:border
+        placeholder-shown:border-2
         placeholder-shown:border-t-transparent
         placeholder-shown:dark:border-t-transparent
         focus:border-t-transparent
@@ -29,7 +29,9 @@ const RegInput = () => {
            py-2.5
            rounded-[7px] 
           border-gray-400
-           focus:border-blue-600"
+           focus:border-blue-600
+        dark:text-gray-400
+           "
     placeholder=" " /><label
     className="
     flex w-full h-full 
