@@ -60,7 +60,7 @@ const RegInput = () => {
          peer-focus:dark:text-gray-200 
         before:border-blue-gray-400
         before:dark:border-gray-600
-         peer-focus:before:!border-gray-900 
+         
          after:border-blue-gray-400 
          after:dark:border-gray-600
          ">Username
