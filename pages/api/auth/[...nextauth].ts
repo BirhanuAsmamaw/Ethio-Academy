@@ -51,21 +51,6 @@ CredentialsProvider({
   ],
 
   
-  callbacks: {
-    async signIn({user, account, profile}) {
-      return true
-    },
-    async redirect() {
-      return "/"
-    },
-    async session({session, user}) {
-      return session
-    },
-    async jwt({token, user, account, profile, isNewUser}) {
-      return token
-    }
-
-},
   pages:{
     signIn:'/login'
   },

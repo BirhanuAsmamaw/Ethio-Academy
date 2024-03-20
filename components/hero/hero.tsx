@@ -16,8 +16,8 @@ const Hero = () => {
 
   ]
   
-  return ( <div className="w-full flex min-h-screen justify-center md:justify-around items-center flex-wrap px-4 items-center
-    dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center"
+  return ( <div className="w-full flex min-h-screen justify-center md:justify-around  flex-wrap px-4 items-center
+    dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative "
   >
     <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
     {/* content */}
