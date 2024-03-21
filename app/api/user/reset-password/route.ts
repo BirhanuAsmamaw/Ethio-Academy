@@ -1,18 +1,43 @@
+import prisma from "@/lib/prismadb"
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
-export async function GET(){
-  const resend = new Resend(process.env.RESEND_APK_KEY);
+import bcrypt from "bcrypt"
+export async function POST(req:Request, res:Response){
+  const body=await req.json();
+  const {token,retypePassword,password}=body;
+
+
   try{
-    const {data}=await resend.emails.send({
-      from: 'deribewsoftwar@gmail.com',
-      to: 'deribew.tech@gmail.com',
-      subject: 'Hello World',
-      html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
-    });
-    return NextResponse.json(data);
+if(!token || !retypePassword || !password){
+  throw new Error('invalid parameters');
+}
+
+if(password!==retypePassword){
+  throw new Error('password not match');
+}
+const verificationToken=await prisma.verificationToken.findUnique({
+  where:{token:token}
+})
+
+if(!verificationToken){
+  throw new Error('invalid token');
+}
+
+const hashedPassword=await bcrypt.hash(password,10);
+
+await prisma.user.update({
+  where:{email:verificationToken.email},
+  data:{
+    hash:hashedPassword,
+    email:verificationToken.email
+  }
+})
+return NextResponse.json({
+  message:"Password updated successfully"
+});
+    
   }
   catch(err){
-
+    throw new Error('something went wrong');
   }
 }
 

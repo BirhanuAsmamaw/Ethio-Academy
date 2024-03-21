@@ -41,7 +41,7 @@ const onSubmit:SubmitHandler<FieldValues> = (data)=>{
   />
 </div>
     
-    <div className="flex justify-end p-4">
+    <div className="w-full flex justify-end p-4">
       <Button isDisabled={isLoading} title={isLoading? "Loading...":"Submit"} onClick={handleSubmit(onSubmit)}/>
     </div>
   </div>
