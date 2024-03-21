@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import toast from 'react-hot-toast';
 import Link from "next/link";
 import Button from "../button/button";
-import RegInput from "../input/regInput";
+
 
 interface LoginProps{
   user:any;
@@ -109,7 +109,7 @@ return null;
 </div>
 
 <div className="flex justify-end mt-4 px-4">
-  <Link href="/forgot-password" className="text-blue-600 no-underline hover:underline">Forgot Password?</Link>
+  <Link href="/forgotPassword" className="text-blue-600 no-underline hover:underline">Forgot Password?</Link>
 </div>
 
 <div className="mt-2 flex justify-end w-full">
