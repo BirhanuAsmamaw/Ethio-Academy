@@ -107,10 +107,12 @@ return null;
 
 
 </div>
+
 <div className="flex justify-end mt-4 px-4">
-  <Link href="/forgot-password" className="text-blue-600 no-underline hover:underline ">Forgot Password?</Link>
+  <Link href="/forgot-password" className="text-blue-600 no-underline hover:underline">Forgot Password?</Link>
 </div>
-<div className="mt-3 px-6 w-full">
+
+<div className="mt-2 flex justify-end w-full">
   <Button 
   isDisabled={Loading}
   title={Loading? "Loading...":"Login"}
