@@ -107,13 +107,18 @@ return null;
 
 
 </div>
-<div className="mt-4 flex justify-end w-full">
+<div className="flex justify-end mt-4 px-4">
+  <Link href="/forgot-password" className="text-blue-600 no-underline hover:underline ">Forgot Password?</Link>
+</div>
+<div className="mt-3 px-6 w-full">
   <Button 
   isDisabled={Loading}
   title={Loading? "Loading...":"Login"}
   className="transition duration-300  text-center " 
   onClick={handleSubmit(onSubmit)}/>
 </div>
+
+
 <p className="text-sm text-gray-500 dark:text-gray-400">Don&lsquo;t have an account? Join our community by <Link href="/register">signup</Link>!</p>
 
 <div className="flex mt-10 w-full relative px-2 py-4 line-clamp-5">
