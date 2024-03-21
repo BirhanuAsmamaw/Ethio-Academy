@@ -24,7 +24,7 @@ const ResetPasswordClient = () => {
 
 const onSubmit:SubmitHandler<FieldValues> = (data)=>{
   setLoading(true)
-  axios.post(`/api/user/reset-password`,data).then(()=>{
+  axios.post(`/api/user/reset-password`,{...data,token:token}).then(()=>{
     toast.success("password reset successfully")
   }).catch(()=>{
     toast.error("password reset failed");

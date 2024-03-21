@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-const ForgotPassword = () => {
+const ForgotPasswordPage = () => {
   const [isLoading,setLoading]=useState(false)
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
@@ -55,4 +55,4 @@ const onSubmit:SubmitHandler<FieldValues> = (data)=>{
   )
 }
 
-export default ForgotPassword
+export default ForgotPasswordPage;
