@@ -157,6 +157,7 @@ EXAMS CATEGORY */}
 
 
 <div className="p-10  space-y-4">
+  <h1>courses list</h1>
   {payments&&payments.map((pay:any,index:number) =>{
 return <div className='text-3xl font-bold' key={index}>{pay.bank}</div>
   })}
