@@ -1,7 +1,8 @@
+import ResetPasswordClient from "@/components/auth/resetPassword"
 import Navbar from "@/components/navbar/Navbar"
 import Spinning from "@/components/spinning"
 import { Suspense } from "react"
-import ResetPasswordClient from "./resetPasswordClient"
+
 
 
 const ResetPassword = () => {
