@@ -32,7 +32,11 @@ export async function POST(req:Request) {
 
 
   const verificationToken=await generateVerificationToken(email)
- await sendVerificationEmail(verificationToken.email,verificationToken.token)
+
+  const confirmLink=`https://ethio-exams-academy.vercel.app/account-verification?token=${verificationToken.token}`
+
+
+ await sendVerificationEmail(verificationToken.email,confirmLink)
 
   
   return NextResponse.json({succes:"confirmation email sent successfully"});
