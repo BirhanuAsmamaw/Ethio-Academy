@@ -1,3 +1,5 @@
+import { generateVerificationToken } from "@/actions/tokens/generateToken";
+import { sendVerificationEmail } from "@/lib/mail";
 import prisma from "@/lib/prismadb"
 import bcrypt from "bcrypt"
 import { NextResponse } from "next/server"
@@ -24,10 +26,15 @@ export async function POST(req:Request) {
 
   const hashPassword=await bcrypt.hash(password,10)
 
-  const newUser= await prisma.user.create({
+  await prisma.user.create({
     data:{name:name,email:email,hash:hashPassword}
   });
 
-  return NextResponse.json(newUser);
+
+  const verificationToken=await generateVerificationToken(email)
+ await sendVerificationEmail(verificationToken.email,verificationToken.token)
+
+  
+  return NextResponse.json({succes:"confirmation email sent successfully"});
   
 }
