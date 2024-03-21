@@ -9,7 +9,7 @@ export async function getAllPayments(){
     });
   return payments
   }catch(e){
-    console.log(e);
+   
     return null;
   }
   

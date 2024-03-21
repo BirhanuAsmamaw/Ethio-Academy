@@ -12,6 +12,8 @@ import { AboutAcademy } from '@/lib/aboutAcademy';
 import { getCourses } from '@/actions/courses/getCourses';
 import { getAllExamsCategory } from '@/actions/examsCategory/getAllExamsCategry';
 import ExamsCategoryCard from '@/components/card/examscategoryCard';
+import { getAllPayments } from '@/actions/payments/getAllPayments';
+
 
 
 
@@ -20,6 +22,7 @@ export default async function Home() {
 
 const courses=await getCourses()
 const examsCategory=await getAllExamsCategory();
+const payments=await getAllPayments();
 
   return (
     <>
@@ -153,7 +156,11 @@ EXAMS CATEGORY */}
       
 
 
-
+<div className="p-10  space-y-4">
+  {payments&&payments.map((pay:any,index:number) =>{
+return <div className='text-3xl font-bold' key={index}>{pay.bank}</div>
+  })}
+</div>
 
 
 
