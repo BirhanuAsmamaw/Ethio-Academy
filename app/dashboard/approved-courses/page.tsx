@@ -21,8 +21,11 @@ const ApprovedCourses = async() => {
 
   console.log("bought", boughtCourses);
   console.log("approved", approvedCourses);
-  
+
   return ( <div className="py-10">
+    <div className="p-10">
+      <p>{boughtCourses? boughtCourses[0].bank :"courses"}</p>
+    </div>
    <ApprovedCoursesClient coursesPayment={boughtCourses || null}/>
   </div> );
 }
