@@ -1,3 +1,5 @@
+
+
 "use client"
 
 import * as React from "react"
@@ -26,6 +28,7 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
+
   DropdownMenuLabel,
 
   DropdownMenuTrigger,
@@ -42,11 +45,8 @@ import {
 import Link from "next/link"
 
 
-
-
-
-interface ApprovedCoursesClientProps{
-  coursePayments:any[];
+interface ApprovedCourseListprops{
+  coursesPayment:any[]| null;
 }
 
 type Course={
@@ -54,10 +54,8 @@ type Course={
   subject: string,
   price:number,
 }
-
 interface Payment {
   id: string;
-  recit:any;
   totalPrice : number;
   status: boolean;
   transaction: string;
@@ -71,15 +69,50 @@ interface Payment {
 
 
 
-
-
 export const columns: ColumnDef<Payment>[] = [
-  
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")? 'border-rose-600 dark:border-green-400':''} `}
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${row.getIsSelected()? 'border-rose-600 dark:border-green-400':''} `}
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+
+
+
+
+
+
+
   {
     accessorKey: "name",
     header: ({ column }) => {
       return (
-        <div>Full Name</div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+        Full Name
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
@@ -91,12 +124,37 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "email",
     header: ({ column }) => {
       return (
-        <div>Email</div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          email
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
       )
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
 
+ 
+
+{
+    accessorKey: "status",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Status
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("status")? <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Approved</span>:
+    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Pending...</span>
+ }</div>,
+  },
 
   {
     accessorKey: "courses",
@@ -123,34 +181,22 @@ export const columns: ColumnDef<Payment>[] = [
 
 
 
-
-
-
   {
     accessorKey: "totalPrice",
     header: ({ column }) => {
       return (
-       <div className="">
-        Price(ETB)
-       </div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+         Price(ETB)
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("totalPrice")}
-    
-    </div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("totalPrice")}</div>,
   },
 
-  {
-    accessorKey: "status",
-    header: ({ column }) => {
-      return (
-        <div className="">Status</div>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("status")? <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Approved</span>:
-    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Pending...</span>
- }</div>,
-  },
 
 
 
@@ -160,24 +206,23 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       const payment = row.original
 
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <DotsHorizontalIcon className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-           
-            <DropdownMenuItem>
-            <Link 
-             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/approved-courses/${payment.id}/`}>View Detail</Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+      return ( <DropdownMenu>
+               <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="h-8 w-8 p-0">
+                    <span className="sr-only">Open menu</span>
+                      <DotsHorizontalIcon className="h-4 w-4" />
+                  </Button>
+               </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                   
+                <DropdownMenuItem>
+                 <Link 
+                     className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
+                     href={`/dashboard/approved-courses/${payment.id}/`}>View Detail</Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
       )
     },
   },
@@ -187,31 +232,8 @@ export const columns: ColumnDef<Payment>[] = [
 
 
 
-
-
-
-
-
-
-
-
-
-export const ApprovedCoursesClient:React.FC<ApprovedCoursesClientProps>=({coursePayments})=> {
-
-
-
-  const data:Payment[]=coursePayments.map(payment =>{
-    return {...payment,
-       name:payment.customer.name,
-       email:payment.customer.email
-    }
-  })
-  
-     
-  
-
-
-  
+export const ApprovedCoursesClient:React.FC<ApprovedCourseListprops>=({coursesPayment})=> {
+ 
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -220,6 +242,75 @@ export const ApprovedCoursesClient:React.FC<ApprovedCoursesClientProps>=({course
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
 
+
+
+
+
+
+
+
+  if (!coursesPayment){
+    return <div className="w-full bg-white dark:bg-gray-800 p-4 ">
+
+<div role="status" className="w-full p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
+    <div className="flex items-center justify-between">
+        <div>
+            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+        </div>
+        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+    </div>
+    <div className="flex items-center justify-between pt-4">
+        <div>
+            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+        </div>
+        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+    </div>
+    <div className="flex items-center justify-between pt-4">
+        <div>
+            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+        </div>
+        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+    </div>
+    <div className="flex items-center justify-between pt-4">
+        <div>
+            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+        </div>
+        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+    </div>
+    <div className="flex items-center justify-between pt-4">
+        <div>
+            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
+            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+        </div>
+        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+    </div>
+    <span className="sr-only">Loading...</span>
+</div>
+
+    </div>
+  }
+
+
+
+
+
+  
+  const data:Payment[]=coursesPayment
+
+
+
+
+
+
+
+
+
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const table = useReactTable({
     data,
     columns,
@@ -256,9 +347,7 @@ export const ApprovedCoursesClient:React.FC<ApprovedCoursesClientProps>=({course
               Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent 
-          align="end"  
-          className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
+          <DropdownMenuContent align="end"  className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
             {table
               .getAllColumns()
               .filter((column) => column.getCanHide())
@@ -282,8 +371,8 @@ export const ApprovedCoursesClient:React.FC<ApprovedCoursesClientProps>=({course
       </div>
 
 
-      <div className="overflow-x-auto rounded-[5px] border border-gray-200 dark:border-gray-700">
-        <Table>
+      <div className="rounded-[5px] p-3 rounded-[5px] w-full overflow-x-auto border border-gray-200 dark:border-gray-700">
+        <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow 
@@ -362,5 +451,3 @@ export const ApprovedCoursesClient:React.FC<ApprovedCoursesClientProps>=({course
     </div>
   )
 }
-
-export default ApprovedCoursesClient;
