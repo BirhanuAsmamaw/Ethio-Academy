@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -59,7 +58,7 @@ type UserType={
  
  role: string,
  
- courses:number
+ users:number
  
  }
 
@@ -167,19 +166,19 @@ export const columns: ColumnDef<UserType>[] = [
 
 
   {
-    accessorKey: "courses",
+    accessorKey: "users",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Courses
+          users
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("courses")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("users")}</div>,
   },
 
   {
@@ -205,7 +204,7 @@ export const columns: ColumnDef<UserType>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const course = row.original
+      const user = row.original
 
       return (
         <DropdownMenu>
@@ -221,17 +220,17 @@ export const columns: ColumnDef<UserType>[] = [
             <DropdownMenuItem>
              <Link 
              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/list-courses/${course.id}/chapter`}>Chapter</Link>
+             href={`/dashboard/list-users/${user.id}/chapter`}>Chapter</Link>
             </DropdownMenuItem>
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-courses/${course.id}/edit`}>Edit</Link>
+               href={`/dashboard/list-users/${user.id}/edit`}>Edit</Link>
             </DropdownMenuItem>
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/list-courses/${course.id}/delete`}>Delete</Link>
+              href={`/dashboard/list-users/${user.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
@@ -316,16 +315,16 @@ export const UserListClient:React.FC<UserListProps>=({users})=> {
  
 
   const data:UserType[]=users.map(user =>{
-    let courses_no=0;
+    let users_no=0;
     let price=0;
-   user.payedCourses.forEach((courses:any)=>{
-    courses_no+=courses.courses.length;
-    price+=courses.totalPrice
+   user.payedusers.forEach((users:any)=>{
+    users_no+=users.users.length;
+    price+=users.totalPrice
 
 
 
     })
-    return {...user, courses:courses_no,price:price}
+    return {...user, users:users_no,price:price}
   })
 
 
