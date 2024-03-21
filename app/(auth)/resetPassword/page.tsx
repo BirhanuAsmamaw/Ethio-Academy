@@ -1,3 +1,4 @@
+import { getCurrentUser } from "@/actions/users/currentUser"
 import ResetPasswordClient from "@/components/auth/resetPassword"
 import Navbar from "@/components/navbar/Navbar"
 import Spinning from "@/components/spinning"
@@ -5,9 +6,9 @@ import { Suspense } from "react"
 
 
 
-const ResetPassword = () => {
+const ResetPassword = async() => {
 
-
+const user = await getCurrentUser();
   return (<>
     <Navbar/>
     <Suspense fallback={<div 
@@ -15,7 +16,7 @@ const ResetPassword = () => {
         <Spinning/>
         <p>Loading...</p>
       </div>}>
-        <ResetPasswordClient/>
+        <ResetPasswordClient user={user}/>
         </Suspense></>
     )
 }
