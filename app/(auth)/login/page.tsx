@@ -1,6 +1,6 @@
 
 import { getCurrentUser } from "@/actions/users/currentUser";
-import Login from "@/components/login/login";
+import Login from "@/components/auth/login/login";
 import Navbar from "@/components/navbar/Navbar";
 
 const LoginPage = async() => {

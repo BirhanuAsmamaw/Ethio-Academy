@@ -19,6 +19,7 @@ const onSubmit:SubmitHandler<FieldValues> = (data)=>{
   setLoading(true)
   axios.post(`/api/user/forgot-password`,data).then(()=>{
     toast.success("Sent to your email address successfully")
+    window.open('https://mail.google.com/mail/u/0/#inbox', '_blank');
   }).catch(()=>{
     toast.error("not send to your email address");
   }).finally(()=>{

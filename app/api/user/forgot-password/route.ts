@@ -14,7 +14,7 @@ export async function POST(req: Request, res: Response){
   
     const verificationToken=await generateVerificationToken(email)
 
-    const confirmLink=`https://ethio-exams-academy.vercel.app/reset-password?token=${verificationToken.token}`
+    const confirmLink=`https://ethio-exams-academy.vercel.app/resetPassword?token=${verificationToken.token}`
   
   
    await sendVerificationEmail(verificationToken.email,confirmLink)

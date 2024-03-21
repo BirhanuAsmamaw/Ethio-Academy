@@ -1,7 +1,6 @@
 "use client"
 
 import { FieldValues,SubmitHandler, useForm } from "react-hook-form";
-import Input from "../input/input";
 import React, { useState } from "react";
 import axios from "axios"
 import { useRouter } from "next/navigation";
@@ -9,7 +8,9 @@ import toast from 'react-hot-toast';
 import {signIn} from 'next-auth/react'
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-import Button from "../button/button";
+import Input from "@/components/input/input";
+import Button from "@/components/button/button";
+
 interface SignupProps{
   user:any;
 }

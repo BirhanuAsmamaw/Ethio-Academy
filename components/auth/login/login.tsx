@@ -1,13 +1,14 @@
 "use client"
 import { FcGoogle } from "react-icons/fc";
 import { FieldValues,SubmitHandler, useForm } from "react-hook-form";
-import Input from "../input/input";
 import { useState } from "react";
 import {signIn} from 'next-auth/react'
 import { useRouter } from "next/navigation";
 import toast from 'react-hot-toast';
 import Link from "next/link";
-import Button from "../button/button";
+import Input from "@/components/input/input";
+import Button from "@/components/button/button";
+
 
 
 interface LoginProps{
