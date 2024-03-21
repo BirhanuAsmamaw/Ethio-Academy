@@ -4,7 +4,7 @@ import Container from "@/components/container/container";
 import { useCart } from "@/hooks/use.cart";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Login from "./login/login";
+import Login from "./auth/login/login";
 interface BlurProps{
   department:any;
   user:any;
