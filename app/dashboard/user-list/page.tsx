@@ -11,9 +11,9 @@ const UserList =async () => {
   const usersData=users?.map(user =>{
     let users_no=0;
     let price=0;
-   user.payedCourses.forEach((users:any)=>{
-    users_no+=users.users.length;
-    price+=users.totalPrice
+   user?.payedCourses?.forEach((users:any)=>{
+    users_no+=users?.users?.length;
+    price+=users?.totalPrice
 
 
 
