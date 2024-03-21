@@ -1,12 +1,13 @@
+import { getCurrentUser } from "@/actions/users/currentUser"
 import AccountVerification from "@/components/account-verification"
 import Navbar from "@/components/navbar/Navbar"
 import Spinning from "@/components/spinning"
 import { Suspense } from "react"
 
 
-const AccountVerificationPage = () => {
+const AccountVerificationPage = async() => {
 
-
+const user=getCurrentUser();
   return (<>
   <Navbar/>
   <Suspense fallback={<div 
@@ -14,7 +15,7 @@ const AccountVerificationPage = () => {
       <Spinning/>
       <p>Loading...</p>
     </div>}>
-      <AccountVerification/>
+      <AccountVerification user={user}/>
       </Suspense></>
   )
 }
