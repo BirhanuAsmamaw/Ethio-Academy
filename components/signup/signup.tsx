@@ -32,27 +32,8 @@ const router=useRouter();
     axios.post("/api/user/register",data).then((response) => {
       console.log("response",response);
       toast.success("Send to Email  Successfully  and Check your email address!");
-      router.push("/account-verification")
-      router.refresh()
-     
-      // signIn('credentials',{
-      //   email: data.email,
-      //   password: data.password,
-      //   redirect:false,
-      //  }).then((callback)=>{
-      //    if (callback?.ok){
-      //      router.push('/')
-      //      router.refresh()
-           
-      //      toast.success("account logged in successfully")
-           
-      //    }
-      //    if (callback?.error){
-      //      toast.error(callback.error)
-      //    }
-      //  }).catch((error)=>toast.error(error.message)).finally(() => {
-      //          setLoading(false)
-      //  })  
+      window.open('https://mail.google.com/mail/u/0/#inbox', '_blank');
+    
        
     }).catch((error:any) => {
       toast.error(error.message)
