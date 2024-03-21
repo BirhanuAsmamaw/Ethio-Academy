@@ -19,6 +19,9 @@ const ApprovedCourses = async() => {
     }
   })
 
+  console.log("bought", boughtCourses);
+  console.log("approved", approvedCourses);
+  
   return ( <div className="py-10">
    <ApprovedCoursesClient coursesPayment={boughtCourses || null}/>
   </div> );
