@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "@/lib/prismadb"
 import bcrypt from 'bcrypt'
+import { getUserById } from "@/actions/tokens/getUserbyd"
 
 export const authOptions:AuthOptions={
   adapter: PrismaAdapter(prisma),
@@ -55,6 +56,30 @@ CredentialsProvider({
   pages:{
     signIn:'/'
   },
+  events:{
+    async linkAccount ({user}) {
+      await prisma.user.update({
+        where: {id: user.id},
+        data: {emailVerified:new Date()}
+      })
+    }
+  },
+  callbacks:{
+    
+    async signIn({user,account}){
+      const existingUser = await getUserById(user.id as string)
+      if(account?.provider!=="credentials"){
+        return true
+      }
+      if(account?.provider==="credentials"){
+        if(!existingUser?.emailVerified){
+          return false
+        }
+      }
+      return true;
+    },
+  },
+
   debug:process.env.NODE_ENV==="development",
   session:{
     strategy:"jwt"
