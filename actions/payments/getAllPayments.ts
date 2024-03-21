@@ -6,7 +6,8 @@ export async function getAllPayments(){
       include:{
         customer:true
       }
-    });
+    })
+  
   return payments
   }catch(e){
    
