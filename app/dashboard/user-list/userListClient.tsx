@@ -343,7 +343,7 @@ export const UserListClient:React.FC<UserListProps>=({users})=> {
   })
 
   return (
-    <div className="w-full bg-white dark:bg-gray-800 ">
+    <div className="w-full bg-white dark:bg-gray-800  p-4">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
