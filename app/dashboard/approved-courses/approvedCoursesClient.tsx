@@ -296,7 +296,7 @@ export const ApprovedCoursesClient:React.FC<ApprovedCourseListprops>=({coursesPa
 
 
 
-
+  console.log("approved", coursesPayment);
   
   const data:Payment[]=coursesPayment
 
