@@ -22,6 +22,13 @@ if(!verificationToken){
   throw new Error('invalid token');
 }
 
+
+const isExpiredToken = new Date(verificationToken.expires) < new Date()
+
+    if(isExpiredToken){
+      return NextResponse.json({error: "Verification token expired"})
+    }
+    
 const hashedPassword=await bcrypt.hash(password,10);
 
 await prisma.user.update({
