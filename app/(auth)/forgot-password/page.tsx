@@ -1,6 +1,7 @@
 "use client"
 import Button from '@/components/button/button'
 import Input from '@/components/input/input'
+import Navbar from '@/components/navbar/Navbar'
 import axios from 'axios'
 import React, { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
@@ -26,7 +27,9 @@ const onSubmit:SubmitHandler<FieldValues> = (data)=>{
   });
 
 }
-  return (<div className="h-screen w-full flex justify-center items-center">
+  return (<>
+  <Navbar/>
+  <div className="h-screen w-full flex justify-center items-center">
 
 <div className="m-2 border border-gray-200 dark:border-gray-600  rounded-[10px] bg-white dark:bg-gray-800 px-2 py-6 w-full md:max-w-md flex flex-col items-center gap-4">
 <div className="w-full">
@@ -37,6 +40,7 @@ const onSubmit:SubmitHandler<FieldValues> = (data)=>{
     register={register}
     errors={errors} 
     required
+    placehoder='write your email'
        
   />
 </div>
@@ -47,6 +51,7 @@ const onSubmit:SubmitHandler<FieldValues> = (data)=>{
   </div>
 
   </div>
+  </>
   )
 }
 
