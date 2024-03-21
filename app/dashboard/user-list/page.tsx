@@ -9,16 +9,16 @@ const UserList =async () => {
 
   const users=await getAllUsers();
   const usersData=users?.map(user =>{
-    let users_no=0;
+    let courses_no=0;
     let price=0;
-   user?.payedCourses?.forEach((users:any)=>{
-    users_no+=users?.users?.length;
-    price+=users?.totalPrice
+   user.payedCourses?.forEach((c:any)=>{
+    courses_no+=c.courses.length
+    price+=c?.totalPrice
 
 
 
     })
-    return {...user, users:users_no,price:price}
+    return {...user, courses:courses_no,price:price}
   })
   return (<div className="px-4 py-10">
     <UserListClient users={usersData || null}/>
