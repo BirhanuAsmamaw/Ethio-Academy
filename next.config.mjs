@@ -4,7 +4,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
 },
 images: {
-  domains: ['avatars.githubusercontent.com','lh3.googleusercontent.com','firebasestorage.googleapis.com'],
+  domains: ['avatars.githubusercontent.com','lh3.googleusercontent.com','firebasestorage.googleapis.com','utfs.io'],
 },
  
   webpack: (config) => {
