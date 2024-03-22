@@ -4,11 +4,10 @@ export async function POST(req:Request) {
   const body=await req.json();
   const {chapterId,
     title ,
-    videoUrl,
-    videoThumbnail,
+   
     content }=body;
 
-    if(!chapterId || !videoThumbnail || !content || !title || !videoUrl) {
+    if(!chapterId || !content || !title ) {
       return NextResponse.json({
         status: false,
         message:"Invalid  parameters"
@@ -19,8 +18,6 @@ export async function POST(req:Request) {
       data:{
         chapterId:chapterId, 
         title:title,
-         videoUrl:videoUrl, 
-         videoThumbnail:videoThumbnail, 
          content:content}
      })
      return NextResponse.json(newLesson);

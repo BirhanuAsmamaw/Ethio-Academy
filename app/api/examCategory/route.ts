@@ -6,7 +6,7 @@ export async function POST(req:Request) {
   const body=await req.json();
 
   try{
-    const {cover,examType}=body
+    const {examType}=body
 
     if(!examType){
       return NextResponse.json({message:"exams not empty",status: false})
@@ -21,7 +21,6 @@ export async function POST(req:Request) {
     const newExams=await  prisma.exam.create({
       data:{
         examType:examType,
-        cover:cover,
       }
     })
 

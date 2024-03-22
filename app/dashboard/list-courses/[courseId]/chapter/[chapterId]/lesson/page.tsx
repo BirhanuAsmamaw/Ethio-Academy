@@ -2,14 +2,10 @@
 import Heading from "@/components/Heading/Heading";
 import Button from "@/components/button/button";
 import TextEditor from "@/components/editor/editor";
-import FileInput from "@/components/input/fileInput";
 import Input from "@/components/input/input";
-import CustomeProgress from "@/components/progress";
-import firebaseApp from "@/lib/firebasedb";
 import axios from "axios";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler,  useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 interface IParams{
@@ -18,15 +14,9 @@ interface IParams{
 const Lesson = ({params}:{params:IParams}) => {
   const [isNext,setNext]=useState(false);
   const [isDisabled,setDisabled]=useState(true);
-  const [image,setImage]=useState<File|null>(null)
-  const [video,setVideo]=useState<File|null>(null)
   const [description, setDescription]=useState("")
   const [isLoading,setLoading]=useState(false);
-  const [selectedImage, setSelectedImage] = useState<any>(null);
-const [selectedVideo, setSelectedVideo] = useState<any>(null);
-const [imageProgress, setImageProgress] = useState(0)
-const [videoProgress, setVideoProgress] = useState(0)
-const [progress, setProgress] = useState(0)
+  
 
 
 const router=useRouter();
@@ -39,20 +29,10 @@ const router=useRouter();
 
   useEffect(() =>{
     setValue('content',description)
-    setValue("videoUrl",video);
-  },[description,video]);
+  },[description,setValue]);
 
 
 
-
- ;
-
-
-  const handleImageChange = useCallback((acceptedFiles:any)=> {
-    setImage(acceptedFiles[0])
-    setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
-   
-  }, []) 
 
 
 
@@ -60,131 +40,26 @@ const dataValue=getValues();
 
 
   useEffect(() =>{
-    if(!dataValue.title || !dataValue.content || !dataValue.chapterId || !dataValue.videoUrl || !dataValue.videoThumbnail ){
+    if(!dataValue.title || !dataValue.description || !dataValue.chapterId ){
       setDisabled(true);
     }
     else{
       setDisabled(false);
     }
-  },[dataValue.title,dataValue.content,dataValue.chapterId,dataValue.videoUrl,dataValue.videoThumbnail])
-
-  const handleVideoChange = useCallback((acceptedFiles:any)=> {
-    // Do something with the files
-    setVideo(acceptedFiles[0])
-    setSelectedVideo(URL.createObjectURL(acceptedFiles[0]));
-    
-  }, []) 
+  },[dataValue.title,dataValue.description,dataValue.chapterId])
 
 
 
 
-  let imageCoverUrl:string="";
-  let videoUrl:string="";
+
 
 
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setLoading(true)
-    const handleImageUpload = async() =>{
-      try{
-        const storage=getStorage(firebaseApp);
-        if(video){
-          const videoName=new Date().getTime()+"-"+video.name;
-          const videoStorageRef=ref(storage,`lesson/videos/${videoName}`);
-          const uploadTask=uploadBytesResumable(videoStorageRef,video);
-
-          await new Promise<void>((resolve,reject)=>{
-            uploadTask.on('state_changed',
-            (snapshot)=>{
-              const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
-             setVideoProgress(progress)
-            
-              switch(snapshot.state){
-                   case "paused":
-                    
-                     break;
-                   case "running":
-                    
-                     break;
-              }
-            },
-            (error)=>{
-            
-              reject(error);
-            },
-            ()=>{
-              //succesful upload image
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
-                videoUrl=downloadUrl
-              
-                resolve();
-              }).catch((error)=>{
-              
-                reject(error);
-              });
-            }
-  
-            )
-  
-          })
-
-        }
-
-
-      if(image){
-        const fileName=new Date().getTime()+"-"+image.name;
-
-        const imageStorageRef=ref(storage,`lesson/cover/${fileName}`);
-        const uploadTask=uploadBytesResumable(imageStorageRef,image);
-        await new Promise<void>((resolve,reject)=>{
-          uploadTask.on('state_changed',
-          (snapshot)=>{
-            const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
-            setImageProgress(progress)
-           
-            switch(snapshot.state){
-                 case "paused":
-                 
-                   break;
-                 case "running":
-                  
-                   break;
-            }
-          },
-          (error)=>{
-           
-            reject(error);
-          },
-          ()=>{
-            //succesful upload image
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
-              imageCoverUrl=downloadUrl
-             
-              resolve();
-            }).catch((error)=>{
-              
-              reject(error);
-            });
-          }
-
-          )
-
-        })
-
-      }
-    
-    } catch(error) {
-
-    }
-
-    
     
 
-
-  }
-  await handleImageUpload();
-
-  const lessonData={...data,videoThumbnail:imageCoverUrl,videoUrl:videoUrl}
+  const lessonData={...data}
  
     axios.post('/api/lesson',lessonData).then(()=>{
       toast.success("Course created successfully")
@@ -202,15 +77,6 @@ const dataValue=getValues();
 
 
 
-//on cancel file
-const onCancelVideo = () => {
-  setSelectedVideo(null);
-};
-const onCancelImage = () => {
-  setSelectedImage(null);
-};
-
-
 const onNext=()=>{
   setNext(true)
 
@@ -221,14 +87,6 @@ const onBack=()=>{
 
 }
 
-
-
-
-
-// set total progress
-useEffect(()=>{
-  setProgress(Math.floor((imageProgress+videoProgress)/2))
-},[imageProgress,videoProgress]);
 
 
 
@@ -243,34 +101,7 @@ useEffect(()=>{
          </div>
 
          
-         
-         <div className="w-full  lg:w-8/12 flex flex-col gap-1">
-          <Heading small title="Upload Video Thumbnail"/>
-            <FileInput
-            required
-            onCancel={onCancelImage}
-            file={selectedImage}
-            fileType="image"
-          onDrop={handleImageChange}
-              register={register}
-              id="videoThumbnail" 
-              errors={errors}          
-          />
-        </div>
-
-
-        <div className="w-full  lg:w-8/12 flex flex-col gap-1">
-          <Heading small title="Upload  Video"/>
-            <FileInput
-            file={selectedVideo}
-            fileType="video"
-            onCancel={onCancelVideo}
-          onDrop={handleVideoChange}
-              register={register}
-              id="videoUrl" 
-              errors={errors}          
-          />
-        </div>
+        
 
 
          <div className="flex flex-col px-4 w-full  gap-1  pt-2 my-4">
@@ -297,17 +128,7 @@ disabled={isDisabled}
   <div className="p-4">
     <h1 className="font-bold text-lg">{dataValue.title}</h1>
   </div>
-
-  <div>
-    <video
-        className="w-full rounded-lg shadow-lg"
-        controls
-        poster={selectedImage}
-      >
-        <source src={selectedVideo} type="video/mp4"  />
-        Your browser does not support the video tag.
-      </video></div>
-
+  
 
 
 
@@ -315,12 +136,11 @@ disabled={isDisabled}
   <div className="p-4" dangerouslySetInnerHTML={{__html:dataValue.content}}>
   </div>
 
-  {isLoading&&<CustomeProgress progress={progress} title={"Uploading"}/>}
 <div className="w-full py-10 px-4 gap-4 flex justify-end">
 
 <button onClick={onBack} type="button" className="text-white bg-blue-700 hover:bg-blue-800 
 focus:ring-4 focus:outline-none focus:ring-blue-300 
-rounded-[10px]
+
 disabled:bg-blue-400 disabled:dark:bg-blue-500 disabled:cursor-not-allowed
  font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
 disabled={isDisabled}

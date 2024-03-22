@@ -31,6 +31,7 @@
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.2.2",
     "@types/bcrypt": "^5.0.2",
+    "@uploadthing/react": "^6.4.0",
     "aws-sdk": "^2.1563.0",
     "axios": "^1.6.7",
     "bcrypt": "^5.1.1",
@@ -59,7 +60,8 @@
     "resend": "^3.2.0",
     "sharp": "^0.33.2",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "uploadthing": "^6.6.0"
   },
   "devDependencies": {
     "@types/node": "^20",
