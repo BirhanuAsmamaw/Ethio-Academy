@@ -79,9 +79,10 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({courseId})=
     setCoverKey(key);
     const coverData={
       public_key:key,
-      public_url:url}
+      public_url:url
+    }
 
-   axios.put(`/api/course/${courseId}/update/cover`,{coverData}).then(()=>{
+   axios.put(`/api/course/${courseId}/update/cover`,{cover:coverData}).then(()=>{
     toast.success("Course Cover uploaded successfully")
     }).catch((error)=>{
       toast.error(error.message);
