@@ -194,7 +194,13 @@ export const columns: ColumnDef<CourseType>[] = [
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-courses/${course.id}/edit`}>Edit</Link>
+               href={`/dashboard/list-courses/${course.id}/edit`}>Edit Course</Link>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem> 
+              <Link
+               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
+               href={`/dashboard/list-courses/${course.id}/course-file-update`}>Update Course Files</Link>
             </DropdownMenuItem>
             <DropdownMenuItem> 
               <Link 
@@ -312,8 +318,7 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
     },
   })
 
-  return (
-    <div className="w-full bg-white dark:bg-gray-800 ">
+  return (<div className="w-full bg-white dark:bg-gray-800 ">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
@@ -353,7 +358,7 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
       </div>
 
 
-      <div className="rounded-[5px] p-3 rounded-[5px] w-full overflow-x-auto border border-gray-200 dark:border-gray-700">
+      <div className="rounded-[5px] p-3  w-full overflow-x-auto border border-gray-200 dark:border-gray-700">
         <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

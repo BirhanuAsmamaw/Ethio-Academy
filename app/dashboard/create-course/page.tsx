@@ -3,16 +3,13 @@ import Heading from "@/components/Heading/Heading";
 import Button from "@/components/button/button";
 import Container from "@/components/container/container";
 import TextEditor from "@/components/editor/editor";
-import FileInput from "@/components/input/fileInput";
 import Input from "@/components/input/input";
 import Select from "@/components/input/select";
 import axios from "axios";
-import {getDownloadURL,getStorage,ref,uploadBytesResumable} from 'firebase/storage'
-import firebaseApp from "@/lib/firebasedb";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, useForm ,SubmitHandler} from "react-hook-form";
 import toast from "react-hot-toast";
-import CustomeProgress from "@/components/progress";
+
 
 
 
@@ -23,14 +20,8 @@ const [requirement, setRequirement]=useState("")
 const [description, setDescription]=useState("")
 const [courseUsers, setCourseUsers]=useState("")
 const [isnext, setIsNext]=useState(false)
-const [image,setImage]=useState<File|null>(null)
-const [video,setVideo]=useState<File|null>(null)
 const [isLoading, setIsLoading]=useState(false)
-const [selectedImage, setSelectedImage] = useState<any>(null);
-const [selectedVideo, setSelectedVideo] = useState<any>(null);
-const [imageProgress, setImageProgress] = useState(0)
-const [videoProgress, setVideoProgress] = useState(0)
-const [progress, setProgress] = useState(0)
+
 
 
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
@@ -49,9 +40,7 @@ const [progress, setProgress] = useState(0)
     setValue('descriptions',description)
     setValue('requirements',requirement)
     setValue('whoShouldTake',courseUsers)
-    setValue("cover",image);
-    setValue("videoUrl",video);
-  },[description,requirement,courseUsers,image,video]);
+  },[description,requirement,courseUsers,setValue]);
 
 
 
@@ -61,136 +50,12 @@ const [progress, setProgress] = useState(0)
 
 
 
-  const handleImageChange = useCallback((acceptedFiles:any)=> {
-    setImage(acceptedFiles[0])
-    setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
-  }, []) 
-
-
-
-  const handleVideoChange = useCallback((acceptedFiles:any)=> {
-    // Do something with the files
-    setVideo(acceptedFiles[0])
-    setSelectedVideo(URL.createObjectURL(acceptedFiles[0]));
-    // setValue('cover','cover')
-  }, []) 
-
-
-
-
-  let imageCoverUrl:string="";
-  let videoUrl:string="";
-
 
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
-    const handleImageUpload = async() =>{
-      try{
-        const storage=getStorage(firebaseApp);
-        if(video){
-          const videoName=new Date().getTime()+"-"+video.name;
-          const videoStorageRef=ref(storage,`course/videos/${videoName}`);
-          const uploadTask=uploadBytesResumable(videoStorageRef,video);
-
-          await new Promise<void>((resolve,reject)=>{
-            uploadTask.on('state_changed',
-            (snapshot)=>{
-              const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
-              setVideoProgress(progress)
-            
-              switch(snapshot.state){
-                   case "paused":
-                    
-                     break;
-                   case "running":
-                    
-                     break;
-              }
-            },
-            (error)=>{
-            
-              reject(error);
-            },
-            ()=>{
-              //succesful upload image
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
-                videoUrl=downloadUrl
-              
-                resolve();
-              }).catch((error)=>{
-              
-                reject(error);
-              });
-            }
-  
-            )
-  
-          })
-
-        }
-
-
-      if(image){
-        const fileName=new Date().getTime()+"-"+image.name;
-
-        const imageStorageRef=ref(storage,`course/cover/${fileName}`);
-        const uploadTask=uploadBytesResumable(imageStorageRef,image);
-        await new Promise<void>((resolve,reject)=>{
-          uploadTask.on('state_changed',
-          (snapshot)=>{
-            const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
-            setImageProgress(progress)
-           
-            switch(snapshot.state){
-                 case "paused":
-                 
-                   break;
-                 case "running":
-                  
-                   break;
-            }
-          },
-          (error)=>{
-           
-            reject(error);
-          },
-          ()=>{
-            //succesful upload image
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
-              imageCoverUrl=downloadUrl
-             
-              resolve();
-            }).catch((error)=>{
-              
-              reject(error);
-            });
-          }
-
-          )
-
-        })
-
-      }
-
-      
     
-    } catch(error) {
-
-    }
-
-    
-    
-
-
-  }
-  await handleImageUpload();
-  
-  if(!imageCoverUrl || !videoUrl){
-throw new Error("course cover and video not empty!!")
-  }
-
-  const course={...data,cover:imageCoverUrl,videoUrl:videoUrl}
+  const course={...data}
     axios.post('/api/course',course).then(()=>{
       toast.success("Course created successfully")
     })
@@ -204,20 +69,8 @@ throw new Error("course cover and video not empty!!")
   }
 
 
-//on cancel file
-const onCancelVideo = () => {
-  setSelectedVideo(null);
-};
-const onCancelImage = () => {
-  setSelectedImage(null);
-};
 
 
-
-// set total progress
-useEffect(()=>{
-  setProgress(Math.floor((imageProgress+videoProgress)/2))
-},[imageProgress,videoProgress]);
 
   
   return ( <div className="flex flex-col w-full  ">
@@ -239,36 +92,7 @@ useEffect(()=>{
           <div className="w-full  lg:w-8/12"><Input id="subject" register={register} errors={errors}  label="Subject" type="text" required/></div>
 
 
-
-          <div className="w-full  lg:w-8/12 flex flex-col gap-1">
-          <Heading small title="Upload Course Cover"/>
-            <FileInput
-            required
-            onCancel={onCancelImage}
-            file={selectedImage}
-            fileType="image"
-          onDrop={handleImageChange}
-              register={register}
-              id="cover" 
-              errors={errors}          
-          />
-        </div>
-
-
-        <div className="w-full  lg:w-8/12 flex flex-col gap-1">
-          <Heading small title="Upload Course Video"/>
-            <FileInput
-            required
-            onCancel={onCancelVideo}
-            file={selectedVideo}
-            fileType="video"
-          onDrop={handleVideoChange}
-              register={register}
-              id="videoUrl" 
-              errors={errors}          
-          />
-        </div>
-
+        
 
 
         
@@ -330,7 +154,6 @@ useEffect(()=>{
 
  </div>
  
- {isLoading&&<CustomeProgress progress={progress} title={"Uploading"}/>}
 
  <div className="p-4 flex justify-end  mx-20 lg:p-20">
 <div className="flex gap-2">
