@@ -23,11 +23,6 @@ const ApprovedCourses = async() => {
  
 
   return ( <div className="py-10">
-    <div className="p-10">
-      <p>{boughtCourses? boughtCourses[0].bank :"courses"}</p>
-      <p>{`${approvedCourses}`}</p>
-      <h1>{approvedCourses? approvedCourses[0].totalPrice :"zero price"}</h1>
-    </div>
    <ApprovedCoursesClient coursesPayment={boughtCourses || null}/>
   </div> );
 }
