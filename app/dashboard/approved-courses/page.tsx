@@ -15,12 +15,12 @@ const ApprovedCourses = async() => {
       email: payment.customer.email,
       createdAt:payment.createdAt,
       courses : payment.courses,
+      exam: payment.department
       
     }
   })
 
-  console.log("bought", boughtCourses);
-  console.log("approved", approvedCourses);
+ 
 
   return ( <div className="py-10">
     <div className="p-10">

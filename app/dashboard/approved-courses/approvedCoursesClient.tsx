@@ -64,6 +64,7 @@ interface Payment {
   email: string;
   createdAt:any;
   courses : Course[];
+  exam:string;
 }
 
 
