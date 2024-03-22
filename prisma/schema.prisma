@@ -34,7 +34,7 @@ model User {
   name          String?
   email         String  @unique
   emailVerified DateTime?
-  image         String?
+  image         File?
   hash String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
@@ -66,9 +66,9 @@ model Course{
    updatedAt     DateTime  @updatedAt
    subject String
   category String
-   cover String?
-   videoUrl String?
-   videoThumbnail String?
+   cover File?
+   videoUrl File?
+   videoThumbnail File?
    price Float
    rating Float?
    descriptions String
@@ -101,8 +101,8 @@ model Lesson{
    chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
    chapterId String @db.ObjectId
    title String
-   videoUrl String?
-   videoThumbnail String?
+   videoUrl File?
+   videoThumbnail File?
    content String
    questions Question []
 
@@ -159,7 +159,7 @@ model Payment{
    id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-   recit       String?
+   recit       File?
    bank        String
    transaction String      @unique
    totalPrice       Float
@@ -215,7 +215,7 @@ model Exam{
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
    examType   String   @unique
-   cover String?
+   cover File?
    departments Department[]
 }
 
@@ -226,7 +226,7 @@ model Department{
    exam     Exam     @relation( fields: [examId], references: [id], onDelete: Cascade)
    examId String @db.ObjectId
    departmentName String   @unique
-   cover String?
+   cover File?
    questions Question[]
    subject  Subject[]
 }
@@ -243,7 +243,10 @@ model Subject{
 
 
 
-
+type File{
+  public_key String
+  public_url String
+}
 enum Role{
    USER
     ADMIN

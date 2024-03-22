@@ -18,8 +18,6 @@ export async function POST(req:Request){
   const {
     subject,
     category,
-     cover,
-     videoUrl,
      price,
      descriptions,
      requirements,
@@ -28,7 +26,7 @@ export async function POST(req:Request){
 
 
 
-  if (!subject || !category || !cover || !price || !descriptions || !requirements || !whoShouldTake || !videoUrl ){
+  if (!subject || !category ||  !price || !descriptions || !requirements || !whoShouldTake ){
     return NextResponse.json({status:false, message:"invalid course parameters"});
 
   }
@@ -37,8 +35,6 @@ export async function POST(req:Request){
       creatorId:user.id,
       subject:subject,
       category:category,
-      videoUrl:videoUrl,
-      cover:cover,
       price:parseFloat(price),
       rating:0,
       descriptions:descriptions,
