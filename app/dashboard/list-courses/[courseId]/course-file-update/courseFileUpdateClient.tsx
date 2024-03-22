@@ -96,7 +96,17 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({courseId})=
     const key=res[0]?.key || "";
     setthumbnailUrl(url);
     setthumbnailKey(key);
+    const thumbnailData={
+      public_key:key,
+      public_url:url
+    }
+
+   axios.put(`/api/course/${courseId}/update/thumbnail`,{thumbnail:thumbnailData}).then(()=>{
     toast.success("Course Thumbnail Uploaded successfully")
+    }).catch((error)=>{
+      toast.error(error.message);
+    });
+    
   }
 
   const onCourseVideoComplete=(res:any[]) => {
@@ -104,7 +114,18 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({courseId})=
     const key=res[0]?.key || "";
     setVideoUrl(url);
     setVideoKey(key);
+
+    const videoData={
+      public_key:key,
+      public_url:url
+    }
+
+   axios.put(`/api/course/${courseId}/update/video`,{video:videoData}).then(()=>{
     toast.success("Video Uploaded successfully")
+    }).catch((error)=>{
+      toast.error(error.message);
+    });
+    
   }
   
 

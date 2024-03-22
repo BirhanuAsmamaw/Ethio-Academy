@@ -40,7 +40,7 @@ const CourseClientPage:React.FC<ICourseId> = ({course,customer}) => {
   <SubLayout>
 
   <h1 className="text-xl  font-semibold">{course.subject}</h1>
-  {course.videoThumbnail?<div>
+  {(course.videoThumbnail&&course?.videoUrl)?<div>
     <video
         className="w-full rounded-lg shadow-lg"
         controls
