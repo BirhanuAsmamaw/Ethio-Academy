@@ -81,12 +81,10 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({courseId})=
       public_key:key,
       public_url:url}
 
-   axios.put(`/api/course/${courseId}/update/cover`,{coverData}).then((data:any)=>{
-      setCoverUrl(data?.cover.public_url);
-    setCoverKey(data?.cover.public_key);
+   axios.put(`/api/course/${courseId}/update/cover`,{coverData}).then(()=>{
     toast.success("Course Cover uploaded successfully")
     }).catch((error)=>{
-      toast.error("something went wrong")
+      toast.error(error.message);
     });
    
   }
@@ -111,7 +109,7 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({courseId})=
 
   return (
     <div className="space-y-10 w-full">
-      <h6>cover url:- {CoverUrl}</h6>
+     
       <FileUploader
       onClientUploadComplete={onCourseCoverComplete}
       label="Upload Course Cover"
