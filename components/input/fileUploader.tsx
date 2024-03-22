@@ -5,13 +5,14 @@ import React from "react";
 import toast from "react-hot-toast";
 
 interface FileUploaderProps{
+  label:string;
   endpoint:any;
   file:any;
   handleMediaChange:() => void;
    mediaType:string;
     onUrlChange:(url:string,key:string) => void;
 }
-const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,file ,endpoint, mediaType, onUrlChange })=> {
+const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,label,file ,endpoint, mediaType, onUrlChange })=> {
 
 
  
@@ -28,7 +29,7 @@ const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,file ,endpoin
     <div>
       <section className="w-full max-w-4xl mx-auto my-8 p-4  bg-white dark:bg-gray-800">
         <div className="flex justify-between items-center">
-          <h2>Upload</h2>
+          <h2>{label}</h2>
           {file&& (
             <button
               onClick={handleMediaChange}

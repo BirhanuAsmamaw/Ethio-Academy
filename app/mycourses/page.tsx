@@ -31,7 +31,7 @@ rounded-[10px] flex flex-col
    space-y-2
    ">
    <Avatar>
-      <AvatarImage src={user?.image?.public_url || ""} alt={user?.name || ''} />
+      <AvatarImage src={user?.image || ""} alt={user?.name || ''} />
       <AvatarFallback>{user?.name|| 'profile'}</AvatarFallback>
     </Avatar>
     <h5 className="font-semibold text-lg ">{user?.name}</h5>
