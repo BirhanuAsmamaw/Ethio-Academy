@@ -93,9 +93,11 @@ const CourseFileUpdateClient=()=> {
     setVideoKey(key);
     toast.success("Video Uploaded successfully")
   }
+  
 
   return (
     <div className="space-y-10 w-full">
+      <h6>cover url:- {CoverUrl}</h6>
       <FileUploader
       onClientUploadComplete={onCourseCoverComplete}
       label="Upload Course Cover"
