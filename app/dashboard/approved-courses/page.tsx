@@ -11,11 +11,11 @@ const ApprovedCourses = async() => {
       status: payment.status,
       transaction: payment.transaction,
       bank: payment.bank,
-      name: payment.customer.name,
+      name: payment.customer?.name,
       email: payment.customer.email,
       createdAt:payment.createdAt,
-      courses : payment.courses,
-      exam: payment.department
+      courses : payment?.courses,
+      exam: payment?.department
       
     }
   })
