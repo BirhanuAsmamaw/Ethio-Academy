@@ -168,7 +168,7 @@ const departmentData={
   
 }
   const payment={...data,recit:receiptUrl, bank:selectedBank,
-    courses:courses,department:departmentData}
+    courses:courses,department:department?departmentData:null}
    console.log("Payments data",payment);
     axios.post('/api/payment',payment).then(()=>{
       toast.success("Thank you! Paid successfully")
