@@ -63,8 +63,8 @@ interface Payment {
   name: string;
   email: string;
   createdAt:any;
-  courses : Course[];
-  exam:string;
+  courses? : Course[] | null;
+  exam?:string;
 }
 
 
@@ -151,14 +151,14 @@ export const columns: ColumnDef<Payment>[] = [
     },
     cell: ({ row }) => <div className="lowercase">
       
-      <ul className="max-w-md text-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+      {row.getValue("courses")?<ul className="max-w-md text-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
 {(row.getValue("courses") as Course[])?.map((course:Course) => {
   return <li key={course.id}>
   {course.subject}
 </li>
 })}
    
-</ul>
+</ul>:"0"}
     </div>,
   },
 
