@@ -96,7 +96,7 @@ const [isLoading, setIsLoading]=useState(false)
 
 
         
-        <div className="lg:w-8/12">
+        <div className="w-full lg:w-8/12">
           <Input register={register} errors={errors} label="Price" type="number" id="price" required/>
           </div>
           
