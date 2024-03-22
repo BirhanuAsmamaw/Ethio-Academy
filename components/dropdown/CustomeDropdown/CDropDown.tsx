@@ -16,7 +16,7 @@ setDropdown((prev)=>!prev)
   
 
   return (  <>
-    <div className="relative">
+    <div className="relative p-2">
      <div className="p-2">
        <button className="flex gap-2" onClick={onOpen}>
        <div className="">{title}</div>
