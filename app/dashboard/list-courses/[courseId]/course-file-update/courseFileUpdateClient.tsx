@@ -1,10 +1,13 @@
 "use client"
 import { RemoveFile } from "@/actions/file/removeFile";
 import FileUploader from "@/components/input/fileUploader";
+import axios from "axios";
 import {  useState } from "react";
 import toast from "react-hot-toast";
-
-const CourseFileUpdateClient=()=> {
+interface CourseFileUpdateClientProps{
+  courseId: string;
+}
+const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({courseId})=> {
   const [CoverUrl, setCoverUrl] = useState("");
   const [CoverKey, setCoverKey] = useState("");
 
@@ -68,13 +71,24 @@ const CourseFileUpdateClient=()=> {
   }
 
 
-
+ 
   const onCourseCoverComplete=(res:any[]) => {
     const url = res[0]?.url || "";
     const key=res[0]?.key || "";
     setCoverUrl(url);
     setCoverKey(key);
+    const coverData={
+      public_key:key,
+      public_url:url}
+
+   axios.put(`/api/course/${courseId}/update/cover`,{coverData}).then((data:any)=>{
+      setCoverUrl(data?.cover.public_url);
+    setCoverKey(data?.cover.public_key);
     toast.success("Course Cover uploaded successfully")
+    }).catch((error)=>{
+      toast.error("something went wrong")
+    });
+   
   }
 
 
