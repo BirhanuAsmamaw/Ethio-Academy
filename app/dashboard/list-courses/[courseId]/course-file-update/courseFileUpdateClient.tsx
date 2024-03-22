@@ -157,8 +157,8 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({courseId})=
       label="Upload Course video"
         file={VideoUrl}
         handleMediaChange={handleVideoChange}
-        endpoint="imageUploader"
-        mediaType="image"
+        endpoint="videoUploader"
+        mediaType="video"
         
       />
 
