@@ -75,7 +75,7 @@ model Course{
    requirements String
    whoShouldTake String?
    chapters Chapter[]
-   creator       User      @relation("createdCourses", fields: [creatorId], references: [id])
+   creator       User      @relation("createdCourses", fields: [creatorId], references: [id], onDelete: Cascade)
    creatorId String @db.ObjectId
    reviews  Review[]
    
@@ -86,7 +86,7 @@ model Chapter{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-   course Course @relation(fields: [courseId], references: [id])
+   course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
    courseId String @db.ObjectId
    title String
    lessons Lesson[]
@@ -98,7 +98,7 @@ model Lesson{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-   chapter Chapter @relation(fields: [chapterId], references: [id])
+   chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
    chapterId String @db.ObjectId
    title String
    videoUrl String?
@@ -113,9 +113,9 @@ model Question{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-   lesson Lesson? @relation(fields: [lessonId], references: [id])
+   lesson Lesson? @relation(fields: [lessonId], references: [id], onDelete: Cascade)
    lessonId String? @db.ObjectId
-   department    Department?     @relation( fields: [departmentId], references: [id])
+   department    Department?     @relation( fields: [departmentId], references: [id], onDelete: Cascade)
    departmentId String? @db.ObjectId
    title String
    chooses Choose[]
@@ -146,9 +146,9 @@ model Review{
    updatedAt     DateTime  @updatedAt
    comment String
    rating Float
-   customer      User      @relation( fields: [customerId], references: [id])
+   customer      User      @relation( fields: [customerId], references: [id], onDelete: Cascade)
    customerId String @db.ObjectId
-   course Course @relation(fields: [courseId], references: [id])
+   course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
    courseId String @db.ObjectId
 
 }
@@ -166,7 +166,7 @@ model Payment{
    department    PaymentDepartmentExam?
 
   courses      PaymentCourse[] 
-   customer User@relation(fields: [customerId], references: [id])
+   customer User@relation(fields: [customerId], references: [id], onDelete: Cascade)
    customerId String @db.ObjectId
    status  Boolean  @default(false)
 }
@@ -193,7 +193,7 @@ model Notification{
    updatedAt     DateTime  @updatedAt
    title String
    message String
-   user User@relation(fields: [userId], references: [id])
+   user User@relation(fields: [userId], references: [id], onDelete: Cascade)
    userId String @db.ObjectId
    customers Customer[]
    isRead  Boolean @default(false)
@@ -223,7 +223,7 @@ model Department{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-   exam     Exam     @relation( fields: [examId], references: [id])
+   exam     Exam     @relation( fields: [examId], references: [id], onDelete: Cascade)
    examId String @db.ObjectId
    departmentName String   @unique
    cover String?
@@ -236,7 +236,7 @@ model Subject{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-  department    Department    @relation( fields: [departmentId], references: [id])
+  department    Department    @relation( fields: [departmentId], references: [id], onDelete: Cascade)
    departmentId String  @db.ObjectId
    subjectName  String   
 }
