@@ -29,7 +29,7 @@ const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,label,file ,e
     <div>
       <section className="w-full lg:max-w-4xl mx-auto my-8 p-4  bg-white dark:bg-gray-800">
         <div className="flex justify-between items-center">
-          <h2>{label}</h2>
+          <h2 className="text-lg font-bold">{label}</h2>
           {file&& (
             <button
               onClick={handleMediaChange}
