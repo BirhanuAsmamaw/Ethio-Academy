@@ -69,8 +69,8 @@ const {carts}=useCart()
 
       
      
-       {!user&&<Link href="/register" className="p-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Signup</Link>}
-       {!user&&<Link href="/login" className="p-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Login</Link>}
+       {!user&&<Link href="/register" className="p-2  py-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Signup</Link>}
+       {!user&&<Link href="/login" className="p-2 py-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Login</Link>}
      
 
       
