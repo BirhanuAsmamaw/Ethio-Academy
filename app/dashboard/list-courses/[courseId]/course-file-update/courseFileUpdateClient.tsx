@@ -27,7 +27,7 @@ const CourseFileUpdateClient=()=> {
   }
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 w-full">
       <FileUploader
       label="Upload Course Cover"
         file={imageUrl}
