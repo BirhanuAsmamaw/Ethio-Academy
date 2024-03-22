@@ -44,9 +44,9 @@ const CourseClientPage:React.FC<ICourseId> = ({course,customer}) => {
     <video
         className="w-full rounded-lg shadow-lg"
         controls
-        poster={course.cover}
+        poster={course.cover.public_url}
       >
-        <source src={course.videoUrl} type="video/mp4"  />
+        <source src={course.videoUrl.public_url} type="video/mp4"  />
         Your browser does not support the video tag.
       </video></div>
   <Container
