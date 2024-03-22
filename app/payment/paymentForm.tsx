@@ -40,7 +40,7 @@ const courses=carts?.map((course)=>{
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-      department:{},
+      department:null,
      recit:null,
      bank:selectedBank,
      courses:courses,
@@ -162,9 +162,9 @@ if (data.department&&data.courses) {
     customers:admins
 };}
 const departmentData={
-  id:department.id,
-  departmentName :department.departmentName,
-  price:department.price
+  id:department?.id,
+  departmentName :department?.departmentName,
+  price:department?.price
   
 }
   const payment={...data,recit:receiptUrl, bank:selectedBank,
