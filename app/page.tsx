@@ -55,7 +55,7 @@ const examsCategory=await getAllExamsCategory();
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
         {courses?.map((course:any)=>{
-          return <Card
+          return course.cover&&<Card
           key={course.id}
               id={course.id}
               no_reviews={course.reviews.length}
@@ -63,7 +63,7 @@ const examsCategory=await getAllExamsCategory();
               price={course.price}
               subject={course.subject}
               rating={course?.rating}
-              cover={course.cover} 
+              cover={course.cover.public_url} 
                />
       
         })}
@@ -82,14 +82,14 @@ const examsCategory=await getAllExamsCategory();
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
         {courses?.map((course,index)=>{
-          return <Card
+          return course.cover&&<Card
           key={index}
               id={course.id}
               category={course.category}
               price={course.price}
               subject={course.subject}
               rating={course?.rating??0}
-              cover={course.cover}  />
+              cover={course.cover?.public_url}  />
       
         })}
 
@@ -110,7 +110,7 @@ EXAMS CATEGORY */}
        {examsCategory?.map((exam)=>{
         return <ExamsCategoryCard key={exam.id} name={exam.examType} 
         url={`/exams/${exam.examType==="AAU  Medicine Entrance COC"? `AAUMEC`:`${exam.examType==="St.Paul's Hospital Millennium Medicine Entrance COC"? `SPHMMEC`:`${exam.examType}`}`}`} 
-        image={exam.cover}/>
+        image={exam.cover?.public_url}/>
        })}
 
       </div>
