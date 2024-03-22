@@ -10,9 +10,10 @@ interface FileUploaderProps{
   file:any;
   handleMediaChange:() => void;
    mediaType:string;
-    onUrlChange:(url:string,key:string) => void;
+    
+    onClientUploadComplete:(res:any[]) => void;
 }
-const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,label,file ,endpoint, mediaType, onUrlChange })=> {
+const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUploadComplete,label,file ,endpoint, mediaType })=> {
 
 
  
@@ -52,14 +53,7 @@ const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,label,file ,e
           <UploadDropzone
             className="bg-slate-100 dark:bg-slate-800 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300"
             endpoint={endpoint}
-            onClientUploadComplete={(res) => {
-              const url = res[0]?.url || "";
-              const key=res[0]?.key || "";
-            
-              
-              onUrlChange(url,key);
-              toast.success("file upload successfully")
-            }}
+            onClientUploadComplete={onClientUploadComplete}
             onUploadError={errorHandle}
           />
         )}
