@@ -40,15 +40,15 @@ const CourseClientPage:React.FC<ICourseId> = ({course,customer}) => {
   <SubLayout>
 
   <h1 className="text-xl  font-semibold">{course.subject}</h1>
-  <div>
+  {course.videoThumbnail?<div>
     <video
         className="w-full rounded-lg shadow-lg"
         controls
-        poster={course.cover.public_url}
+        poster={course?.videoThumbnail.public_url}
       >
-        <source src={course.videoUrl.public_url} type="video/mp4"  />
+        <source src={course?.videoUrl.public_url} type="video/mp4"  />
         Your browser does not support the video tag.
-      </video></div>
+      </video></div>:""}
   <Container
   childern={
     <div className="space-y-4 p-4">
