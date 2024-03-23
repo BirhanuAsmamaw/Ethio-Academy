@@ -87,7 +87,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
         <Button variant="ghost"><BsThreeDots size={20}/></Button>
       </DropdownMenuTrigger>
       
-      <DropdownMenuContent className="w-56 absolute right-0 top-2">
+      <DropdownMenuContent className="w-56 absolute right-0 top-2 bg-slate-100 dark:bg-slate-700 p-2">
         <DropdownMenuLabel>Lesson: {ind+1}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem >
