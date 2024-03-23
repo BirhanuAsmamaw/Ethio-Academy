@@ -36,8 +36,8 @@ const Hero = () => {
     animate: {
       x: "-220%",
       transition: {
-        repeat: Infinity,
-        repeatType:"mirror",
+        
+       
         duration: 20,
       },
     },
@@ -92,12 +92,13 @@ const Hero = () => {
     
 
     <motion.div 
-    variants={sliderVariants}
+   variants={sliderVariants}
         initial="initial"
         animate="animate" className="md:w-1/3 items-center">
       <Image  src={Banner} alt="banner" className=""/>
     </motion.div>
-  </div> );
+
+  </motion.div> );
 }
  
 export default Hero;
