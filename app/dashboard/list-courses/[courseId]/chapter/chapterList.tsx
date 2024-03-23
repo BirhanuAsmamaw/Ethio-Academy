@@ -35,8 +35,7 @@ import { CourseType } from "@/types";
 import ActionButton from "@/components/button/actionButton";
 import UpdateChapter from "./updateChapter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import EditAccount from "@/app/settings/editAccount";
-import EditPassword from "@/app/settings/editPassword";
+
 import DeleteChapter from "./deleteChapter";
 export function ChapterList({course}:{course:CourseType|any}) {
   if (!course){
@@ -57,7 +56,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
            
 
             <Tabs defaultValue="" className=" w-full">
-  <TabsList className="grid w-full grid-cols-1 md:grid-cols-2 gap-4 ">
+  <TabsList className="grid w-full grid-cols-2 gap-4 ">
     <TabsTrigger className="py-2 md:py-2.5 px-3 md:px-5 me-2 mb-2
   text-sm font-medium text-gray-900 focus:outline-none
    bg-white rounded-full border border-gray-200 
