@@ -1,4 +1,5 @@
 import { generateVerificationToken } from "@/actions/tokens/generateToken";
+import { getUserByEmail } from "@/actions/users/getuserByEmail";
 import { sendVerificationEmail } from "@/lib/mail";
 import { NextResponse } from "next/server";
 
@@ -12,6 +13,10 @@ export async function POST(req: Request, res: Response){
 
     }
   
+    const user=await getUserByEmail(email)
+    if(!user){
+      throw new Error('email is not existing');
+    }
     const verificationToken=await generateVerificationToken(email)
 
     const confirmLink=`https://ethio-exams-academy.vercel.app/resetPassword?token=${verificationToken.token}`

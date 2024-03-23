@@ -20,15 +20,17 @@ export async function POST(req:Request) {
 
   const user = await prisma.user.findUnique({where: {email: email}})
 
-  if (user) {
+  if (user&&user.emailVerified) {
     throw new Error('User already exists');
   }
 
   const hashPassword=await bcrypt.hash(password,10)
 
-  await prisma.user.create({
-    data:{name:name,email:email,hash:hashPassword}
-  });
+  if(!user){
+    await prisma.user.create({
+      data:{name:name,email:email,hash:hashPassword}
+    });
+  }
 
 
   const verificationToken=await generateVerificationToken(email)
