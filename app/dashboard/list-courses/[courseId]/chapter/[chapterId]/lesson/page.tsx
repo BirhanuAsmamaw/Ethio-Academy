@@ -29,7 +29,7 @@ const router=useRouter();
 
   useEffect(() =>{
     setValue('content',description)
-  },[description,setValue]);
+  },[description]);
 
 
 
