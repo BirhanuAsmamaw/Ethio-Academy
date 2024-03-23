@@ -93,22 +93,25 @@ export function ChapterList({course}:{course:CourseType|any}) {
         <DropdownMenuItem >
           <Link 
            href={`/course/${course.id}/${lesson.id}`}
-                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" ><GrFormView size={20}/> <p>View Detail</p></Link>
+                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><GrFormView size={20}/> <p>View Detail</p></Link>
         </DropdownMenuItem>
         <DropdownMenuItem >
           <Link 
                 href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/add-questions`}
-                 className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" ><GoQuestion size={20}/> <p>Lesson Questions</p></Link>
+                 className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><GoQuestion size={20}/> <p>Lesson Questions</p></Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-        <Link href={`/course`}       className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" ><MdEditNote size={20}/> <p>Edit Lesson</p></Link>
+        <Link href={`/course`}   
+        className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><MdEditNote size={20}/> <p>Edit Lesson</p></Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-        <Link href={`/course`}       className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" ><MdEditDocument size={20}/> <p>Edit Lesson Files</p></Link>
+        <Link href={`/course`}      
+         className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><MdEditDocument size={20}/> <p>Edit Lesson Files</p></Link>
         </DropdownMenuItem>
 
         <DropdownMenuItem>
-        <Link href={`/course`}       className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" ><AiOutlineDelete size={20}/> <p>Delete Lesson</p></Link>
+        <Link href={`/course`}      
+         className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><AiOutlineDelete size={20}/> <p>Delete Lesson</p></Link>
 
         </DropdownMenuItem>
         
