@@ -3,10 +3,10 @@ import React from 'react'
 const DeleteChapter = () => {
   return (<div className="flex w-full justify-center gap-1">
       
-  <div className="w-8/12 space-y-4">
-    <p>Are You Sure To Delete This Chapter?</p>
+  <div className="w-full px-6  py-4 lg:w-8/12 space-y-4 bg-slate-100 dark:bg-slate-900">
+    <p className='text-sm backdrop:md'>Are You Sure To Delete This Chapter?</p>
     <div className="w-full flex justify-end">
-    <button>Delete</button>
+    <button className='text-rose-500 font-medium hover:text-rose-600 '>Delete</button>
     </div>
     </div>
   </div>
