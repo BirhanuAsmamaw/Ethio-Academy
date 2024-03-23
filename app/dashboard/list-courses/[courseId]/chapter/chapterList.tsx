@@ -1,93 +1,138 @@
+
+
+
+
 "use client"
+
+import * as React from "react"
+import { GrFormView } from "react-icons/gr";
+import { AiOutlineDelete } from "react-icons/ai"
+import { Button } from "@/components/ui/button"
+import { MdEditNote } from "react-icons/md";
+import { MdEditDocument } from "react-icons/md";
+import { BsThreeDots } from "react-icons/bs";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { IoMdAdd } from "react-icons/io";
+import { MdModeEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import { GoQuestion } from "react-icons/go";
+import Link from "next/link"
 import { CourseType } from "@/types";
-import Link from "next/link";
-
-const ChapterList = ({course}:{course:CourseType|any}) => {
-  
+import ActionButton from "@/components/button/actionButton";
+export function ChapterList({course}:{course:CourseType|any}) {
   if (!course){
     return <div className="p-4 font-bold text-xl">No Chapter!</div>
   }
+  return (
 
-  return (<div className="flex flex-col p-2 gap-10 ">
-     <h1 className="text-lg font-semibold">Course Lists</h1>
-      <Accordion type="single" collapsible className="w-full">
- {course.chapters.map((chapter:any)=>{
-  return  <AccordionItem className="border-none" key={chapter.id} value={`${chapter.id}`}>
-  <AccordionTrigger className="hover:no-underline"><h5 className="text-[14px] text-gray-700 dark:text-gray-400 font-normal">{chapter.title}</h5></AccordionTrigger>
-  <AccordionContent>
-    <div className="flex justify-end gap-2">
-    <Link className="no-underline 
-    text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
-    border
-    text-sm
-     rounded-[10px] 
-     px-3 py-1 
-     border-gray-200
-     dark:border-gray-700
-     
-     "
-      href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/edit`}>Edit</Link>
+    <Accordion type="single" collapsible className="w-fu">
+      {course.chapters.map((chapter:any,index:number)=>{
+        return <AccordionItem key={index} value={`${index}`}>
+        <AccordionTrigger className="hover:no-underline">
+        <h5 className="flex text-[14px] gap-2 font-medium px-2 md:px-6"><p>Chapter {index+1}: </p><p>{chapter.title}</p></h5>
+        </AccordionTrigger>
+        <AccordionContent>
+        <div className="flex flex-col">
 
-<Link className="no-underline 
-text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
-    border
-    text-sm
-     rounded-[10px] 
-     px-3 py-1 
-     border-gray-200
-     dark:border-gray-700
-   
-     "
-      href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/delete`}>Delete</Link>
-
-    </div>
-
-
-  {chapter.lessons.length?<div>
-    <div className="py-4">
-<Link  href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
- className="no-underline relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-[10px] group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-<span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-Add Lesson
-</span>
-</Link>
-
-
-</div>
-    
-        {chapter.lessons.map((lesson:any)=>{
-          return <div key={lesson.id} className="flex flex-col gap-1">
-          <Link 
-                className="px-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-          href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/add-questions`}>Questions list</Link>
-          <Link
-          className="px-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-           href={`course/${course.id}/${lesson.id}`}  >{lesson.title}</Link></div>
-        })}
-      </div>:<div className="py-4">
-<Link  href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
- className=" no-underline relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-[10px] group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-<span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-Add Lesson
-</span>
-</Link>
-
-
-</div>
- }
+          <div className="p-4 flex flex-col md:flex-row md:justify-between">
+            <div className="flex flex-col md:flex-row  md:gap-4">
+            <ActionButton 
+            label="Edit Chapter"
+            url={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/edit`}
+            icon={MdModeEdit}/>
+            <ActionButton 
+            label="Delete Chapter"
+            url={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/delete`}
+            icon={MdDelete}/>
+            </div>
+            <ActionButton 
+            label="Add Lesson"
+            url={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
+            icon={IoMdAdd}/>
+          </div>
+  <div className="-m-1.5 overflow-x-auto">
+    <div className="p-1.5 min-w-full inline-block align-middle relative">
+      <div className="overflow-hidden">
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 relative">
+          <thead>
+            <tr>
+              <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Lessons</th>
+              <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Titles</th>
+              <th scope="col" className="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Action</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+           {
+            chapter.lessons.map((lesson:any,ind:number)=>{
+              return  <tr key={ind} className="hover:bg-gray-100 dark:hover:bg-gray-700">
+              <td className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">Lesson: {ind+1}</td>
+              <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{lesson.title}</td>
+              <td className="py-2 whitespace-nowrap text-end text-sm font-medium relative">
+             
+             <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost"><BsThreeDots size={20}/></Button>
+      </DropdownMenuTrigger>
       
-  
-  </AccordionContent>
-</AccordionItem>
- })}
+      <DropdownMenuContent className="w-56 absolute right-0 top-2">
+        <DropdownMenuLabel>Lesson: {ind+1}</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem >
+          <Link 
+           href={`/course/${course.id}/${lesson.id}`}
+          className="flex no-underline gap-2 items-center text-sm"><GrFormView size={20}/> <p>View Detail</p></Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem >
+          <Link 
+                href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/add-questions`}
+           className="flex no-underline gap-2 items-center text-sm"><GoQuestion size={20}/> <p>Lesson Questions</p></Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+        <Link href={`/course`} className="flex no-underline gap-2 items-center text-sm"><MdEditNote size={20}/> <p>Edit Lesson</p></Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+        <Link href={`/course`} className="flex no-underline gap-2 items-center text-sm"><MdEditDocument size={20}/> <p>Edit Lesson Files</p></Link>
+        </DropdownMenuItem>
 
-</Accordion></div> );
+        <DropdownMenuItem>
+        <Link href={`/course`} className="flex no-underline gap-2 items-center text-sm"><AiOutlineDelete size={20}/> <p>Delete Lesson</p></Link>
+
+        </DropdownMenuItem>
+        
+       
+      </DropdownMenuContent>
+    
+    </DropdownMenu>
+            
+              </td>
+            </tr>
+            })
+           }
+
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+        </AccordionContent>
+      </AccordionItem>
+      
+      })}
+    </Accordion>
+  )
 }
- 
-export default ChapterList;
