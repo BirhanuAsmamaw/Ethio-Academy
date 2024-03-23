@@ -40,7 +40,7 @@ const dataValue=getValues();
 
 
   useEffect(() =>{
-    if(!dataValue.title || !dataValue.description || !dataValue.chapterId ){
+    if(!dataValue.title || !dataValue.content || !dataValue.chapterId ){
       setDisabled(true);
     }
     else{

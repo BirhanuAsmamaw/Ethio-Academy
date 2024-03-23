@@ -318,7 +318,7 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
     },
   })
 
-  return (<div className="w-full bg-white dark:bg-gray-800 ">
+  return (<div className="w-full bg-white dark:bg-gray-800 p-4">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."

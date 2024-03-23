@@ -169,9 +169,7 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({course})=> 
         
       />
 
-      <div className="p-4 w-full flex justify-end">
-        <button className="px-4 py-2 rounded-[5px] bg-blue-600 hover:bg-blue-700">Submit</button>
-      </div>
+     
     </div>
   );
 }
