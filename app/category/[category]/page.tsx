@@ -38,14 +38,14 @@ const Category =async ({params}:{params:IPrams}) => {
     <div className='flex justify-center flex-wrap gap-8 md:px-10 '>
 
 {selectedCourses?.map((course,index)=>{
-  return <Card
+  return course.cover&&<Card
   key={index}
       id={course.id}
       category={course.category}
       price={course.price}
       subject={course.subject}
       rating={course.rating??0}
-      cover={course.cover}  />
+      cover={course.cover.public_url}  />
 
 })}
 
