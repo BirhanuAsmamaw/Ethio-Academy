@@ -8,14 +8,14 @@ interface CourseFileUpdateClientProps{
   course: any;
 }
 const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({course})=> {
-  const [CoverUrl, setCoverUrl] = useState(course?.cover.public_url);
-  const [CoverKey, setCoverKey] = useState(course?.cover.public_key);
+  const [CoverUrl, setCoverUrl] = useState(course?.cover?course?.cover.public_url:"");
+  const [CoverKey, setCoverKey] = useState(course?.cover?course?.cover.public_key:"");
 
-  const [thumbnailUrl, setthumbnailUrl] = useState(course?.videoThumbnail.public_url);
-  const [thumbnailKey, setthumbnailKey] = useState(course?.videoThumbnail.public_key);
+  const [thumbnailUrl, setthumbnailUrl] = useState(course?.videoThumbnail?course?.videoThumbnail.public_url:"");
+  const [thumbnailKey, setthumbnailKey] = useState(course?.videoThumbnail?course?.videoThumbnail.public_key:"");
 
-  const [VideoUrl, setVideoUrl] = useState(course?.videoUrl.public_url);
-  const [VideoKey, setVideoKey] = useState(course?.videoUrl.public_key);
+  const [VideoUrl, setVideoUrl] = useState(course?.videoUrl?course?.videoUrl?.public_url:"");
+  const [VideoKey, setVideoKey] = useState(course?.videoUrl?course?.videoUrl.public_key:"");
 
 
 
@@ -83,8 +83,8 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({course})=> 
     }
 
    axios.put(`/api/course/${course.id}/update/cover`,{cover:coverData}).then(()=>{
-    setVideoUrl(course?.cover.public_url);
-    setVideoKey(course?.cover.public_key);
+    setVideoUrl(course?.cover?course?.cover.public_url:"");
+    setVideoKey(course?.cover?course?.cover.public_key:"");
     toast.success("Course Cover uploaded successfully")
     }).catch((error)=>{
       toast.error(error.message);
@@ -105,8 +105,8 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({course})=> 
 
    axios.put(`/api/course/${course.id}/update/thumbnail`,{thumbnail:thumbnailData}).then(()=>{
     course.videoThumn
-    setVideoUrl(course?.videoThumbnail.public_url);
-    setVideoKey(course?.videoThumbnail.public_key);
+    setVideoUrl(course?.videoThumbnail?course?.videoThumbnail.public_url:"");
+    setVideoKey(course?.videoThumbnail?course?.videoThumbnail.public_key:"");
     toast.success("Course Thumbnail Uploaded successfully")
     }).catch((error)=>{
       toast.error(error.message);
@@ -127,8 +127,8 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({course})=> 
 
    axios.put(`/api/course/${course.id}/update/video`,{video:videoData}).then(()=>{
     toast.success("Video Uploaded successfully")
-    setVideoUrl(course?.videoUrl.public_url);
-    setVideoKey(course?.videoUrl.public_key);
+    setVideoUrl(course?.videoUrl?course?.videoUrl.public_url:"");
+    setVideoKey(course?.videoUrl?course?.videoUrl.public_key:"");
     }).catch((error)=>{
       toast.error(error.message);
     });
