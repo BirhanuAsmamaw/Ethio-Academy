@@ -63,7 +63,7 @@ const dataValue=getValues();
  
     axios.post('/api/lesson',lessonData).then(()=>{
       toast.success("Course created successfully")
-      router.push(`dashboard/list-courses`)
+      router.push(`/dashboard/list-courses`)
       router.refresh();
     })
     .catch((error)=>{
