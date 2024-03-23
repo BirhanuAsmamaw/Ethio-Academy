@@ -5,7 +5,7 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 export async function PUT(req: Request, {params}:{params:{lessonId:string}}){
   const lessonId=params.lessonId;
   const body = await req.json();
-  const {video,thumbnail} = body;
+  const {thumbnail} = body;
 
   try{
     const user=await  getCurrentUser();
@@ -27,8 +27,7 @@ export async function PUT(req: Request, {params}:{params:{lessonId:string}}){
     const updatedLesson=await prisma.lesson.update({
       where: {id:lessonId},
       data:{
-        videoThumbnail:thumbnail,
-       videoUrl:video
+      videoThumbnail:thumbnail
       }
     })
     return NextResponse.json(updatedLesson);
