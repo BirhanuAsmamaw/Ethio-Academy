@@ -91,9 +91,12 @@ const Hero = () => {
 
     
 
-    <div className="md:w-1/3 items-center">
+    <motion.div 
+    variants={sliderVariants}
+        initial="initial"
+        animate="animate" className="md:w-1/3 items-center">
       <Image  src={Banner} alt="banner" className=""/>
-    </div>
+    </motion.div>
   </div> );
 }
  
