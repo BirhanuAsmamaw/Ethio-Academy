@@ -105,7 +105,7 @@ const examsCategory=await getAllExamsCategory();
 
     {/* 
 EXAMS CATEGORY */}
-  <div className="flex snap-start justify-center w-full pt-10">
+  <div className="flex snap-center justify-center w-full pt-10">
     <div className="w-full lg:w-11/12   space-y-4">
 
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Exams</h1>
