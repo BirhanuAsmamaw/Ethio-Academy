@@ -37,6 +37,7 @@ import UpdateChapter from "./updateChapter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import EditAccount from "@/app/settings/editAccount";
 import EditPassword from "@/app/settings/editPassword";
+import DeleteChapter from "./deleteChapter";
 export function ChapterList({course}:{course:CourseType|any}) {
   if (!course){
     return <div className="p-4 font-bold text-xl">No Chapter!</div>
@@ -74,7 +75,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 
 
   <TabsContent value="delete">
- <h1>delete chapter</h1>
+ <DeleteChapter/>
   </TabsContent>
 
 
