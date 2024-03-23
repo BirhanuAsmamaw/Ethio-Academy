@@ -51,9 +51,9 @@ export function ChapterList({course}:{course:CourseType|any}) {
         <h5 className="flex text-[14px] gap-2 font-medium px-2 md:px-6"><p>Chapter {index+1}: </p><p>{chapter.title}</p></h5>
         </AccordionTrigger>
         <AccordionContent>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-6">
 
-          <div className="p-4 flex flex-col md:flex-row md:justify-between">
+          
            
 
             <Tabs defaultValue="" className=" w-full">
@@ -74,13 +74,13 @@ export function ChapterList({course}:{course:CourseType|any}) {
      dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center" value="delete"><><MdDelete size={24}/> <p>DelteChapter</p></></TabsTrigger>
   </TabsList>
 
-  <TabsContent value="update">
+  <TabsContent value="update" className="pt-10">
   <UpdateChapter chapter={chapter}/>
   </TabsContent>
 
 
 
-  <TabsContent value="delete">
+  <TabsContent value="delete" className="pt-10">
  <DeleteChapter/>
   </TabsContent>
 
@@ -88,7 +88,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 </Tabs>
 
 
-
+<div className="px-4 flex  w-full justify-end">
             <ActionButton 
             label="Add Lesson"
             url={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
