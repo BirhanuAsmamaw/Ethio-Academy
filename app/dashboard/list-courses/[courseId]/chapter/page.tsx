@@ -27,7 +27,7 @@ const Chapter = async({params}:{params:IParams}) => {
 
 
   return ( <div className="flex  min-h-screen items-center justify-center w-full  p-4 lg:p-10">
-  <div className="w-full lg:px-10  xl:px-20 2xl:px-32 bg-white dark:bg-slate-800 p-2 flex flex-col gap-2">
+  <div className="w-full  xl:w-8/12 bg-white dark:bg-slate-800 p-2 flex flex-col gap-2">
     
   <CreateChapter courseId={params.courseId}/>
     <ChapterList course={course}/>
