@@ -8,6 +8,7 @@ import TextEditor from "@/components/editor/editor";
 import Input from "@/components/input/input";
 import Select from "@/components/input/select";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FieldValues, useForm ,SubmitHandler} from "react-hook-form";
 import toast from "react-hot-toast";
@@ -24,6 +25,7 @@ const [description, setDescription]=useState<string|null>(null)
 const [courseUsers, setCourseUsers]=useState<string|null>(null)
 const [isnext, setIsNext]=useState(false)
 const [isLoading, setIsLoading]=useState(false)
+const router=useRouter();
 
 
 
@@ -65,6 +67,7 @@ const [isLoading, setIsLoading]=useState(false)
 
   const courseData={...data}
     axios.put(`/api/course/${course.id}/update/content`,courseData).then(()=>{
+      router.push("/dashboard/list-courses")
       toast.success("Course updated successfully")
     })
     .catch((error)=>{
