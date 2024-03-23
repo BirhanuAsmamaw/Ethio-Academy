@@ -26,12 +26,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { IoMdAdd } from "react-icons/io";
-import { MdModeEdit } from "react-icons/md";
+
 import { MdDelete } from "react-icons/md";
 import { GoQuestion } from "react-icons/go";
 import Link from "next/link"
 import { CourseType } from "@/types";
 import ActionButton from "@/components/button/actionButton";
+import UpdateChapter from "./updateChapter";
 export function ChapterList({course}:{course:CourseType|any}) {
   if (!course){
     return <div className="p-4 font-bold text-xl">No Chapter!</div>
@@ -49,10 +50,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 
           <div className="p-4 flex flex-col md:flex-row md:justify-between">
             <div className="flex flex-col md:flex-row  md:gap-4">
-            <ActionButton 
-            label="Edit Chapter"
-            url={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/edit`}
-            icon={MdModeEdit}/>
+            <UpdateChapter chapter={chapter}/>
             <ActionButton 
             label="Delete Chapter"
             url={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/delete`}

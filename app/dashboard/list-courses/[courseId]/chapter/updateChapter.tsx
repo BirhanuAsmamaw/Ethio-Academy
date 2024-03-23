@@ -7,29 +7,29 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
-import { IoIosSend, IoMdAdd } from "react-icons/io";
-interface CreateChapterProps{
-  course:any;
+import { IoIosSend} from "react-icons/io";
+import { MdModeEdit } from "react-icons/md";
+interface UpdateChapterProps{
+  chapter:any;
 }
-const CreateChapter:React.FC<CreateChapterProps> = ({course}) => {
+const UpdateChapter:React.FC<UpdateChapterProps> = ({chapter}) => {
   const [isLoading,setLoading]=useState(false)
-  const [isAdd,setAdd]=useState(false)
+  const [isUpdate,setUpdate]=useState(false)
   const router=useRouter();
 const {register,handleSubmit,reset,formState:{errors}}=useForm<FieldValues>({
   defaultValues:{
-    title:"",
-    courseId:course.id,
+    title:chapter.title,
   }
   
 });
-const onAddChapter=()=>{
-setAdd((prev)=>!prev)
+const onUpdateChapter=()=>{
+setUpdate((prev)=>!prev)
 }
 
   const onSubmit:SubmitHandler<FieldValues>=(data)=>{
     setLoading(true);
-    axios.post('/api/chapter',data).then(()=>{
-      toast.success("Course Chapter  created  successfully")
+    axios.put(`/api/chapter/${chapter.id}`,data).then(()=>{
+      toast.success("Chapter updated successfully")
       router.refresh()
       reset();
     }).catch((errors)=>{
@@ -41,28 +41,28 @@ setAdd((prev)=>!prev)
   
   }
   return ( <div className="space-y-2">
-    <div className="flex flex-col md:flex-row w-full px-4 justify-between">
-      <h2 className="text-lg font-semibold">{course.subject}</h2>
+    
       <button   
-      onClick={onAddChapter}
+      onClick={onUpdateChapter}
       className="py-2 md:py-2.5 px-3 md:px-5 me-2 mb-2
   text-sm font-medium text-gray-900 focus:outline-none
    bg-white rounded-full border border-gray-200 
    hover:bg-gray-100 hover:text-blue-700 focus:z-10 
    focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700
     dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600
-     dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center"><IoMdAdd size={24}/> <p>Add Chapter</p></button>
+     dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center"><MdModeEdit size={24}/> <p>Update Chapter</p></button>
 
-    </div>
+  
 
-    {isAdd?<div className="flex w-full justify-center gap-1">
+    {isUpdate?<div className="flex w-full justify-center gap-1">
       
       <div className="w-8/12">
       <Input
       
       id="title"
-      label="Add Chapter Title"
+      label="Update Chapter Title"
       required
+      defaultValue={chapter.title}
       register={register}
       errors={errors}
       disabled={isLoading}
@@ -80,4 +80,4 @@ setAdd((prev)=>!prev)
    );
 }
  
-export default CreateChapter;
+export default UpdateChapter;
