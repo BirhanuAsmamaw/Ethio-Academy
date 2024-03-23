@@ -40,7 +40,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 
     <Accordion type="single" collapsible className="w-fu">
       {course.chapters.map((chapter:any,index:number)=>{
-        return <AccordionItem key={index} value={`${index}`}>
+        return <AccordionItem className="dark:border-b-gray-600" key={index} value={`${index}`}>
         <AccordionTrigger className="hover:no-underline">
         <h5 className="flex text-[14px] gap-2 font-medium px-2 md:px-6"><p>Chapter {index+1}: </p><p>{chapter.title}</p></h5>
         </AccordionTrigger>
