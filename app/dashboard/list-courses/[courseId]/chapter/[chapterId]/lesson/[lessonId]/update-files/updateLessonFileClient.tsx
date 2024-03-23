@@ -10,11 +10,11 @@ interface UpdateLessonFileClientProps{
 const UpdateLessonFileClient:React.FC<UpdateLessonFileClientProps>=({lesson})=> {
 
 
-  const [thumbnailUrl, setthumbnailUrl] = useState(lesson?.videoThumbnail.public_url);
-  const [thumbnailKey, setthumbnailKey] = useState(lesson?.videoThumbnail.public_key);
+  const [thumbnailUrl, setthumbnailUrl] = useState(lesson?.videoThumbnail?lesson?.videoThumbnail.public_url :"");
+  const [thumbnailKey, setthumbnailKey] = useState(lesson?.videoThumbnail? lesson?.videoThumbnail.public_key:"");
 
-  const [VideoUrl, setVideoUrl] = useState(lesson?.videoUrl.public_url);
-  const [VideoKey, setVideoKey] = useState(lesson?.videoUrl.public_key);
+  const [VideoUrl, setVideoUrl] = useState(lesson?.videoUrl? lesson?.videoUrl.public_url:"");
+  const [VideoKey, setVideoKey] = useState(lesson?.videoUrl? lesson?.videoUrl.public_key:"");
 
 
 
@@ -68,8 +68,8 @@ const UpdateLessonFileClient:React.FC<UpdateLessonFileClientProps>=({lesson})=> 
 
    axios.put(`/api/lesson/${lesson.id}/update/thumbnail`,{thumbnail:thumbnailData}).then(()=>{
    
-    setVideoUrl(lesson?.videoThumbnail.public_url);
-    setVideoKey(lesson?.videoThumbnail.public_key);
+    setVideoUrl(lesson?.videoThumbnail?lesson?.videoThumbnail.public_url:"");
+    setVideoKey(lesson?.videoThumbnail ?lesson?.videoThumbnail.public_key:"");
     toast.success("Lesson Thumbnail Uploaded successfully")
     }).catch((error)=>{
       toast.error(error.message);
@@ -90,8 +90,8 @@ const UpdateLessonFileClient:React.FC<UpdateLessonFileClientProps>=({lesson})=> 
 
    axios.put(`/api/lesson/${lesson.id}/update/video`,{video:videoData}).then(()=>{
     toast.success("Video Uploaded successfully")
-    setVideoUrl(lesson?.videoUrl.public_url);
-    setVideoKey(lesson?.videoUrl.public_key);
+    setVideoUrl(lesson?.videoUrl?lesson?.videoUrl.public_url:"");
+    setVideoKey(lesson?.videoUrl?lesson?.videoUrl.public_key:"");
     }).catch((error)=>{
       toast.error(error.message);
     });
