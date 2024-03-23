@@ -131,11 +131,13 @@ export function ChapterList({course}:{course:CourseType|any}) {
                  className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><GoQuestion size={20}/> <p>Lesson Questions</p></Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-        <Link href={`/course`}   
+        <Link
+        href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/update-content`} 
         className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><MdEditNote size={20}/> <p>Edit Lesson</p></Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-        <Link href={`/course`}      
+        <Link 
+        href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/update-files`}      
          className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><MdEditDocument size={20}/> <p>Edit Lesson Files</p></Link>
         </DropdownMenuItem>
 
