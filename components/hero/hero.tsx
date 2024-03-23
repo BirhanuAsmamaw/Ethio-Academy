@@ -38,7 +38,7 @@ const Hero = () => {
       transition: {
         
        
-        duration: 10,
+        duration: 2,
       },
     },
   };
