@@ -12,7 +12,7 @@ const [isLoading,setLoading]=useState(false)
 const router=useRouter();
   const onSubmit=()=>{
     setLoading(true);
-    axios.put(`/api/chapter/${chapterId}/delete`).then(()=>{
+    axios.delete(`/api/chapter/${chapterId}/delete`).then(()=>{
       toast.success("Chapter deleted successfully")
       router.refresh()
       
