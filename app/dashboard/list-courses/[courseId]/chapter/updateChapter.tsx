@@ -25,7 +25,7 @@ const {register,handleSubmit,reset,formState:{errors}}=useForm<FieldValues>({
 
   const onSubmit:SubmitHandler<FieldValues>=(data)=>{
     setLoading(true);
-    axios.put(`/api/chapter/${chapter.id}`,data).then(()=>{
+    axios.put(`/api/chapter/${chapter.id}/update`,data).then(()=>{
       toast.success("Chapter updated successfully")
       router.refresh()
       reset();
@@ -39,7 +39,7 @@ const {register,handleSubmit,reset,formState:{errors}}=useForm<FieldValues>({
   }
   return (<div className="flex w-full justify-center gap-1">
       
-      <div className="w-8/12">
+      <div className="w-full">
       <Input
       
       id="title"
