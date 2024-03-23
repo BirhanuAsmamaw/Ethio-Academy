@@ -52,13 +52,13 @@ const Hero = () => {
 
   ]
   
-  return ( <motion.div
-    variants={textVariants}
-    initial="initial"
-    animate="animate" className=" w-full flex min-h-screen justify-center md:justify-around  flex-wrap px-4 items-center
+  return ( <div
+    className=" w-full flex min-h-screen justify-center md:justify-around  flex-wrap px-4 items-center
     dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative "
   >
-    <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+    <motion.div  variants={textVariants}
+    initial="initial"
+    animate="animate"className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></motion.div>
     {/* content */}
     <div className="pt-10 md:pt-0 flex flex-col gap-20 justify-center items-center  md:w-2/3">
       <div className="flex flex-col gap-6">
@@ -98,7 +98,7 @@ const Hero = () => {
       <Image  src={Banner} alt="banner" className=""/>
     </motion.div>
 
-  </motion.div> );
+  </div> );
 }
  
 export default Hero;
