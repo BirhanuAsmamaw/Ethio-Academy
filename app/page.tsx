@@ -42,13 +42,11 @@ const examsCategory=await getAllExamsCategory();
     
     <Navbar/>
 
-    <main className="w-full snap-y space-y-6 md:space-y-20">
-    <div className="min-h-screen snap-start">
+    <main className="w-full space-y-6 md:space-y-20">
     <Hero/>
-    </div>
    
    
-    <div id="courseslist" className="snap-start min-h-screen flex flex-col gap-10 overflow-hidden">
+    <div id="courseslist" className=" min-h-screen flex flex-col gap-10 overflow-hidden">
 
 
     <div className="flex justify-center w-full">
@@ -107,7 +105,7 @@ const examsCategory=await getAllExamsCategory();
 
     {/* 
 EXAMS CATEGORY */}
-  <div className="flex snap-center justify-center w-full pt-10">
+  <div className="flex  justify-center w-full pt-10">
     <div className="w-full lg:w-11/12   space-y-4">
 
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Exams</h1>
@@ -129,7 +127,7 @@ EXAMS CATEGORY */}
 
 {/* FAQ */}
 
-    <div className="py-20  snap-start flex justify-center w-full">
+    <div className="py-20 min-h-screen  flex justify-center w-full">
 <div className="w-full lg:w-8/12  xl:w-6/12  flex flex-col gap-4">
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>What to expect from Ethio Exams Academy courses</h1>
 
