@@ -92,7 +92,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
         <DropdownMenuSeparator />
         <DropdownMenuItem >
           <Link 
-           href={`/course/${course.id}/${lesson.id}`}
+           href={`/course/${course.id}/${chapter.id}/${lesson.id}`}
                 className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><GrFormView size={20}/> <p>View Detail</p></Link>
         </DropdownMenuItem>
         <DropdownMenuItem >
