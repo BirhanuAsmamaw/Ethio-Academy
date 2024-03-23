@@ -80,7 +80,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 
 
   <TabsContent value="delete" className="pt-10">
- <DeleteChapter/>
+ <DeleteChapter chapterId={chapter.id}/>
   </TabsContent>
 
 
