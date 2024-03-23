@@ -7,10 +7,7 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
   const body = await req.json();
   const {subject,
     category,
-     cover,
-     videoUrl,
      price,
-     
      descriptions,
      requirements,
      whoShouldTake,} = body;
@@ -37,9 +34,7 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
       data:{
         subject:subject,
         category:category,
-        cover:cover,
        
-        videoUrl:videoUrl,
         price:price,
         descriptions:descriptions,
         requirements:requirements,
