@@ -4,7 +4,10 @@
  
 
 
-
+html{
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
 
 ul {
   @apply list-disc pl-4 list-inside; /* Example: Apply Tailwind styles to ul */
