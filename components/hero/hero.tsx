@@ -31,10 +31,10 @@ const Hero = () => {
   };
   const sliderVariants = {
     initial: {
-      x: 0,
+      x: "220%",
     },
     animate: {
-      x: "-20%",
+      x: 0,
       transition: {
         
        
