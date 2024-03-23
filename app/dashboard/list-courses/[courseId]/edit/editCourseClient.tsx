@@ -5,13 +5,10 @@ import Heading from "@/components/Heading/Heading";
 import Button from "@/components/button/button";
 import Container from "@/components/container/container";
 import TextEditor from "@/components/editor/editor";
-import FileInput from "@/components/input/fileInput";
 import Input from "@/components/input/input";
 import Select from "@/components/input/select";
 import axios from "axios";
-import {deleteObject, getDownloadURL,getStorage,ref,uploadBytesResumable} from 'firebase/storage'
-import firebaseApp from "@/lib/firebasedb";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, useForm ,SubmitHandler} from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -26,14 +23,8 @@ const [requirement, setRequirement]=useState<string|null>(null)
 const [description, setDescription]=useState<string|null>(null)
 const [courseUsers, setCourseUsers]=useState<string|null>(null)
 const [isnext, setIsNext]=useState(false)
-const [image,setImage]=useState<File|null>(null)
-const [video,setVideo]=useState<File|null>(null)
 const [isLoading, setIsLoading]=useState(false)
-const [selectedImage, setSelectedImage] = useState<any>('image');
-const [selectedVideo, setSelectedVideo] = useState<any>('video');
-const [imageProgress, setImageProgress] = useState(0)
-const [videoProgress, setVideoProgress] = useState(0)
-const [progress, setProgress] = useState(0)
+
 
 
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
@@ -52,9 +43,8 @@ const [progress, setProgress] = useState(0)
     setValue('descriptions',description)
     setValue('requirements',requirement)
     setValue('whoShouldTake',courseUsers)
-    setValue("cover",image);
-    setValue("videoUrl",video);
-  },[description,requirement,courseUsers,image,video]);
+   
+  },[description,requirement,courseUsers]);
 
 
 
@@ -64,187 +54,16 @@ const [progress, setProgress] = useState(0)
 
   
 
-  const handleImageChange = useCallback((acceptedFiles:any)=> {
-    setImage(acceptedFiles[0])
-    setSelectedImage(URL.createObjectURL(acceptedFiles[0]));
-  }, []) 
 
-
-
-  const handleVideoChange = useCallback((acceptedFiles:any)=> {
-    // Do something with the files
-    setVideo(acceptedFiles[0])
-    setSelectedVideo(URL.createObjectURL(acceptedFiles[0]));
-    // setValue('cover','cover')
-  }, []) 
-
-
-
-
-  let imageCoverUrl:string="";
-  let videoUrl:string="";
 
 
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
    
-    const handleImageUpload = async() =>{
-      const storage=getStorage(firebaseApp);
-      try{
-       
-        if(video){
-          
-          const videoName=new Date().getTime()+"-"+video.name;
-          const videoStorageRef=ref(storage,`course/videos/${videoName}`);
-          const uploadTask=uploadBytesResumable(videoStorageRef,video);
-
-          await new Promise<void>((resolve,reject)=>{
-            uploadTask.on('state_changed',
-            (snapshot)=>{
-              const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
-              setVideoProgress(progress)
-            
-              switch(snapshot.state){
-                   case "paused":
-                    
-                     break;
-                   case "running":
-                    
-                     break;
-              }
-            },
-            (error)=>{
-            
-              reject(error);
-            },
-            ()=>{
-              
-              //succesful upload video
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
-                videoUrl=downloadUrl
-              
-                resolve();
-              }).catch((error)=>{
-              
-                reject(error);
-              });
-            }
-  
-            )
-  
-          })
-
-        }
-
-
-      if(image){
-
-
-
-        const fileName=new Date().getTime()+"-"+image.name;
-
-        const imageStorageRef=ref(storage,`course/cover/${fileName}`);
-        
-        const uploadTask=uploadBytesResumable(imageStorageRef,image);
-
-
-        await new Promise<void>((resolve,reject)=>{
-          uploadTask.on('state_changed',
-          (snapshot)=>{
-            const progress=(snapshot.bytesTransferred/snapshot.totalBytes)*100
-            setImageProgress(progress)
-           
-            switch(snapshot.state){
-                 case "paused":
-                 
-                   break;
-                 case "running":
-                  
-                   break;
-            }
-          },
-          (error)=>{
-           
-            reject(error);
-          },
-          ()=>{
-            
-            //succesful upload image
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
-              imageCoverUrl=downloadUrl
-             
-              resolve();
-            }).catch((error)=>{
-              
-              reject(error);
-            });
-          }
-
-          )
-
-        })
-
-      }
-
-      
-    
-    } catch(error) {
-
-    }
-
-    
     
 
-
-  }
-
-  const handleImageAndVideoDelete=async()=>{
-    const storage=getStorage(firebaseApp);
-    try{
-
-      if(course?.videoUrl){
-        const previousVideoRef = ref(storage, course.videoUrl);
-        await deleteObject(previousVideoRef).then(() => {
-          console.log("Video File deleted successfully!")
-        }).catch((error) => {
-          // Do something if error occured.
-          if (error.code == 'storage/object-not-found') {
-              console.log('Object not found!')
-          }
-        });
-
-      }
-     
-    
-      if(course?.cover){
-        const previousImageRef = ref(storage, course.cover);
-    
-      await deleteObject(previousImageRef).then(() => {
-        console.log("Image File deleted successfully!")
-      }).catch((error:any) => {
-        // Do something if error occured.
-        if (error.code == 'storage/object-not-found') {
-            console.log('Object not found!')
-        }
-      });
-      }
-    }
-    catch(error) {
-      console.log("errpr delete",error);
-    }
-  }
- 
-  await handleImageUpload();
-  await handleImageAndVideoDelete();
-
-
-  
-  if(!imageCoverUrl || !videoUrl){
-throw new Error("course cover and video not empty!!")
-  }
-
-  const courseData={...data,cover:imageCoverUrl,videoUrl:videoUrl}
+  const courseData={...data}
     axios.put(`/api/course/${course.id}/update/content`,courseData).then(()=>{
       toast.success("Course updated successfully")
     })
@@ -259,25 +78,15 @@ throw new Error("course cover and video not empty!!")
   }
 
 
-//on cancel file
-const onCancelVideo = () => {
-  setSelectedVideo(null);
-};
-const onCancelImage = () => {
-  setSelectedImage(null);
-};
 
 
-
-// set total progress
-useEffect(()=>{
-  setProgress(Math.floor((imageProgress+videoProgress)/2))
-},[imageProgress,videoProgress]);
-
-  
   return ( <div className="flex flex-col w-full  ">
    
     <div className="flex flex-col gap-10 w-full pb-6 mb-10">
+    <div className="space-y-2 w-full flex flex-col items-center">
+
+    <h1 className="text-xl font-semibold">{course.subject} Contents</h1>
+    </div>
       
       {!isnext&&<Container
       childern={
@@ -297,36 +106,6 @@ useEffect(()=>{
             <Input id="subject"  defaultValue={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
 
 
-
-          <div className="w-full  lg:w-8/12 flex flex-col gap-1">
-          <Heading small title="Upload Course Cover"/>
-            <FileInput
-
-            required
-            onCancel={onCancelImage}
-            file={selectedImage==='image'? course.cover:selectedImage}
-            fileType="image"
-          onDrop={handleImageChange}
-              register={register}
-              id="cover" 
-              errors={errors}          
-          />
-        </div>
-
-
-        <div className="w-full  lg:w-8/12 flex flex-col gap-1">
-          <Heading small title="Upload Course Video"/>
-            <FileInput
-            required
-            onCancel={onCancelVideo}
-            file={selectedVideo==='video'? course.videoUrl:selectedVideo}
-            fileType="video"
-          onDrop={handleVideoChange}
-              register={register}
-              id="videoUrl" 
-              errors={errors}          
-          />
-        </div>
 
 
 
@@ -400,13 +179,7 @@ useEffect(()=>{
 </div> </div>
 
 
-{isLoading&&<div className="p-4 w-full"><div className="flex justify-between mb-1">
-  <span className="text-base font-medium text-blue-700 dark:text-white">Updating...</span>
-  <span className="text-sm font-medium text-blue-700 dark:text-white">{progress}%</span>
-</div>
-<div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-  <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
-</div></div>}
+
 
 
         </div>
