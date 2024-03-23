@@ -102,11 +102,14 @@ const UpdateLessonFileClient:React.FC<UpdateLessonFileClientProps>=({lesson})=> 
   return (
     <div className="space-y-10 w-full">
      
-     
+    <div className="space-y-2 w-full">
+      <h2 className="text-lg text-gray-600 dark:text-gray-400 font-semibold">{lesson.chapter.title} in {lesson.chapter.course.subject}</h2>
+    <h1 className="text-xl font-semibold">{lesson.title} Files</h1>
+    </div>
 
 <FileUploader
   onClientUploadComplete={onCourseThumbnailComplete}
-      label="Upload Course Thumbail"
+      label="Upload Lesson Thumbail"
         file={thumbnailUrl}
         handleMediaChange={handleThumbnailChange}
         endpoint="imageUploader"
@@ -117,7 +120,7 @@ const UpdateLessonFileClient:React.FC<UpdateLessonFileClientProps>=({lesson})=> 
 
 <FileUploader
   onClientUploadComplete={onCourseVideoComplete}
-      label="Upload Course video"
+      label="Upload Lesson video"
         file={VideoUrl}
         handleMediaChange={handleVideoChange}
         endpoint="videoUploader"

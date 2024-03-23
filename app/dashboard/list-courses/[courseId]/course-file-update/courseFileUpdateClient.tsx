@@ -138,7 +138,11 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({course})=> 
 
   return (
     <div className="space-y-10 w-full">
-     
+     <div className="space-y-2 w-full">
+    
+    <h1 className="text-xl font-semibold">{course.subject} Files</h1>
+    </div>
+
       <FileUploader
       onClientUploadComplete={onCourseCoverComplete}
       label="Upload Course Cover"
