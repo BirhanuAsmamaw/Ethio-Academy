@@ -46,7 +46,7 @@ const dataValue=getValues();
     else{
       setDisabled(false);
     }
-  },[dataValue.title,dataValue.description,dataValue.chapterId])
+  },[dataValue.title,dataValue.content,dataValue.chapterId])
 
 
 
