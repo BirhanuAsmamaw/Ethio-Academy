@@ -34,11 +34,11 @@ const Hero = () => {
       x: 0,
     },
     animate: {
-      x: "-100%",
+      x: "-20%",
       transition: {
         
        
-        duration: 20,
+        duration: 10,
       },
     },
   };
