@@ -80,7 +80,7 @@ const {carts}=useCart()
     {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <Profile user={user}/>
       </div>}
-      <div className="lg:hidden py-4">
+      <div className="lg:hidden py-2">
        <Search />
        </div>
       <Link 
@@ -105,7 +105,7 @@ const {carts}=useCart()
     </div>
 
     
-    <div className="md:hidden py-4">
+    <div className="md:hidden py-2">
    <MobileSidebar user={user}/>
     </div>
    
