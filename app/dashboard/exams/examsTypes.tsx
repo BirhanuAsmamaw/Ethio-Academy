@@ -56,7 +56,7 @@ const [isLoading, setIsLoading]=useState(false)
     <div className="w-full pt-10 flex flex-col gap-4  justify-between px-4">
     <div className="flex-col items-center justify-center w-full ">
 
-<Input id="examType" register={register} errors={errors}  label="Exams Type" type="text" required/>
+<Input id="examType" register={register} errors={errors}  label="Exams TName" type="text" required/>
 </div>
 <div className=" flex-col items-center justify-center w-full ">
 

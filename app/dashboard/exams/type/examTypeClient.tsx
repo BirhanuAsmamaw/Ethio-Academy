@@ -119,14 +119,14 @@ export const columns: ColumnDef<ExamType>[] = [
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/exam/type/${Exam.id}/update`}>Edit Exam Type </Link>
+               href={`/dashboard/exams/type/${Exam.id}/update`}>Edit Exam </Link>
             </DropdownMenuItem>
 
            
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/exam/type/${Exam.id}/delete`}>Delete</Link>
+              href={`/dashboard/exams/type/${Exam.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
