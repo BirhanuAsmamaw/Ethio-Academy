@@ -15,6 +15,7 @@ import CategorCDrobDown from "../dropdown/CourseCategory";
 
 import NotificationDropDown from "../dropdown/notificationDropDown";
 import Search from "../search/search";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 interface NavbarClientProps{
   user:any;
@@ -48,6 +49,10 @@ const {carts}=useCart()
   return ( <div className={` w-full px-4 md:px-6 z-50 h-14 items-center   flex justify-between flex-wrap  ${isScroll? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-white dark:bg-gray-900  ":"bg-stone-200 dark:bg-gray-900 "} duration-300 z-50`}>
     <Link href="/" className="no-underline flex gap-2">
       <Image src={Logo} alt="logo" className="w-10 h-10 rounded-full" height={30} width={30}/>
+      <Avatar className={`${!user?.image&&'hidden'} h-10 w-10`}>
+      <AvatarImage src={`${Logo}`} alt="EEA" />
+      <AvatarFallback>EEA</AvatarFallback>
+    </Avatar>
      <h1 className="hidden md:block font-semibold text-xl md:text-2xl py-2 overflow-hidden">
       <span className="text-blue-600">Ethio</span>
       <span className="text-rose-600"> Exams</span>
