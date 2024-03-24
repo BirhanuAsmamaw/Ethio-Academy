@@ -53,7 +53,7 @@ const [isLoading, setIsLoading]=useState(false)
   <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between">
     {/* create exams category */}
     
-    <div className="w-full pt-10 flex  justify-between px-4">
+    <div className="w-full pt-10 flex flex-col gap-4  justify-between px-4">
     <div className="flex-col items-center justify-center w-full ">
 
 <Input id="examType" register={register} errors={errors}  label="Exams Type" type="text" required/>

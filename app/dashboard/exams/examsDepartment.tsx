@@ -81,7 +81,7 @@ useEffect(()=>{
     </Select>
     </div>
 
-    <div className="pt-10 flex justify-between px-4">
+    <div className="pt-10 flex flex-col gap-4 justify-between px-4">
     <div className=" flex-col items-center justify-center w-full ">
 
 <Input id="department" register={register} errors={errors}  label="write Department" type="text" required/>
