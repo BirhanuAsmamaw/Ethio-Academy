@@ -1,4 +1,4 @@
-import { MdOutlineDashboard } from "react-icons/md";
+import { PiExam } from "react-icons/pi";
 import { SiCoursera } from "react-icons/si";
 import { PiUsersFourLight } from "react-icons/pi";
 
@@ -33,6 +33,25 @@ export const sidebarData=[
       {
         label:"User List",
         url:"/dashboard/user-list"
+      }
+    ]
+  },
+
+  {
+    title:"Exams",
+    icon:PiExam,
+    items:[
+      {
+        label:"Create Exam Category",
+        url:"/dashboard/exams"
+      },
+      {
+        label:"Exam Type List",
+        url:"/dashboard/exams/type"
+      },
+      {
+        label:"Department List",
+        url:"/dashboard/department"
       }
     ]
   }
