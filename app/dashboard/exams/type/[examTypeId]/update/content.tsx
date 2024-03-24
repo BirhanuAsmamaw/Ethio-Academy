@@ -8,18 +8,18 @@ import toast from 'react-hot-toast'
 import Input from '@/components/input/input'
 import Button from '@/components/button/button'
 
-interface UpdateDepartmentContentProps{
-  department: any;
+interface UpdateExamContentProps{
+  exam: any;
 }
-const UpdateDepartmentContent:React.FC<UpdateDepartmentContentProps> = ({department}) => {
+const UpdateExamContent:React.FC<UpdateExamContentProps> = ({exam}) => {
   const router=useRouter()
   const [isLoading, setIsLoading]=useState(false)
   
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-      department:department.departmentName,
-      url:department.url,
+      exam:exam.examType,
+      url:exam.url,
         
     },
   })
@@ -35,8 +35,8 @@ const UpdateDepartmentContent:React.FC<UpdateDepartmentContentProps> = ({departm
     setIsLoading(true)
    
     
-    axios.put(`/api/department/${department.id}/update/content`,{...data}).then(()=>{
-      toast.success("Department updated successfully")
+    axios.put(`/api/examCategory/${exam.id}/update/content`,{...data}).then(()=>{
+      toast.success("Exam updated successfully")
       router.refresh()
     })
     .catch((error)=>{
@@ -57,16 +57,16 @@ const UpdateDepartmentContent:React.FC<UpdateDepartmentContentProps> = ({departm
   <div className=" flex-col items-center justify-center w-full ">
 
 <Input 
-id="department" 
-defaultValue={department.departmentName}
-register={register} errors={errors}  label="write Department" type="text" required/>
+id="Exam" 
+defaultValue={exam.ExamType}
+register={register} errors={errors}  label="write Exam" type="text" required/>
 </div>
 
 <div className=" flex-col items-center justify-center w-full ">
 
 <Input id="url" 
-defaultValue={department.url}
-register={register} errors={errors}  label="Add Department Path" type="text" required/>
+defaultValue={exam.url}
+register={register} errors={errors}  label="Add Exam Path" type="text" required/>
 </div>
   </div>
 </div>
@@ -77,4 +77,4 @@ register={register} errors={errors}  label="Add Department Path" type="text" req
   )
 }
 
-export default UpdateDepartmentContent
+export default UpdateExamContent

@@ -6,12 +6,12 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 
 
-interface UpdateDepartmentFileProps{
-  department: any;
+interface UpdateExamFileProps{
+  exam: any;
 }
-const UpdateDepartmentFile:React.FC<UpdateDepartmentFileProps> = ({department}) => {
-  const [CoverUrl, setCoverUrl] = useState(department?.cover?department?.cover.public_url:"");
-  const [CoverKey, setCoverKey] = useState(department?.cover?department?.cover.public_key:"");
+const UpdateExamFile:React.FC<UpdateExamFileProps> = ({exam}) => {
+  const [CoverUrl, setCoverUrl] = useState(exam?.cover?exam?.cover.public_url:"");
+  const [CoverKey, setCoverKey] = useState(exam?.cover?exam?.cover.public_key:"");
 
   
 
@@ -40,7 +40,7 @@ const UpdateDepartmentFile:React.FC<UpdateDepartmentFileProps> = ({department}) 
 
  
  
-  const ondepartmentCoverComplete=(res:any[]) => {
+  const onExamCoverComplete=(res:any[]) => {
     const url = res[0]?.url || "";
     const key=res[0]?.key || "";
     setCoverUrl(url);
@@ -50,10 +50,10 @@ const UpdateDepartmentFile:React.FC<UpdateDepartmentFileProps> = ({department}) 
       public_url:url
     }
 
-   axios.put(`/api/department/${department.id}/update/file`,{cover:coverData}).then(()=>{
-    setCoverUrl(department?.cover?department?.cover.public_url:"");
-    setCoverKey(department?.cover?department?.cover.public_key:"");
-    toast.success("department Cover uploaded successfully")
+   axios.put(`/api/examCategory/${exam.id}/update/file`,{cover:coverData}).then(()=>{
+    setCoverUrl(exam?.cover?exam?.cover.public_url:"");
+    setCoverKey(exam?.cover?exam?.cover.public_key:"");
+    toast.success("Exam Cover uploaded successfully")
     }).catch((error)=>{
       toast.error(error.message);
     });
@@ -66,12 +66,12 @@ const UpdateDepartmentFile:React.FC<UpdateDepartmentFileProps> = ({department}) 
   return (<div className="w-full p-2 flex justify-center bg-white shadow-md dark:bg-slate-800">
     <div className="space-y-2 w-full text-center">
     
-    <h1 className="text-xl font-semibold">{department.subject} Files</h1>
+    <h1 className="text-xl font-semibold">{exam.examType} Files</h1>
    
 
       <FileUploader
-      onClientUploadComplete={ondepartmentCoverComplete}
-      label="Upload department Cover"
+      onClientUploadComplete={onExamCoverComplete}
+      label="Upload Exam Cover"
         file={CoverUrl}
         handleMediaChange={handleCoverChange}
         endpoint="imageUploader"
@@ -83,4 +83,4 @@ const UpdateDepartmentFile:React.FC<UpdateDepartmentFileProps> = ({department}) 
   )
 }
 
-export default UpdateDepartmentFile
+export default UpdateExamFile
