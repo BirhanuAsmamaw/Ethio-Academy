@@ -58,7 +58,7 @@ const UpdateExamContent:React.FC<UpdateExamContentProps> = ({exam}) => {
 
 <Input 
 id="Exam" 
-defaultValue={exam.ExamType}
+defaultValue={exam.examType}
 register={register} errors={errors}  label="write Exam" type="text" required/>
 </div>
 
