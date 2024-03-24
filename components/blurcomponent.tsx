@@ -30,7 +30,7 @@ const BlurComponent:React.FC<BlurProps> = ({department,user,buyLabel,trayLabel})
     router.push('/payment')
   }
 
-  if (!user){
+  if (!user&&reloadPage){
     return (<div className="fixed z-50 flex justify-center items-center h-screen w-full bg-black bg-opacity-80">
       <Login user={user}/>
     </div>

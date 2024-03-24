@@ -37,7 +37,7 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 
   return (<>
   <Navbar/>
-  {(!isCoursePayed&&lesson.chapter.course.price)?<LessonBlur course={lesson.chapter.course}/>:''}
+  {(!isCoursePayed&&lesson.chapter.course.price)?<LessonBlur user={user} course={lesson.chapter.course}/>:''}
   <Header
     title={`${lesson.title}`}
     description={`${lesson.title}`}
@@ -73,8 +73,8 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
   <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-4">
     <TabsTrigger className=" rounded-full" value="notes">Notes</TabsTrigger>
     <TabsTrigger  className=" rounded-full" value="exam">Exam</TabsTrigger>
-    <TabsTrigger  className=" rounded-full" value="handout">handout</TabsTrigger>
-    <TabsTrigger  className=" rounded-full" value="Q&A">Q&A</TabsTrigger>
+    <TabsTrigger  className=" rounded-full hidden" value="handout">handout</TabsTrigger>
+    <TabsTrigger  className=" rounded-full hidden" value="Q&A">Q&A</TabsTrigger>
   </TabsList>
 
   <TabsContent value="notes">
@@ -91,13 +91,13 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
   </div>
   </TabsContent>
 
-  <TabsContent value="handout">
+  <TabsContent className="hidden" value="handout">
   <div className="mt-20">
   <p className="text-2xl font-bold p-2">handouts  like pdf ppt</p>
   </div>
   </TabsContent>
 
-  <TabsContent value="Q&A">
+  <TabsContent className="hidden" value="Q&A">
   <div className="mt-20">
   <p>Question and Answers</p>
   </div>

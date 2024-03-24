@@ -50,7 +50,7 @@ const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
 
   const [lessonNo,setLessonNo]=useState(0)
 
-  useEffect(()=>{
+ 
     course?.chapters.forEach((chapter:any) => {
       chapter?.lessons.forEach((lesson:any) => {
  
@@ -58,7 +58,7 @@ const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
       })
    })
  
-  },[course])
+ 
   const router=useRouter()
 const {addToCart}=useCart();
 
