@@ -51,15 +51,16 @@ const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
   const [lessonNo,setLessonNo]=useState(0)
 
  
-  useEffect(()=>{
+  useEffect(() => {
+    let lessonCount = 0; // Initialize a counter outside the loops
     course?.chapters.forEach((chapter:any) => {
-      chapter?.lessons.forEach((lesson:any,ind:number) => {
- 
-       setLessonNo(1+ind)
-      })
-   })
- 
-  },[course,setLessonNo])
+        chapter?.lessons.forEach((lesson:any) => {
+            lessonCount++; // Increment the counter for each lesson
+        });
+    });
+    setLessonNo(lessonCount); // Set the state after counting all the lessons
+}, [course]); // Make sure to include course in the dependency array if it's a dependency
+
  
   const router=useRouter()
 const {addToCart}=useCart();
