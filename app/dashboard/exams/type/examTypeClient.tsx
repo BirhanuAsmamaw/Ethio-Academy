@@ -69,7 +69,7 @@ export const columns: ColumnDef<ExamType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-         Examt Name
+         Exam Name
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )

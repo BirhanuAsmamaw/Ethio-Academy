@@ -24,18 +24,18 @@ const onSearchOpen=()=>{
   
   return ( <>
     <div className="hidden lg:block w-full relative ">
-   <form onSubmit={onHandleSubmit}  className="flex w-full  bg-white dark:bg-gray-800  border rounded-[8px] border-gray-200 dark:border-gray-700 overflow-hidden ">
+   <form onSubmit={onHandleSubmit}  className="flex w-full   bg-white dark:bg-gray-800 pl-4 border rounded-[8px] border-gray-200 dark:border-gray-700 overflow-hidden ">
      <CiSearch size={30} className="pt-1"/> 
      <input value={searchQuery||''} onChange={(event)=>setSearchQuery(event.target.value)} placeholder="search courses..." type="search" className="focus:shadow-md bg-white dark:bg-gray-800  w-full border-none outline-none px-2 py-1"/>
      </form>
    
    </div>
    <div className="lg:hidden   w-full">
-    <button onClick={onSearchOpen} className="pt-2 no-underline text-gray-500 dark:text-gray-400 font-medium  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium" >
+    <button onClick={onSearchOpen} className="pt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium" >
     {isSearchOpen? <IoMdClose size={24}/>:<IoIosSearch size={24}/>}
     </button>
     <div className={`absolute  z-20 mt-1 top-13 w-11/12 p-3 left-2 right-2 ${!isSearchOpen?'bg-opacity-0 -translate-y-[200%]':'bg-opacity-100 translate-y-0'} transition duration-300`}>
-    <form onSubmit={onHandleSubmit} className=" dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
+    <form onSubmit={onHandleSubmit} className="pl-4 dark:border-gray-700 bg-white dark:bg-gray-800  shadow-lg flex w-full  border rounded-[8px] border-gray-200 overflow-hidden ">
     <CiSearch size={30} className="pt-1"/> 
     <input   onChange={(event)=>setSearchQuery(event.target.value)} type="search" 
     placeholder="search courses..."
