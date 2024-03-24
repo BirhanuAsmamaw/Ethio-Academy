@@ -216,6 +216,7 @@ model Exam{
    updatedAt     DateTime  @updatedAt
    examType   String   @unique
    cover File?
+   url String  @unique
    departments Department[]
 }
 
@@ -227,6 +228,7 @@ model Department{
    examId String @db.ObjectId
    departmentName String   @unique
    cover File?
+   url String  @unique
    questions Question[]
    subject  Subject[]
 }
