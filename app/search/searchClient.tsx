@@ -29,7 +29,7 @@ const SearchClient = () => {
   return <div className="min-h-screen w-full flex justify-center items-center">
        <div className="w-full md:w-10/12  xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 justify-center">
         {courses.map((course) =>{
-          return <Card
+          return course.cover&&<Card
           key={course.id}
               id={course.id}
               no_reviews={course.reviews.length}
@@ -37,7 +37,7 @@ const SearchClient = () => {
               price={course.price}
               subject={course.subject}
               rating={course?.rating}
-              cover={course.cover} 
+              cover={course.cover?.public_url}
                />
         })}
        </div>
