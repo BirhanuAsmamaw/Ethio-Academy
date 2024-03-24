@@ -38,8 +38,8 @@ export async function POST(req:Request) {
     }
    
   }
-
-  const hashPassword=await bcrypt.hash(password,10)
+  else{
+    const hashPassword=await bcrypt.hash(password,10)
 
   
     await prisma.user.create({
@@ -57,5 +57,8 @@ export async function POST(req:Request) {
 
   
   return NextResponse.json({succes:"confirmation email sent successfully"});
+  }
+
+  
   
 }
