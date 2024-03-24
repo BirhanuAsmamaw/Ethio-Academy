@@ -83,8 +83,8 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({course})=> 
     }
 
    axios.put(`/api/course/${course.id}/update/cover`,{cover:coverData}).then(()=>{
-    setVideoUrl(course?.cover?course?.cover.public_url:"");
-    setVideoKey(course?.cover?course?.cover.public_key:"");
+    setCoverUrl(course?.cover?course?.cover.public_url:"");
+    setCoverKey(course?.cover?course?.cover.public_key:"");
     toast.success("Course Cover uploaded successfully")
     }).catch((error)=>{
       toast.error(error.message);
@@ -105,8 +105,8 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({course})=> 
 
    axios.put(`/api/course/${course.id}/update/thumbnail`,{thumbnail:thumbnailData}).then(()=>{
     course.videoThumn
-    setVideoUrl(course?.videoThumbnail?course?.videoThumbnail.public_url:"");
-    setVideoKey(course?.videoThumbnail?course?.videoThumbnail.public_key:"");
+    setthumbnailUrl(course?.videoThumbnail?course?.videoThumbnail.public_url:"");
+    setthumbnailKey(course?.videoThumbnail?course?.videoThumbnail.public_key:"");
     toast.success("Course Thumbnail Uploaded successfully")
     }).catch((error)=>{
       toast.error(error.message);
