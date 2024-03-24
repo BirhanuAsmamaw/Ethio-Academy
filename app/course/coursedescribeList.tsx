@@ -83,46 +83,22 @@ const onPayment=()=>{
    flex-col overflow-y-auto 
   overflow-x-hidden  
     bg-white dark:bg-gray-800">
+<div className="flex justify-end items-center p-6">
+
+
+<ShareSocialMedia url={`https://ethio-exams-academy.vercel.app/course/${course.id}`}/>
+
+</div>
     <div className="p-2 flex justify-end gap-6">
       <button 
       onClick={onAddToCart}
-      className="
-      text-xl
-      
-      dark:bg-gray-700 
-      border
-       bg-gray-100 
-      border-gray-200 
-      hover:border-blue-600 
-      hover:text-blue-600 
-      dark:border-gray-600
-       px-3 py-2 rounded-[5px] 
-      hover:dark:border-green-400 
-      hover:dark:text-green-400 transition
-       duration-300"
+      className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
        >Add to cart</button>
       <button
 
       onClick={onPayment}
-       className="
-       text-xl
-      
-       dark:bg-gray-700 
-       border
-        bg-gray-100 
-       border-gray-200 
-       hover:border-blue-600 
-       hover:text-blue-600 
-       dark:border-gray-600
-        px-3 py-2 rounded-[5px] 
-       hover:dark:border-green-400 
-       hover:dark:text-green-400 transition
-        duration-300"
-      >Buy</button>
-
-
-
-<ShareSocialMedia url={`https://ethio-exams-academy.vercel.app/course/${course.id}`}/>
+      className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+      >Buy Now!!</button>
     </div>
   <h5 className="px-2 text-lg font-medium text-gray-500 dark:text-gray-400">Course Content</h5>
  <div className="flex flex-col  ">
