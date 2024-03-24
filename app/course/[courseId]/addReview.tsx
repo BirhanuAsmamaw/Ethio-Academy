@@ -7,13 +7,13 @@ import { Rating } from "@mui/material";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
-import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
+
 import { useRouter } from "next/navigation";
 import Container from "@/components/container/container";
 import toast from "react-hot-toast";
 import Heading from "@/components/Heading/Heading";
 import Input from "@/components/input/input";
-import Button from "@/components/button/button";
+
 import StarOutlined from "@mui/icons-material/StarOutlined";
 interface AddReviewsProps{
   course:any|null;
@@ -51,7 +51,7 @@ useEffect(()=>{
 
 
 useEffect(()=>{
-  setNewRate((prev:number)=>prev?(prev+isvalue)/(course.reviews.length):isvalue)
+  setNewRate((prev:number)=>(prev&&course.reviews.length)?(prev+isvalue)/(course.reviews.length):isvalue)
   router.refresh();
 },[course.reviews.length, isvalue, router]);
 

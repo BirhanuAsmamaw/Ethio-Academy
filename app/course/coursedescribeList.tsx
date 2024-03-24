@@ -1,3 +1,4 @@
+"use client"
 import { BsBarChart } from "react-icons/bs";
 import { SiLibreoffice } from "react-icons/si";
 import { IoPeopleOutline } from "react-icons/io5";
@@ -7,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
 import { CiCircleQuestion } from "react-icons/ci";
 import ShareSocialMedia from "@/components/ShareSocial";
+import { useEffect, useState } from "react";
 
 interface ContentListProps{
   icon:IconType;
@@ -20,9 +22,10 @@ interface ContentListProps{
   }
 
 const ContentList:React.FC<ContentListProps>=({icon:Icon,title,content})=>{
+ 
   
   return(
-    <div className="flex gap-4 px-2 justify-between  text-base text-gray-500 dark:text-gray-400  border-y border-gray-200 dark:border-gray-700  px-2 mx-2 py-2">
+    <div className="flex gap-4 justify-between  text-base text-gray-500 dark:text-gray-400  border-y border-gray-200 dark:border-gray-700  px-2 mx-2 py-2">
       <div className="flex gap-2"><Icon size={24}/>
       <p>{title}</p></div>
       <p className="font-medium text-rose-600 dark:text-green-400 ">{content}</p>
@@ -44,6 +47,18 @@ const ContentList:React.FC<ContentListProps>=({icon:Icon,title,content})=>{
 
 const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
 
+
+  const [lessonNo,setLessonNo]=useState(0)
+
+  useEffect(()=>{
+    course?.chapters.forEach((chapter:any) => {
+      chapter?.lessons.forEach((lesson:any) => {
+ 
+       setLessonNo((prev) => prev+1)
+      })
+   })
+ 
+  },[course])
   const router=useRouter()
 const {addToCart}=useCart();
 
@@ -115,16 +130,16 @@ const onPayment=()=>{
   content="3000"
   />
 
-<ContentList
+{false?<ContentList
   title="Resourses"
   icon={SiLibreoffice}
   content="2"
-  />
+  />:""}
 
 <ContentList
   title="Lessons"
   icon={BsBarChart}
-  content="20"
+  content={`${lessonNo}`}
   />
 
 

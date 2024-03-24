@@ -8,6 +8,7 @@ import {
 
 
 import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react";
 interface courseContentProps{
   course: any|null;
 }
@@ -18,9 +19,16 @@ router.push(`/course/${courseId}/${chapterId}/${lessonId}`)
 router.refresh()
   }
 
+  
+
+
   if(!course){
     return null
   }
+
+ 
+    
+ 
   return (
     <Accordion type="single" collapsible className="w-full p-1" >
 
