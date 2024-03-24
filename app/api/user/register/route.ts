@@ -20,17 +20,32 @@ export async function POST(req:Request) {
 
   const user = await prisma.user.findUnique({where: {email: email}})
 
-  if (user&&user.emailVerified) {
-    throw new Error('User already exists');
+  if (user) {
+    if(!user.emailVerified){
+
+      const verificationToken=await generateVerificationToken(email)
+
+      const confirmLink=`https://ethio-exams-academy.vercel.app/account-verification?token=${verificationToken.token}`
+    
+    
+     await sendVerificationEmail(verificationToken.email,confirmLink)
+    
+      
+      return NextResponse.json({succes:"confirmation email sent successfully"})
+    }
+    else{
+      throw new Error('User already exists');
+    }
+   
   }
 
   const hashPassword=await bcrypt.hash(password,10)
 
-  if(!user){
+  
     await prisma.user.create({
       data:{name:name,email:email,hash:hashPassword}
     });
-  }
+  
 
 
   const verificationToken=await generateVerificationToken(email)

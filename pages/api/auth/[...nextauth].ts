@@ -5,6 +5,9 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "@/lib/prismadb"
 import bcrypt from 'bcrypt'
 import { getUserById } from "@/actions/tokens/getUserbyd"
+import { generateVerificationToken } from "@/actions/tokens/generateToken"
+import { sendVerificationEmail } from "@/lib/mail"
+import { NextResponse } from "next/server"
 
 export const authOptions:AuthOptions={
   adapter: PrismaAdapter(prisma),
@@ -37,6 +40,11 @@ CredentialsProvider({
       }
     });
 
+  
+
+ 
+
+
     if (!user || !user.hash){
       throw new Error("invalid email or password")
     }
@@ -46,7 +54,25 @@ CredentialsProvider({
       throw new Error("invalid email or password")
     }
 
-    return user;
+
+    
+    if(user&&!user.emailVerified){
+  
+      const verificationToken=await generateVerificationToken(credentials.email)
+
+      const confirmLink=`https://ethio-exams-academy.vercel.app/account-verification?token=${verificationToken.token}`
+    
+    
+     await sendVerificationEmail(verificationToken.email,confirmLink)
+    
+    
+      
+    }
+     
+        return user;
+    
+     
+   
   }
 })
 
@@ -68,9 +94,6 @@ CredentialsProvider({
     
     async signIn({user,account}){
       const existingUser = await getUserById(user.id as string)
-      if(account?.provider!=="credentials"){
-        return true
-      }
       if(account?.provider==="credentials"){
         if(!existingUser?.emailVerified){
           return false
