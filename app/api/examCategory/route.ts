@@ -6,9 +6,9 @@ export async function POST(req:Request) {
   const body=await req.json();
 
   try{
-    const {examType}=body
+    const {examType,url}=body
 
-    if(!examType){
+    if(!examType || !url){
       return NextResponse.json({message:"exams not empty",status: false})
     }
     const user=await getCurrentUser();
@@ -20,6 +20,7 @@ export async function POST(req:Request) {
     }
     const newExams=await  prisma.exam.create({
       data:{
+        url:url,
         examType:examType,
       }
     })

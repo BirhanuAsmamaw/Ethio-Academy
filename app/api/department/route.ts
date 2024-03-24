@@ -4,8 +4,8 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request, res: Response){
   const body = await req.json();
   try{
-  const {examId,department}=body
-  if (!examId || !department){
+  const {examId,department,url}=body
+  if (!examId || !department || !url){
     return NextResponse.json({
       status:false,
       message:"invalid parameters"
@@ -13,6 +13,7 @@ export async function POST(req: Request, res: Response){
   }
     const newDepartment=await prisma.department.create({
       data:{
+        url:url,
         examId:examId,
         departmentName:department
       }
