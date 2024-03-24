@@ -65,7 +65,7 @@ CredentialsProvider({
     
      await sendVerificationEmail(verificationToken.email,confirmLink)
     
-    
+     throw new Error("Your Account not verified; Please Check your email and verify your account!!!")
       
     }
      
