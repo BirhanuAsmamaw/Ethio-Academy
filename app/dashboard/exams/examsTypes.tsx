@@ -14,7 +14,8 @@ const ExamsTypes = () => {
 const [isLoading, setIsLoading]=useState(false)
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-      examType:""
+      examType:"",
+      url: "",
         
     },
   })
@@ -52,9 +53,16 @@ const [isLoading, setIsLoading]=useState(false)
   <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between">
     {/* create exams category */}
     
-    <div className="pt-10 flex-col items-center justify-center w-full ">
+    <div className="w-full pt-10 flex  justify-between px-4">
+    <div className="flex-col items-center justify-center w-full ">
 
-    <Input id="examType" register={register} errors={errors}  label="Exams Type" type="text" required/>
+<Input id="examType" register={register} errors={errors}  label="Exams Type" type="text" required/>
+</div>
+<div className=" flex-col items-center justify-center w-full ">
+
+    <Input id="url" register={register} errors={errors}  label="Exams Path" type="text" required/>
+    </div>
+
     </div>
   </div>
   <div className="w-full flex justify-end  mt-6 py-6 px-4 ">

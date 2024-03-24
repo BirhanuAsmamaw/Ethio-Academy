@@ -26,7 +26,8 @@ useEffect(()=>{
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
       examId:examIdValue,
-      department:""
+      department:"",
+      url:""
         
     },
   })
@@ -80,9 +81,16 @@ useEffect(()=>{
     </Select>
     </div>
 
-    <div className="pt-10 flex-col items-center justify-center w-full ">
+    <div className="pt-10 flex justify-between px-4">
+    <div className=" flex-col items-center justify-center w-full ">
 
-    <Input id="department" register={register} errors={errors}  label="write Department" type="text" required/>
+<Input id="department" register={register} errors={errors}  label="write Department" type="text" required/>
+</div>
+
+<div className=" flex-col items-center justify-center w-full ">
+
+<Input id="url" register={register} errors={errors}  label="Add Department Path" type="text" required/>
+</div>
     </div>
   </div>
   <div className="w-full flex justify-end  mt-6 py-6 px-4 ">

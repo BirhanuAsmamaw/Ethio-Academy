@@ -136,7 +136,7 @@ isAnswer:false,
 };
 
 
-  return (<div className="py-10 flex flex-col bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
+  return (<div className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
      <div className="w-full">
     <div className="p-4">
       <Heading title={'Exams Subject'}/>
