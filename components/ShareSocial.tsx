@@ -28,7 +28,8 @@ const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
   return (
     <div>
      <Dialog >
-      <DialogTrigger asChild  className="
+      <DialogTrigger asChild  >
+        <div className="
        text-xl
       
        dark:bg-gray-700 
@@ -42,7 +43,6 @@ const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
        hover:dark:border-green-400 
        hover:dark:text-green-400 transition
         duration-300">
-        <div>
           <HiOutlineShare size={30}/>
         </div>
       </DialogTrigger>

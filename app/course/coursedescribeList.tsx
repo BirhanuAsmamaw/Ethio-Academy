@@ -55,7 +55,7 @@ const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
     course?.chapters.forEach((chapter:any) => {
       chapter?.lessons.forEach((lesson:any,ind:number) => {
  
-       setLessonNo((prev) => prev+ind)
+       setLessonNo(1+ind)
       })
    })
  
