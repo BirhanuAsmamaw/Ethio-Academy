@@ -2,8 +2,6 @@
 "use client"
 import { IoCartOutline } from "react-icons/io5";
 import { useTheme } from "next-themes";
-import Logo from "../../public/logo.png";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { GoMoon } from "react-icons/go";
 import { LuSunMedium } from "react-icons/lu";
@@ -49,7 +47,7 @@ const {carts}=useCart()
   return ( <div className={` w-full px-4 md:px-6 z-50 h-14 items-center   flex justify-between flex-wrap  ${isScroll? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-white dark:bg-gray-900  ":"bg-stone-200 dark:bg-gray-900 "} duration-300 z-50`}>
     <Link href="/" className="no-underline flex gap-2">
       <Avatar className={` h-10 w-10`}>
-      <AvatarImage src="../../public/logo.png" alt="EEA" />
+      <AvatarImage src={`https://utfs.io/f/41397d7e-0c5e-430b-9802-93cfd68da003-rdpp72.png`} alt="EEA" />
       <AvatarFallback>EEA</AvatarFallback>
     </Avatar>
      <h1 className="hidden md:block font-semibold text-xl md:text-2xl py-2 overflow-hidden">
