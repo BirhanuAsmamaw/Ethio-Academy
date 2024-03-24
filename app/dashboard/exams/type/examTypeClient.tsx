@@ -115,26 +115,18 @@ export const columns: ColumnDef<ExamType>[] = [
 
           <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
           
-            <DropdownMenuItem>
-             <Link 
-             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/list-Examt/${Exam.id}/chapter`}>Chapter</Link>
-            </DropdownMenuItem>
+           
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-Examt/${Exam.id}/edit`}>Edit Examt </Link>
+               href={`/dashboard/exam/type/${Exam.id}/update`}>Edit Exam Type </Link>
             </DropdownMenuItem>
 
-            <DropdownMenuItem> 
-              <Link
-               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-Examt/${Exam.id}/Examtfile-update`}>Update ExamtFiles</Link>
-            </DropdownMenuItem>
+           
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/list-Examt/${Exam.id}/delete`}>Delete</Link>
+              href={`/dashboard/exam/type/${Exam.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 

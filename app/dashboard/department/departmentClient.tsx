@@ -115,26 +115,18 @@ export const columns: ColumnDef<DepartmenType>[] = [
 
           <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
           
-            <DropdownMenuItem>
-             <Link 
-             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/list-Department/${department.id}/chapter`}>Chapter</Link>
-            </DropdownMenuItem>
+          
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-Department/${department.id}/edit`}>Edit Department </Link>
+               href={`/dashboard/department/${department.id}/update`}>Edit Department </Link>
             </DropdownMenuItem>
 
-            <DropdownMenuItem> 
-              <Link
-               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-Department/${department.id}/Departmentfile-update`}>Update DepartmentFiles</Link>
-            </DropdownMenuItem>
+           
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/list-Department/${department.id}/delete`}>Delete</Link>
+              href={`/dashboard/department/${department.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
