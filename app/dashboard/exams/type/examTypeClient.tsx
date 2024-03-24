@@ -118,7 +118,10 @@ export const columns: ColumnDef<ExamType>[] = [
            
             <DropdownMenuItem> 
               <Link
-               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
+               className="no-underline text-sm
+                text-gray-500 dark:text-gray-400
+                hover:text-gray-700
+                 dark:hover:text-gray-200" 
                href={`/dashboard/exams/type/${Exam.id}/update`}>Edit Exam </Link>
             </DropdownMenuItem>
 
