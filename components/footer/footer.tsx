@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import Logo from '../../public/alpha.png';
+
 import Link from 'next/link';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 const Footer = () => {
   return ( 
 
@@ -9,7 +9,10 @@ const Footer = () => {
             <div className="md:flex md:justify-between">
               <div className="mb-6 md:mb-0">
                   <Link href="/" className="no-underline flex items-center">
-                  <Image src={Logo} alt="logo" className="w-10 h-10 rounded-full" height={30} width={30}/>
+                  <Avatar className={` h-10 w-10`}>
+      <AvatarImage src={`https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png`} alt="EEA" />
+      <AvatarFallback>EEA</AvatarFallback>
+    </Avatar>
                       <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><span className="text-blue-600">Ethio</span> <span>Exams</span><span className="text-green-600">Academy</span></span>
                   </Link>
               </div>
