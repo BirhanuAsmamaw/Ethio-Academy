@@ -66,7 +66,7 @@ const UpdateExamFile:React.FC<UpdateExamFileProps> = ({exam}) => {
   return (<div className="w-full p-2 flex justify-center bg-white shadow-md dark:bg-slate-800">
     <div className="space-y-2 w-full text-center">
     
-    <h1 className="text-xl font-semibold">{exam.examType} Files</h1>
+    <h1 className="text-xl font-semibold">Update {exam.examType} Files</h1>
    
 
       <FileUploader

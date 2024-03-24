@@ -66,7 +66,7 @@ const UpdateDepartmentFile:React.FC<UpdateDepartmentFileProps> = ({department}) 
   return (<div className="w-full p-2 flex justify-center bg-white shadow-md dark:bg-slate-800">
     <div className="space-y-2 w-full text-center">
     
-    <h1 className="text-xl font-semibold">{department.subject} Files</h1>
+    <h1 className="text-xl font-semibold">Update {department.departmentName} Files</h1>
    
 
       <FileUploader

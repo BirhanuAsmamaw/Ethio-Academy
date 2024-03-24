@@ -49,7 +49,7 @@ const UpdateExamContent:React.FC<UpdateExamContentProps> = ({exam}) => {
   }
   return ( <div className="w-full p-2 bg-white shadow-md dark:bg-slate-800">
   <div className="p-4">
-  <Heading small title="Upload Exams Category Cover"/>
+  <Heading small title="Update Exams Content"/>
   </div>
 <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between">
  
