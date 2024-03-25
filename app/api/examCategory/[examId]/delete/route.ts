@@ -2,8 +2,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
-export async function DELETE(req: Request, {params}:{params:{id:string}}){
-  const id=params.id;
+export async function DELETE(req: Request, {params}:{params:{examId:string}}){
+  const examId=params.examId;
  
 
   try{
@@ -16,18 +16,21 @@ export async function DELETE(req: Request, {params}:{params:{id:string}}){
       return NextResponse.json({status:false, message:"unathorized"});
     }
 
-    const course=await prisma.course.findUnique({
-      where: {id:id}
+    const exam=await prisma.exam.findUnique({
+      where: {id:examId}
     })
-    if(!course){
-      return NextResponse.json({status:false, message:"course not found"});
+    if(!exam){
+      return NextResponse.json({status:false, message:"exam not found"});
     }
 
-   const dCourse= await prisma.course.delete({
-      where: {id:id},
+ await prisma.exam.delete({
+      where: {id:examId},
       
     })
-    return NextResponse.json(dCourse);
+    return NextResponse.json({
+      success:true,
+      message:"exam deleted successfully"
+    });
   }
   catch(err){
     console.log(err);
