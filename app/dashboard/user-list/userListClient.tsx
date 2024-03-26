@@ -220,17 +220,13 @@ export const columns: ColumnDef<UserType>[] = [
             <DropdownMenuItem>
              <Link 
              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/list-users/${user.id}/chapter`}>Chapter</Link>
+             href={`/dashboard/list-users/${user.id}/update/role`}>Edit User Role</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem> 
-              <Link
-               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-users/${user.id}/edit`}>Edit</Link>
-            </DropdownMenuItem>
+            
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/list-users/${user.id}/delete`}>Delete</Link>
+              href={`/dashboard/list-users/${user.id}/delete`}>Delete User</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
