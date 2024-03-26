@@ -1,29 +1,10 @@
-"use client"
-import DeleteComponent from '@/components/deleteComponent'
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
-import toast from 'react-hot-toast';
+import { getDepartmentById } from "@/actions/departments/getDepartmentById";
+import DeleteDepartmentClient from "./deleteDepartmentClient";
 
-const DeleteDepartment = ({params}:{params:{departmentId:string}}) => {
-  const [isLoading,setLoading]=useState(false)
-const router=useRouter();
-  const onSubmit=()=>{
-    setLoading(true);
-    axios.delete(`/api/department/${params.departmentId}/delete`).then(()=>{
-      toast.success("Department deleted successfully")
-      router.refresh()
-      
-    }).catch((errors)=>{
-      toast.error("something went wrong");
-    }).finally(()=>{
-      setLoading(false);
-    });
-   
-  
-  }
+const DeleteDepartment =async ({params}:{params:{departmentId:string}}) => {
+ const department=await getDepartmentById(params.departmentId);
  
-  return (<DeleteComponent onDelete={onSubmit} title={' Delete this Department'} label={'Delete'}/>
+  return (<DeleteDepartmentClient department={department}/>
   )
 }
 
