@@ -70,7 +70,7 @@ const Hero = () => {
        lg:text-4xl xl:text-5xl font-semibold 
        items-center z-10 justify-center text-center
         overflow-hidden">
-          <span className=" text-blue-500 dark:text-yellow-400">Ethio Exams Academy</span>
+          <span className=" text-blue-600 dark:text-green-400">Ethio Exams Academy</span>
           <span>, where heroes are born and excellence reigns supreme </span>
           <span className="font-bold text-rose-500 dark:text-yellow-400 text-3xl md:text-5xl">!</span></motion.h1>
       <div className="font-medium md:text-lg flex flex-col gap-1 md:mx-10 ">

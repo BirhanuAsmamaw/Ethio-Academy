@@ -23,6 +23,9 @@ const Button:React.FC<ButtonProps> = ({outline,small,title,onClick,className,isD
    text-sm 
    px-5 
    py-2.5
+    disabled:bg-transparent
+    disabled:dark:text-gray-400
+    disabled:text-gray-600
     text-center 
     me-2
      dark:bg-blue-600 
