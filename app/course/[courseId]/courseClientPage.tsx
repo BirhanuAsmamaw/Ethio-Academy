@@ -14,6 +14,7 @@ import CourseDescribeList from "../coursedescribeList";
 import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
 import { Button } from "@/components/ui/button";
+import OnExpand from "@/components/button/onExpand";
 
 interface ICourseId{
   course:any;
@@ -22,7 +23,7 @@ interface ICourseId{
 
 const CourseClientPage:React.FC<ICourseId> = ({course,customer}) => {
 const [isExpand,setExpand]=useState(false);
-  const onExpand=()=>{
+  const onExpanded=()=>{
     setExpand((prev)=>!prev);
   }
   if(!course){
@@ -63,14 +64,12 @@ const [isExpand,setExpand]=useState(false);
       <Heading title="About Course"/>
       <div className="pb-10 " dangerouslySetInnerHTML={{ __html: course.descriptions}}></div>
       <div className={`absolute ${isExpand? 'bottom-2  left-[50%]':'top-[70%] left-[50%]'}  shadow-lg z-20`}>
-        <Button 
-        className="bg-black  hover:bg-opacity-20  bg-opacity-10 p-2"
-        variant="outline" 
-        onClick={onExpand}>{isExpand? <IoChevronUp size={30}/>:<IoChevronDown size={30}/>}</Button>
+       <OnExpand isExpand={isExpand} onExpand={onExpanded}/>
       </div>
       </div>
   }
   />
+  
 
 
 
