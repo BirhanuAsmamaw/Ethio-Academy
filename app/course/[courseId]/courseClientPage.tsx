@@ -52,13 +52,21 @@ const [isExpand,setExpand]=useState(false);
         <source src={course?.videoUrl.public_url} type="video/mp4"  />
         Your browser does not support the video tag.
       </video></div>:""}
+
+      <div className=" lg:hidden">
+<CourseDescribeList course={course}/>
+</div>
+
   <Container
   childern={
     <div className={`${isExpand? '':'h-72 overflow-hidden'} space-y-4 p-4 relative`}>
       <Heading title="About Course"/>
       <div className="" dangerouslySetInnerHTML={{ __html: course.descriptions}}></div>
-      <div className="absolute top-[50%] left-[50%]  z-30">
-        <Button variant="ghost" onClick={onExpand}>{isExpand? <IoChevronUp size={30}/>:<IoChevronDown size={30}/>}</Button>
+      <div className={`absolute ${isExpand? 'bottom-2  left-[50%]':'top-[50%] left-[50%]'}  z-30`}>
+        <Button 
+        className="bg-black  bg-opacity-20 p-2"
+        variant="ghost" 
+        onClick={onExpand}>{isExpand? <IoChevronUp size={30}/>:<IoChevronDown size={30}/>}</Button>
       </div>
       </div>
   }
@@ -77,9 +85,6 @@ const [isExpand,setExpand]=useState(false);
 
 
 
-<div className=" lg:hidden">
-<CourseDescribeList course={course}/>
-</div>
 
 
 <Container
