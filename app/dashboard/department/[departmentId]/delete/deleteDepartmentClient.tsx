@@ -33,6 +33,10 @@ const DeleteDepartmentClient:React.FC<DeleteDepartmentClientProps> = ({departmen
      
     
     }
+    if(!department){
+      router.back();
+      return null;
+    }
   return (<DeleteComponent isLoading={isLoading}  onDelete={onSubmit} title={department.departmentName} />
   )
 }

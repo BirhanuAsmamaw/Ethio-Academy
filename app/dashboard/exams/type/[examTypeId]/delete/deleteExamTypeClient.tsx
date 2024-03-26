@@ -33,6 +33,12 @@ const DeleteExamTypeClient:React.FC<DeleteExamTypeClientProps> = ({exam}) => {
      
     
     }
+
+
+    if(!exam){
+      router.back();
+      return null;
+    }
   return (<DeleteComponent isLoading={isLoading} onDelete={onSubmit} title={exam.examType} />
   )
 }
