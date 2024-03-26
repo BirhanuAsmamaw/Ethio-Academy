@@ -38,10 +38,10 @@ const router=useRouter();
 
     <div className="w-full flex justify-end gap-4 p-6">
     <Button 
-title={`Cancel`}
+
 variant="destructive"
-className="transition duration-300  text-rose-600 hover:text-rose-700  bg-red-300  hover:bg-rose-400 text-center " 
-onClick={onCancel}/>
+className="" 
+onClick={onCancel}>Cancel</Button>
 
 
 
@@ -49,9 +49,8 @@ onClick={onCancel}/>
     <Button 
  disabled={isLoading || !isValue}
  variant="destructive"
-title={isLoading? "Loading...":`Delete`}
-className="transition duration-300 text-rose-600 hover:text-rose-700  bg-red-300  hover:bg-rose-400 text-center " 
-onClick={onDelete}/>
+className=" disabled:cursor-not-allowed " 
+onClick={onDelete}>{isLoading? "Loading...":`Delete`}</Button>
     </div>
   </div>
 </div> );
