@@ -33,7 +33,7 @@ const DeleteDepartmentClient:React.FC<DeleteDepartmentClientProps> = ({departmen
      
     
     }
-  return (<DeleteComponent onDelete={onSubmit} title={department.departmentName} />
+  return (<DeleteComponent isLoading={isLoading}  onDelete={onSubmit} title={department.departmentName} />
   )
 }
 

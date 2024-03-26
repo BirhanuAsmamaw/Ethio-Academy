@@ -33,7 +33,7 @@ const DeleteExamTypeClient:React.FC<DeleteExamTypeClientProps> = ({exam}) => {
      
     
     }
-  return (<DeleteComponent onDelete={onSubmit} title={exam.examType} />
+  return (<DeleteComponent isLoading={isLoading} onDelete={onSubmit} title={exam.examType} />
   )
 }
 
