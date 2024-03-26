@@ -61,10 +61,10 @@ const [isExpand,setExpand]=useState(false);
   childern={
     <div className={`${isExpand? '':'h-72 overflow-hidden'} space-y-4 p-4 relative`}>
       <Heading title="About Course"/>
-      <div className="" dangerouslySetInnerHTML={{ __html: course.descriptions}}></div>
-      <div className={`absolute ${isExpand? 'bottom-2  left-[50%]':'top-[50%] left-[50%]'}  z-30`}>
+      <div className="pb-10 " dangerouslySetInnerHTML={{ __html: course.descriptions}}></div>
+      <div className={`absolute ${isExpand? 'bottom-2  left-[50%]':'top-[70%] left-[50%]'}  shadow-lg z-20`}>
         <Button 
-        className="bg-black  bg-opacity-20 p-2"
+        className="bg-black  hover:bg-opacity-20  bg-opacity-10 p-2"
         variant="ghost" 
         onClick={onExpand}>{isExpand? <IoChevronUp size={30}/>:<IoChevronDown size={30}/>}</Button>
       </div>
