@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${IBM_plex_sans.className} bg-stone-200 dark:text-gray-200 dark:bg-gray-900 bg-cover bg-center bg-no-repeat bg-[url('../public/dark-app-cover.jpg')] `}>
+      <body className={`${IBM_plex_sans.className} bg-stone-200 dark:text-gray-200 dark:bg-gray-900  `}>
       <Toaster
   position="top-center"
   reverseOrder={false}
