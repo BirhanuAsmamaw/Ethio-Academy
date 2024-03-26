@@ -2,8 +2,8 @@
 
 import Heading from "@/components/Heading/Heading";
 import Container from "@/components/container/container";
-
-import React from "react";
+import { IoChevronUp,IoChevronDown } from "react-icons/io5";
+import React, { useState } from "react";
 import RatingPage from "./rating";
 import AddReviews from "./addReview";
 import Reviews from "./reviews";
@@ -13,6 +13,7 @@ import CourseSceleton from "./[chapterId]/courseSceleton";
 import CourseDescribeList from "../coursedescribeList";
 import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
+import { Button } from "@/components/ui/button";
 
 interface ICourseId{
   course:any;
@@ -20,8 +21,10 @@ interface ICourseId{
 }
 
 const CourseClientPage:React.FC<ICourseId> = ({course,customer}) => {
-
-  
+const [isExpand,setExpand]=useState(false);
+  const onExpand=()=>{
+    setExpand((prev)=>!prev);
+  }
   if(!course){
     return ( <div className="flex h-screen justify-center py-10 px-2">
       <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
@@ -51,9 +54,12 @@ const CourseClientPage:React.FC<ICourseId> = ({course,customer}) => {
       </video></div>:""}
   <Container
   childern={
-    <div className="space-y-4 p-4">
+    <div className={`${isExpand? '':'h-72 overflow-hidden'} space-y-4 p-4`}>
       <Heading title="About Course"/>
       <div className="" dangerouslySetInnerHTML={{ __html: course.descriptions}}></div>
+      <div className="flex justify-center p-10">
+        <Button onClick={onExpand}>{isExpand? <IoChevronUp size={30}/>:<IoChevronDown size={30}/>}</Button>
+      </div>
       </div>
   }
   />
