@@ -54,11 +54,11 @@ const [isExpand,setExpand]=useState(false);
       </video></div>:""}
   <Container
   childern={
-    <div className={`${isExpand? '':'h-72 overflow-hidden'} space-y-4 p-4`}>
+    <div className={`${isExpand? '':'h-72 overflow-hidden'} space-y-4 p-4 relative`}>
       <Heading title="About Course"/>
       <div className="" dangerouslySetInnerHTML={{ __html: course.descriptions}}></div>
-      <div className="flex justify-center p-10">
-        <Button onClick={onExpand}>{isExpand? <IoChevronUp size={30}/>:<IoChevronDown size={30}/>}</Button>
+      <div className="absolute top-[50%] left-[50%]  z-30">
+        <Button variant="ghost" onClick={onExpand}>{isExpand? <IoChevronUp size={30}/>:<IoChevronDown size={30}/>}</Button>
       </div>
       </div>
   }
