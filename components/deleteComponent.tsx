@@ -30,8 +30,8 @@ const router=useRouter();
  }
   return ( <div className="h-screen w-full flex justify-center items-center">
   <div className="mx-4 w-full md:max-w-md py-4 px-2 border bg-white border-gray-200 rounded-[10px] space-y-4 dark:bg-gray-800 dark:border-gray-700 ">
-    <h5 className="text-[20px] font-normal text-rose-400 ">Are Sure To Delete this {title}?</h5>
-<div className="space-y-1">
+    <h5 className="text-[20px] font-normal text-gray-600 dark:text-gray-400 ">Are Sure To Delete this <span className="font-semibold">{title}</span>?</h5>
+<div className="p-4 space-y-1">
 <label>To verify, type <span className="font-semibold text-rose-600 dark:text-red-400">delete my project</span> below:</label>
 <Input onChange={(event)=>setValue(event.target.value)}/>
 </div>
@@ -49,7 +49,11 @@ onClick={onCancel}>Cancel</Button>
     <Button 
  disabled={isLoading || !isValue}
  variant="destructive"
-className="bg-rose-600 hover:bg-rose-500 disabled:bg-rose-400  disabled:dark:bg-rose-500  disabled:cursor-not-allowed " 
+className="bg-rose-600
+ hover:bg-rose-500
+ disabled:bg-rose-400 
+ disabled:dark:bg-rose-500  
+disabled:cursor-not-allowed " 
 onClick={onDelete}>{isLoading? "Loading...":`Delete`}</Button>
     </div>
   </div>
