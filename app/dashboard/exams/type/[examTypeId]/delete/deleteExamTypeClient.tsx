@@ -32,7 +32,7 @@ const DeleteExamTypeClient:React.FC<DeleteExamTypeClientProps> = ({exam}) => {
      
     
     }
-  return (<DeleteComponent onDelete={onSubmit} title={'Delete This Exam type'} label={'Delete'}/>
+  return (<DeleteComponent onDelete={onSubmit} title={exam.examType} />
   )
 }
 

@@ -9,9 +9,9 @@ interface DeleteComponentProps{
   isLoading?: boolean;
   onDelete:()=>void;
   title:string;
-  label:string;
+ 
 }
-const DeleteComponent:React.FC<DeleteComponentProps> = ({isLoading,onDelete,label,title}) => {
+const DeleteComponent:React.FC<DeleteComponentProps> = ({isLoading,onDelete,title}) => {
 const router=useRouter();
   const [value,setValue]=useState("")
  const [isValue,setisValue]=useState(false)
