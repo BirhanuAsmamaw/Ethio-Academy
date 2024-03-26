@@ -54,7 +54,7 @@ const Hero = () => {
   
   return ( <div
     className=" w-full flex min-h-screen justify-center md:justify-around  flex-wrap px-4 items-center
-    dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative "
+    dark:bg-grid-white/[0.5] bg-grid-black/[0.2] relative "
   >
     <motion.div  variants={textVariants}
     initial="initial"
@@ -68,9 +68,9 @@ const Hero = () => {
       drop-shadow-md
        text-2xl md:text-3xl 
        lg:text-4xl xl:text-5xl font-semibold 
-       items-center justify-center text-center
+       items-center z-10 justify-center text-center
         overflow-hidden">
-          <span className="text-blue-500 dark:text-yellow-400">Ethio Exams Academy</span>
+          <span className=" text-blue-500 dark:text-yellow-400">Ethio Exams Academy</span>
           <span>, where heroes are born and excellence reigns supreme </span>
           <span className="font-bold text-rose-500 dark:text-yellow-400 text-3xl md:text-5xl">!</span></motion.h1>
       <div className="font-medium md:text-lg flex flex-col gap-1 md:mx-10 ">
