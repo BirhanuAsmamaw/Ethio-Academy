@@ -54,7 +54,7 @@ const Hero = () => {
   
   return ( <div
     className=" w-full flex min-h-screen justify-center md:justify-around  flex-wrap px-4 items-center
-    dark:bg-grid-white/[0.5] bg-grid-black/[0.2] relative "
+    dark:bg-grid-gray-900 bg-grid-gray-400 relative "
   >
     <motion.div  variants={textVariants}
     initial="initial"
