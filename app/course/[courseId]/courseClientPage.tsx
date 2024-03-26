@@ -65,7 +65,7 @@ const [isExpand,setExpand]=useState(false);
       <div className={`absolute ${isExpand? 'bottom-2  left-[50%]':'top-[70%] left-[50%]'}  shadow-lg z-20`}>
         <Button 
         className="bg-black  hover:bg-opacity-20  bg-opacity-10 p-2"
-        variant="ghost" 
+        variant="outline" 
         onClick={onExpand}>{isExpand? <IoChevronUp size={30}/>:<IoChevronDown size={30}/>}</Button>
       </div>
       </div>
