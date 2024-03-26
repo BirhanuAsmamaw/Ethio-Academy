@@ -30,7 +30,7 @@ const DeleteComponent:React.FC<DeleteComponentProps> = ({isLoading,onDelete,labe
 <Input onChange={(event)=>setValue(event.target.value)}/>
 </div>
 
-    <div className="w-full flex justify-between px-4">
+    <div className="w-full flex justify-end gap-4 p-6">
     <Button 
 title={`Cancel`}
 className="transition duration-300  text-rose-600 hover:text-rose-700  bg-red-300  hover:bg-rose-400 text-center " 
@@ -38,7 +38,7 @@ onClick={onDelete}/>
 
 
     <Button 
-isDisabled={isLoading || isValue}
+isDisabled={isLoading || !isValue}
 title={isLoading? "Loading...":`Delete`}
 className="transition duration-300 text-rose-600 hover:text-rose-700  bg-red-300  hover:bg-rose-400 text-center " 
 onClick={onDelete}/>
