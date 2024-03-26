@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import Button from "./button/button";
 import { Input } from "./ui/input";
+import { useRouter } from "next/navigation";
+
 
 interface DeleteComponentProps{
   isLoading?: boolean;
@@ -10,7 +12,7 @@ interface DeleteComponentProps{
   label:string;
 }
 const DeleteComponent:React.FC<DeleteComponentProps> = ({isLoading,onDelete,label,title}) => {
-
+const router=useRouter();
   const [value,setValue]=useState("")
  const [isValue,setisValue]=useState(false)
 
@@ -22,6 +24,10 @@ const DeleteComponent:React.FC<DeleteComponentProps> = ({isLoading,onDelete,labe
     setisValue(false)
   }
  },[value,setisValue])
+
+ const onCancel=()=>{
+  router.back();
+ }
   return ( <div className="h-screen w-full flex justify-center items-center">
   <div className="mx-4 w-full md:max-w-md py-4 px-2 border bg-white border-gray-200 rounded-[10px] space-y-4 dark:bg-gray-800 dark:border-gray-700 ">
     <h5 className="text-[20px] font-normal text-rose-400 ">Are Sure To Delete this {title}?</h5>
@@ -34,7 +40,7 @@ const DeleteComponent:React.FC<DeleteComponentProps> = ({isLoading,onDelete,labe
     <Button 
 title={`Cancel`}
 className="transition duration-300  text-rose-600 hover:text-rose-700  bg-red-300  hover:bg-rose-400 text-center " 
-onClick={onDelete}/>
+onClick={onCancel}/>
 
 
     <Button 
