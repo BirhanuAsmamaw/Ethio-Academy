@@ -40,7 +40,7 @@ const router=useRouter();
     <Button 
 
 variant="destructive"
-className="" 
+className="bg-rose-600 hover:bg-rose-500" 
 onClick={onCancel}>Cancel</Button>
 
 
@@ -49,7 +49,7 @@ onClick={onCancel}>Cancel</Button>
     <Button 
  disabled={isLoading || !isValue}
  variant="destructive"
-className=" disabled:cursor-not-allowed " 
+className="bg-rose-600 hover:bg-rose-500 disabled:bg-rose-400  disabled:dark:bg-rose-500  disabled:cursor-not-allowed " 
 onClick={onDelete}>{isLoading? "Loading...":`Delete`}</Button>
     </div>
   </div>
