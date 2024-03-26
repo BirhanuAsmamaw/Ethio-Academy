@@ -22,6 +22,7 @@ const DeleteDepartmentClient:React.FC<DeleteDepartmentClientProps> = ({departmen
         }
         
         toast.success("Department deleted successfully")
+        router.back();
         router.refresh()
         
       }).catch((errors)=>{

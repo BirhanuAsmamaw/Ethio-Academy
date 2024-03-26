@@ -21,7 +21,8 @@ const DeleteExamTypeClient:React.FC<DeleteExamTypeClientProps> = ({exam}) => {
           await RemoveFile(exam.cover.public_key);
         }
         
-        toast.success("Department deleted successfully")
+        toast.success("Exams Category deleted successfully")
+        router.back();
         router.refresh()
         
       }).catch((errors)=>{
