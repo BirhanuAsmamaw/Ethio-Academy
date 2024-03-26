@@ -3,6 +3,7 @@ import {IBM_Plex_Sans} from 'next/font/google'
 import './globals.css'
 import AppProvider from '@/providers/appProvider'
 import Footer from '@/components/footer/footer'
+
 import { Toaster } from 'react-hot-toast'
 
 
