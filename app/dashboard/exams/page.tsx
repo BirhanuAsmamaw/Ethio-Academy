@@ -7,7 +7,7 @@ import ExamsTypes from "./examsTypes"
 const ExamsCategory = async() => {
   const exams= await getAllExamsCategory();
   
-  return ( <div className="py-10 flex flex-col bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
+  return ( <div className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
 
 
 

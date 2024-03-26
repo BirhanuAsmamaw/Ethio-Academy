@@ -62,7 +62,17 @@ const Hero = () => {
     {/* content */}
     <div className="pt-10 md:pt-0 flex flex-col gap-20 justify-center items-center  md:w-2/3">
       <div className="flex flex-col gap-6">
-      <motion.h1 variants={textVariants} className=" drop-shadow-md text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold items-center justify-center text-center overflow-hidden">Ethio Exams Academy, where heroes are born and excellence reigns supreme <span className="font-bold text-rose-500 dark:text-yellow-400 text-3xl md:text-5xl">!</span></motion.h1>
+      <motion.h1 
+      variants={textVariants} 
+      className=" 
+      drop-shadow-md
+       text-2xl md:text-3xl 
+       lg:text-4xl xl:text-5xl font-semibold 
+       items-center justify-center text-center
+        overflow-hidden">
+          <span className="text-blue-500 dark:text-yellow-400">Ethio Exams Academy</span>
+          <span>, where heroes are born and excellence reigns supreme </span>
+          <span className="font-bold text-rose-500 dark:text-yellow-400 text-3xl md:text-5xl">!</span></motion.h1>
       <div className="font-medium md:text-lg flex flex-col gap-1 md:mx-10 ">
       <p className="text-md px-4 font-medium dark:text-gray-400 text-slate-500 flex flex-col "> 
       <motion.span variants={textVariants}  className="text-rose-700 dark:text-yellow-300 drop-shadow-md">🌟 Ignite Your Brilliance:</motion.span> 

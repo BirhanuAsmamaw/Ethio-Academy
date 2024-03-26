@@ -45,6 +45,7 @@ useEffect(()=>{
     
     axios.post('/api/department',{...data,examId:examIdValue}).then(()=>{
       toast.success("Department created successfully")
+      router.push("/dashboard/exams")
       router.refresh()
     })
     .catch((error)=>{

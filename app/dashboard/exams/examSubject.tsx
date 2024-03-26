@@ -6,11 +6,13 @@ import Input from '@/components/input/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useExamId } from '@/hooks/useExamsId'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 const ExamSubject = () => {
+  const router=useRouter();
   const [departmentIdValue,setDepartmentIdValue]=useState("")
   const [isLoading, setIsLoading]=useState(false)
   const [departments,setDepartments]=useState<any[]|null>(null)
@@ -51,6 +53,8 @@ console.log("departments",departments);
     console.log("subjects",{...data,departmentId:departmentIdValue})
     
     axios.post('/api/subject',{...data,departmentId:departmentIdValue}).then(()=>{
+      router.push("/dashboard/exams")
+      router.refresh()
       toast.success("Subject created successfully")
     })
     .catch((error)=>{

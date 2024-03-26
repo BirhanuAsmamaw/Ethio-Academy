@@ -4,13 +4,14 @@ import Heading from '@/components/Heading/Heading'
 import Button from '@/components/button/button'
 import Input from '@/components/input/input'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 import React, { useState } from 'react'
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 const ExamsTypes = () => {
- 
+ const router=useRouter();
 const [isLoading, setIsLoading]=useState(false)
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
@@ -29,6 +30,8 @@ const [isLoading, setIsLoading]=useState(false)
 
   const exam={...data}
     axios.post('/api/examCategory',exam).then(()=>{
+      router.push("/dashboard/exams")
+      router.refresh()
       toast.success("exams Category created successfully")
     })
     .catch((error)=>{
