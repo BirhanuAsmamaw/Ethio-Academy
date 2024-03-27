@@ -43,7 +43,7 @@ const router=useRouter();
           className=" w-full   md:min-w-[500px] max-w-[800px] justify-between"
         >
           {value
-            ? departments.find((department) => department.url.toLowerCase()=== value)?.departmentName
+            ? departments?.find((department) => department.url.toLowerCase()=== value)?.departmentName
             : "Select your department..."}
  
         </Button>
@@ -56,7 +56,7 @@ const router=useRouter();
           <CommandList>
             <CommandEmpty>No Departments found.</CommandEmpty>
             <CommandGroup>
-              {departments.map((department) => (
+              {departments?.map((department) => (
                 <CommandItem
                   key={department.id}
                   value={department.url.toLowerCase()}
