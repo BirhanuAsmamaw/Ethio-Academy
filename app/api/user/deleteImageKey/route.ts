@@ -25,6 +25,7 @@ export async function PUT(req: Request, res: Response){
     const updatedprofile=await prisma.user.update({
       where: {id:user.id},
       data:{
+        image:null,
        image_key:null
       }
     })
