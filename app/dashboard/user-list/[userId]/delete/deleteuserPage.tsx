@@ -22,7 +22,7 @@ const DeleteUserClientPage:React.FC<DeleteUserClientPageProps>= ({user}) => {
         }
         
         toast.success("user deleted successfully")
-        router.back();
+        router.push("/dashboard/user-list");
         router.refresh()
         
       }).catch((errors)=>{
