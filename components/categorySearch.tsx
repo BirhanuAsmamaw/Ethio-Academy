@@ -34,7 +34,7 @@ interface CategorySearchProps{
   const [departmentId, setDepartmentId] = useState("");
 const router=useRouter();
   return (<Popover open={open} onOpenChange={setOpen} >
-    <div className="flex w-full  p-2  rounded-[5px] overflow-hidden  border dark:border-gray-600 bg-white dark:bg-gray-800 ">
+    <div className="flex w-full  m-2  rounded-[5px] overflow-hidden  border dark:border-gray-600 bg-white dark:bg-gray-800 ">
       <PopoverTrigger asChild >
         <Button
           variant="ghost"
@@ -49,7 +49,7 @@ const router=useRouter();
  
         </Button>
       </PopoverTrigger>
-      <button className="p-2 hover:bg-gray-200 hover:dark:bg-gray-700" onClick={()=>{router.push(`/category/${departmentId}`)}}>
+      <button disabled={value? false:true} className="p-2 hover:bg-gray-200 hover:dark:bg-gray-700" onClick={()=>{router.push(`/category/${departmentId}`)}}>
         {value?<CiSearch  size={24}/>:<IoChevronDown size={24}/>}
         </button>
       </div>
