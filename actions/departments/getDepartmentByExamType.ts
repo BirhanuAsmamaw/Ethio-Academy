@@ -4,7 +4,7 @@ export async function getDepartmentByExamType(exam: string){
   try{
     const departments=await prisma.department.findMany({
       where:{exam:{
-        examType:exam
+        url:exam
       }}
     })
     return departments
