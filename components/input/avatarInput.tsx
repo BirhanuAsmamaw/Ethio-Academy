@@ -3,6 +3,7 @@ import { UploadDropzone } from "@/utils/uploadthing";
 import Image from "next/image";
 import React from "react";
 import toast from "react-hot-toast";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 interface FileUploaderProps{
   label:string;
@@ -42,7 +43,11 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
         </div>
         {file? (
           
-            <Image src={file} alt="uploaded image" width={300} height={300} />
+          
+            <Avatar className={` h-16 w-16`}>
+            <AvatarImage src={file} alt="image" />
+            <AvatarFallback>Avatar</AvatarFallback>
+          </Avatar>
           
         ) : (
           <div className="h-32 w-32 rounded-full overflow-hidden p-1">
