@@ -1,5 +1,6 @@
 "use client"
 
+import { RemoveFile } from '@/actions/file/removeFile';
 import DeleteComponent from '@/components/deleteComponent';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -16,9 +17,9 @@ const DeleteUserClientPage:React.FC<DeleteUserClientPageProps>= ({user}) => {
       setLoading(true);
       axios.delete(`/api/user/${user.id}/delete`).then(async()=>{
         
-        // if(user.image){
-        //   await RemoveFile(user.cover.public_key);
-        // }
+        if(user.image && user.image_key){
+          await RemoveFile(user.image_key);
+        }
         
         toast.success("user deleted successfully")
         router.back();

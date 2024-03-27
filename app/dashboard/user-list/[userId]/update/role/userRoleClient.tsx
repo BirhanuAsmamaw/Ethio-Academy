@@ -1,17 +1,57 @@
 "use client"
 import Button from '@/components/button/button';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 
 interface UpdateUserRoleClient{
   user:any;
 }
 const UpdateUserRoleClient:React.FC<UpdateUserRoleClient> = ({user}) => {
-const [isLoading,setLoading]=useState(false)
+const [isLoading,setIsLoading]=useState(false)
   const [userRole,setUserRole]=useState(user.role)
 
-  const onUpdateRole = () => {}
+
+
+
+  const router=useRouter()
+  
+  
+
+  
+
+
+
+
+
+
+
+  const onUpdateRole=async()=>{
+    setIsLoading(true)
+   
+    
+    axios.put(`/api/user/${user.id}/update/role`,{userRole}).then(()=>{
+      toast.success("User Role updated successfully")
+      router.back();
+      router.refresh()
+
+    })
+    .catch((error)=>{
+      toast.error(error.message)
+    
+    }).finally(()=>{
+      setIsLoading(false)
+    });
+
+  }
+
+
+  
+  
   return (<div className='w-full h-screen flex justify-center items-center p-2'>
 
     <div className="w-full md:w-[400px] bg-white dark:bg-gray-800 drop-shadow-sm shadow-md p-4 space-y-2">
