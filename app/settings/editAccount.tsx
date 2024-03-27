@@ -39,7 +39,11 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
     try {
       if(user.image&&user.image_key){
         const data = await RemoveFile(user.image_key);
-        axios.put(`/api/user/deleteImageKey`)
+        axios.put(`/api/user/deleteImageKey`).then(()=>{
+          router.push("/settings")
+          router.refresh();
+        })
+       
       if (data.success) {
         toast.success(data.message);
         setImageUrl("");
@@ -70,6 +74,8 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
    axios.put(`/api/user/updatePhoto`,{image:imageData.image,image_key:imageData.image_key}).then(()=>{
     setImageUrl(user?.image?user?.image:"");
     setImageKey(user?.image_key?user?.image_key:"");
+    router.push("/settings")
+    router.refresh();
     toast.success("Your Image Updated  successfully")
     }).catch((error)=>{
       toast.error(error.message);
@@ -82,6 +88,8 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
       setloading(true);
      
       axios.put('/api/user/updateprofile', {...data}).then(() => {
+        router.push("/settings")
+        router.refresh();
         toast.success("Your profile has been updated successfully")
       
         signIn('credentials',{
