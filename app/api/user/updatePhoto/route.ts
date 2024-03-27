@@ -6,16 +6,9 @@ export async function PUT(req: Request, res: Response){
   const body =await req.json();
 
   try{
-    const{name,email}=body;
+    const{image,image_key}=body;
 
 
-    if (!name || !email){
-      return  NextResponse.json({
-        status: false,
-        message:"invalid parameters"
-      })
-
-    }
     const user= await getCurrentUser();
     if(!user){
      return  NextResponse.json({
@@ -31,9 +24,8 @@ export async function PUT(req: Request, res: Response){
     const updatedprofile=await prisma.user.update({
       where: {id:user.id},
       data:{
-        name:name,
-        email:email,
-        
+        image_key:image_key,
+        image:image
       }
     })
    return NextResponse.json(updatedprofile)
