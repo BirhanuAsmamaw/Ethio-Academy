@@ -14,13 +14,15 @@ import CategorCDrobDown from "../dropdown/CourseCategory";
 import NotificationDropDown from "../dropdown/notificationDropDown";
 import Search from "../search/search";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import CategorySearch from "../categorySearch";
 
 interface NavbarClientProps{
   user:any;
   notifications:any[];
+  departments:any[]| null;
  
 }
-const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications}) => {
+const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,departments}) => {
   const [isScroll,setScroll] =useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -66,6 +68,11 @@ const {carts}=useCart()
       <div className="flex ">
         <div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <CategorCDrobDown/>
+            
+        </div>
+
+        <div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        <CategorySearch departments={departments || null}/>
             
         </div>
       <Link href="/#courseslist" className="p-2  py-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Courses</Link>

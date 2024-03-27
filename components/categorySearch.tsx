@@ -1,0 +1,86 @@
+"use client";
+import { CiSearch } from "react-icons/ci";
+import * as React from "react";
+import { Check} from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+interface CategorySearchProps{
+  departments:any[] | null;
+ 
+}
+
+ const CategorySearch:React.FC<CategorySearchProps>=({departments}) =>{
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [departmentId, setDepartmentId] = useState("");
+const router=useRouter();
+  return (<Popover open={open} onOpenChange={setOpen}>
+    <div className="flex w-full    rounded-[5px] overflow-hidden">
+      <PopoverTrigger asChild >
+        <Button
+          variant="ghost"
+          role="combobox"
+          aria-expanded={open}
+          
+          className=" w-full   md:min-w-[500px] max-w-[800px] justify-between"
+        >
+          {value
+            ? departments.find((department) => department.url.toLowerCase()=== value)?.departmentName
+            : "Select your department..."}
+ 
+        </Button>
+      </PopoverTrigger>
+      <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/category/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
+      </div>
+      <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
+        <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
+          <CommandInput  placeholder="Search your department..." />
+          <CommandList>
+            <CommandEmpty>No Departments found.</CommandEmpty>
+            <CommandGroup>
+              {departments.map((department) => (
+                <CommandItem
+                  key={department.id}
+                  value={department.url.toLowerCase()}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? "" : currentValue);
+                    setDepartmentId(department.id);
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      value === department.url.toLowerCase()? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  {department.departmentName}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+export default CategorySearch;
