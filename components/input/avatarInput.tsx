@@ -50,14 +50,14 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
           </Avatar>
           
         ) : (
-          <div className="overflow-hidden p-1">
+         
             <UploadDropzone
             className="bg-slate-100 h-32 w-32 rounded-full   dark:bg-slate-800 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300"
             endpoint={endpoint}
             onClientUploadComplete={onClientUploadComplete}
             onUploadError={errorHandle}
           />
-          </div>
+         
         )}
       </section>
     </div>
