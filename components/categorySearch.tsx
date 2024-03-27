@@ -43,7 +43,7 @@ const router=useRouter();
           className=" w-full    justify-between"
         >
           {value
-            ? departments?.find((department) => department.departmentName.toLowerCase()=== value)?.departmentName
+            ? value
             : "Select your department..."}
  
         </Button>
