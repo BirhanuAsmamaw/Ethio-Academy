@@ -41,17 +41,18 @@ const router=useRouter();
           role="combobox"
           aria-expanded={open}
           
-          className=" w-full    justify-between"
+          className=" w-full  flex  items-center justify-between"
         >
-          {value
+          <p>{value
             ? value
-            : "Select your department..."}
+            : "Select your department..."}</p>
+            {!value&&<IoChevronDown size={24}/>}
  
         </Button>
       </PopoverTrigger>
-      <button disabled={value? false:true} className="p-2 hover:bg-gray-200 hover:dark:bg-gray-700" onClick={()=>{router.push(`/category/${departmentId}`)}}>
-        {value?<CiSearch  size={24}/>:<IoChevronDown size={24}/>}
-        </button>
+      {value?<button disabled={value? false:true} className="p-2 hover:bg-gray-200 hover:dark:bg-gray-700" onClick={()=>{router.push(`/category/${departmentId}`)}}>
+        <CiSearch  size={24}/>
+        </button>:""}
       </div>
       <PopoverContent className="w-full p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
