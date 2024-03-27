@@ -116,7 +116,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
   <AvatarUploader
       onClientUploadComplete={onuserCoverComplete}
       label="Upload Your Photo"
-        file={imageUrl?imageUrl:user.image}
+        file={imageUrl?imageUrl:user.image_key? user.image:''}
         handleMediaChange={handleCoverChange}
         endpoint="imageUploader"
        
