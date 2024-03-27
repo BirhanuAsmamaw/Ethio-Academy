@@ -52,7 +52,7 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
         ) : (
          
             <UploadDropzone
-            className="bg-slate-100 h-32 w-32 rounded-full   dark:bg-slate-800 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300"
+            className="bg-slate-100 rounded-full   dark:bg-slate-800 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300"
             endpoint={endpoint}
             onClientUploadComplete={onClientUploadComplete}
             onUploadError={errorHandle}
