@@ -45,7 +45,7 @@ const router=useRouter();
         >
           <p>{value
             ? value
-            : "Select your department..."}</p>
+            : "Category"}</p>
             {!value&&<IoChevronDown size={24}/>}
  
         </Button>
@@ -58,7 +58,7 @@ const router=useRouter();
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
           <CommandInput  placeholder="Search your department..." />
           <CommandList>
-            <CommandEmpty>No Departments found.</CommandEmpty>
+            <CommandEmpty>No Category found.</CommandEmpty>
             <CommandGroup>
               {departments?.map((department) => (
                 <CommandItem
