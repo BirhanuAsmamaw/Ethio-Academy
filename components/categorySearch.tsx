@@ -32,9 +32,9 @@ interface CategorySearchProps{
   const [value, setValue] = useState("");
   const [departmentId, setDepartmentId] = useState("");
 const router=useRouter();
-  return (<Popover open={open} onOpenChange={setOpen}>
-    <div className="flex w-full    rounded-[5px] overflow-hidden">
-      <PopoverTrigger asChild >
+  return (<Popover open={open} onOpenChange={setOpen} >
+    <div className="flex w-full  p-2  rounded-[5px] overflow-hidden">
+      <PopoverTrigger asChild className="bg-white dark:bg-gray-800">
         <Button
           variant="ghost"
           role="combobox"
@@ -50,7 +50,7 @@ const router=useRouter();
       </PopoverTrigger>
       <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/category/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
       </div>
-      <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
+      <PopoverContent className="w-full p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
           <CommandInput  placeholder="Search your department..." />
           <CommandList>
