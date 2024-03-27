@@ -43,7 +43,7 @@ const router=useRouter();
           className=" w-full   md:min-w-[500px] max-w-[800px] justify-between"
         >
           {value
-            ? departments?.find((department) => department.url.toLowerCase()=== value)?.departmentName
+            ? departments?.find((department) => department.departmentName.toLowerCase()=== value)?.departmentName
             : "Select your department..."}
  
         </Button>
@@ -59,7 +59,7 @@ const router=useRouter();
               {departments?.map((department) => (
                 <CommandItem
                   key={department.id}
-                  value={department.url.toLowerCase()}
+                  value={department.departmentName.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setDepartmentId(department.id);
@@ -69,7 +69,7 @@ const router=useRouter();
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === department.url.toLowerCase()? "opacity-100" : "opacity-0"
+                      value === department.departmentName.toLowerCase()? "opacity-100" : "opacity-0"
                     )}
                   />
                   {department.departmentName}
