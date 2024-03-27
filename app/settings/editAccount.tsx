@@ -113,7 +113,8 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
   return ( <div className="p-2 flex flex-col gap-4 w-full">
   <h1 className="text-lg font-semibold">Edit Your Account</h1>
   <div className="p-2 space-y-3">
-  <AvatarUploader
+<div className="w-full flex justify-center">
+<AvatarUploader
       onClientUploadComplete={onuserCoverComplete}
       label="Upload Your Photo"
         file={imageUrl?imageUrl:user.image_key? user.image:''}
@@ -121,6 +122,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
         endpoint="imageUploader"
        
       />
+</div>
 
     <Input defaultValue={user.name} type="text" label="Edit Your Name" register={register} errors={errors} id="name"/>
     <Input defaultValue={user.email} type="email" label="Edit Your Email" register={register} errors={errors} id="email"/>

@@ -44,7 +44,7 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
         {file? (
           
           
-            <Avatar className={` h-16 w-16`}>
+            <Avatar className={` h-28 w-28`}>
             <AvatarImage src={file} alt="image" />
             <AvatarFallback>Avatar</AvatarFallback>
           </Avatar>
