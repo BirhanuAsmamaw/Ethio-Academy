@@ -17,7 +17,7 @@ interface EditAccountProps{
 const EditAccount:React.FC<EditAccountProps> = ({user}) => {
   const [isLoading,setloading] =useState(false);
   const router=useRouter();
-  const [imageUrl, setImageUrl] = useState(user?.image? user?.image:"");
+  const [imageUrl, setImageUrl] = useState(user?.image&&user?.image_key? user?.image:"");
   const [imageKey, setImageKey] = useState(user?.image_key? user?.image_key:"");
 
 
@@ -117,7 +117,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
 <AvatarUploader
       onClientUploadComplete={onuserCoverComplete}
       label="Upload Your Photo"
-        file={imageUrl?imageUrl:user.image_key? user.image:''}
+        file={imageUrl?imageUrl:user.image_key&&user.image?user.image:''}
         handleMediaChange={handleCoverChange}
         endpoint="imageUploader"
        
