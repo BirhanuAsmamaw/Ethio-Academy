@@ -39,6 +39,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
     try {
       if(user.image&&user.image_key){
         const data = await RemoveFile(user.image_key);
+        axios.put(`/api/user/deleteImageKey`)
       if (data.success) {
         toast.success(data.message);
         setImageUrl("");
