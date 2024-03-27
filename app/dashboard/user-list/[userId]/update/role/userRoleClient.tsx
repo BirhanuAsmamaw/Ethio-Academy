@@ -34,7 +34,7 @@ const [isLoading,setIsLoading]=useState(false)
     setIsLoading(true)
    
     
-    axios.put(`/api/user/${user.id}/update/role`,{userRole}).then(()=>{
+    axios.put(`/api/user/${user.id}/update/role`,{role:userRole}).then(()=>{
       toast.success("User Role updated successfully")
       router.back();
       router.refresh()
