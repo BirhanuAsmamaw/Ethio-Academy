@@ -71,7 +71,7 @@ const {carts}=useCart()
             
         </div>
 
-        <div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        <div className="p-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <CategorySearch departments={departments || null}/>
             
         </div>
