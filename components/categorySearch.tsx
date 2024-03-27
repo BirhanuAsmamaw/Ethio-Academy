@@ -1,5 +1,6 @@
 "use client";
 import { CiSearch } from "react-icons/ci";
+import { IoChevronDown } from "react-icons/io5";
 import * as React from "react";
 import { Check} from "lucide-react";
 
@@ -34,7 +35,7 @@ interface CategorySearchProps{
 const router=useRouter();
   return (<Popover open={open} onOpenChange={setOpen} >
     <div className="flex w-full  p-2  rounded-[5px] overflow-hidden">
-      <PopoverTrigger asChild className="bg-white dark:bg-gray-800">
+      <PopoverTrigger asChild className="border dark:border-gray-600 bg-white dark:bg-gray-800">
         <Button
           variant="ghost"
           role="combobox"
@@ -48,7 +49,9 @@ const router=useRouter();
  
         </Button>
       </PopoverTrigger>
-      <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/category/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
+      <button className="p-2 " onClick={()=>{router.push(`/category/${departmentId}`)}}>
+        {value?<CiSearch  size={24}/>:<IoChevronDown size={24}/>}
+        </button>
       </div>
       <PopoverContent className="w-full p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
