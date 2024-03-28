@@ -9,20 +9,21 @@ import Link from "next/link";
 import { useCart } from "@/hooks/use.cart";
 import Profile from "../Profile";
 import MobileSidebar from "./mobileMenu";
-import CategorCDrobDown from "../dropdown/CourseCategory";
 
 import NotificationDropDown from "../dropdown/notificationDropDown";
 import Search from "../search/search";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import CategorySearch from "../categorySearch";
+import ExamsCDrobDown from "../dropdown/CourseCategory";
 
 interface NavbarClientProps{
   user:any;
   notifications:any[];
   departments:any[]| null;
+  exams:any[]|null;
  
 }
-const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,departments}) => {
+const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,departments,exams}) => {
   const [isScroll,setScroll] =useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -67,7 +68,7 @@ const {carts}=useCart()
     <div className=" hidden md:block">
       <div className="flex ">
         <div className=" no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
-        <CategorCDrobDown/>
+        <ExamsCDrobDown exams={exams}/>
             
         </div>
 

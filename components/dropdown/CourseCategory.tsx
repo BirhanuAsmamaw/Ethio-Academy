@@ -1,9 +1,11 @@
 import Link from "next/link";
 import CDropDown from "./CustomeDropdown/CDropDown";
-import { getAllExamsCategory } from "@/actions/examsCategory/getAllExamsCategry";
 
-const CategorCDrobDown = async() => {
-  const exams=await getAllExamsCategory();
+interface ExamsCDrobDownProps{
+  exams:any[]|null;
+}
+const ExamsCDrobDown:React.FC<ExamsCDrobDownProps> = ({exams}) => {
+
  
   return ( 
     <CDropDown chevron title={
@@ -18,4 +20,4 @@ const CategorCDrobDown = async() => {
    );
 }
  
-export default CategorCDrobDown;
+export default ExamsCDrobDown;

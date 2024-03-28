@@ -36,7 +36,7 @@ const Category =async ({params}:{params:IPrams}) => {
 
    
 
-    <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming {params.category}   Courses</h1>
+    <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming {department?.departmentName}  Courses</h1>
     <div className='flex justify-center flex-wrap gap-8 md:px-10 '>
 
 {selectedCourses?.map((course,index)=>{
