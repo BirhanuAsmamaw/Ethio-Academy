@@ -1,4 +1,5 @@
 import { getCourses } from "@/actions/courses/getCourses";
+import { getDepartmentByCode } from "@/actions/departments/getDepartmentByCode";
 import Banner from "@/components/banner";
 import Card from "@/components/card/card";
 
@@ -14,6 +15,7 @@ const Category =async ({params}:{params:IPrams}) => {
   
 
   const courses=await getCourses();
+  const department = await getDepartmentByCode(params.category);
   const selectedCourses=courses?.filter((course)=>course.department.code===params.category);
   if(!courses){
     return <div className="w-full h-screen flex justify-center items-center">
@@ -26,7 +28,7 @@ const Category =async ({params}:{params:IPrams}) => {
 
 
 <div className="p-4 md:p-6 lg:p-10 xl:p-20 w-full">
-     <Banner title={`${params.category} Courses`}>
+     <Banner title={`${department?.departmentName} Courses`}>
         
     <></>
      </Banner>
@@ -42,6 +44,7 @@ const Category =async ({params}:{params:IPrams}) => {
   key={index}
       id={course.id}
       category={course.department.name}
+      url={course.department.code}
       price={course.price}
       subject={course.subject}
       rating={course.rating??0}

@@ -71,16 +71,16 @@ const {carts}=useCart()
             
         </div>
 
-        <div className=" no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        <div className="mt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <CategorySearch departments={departments || null}/>
             
         </div>
-      <Link href="/#courseslist" className="p-2   no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Courses</Link>
+      <Link href="/#courseslist" className="p-2  mt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Courses</Link>
 
       
      
-       {!user&&<Link href="/register" className="p-2   no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Signup</Link>}
-       {!user&&<Link href="/login" className="p-2  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Login</Link>}
+       {!user&&<Link href="/register" className="p-2  mt-2  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Signup</Link>}
+       {!user&&<Link href="/login" className="p-2  mt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Login</Link>}
      
 
       
@@ -95,7 +95,7 @@ const {carts}=useCart()
        </div>
       <Link 
       href="/cart" 
-      className="p-2  no-underline text-gray-500 dark:text-gray-400   hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium relative ">
+      className="p-2 mt-2  no-underline text-gray-500 dark:text-gray-400   hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium relative ">
         <IoCartOutline size={24}/>
        <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-blue-500 ${carts?.length? 'block':'hidden'}`}><p className="text-[10px]">{carts?.length?`${carts?.length}`:''}</p></div>
         </Link>
@@ -103,7 +103,7 @@ const {carts}=useCart()
         {user&&<div className=" no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <NotificationDropDown notifications={notifications}/>
       </div>}
-    <div className="  p-2   no-underline text-gray-500 dark:text-gray-400   hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium ">
+    <div className=" mt-2  p-2   no-underline text-gray-500 dark:text-gray-400   hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium ">
     <button className="dark:hidden px-1" onClick={()=>setTheme('dark')}>
 
 

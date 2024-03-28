@@ -15,11 +15,12 @@ interface CardProps{
   price: number;
 no_reviews?:number; // Assuming
   rating: number;
+  url: string;
   
 }
 
 
-const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating,no_reviews}) => {
+const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating,no_reviews,url}) => {
   return ( <div className="
   group
   z-30 
@@ -49,7 +50,7 @@ rounded-[5px]
   </Link>
   <div className="flex flex-col p-3 gap-4">
     <div className="flex justify-between px-2">
-      <Link href={`/category/${category}`} className=" no-underline bg-gray-200 dark:bg-gray-700 hover:text-blue-500 hover:underline transition py-1 px-2 cursor-pointer rounded-full items-center text-center text-sm">{category}</Link>
+      <Link href={`/category/${url}`} className=" no-underline bg-gray-200 dark:bg-gray-700 hover:text-blue-500 hover:underline transition py-1 px-2 cursor-pointer rounded-full items-center text-center text-sm">{category}</Link>
       <div  className="py-1 px-2   bg-teal-200 dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
     </div>
     <div className="flex justify-center">
