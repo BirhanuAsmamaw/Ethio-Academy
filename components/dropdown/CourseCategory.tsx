@@ -4,41 +4,23 @@ import CDropDown from "./CustomeDropdown/CDropDown";
 const CategorCDrobDown = () => {
   const category=[
     {
-      name: "Highschool",
+      name: "EUEE",
       url: "/category/Highschool"
     },
     {
-      name: "Freshman",
+      name: "Exit Exams",
       url: "/category/Freshman"
     },
     {
-      name: "Remedial",
+      name: "Remedial Exams",
       url: "/category/Remedial"
     },
     {
-      name: "Development",
+      name: "GAT Exams",
       url: "/category/Development"
-    },
-    {
-      name: "Software and IT",
-      url: "/category/SoftwareAndIT"
-    },
-    {
-      name: "Electrical and Computer Engineering",
-      url: "/category/ElectricalEngineering"
-    },
-    {
-      name: "Mechanical  and Industrial Engineering",
-      url: "/category/MechanicalEngineering"
-    },
-    {
-      name: "Chemical Engineering",
-      url: "/category/ChemicalEngineering"
-    },
-    {
-      name: "Biomedical Engineering",
-      url: "/category/BiomedicalEngineering"
-    },
+    }
+    
+    
   ]
   return ( 
     <CDropDown chevron title={
