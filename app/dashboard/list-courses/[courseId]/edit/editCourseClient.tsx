@@ -34,7 +34,7 @@ const router=useRouter();
      
       subject:course.subject,
       price:course.price,
-      category:course.category,}})
+      }})
 
 
 
@@ -98,13 +98,16 @@ const router=useRouter();
        <Heading title="Update Course"/>
        </div>
           <div className="w-full  lg:w-8/12">
-            <Select
+            {/* <Select
           defaultValue={ courseData.category? courseData.category:course.category}
           id="category"
           register={register}
           errors={errors}
 
-          /></div>
+          /> */}
+          
+          
+          </div>
           <div className="w-full  lg:w-8/12">
             <Input id="subject"  defaultValue={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
 
