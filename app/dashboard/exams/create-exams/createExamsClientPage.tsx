@@ -87,7 +87,7 @@ useEffect(() => {
       ...prevQuestion,
       [selectedChoose]: {
         ...prevQuestion[selectedChoose],
-        isAnswer: false,
+        isAnswer: true,
       },
     }));
   }
@@ -149,13 +149,13 @@ isAnswer:false,
 
 const handleChooseSelection = (choose: string, value: string) => {
   setSelectedChoose(choose);
-  setQuestion((prevQuestion:any )=> ({
-    ...prevQuestion,
-    [choose]: {
-      ...prevQuestion[choose],
-      isAnswer: value === "true",
-    },
-  }));
+  // setQuestion((prevQuestion:any )=> ({
+  //   ...prevQuestion,
+  //   [choose]: {
+  //     ...prevQuestion[choose],
+  //     isAnswer: value === "true",
+  //   },
+  // }));
 };
 
 
