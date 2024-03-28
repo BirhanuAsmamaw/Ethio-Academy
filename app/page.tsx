@@ -62,7 +62,7 @@ const examsCategory=await getAllExamsCategory();
           key={course.id}
               id={course.id}
               no_reviews={course.reviews.length}
-              category={course.category}
+              category={course.department.name}
               price={course.price}
               subject={course.subject}
               rating={course?.rating}
@@ -88,7 +88,7 @@ const examsCategory=await getAllExamsCategory();
           return course.cover&&<Card
           key={index}
               id={course.id}
-              category={course.category}
+              category={course.department.name}
               price={course.price}
               subject={course.subject}
               rating={course?.rating??0}

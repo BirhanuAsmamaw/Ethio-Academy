@@ -14,7 +14,7 @@ const Category =async ({params}:{params:IPrams}) => {
   
 
   const courses=await getCourses();
-  const selectedCourses=courses?.filter((course)=>course.category===params.category);
+  const selectedCourses=courses?.filter((course)=>course.department.code===params.category);
   if(!courses){
     return <div className="w-full h-screen flex justify-center items-center">
       <Spinning/>
@@ -41,7 +41,7 @@ const Category =async ({params}:{params:IPrams}) => {
   return course.cover&&<Card
   key={index}
       id={course.id}
-      category={course.category}
+      category={course.department.name}
       price={course.price}
       subject={course.subject}
       rating={course.rating??0}
