@@ -27,7 +27,7 @@ const LogoutClient:React.FC<LogoutClientProps> = ({user}) => {
   const onLogout =()=>{
     setLoading(true);
     signOut().then(()=>{
-      router.push('/');
+      router.back();
     router.refresh();
     toast.success("Your Account Logout Successfully!");
     })
@@ -53,7 +53,7 @@ const LogoutClient:React.FC<LogoutClientProps> = ({user}) => {
 
     <div className="w-full flex justify-end gap-4 p-6">
     <Button 
-variant="destructive"
+ variant="ghost"
 onClick={onCancel}>
   Cancel
 </Button>
@@ -63,7 +63,8 @@ onClick={onCancel}>
 
     <Button 
  disabled={Loading}
- variant="destructive"
+ variant="ghost"
+ className='text-rose-600'
 
 onClick={onLogout}>
   {Loading? "Loading...":`Delete`}
