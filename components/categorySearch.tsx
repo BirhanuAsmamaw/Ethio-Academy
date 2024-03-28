@@ -44,6 +44,7 @@ const router=useRouter();
           className=" w-full  flex  items-center justify-between"
         >
           <p>{value
+          
             ? value
             : "Category"}</p>
             {!value&&<IoChevronDown size={24}/>}

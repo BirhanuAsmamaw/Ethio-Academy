@@ -59,14 +59,14 @@ const {carts}=useCart()
      </h1></Link>
 
      
-       <div className="hidden pb-2 lg:block w-md">
+       <div className="hidden p-4 lg:block w-md">
        <Search />
        </div>
     
      <div className="flex   justify-center">
     <div className=" hidden md:block">
       <div className="flex ">
-        <div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        <div className="p-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <CategorCDrobDown/>
             
         </div>
@@ -87,7 +87,7 @@ const {carts}=useCart()
     </div></div>
    
     
-    {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+    {user&&<div className="p-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <Profile user={user}/>
       </div>}
       <div className="lg:hidden py-2">
@@ -100,7 +100,7 @@ const {carts}=useCart()
        <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-blue-500 ${carts?.length? 'block':'hidden'}`}><p className="text-[10px]">{carts?.length?`${carts?.length}`:''}</p></div>
         </Link>
 
-        {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        {user&&<div className="p-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <NotificationDropDown notifications={notifications}/>
       </div>}
     <div className="  p-2  py-4 no-underline text-gray-500 dark:text-gray-400   hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium ">
