@@ -263,9 +263,15 @@ const handleChooseSelection = (choose: string, value: string) => {
 </SelectContent>
 </Select>
 
-<div className="flex gap-2">
-  <input value={'true'} className='h-4 w-4' type="radio" onChange={(event)=>setModel(Boolean(event.target.value))}/> <label>Is Model?</label>
-</div>
+<div className="flex gap-2 items-center">
+    <input
+      checked={isModel}
+      onChange={(event) => setModel(event.target.checked)}
+      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+      type="radio"
+    />
+    <label className="text-gray-700 dark:text-gray-300">Is Model?</label>
+  </div>
   </div>
 
 
