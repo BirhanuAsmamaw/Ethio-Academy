@@ -7,7 +7,7 @@ const DepartmentPage = async() => {
   const selectedDepartments = departments&&departments?.map((department)=>{
     return{
       id:department.id, 
-      examType:department.exam.examType,
+      examType:department.exam? department?.exam.examType:null,
      name:department.departmentName
     }
   })
