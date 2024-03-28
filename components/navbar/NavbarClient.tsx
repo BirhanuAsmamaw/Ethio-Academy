@@ -47,7 +47,7 @@ const {setTheme}=useTheme();
 const {carts}=useCart()
 
   return ( <div className={` w-full px-4 md:px-6 z-50 h-14 items-center   flex justify-between   ${isScroll? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-white dark:bg-gray-900  ":"bg-stone-200 dark:bg-gray-900 "} duration-300 z-50`}>
-    <Link href="/" className="p-4 no-underline flex gap-2">
+    <Link href="/" className="no-underline flex gap-2">
       <Avatar className={` h-10 w-10`}>
       <AvatarImage src={`https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png`} alt="EEA" />
       <AvatarFallback>EEA</AvatarFallback>
@@ -59,64 +59,51 @@ const {carts}=useCart()
      </h1></Link>
 
      
-       <div className="hidden p-4 lg:block w-md">
+       <div className="hidden pb-2 lg:block w-md">
        <Search />
        </div>
     
      <div className="flex   justify-center">
     <div className=" hidden md:block">
       <div className="flex ">
-        <div className="p-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        <div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <CategorCDrobDown/>
             
         </div>
 
-        <div className="p-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        <div className=" no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <CategorySearch departments={departments || null}/>
             
         </div>
-        <div className="p-4"><Link href="/#courseslist" className=" no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Courses</Link></div>
+      <Link href="/#courseslist" className="p-2   no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Courses</Link>
 
       
      
-       {!user&&<div className="p-4"><Link 
-       href="/register" 
-       className=" no-underline text-gray-500 dark:text-gray-400 
-        hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
-        Signup</Link></div>}
-
-       {!user&&<div className="p-4">
-        <Link 
-       href="/login" 
-       className="no-underline text-gray-500 dark:text-gray-400 
-        hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
-          Login</Link></div>}
+       {!user&&<Link href="/register" className="p-2   no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Signup</Link>}
+       {!user&&<Link href="/login" className="p-2  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Login</Link>}
      
 
       
     </div></div>
    
     
-    {user&&<div className="p-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+    {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <Profile user={user}/>
       </div>}
       <div className="lg:hidden py-2">
        <Search />
        </div>
-      <div className="p-4">
       <Link 
       href="/cart" 
-      className="no-underline text-gray-500 dark:text-gray-400   hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium relative ">
+      className="p-2  no-underline text-gray-500 dark:text-gray-400   hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium relative ">
         <IoCartOutline size={24}/>
        <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-blue-500 ${carts?.length? 'block':'hidden'}`}><p className="text-[10px]">{carts?.length?`${carts?.length}`:''}</p></div>
         </Link>
-      </div>
 
-        {user&&<div className="p-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
+        {user&&<div className="pb-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <NotificationDropDown notifications={notifications}/>
       </div>}
-    <div className="p-4">
-    <div className="  no-underline text-gray-500 dark:text-gray-400   hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium ">
+    <div className="  p-2   no-underline text-gray-500 dark:text-gray-400   hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium ">
     <button className="dark:hidden px-1" onClick={()=>setTheme('dark')}>
 
 
@@ -125,7 +112,6 @@ const {carts}=useCart()
 <button className="px-1 hidden dark:block" onClick={() => setTheme("light")}>
 <LuSunMedium size={24}/>
 </button>
-    </div>
     </div>
 
     
