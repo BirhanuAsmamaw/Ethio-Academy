@@ -34,7 +34,7 @@ interface CategorySearchProps{
   const [departmentId, setDepartmentId] = useState("");
 const router=useRouter();
   return (<Popover open={open} onOpenChange={setOpen} >
-    <div className="flex w-full  m-2  rounded-[5px] overflow-hidden  border dark:border-gray-600 bg-white dark:bg-gray-800 ">
+    <div className="flex w-full   rounded-[5px] overflow-hidden  ">
       <PopoverTrigger asChild >
         <Button
           variant="ghost"
