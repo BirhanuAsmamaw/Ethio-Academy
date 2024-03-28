@@ -94,6 +94,9 @@ useEffect(() => {
 }, [selectedChoose]);
 
 
+
+
+
 const qData={
   departmentId:departmentIdvalue,
   subject:subjectValue,
@@ -120,7 +123,8 @@ console.log('questionData',qData)
     
   }).finally(()=>{
     setLoading(false);
-    setQuestion({Q:"",
+    setQuestion({
+      Q:"",
     year:"",
     explanation:"",
 A:{
@@ -146,6 +150,8 @@ isAnswer:false,
 
  
 };
+
+
 
 const handleChooseSelection = (choose: string, value: string) => {
   setSelectedChoose(choose);
