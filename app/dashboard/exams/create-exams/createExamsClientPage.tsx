@@ -18,6 +18,7 @@ interface  CreateExamsClientProps{
 }
 const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
   const [examIdvalue,setExamIdValue]=useState("")
+  const [isModel,setModel]=useState(false)
   const [departmentIdvalue,setDepartmentIdValue]=useState("")
   const [departments,setDepartments]=useState<any|null>(null)
   const [subjects,setSubjects]=useState<any|null>(null)
@@ -91,6 +92,7 @@ const qData={
   year:question.year,
   explanation:explanation,
   title:question.Q,
+  isModel:isModel,
   chooses:[question.A,question.B,question.C,question.D]
 
 }
@@ -242,7 +244,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 {/* add exams question */}
 <div className="w-full pt-10">
 
-<div className="p-4">
+<div className="p-4 w-full justify-between">
   <Select
    onValueChange={
     (value)=>setQuestion({...question,year:value})
@@ -260,6 +262,10 @@ const handleChooseSelection = (choose: string, value: string) => {
 </SelectGroup>
 </SelectContent>
 </Select>
+
+<div className="flex gap-2">
+  <input value={'true'}  type="radio" onChange={(event)=>setModel(Boolean(event.target.value))}/> <label>Is Model?</label>
+</div>
   </div>
 
 

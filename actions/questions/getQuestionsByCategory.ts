@@ -1,5 +1,5 @@
 import prisma from "@/lib/prismadb";
-import { url } from "inspector";
+
 
 export async function getQuestionsByCategory(type: string, department: string, year: string, subject?: string) {
   try {

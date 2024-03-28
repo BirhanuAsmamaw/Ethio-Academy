@@ -7,6 +7,7 @@ export async function POST(req:Request) {
     subject,
     lessonId,
     title ,
+    isModel,
     chooses ,
     year,
     explanation
@@ -28,6 +29,7 @@ export async function POST(req:Request) {
         title:title,
         chooses:chooses,
         year:year,
+        isModel:isModel,
         explanation:explanation
        }
      })
