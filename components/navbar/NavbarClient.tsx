@@ -75,7 +75,7 @@ const {carts}=useCart()
         <CategorySearch departments={departments || null}/>
             
         </div>
-      <Link href="/#courseslist" className="p-2  py-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Courses</Link>
+      <Link href="/#courseslist" className="p-2  pt-4 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Courses</Link>
 
       
      
