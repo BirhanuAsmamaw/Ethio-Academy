@@ -56,6 +56,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
   const router=useRouter();
    const [isLoading,setLoading]=useState(false);
    const [explanation,setExplanation]=useState("")
+   const [selectedChoose,setSelectedChoose]=useState({choose:"",isAnswer:false});
     const [question,setQuestion]=useState<any>(
         {Q:"",
         year:"",
@@ -79,7 +80,11 @@ D:{
 },
 });
 
-
+useEffect(()=>{
+  
+  const ch=selectedChoose.choose
+  question[ch].isAnswer=selectedChoose.isAnswer
+},[question,selectedChoose])
 
 
 const qData={
@@ -265,27 +270,31 @@ rows={4}
 <div className={`p-4 flex flex-col gap-2 ${question.Q!==""? 'block':'hidden'}`}>
 
 <ChooseForm 
+id='A'
 onChange={(event) => setQuestion({ ...question, A:{ ...question.A,text: event.target.value } })} 
 label="A"
-onAnswer={(event) => setQuestion({ ...question, A: {...question.A, isAnswer: Boolean(event.target.value ) } })} />
+onAnswer={(event) => setSelectedChoose({choose:'A',isAnswer:true})} />
 
 <ChooseForm 
 label="B"
+id='B'
 onChange={(event)=>setQuestion({...question,B:{...question.B,text:event.target.value}})}
-onAnswer={(event) => setQuestion({ ...question, B: { ...question.B,isAnswer: Boolean(event.target.value )} })} 
+onAnswer={(event) => setSelectedChoose({choose:'B',isAnswer:true})} 
 />
 
 
 <ChooseForm 
+id='C'
 label="C"
 onChange={(event)=>setQuestion({...question,C:{...question.C,text:event.target.value}})}
-onAnswer={(event) => setQuestion({ ...question, C: {...question.C, isAnswer:  Boolean(event.target.value )} })} 
+onAnswer={(event) => setSelectedChoose({choose:'C',isAnswer:true})} 
 />
 
 <ChooseForm 
+id='D'
 label="D"
 onChange={(event)=>setQuestion({...question,D:{...question.D,text:event.target.value}})}
-onAnswer={(event) => setQuestion({ ...question, D: {...question.D, isAnswer:  Boolean(event.target.value )} })} 
+onAnswer={(event) => setSelectedChoose({choose:'D',isAnswer:true})} 
 />
 <div className="flex flex-col px-4 w-full gap-1 my-4">
     <Heading small title="Write Answer Explanation"/>

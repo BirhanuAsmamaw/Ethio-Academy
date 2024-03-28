@@ -15,10 +15,7 @@ const Sidebar = () => {
     <Link className=" flex gap-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           href="/dashboard"> <p><MdOutlineDashboard size={20}/></p><p>Dashbord</p> </Link>
      <SideBarItems sidebarData={sidebarData}/>
-     <Link className=" flex gap-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-          href="/dashboard/exams"> <p><MdOutlineCategory size={20}/></p><p>Exams Category</p> </Link>
-           <Link className=" flex gap-2 no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-          href="/dashboard/exams/create-exams"> <p><MdOutlineCategory size={20}/></p><p>Create Exams Question</p> </Link>
+     
           
 
  </div> );

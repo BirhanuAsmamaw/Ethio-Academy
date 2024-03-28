@@ -176,11 +176,14 @@ rows={4}
 <div className={`p-4 flex flex-col gap-2 ${question.Q!==""? 'block':'hidden'}`}>
 
    <ChooseForm 
-    onChange={(event) => setQuestion({ ...question, A:{ ...question.A,text: event.target.value } })} 
-    label="A"
-    onAnswer={(event) => setQuestion({ ...question, A: {...question.A, isAnswer: Boolean(event.target.value ) } })} />
+          id="A"
+          onChange={(event) => setQuestion({ ...question, A: { ...question.A, text: event.target.value } })}
+          label="A"
+
+          onAnswer={(event) => setQuestion({ ...question, A: { ...question.A, isAnswer: Boolean(event.target.value) } })}  />
 
    <ChooseForm 
+   id="B"
     label="B"
    onChange={(event)=>setQuestion({...question,B:{...question.B,text:event.target.value}})}
    onAnswer={(event) => setQuestion({ ...question, B: { ...question.B,isAnswer: Boolean(event.target.value )} })} 
@@ -188,12 +191,14 @@ rows={4}
    
 
    <ChooseForm 
+   id="C"
     label="C"
    onChange={(event)=>setQuestion({...question,C:{...question.C,text:event.target.value}})}
    onAnswer={(event) => setQuestion({ ...question, C: {...question.C, isAnswer:  Boolean(event.target.value )} })} 
    />
 
    <ChooseForm 
+   id="D"
    label="D"
    onChange={(event)=>setQuestion({...question,D:{...question.D,text:event.target.value}})}
    onAnswer={(event) => setQuestion({ ...question, D: {...question.D, isAnswer:  Boolean(event.target.value )} })} 

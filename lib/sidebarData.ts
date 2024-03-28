@@ -24,6 +24,7 @@ export const sidebarData=[
         label:"Approved Course",
         url:"/dashboard/approved-courses"
       }
+
     ]
   },
   {
@@ -52,7 +53,12 @@ export const sidebarData=[
       {
         label:"Department List",
         url:"/dashboard/department"
+      },
+      {
+        label:"Create Exam Question",
+        url:"/dashboard/exams/create-exams"
       }
+      
     ]
   }
 ]
