@@ -50,7 +50,7 @@ type CourseType={
  id:string, 
 
 subject: string,
-category: string,
+
 price: number,
 
 rating: number,
@@ -113,22 +113,7 @@ export const columns: ColumnDef<CourseType>[] = [
 
 
 
-  {
-    accessorKey: "category",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Category
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("category")}</div>,
-  },
-
+  
  
 
 {
