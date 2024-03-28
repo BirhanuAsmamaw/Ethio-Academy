@@ -156,7 +156,7 @@ const [open, setOpen] = useState(false);
           
        <div className="w-full flex flex-col md:flex-row px-4 lg:px-10  gap-10 justify-between">
 
-       <div className="w-full  lg:w-8/12">
+       <div className="w-full  ">
             <Input id="subject" register={register} errors={errors}  label="Subject" type="text" required/>
             </div>
 
@@ -165,7 +165,7 @@ const [open, setOpen] = useState(false);
 
 
         
-        <div className="w-full lg:w-8/12">
+        <div className="w-full ">
           <Input register={register} errors={errors} label="Price" type="number" id="price" required/>
           </div>
        </div>
