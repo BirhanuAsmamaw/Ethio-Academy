@@ -48,15 +48,15 @@ const LogoutClient:React.FC<LogoutClientProps> = ({user}) => {
   };
   return (<div className="h-screen w-full flex justify-center items-center">
   <div className="mx-4 w-full md:max-w-md py-4 px-2 border bg-white border-gray-200 rounded-[10px] space-y-4 dark:bg-gray-800 dark:border-gray-700 ">
-    <h5 className="text-[20px] font-normal text-rose-400 ">Are Sure To Logout ?</h5>
+    <h5 className="text-[20px] font-normal text-gray-600 dark:text-gray-400  ">Are Sure To Logout ?</h5>
 
 
     <div className="w-full flex justify-end gap-4 p-6">
     <Button 
-title={`Cancel`}
 variant="destructive"
-className="transition duration-300  text-rose-600 hover:text-rose-700  bg-red-300  hover:bg-rose-400 text-center " 
-onClick={onCancel}/>
+onClick={onCancel}>
+  Cancel
+</Button>
 
 
 
@@ -64,9 +64,12 @@ onClick={onCancel}/>
     <Button 
  disabled={Loading}
  variant="destructive"
-title={Loading? "Loading...":`Delete`}
-className="transition duration-300 text-rose-600 hover:text-rose-700  bg-red-300  hover:bg-rose-400 text-center " 
-onClick={onLogout}/>
+
+onClick={onLogout}>
+  {Loading? "Loading...":`Delete`}
+</Button>
+
+
     </div>
   </div>
 </div> );
