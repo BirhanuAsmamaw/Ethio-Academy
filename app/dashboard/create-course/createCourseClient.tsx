@@ -87,7 +87,6 @@ const [open, setOpen] = useState(false);
   return ( <div className="flex flex-col w-full  ">
    
     <div className="flex flex-col gap-10 w-full pb-6 mb-10">
-    <h1>  {`${departmentData}`}</h1>
 
       {!isnext&&<Container
       childern={
@@ -104,7 +103,7 @@ const [open, setOpen] = useState(false);
             
        <Popover open={open} onOpenChange={setOpen} >
 
-    <div className="flex w-full  md:w-[200px] p-2 m-2  rounded-[5px] overflow-hidden  border dark:border-gray-600 bg-white dark:bg-gray-800 ">
+    <div className="flex w-full  md:w-[200px] p-2 m-2  rounded-[5px] overflow-hidden  border dark:border-gray-600 bg-slate-100 dark:bg-gray-700 ">
       <PopoverTrigger asChild >
         <button
          
@@ -155,7 +154,7 @@ const [open, setOpen] = useState(false);
     </Popover>
                </div> 
           
-       <div className="w-full flex flex-col md:flex-row px-4 lg:px-10 justify-between">
+       <div className="w-full flex flex-col md:flex-row px-4 lg:px-10  gap-10 justify-between">
 
        <div className="w-full  lg:w-8/12">
             <Input id="subject" register={register} errors={errors}  label="Subject" type="text" required/>

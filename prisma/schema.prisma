@@ -231,8 +231,8 @@ model Department{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-   exam     Exam     @relation( fields: [examId], references: [id], onDelete: Cascade)
-   examId String @db.ObjectId
+   exam     Exam ?     @relation( fields: [examId], references: [id], onDelete: Cascade)
+   examId String ? @db.ObjectId
    departmentName String   @unique
    cover File?
    url String  @unique
@@ -258,6 +258,7 @@ type File{
 }
 enum Role{
    USER
+   TEACHER
     ADMIN
    
 }
