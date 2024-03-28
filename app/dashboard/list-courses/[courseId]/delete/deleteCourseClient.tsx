@@ -15,7 +15,7 @@ const DeleteCourseClient:React.FC<DeleteCourseClientProps> = ({course}) => {
   const [isLoading,setLoading]=useState(false);
   const onDelete=()=>{
     setLoading(true);
- axios.delete(`/api/course/${course.id}/deletecourse/contents`).then(async()=>{
+ axios.delete(`/api/course/${course.id}/deletecourse`).then(async()=>{
   
   if(course.cover){
     await RemoveFile(course.cover.public_key);
