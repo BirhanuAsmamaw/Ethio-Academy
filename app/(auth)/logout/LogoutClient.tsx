@@ -67,7 +67,7 @@ onClick={onCancel}>
  className='text-rose-600'
 
 onClick={onLogout}>
-  {Loading? "Loading...":`Delete`}
+  {Loading? "Loading...":`Logout`}
 </Button>
 
 
