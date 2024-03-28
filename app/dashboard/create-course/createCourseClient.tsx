@@ -103,7 +103,8 @@ const [open, setOpen] = useState(false);
             
             
        <Popover open={open} onOpenChange={setOpen} >
-    <div className="flex w-full  m-2  rounded-[5px] overflow-hidden  border dark:border-gray-600 bg-white dark:bg-gray-800 ">
+
+    <div className="flex w-full  md:w-[200px] p-2 m-2  rounded-[5px] overflow-hidden  border dark:border-gray-600 bg-white dark:bg-gray-800 ">
       <PopoverTrigger asChild >
         <button
          
@@ -120,6 +121,8 @@ const [open, setOpen] = useState(false);
         </button>
       </PopoverTrigger>
       </div>
+
+
       <PopoverContent className="w-full p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
           <CommandInput  placeholder="Search your department..." />
@@ -152,8 +155,11 @@ const [open, setOpen] = useState(false);
     </Popover>
                </div> 
           
-       
-          <div className="w-full  lg:w-8/12"><Input id="subject" register={register} errors={errors}  label="Subject" type="text" required/></div>
+       <div className="w-full flex flex-col md:flex-row px-4 lg:px-10 justify-between">
+
+       <div className="w-full  lg:w-8/12">
+            <Input id="subject" register={register} errors={errors}  label="Subject" type="text" required/>
+            </div>
 
 
         
@@ -163,6 +169,7 @@ const [open, setOpen] = useState(false);
         <div className="w-full lg:w-8/12">
           <Input register={register} errors={errors} label="Price" type="number" id="price" required/>
           </div>
+       </div>
           
          
 
