@@ -1,31 +1,12 @@
-"use client"
-
-import DeleteComponent from "@/components/deleteComponent";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { GetCourseById } from "@/actions/courses/getCourseById";
+import DeleteCourseClient from "./deleteCourseClient";
 
 interface IParams{
   courseId: string;
 }
-const DeleteCourse = ({params}:{params:IParams}) => {
-  const router=useRouter();
-  const [isLoading,setLoading]=useState(false);
-  const onDelete=()=>{
-    setLoading(true);
- axios.delete(`/api/course/${params.courseId}/deletecourse/contents`).then(()=>{
-      toast.success(`Course deleted successfully`);
-      router.push(`/dashboard/list-courses`);
-      router.refresh();
-    }).catch((error)=>{
-      toast.error(error.message);
-    }).finally(()=>{
-      setLoading(false);
-    });
-
-  }
-  return (<DeleteComponent isLoading={isLoading} onDelete={onDelete} title=" Course" />);
+const DeleteCourse = async({params}:{params:IParams}) => {
+  const course=await GetCourseById(params.courseId);
+  return (<DeleteCourseClient course={course}/>);
 }
  
 export default DeleteCourse;
