@@ -56,7 +56,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
   const router=useRouter();
    const [isLoading,setLoading]=useState(false);
    const [explanation,setExplanation]=useState("")
-   const [selectedChoose,setSelectedChoose]=useState({choose:"",isAnswer:false});
+   const [selectedChoose, setSelectedChoose] = useState<string>("");
     const [question,setQuestion]=useState<any>(
         {Q:"",
         year:"",
@@ -80,11 +80,18 @@ D:{
 },
 });
 
-useEffect(()=>{
-  
-  const ch=selectedChoose.choose
-  question[ch].isAnswer=selectedChoose.isAnswer
-},[question,selectedChoose])
+useEffect(() => {
+  // Set previous selectedChoose to false when a new one is selected
+  if (selectedChoose !== "") {
+    setQuestion((prevQuestion:any) => ({
+      ...prevQuestion,
+      [selectedChoose]: {
+        ...prevQuestion[selectedChoose],
+        isAnswer: false,
+      },
+    }));
+  }
+}, [selectedChoose]);
 
 
 const qData={
@@ -273,13 +280,31 @@ rows={4}
 id='A'
 onChange={(event) => setQuestion({ ...question, A:{ ...question.A,text: event.target.value } })} 
 label="A"
-onAnswer={(event) => setSelectedChoose({choose:'A',isAnswer:true})} />
+onAnswer={(event) =>{
+  setSelectedChoose("A");
+    setQuestion((prevQuestion:any) => ({
+      ...prevQuestion,
+      A: {
+        ...prevQuestion["A"],
+        isAnswer: Boolean(event.target.value),
+      },
+    }));
+}} />
 
 <ChooseForm 
 label="B"
 id='B'
 onChange={(event)=>setQuestion({...question,B:{...question.B,text:event.target.value}})}
-onAnswer={(event) => setSelectedChoose({choose:'B',isAnswer:true})} 
+onAnswer={(event) =>{
+  setSelectedChoose("B");
+    setQuestion((prevQuestion:any) => ({
+      ...prevQuestion,
+      B: {
+        ...prevQuestion["B"],
+        isAnswer: Boolean(event.target.value),
+      },
+    }));
+}} 
 />
 
 
@@ -287,14 +312,32 @@ onAnswer={(event) => setSelectedChoose({choose:'B',isAnswer:true})}
 id='C'
 label="C"
 onChange={(event)=>setQuestion({...question,C:{...question.C,text:event.target.value}})}
-onAnswer={(event) => setSelectedChoose({choose:'C',isAnswer:true})} 
+onAnswer={(event) =>{
+  setSelectedChoose("C");
+    setQuestion((prevQuestion:any) => ({
+      ...prevQuestion,
+      C: {
+        ...prevQuestion["C"],
+        isAnswer: Boolean(event.target.value),
+      },
+    }));
+}} 
 />
 
 <ChooseForm 
 id='D'
 label="D"
 onChange={(event)=>setQuestion({...question,D:{...question.D,text:event.target.value}})}
-onAnswer={(event) => setSelectedChoose({choose:'D',isAnswer:true})} 
+onAnswer={(event) =>{
+  setSelectedChoose("D");
+    setQuestion((prevQuestion:any) => ({
+      ...prevQuestion,
+      D: {
+        ...prevQuestion["D"],
+        isAnswer: Boolean(event.target.value),
+      },
+    }));
+}} 
 />
 <div className="flex flex-col px-4 w-full gap-1 my-4">
     <Heading small title="Write Answer Explanation"/>
