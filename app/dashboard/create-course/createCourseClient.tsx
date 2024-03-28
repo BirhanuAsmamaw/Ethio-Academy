@@ -154,7 +154,7 @@ const [open, setOpen] = useState(false);
     </Popover>
                </div> 
           
-       <div className="w-full flex flex-col md:flex-row px-4 lg:px-10  gap-10 justify-between">
+       <div className="w-full  lg:w-8/12 flex flex-col md:flex-row px-4 lg:px-10  gap-10 justify-between">
 
        <div className="w-full  ">
             <Input id="subject" register={register} errors={errors}  label="Subject" type="text" required/>
