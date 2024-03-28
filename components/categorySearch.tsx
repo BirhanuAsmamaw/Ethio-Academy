@@ -67,7 +67,7 @@ const router=useRouter();
                   value={department.departmentName.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    setDepartmentId(department.id);
+                    setDepartmentId(department.url);
                     setOpen(false);
                   }}
                 >

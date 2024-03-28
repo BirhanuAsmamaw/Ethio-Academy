@@ -16,13 +16,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import CustomeSheet from "../customSheet";
+import CategorySearch from "../categorySearch";
  
 
 interface MobileSidebarProps{
   user:any;
+  departments:any[] |null;
 }
 
-const MobileSidebar:React.FC<MobileSidebarProps>= ({user}) => {
+const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments}) => {
  
   
 
@@ -57,6 +59,7 @@ const MobileSidebar:React.FC<MobileSidebarProps>= ({user}) => {
           <SiCoursera className="pt-1" size={20}/>  <p>Courses</p>
          </Link>
         
+         <CategorySearch departments={departments || null}/>
 
          <Accordion type="single" collapsible className="w-full  ">
       <AccordionItem value="item-3" className="hover:no-underline border-none">
