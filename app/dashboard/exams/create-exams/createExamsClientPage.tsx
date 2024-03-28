@@ -80,18 +80,6 @@ D:{
 },
 });
 
-useEffect(() => {
-  // Set previous selectedChoose to false when a new one is selected
-  if (selectedChoose !== "") {
-    setQuestion((prevQuestion:any) => ({
-      ...prevQuestion,
-      [selectedChoose]: {
-        ...prevQuestion[selectedChoose],
-        isAnswer: true,
-      },
-    }));
-  }
-}, [selectedChoose]);
 
 
 
@@ -154,14 +142,27 @@ isAnswer:false,
 
 
 const handleChooseSelection = (choose: string, value: string) => {
+   // Unmark previously selected option
+   Object.keys(question).forEach(key => {
+    if (key !== choose && question[key].isAnswer) {
+      setQuestion((prevQuestion:any )=> ({
+        ...prevQuestion,
+        [key]: {
+          ...prevQuestion[key],
+          isAnswer: false
+        }
+      }));
+    }
+  });
+
   setSelectedChoose(choose);
-  // setQuestion((prevQuestion:any )=> ({
-  //   ...prevQuestion,
-  //   [choose]: {
-  //     ...prevQuestion[choose],
-  //     isAnswer: value === "true",
-  //   },
-  // }));
+  setQuestion((prevQuestion:any) => ({
+    ...prevQuestion,
+    [choose]: {
+      ...prevQuestion[choose],
+      isAnswer: value === "true"
+    }
+  }));
 };
 
 
