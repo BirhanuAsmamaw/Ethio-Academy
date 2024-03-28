@@ -17,7 +17,7 @@ export async function POST(req:Request){
 
   const {
     subject,
-    category,
+    department,
      price,
      descriptions,
      requirements,
@@ -26,7 +26,7 @@ export async function POST(req:Request){
 
 
 
-  if (!subject || !category ||  !price || !descriptions || !requirements || !whoShouldTake ){
+  if (!subject || !department ||  !price || !descriptions || !requirements || !whoShouldTake ){
     return NextResponse.json({status:false, message:"invalid course parameters"});
 
   }
@@ -34,7 +34,7 @@ export async function POST(req:Request){
     data:{
       creatorId:user.id,
       subject:subject,
-      category:category,
+      department:department,
       price:parseFloat(price),
       rating:0,
       descriptions:descriptions,
