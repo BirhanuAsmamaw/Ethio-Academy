@@ -31,7 +31,7 @@ const [isLoading, setIsLoading]=useState(false)
 
 
 const [open, setOpen] = useState(false);
-  const [departmentValues, setDepartmentValues] = useState<any>({department:null,url:null});
+  const [departmentValues, setDepartmentValues] = useState("");
   const [departmentData, setDepartment] = useState<any>(null);
 
 
