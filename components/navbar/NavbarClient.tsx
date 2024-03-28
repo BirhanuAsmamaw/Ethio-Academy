@@ -117,7 +117,7 @@ const {carts}=useCart()
 
     
     <div className="md:hidden py-2">
-   <MobileSidebar departments={departments|| null} user={user}/>
+   <MobileSidebar departments={departments|| null} user={user} exams={exams}/>
     </div>
    
 

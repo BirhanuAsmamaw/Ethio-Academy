@@ -2,7 +2,6 @@
 
 import { IoIosMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
-import { useState } from "react";
 import { CiLogin,CiLogout  } from "react-icons/ci";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { SiCoursera } from "react-icons/si";
@@ -21,33 +20,15 @@ import CategorySearch from "../categorySearch";
 
 interface MobileSidebarProps{
   user:any;
+  exams:any[]|null;
   departments:any[] |null;
 }
 
-const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments}) => {
+const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments,exams}) => {
  
   
 
  
-  const category=[
-    {
-      name: "Highschool",
-      url: "/category/Highschool"
-    },
-    {
-      name: "Freshman",
-      url: "/category/Freshman"
-    },
-    {
-      name: "Remedial",
-      url: "/category/Remedial"
-    },
-    {
-      name: "Development",
-      url: "/category/Development"
-    }
-  ]
-  
  
     return (
      
@@ -64,13 +45,13 @@ const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments}) => {
          <Accordion type="single" collapsible className="w-full  ">
       <AccordionItem value="item-3" className="hover:no-underline border-none">
         <AccordionTrigger className="hover:no-underline border-none"><div className="text-sm flex hover:no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-          <BiCategory className="pt-1" size={20}/>  <p>Category</p>
+          <BiCategory className="pt-1" size={20}/>  <p>Exams</p>
          </div></AccordionTrigger>
         <AccordionContent>
 
-          {category.map((c,index)=>{
-            return <Link key={index} href={c.url} className="px-2 py-1 text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-            {c.name}
+          {exams?.map((c:any,index:number)=>{
+            return <Link key={index} href={`/exams/${c.url}`} className="px-2 py-1 text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+            {c.examType}
            </Link>
           })}
         
