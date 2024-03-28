@@ -8,6 +8,7 @@ import { SiCoursera } from "react-icons/si";
 import { BiCategory } from "react-icons/bi";
 import { MdOutlineDashboard } from "react-icons/md";
 import Link from "next/link";
+import { PiExam } from "react-icons/pi";
 import {
   Accordion,
   AccordionContent,
@@ -40,7 +41,10 @@ const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments,exams}) => 
           <SiCoursera className="pt-1" size={20}/>  <p>Courses</p>
          </Link>
         
+         <div className="text-sm flex hover:no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"> 
+         <PiExam className="pt-1" size={20}/>
          <CategorySearch departments={departments || null}/>
+         </div>
 
          <Accordion type="single" collapsible className="w-full  ">
       <AccordionItem value="item-3" className="hover:no-underline border-none">
