@@ -244,7 +244,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 {/* add exams question */}
 <div className="w-full pt-10">
 
-<div className="p-4 w-full justify-between">
+<div className="p-4 flex w-full justify-between">
   <Select
    onValueChange={
     (value)=>setQuestion({...question,year:value})
@@ -264,7 +264,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 </Select>
 
 <div className="flex gap-2">
-  <input value={'true'}  type="radio" onChange={(event)=>setModel(Boolean(event.target.value))}/> <label>Is Model?</label>
+  <input value={'true'} className='h-4 w-4' type="radio" onChange={(event)=>setModel(Boolean(event.target.value))}/> <label>Is Model?</label>
 </div>
   </div>
 
