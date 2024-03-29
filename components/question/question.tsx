@@ -90,7 +90,7 @@ Next Year Exam
 </span>
 </button>
             </div>
-            <h4 className="text-lg font-semibold border-b-2 border-dashed">
+            <h4 className="text-lg mt-6 font-semibold border-b-2 border-dashed">
            {examsTitle}
             </h4>
           </div>
