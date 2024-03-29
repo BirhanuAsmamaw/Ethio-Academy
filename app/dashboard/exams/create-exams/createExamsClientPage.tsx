@@ -270,6 +270,7 @@ const handleChooseSelection = (choose: string, value: string) => {
       onChange={(event) => setModel(event.target.checked)}
       className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
       type="radio"
+      name='model'
     />
     <label className="text-gray-700 dark:text-gray-300">Is Model?</label>
   </div>
@@ -277,9 +278,11 @@ const handleChooseSelection = (choose: string, value: string) => {
   <div className="flex gap-2 items-center">
     <input
       checked={!isModel}
+      name='model'
       onChange={(event) => setModel(event.target.checked)}
       className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
       type="radio"
+      
     />
     <label className="text-gray-700 dark:text-gray-300">Is Not Model?</label>
   </div>
