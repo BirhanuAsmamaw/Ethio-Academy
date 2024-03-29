@@ -67,7 +67,7 @@ const router=useRouter();
               {departments.map((department) => (
                 <CommandItem
                   key={department.id}
-                  value={department.url.toLowerCase()}
+                  value={department.departmentName.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setDepartmentId(department.id);
