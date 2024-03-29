@@ -244,7 +244,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 {/* add exams question */}
 <div className="w-full pt-10">
 
-<div className="flex justify-center  w-full gap-10">
+<div className="flex justify-center pb-10 w-full gap-10">
   <Select
    onValueChange={
     (value)=>setQuestion({...question,year:value})
