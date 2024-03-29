@@ -10,7 +10,7 @@ const Banner:React.FC<Bannerprops> = ({title,children}) => {
       <div className='space-y-4'>
     
     <div className="flex  justify-center items-center ">
-      <h1 className=' text-xl md:text-2xl lg:text-4xl xl:text-6xl text-blue-700 
+      <h1 className=' drop-shadow-lg text-xl md:text-2xl lg:text-4xl xl:text-6xl text-blue-700 
       dark:text-white font-bold xl:font-extra-bold'>{title}</h1>
 
     </div>
