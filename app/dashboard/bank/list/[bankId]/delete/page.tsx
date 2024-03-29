@@ -1,7 +1,13 @@
-const DeleteBank = () => {
-  return ( <div className="h-screen w-full justify-center items-center">
-    <div className="">delete bank</div>
-  </div> );
-}
+
+import { getBankById } from "@/actions/bank/getBankById";
+import DeleteBankClient from "./deleteBankClient";
+
+
+const DeleteBank =async ({params}:{params:{bankId:string}}) => {
+ const bank=await getBankById(params.bankId);
  
-export default DeleteBank;
+  return (<DeleteBankClient bank={bank}/>
+  )
+}
+
+export default DeleteBank
