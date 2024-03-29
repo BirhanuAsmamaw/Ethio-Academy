@@ -244,7 +244,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 {/* add exams question */}
 <div className="w-full pt-10">
 
-<div className="p-4 flex w-full justify-between">
+<div className="p-4 flex w-full gap-10">
   <Select
    onValueChange={
     (value)=>setQuestion({...question,year:value})
@@ -263,6 +263,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 </SelectContent>
 </Select>
 
+<div className="flex gap-4">
 <div className="flex gap-2 items-center">
     <input
       checked={isModel}
@@ -272,6 +273,17 @@ const handleChooseSelection = (choose: string, value: string) => {
     />
     <label className="text-gray-700 dark:text-gray-300">Is Model?</label>
   </div>
+
+  <div className="flex gap-2 items-center">
+    <input
+      checked={!isModel}
+      onChange={(event) => setModel(event.target.checked)}
+      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+      type="radio"
+    />
+    <label className="text-gray-700 dark:text-gray-300">Is Not Model?</label>
+  </div>
+</div>
   </div>
 
 
