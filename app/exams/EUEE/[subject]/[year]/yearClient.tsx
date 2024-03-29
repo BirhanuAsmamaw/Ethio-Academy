@@ -2,13 +2,11 @@
 
 import Header from "@/components/Header";
 import QuestionComponent from "@/components/question/question";
-import { title } from "process";
 
 interface EUEEYearExamsClientPageProps{
   subject:string,
     year:string,
     Questions:any[];
-    title?:string;
 }
 const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject,year,Questions}) => {
    return  <>
@@ -23,7 +21,7 @@ const EUEEYearExamsClientPage:React.FC<EUEEYearExamsClientPageProps> = ({subject
    notificationUrl={`/exams/EUEE/${subject}`} 
    
    notificationLabel={`Click Here and See ${subject} Exams in Others Years`} 
-   examsTitle={`${title? `${subject} ${title} Exams in ${year}`:`${subject} Exams in ${year}`} Year`}/></>
+   examsTitle={`${subject} Exams in ${year} Year`}/></>
 };
 
 export default EUEEYearExamsClientPage;
