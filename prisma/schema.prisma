@@ -252,6 +252,34 @@ model Subject{
 
 
 
+
+
+model Bank{
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+   name String
+   account String
+   logo  File?
+
+
+}
+
+
+model Hero{
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+   title String
+   subtitle String?
+   logo  File?
+
+
+}
+
+
+
+
 type File{
   public_key String
   public_url String

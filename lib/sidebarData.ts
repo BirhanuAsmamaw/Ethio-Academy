@@ -1,6 +1,9 @@
 import { PiExam } from "react-icons/pi";
 import { SiCoursera } from "react-icons/si";
 import { PiUsersFourLight } from "react-icons/pi";
+import { PiBankLight } from "react-icons/pi";
+import { GiHeron } from "react-icons/gi";
+
 
 export const sidebarData=[
   // {
@@ -60,5 +63,41 @@ export const sidebarData=[
       }
       
     ]
-  }
+  },{
+    title:"Bank",
+    icon:PiBankLight,
+    items:[
+      {
+        label:"Create Bank",
+        url:"/dashboard/bank/create"
+      },
+      {
+        label:"Bank List",
+        url:"/dashboard/bank/list"
+      },
+      
+      
+    ]
+  },
+
+
+  {
+    title:"Banner",
+    icon:GiHeron,
+    items:[
+      {
+        label:"Banner",
+        url:"/dashboard/banner"
+      },
+      
+      
+      
+    ]
+  },
+  
+
+  
+
+  
+
 ]
