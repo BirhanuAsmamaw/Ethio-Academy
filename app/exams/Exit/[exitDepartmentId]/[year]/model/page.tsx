@@ -21,8 +21,8 @@ const department=await getDepartmentById(params.exitDepartmentId)
   const examQuestions=await getModelQuestionsByCategory("Exit",department?.departmentName||"",params.year);
   return (<>
   <Header
-    title={`${department} Exit Exams in ${params.year} year`}
-    description={` ${department} Exit  Exams  || All ${department}  Exit  Exams  in ${params.year} year  With Answer and  Detail Exaplanations!`}
+    title={`${department?.departmentName} Exit Exams in ${params.year} year`}
+    description={` ${department?.departmentName} Exit  Exams  || All ${department?.departmentName}  Exit  Exams  in ${params.year} year  With Answer and  Detail Exaplanations!`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
   <Navbar/>
