@@ -20,7 +20,7 @@ const department=await getDepartmentByName("Freshman")
 
   const examQuestions=await getQuestionsByCategory("Remedial","Freshman",params.year,params.subject);
   return (<><Navbar/>
-     {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All COC Exam Now!"} trayLabel={"See Tray Exams"}/>}
+     {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All COC Exam Now!"} />}
   <RemedialYearExamsClientPage subject={params.subject} year={params.year} Questions={examQuestions}/>
   </>)
  

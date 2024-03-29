@@ -19,7 +19,7 @@ const GATYearExamsPage = async({params}:{
 const department=await getDepartmentById(params.gatDepartmentId)
   const examQuestions=await getQuestionsByCategory("GAT",department?.departmentName||"",params.year);
   return (<><Navbar/>
-  {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All GAT Exam Now!"} trayLabel={"See Tray Exams"}/>}
+  {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All GAT Exam Now!"} />}
   <GATYearExamsClientPage department={department} year={params.year} Questions={examQuestions}/>
   </>)
  

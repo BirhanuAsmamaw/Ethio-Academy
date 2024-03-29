@@ -20,7 +20,7 @@ const AAUMECYearExamsPage = async({params}:{
 const department=await getDepartmentByName("AAUMEC")
   const examQuestions=await getQuestionsByCategory("AAU  Medicine Entrance COC","AAUMEC",params.year);
   return (<><Navbar/>
-   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All COC Exam Now!"} trayLabel={"See Tray Exams"}/>}
+   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All COC Exam Now!"} />}
   <AAUMECClientPage year={params.year} Questions={examQuestions}/>
   </>)
  

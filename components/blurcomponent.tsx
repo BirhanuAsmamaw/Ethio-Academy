@@ -9,9 +9,9 @@ interface BlurProps{
   department:any;
   user:any;
   buyLabel:string;
-  trayLabel:string;
+ 
 }
-const BlurComponent:React.FC<BlurProps> = ({department,user,buyLabel,trayLabel}) => {
+const BlurComponent:React.FC<BlurProps> = ({department,user,buyLabel}) => {
   const router=useRouter();
   const [reloadPage, setReloadPage] = useState(false);
   const {addDepartment}=useCart();
@@ -50,15 +50,7 @@ const BlurComponent:React.FC<BlurProps> = ({department,user,buyLabel,trayLabel})
           {buyLabel}
         </button>
 
-        <button
-          onClick={()=>{
-            router.push(`/course/tray`);
-            
-          }}
-          className="text-white bg-blue-500 px-4 py-2 rounded-[5px] hover:bg-blue-600 focus:outline-none"
-        >
-          {trayLabel}
-        </button>
+       
         
       </div>
     }/>

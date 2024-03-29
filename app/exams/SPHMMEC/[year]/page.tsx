@@ -19,7 +19,7 @@ const department=await getDepartmentByName("SPHMMEC")
 
   const examQuestions=await getQuestionsByCategory("St.Paul's Hospital Millennium Medicine Entrance COC","SPHMMEC",params.year);
   return (<><Navbar/>
-     {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All COC Exam Now!"} trayLabel={"See Tray Exams"}/>}
+     {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All COC Exam Now!"} />}
   <SPHMMECClientPage year={params.year} Questions={examQuestions}/>
   </>)
  

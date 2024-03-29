@@ -19,7 +19,7 @@ const EUEEYearExamsPage = async({params}:{
 const department=await getDepartmentByName("Highschool")
   const examQuestions=await getModelQuestionsByCategory("EUEE","Highschool",params.year,params.subject);
   return (<><Navbar/>
-  {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Subjects Exam Now!"} trayLabel={"See Tray Exams"}/>}
+  {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Subjects Exam Now!"} />}
  
   <ModelYearExamsClientPage subject={params.subject} year={params.year} Questions={examQuestions}/></>
  )
