@@ -10,24 +10,25 @@ import {
 } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
-import { Button } from "../ui/button";
+
 interface QuestionComponentProps{
     notificationTitle:string,
     notificationUrl:string,
     notificationLabel:string,
     examsTitle:string,
+    backUrl?:string,
     Questions:any[];
 
 }
-const QuestionComponent:React.FC<QuestionComponentProps> = ({Questions,notificationTitle,notificationUrl,examsTitle,notificationLabel}) => {
+const QuestionComponent:React.FC<QuestionComponentProps> = ({backUrl,Questions,notificationTitle,notificationUrl,examsTitle,notificationLabel}) => {
   const [feedbackVisible, setFeedbackVisible] = useState(false);
   const [isSelectedAll, setSelectedAll] = useState(false);
   const [score, setScore] = useState(0);
   const [selectedChoices, setSelectedChoices] = useState<any>({});
- 
+ const router=useRouter();
   const isVisible=useSearchParams();
   const isVisibleFeedBackQuery=isVisible?.get("right")
 
@@ -76,10 +77,19 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({Questions,notificat
   return (<MainLayout>
       <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
         <div className="pt-10" id="quiz">
-          <div className="p-2 space-y-2 py-10">
+        <button onClick={()=>router.back()} type="button" className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Back to Exams List</button>
+          <div className="p-2 space-y-2 py-6">
             <div className="flex justify-between px-10">
-              <Button variant="outline">Previous Year Exam</Button>
-              <Button variant="outline">Next Year Exam</Button>
+            <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+<span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+Previuos Year Exam
+</span>
+</button>
+<button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+<span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+Next Year Exam
+</span>
+</button>
             </div>
             <h4 className="text-lg font-semibold border-b-2 border-dashed">
            {examsTitle}
