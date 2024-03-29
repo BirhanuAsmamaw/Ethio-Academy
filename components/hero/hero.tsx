@@ -1,11 +1,14 @@
 "use client"
 
 import Image from "next/image";
-import Banner from "../../public/banner.png"
 import { motion } from "framer-motion";
 
 
-const Hero = () => {
+interface HeroProps{
+  banner:any
+}
+
+const Hero:React.FC<HeroProps> = ({banner}) => {
 
   const textVariants = {
     initial: {
@@ -71,7 +74,7 @@ const Hero = () => {
        items-center z-10 justify-center text-center
         overflow-hidden">
           <span className=" text-blue-600 dark:text-green-400">Ethio Exams Academy</span>
-          <span>, where heroes are born and excellence reigns supreme </span>
+          <span>,{banner?.title} </span>
           <span className="font-bold text-rose-500 dark:text-yellow-400 text-3xl md:text-5xl">!</span></motion.h1>
       <div className="font-medium md:text-lg flex flex-col gap-1 md:mx-10 ">
       <p className="text-md px-4 font-medium dark:text-gray-400 text-slate-500 flex flex-col "> 
@@ -105,7 +108,7 @@ const Hero = () => {
    variants={sliderVariants}
         initial="initial"
         animate="animate" className="md:w-1/3 items-center">
-      <Image  src={Banner} alt="banner" className=""/>
+      <Image  src={banner?.logo.public_url} alt="banner" className=""/>
     </motion.div>
 
   </div> );

@@ -12,6 +12,7 @@ import { AboutAcademy } from '@/lib/aboutAcademy';
 import { getCourses } from '@/actions/courses/getCourses';
 import { getAllExamsCategory } from '@/actions/examsCategory/getAllExamsCategry';
 import ExamsCategoryCard from '@/components/card/examscategoryCard';
+import { getBanner } from '@/actions/banner/getbanner';
 
 
 
@@ -22,6 +23,7 @@ export default async function Home() {
 
 const courses=await getCourses()
 const examsCategory=await getAllExamsCategory();
+const banner=await getBanner();
 
 
   return (<>
@@ -43,7 +45,7 @@ const examsCategory=await getAllExamsCategory();
     <Navbar/>
 
     <main className="w-full space-y-6 md:space-y-20">
-    <Hero/>
+    <Hero banner={banner}/>
    
    
 
