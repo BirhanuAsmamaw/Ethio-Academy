@@ -1,31 +1,108 @@
+"use client"
+import { Button } from "@/components/ui/button";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { Check } from "lucide-react";
 import Image from "next/image";
-import CBE from "../../public/CBE.jpg"
+import { useRouter } from "next/router";
+import { useState } from "react";
+
+
 
 
 interface BankProps{
-  bank_name: string;
-  name: string;
-  account_no: string;
-  image:any;
+
+  banks:any[]|null
 
 }
 
-const Bank:React.FC<BankProps>  = ({bank_name,name,account_no,image}) => {
-  return ( <div className="border-y-2 bg-white dark:bg-gray-800 rounded-[10px] p-1 border-gray-200 dark:border-gray-700">
-    <h5 className="text-sm text-gray-500 dark:text-gray-400">{bank_name}</h5>
+const Bank:React.FC<BankProps>  = ({banks}) => {
+
+const router=useRouter();
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [newbank, setNewbank] = useState<any>(null);
+  if(!banks){
+router.back()
+return null;
+  }
+  return ( <div className="space-y-10">
+
+
+<Popover open={open} onOpenChange={setOpen} >
+ 
+      <PopoverTrigger asChild >
+        <Button
+          variant="ghost"
+          role="combobox"
+          aria-expanded={open}
+          
+          className=" w-full  flex  items-center justify-between"
+        >
+          <p>{value
+          
+            ? value
+            : "Selected the Bank you Need to pay"}</p>
+            
+ 
+        </Button>
+      </PopoverTrigger>
+      
+    
+      <PopoverContent className="w-full p-0">
+        <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
+          <CommandInput  placeholder="Search your department..." />
+          <CommandList>
+            <CommandEmpty>No Bank  found.</CommandEmpty>
+            <CommandGroup>
+              {banks?.map((b) => (
+                <CommandItem
+                  key={b.id}
+                  value={b.bank_name.toLowerCase()}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? "" : currentValue);
+                    setNewbank({bank_name: b.bank_name,name: b.name,account:b.account,image: b.logo.public_url})
+                    
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      value === b.bank_name.toLowerCase()? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  {b.bank_name}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
+
+
+
+
+
+
+{newbank?<div className="border-y-2 bg-white dark:bg-gray-800 rounded-[10px] p-1 border-gray-200 dark:border-gray-700">
+    <h5 className="text-sm text-gray-500 dark:text-gray-400">{newbank.bank_name}</h5>
     <div className="flex gap-2">
       <div className=" overflow-hidden ">
       
-        <Image  width={60} height={60} src={image} alt="cbe" className="object-contain "/>
+        <Image  width={60} height={60} src={newbank.image} alt="cbe" className="object-contain "/>
       </div>
 
       <div className="flex flex-col text-gray-500 dark:text-gray-400">
-        <p>{name}</p>
-        <p className="lining-nums">{account_no}</p>
+        <p>{newbank.name}</p>
+        <p className="lining-nums">{newbank.account}</p>
       </div>
 
     </div>
 
+  </div>:""}
   </div> );
 }
  

@@ -5,11 +5,13 @@ import PaymentCourse from "./paymentCourse";
 import Navbar from "@/components/navbar/Navbar";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import { getAllUsers } from "@/actions/users/getAllUsers";
+import { getAllBanks } from "@/actions/bank/getAllBanks";
 
 const Payment = async() => {
 
   const user=await getCurrentUser();
   const users=await getAllUsers();
+  const banks=await getAllBanks();
 
   const admins=users?.filter((u)=>u.role ==='ADMIN').map((a)=>{
     return {
@@ -23,19 +25,9 @@ const Payment = async() => {
 
     <div className="p-4 mt-10  md:m-10 w-full ">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-
-     {
-      bank_accounts.map((bank,index)=>{
-        return  <Bank 
-        key={index}
-        bank_name={bank.bank_name}
-        image={bank.image}
-        name={bank.name}
-        account_no={bank.account_no}
+      <Bank 
+       banks={banks}
         />
-      })
-     }
-      
 
       </div>
     </div>
