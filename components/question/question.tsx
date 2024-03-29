@@ -13,6 +13,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
+import { Button } from "../ui/button";
 interface QuestionComponentProps{
     notificationTitle:string,
     notificationUrl:string,
@@ -76,6 +77,10 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({Questions,notificat
       <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
         <div className="pt-10" id="quiz">
           <div className="p-2 py-10">
+            <div className="flex justify-between px-10">
+              <Button variant="secondary">Previous Year Exam</Button>
+              <Button variant="secondary">Next Year Exam</Button>
+            </div>
             <h4 className="text-lg font-semibold border-b-2 border-dashed">
            {examsTitle}
             </h4>
