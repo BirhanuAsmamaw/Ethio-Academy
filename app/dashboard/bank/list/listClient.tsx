@@ -151,14 +151,14 @@ export const columns: ColumnDef<BankType>[] = [
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/bank/${Bank.id}/update`}>Edit Bank</Link>
+               href={`/dashboard/bank/list/${Bank.id}/update`}>Edit Bank</Link>
             </DropdownMenuItem>
 
             
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/bank/${Bank.id}/delete`}>Delete</Link>
+              href={`/dashboard/bank/list/${Bank.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
