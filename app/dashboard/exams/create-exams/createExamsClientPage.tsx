@@ -264,28 +264,17 @@ const handleChooseSelection = (choose: string, value: string) => {
 </Select>
 
 <div className="flex gap-4">
-<div className="flex gap-2 items-center">
-    <input
-      checked={isModel}
-      onChange={(event) => setModel(event.target.checked)}
-      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-      type="radio"
-      name='model'
-    />
-    <label className="text-gray-700 dark:text-gray-300">Is Model?</label>
-  </div>
 
-  <div className="flex gap-2 items-center">
-    <input
-      checked={!isModel}
-      name='model'
-      onChange={(event) => setModel(event.target.checked)}
-      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-      type="radio"
-      
-    />
-    <label className="text-gray-700 dark:text-gray-300">Is Not Model?</label>
-  </div>
+<div className="flex items-center mb-4">
+    <input   onChange={(event) => setModel(event.target.checked)}  id="default-radio-1" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Model?</label>
+</div>
+<div className="flex items-center">
+    <input checked    onChange={(event) => setModel(!event.target.checked)} id="default-radio-2" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-2" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Not Model?</label>
+</div>
+
+  
 </div>
   </div>
 
