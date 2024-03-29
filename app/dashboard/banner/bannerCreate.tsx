@@ -34,7 +34,7 @@ const BannerCreate = () => {
     });
 
   }
-  return (<div className="min-h-screen w-full flex justify-center items-center p-2">
+  return (<div className=" w-full flex justify-center items-center p-2">
 <div className='space-y-6  bg-white dark:bg-gray-800 w-full md:w-[400px] p-2 rounde-[10px]'>
   <h1 className='text-lg font-semibold'>Create Banner</h1>
   <div className="grid grid-cols-1 md:grid-col-2 xl:grid-col-3 gap-4">
