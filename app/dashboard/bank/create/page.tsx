@@ -37,7 +37,7 @@ const CreateBank = () => {
   <div className="grid grid-cols-1 md:grid-col-2 xl:grid-col-3 gap-4">
     <Input id='bank_name' label='Bank Name' register={register} errors={errors} type={'text'} required placehoder='write name of bank'/>
     <Input id='name' label='Your Full Name' register={register} errors={errors} type={'text'} required placehoder='write your full name '/>
-    <Input id='accpuount' label='Bank Name' register={register} errors={errors} type={'text'} required placehoder='write bank account number'/>
+    <Input id='account' label='Bank Name' register={register} errors={errors} type={'text'} required placehoder='write bank account number'/>
    
   </div>
   <div className="w-full flex justify-end p-6">
