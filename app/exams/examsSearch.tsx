@@ -21,6 +21,7 @@ import {
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import BeatLoader from "react-spinners/BeatLoader";
 
 interface ExamsSearchProps{
   departments:any[];
@@ -28,6 +29,7 @@ interface ExamsSearchProps{
 }
 
  const ExamsSearch:React.FC<ExamsSearchProps>=({examType,departments}) =>{
+  const [isClickedSearch,setClickedSearch]=useState(false);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [departmentId, setDepartmentId] = useState("");
@@ -43,12 +45,18 @@ const router=useRouter();
           className=" w-full   md:min-w-[500px] max-w-[800px] justify-between"
         >
           {value
-            ? departments.find((department) => department.url.toLowerCase()=== value)?.departmentName
+            ? value
             : "Select your department..."}
  
         </Button>
       </PopoverTrigger>
-      <button className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{router.push(`/exams/${examType}/${departmentId}`)}}><CiSearch className="text-white font-bold" size={24}/></button>
+      <button disabled={isClickedSearch} className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{
+        setClickedSearch(true)
+        router.push(`/exams/${examType}/${departmentId}`)}
+        
+        }>
+          {isClickedSearch? <BeatLoader color="#36d7b7" />:<CiSearch className="text-white font-bold" size={24}/>}
+          </button>
       </div>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
@@ -69,7 +77,7 @@ const router=useRouter();
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === department.url.toLowerCase()? "opacity-100" : "opacity-0"
+                      value === department.departmentName.toLowerCase()? "opacity-100" : "opacity-0"
                     )}
                   />
                   {department.departmentName}
