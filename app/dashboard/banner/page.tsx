@@ -1,7 +1,16 @@
-const BannerPage = () => {
+import { getBanner } from "@/actions/banner/getbanner";
+import Banner from "./banner";
+import BannerCreate from "./bannerCreate";
+
+const BannerPage = async() => {
+  const banner = await getBanner()
   return ( <div className="min-h-screen w-full flex justify-center items-center">
 
-    <h1>banner</h1>
+    <div className="w-full space-y-10">
+      <BannerCreate />
+
+      <Banner banner={banner}/>
+    </div>
   </div> );
 }
  
