@@ -78,8 +78,8 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({Questions,notificat
         <div className="pt-10" id="quiz">
           <div className="p-2 space-y-2 py-10">
             <div className="flex justify-between px-10">
-              <Button variant="secondary">Previous Year Exam</Button>
-              <Button variant="secondary">Next Year Exam</Button>
+              <Button variant="outline">Previous Year Exam</Button>
+              <Button variant="outline">Next Year Exam</Button>
             </div>
             <h4 className="text-lg font-semibold border-b-2 border-dashed">
            {examsTitle}
