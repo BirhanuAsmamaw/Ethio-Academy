@@ -147,26 +147,18 @@ export const columns: ColumnDef<BankType>[] = [
 
           <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
           
-            <DropdownMenuItem>
-             <Link 
-             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/list-Banks/${Bank.id}/chapter`}>Chapter</Link>
-            </DropdownMenuItem>
+           
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-Banks/${Bank.id}/edit`}>Edit Bank</Link>
+               href={`/dashboard/bank/${Bank.id}/update`}>Edit Bank</Link>
             </DropdownMenuItem>
 
-            <DropdownMenuItem> 
-              <Link
-               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-Banks/${Bank.id}/Bank-file-update`}>Update Bank Files</Link>
-            </DropdownMenuItem>
+            
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/list-Banks/${Bank.id}/delete`}>Delete</Link>
+              href={`/dashboard/bank/${Bank.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
