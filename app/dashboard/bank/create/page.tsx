@@ -2,11 +2,13 @@
 import Button from '@/components/button/button'
 import Input from '@/components/input/input'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 const CreateBank = () => {
+  const router=useRouter();
   const [IsLoading,setIsLoading]=useState(false)
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues:{
@@ -21,6 +23,7 @@ const CreateBank = () => {
     
   
     axios.post('/api/bank',data).then(()=>{
+    router.push("/dashboard/bank/list")
       toast.success("Bank created successfully")
     })
     .catch((error)=>{
