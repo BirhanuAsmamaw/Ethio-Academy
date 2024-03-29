@@ -259,6 +259,7 @@ model Bank{
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
    name String
+   bankName String
    account String
    logo  File?
 
