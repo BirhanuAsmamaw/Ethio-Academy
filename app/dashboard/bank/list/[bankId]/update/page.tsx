@@ -1,17 +1,19 @@
-const UpdateBank = () => {
-  return ( <div className="min-h-sreen flex w-full justify-center items-center">
-<div className="flex flex-col w-full gap-10">
+import React from 'react'
+import UpdateBankContent from './content'
+import UpdateBankFile from './file'
+import { getBankById } from '@/actions/bank/getBankById'
 
-  <div className=" h-96 w-full bg-white p-2 ">
-    update content
+
+const UpdateBank = async({params}:{params:{bankId:string}}) => {
+  const bank=await getBankById(params.bankId)
+  return (<div className="min-h-screen w-full flex justify-center items-center">
+
+     <div className="w-full lg:w-11/12 xl:px-20 xl:8/12 flex flex-col gap-6 items-center">
+      <UpdateBankContent bank={bank}/>
+      <UpdateBankFile bank={bank}/>
+     </div>
   </div>
-
-  <div className=" h-96 w-full bg-white p-2 ">
-    update file
-  </div>
-</div>
-
-  </div> );
+  )
 }
- 
-export default UpdateBank;
+
+export default UpdateBank
