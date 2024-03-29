@@ -22,7 +22,7 @@ const BannerCreate = () => {
     setIsLoading(true)
     
   
-    axios.post('/api/banner',data).then(()=>{
+    axios.post('/api/hero',data).then(()=>{
     router.push("/dashboard/bank/list")
       toast.success("Bank created successfully")
     })
