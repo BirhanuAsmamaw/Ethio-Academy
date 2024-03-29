@@ -1,4 +1,4 @@
-import { bank_accounts } from "@/lib/bank_account";
+
 import Bank from "./bank";
 import PaymentForm from "./paymentForm";
 import PaymentCourse from "./paymentCourse";

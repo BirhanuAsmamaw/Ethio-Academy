@@ -62,7 +62,7 @@ return null;
                   value={b.bank_name.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    setNewbank({bank_name: b.bank_name,name: b.name,account:b.account,image: b.logo.public_url})
+                    setNewbank({bank_name: b?.bank_name,name: b?.name,account:b?.account,image: b?.logo.public_url})
                     
                     setOpen(false);
                   }}
@@ -88,16 +88,16 @@ return null;
 
 
 {newbank?<div className="border-y-2 bg-white dark:bg-gray-800 rounded-[10px] p-1 border-gray-200 dark:border-gray-700">
-    <h5 className="text-sm text-gray-500 dark:text-gray-400">{newbank.bank_name}</h5>
+    <h5 className="text-sm text-gray-500 dark:text-gray-400">{newbank?.bank_name}</h5>
     <div className="flex gap-2">
       <div className=" overflow-hidden ">
       
-        <Image  width={60} height={60} src={newbank.image} alt="cbe" className="object-contain "/>
+        <Image  width={60} height={60} src={newbank?.image} alt="cbe" className="object-contain "/>
       </div>
 
       <div className="flex flex-col text-gray-500 dark:text-gray-400">
-        <p>{newbank.name}</p>
-        <p className="lining-nums">{newbank.account}</p>
+        <p>{newbank?.name}</p>
+        <p className="lining-nums">{newbank?.account}</p>
       </div>
 
     </div>
