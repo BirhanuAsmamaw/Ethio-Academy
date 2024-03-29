@@ -24,13 +24,13 @@ const Payment = async() => {
   <div className="p-2 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-10 w-full justify-around  pb-20">
 
     <div className="p-4 mt-10  md:m-10 w-full ">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+     
       <Bank 
        banks={banks}
         />
 
       </div>
-    </div>
+    
 
 
     <div className="w-full mt-10 md:mt-20 flex justify-center">
