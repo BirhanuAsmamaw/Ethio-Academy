@@ -1,9 +1,12 @@
 import React from 'react'
+import { BankListClient } from './listClient'
+import { getAllBanks } from '@/actions/bank/getAllBanks'
 
-const BankList = () => {
+const BankList = async() => {
+  const banks=await getAllBanks()
   return (<div className="min-h-screen w-full flex justify-center items-center">
 
-    <h1>banner</h1>
+    <BankListClient banks={banks}/>
   </div>
   )
 }
