@@ -15,7 +15,7 @@ const DeleteBannerClient:React.FC<DeleteBannerClientProps> = ({banner}) => {
   const router=useRouter();
     const onSubmit=()=>{
       setLoading(true);
-      axios.delete(`/api/banner/${banner.id}/delete`).then(async()=>{
+      axios.delete(`/api/hero/${banner.id}/delete`).then(async()=>{
         
         if(banner.logo){
           await RemoveFile(banner.logo.public_key);

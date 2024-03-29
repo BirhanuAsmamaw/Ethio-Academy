@@ -36,7 +36,7 @@ const UpdatBannerContent:React.FC<UpdatebannerContentProps> = ({banner}) => {
     setIsLoading(true)
    
     
-    axios.put(`/api/banner/${banner.id}/update/content`,{...data}).then(()=>{
+    axios.put(`/api/hero/${banner.id}/update/content`,{...data}).then(()=>{
       toast.success("banner updated successfully")
       router.refresh()
     })

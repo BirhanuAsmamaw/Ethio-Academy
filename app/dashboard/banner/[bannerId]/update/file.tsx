@@ -50,7 +50,7 @@ const UpdateFileFile:React.FC<UpdatebannerFileProps> = ({banner}) => {
       public_url:url
     }
 
-   axios.put(`/api/banner/${banner.id}/update/file`,{logo:logoData}).then(()=>{
+   axios.put(`/api/hero/${banner.id}/update/file`,{logo:logoData}).then(()=>{
     setlogoUrl(banner?.logo?banner?.logo.public_url:"");
     setlogoKey(banner?.logo?banner?.logo.public_key:"");
     toast.success("banner logo uploaded successfully")
