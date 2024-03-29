@@ -18,7 +18,7 @@ const SPHMMECPage = async() => {
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title="St.Paul's Hospital Millennium Medicine Entrance COC Exams<">
-      {isCourseDepartment? <></>: <BuyExamButton department={department} trayUrl={'/exams/SPHMMEC/tray'}/>}
+      {isCourseDepartment? <></>: <BuyExamButton department={department} />}
       </Banner>
      </div>
 

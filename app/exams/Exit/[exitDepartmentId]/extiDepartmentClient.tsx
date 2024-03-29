@@ -13,7 +13,7 @@ const ExitDepartmentClient:React.FC<ExitDepartmentClientProps> = ({department,is
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title={`${department.departmentName}  Exit Exams`}>
-     {isCourseDepartment? <></>:<BuyExamButton department={department} trayUrl='/exams/Exit/tray'/>}
+     {isCourseDepartment? <></>:<BuyExamButton department={department} />}
      </Banner>
    
      </div>

@@ -23,7 +23,7 @@ const RemedialExamPage = async() => {
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title='Ethiopian University  Remedial Students  Exams'>
-    {isCourseDepartment? <></>: <BuyExamButton department={department} trayUrl='/exams/Remedial/tray'/>}
+    {isCourseDepartment? <></>: <BuyExamButton department={department} />}
       </Banner>
      </div>
 

@@ -13,7 +13,7 @@ const GATDepartmentClient:React.FC<GATDepartmentClientProps> = ({department,isCo
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title={`${department.departmentName}  GAT Exams`}>
     
-     {isCourseDepartment? <></>: <BuyExamButton department={department} trayUrl='/exams/GAT/tray'/>}
+     {isCourseDepartment? <></>: <BuyExamButton department={department} />}
       </Banner>
      </div>
 

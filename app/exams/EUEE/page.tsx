@@ -25,7 +25,7 @@ const department=await getDepartmentByName("Highschool")
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10 pb-20'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title="Ethiopian University Entrance Exams">
-     {isCoursePDepartment? <></>:<BuyExamButton department={department} trayUrl='/exams/EUEE/tray'/>}
+     {isCoursePDepartment? <></>:<BuyExamButton department={department} />}
      </Banner>
      </div>
 
