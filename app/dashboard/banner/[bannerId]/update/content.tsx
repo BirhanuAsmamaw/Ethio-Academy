@@ -19,8 +19,8 @@ const UpdatBannerContent:React.FC<UpdatebannerContentProps> = ({banner}) => {
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
      
-     title:banner.name,
-      subtitle:banner.account,
+     title:banner.title,
+      subtitle:banner.subtitle,
         
     },
   })
