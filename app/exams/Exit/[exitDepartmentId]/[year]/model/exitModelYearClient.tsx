@@ -7,8 +7,10 @@ interface ExitYearExamsClientPageProps{
     Questions:any[];
     department:any;
 }
-const ExitYearExamsClientPage:React.FC<ExitYearExamsClientPageProps> = ({department,year,Questions}) => {
+const ExitModelYearExamsClientPage:React.FC<ExitYearExamsClientPageProps> = ({department,year,Questions}) => {
  
+
+
   const router=useRouter()
   let currentYear=Number(year)
      const onPreviousYear = (): void => {
@@ -18,7 +20,7 @@ const ExitYearExamsClientPage:React.FC<ExitYearExamsClientPageProps> = ({departm
         } else {
            currentYear=2016
         }
-        router.push(`exams/Exit/${department.id}/${currentYear}?right=true`)
+        router.push(`exams/Exit/${department.id}/${currentYear}/model?right=true`)
        
       };
       
@@ -29,19 +31,24 @@ const ExitYearExamsClientPage:React.FC<ExitYearExamsClientPageProps> = ({departm
         } else {
            currentYear=2015
         }
-        router.push(`exams/Exit/${department.id}/${currentYear}?right=true`)
+        router.push(`exams/Exit/${department.id}/${currentYear}/model?right=true`)
       };
-
-
   
-  return (<QuestionComponent  
-    Questions={Questions}
-    onNext={onNext}
+  
+  
+  
+  
+  
+  
+  
+  return (<QuestionComponent 
+    onNext={onNext} 
     onPrevious={onPreviousYear}
+    Questions={Questions}
     notificationTitle={`There is No ${department.departmentName} Exit Exams in ${year} Year`}
-    notificationUrl={`/exams/Exit/${department.id}`}
+    notificationUrl={`/exams/Exit/${department.id}/model`}
     notificationLabel={`Click Here and See ${department.departmentName} Exit Exams in Others Years`} 
     examsTitle={`${department.departmentName} Exit Exams in ${year}`}/>)
 };
 
-export default ExitYearExamsClientPage;
+export default ExitModelYearExamsClientPage;
