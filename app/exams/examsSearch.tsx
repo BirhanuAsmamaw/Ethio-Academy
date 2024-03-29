@@ -36,7 +36,7 @@ interface ExamsSearchProps{
 const router=useRouter();
   return (<Popover open={open} onOpenChange={setOpen}>
     <div className="flex w-full   md:min-w-[500px] max-w-[800px] shadow-md dark:shadow-black bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] overflow-hidden">
-      <PopoverTrigger asChild >
+      <PopoverTrigger asChild className="p-3" >
         <Button
           variant="ghost"
           role="combobox"
@@ -50,7 +50,7 @@ const router=useRouter();
  
         </Button>
       </PopoverTrigger>
-      <button disabled={isClickedSearch} className="p-2 bg-green-500 hover:bg-green-600" onClick={()=>{
+      <button disabled={isClickedSearch} className="p-4 bg-green-500 hover:bg-green-600" onClick={()=>{
         setClickedSearch(true)
         router.push(`/exams/${examType}/${departmentId}`)}
         
