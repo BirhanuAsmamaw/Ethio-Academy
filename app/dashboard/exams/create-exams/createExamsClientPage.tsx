@@ -172,7 +172,7 @@ const handleChooseSelection = (choose: string, value: string) => {
   return (<div className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
      <div className="w-full">
     <div className="p-4">
-      <Heading title={'Exams Subject'}/>
+      <Heading title={'Write Exam Question'}/>
     </div>
 
   <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-between">
@@ -244,7 +244,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 {/* add exams question */}
 <div className="w-full pt-10">
 
-<div className="p-4 flex w-full gap-10">
+<div className="flex justify-center  w-full gap-10">
   <Select
    onValueChange={
     (value)=>setQuestion({...question,year:value})
@@ -266,11 +266,11 @@ const handleChooseSelection = (choose: string, value: string) => {
 <div className="flex gap-4">
 
 <div className="flex items-center mb-4">
-    <input   onChange={(event) => setModel(event.target.checked)}  id="default-radio-1" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <input   onChange={(event) => setModel(true)}  id="default-radio-1" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
     <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Model?</label>
 </div>
 <div className="flex items-center">
-    <input checked    onChange={(event) => setModel(!event.target.checked)} id="default-radio-2" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <input checked    onChange={(event) => setModel(false)} id="default-radio-2" type="radio" value="" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
     <label htmlFor="default-radio-2" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Not Model?</label>
 </div>
 
