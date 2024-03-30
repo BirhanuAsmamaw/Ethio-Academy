@@ -61,7 +61,7 @@ return null;
               {banks?.map((bank) => (
                 <CommandItem
                   key={bank.id}
-                  value={(bank.bank_name).toLowerCase()}
+                  value={bank.bank_name?.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setNewbank({bank_name: bank?.bank_name,name: bank?.name,account:bank?.account,image: bank?.logo.public_url})
@@ -72,7 +72,7 @@ return null;
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === (bank.bank_name).toLowerCase()? "opacity-100" : "opacity-0"
+                      value === bank.bank_name?.toLowerCase()? "opacity-100" : "opacity-0"
                     )}
                   />
                   {bank.bank_name}
