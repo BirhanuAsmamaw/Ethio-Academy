@@ -57,7 +57,7 @@ const router=useRouter();
       onClick={()=>{
         setClickedSearch(true)
         router.push(`/category/${departmentId}`)}}>
-        {isClickedSearch? <ClipLoader color="#36d7b7" />:<CiSearch className="font-semibold  text-black dark:text-white" size={24}/>}
+        {isClickedSearch? <ClipLoader color="#36d7b7" size={14} />:<CiSearch className="font-semibold  text-black dark:text-white" size={24}/>}
         </button>:""}
       </div>
 
