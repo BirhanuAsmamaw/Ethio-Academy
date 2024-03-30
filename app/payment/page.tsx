@@ -26,7 +26,7 @@ const Payment = async() => {
     <div className="p-4 mt-10  md:m-10 w-full ">
      
       <Bank 
-       banks={banks}
+       banks={banks ||null}
         />
 
       </div>
