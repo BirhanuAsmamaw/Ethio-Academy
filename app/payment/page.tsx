@@ -21,17 +21,16 @@ const Payment = async() => {
   });
   return ( <>
   <Navbar/>
-  <div className="p-2 mt-10 flex flex-col gap-10 w-full justify-center pb-20">
+  <div className="p-2 pt-10 flex flex-col gap-10 w-full justify-center pb-20">
 
     <div className="p-4  w-full flex justify-center ">
       <div className="w-full md:w-[400px]">
-
-      </div>
+     
      
       <Bank 
        banks={banks ||null}
         />
-
+ </div>
       </div>
     
 
