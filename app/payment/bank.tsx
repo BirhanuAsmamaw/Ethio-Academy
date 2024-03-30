@@ -34,7 +34,7 @@ return null;
 
 <Popover open={open} onOpenChange={setOpen} >
  
-      <PopoverTrigger asChild  className="p-2 border bg-slate-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded-full">
+      <PopoverTrigger asChild  className="p-2 border w-full md:w-[400px] bg-slate-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded-full">
         <Button
           variant="ghost"
           role="combobox"
@@ -42,7 +42,7 @@ return null;
           
           className=" w-full  flex  items-center justify-between"
         >
-          <p className="text-lg font-semibold">{value
+          <p className="text-[16px] ">{value
           
             ? value
             : "Selected the Bank you Need to pay"}</p>
