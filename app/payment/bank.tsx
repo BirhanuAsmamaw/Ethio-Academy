@@ -5,7 +5,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 
 
@@ -22,7 +23,8 @@ const Bank:React.FC<BankProps>  = ({banks}) => {
 const router=useRouter();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
-  const [newbank, setNewbank] = useState<any>(null);
+  const [newbank, setNewbank] = useState<any|null>(null);
+
   if(!banks){
 router.back()
 return null;
