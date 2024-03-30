@@ -43,7 +43,7 @@ const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments,exams}) => 
         
          <div className="text-sm flex hover:no-underline   text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"> 
         
-         <BiCategory className="pt-1" size={20}/> 
+         <BiCategory className="pt-3" size={20}/> 
          <CategorySearch departments={departments || null}/>
          </div>
 
