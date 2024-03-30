@@ -58,13 +58,13 @@ return null;
           <CommandList>
             <CommandEmpty>No Bank  found.</CommandEmpty>
             <CommandGroup>
-              {banks?.map((b:any) => (
+              {banks?.map((bank) => (
                 <CommandItem
-                  key={b.id}
-                  value={(b?.bank_name).toLowerCase()}
+                  key={bank.id}
+                  value={(bank.bank_name).toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    setNewbank({bank_name: b?.bank_name,name: b?.name,account:b?.account,image: b?.logo.public_url})
+                    setNewbank({bank_name: bank?.bank_name,name: bank?.name,account:bank?.account,image: bank?.logo.public_url})
                     
                     setOpen(false);
                   }}
@@ -72,10 +72,10 @@ return null;
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === (b?.bank_name).toLowerCase()? "opacity-100" : "opacity-0"
+                      value === (bank.bank_name).toLowerCase()? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {b.bank_name}
+                  {bank.bank_name}
                 </CommandItem>
               ))}
             </CommandGroup>
