@@ -75,9 +75,7 @@ const onReject=()=>{
 
   return (<div className="w-full flex flex-col justify-center items-center gap-10">
 
-  <div className="">
-    <Image height={600} width={400} src={payment?.recit.public_url|| ''} alt="payment reciept"/>
-  </div>
+  
   
   
   
