@@ -3,7 +3,7 @@ import { CiSearch } from "react-icons/ci";
 import { IoChevronDown } from "react-icons/io5";
 import * as React from "react";
 import { Check} from "lucide-react";
-
+import {ClipLoader} from "react-spinners"
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,6 +30,7 @@ interface CategorySearchProps{
 
  const CategorySearch:React.FC<CategorySearchProps>=({departments}) =>{
   const [open, setOpen] = useState(false);
+  const [isClickedSearch, setClickedSearch] = useState(false);
   const [value, setValue] = useState("");
   const [departmentId, setDepartmentId] = useState("");
 const router=useRouter();
@@ -51,10 +52,18 @@ const router=useRouter();
  
         </Button>
       </PopoverTrigger>
-      {value?<button disabled={value? false:true} className="p-2 bg-blue-500 hover:bg-blue-600 dark:bg-green-500 hover:dark:bg-green-400 rounded-r-[5px]" onClick={()=>{router.push(`/category/${departmentId}`)}}>
-        <CiSearch className="font-semibold  text-black dark:text-white" size={24}/>
+      {value?
+      <button disabled={isClickedSearch} className="p-2 bg-blue-500 hover:bg-blue-600 dark:bg-green-500 hover:dark:bg-green-400 rounded-r-[5px]" 
+      onClick={()=>{
+        setClickedSearch(true)
+        router.push(`/category/${departmentId}`)}}>
+        {isClickedSearch? <ClipLoader color="#36d7b7" />:<CiSearch className="font-semibold  text-black dark:text-white" size={24}/>}
         </button>:""}
       </div>
+
+
+
+
       <PopoverContent className="w-full p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
           <CommandInput  placeholder="Search your department..." />
