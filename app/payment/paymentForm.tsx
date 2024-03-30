@@ -138,7 +138,7 @@ const departmentData={
 
 
 
-  return ( <div className="">
+  return ( <div className="py-10">
   
 
 <form className="max-w-md mx-auto">
