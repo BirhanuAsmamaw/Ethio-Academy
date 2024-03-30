@@ -55,7 +55,7 @@ const router=useRouter();
         router.push(`/exams/${examType}/${departmentId}`)}
         
         }>
-          {isClickedSearch? <BeatLoader color="#36d7b7" size={20} />:<CiSearch className="text-white font-bold" size={24}/>}
+          {isClickedSearch? <BeatLoader color="#36d7b7" size={18} />:<CiSearch className="text-white font-bold" size={24}/>}
           </button>
       </div>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">

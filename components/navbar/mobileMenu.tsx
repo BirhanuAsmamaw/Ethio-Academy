@@ -50,7 +50,7 @@ const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments,exams}) => 
          <Accordion type="single" collapsible className="w-full  ">
       <AccordionItem value="item-3" className="hover:no-underline border-none">
         <AccordionTrigger className="hover:no-underline border-none"><div className="text-sm flex hover:no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-        <PiExam className="mt-3" size={20}/>  <p>Exams</p>
+        <PiExam className="pt-1" size={20}/>  <p>Exams</p>
          </div></AccordionTrigger>
         <AccordionContent>
 
