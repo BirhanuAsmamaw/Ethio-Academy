@@ -29,12 +29,12 @@ const router=useRouter();
 router.back()
 return null;
   }
-  return ( <div className="space-y-10">
+  return ( <div className="space-y-10 m-2 w-full md:w-[400px]">
 
 
 <Popover open={open} onOpenChange={setOpen} >
  
-      <PopoverTrigger asChild  className="p-2 border w-full md:w-[400px] bg-slate-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded-full">
+      <PopoverTrigger asChild  className="p-2 border  bg-slate-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded-full">
         <Button
           variant="ghost"
           role="combobox"
