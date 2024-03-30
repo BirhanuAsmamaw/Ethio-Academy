@@ -42,7 +42,7 @@ return null;
           
           className=" w-full  flex  items-center justify-between"
         >
-          <p>{value
+          <p className="text-lg font-semibold">{value
           
             ? value
             : "Selected the Bank you Need to pay"}</p>
