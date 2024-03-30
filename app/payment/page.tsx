@@ -23,7 +23,10 @@ const Payment = async() => {
   <Navbar/>
   <div className="p-2 flex flex-col gap-10 w-full justify-center pb-20">
 
-    <div className="p-4 mt-10  w-full md:w-[400px]">
+    <div className="p-4  w-full flex justify-center ">
+      <div className="w-full md:w-[400px]">
+
+      </div>
      
       <Bank 
        banks={banks ||null}
@@ -33,7 +36,7 @@ const Payment = async() => {
     
 
 
-    <div className="w-full mt-10 md:mt-20 flex justify-center">
+    <div className="w-full   flex justify-center">
       <div className="flex flex-col gap-10">
         <PaymentCourse/>
       <PaymentForm admins={admins||[]} user={user} banks={banks|| null}/>
