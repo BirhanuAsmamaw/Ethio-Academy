@@ -8,14 +8,14 @@ const body=await req.json();
 
 const {
   department,
-  recit,
+  
    bank,
    courses,
    transaction,
    totalPrice,
 }=body;
 
-if (!transaction || !bank || !totalPrice ||  !recit ){
+if (!transaction || !bank || !totalPrice ){
   return NextResponse.json({
     status: false,
     message:"Invalid payment parameters"
@@ -37,7 +37,7 @@ if (!user){
 
 const newPayment = await prisma.payment.create({
   data:{
-    recit: recit,
+    
     transaction: transaction,
     totalPrice: parseFloat(totalPrice),
     bank:bank,

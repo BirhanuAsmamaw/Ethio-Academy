@@ -36,7 +36,7 @@ const Payment = async() => {
     <div className="w-full mt-10 md:mt-20 flex justify-center">
       <div className="flex flex-col gap-10">
         <PaymentCourse/>
-      <PaymentForm admins={admins||[]} user={user}/>
+      <PaymentForm admins={admins||[]} user={user} banks={banks|| null}/>
       </div>
     </div>
   </div> </>);

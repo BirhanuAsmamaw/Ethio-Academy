@@ -92,7 +92,7 @@ return null;
 
 
 {newbank?<div className="border-y-2 bg-white dark:bg-gray-800 rounded-[10px] p-1 border-gray-200 dark:border-gray-700">
-  <h1 className="text-lg font-semibold px-4 pb-10">Make payment on This Account:</h1>
+  <h1 className="text-lg font-semibold px-4 pb-6 pt-2">Make payment on This Account</h1>
     <h5 className="text-sm text-gray-500 dark:text-gray-400">{newbank?.bank_name}</h5>
     <div className="flex gap-2">
       <div className=" overflow-hidden ">
