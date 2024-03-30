@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
+import { IoSearchOutline } from "react-icons/io5";
 import { useState } from "react";
 
 
@@ -34,7 +34,7 @@ return null;
 
 <Popover open={open} onOpenChange={setOpen} >
  
-      <PopoverTrigger asChild  className="p-2 border border-gray-300 dark:border-gray-600 rounded-full">
+      <PopoverTrigger asChild  className="p-2 border bg-slate-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded-full">
         <Button
           variant="ghost"
           role="combobox"
@@ -46,6 +46,7 @@ return null;
           
             ? value
             : "Selected the Bank you Need to pay"}</p>
+            <IoSearchOutline size={24}/>
             
  
         </Button>
