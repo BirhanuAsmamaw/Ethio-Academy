@@ -23,7 +23,7 @@ const Payment = async() => {
   <Navbar/>
   <div className="p-2 flex flex-col gap-10 w-full justify-center pb-20">
 
-    <div className="p-4 mt-10  md:m-10 w-full ">
+    <div className="p-4 mt-10  w-full md:w-[400px]">
      
       <Bank 
        banks={banks ||null}

@@ -29,7 +29,7 @@ const router=useRouter();
 router.back()
 return null;
   }
-  return ( <div className="space-y-10 m-2 w-full md:w-[400px]">
+  return ( <div className="space-y-10 m-2 w-full ">
 
 
 <Popover open={open} onOpenChange={setOpen} >
