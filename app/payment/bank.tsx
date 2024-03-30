@@ -58,7 +58,7 @@ return null;
           <CommandList>
             <CommandEmpty>No Bank  found.</CommandEmpty>
             <CommandGroup>
-              {banks?.map((b) => (
+              {banks?.map((b:any) => (
                 <CommandItem
                   key={b.id}
                   value={b.bank_name.toLowerCase()}
