@@ -4,7 +4,6 @@ import Button from "@/components/button/button";
 import Input from "@/components/input/input";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useCart } from "@/hooks/use.cart";
-import { bank_accounts } from "@/lib/bank_account";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -71,7 +70,6 @@ useEffect(()=>{
     customers:admins
 };}
 
-
 if (data.department&&!data.courses?.length) {
   notificationData = {
     url:`/dashboard/approved-courses`,
@@ -82,7 +80,7 @@ if (data.department&&!data.courses?.length) {
 };}
 
 
-if (data.department&&data.courses) {
+if (data.courses&&data.department) {
   notificationData = {
     url:`/dashboard/approved-courses`,
     type:'Success',
@@ -101,6 +99,8 @@ const departmentData={
    console.log("Payments data",payment);
     axios.post('/api/payment',payment).then(()=>{
       toast.success("Thank you! Paid successfully")
+      axios.post('/api/notification',notificationData);
+    router.push('/mycourses')
     })
     .catch((error)=>{
       toast.error(error.message)
@@ -109,10 +109,8 @@ const departmentData={
       setIsLoading(false)
     });
     removeAllFromCart()
-    axios.post('/api/notification',notificationData);
-    router.push('/mycourses')
+    
 
-    console.log("Payments data",payment);
     
   
 
