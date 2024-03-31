@@ -72,7 +72,7 @@ useEffect(()=>{
 };}
 
 
-if (data.department&&!data.courses) {
+if (data.department&&!data.courses?.length) {
   notificationData = {
     url:`/dashboard/approved-courses`,
     type:'Success',
