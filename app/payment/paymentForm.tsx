@@ -59,35 +59,18 @@ useEffect(()=>{
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
    
-  let notificationData = {}
-
-  if (data.courses&&!data.department) {
-  notificationData = {
-    url:`/dashboard/approved-courses`,
-    type:'Success',
-    title: `🌟 Payment Success!`,
-    message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:0} exciting courses.`,
-    customers:admins
-};}
-
-if (data.department&&!data.courses?.length) {
-  notificationData = {
-    url:`/dashboard/approved-courses`,
-    type:'Success',
-    title: `🌟 Payment Success!`,
-    message: `🎉 ${user.name} has successfully purchased all ${department.exam.examType} exams.`,
-    customers:admins
-};}
-
-
-if (data.courses&&data.department) {
-  notificationData = {
-    url:`/dashboard/approved-courses`,
-    type:'Success',
-    title: `🌟 Payment Success!`,
-    message: `🎉 ${user.name} has successfully purchased ${courses? courses.length:0} courses and all ${department.exam.examType} exams.`,
-    customers:admins
-};}
+    const notificationData = {
+      url:`/dashboard/approved-courses`,
+      type:'Success',
+      title: `🌟 Payment Success!`,
+      message: `🎉 ${user.name} 
+      has successfully purchased 
+      ${courses?.length?`${courses? courses.length:0} exciting courses.`:''},
+      ${department?`${department?.departmentName} exciting Exam.`:''}
+      `,
+      customers:admins
+  };
+  
 const departmentData={
   id:department?.id,
   departmentName :department?.departmentName,
