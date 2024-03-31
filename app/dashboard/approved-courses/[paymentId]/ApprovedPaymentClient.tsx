@@ -28,7 +28,7 @@ const customer={
   const notificationSuccess = {
     url:`/mycourses`,
     type:'Success',
-    title: `🌟 Your Course approved Succeffully!`,
+    title: `🌟 Your  ${payment?.department? `${payment?.department?.departmentName} Exam`:'Course '} approved Succeffully!`,
     message: `🎉 ${payment.customer.name}; please start learning Your Course!`,
     customers:[customer]
 };
@@ -36,12 +36,10 @@ const customer={
 const notificationReject= {
     url:`/mycourses`,
     type:'Danger',
-    title: `Sorry!!, Your Course not approved`,
-    message: `🎉 ${payment.customer.name};your payment is not correct; please call me at 0930793119`,
+    title: `Sorry!!, The  ${payment?.department? `${payment?.department?.departmentName} Exam`:'Course '} not approved`,
+    message: `🎉 ${`${payment.customer.name};your payment is not correct; please call me at 0930793119`}`,
     customers:[customer]
 };
-
-
 
 const onApproved=()=>{
 
@@ -107,6 +105,16 @@ const onReject=()=>{
       <dt className="font-medium text-gray-900 dark:text-white">Name</dt>
       <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment.customer.name}</dd>
     </div>
+
+    {payment?.department?.departmentName?<div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+      <dt className="font-medium text-gray-900 dark:text-white">Exam</dt>
+      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment?.department?.departmentName} exam</dd>
+    </div>:""}
+
+    {payment?.department?.price?<div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+      <dt className="font-medium text-gray-900 dark:text-white">Exam Price</dt>
+      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment?.department?.price} ETB</dd>
+    </div>:""}
 
     <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt className="font-medium text-gray-900 dark:text-white">Bank</dt>
