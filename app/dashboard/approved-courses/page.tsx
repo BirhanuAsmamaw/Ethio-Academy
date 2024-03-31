@@ -15,7 +15,9 @@ const ApprovedCourses = async() => {
       email: payment.customer.email,
       createdAt:payment.createdAt,
       courses : payment?.courses,
-      exam: payment?.department
+      exam: payment?.department,
+      department: payment?.department?.departmentName,
+      price: payment?.department?.price
       
     }
   })

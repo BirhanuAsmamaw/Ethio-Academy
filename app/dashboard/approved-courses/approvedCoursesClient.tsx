@@ -65,6 +65,8 @@ interface Payment {
   createdAt:any;
   courses? : Course[] | null;
   exam?:string;
+  department?:string;
+  price?:number;
 }
 
 
@@ -137,6 +139,38 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
 
+  {
+    accessorKey: "department",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Exam Type
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("department")}</div>,
+  },
+
+  {
+    accessorKey: "price",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+         Department Price(ETB)
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("price")}</div>,
+  },
+
 
 
   {
@@ -172,7 +206,7 @@ export const columns: ColumnDef<Payment>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-         Price(ETB)
+         Course Price(ETB)
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )

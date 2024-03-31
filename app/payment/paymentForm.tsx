@@ -62,7 +62,7 @@ useEffect(()=>{
    
   let notificationData = {}
 
-  if (data.courses) {
+  if (data.courses&&!data.department) {
   notificationData = {
     url:`/dashboard/approved-courses`,
     type:'Success',
@@ -72,7 +72,7 @@ useEffect(()=>{
 };}
 
 
-if (data.department) {
+if (data.department&&!data.courses) {
   notificationData = {
     url:`/dashboard/approved-courses`,
     type:'Success',
