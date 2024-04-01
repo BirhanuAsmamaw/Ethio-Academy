@@ -169,23 +169,19 @@ const handleChooseSelection = (choose: string, value: string) => {
   }));
 };
 
-useEffect(()=>{
-
-
-    const Ex=exams?exams?.filter((exam)=>exam.id==examIdvalue):null
-    const dep=departments?departments?.filter((department:any)=>department.id==departmentIdvalue):null;
-  setQdata((prev:any)=>{
-return prev?{...prev,type:Ex?Ex[0]?.url:"EUEE", 
-  department:dep?dep[0]?.url:"Highschool", 
-  subject:subjectValue,
-  year:question.year,}:{type:Ex?Ex[0]?.url:"EUEE", 
-  department:dep?dep[0]?.url:"Highschool", 
-  subject:subjectValue,
-  year:question.year,}
-  })
-
-},[exams, departments, subjectValue, question, examIdvalue, departmentIdvalue]);
-
+useEffect(() => {
+  if (exams && departments && subjectValue && question && examIdvalue && departmentIdvalue) {
+    const Ex = exams.filter(exam => exam.id === examIdvalue);
+    const dep = departments.departments.filter((department:any) => department.id === departmentIdvalue);
+    setQdata((prev:any) => ({
+      ...prev,
+      type: Ex.length > 0 ? Ex[0].url : "EUEE",
+      department: dep.length > 0 ? dep[0].url : "Highschool",
+      subject: subjectValue,
+      year: question.year,
+    }));
+  }
+}, [exams, departments, subjectValue, question, examIdvalue, departmentIdvalue]);
 
 
   return (<div className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
