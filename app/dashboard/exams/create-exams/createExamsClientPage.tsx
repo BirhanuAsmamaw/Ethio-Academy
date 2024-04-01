@@ -183,7 +183,7 @@ return {...prev,type:Ex[0]?.url,
 
 },[exams, departments, subjectValue, question, examIdvalue, departmentIdvalue]);
 
-
+console.log("Question Data:-",qdata)
 
   return (<div className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
      <div className="flex flex-col gap-10 lg:gap-20">
@@ -372,7 +372,7 @@ onClick={onSubmit}
 </div>
 </div>
 
-
+<div className="">exams type:{qdata.type}</div>
 
  {/* questions list */}
 {qdata?<div className="flex justify-center w-full">
