@@ -47,7 +47,7 @@ const ExitModelYearExamsClientPage:React.FC<ExitYearExamsClientPageProps> = ({de
     Questions={Questions}
     notificationTitle={`There is No ${department.departmentName} Exit Exams in ${year} Year`}
     notificationUrl={`/exams/Exit/${department.id}/model`}
-    notificationLabel={`Click Here and See ${department.departmentName} Exit Exams in Others Years`} 
+    notificationLabel={`Click Here and See ${department.url} Exit Exams in Others Years`} 
     examsTitle={`${department.departmentName} Exit Exams in ${year}`}/>)
 };
 

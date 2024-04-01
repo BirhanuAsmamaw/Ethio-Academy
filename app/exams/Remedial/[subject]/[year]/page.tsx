@@ -14,13 +14,13 @@ const RemedialYearExamsPage = async({params}:{
 }) => {
   
   const user=await getCurrentUser();
-  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName==="Highschool"&&payedCourse?.status);
+  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName==="Remedial"&&payedCourse?.status);
 
-const department=await getDepartmentByName("Freshman")
+const department=await getDepartmentByName("Remedial")
 
-  const examQuestions=await getQuestionsByCategory("Remedial","Freshman",params.year,params.subject);
+  const examQuestions=await getQuestionsByCategory("Remedial","Remedial",params.year,params.subject);
   return (<><Navbar/>
-     {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All COC Exam Now!"} />}
+     {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Remedial Exam Now!"} />}
   <RemedialYearExamsClientPage subject={params.subject} year={params.year} Questions={examQuestions}/>
   </>)
  

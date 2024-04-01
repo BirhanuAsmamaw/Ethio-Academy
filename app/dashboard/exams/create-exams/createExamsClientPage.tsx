@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
+import QuestionsList from './questionsList';
 
  
 interface  CreateExamsClientProps{
@@ -170,6 +171,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 
 
   return (<div className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
+     <div className="flex flex-col gap-10 lg:gap-20">
      <div className="w-full">
     <div className="p-4">
       <Heading title={'Write Exam Question'}/>
@@ -355,6 +357,12 @@ onClick={onSubmit}
 </div>
 </div>
 
+
+
+ {/* questions list */}
+
+ <QuestionsList type={'EUEE'} department={'Highschool'} year={`2015`} subject={'Biology'}/>
+     </div>
   </div>
  
   )

@@ -15,7 +15,7 @@ const ExitYearExamsPage = async({params}:{
 }) => {
   
   const user=await getCurrentUser();
-  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===params.exitDepartmentId&&payedCourse?.status);
+  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.url===params.exitDepartmentId&&payedCourse?.status);
 
 const department=await getDepartmentById(params.exitDepartmentId)
   const examQuestions=await getQuestionsByCategory("Exit",department?.departmentName||"",params.year);
