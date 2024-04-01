@@ -372,7 +372,7 @@ onClick={onSubmit}
 </div>
 </div>
 
-<div className="">exams type:{qdata.type}</div>
+<div className="">exams type:{qdata? qdata?.type:"No Questions"}</div>
 
  {/* questions list */}
 {qdata?<div className="flex justify-center w-full">
