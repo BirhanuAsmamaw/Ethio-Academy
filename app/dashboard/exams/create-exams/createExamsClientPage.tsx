@@ -172,14 +172,14 @@ const handleChooseSelection = (choose: string, value: string) => {
 useEffect(()=>{
 
 
-    const Ex=exams?exams?.filter((exam)=>exam.id==examIdvalue):[]
-    const dep=departments?departments?.filter((department:any)=>department.id==departmentIdvalue):[];
+    const Ex=exams?exams?.filter((exam)=>exam.id==examIdvalue):null
+    const dep=departments?departments?.filter((department:any)=>department.id==departmentIdvalue):null;
   setQdata((prev:any)=>{
-return prev?{...prev,type:Ex.length?Ex[0]?.url:"EUEE", 
-  department:dep.length?dep[0]?.url:"Highschool", 
+return prev?{...prev,type:Ex?Ex[0]?.url:"EUEE", 
+  department:dep?dep[0]?.url:"Highschool", 
   subject:subjectValue,
-  year:question.year,}:{type:Ex.length?Ex[0]?.url:"EUEE", 
-  department:dep.length?dep[0]?.url:"Highschool", 
+  year:question.year,}:{type:Ex?Ex[0]?.url:"EUEE", 
+  department:dep?dep[0]?.url:"Highschool", 
   subject:subjectValue,
   year:question.year,}
   })
