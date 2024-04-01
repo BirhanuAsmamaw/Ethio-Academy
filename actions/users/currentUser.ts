@@ -17,7 +17,15 @@ export async function getCurrentUser() {
     where:{email:session.user.email},
     include:{
       createdCourses:true,
-     payedCourses:true
+     payedCourses:{
+      include:{
+        department:{
+          include:{
+            exam:true
+          }
+        }
+      }
+     }
     }
   })
   if(!currentUser){

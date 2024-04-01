@@ -7,7 +7,7 @@ export async function POST(req:Request){
 const body=await req.json();
 
 const {
-  department,
+  departmentId,
   
    bank,
    courses,
@@ -43,7 +43,7 @@ const newPayment = await prisma.payment.create({
     bank:bank,
     courses: courses,
     customerId:user.id,
-    department:department
+   departmentId:departmentId
 
   }
 })

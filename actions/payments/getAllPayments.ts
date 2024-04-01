@@ -4,7 +4,8 @@ export async function getAllPayments(){
   try{
     const payments = await prisma.payment.findMany({
       include:{
-        customer:true
+        customer:true,
+        department:true
       }
     });
     

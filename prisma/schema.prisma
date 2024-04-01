@@ -172,11 +172,14 @@ model Payment{
    bank        String
    transaction String      @unique
    totalPrice       Float
-   department    PaymentDepartmentExam?
+  
 
   courses      PaymentCourse[] 
    customer User@relation(fields: [customerId], references: [id], onDelete: Cascade)
    customerId String @db.ObjectId
+
+  department Department? @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+   departmentId String? @db.ObjectId
    status  Boolean  @default(false)
 }
 
@@ -239,6 +242,7 @@ model Department{
    cover File?
    url String  @unique
    questions Question[]
+   payments  Payment[]
    subject  Subject[]
 }
 

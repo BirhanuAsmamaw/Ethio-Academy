@@ -32,7 +32,7 @@ const courses=carts?.map((course)=>{
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-      department:null,
+      departmentId:null,
     
      bank:selectedBank,
      courses:courses,
@@ -73,12 +73,11 @@ useEffect(()=>{
   
 const departmentData={
   id:department?.id,
-  departmentName :department?.departmentName,
-  price:department?.price
+  
   
 }
   const payment={...data, bank:selectedBank,
-    courses:courses,department:department?departmentData:null}
+    courses:courses,departmentId:department?departmentData.id:null}
    console.log("Payments data",payment);
     axios.post('/api/payment',payment).then(()=>{
       toast.success("Thank you! Paid successfully")

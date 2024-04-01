@@ -17,7 +17,7 @@ const ApprovedCourses = async() => {
       courses : payment?.courses,
       exam: payment?.department,
       department: payment?.department?.departmentName,
-      price: payment?.department?.price
+      price: 100
       
     }
   })

@@ -12,11 +12,7 @@ const MyCourses = async() => {
 
 
 const user=await getCurrentUser();
-const getDepartment=async(id:string)=>{
 
-    return await getDepartmentById(id)
-
-}
  
   return ( <>
   <Navbar/>
@@ -103,7 +99,7 @@ rounded-[10px] flex flex-col
 
 
 
-  {user?.payedCourses[0].department?<div className="overflow-x-auto p-2 ">
+  {user?.payedCourses[0].departmentId?<div className="overflow-x-auto p-2 ">
   <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -120,17 +116,17 @@ rounded-[10px] flex flex-col
             <tbody>
                
 
-{user?.payedCourses.map(async (exam)=>{
+{user?.payedCourses.map((exam)=>{
 
-    const depmnt=await getDepartment(exam.id);
+   
 
     return (<tr key={exam.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-       {depmnt?.exam?.examType}
+       {exam.department?.departmentName}
     </th>
     
     <td className="px-6 py-4 text-right">
-       {exam.status? <Link href={`/exams/${depmnt?.exam?.url}/${exam.id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Start</Link>:<p>Pending...</p>}
+       {exam.status? <Link href={`/exams/${exam.department?.exam?.url}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Start</Link>:<p>Pending...</p>}
     </td>
 </tr>)
 

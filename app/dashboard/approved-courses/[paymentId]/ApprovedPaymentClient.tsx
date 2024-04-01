@@ -111,9 +111,9 @@ const onReject=()=>{
       <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment?.department?.departmentName} exam</dd>
     </div>:""}
 
-    {payment?.department?.price?<div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+    {payment?.department?<div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt className="font-medium text-gray-900 dark:text-white">Exam Price</dt>
-      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">{payment?.department?.price} ETB</dd>
+      <dd className="text-gray-700 sm:col-span-2 dark:text-gray-200">100 ETB</dd>
     </div>:""}
 
     <div className="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
