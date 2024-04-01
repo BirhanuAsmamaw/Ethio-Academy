@@ -172,8 +172,8 @@ const handleChooseSelection = (choose: string, value: string) => {
 useEffect(()=>{
 
 
-    const Ex=exams.filter((exam)=>exam.id==examIdvalue)
-    const dep=departments.departments.filter((department:any)=>department.id==departmentIdvalue)
+    const Ex=exams?.filter((exam)=>exam.id==examIdvalue)
+    const dep=departments?.filter((department:any)=>department.id==departmentIdvalue)
   setQdata((prev:any)=>{
 return {...prev,type:Ex[0]?.url, 
   department:dep[0]?.url, 
