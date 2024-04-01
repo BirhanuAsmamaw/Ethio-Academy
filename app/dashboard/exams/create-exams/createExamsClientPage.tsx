@@ -175,11 +175,11 @@ useEffect(()=>{
     const Ex=exams?exams?.filter((exam)=>exam.id==examIdvalue):[]
     const dep=departments?departments?.filter((department:any)=>department.id==departmentIdvalue):[];
   setQdata((prev:any)=>{
-return prev?{...prev,type:Ex.length?Ex[0]?.url:"", 
-  department:dep.length?dep[0]?.url:"", 
+return prev?{...prev,type:Ex.length?Ex[0]?.url:"EUEE", 
+  department:dep.length?dep[0]?.url:"Highschool", 
   subject:subjectValue,
-  year:question.year,}:{type:Ex.length?Ex[0]?.url:"", 
-  department:dep.length?dep[0]?.url:"", 
+  year:question.year,}:{type:Ex.length?Ex[0]?.url:"EUEE", 
+  department:dep.length?dep[0]?.url:"Highschool", 
   subject:subjectValue,
   year:question.year,}
   })
