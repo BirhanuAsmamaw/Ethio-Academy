@@ -125,6 +125,8 @@ model Question{
    department    Department?     @relation( fields: [departmentId], references: [id], onDelete: Cascade)
    departmentId String? @db.ObjectId
    title String
+   title_two String? 
+   q_image File?
    chooses Choose[]
    year String
    explanation String?

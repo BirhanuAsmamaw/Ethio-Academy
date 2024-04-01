@@ -5,12 +5,18 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { getDepartmentById } from "@/actions/departments/getDepartmentById";
 
 
 const MyCourses = async() => {
 
 
 const user=await getCurrentUser();
+const getDepartment=async(id:string)=>{
+
+    return await getDepartmentById(id)
+
+}
  
   return ( <>
   <Navbar/>
@@ -114,14 +120,17 @@ rounded-[10px] flex flex-col
             <tbody>
                
 
-{user?.payedCourses.map((exam)=>{
+{user?.payedCourses.map(async (exam)=>{
+
+    const depmnt=await getDepartment(exam.id);
+
     return (<tr key={exam.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-       {exam?.department?.departmentName}
+       {depmnt?.exam?.examType}
     </th>
     
     <td className="px-6 py-4 text-right">
-        <Link href={`/exam/${exam.id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Start</Link>
+       {exam.status? <Link href={`/exams/${depmnt?.exam?.url}/${exam.id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Start</Link>:<p>Pending...</p>}
     </td>
 </tr>)
 
