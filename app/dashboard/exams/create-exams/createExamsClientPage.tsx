@@ -171,17 +171,22 @@ const handleChooseSelection = (choose: string, value: string) => {
 
 useEffect(()=>{
 
-if(exams?.length && departments?.length){
-    const Ex=exams?.filter((exam)=>exam.id==examIdvalue)
-    const dep=departments?.filter((department:any)=>department.id==departmentIdvalue)
-  setQdata({type:Ex[0]?.url, 
-    department:dep[0]?.url, 
-    subject:subjectValue,
-    year:question.year,})}
+
+    const Ex=exams?exams?.filter((exam)=>exam.id==examIdvalue):[]
+    const dep=departments?departments?.filter((department:any)=>department.id==departmentIdvalue):[];
+  setQdata((prev:any)=>{
+return prev?{...prev,type:Ex.length?Ex[0]?.url:"", 
+  department:dep.length?dep[0]?.url:"", 
+  subject:subjectValue,
+  year:question.year,}:{type:Ex.length?Ex[0]?.url:"", 
+  department:dep.length?dep[0]?.url:"", 
+  subject:subjectValue,
+  year:question.year,}
+  })
 
 },[exams, departments, subjectValue, question, examIdvalue, departmentIdvalue]);
 
-console.log("Question Data:-",qdata)
+
 
   return (<div className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
      <div className="flex flex-col gap-10 lg:gap-20">
@@ -370,7 +375,7 @@ onClick={onSubmit}
 </div>
 </div>
 
-<div className="">exams type:{qdata? qdata?.type:"No Questions"}</div>
+
 
  {/* questions list */}
 {qdata?<div className="flex justify-center w-full">
