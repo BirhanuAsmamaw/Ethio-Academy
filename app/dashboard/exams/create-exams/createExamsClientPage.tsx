@@ -24,6 +24,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({exams}) => {
   const [departments,setDepartments]=useState<any|null>(null)
   const [subjects,setSubjects]=useState<any|null>(null)
   const [subjectValue,setSubjectValue]=useState<string>("")
+  const [qdata,setQdata]=useState<any|null>(null)
 
 
   useEffect(()=>{
@@ -167,6 +168,20 @@ const handleChooseSelection = (choose: string, value: string) => {
     }
   }));
 };
+
+useEffect(()=>{
+
+
+    const Ex=exams.filter((exam)=>exam.id==examIdvalue)
+    const dep=departments.departments.filter((department:any)=>department.id==departmentIdvalue)
+  setQdata((prev:any)=>{
+return {...prev,type:Ex[0]?.url, 
+  department:dep[0]?.url, 
+  subject:subjectValue,
+  year:question.year,}
+  })
+
+},[exams, departments, subjectValue, question, examIdvalue, departmentIdvalue]);
 
 
 
@@ -360,8 +375,10 @@ onClick={onSubmit}
 
 
  {/* questions list */}
+{qdata?<div className="flex justify-center w-full">
+<QuestionsList type={qdata.type} department={qdata.department} year={qdata.year} subject={qdata.subject}/>
+</div>:""}
 
- <QuestionsList type={'EUEE'} department={'Highschool'} year={`2015`} subject={'Biology'}/>
      </div>
   </div>
  
