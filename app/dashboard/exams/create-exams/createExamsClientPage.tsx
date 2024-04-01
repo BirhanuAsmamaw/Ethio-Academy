@@ -378,7 +378,7 @@ onClick={onSubmit}
 
 
  {/* questions list */}
-{qdata?<div className="flex justify-center w-full">
+{(qdata&&qdata?.type&&qdata?.department&&qdata.year&&qdata.subject)?<div className="flex justify-center w-full">
 <QuestionsList type={qdata.type} department={qdata.department} year={qdata.year} subject={qdata.subject}/>
 </div>:""}
 
