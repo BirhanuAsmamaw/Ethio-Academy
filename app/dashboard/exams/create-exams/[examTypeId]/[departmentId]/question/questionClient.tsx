@@ -292,7 +292,11 @@ onClick={onSubmit}
 
 
 
-
+<div className="">
+  {questionsData&&questionsData.map((question )=>{
+    return <div className="" key={question.id}>1{question.title}</div>
+  })}
+</div>
 
      </div>
   </div>
