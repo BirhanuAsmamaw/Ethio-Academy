@@ -11,7 +11,7 @@ const DashboardYearExamsCard:React.FC<DashboardYearExamsCardProps> = ({year,url}
   const router=useRouter();
   const onCheckRight=()=>{
     
-    router.push(`/exams/${url}`)
+    router.push(`${url}`)
   }
 
  
