@@ -143,6 +143,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       const response = await axios.get('/api/question/getAllQuestionsByCategory', {
+        
         params: {
           type: "EUEE",
           department: "Highschool",
