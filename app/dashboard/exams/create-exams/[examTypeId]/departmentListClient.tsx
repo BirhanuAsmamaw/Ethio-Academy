@@ -43,6 +43,7 @@ import Link from "next/link"
 
 interface DepartmentProps{
   departments:any[]| null;
+  
 }
 
 
@@ -50,7 +51,9 @@ type DepartmenType={
  id:string, 
  subject?:string,
  
- name:string
+ name:string,
+ examId:string,
+
 
 
 
@@ -112,7 +115,7 @@ export const columns: ColumnDef<DepartmenType>[] = [
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/department/${department.id}/delete?subject=${department.subject}`}>questions</Link>
+              href={`/dashboard/exams/create-exams/${department.examId}/${department.id}/question?subject=${department.subject}`}>questions</Link>
               </DropdownMenuItem>
 
 

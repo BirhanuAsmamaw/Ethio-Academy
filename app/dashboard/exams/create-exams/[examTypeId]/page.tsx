@@ -10,13 +10,15 @@ const ExamTypeQuestion = async ({ params }: { params: { examTypeId: string } }) 
         return department.subject.map((subject) => ({
           id: department.id,
           name: subject.subjectName,
-          subject:subject.subjectName
+          subject:subject.subjectName,
+          examId:params.examTypeId
         }))
       } else {
         return {
           id: department.id,
           name: department.departmentName,
-          subject:null
+          subject:null,
+          examId:params.examTypeId
         }
       }
     }).flat()
