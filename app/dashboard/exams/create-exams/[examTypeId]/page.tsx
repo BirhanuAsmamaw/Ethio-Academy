@@ -6,7 +6,7 @@ const ExamTypeQuestion = async ({ params }: { params: { examTypeId: string } }) 
   try {
     const exam = await getExamTypeById(params.examTypeId)
     const departments = exam?.departments.map((department) => {
-      if (department.subject) {
+      if (department.subject.length) {
         return department.subject.map((subject) => ({
           id: department.id,
           name: subject.subjectName
