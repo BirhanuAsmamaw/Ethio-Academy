@@ -1,8 +1,22 @@
-import React from 'react'
 
-const EUEEYearPage = () => {
-  return (<div>EUEEYearPage</div>
-  )
-}
+import { getQuestionsByCategory } from "@/actions/questions/getQuestionsByCategory";
+import { EUEEYearExamsClientPage } from "./EUEEYearClient";
 
-export default EUEEYearPage
+
+const EUEEYearExamsPage = async({params}:{
+  params:{
+    subject:string,
+    year:string
+  }
+}) => {
+  
+
+  
+  const examQuestions=await getQuestionsByCategory("EUEE","Highschool",params.year,params.subject);
+  return (<>
+  <EUEEYearExamsClientPage  questions={examQuestions}/>
+  </>)
+ 
+};
+
+export default EUEEYearExamsPage;
