@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { examsYears } from '@/lib/examsYear';
 import axios from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 
 
@@ -24,7 +24,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps> = ({departmentId}) => {
   const searchParam=useSearchParams();
   const subject=searchParam?.get('subject')
   const [isModel,setModel]=useState(false)
-
+const [questionsData,setQuestionData]=useState<any[]|null>(null)
   const router=useRouter();
    const [isLoading,setLoading]=useState(false);
    const [explanation,setExplanation]=useState("")
@@ -138,6 +138,34 @@ const handleChooseSelection = (choose: string, value: string) => {
   }));
 };
 
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('/api/question/getAllQuestionsByCategory', {
+        params: {
+          type: "EUEE",
+          department: "Highschool",
+          year: question.year,
+          subject: subject,
+          isModel: isModel
+        }
+      });
+
+      setQuestionData(response.data)
+
+
+      // Do something with response data
+    } catch (error) {
+      // Handle error
+    }
+  };
+  fetchData();
+}, [isModel, question.year, subject]);
+
+
+
+console.log("Questions:-",questionsData)
 
 
 
