@@ -30,7 +30,7 @@ const EUEEPage = async() => {
           return  <ExamsCategoryCard
           key={index}
            name={euee.subjectName}
-           url={`dashboard/exam-questions/EUEE/${euee.subjectName}`}
+           url={`/dashboard/exam-questions/EUEE/${euee.subjectName}`}
            image={""}
            />
          })}
