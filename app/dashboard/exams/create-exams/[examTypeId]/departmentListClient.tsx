@@ -112,7 +112,7 @@ export const columns: ColumnDef<DepartmenType>[] = [
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/department/${department.id}/delete?subject=${row.getValue("subject")}`}>questions</Link>
+              href={`/dashboard/department/${department.id}/delete?subject=${department.subject}`}>questions</Link>
               </DropdownMenuItem>
 
 
