@@ -107,7 +107,7 @@ export const columns: ColumnDef<QuestionType>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("subject")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("title")}</div>,
   },
 
 
@@ -122,7 +122,7 @@ export const columns: ColumnDef<QuestionType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-         questions
+        Subject
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
