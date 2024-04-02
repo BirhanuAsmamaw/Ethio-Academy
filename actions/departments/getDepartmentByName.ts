@@ -3,11 +3,13 @@ export async function getDepartmentByName(name: string){
   try{
 const department = await prisma.department.findUnique({
   where:{
-    departmentName: name
+    url: name
   },
   include:{
-    exam: true
-  }
+    exam: true,
+    subject:true
+  },
+  
 })
 
 return department
