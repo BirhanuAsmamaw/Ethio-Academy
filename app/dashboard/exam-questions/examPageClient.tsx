@@ -5,6 +5,9 @@ interface ExamPageClientProps{
   exams:any[]|null;
 }
 const ExamPageClient:React.FC<ExamPageClientProps> = ({exams}) => {
+  if(!exams){
+    return null;
+  }
   return (<div className="min-h-screen w-full justify-center items-center">
 <div className="w-full lg:w-11/12 xl:px-20   space-y-4">
 
