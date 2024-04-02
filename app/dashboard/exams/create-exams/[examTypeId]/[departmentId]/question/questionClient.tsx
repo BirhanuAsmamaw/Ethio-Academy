@@ -146,9 +146,9 @@ useEffect(() => {
         params: {
           type: "EUEE",
           department: "Highschool",
-          year: question.year,
-          subject: subject,
-          isModel: isModel
+          year: 2015,
+          subject:"Biology",
+          isModel:false
         }
       });
 
