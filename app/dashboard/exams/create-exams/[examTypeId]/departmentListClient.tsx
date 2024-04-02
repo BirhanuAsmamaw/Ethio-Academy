@@ -49,7 +49,7 @@ interface DepartmentProps{
 type DepartmenType={
  id:string, 
  
- departmentName:string
+ name:string
 
 
 
@@ -62,7 +62,7 @@ export const columns: ColumnDef<DepartmenType>[] = [
   
 
   {
-    accessorKey: "departmentName",
+    accessorKey: "name",
     header: ({ column }) => {
       return (
         <Button
@@ -74,7 +74,7 @@ export const columns: ColumnDef<DepartmenType>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("departmentName")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
   },
 
 
