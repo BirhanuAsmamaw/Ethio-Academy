@@ -1,8 +1,7 @@
 import React from 'react'
 
 const EUEEYearPage = () => {
-  return (
-    <div>EUEEYearPage</div>
+  return (<div>EUEEYearPage</div>
   )
 }
 
