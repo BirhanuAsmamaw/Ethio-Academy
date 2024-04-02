@@ -54,6 +54,7 @@ type QuestionType={
 subject?: string,
 
 title: string,
+year?: string,
 
 
 
@@ -160,26 +161,17 @@ export const columns: ColumnDef<QuestionType>[] = [
 
           <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
           
-            <DropdownMenuItem>
-             <Link 
-             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/list-questions/${question.id}/chapter`}>Chapter</Link>
-            </DropdownMenuItem>
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-questions/${question.id}/edit`}>Edit question</Link>
+               href={`/app/dashboard/exam-questions/EUEE/${question.subject}/${question.year}/${question.id}/edit`}>Edit question</Link>
             </DropdownMenuItem>
 
-            <DropdownMenuItem> 
-              <Link
-               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-questions/${question.id}/question-file-update`}>Update question Files</Link>
-            </DropdownMenuItem>
+           
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/list-questions/${question.id}/delete`}>Delete</Link>
+              href={`/app/dashboard/exam-questions/EUEE/${question.subject}/${question.year}/${question.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
