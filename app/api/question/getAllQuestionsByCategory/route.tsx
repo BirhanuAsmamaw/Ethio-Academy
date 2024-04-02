@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/lib/prismadb";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export  async function GET(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { type, department, year, subject, isModel } = req.query
 
