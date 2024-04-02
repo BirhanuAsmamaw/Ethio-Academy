@@ -2,7 +2,10 @@
 export async function getExamTypeById(id: string){
   try{
     const exam=await prisma.exam.findUnique({
-      where:{id:id}
+      where:{id:id},
+      include:{
+        departments:true
+      }
     });
     return exam
   }

@@ -5,6 +5,7 @@ import React from 'react'
 import CreateExamsClient from './createExamsClientPage'
 
 const CreateExams =async () => {
+  
   const exams=await getAllExamsCategory();
   return (<CreateExamsClient exams={exams || []}/>)
 }

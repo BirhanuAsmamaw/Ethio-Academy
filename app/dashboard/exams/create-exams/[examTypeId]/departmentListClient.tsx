@@ -20,7 +20,7 @@ import {
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -41,19 +41,15 @@ import {
 import Link from "next/link"
 
 
-interface CourseListprops{
-  courses:any[]| null;
+interface DepartmentProps{
+  departments:any[]| null;
 }
 
 
-type CourseType={
+type DepartmenType={
  id:string, 
-
-subject: string,
-
-price: number,
-
-rating: number,
+ 
+ departmentName:string
 
 
 
@@ -62,95 +58,28 @@ rating: number,
 
 
 
-export const columns: ColumnDef<CourseType>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${row.getIsSelected()? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-
-
-
-
-
-
-
-  {
-    accessorKey: "subject",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-         Courses
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("subject")}</div>,
-  },
-
-
-
+export const columns: ColumnDef<DepartmenType>[] = [
   
- 
-
-{
-    accessorKey: "rating",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Rating
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("rating")}</div>,
-  },
-
-
-
 
   {
-    accessorKey: "price",
+    accessorKey: "departmentName",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-         Price(ETB)
+         Department Name
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("price")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("departmentName")}</div>,
   },
 
+
+
+ 
 
 
 
@@ -158,7 +87,7 @@ export const columns: ColumnDef<CourseType>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const course = row.original
+      const department= row.original
 
       return (
         <DropdownMenu>
@@ -171,26 +100,18 @@ export const columns: ColumnDef<CourseType>[] = [
 
           <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
           
-            <DropdownMenuItem>
-             <Link 
-             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/list-courses/${course.id}/chapter`}>Chapter</Link>
-            </DropdownMenuItem>
+          
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-courses/${course.id}/edit`}>Edit Course</Link>
+               href={`/dashboard/department/${department.id}/update`}>Edit Department </Link>
             </DropdownMenuItem>
 
-            <DropdownMenuItem> 
-              <Link
-               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-courses/${course.id}/course-file-update`}>Update Course Files</Link>
-            </DropdownMenuItem>
+           
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/list-courses/${course.id}/delete`}>Delete</Link>
+              href={`/dashboard/department/${department.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
@@ -205,7 +126,7 @@ export const columns: ColumnDef<CourseType>[] = [
 
 
 
-export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
+export const DepartmentClient:React.FC<DepartmentProps>=({departments})=> {
  
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -222,7 +143,7 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
 
 
 
-  if (!courses){
+  if (!departments){
     return <div className="w-full bg-white dark:bg-gray-800 ">
 
 <div role="status" className="w-full p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
@@ -272,7 +193,7 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
 
 
   
-  const data:CourseType[]=courses
+  const data:DepartmenType[]=departments
 
 
 
@@ -306,10 +227,10 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
   return (<div className="w-full bg-white dark:bg-gray-800 p-4">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter subjects..."
-          value={(table.getColumn("subject")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter names..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("subject")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm border-gray-200 dark:border-gray-700 ml-2 rounded-[5px]"
         />
