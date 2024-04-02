@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/lib/prismadb";
 
 export  async function GET(req: NextApiRequest, res: NextApiResponse) {
+  if(req.method=="GET"){
   try {
     const { type, department, year, subject, isModel } = req.query
 
@@ -30,4 +31,4 @@ export  async function GET(req: NextApiRequest, res: NextApiResponse) {
     console.error("Error in getQuestionsByCategory:", err);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-}
+}}
