@@ -1,4 +1,5 @@
 import prisma from "@/lib/prismadb";
+import { NextResponse } from "next/server";
 
 
 export async function GET(req:Request,res:Response) {
@@ -25,7 +26,7 @@ export async function GET(req:Request,res:Response) {
       where: whereClause,
     });
 
-    return selectedQuestion;
+    return NextResponse.json(selectedQuestion);
   } catch (err) {
     // Handle the error appropriately
     console.error("Error in getQuestionsByCategory:", err);
