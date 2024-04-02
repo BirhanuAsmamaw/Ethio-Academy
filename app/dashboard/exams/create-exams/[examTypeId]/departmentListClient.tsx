@@ -48,6 +48,7 @@ interface DepartmentProps{
 
 type DepartmenType={
  id:string, 
+ subject?:string,
  
  name:string
 
@@ -69,12 +70,12 @@ export const columns: ColumnDef<DepartmenType>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-         Department Name
+         Name
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+    cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
   },
 
 
@@ -109,6 +110,14 @@ export const columns: ColumnDef<DepartmenType>[] = [
 
            
             <DropdownMenuItem> 
+              <Link 
+              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
+              href={`/dashboard/department/${department.id}/delete?subject=${row.getValue("subject")}`}>questions</Link>
+              </DropdownMenuItem>
+
+
+
+              <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
               href={`/dashboard/department/${department.id}/delete`}>Delete</Link>

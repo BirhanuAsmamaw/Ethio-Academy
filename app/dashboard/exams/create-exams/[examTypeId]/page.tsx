@@ -9,12 +9,14 @@ const ExamTypeQuestion = async ({ params }: { params: { examTypeId: string } }) 
       if (department.subject.length) {
         return department.subject.map((subject) => ({
           id: department.id,
-          name: subject.subjectName
+          name: subject.subjectName,
+          subject:subject.subjectName
         }))
       } else {
         return {
           id: department.id,
-          name: department.departmentName
+          name: department.departmentName,
+          subject:null
         }
       }
     }).flat()
