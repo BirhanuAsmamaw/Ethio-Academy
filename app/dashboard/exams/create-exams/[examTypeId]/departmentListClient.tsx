@@ -115,7 +115,7 @@ export const columns: ColumnDef<DepartmenType>[] = [
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/exams/create-exams/${department.examId}/${department.id}/question?subject=${department.subject}`}>questions</Link>
+              href={`/dashboard/exams/create-exams/${department.examId}/${department.id}/question${department.subject&&`?subject=${department.subject}`}`}>questions</Link>
               </DropdownMenuItem>
 
 
