@@ -135,41 +135,8 @@ export const columns: ColumnDef<QuestionType>[] = [
 
 
 
-  {
-    accessorKey: "subject",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-        Subject
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("subject")}</div>,
-  },
 
-
-
-  {
-    accessorKey: "year",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-       Exam Year
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("year")}</div>,
-  },
- 
-
+  
 
 
 
@@ -319,6 +286,9 @@ export const EUEEYearExamsClientPage:React.FC<questionListprops>=({questions,sub
   })
 
   return (<div className="w-full bg-white dark:bg-gray-800 p-4">
+    <div className="w-full p-4">
+      <h1 className="text-lg font-semibold">{subject} in {year} year Questions List</h1>
+    </div>
       <div className="flex items-center py-4 gap-4">
         <Input
           placeholder="Filter titles..."
