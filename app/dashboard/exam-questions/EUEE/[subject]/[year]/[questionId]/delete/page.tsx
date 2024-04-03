@@ -1,7 +1,11 @@
-import React from 'react'
+import { getQuestionById } from "@/actions/questions/getQuestionById"
+import DeleteQustionClient from "./deleteQuestionClient"
 
-const QuestionDeletePage = () => {
-  return (<div>QuestionDeletePage</div>
+
+const QuestionDeletePage =async ({params}:{params:{questionId:string}}) => {
+  const question=await getQuestionById(params.questionId)
+ 
+  return (<DeleteQustionClient question={question}/>
   )
 }
 
