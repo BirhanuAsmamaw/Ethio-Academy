@@ -7,6 +7,7 @@ export async function POST(req:Request) {
     subject,
     lessonId,
     title ,
+    title_two,
     isModel,
     chooses ,
     year,
@@ -29,6 +30,7 @@ export async function POST(req:Request) {
         title:title,
         chooses:chooses,
         year:year,
+        title_two:title_two,
         isModel:isModel,
         explanation:explanation
        }

@@ -78,7 +78,7 @@ const qData={
   year:year,
   explanation:explanation,
   title:question.Q,
-  title_two:question.Q2,
+  title_two:question.Q2||null,
   isModel:isModel,
   chooses:[question.A,question.B,question.C,question.D]
 
@@ -168,7 +168,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 
     
 {/* add exams question */}
-<div className="w-full pt-10">
+<div className="w-full pt-10 space-y-4">
 
 <div className="flex justify-center pb-10 w-full gap-10">
  
@@ -189,8 +189,13 @@ const handleChooseSelection = (choose: string, value: string) => {
 
 
 
+<div className="space-y-2">
+  <label className='text-lg' htmlFor="Q">
+    question
+  </label>
 
 <textarea
+id='Q'
 onChange={(event)=>setQuestion({...question,Q:event.target.value})}
 className={`
 block 
@@ -214,8 +219,42 @@ dark:focus:border-blue-500
 `}
 rows={4}
 ></textarea>
+</div>
 
 
+
+
+<div className="space-y-2">
+  <label className='text-lg' htmlFor="Q2">
+    question bottom Image(optional)
+  </label>
+
+<textarea
+id='Q2'
+onChange={(event)=>setQuestion({...question,Q2:event.target.value})}
+className={`
+block 
+p-2.5 w-full 
+text-sm 
+text-gray-900 
+bg-gray-50 
+
+rounded-[10px]
+border 
+border-gray-300
+focus:ring-blue-500 
+focus:border-blue-500 
+dark:bg-gray-700 
+dark:border-gray-600 
+dark:placeholder-gray-400 
+dark:text-white 
+dark:focus:ring-blue-500 
+dark:focus:border-blue-500
+
+`}
+rows={4}
+></textarea>
+</div>
 
 <div className={`p-4 flex flex-col gap-2 `}>
 
