@@ -15,7 +15,7 @@ const ExitYearExamsPage = async({params}:{
   
 
 const department=await getDepartmentById(params.exitDepartmentId)
-  const examQuestions=await getQuestionsByCategory("Exit",department?.departmentName||"",params.year);
+  const examQuestions=await getQuestionsByCategory("Exit",department?.url||"",params.year);
   return (<>
   <Header
     title={`${department?.departmentName} Exit Exams in ${params.year} year`}
