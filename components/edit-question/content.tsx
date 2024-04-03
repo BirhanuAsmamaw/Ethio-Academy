@@ -21,7 +21,8 @@ const [explanation,setExplanation]=useState<any>()
     defaultValues: {
       title:question.title,
       title_two:question.title_two,
-      year:question.year
+      year:question.year,
+      explanation:explanation
     },
   })
   
