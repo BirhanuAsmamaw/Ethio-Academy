@@ -58,8 +58,8 @@ export const sidebarData=[
         url:"/dashboard/department"
       },
       {
-        label:"Create Exam Question",
-        url:"/dashboard/exams/create-exams"
+        label:"Exam Questions",
+        url:"/dashboard/exam-questions/"
       }
       
     ]
