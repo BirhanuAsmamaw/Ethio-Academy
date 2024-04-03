@@ -6,8 +6,8 @@ import { getCurrentUser } from '@/actions/users/currentUser'
 import Header from '@/components/Header'
 import ExitDepartmentQuestionClient from './ExitDepartmentQuestionClient'
 
-const ExitExamDepartment = async({params}:{params:{exitDepartmentId:string}}) => {
-  const department=await getDepartmentById(params.exitDepartmentId)
+const ExitExamDepartment = async({params}:{params:{departmentId:string}}) => {
+  const department=await getDepartmentById(params.departmentId)
   const user=await getCurrentUser();
   const isCourseDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===department?.departmentName&&payedCourse?.status);
 
