@@ -5,7 +5,7 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 export async function PUT(req: Request, {params}:{params:{questionId:string}}){
   const questionId=params.questionId;
   const body = await req.json();
-  const {title_two,title,year} = body;
+  const {title_two,title,year,explanation} = body;
 
   try{
     const user=await  getCurrentUser();
@@ -30,6 +30,7 @@ export async function PUT(req: Request, {params}:{params:{questionId:string}}){
         title:title,
        title_two:title_two,
        year:year,
+       explanation:explanation
       }
     })
     return NextResponse.json(updatedquestion);

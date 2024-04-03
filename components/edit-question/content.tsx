@@ -7,6 +7,7 @@ import { useForm, FieldValues, SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import Input from '@/components/input/input'
 import Button from '@/components/button/button'
+import TextEditor from '../editor/editor'
 
 interface UpdateQuestionContentProps{
   question: any;
@@ -15,7 +16,7 @@ const UpdateQuestionContent:React.FC<UpdateQuestionContentProps> = ({question}) 
   const router=useRouter()
   const [isLoading, setIsLoading]=useState(false)
   
-
+const [explanation,setExplanation]=useState<any>()
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
       title:question.title,
@@ -72,6 +73,14 @@ register={register} errors={errors}  label="question 2" type="text" required/>
 <Input id="year" 
 defaultValue={question.year}
 register={register} errors={errors}  label="year" type="text" required/>
+
+
+
+<div className="flex flex-col px-4 w-full gap-1 my-4">
+            <Heading small title="Update Course Description"/>
+       
+          <TextEditor  value={explanation? explanation:question.explanation} setValue={setExplanation}/>
+          </div>
 </div>
   </div>
 </div>
