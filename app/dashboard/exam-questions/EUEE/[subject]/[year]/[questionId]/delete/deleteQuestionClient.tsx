@@ -33,7 +33,7 @@ const DeleteQustionClient:React.FC<DeleteQustionClientProps> = ({question}) => {
      
     
     }
-    if(question){
+    if(!question){
       router.back();
       return null;
     }
