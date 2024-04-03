@@ -19,7 +19,7 @@ const UpdateQuestionContent:React.FC<UpdateQuestionContentProps> = ({question}) 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
       title:question.title,
-      title_two:question.title,
+      title_two:question.title_two,
       year:question.year
     },
   })
@@ -35,7 +35,7 @@ const UpdateQuestionContent:React.FC<UpdateQuestionContentProps> = ({question}) 
     setIsLoading(true)
    
     
-    axios.put(`/api/Question/${question.id}/update/content`,{...data}).then(()=>{
+    axios.put(`/api/question/${question.id}/update/content`,data).then(()=>{
       toast.success("Question updated successfully")
       router.refresh()
     })
@@ -71,7 +71,7 @@ register={register} errors={errors}  label="question 2" type="text" required/>
 
 <Input id="year" 
 defaultValue={question.year}
-register={register} errors={errors}  label="question 2" type="text" required/>
+register={register} errors={errors}  label="year" type="text" required/>
 </div>
   </div>
 </div>

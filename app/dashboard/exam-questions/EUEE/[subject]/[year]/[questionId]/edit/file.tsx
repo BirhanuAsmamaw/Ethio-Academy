@@ -2,6 +2,7 @@
 import { RemoveFile } from '@/actions/file/removeFile';
 import FileUploader from '@/components/input/fileUploader'
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 
@@ -10,9 +11,10 @@ interface UpdateQuestionFileProps{
   question: any;
 }
 const UpdateQuestionFile:React.FC<UpdateQuestionFileProps> = ({question}) => {
-  const [q_imageUrl, setq_imageUrl] = useState(question?.q_image?question?.q_image.public_url:"");
+  const [q_imageUrl, setq_imageUrl] = useState(question?.q_image? question?.q_image.public_url:"");
   const [q_imageKey, setq_imageKey] = useState(question?.q_image?question?.q_image.public_key:"");
 
+  const router=useRouter();
   
 
 
@@ -50,10 +52,11 @@ const UpdateQuestionFile:React.FC<UpdateQuestionFileProps> = ({question}) => {
       public_url:url
     }
 
-   axios.put(`/api/question/${question.id}/update/file`,{q_image:q_imageData}).then(()=>{
+   axios.put(`/api/question/${question.id}/update/file`,{image:q_imageData}).then(()=>{
     setq_imageUrl(question?.q_image?question?.q_image.public_url:"");
     setq_imageKey(question?.q_image?question?.q_image.public_key:"");
-    toast.success("Question q_image uploaded successfully")
+    toast.success("Question image uploaded successfully")
+    router.refresh();
     }).catch((error)=>{
       toast.error(error.message);
     });
@@ -66,7 +69,7 @@ const UpdateQuestionFile:React.FC<UpdateQuestionFileProps> = ({question}) => {
   return (<div className="w-full p-2 flex justify-center bg-white shadow-md dark:bg-slate-800">
     <div className="space-y-2 w-full text-center">
     
-    <h1 className="text-xl font-semibold">Update {question.title} Files</h1>
+    <h1 className="text-lg ">Update <span className=' font-semibold'>{question.title}</span> Files</h1>
    
 
       <FileUploader
