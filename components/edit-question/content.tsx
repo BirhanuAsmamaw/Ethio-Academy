@@ -2,7 +2,7 @@
 import Heading from '@/components/Heading/Heading'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import Input from '@/components/input/input'
@@ -29,6 +29,9 @@ const [explanation,setExplanation]=useState<any>()
 
 
 
+  useEffect(() =>{
+    setExplanation(question.explanation)
+  },[question.explanation]);
 
 
 
@@ -80,7 +83,7 @@ register={register} errors={errors}  label="year" type="text" required/>
 <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Update Course Description"/>
        
-          <TextEditor  value={explanation? explanation:question.explanation} setValue={setExplanation}/>
+          <TextEditor  value={explanation} setValue={setExplanation}/>
           </div>
 </div>
   </div>
