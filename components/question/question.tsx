@@ -14,6 +14,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface QuestionComponentProps{
     notificationTitle:string,
@@ -115,7 +116,15 @@ Next Year Exam
                   <p className="text-xl font-bold">{index + 1}</p>
                   
                 </div>
+                <div className="">
                 <p className="p-2">{question.title}</p>
+                {
+                  question?.q_image?<div className="">
+                  <Image height={300} width={350} src={question.q_image.public_url} alt={question.title}/>
+                  </div>:""
+                }
+                { question.title_two?<p className="p-2">{question.title_two}</p>:""}
+                </div>
                 <div className="p-2 space-y-2">
                   {question.chooses.map((choice: any, ind: number) => {
                     return (
