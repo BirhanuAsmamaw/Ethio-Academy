@@ -13,12 +13,12 @@ import toast from 'react-hot-toast';
  
 interface  CreateExamsClientProps{
  
-  departmentId: string;
+  department: any;
   subject?: string|null;
   year: string;
   
 }
-const CreateExamsClient:React.FC<CreateExamsClientProps> = ({departmentId,subject,year}) => {
+const CreateExamsClient:React.FC<CreateExamsClientProps> = ({department,subject,year}) => {
   const [isModel,setModel]=useState(false)
  
   
@@ -73,7 +73,7 @@ D:{
 
 
 const qData={
-  departmentId:departmentId,
+  departmentId:department.id,
   subject:subject,
   year:year,
   explanation:explanation,
@@ -162,7 +162,7 @@ const handleChooseSelection = (choose: string, value: string) => {
      <div className="flex flex-col gap-10 lg:gap-20">
      <div className="w-full">
     <div className="p-4">
-      <Heading title={`Write ${subject} ${year} Exam Question`}/>
+      <Heading title={`Write ${subject? subject:department.departmentName} in  ${year} Year Exam Question`}/>
     </div>
 
 

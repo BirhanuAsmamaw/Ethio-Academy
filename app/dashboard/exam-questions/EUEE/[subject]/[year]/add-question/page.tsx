@@ -13,7 +13,7 @@ const AddExitQuestionPage = async({params}:{
 
   const department = await getDepartmentByName("Highschool")
 
-  return ( <CreateExamsClient departmentId={department?.id||""} year={params.year} subject={params.subject}/> );
+  return ( <CreateExamsClient department={department} year={params.year} subject={params.subject}/> );
 }
  
 export default AddExitQuestionPage;
