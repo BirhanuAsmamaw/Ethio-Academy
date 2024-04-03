@@ -128,7 +128,7 @@ export const columns: ColumnDef<QuestionType>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className=" capitalize">{row.getValue("isModel")?"Model":"EUEE"}</div>,
+    cell: ({ row }) => <div className=" capitalize">{row.getValue("isModel")?"Model":"Exit"}</div>,
   },
 
 
@@ -303,7 +303,7 @@ export const ExitQuestiosClientPage:React.FC<questionListprops>=({questions})=> 
   })
 
   return (<div className="w-full bg-white dark:bg-gray-800 p-4">
-      <div className="flex items-center py-4">
+      <div className="flex items-center py-4 gap-4">
         <Input
           placeholder="Filter titles..."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}

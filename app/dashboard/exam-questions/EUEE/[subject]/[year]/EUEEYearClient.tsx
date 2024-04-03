@@ -41,10 +41,13 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 
 interface questionListprops{
   questions:any[]|null;
+  subject:string;
+  year:string;
 }
 
 
@@ -217,8 +220,8 @@ export const columns: ColumnDef<QuestionType>[] = [
 
 
 
-export const EUEEYearExamsClientPage:React.FC<questionListprops>=({questions})=> {
- 
+export const EUEEYearExamsClientPage:React.FC<questionListprops>=({questions,subject,year})=> {
+ const router=useRouter();
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -316,7 +319,7 @@ export const EUEEYearExamsClientPage:React.FC<questionListprops>=({questions})=>
   })
 
   return (<div className="w-full bg-white dark:bg-gray-800 p-4">
-      <div className="flex items-center py-4">
+      <div className="flex items-center py-4 gap-4">
         <Input
           placeholder="Filter titles..."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
@@ -357,7 +360,9 @@ export const EUEEYearExamsClientPage:React.FC<questionListprops>=({questions})=>
         </DropdownMenu>
 
 
-<Button variant="outline">Add Question</Button>
+<Button variant="outline" onClick={()=>{
+  router.push(`/app/dashboard/exam-questions/EUEE/${subject}/${year}`)
+}}>Add Question</Button>
 
 
       </div>

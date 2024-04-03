@@ -1,15 +1,12 @@
-
 "use client"
 
 import Heading from '@/components/Heading/Heading'
 import Button from '@/components/button/button';
 import TextEditor from '@/components/editor/editor';
 import ChooseForm from '@/components/questionForm/chooseForm';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { examsYears } from '@/lib/examsYear';
 import axios from 'axios';
-import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 
 
@@ -17,21 +14,39 @@ import toast from 'react-hot-toast';
 interface  CreateExamsClientProps{
  
   departmentId: string;
-  
+  subject?: string|null;
+  year: string;
   
 }
-const CreateExamsClient:React.FC<CreateExamsClientProps> = ({departmentId}) => {
-  const searchParam=useSearchParams();
-  const subject=searchParam?.get('subject')
+const CreateExamsClient:React.FC<CreateExamsClientProps> = ({departmentId,subject,year}) => {
   const [isModel,setModel]=useState(false)
-const [questionsData,setQuestionData]=useState<any[]|null>(null)
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const router=useRouter();
    const [isLoading,setLoading]=useState(false);
    const [explanation,setExplanation]=useState("")
-   const [selectedChoose, setSelectedChoose] = useState<string>("");
     const [question,setQuestion]=useState<any>(
         {Q:"",
-        year:"",
+        Q2:"",
+        
+        
         explanation:"",
 A:{
     text:"",
@@ -60,9 +75,10 @@ D:{
 const qData={
   departmentId:departmentId,
   subject:subject,
-  year:question.year,
+  year:year,
   explanation:explanation,
   title:question.Q,
+  title_two:question.Q2,
   isModel:isModel,
   chooses:[question.A,question.B,question.C,question.D]
 
@@ -128,7 +144,7 @@ const handleChooseSelection = (choose: string, value: string) => {
     }
   });
 
-  setSelectedChoose(choose);
+  
   setQuestion((prevQuestion:any) => ({
     ...prevQuestion,
     [choose]: {
@@ -139,66 +155,22 @@ const handleChooseSelection = (choose: string, value: string) => {
 };
 
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('/api/question/getAllQuestionsByCategory', {
-        
-        params: {
-          type: "EUEE",
-          department: "Highschool",
-          year: 2015,
-          subject:"Biology",
-          isModel:false
-        }
-      });
-
-      setQuestionData(response.data)
-
-
-      // Do something with response data
-    } catch (error) {
-      // Handle error
-    }
-  };
-  fetchData();
-}, [isModel, question.year, subject]);
-
-
-
-console.log("Questions:-",questionsData)
-
 
 
   return (<div className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
      <div className="flex flex-col gap-10 lg:gap-20">
      <div className="w-full">
     <div className="p-4">
-      <Heading title={`Write ${subject? subject:""} Exam Question `}/>
+      <Heading title={'Write Exam Question'}/>
     </div>
-  
+
+
+    
 {/* add exams question */}
 <div className="w-full pt-10">
 
 <div className="flex justify-center pb-10 w-full gap-10">
-  <Select
-   onValueChange={
-    (value)=>setQuestion({...question,year:value})
-  }>
-<SelectTrigger  className="w-[180px] bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
-<SelectValue  placeholder="Select a Quizzes Year" />
-</SelectTrigger>
-<SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-[10px]">
-<SelectGroup>
-  <SelectLabel>Select a Quizzes Year</SelectLabel>
- {examsYears.map((year,index) =>{
- return  <SelectItem className="w-full hover:bg-gray-200  hover:dark:bg-gray-600" key={index} value={year}>{year}</SelectItem >
- })}
-  
-</SelectGroup>
-</SelectContent>
-</Select>
-
+ 
 <div className="flex gap-4">
 
 <div className="flex items-center ">
@@ -293,12 +265,8 @@ onClick={onSubmit}
 
 
 
-<div className="">
-  <div className="">questiosn</div>
-  {questionsData&&questionsData.map((question )=>{
-    return <div className="" key={question.id}>1{question.title}</div>
-  })}
-</div>
+
+
 
      </div>
   </div>
