@@ -6,7 +6,6 @@ import Button from "@/components/button/button";
 import Container from "@/components/container/container";
 import TextEditor from "@/components/editor/editor";
 import Input from "@/components/input/input";
-import Select from "@/components/input/select";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -46,7 +45,7 @@ const router=useRouter();
     setValue('requirements',requirement)
     setValue('whoShouldTake',courseUsers)
    
-  },[description,requirement,courseUsers]);
+  },[description, requirement, courseUsers, setValue]);
 
 
 

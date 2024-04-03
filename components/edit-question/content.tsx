@@ -67,7 +67,7 @@ register={register} errors={errors}  label="question" type="text" required/>
 
 <Input id="title_two" 
 defaultValue={question.title_two}
-register={register} errors={errors}  label="question 2" type="text" required/>
+register={register} errors={errors}  label="question 2" type="text" />
 
 
 <Input id="year" 
