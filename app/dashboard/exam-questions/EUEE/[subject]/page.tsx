@@ -2,7 +2,6 @@
 import Header from '@/components/Header'
 import Banner from '@/components/banner'
 import DashboardYearExamsCard from '@/components/card/DashboardYearExamsCard'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
 
@@ -20,17 +19,7 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
      </div>
 
 
-     <Tabs defaultValue="EUEE" className="w-full ">
- <div className="flex w-fulll justify-center">
- <TabsList className="grid w-full md:w-10/12 lg:w-8/12 xl:w-6/12 grid-cols-2 gap-4">
-    <TabsTrigger className=" rounded-full border-gray-600" value="EUEE">EUEE</TabsTrigger>
-    <TabsTrigger  className=" rounded-full border-gray-600" value="model">Model Exams</TabsTrigger>
-  </TabsList>
- </div>
-
-
-{/* EUEE */}
-  <TabsContent value="EUEE">
+  
   <div className="flex justify-center p-4 py-20">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
@@ -40,26 +29,6 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
           
         </div>
       </div>
-  </TabsContent>
-
-
-
-
-{/* model */}
-  <TabsContent value="model">
-  <div className="flex justify-center p-4 py-20">
-        <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-         {examsYears.map((year,index)=>{
-          return <DashboardYearExamsCard key={index} year={year} url={`/dashboard/exam-questions/EUEE/${params.subject}/${year}/model`}/>
-         })}
-         
-          
-        </div>
-      </div>
-  </TabsContent>
-
- 
-</Tabs>
 
 
      
