@@ -42,11 +42,12 @@ import {
 } from "@/components/ui/table"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import Heading from "@/components/Heading/Heading"
 
 
 interface questionListprops{
   questions:any[]|null;
-  departmentId:string;
+  department:any;
   year:string;
 }
 
@@ -207,7 +208,7 @@ export const columns: ColumnDef<QuestionType>[] = [
 
 
 
-export const ExitQuestiosClientPage:React.FC<questionListprops>=({questions,departmentId,year})=> {
+export const ExitQuestiosClientPage:React.FC<questionListprops>=({questions,department,year})=> {
  const router=useRouter()
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -306,6 +307,9 @@ export const ExitQuestiosClientPage:React.FC<questionListprops>=({questions,depa
   })
 
   return (<div className="w-full bg-white dark:bg-gray-800 p-4">
+    <div className="w-full p-4">
+      <Heading title={`${department.departmentName} in ${year} Exit Exam Questions List`}/>
+    </div>
       <div className="flex items-center py-4 gap-4">
         <Input
           placeholder="Filter titles..."
@@ -349,7 +353,7 @@ export const ExitQuestiosClientPage:React.FC<questionListprops>=({questions,depa
 
 <Button variant="outline"
 onClick={()=>{
-  router.push(`/dashboard/exam-questions/Exit/${departmentId}/${year}/add-question`)
+  router.push(`/dashboard/exam-questions/Exit/${department.id}/${year}/add-question`)
 }}
 >Add Question</Button>
 

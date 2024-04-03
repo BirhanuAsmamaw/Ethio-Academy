@@ -22,7 +22,7 @@ const department=await getDepartmentById(params.departmentId)
     description={` ${department?.departmentName} Exit  Exams  || All ${department?.departmentName}  Exit  Exams  in ${params.year} year  With Answer and  Detail Exaplanations!`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
-  <ExitQuestiosClientPage departmentId={params.departmentId} year={params.year} questions={examQuestions}/>
+  <ExitQuestiosClientPage department={department} year={params.year} questions={examQuestions}/>
   </>)
  
 };
