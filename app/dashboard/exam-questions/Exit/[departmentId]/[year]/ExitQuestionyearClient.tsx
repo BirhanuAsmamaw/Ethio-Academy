@@ -349,7 +349,7 @@ export const ExitQuestiosClientPage:React.FC<questionListprops>=({questions,depa
 
 <Button variant="outline"
 onClick={()=>{
-  router.push(`/app/dashboard/exam-questions/Exit/${departmentId}/${year}/add-question`)
+  router.push(`/dashboard/exam-questions/Exit/${departmentId}/${year}/add-question`)
 }}
 >Add Question</Button>
 
