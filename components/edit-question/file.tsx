@@ -69,7 +69,7 @@ const UpdateQuestionFile:React.FC<UpdateQuestionFileProps> = ({question}) => {
   return (<div className="w-full p-2 flex justify-center bg-white shadow-md dark:bg-slate-800">
     <div className="space-y-2 w-full text-center">
     
-    <h1 className="text-lg ">Update <span className=' font-semibold'>{question.title}</span> Files</h1>
+    <h1 className="text-lg ">Update <span className=' text-sm'>{question.title}</span> Files</h1>
    
 
       <FileUploader
