@@ -7,14 +7,14 @@ import { ExitQuestiosClientPage } from "./ExitQuestionyearClient";
 
 const ExitYearExamsPage = async({params}:{
   params:{
-   exitDepartmentId:string,
+   departmentId:string,
     year:string
   }
 }) => {
   
   
 
-const department=await getDepartmentById(params.exitDepartmentId)
+const department=await getDepartmentById(params.departmentId)
   const examQuestions=await getQuestionsByCategory("Exit",department?.url||"",params.year);
   return (<>
   <Header
