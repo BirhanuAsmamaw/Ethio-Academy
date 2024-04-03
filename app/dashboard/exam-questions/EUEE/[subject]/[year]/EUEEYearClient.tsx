@@ -52,6 +52,7 @@ type QuestionType={
  id:string, 
 
 subject?: string,
+isModel?:boolean,
 
 title: string,
 year?: string,
@@ -108,10 +109,26 @@ export const columns: ColumnDef<QuestionType>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("title")}</div>,
+    cell: ({ row }) => <div className="capitalize">{row.getValue("title")}</div>,
   },
 
 
+
+  {
+    accessorKey: "isModel",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+        Exam Type
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className=" capitalize">{row.getValue("isModel")?"Model":"EUEE"}</div>,
+  },
 
 
 
@@ -133,7 +150,21 @@ export const columns: ColumnDef<QuestionType>[] = [
 
 
 
-  
+  {
+    accessorKey: "year",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+       Exam Year
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => <div className="lowercase">{row.getValue("year")}</div>,
+  },
  
 
 
