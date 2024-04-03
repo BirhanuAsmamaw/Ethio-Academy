@@ -94,6 +94,7 @@ console.log('questionData',qData)
 
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
+    router.back();
     router.refresh();
   }).catch((error:any)=>{
    
@@ -210,14 +211,13 @@ dark:text-white
 dark:focus:ring-blue-500 
 dark:focus:border-blue-500
 
-${question.year!==""? 'block':'hidden'}
 `}
 rows={4}
 ></textarea>
 
 
 
-<div className={`p-4 flex flex-col gap-2 ${question.Q!==""? 'block':'hidden'}`}>
+<div className={`p-4 flex flex-col gap-2 `}>
 
 <ChooseForm 
 id='A'
