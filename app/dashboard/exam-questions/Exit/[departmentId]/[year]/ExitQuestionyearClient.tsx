@@ -41,10 +41,13 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 
 interface questionListprops{
   questions:any[]|null;
+  departmentId:string;
+  year:string;
 }
 
 
@@ -204,8 +207,8 @@ export const columns: ColumnDef<QuestionType>[] = [
 
 
 
-export const ExitQuestiosClientPage:React.FC<questionListprops>=({questions})=> {
- 
+export const ExitQuestiosClientPage:React.FC<questionListprops>=({questions,departmentId,year})=> {
+ const router=useRouter()
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -344,7 +347,11 @@ export const ExitQuestiosClientPage:React.FC<questionListprops>=({questions})=> 
         </DropdownMenu>
 
 
-<Button variant="outline">Add Question</Button>
+<Button variant="outline"
+onClick={()=>{
+  router.push(`/app/dashboard/exam-questions/Exit/${departmentId}/${year}/add-question`)
+}}
+>Add Question</Button>
 
 
       </div>

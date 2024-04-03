@@ -361,7 +361,7 @@ export const EUEEYearExamsClientPage:React.FC<questionListprops>=({questions,sub
 
 
 <Button variant="outline" onClick={()=>{
-  router.push(`/app/dashboard/exam-questions/EUEE/${subject}/${year}`)
+  router.push(`/app/dashboard/exam-questions/EUEE/${subject}/${year}/add-question`)
 }}>Add Question</Button>
 
 
