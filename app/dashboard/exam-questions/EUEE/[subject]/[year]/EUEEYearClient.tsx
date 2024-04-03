@@ -318,13 +318,16 @@ export const EUEEYearExamsClientPage:React.FC<questionListprops>=({questions})=>
   return (<div className="w-full bg-white dark:bg-gray-800 p-4">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter subjects..."
-          value={(table.getColumn("subject")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter titles..."
+          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("subject")?.setFilterValue(event.target.value)
+            table.getColumn("title")?.setFilterValue(event.target.value)
           }
           className="max-w-sm border-gray-200 dark:border-gray-700 ml-2 rounded-[5px]"
         />
+
+
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto border-gray-200 dark:border-gray-600 rounded-[5px]">
@@ -352,6 +355,11 @@ export const EUEEYearExamsClientPage:React.FC<questionListprops>=({questions})=>
               })}
           </DropdownMenuContent>
         </DropdownMenu>
+
+
+<Button variant="outline">Add Question</Button>
+
+
       </div>
 
 
