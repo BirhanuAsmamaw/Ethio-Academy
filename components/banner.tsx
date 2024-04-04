@@ -13,7 +13,7 @@ interface Bannerprops{
 const Banner:React.FC<Bannerprops> = ({title,children,isChange,editUrl,deleteUrl}) => {
   const router=useRouter();
   return (
-    <div className="w-full rounded-[10px] flex justify-center  p-2   lg:py-10 bg-[url('../public/lightBanner.png')] dark:bg-[url('../public/darkBanner.png')] ">
+    <div className="w-full rounded-[10px] flex flex-col items-center justify-center  p-2   lg:py-10 bg-[url('../public/lightBanner.png')] dark:bg-[url('../public/darkBanner.png')] ">
       {isChange?<div className="w-full flex  justify-end px-4">
         <Button variant="outline" onClick={()=>{router.push(editUrl||"/")}}>Edit</Button>
         <Button variant="outline" onClick={()=>{router.push(deleteUrl||"/")}}>Delete </Button>
