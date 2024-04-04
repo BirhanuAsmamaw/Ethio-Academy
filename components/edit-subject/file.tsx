@@ -70,7 +70,7 @@ const UpdateSubjectFile:React.FC<UpdatesubjectFileProps> = ({subject}) => {
       public_url:url
     }
 
-   axios.put(`/api/subject/${subject.id}/update/file/cover`,{image:coverData}).then(()=>{
+   axios.put(`/api/subject/${subject.id}/update/file/cover`,{cover:coverData}).then(()=>{
     setcoverUrl(subject?.cover?subject?.cover.public_url:"");
     setcoverKey(subject?.cover?subject?.cover.public_key:"");
     toast.success("subject image uploaded successfully")
@@ -97,7 +97,7 @@ const UpdateSubjectFile:React.FC<UpdatesubjectFileProps> = ({subject}) => {
       public_url:url
     }
 
-   axios.put(`/api/subject/${subject.id}/update/file/banner`,{image:bannerData}).then(()=>{
+   axios.put(`/api/subject/${subject.id}/update/file/banner`,{banner:bannerData}).then(()=>{
     setbannerUrl(subject?.banner?subject?.banner.public_url:"");
     setbannerKey(subject?.banner?subject?.banner.public_key:"");
     toast.success("subject image uploaded successfully")
@@ -113,7 +113,7 @@ const UpdateSubjectFile:React.FC<UpdatesubjectFileProps> = ({subject}) => {
   return (<div className="w-full p-2 flex justify-center bg-white shadow-md dark:bg-slate-800">
     <div className="space-y-2 w-full text-center">
     
-    <h1 className="text-lg ">Update <span className=' text-sm'>{subject.title}</span> Files</h1>
+    <h1 className="text-lg ">Update <span className=' text-sm'>{subject.subjectName}</span> Files</h1>
    
 
       <FileUploader
@@ -128,7 +128,7 @@ const UpdateSubjectFile:React.FC<UpdatesubjectFileProps> = ({subject}) => {
 
 
 <FileUploader
-      onClientUploadComplete={onsubjectcoverComplete}
+      onClientUploadComplete={onsubjectbannerComplete}
       label="Upload subject banner"
         file={bannerUrl}
         handleMediaChange={handlebannerChange}
