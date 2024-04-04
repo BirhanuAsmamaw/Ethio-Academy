@@ -1,7 +1,10 @@
+import { getSubjectById } from '@/actions/subject/getSubjectById'
+import EditSubjectComponent from '@/components/edit-subject/EditSubject'
 import React from 'react'
 
-const UpdateSubjectPage = () => {
-  return (<div>UpdateSubjectPage</div>
+const UpdateSubjectPage = async({params}:{params:{subject:string}}) => {
+  const subject =await getSubjectById(params.subject)
+  return (<EditSubjectComponent subject={subject}/>
   )
 }
 

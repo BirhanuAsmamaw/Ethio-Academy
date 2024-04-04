@@ -5,7 +5,7 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 export async function PUT(req: Request, {params}:{params:{subjectId:string}}){
   const subjectId=params.subjectId;
   const body = await req.json();
-  const {cover,banner} = body;
+  const {cover} = body;
 
   try{
     const user=await  getCurrentUser();
@@ -27,8 +27,7 @@ export async function PUT(req: Request, {params}:{params:{subjectId:string}}){
     const updatedsubject=await prisma.subject.update({
       where: {id:subjectId},
       data:{
-        cover:cover,
-        banner:banner
+        cover:cover
       }
     })
     return NextResponse.json(updatedsubject);
