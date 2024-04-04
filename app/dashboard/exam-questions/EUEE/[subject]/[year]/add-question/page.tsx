@@ -1,6 +1,7 @@
 import { getDepartmentByName } from "@/actions/departments/getDepartmentByName";
 import { getSubjectById } from "@/actions/subject/getSubjectById";
-import CreateExamsClient from "@/app/dashboard/exam-questions/createExamQuestion";
+import CreateExamsClient from "@/components/question/createExamQuestion";
+
 
 
 

@@ -1,5 +1,6 @@
 import { getDepartmentByName } from "@/actions/departments/getDepartmentByName";
-import CreateExamsClient from "@/app/dashboard/exam-questions/createExamQuestion";
+import CreateExamsClient from "@/components/question/createExamQuestion";
+
 
 
 
@@ -11,7 +12,7 @@ const AddExitQuestionPage = async({params}:{
   }
 }) => {
 
-  const department = await getDepartmentByName("Highschool")
+  const department = await getDepartmentByName("Remedial")
 
   return ( <CreateExamsClient department={department} year={params.year} subject={params.subject}/> );
 }
