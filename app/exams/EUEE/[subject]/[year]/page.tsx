@@ -22,7 +22,7 @@ const department=await getDepartmentByName("Highschool")
   const examQuestions=await getQuestionsByCategory("EUEE","Highschool",params.year,subject?.subjectName);
   return (<><Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Subjects Exam Now!"} />}
-  <EUEEYearExamsClientPage subject={subject?.subjectName} year={params.year} Questions={examQuestions}/>
+  <EUEEYearExamsClientPage subject={subject} year={params.year} Questions={examQuestions}/>
   </>)
  
 };
