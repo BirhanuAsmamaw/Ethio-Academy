@@ -42,6 +42,7 @@ const [explanation,setExplanation]=useState<any>()
     
     axios.put(`/api/question/${question.id}/update/content`,data).then(()=>{
       toast.success("Question updated successfully")
+      router.back()
       router.refresh()
     })
     .catch((error)=>{

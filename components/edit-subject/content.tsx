@@ -30,6 +30,7 @@ const UpdateSubjectContent:React.FC<UpdatesubjectContentProps> = ({subject}) => 
     
     axios.put(`/api/subject/${subject.id}/update/content`,data).then(()=>{
       toast.success("subject updated successfully")
+      router.back()
       router.refresh()
     })
     .catch((error)=>{

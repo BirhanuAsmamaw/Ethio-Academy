@@ -74,6 +74,7 @@ const UpdateSubjectFile:React.FC<UpdatesubjectFileProps> = ({subject}) => {
     setcoverUrl(subject?.cover?subject?.cover.public_url:"");
     setcoverKey(subject?.cover?subject?.cover.public_key:"");
     toast.success("subject image uploaded successfully")
+    router.back()
     router.refresh();
     }).catch((error)=>{
       toast.error(error.message);
@@ -100,6 +101,7 @@ const UpdateSubjectFile:React.FC<UpdatesubjectFileProps> = ({subject}) => {
     setbannerUrl(subject?.banner?subject?.banner.public_url:"");
     setbannerKey(subject?.banner?subject?.banner.public_key:"");
     toast.success("subject image uploaded successfully")
+    router.back()
     router.refresh();
     }).catch((error)=>{
       toast.error(error.message);

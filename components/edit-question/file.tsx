@@ -56,6 +56,7 @@ const UpdateQuestionFile:React.FC<UpdateQuestionFileProps> = ({question}) => {
     setq_imageUrl(question?.q_image?question?.q_image.public_url:"");
     setq_imageKey(question?.q_image?question?.q_image.public_key:"");
     toast.success("Question image uploaded successfully")
+    router.back()
     router.refresh();
     }).catch((error)=>{
       toast.error(error.message);
