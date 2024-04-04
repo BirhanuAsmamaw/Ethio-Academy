@@ -253,7 +253,9 @@ model Subject{
    updatedAt     DateTime  @updatedAt
   department    Department    @relation( fields: [departmentId], references: [id], onDelete: Cascade)
    departmentId String  @db.ObjectId
-   subjectName  String   
+   subjectName  String  
+   cover File?
+   banner File?
 }
 
 

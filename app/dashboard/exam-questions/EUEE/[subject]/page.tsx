@@ -15,7 +15,11 @@ const ExamSubjectPage = ({params}:{params:{subject:string}}) => {
   
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
-     <Banner title={`${params.subject} Entrance Exams`}><></></Banner>
+     <Banner title={`${params.subject} Entrance Exams`} 
+     isChange
+      editUrl={`/dashboard/exam-questions/EUEE/${params.subject}/update`}
+      deleteUrl={`/dashboard/exam-questions/EUEE/${params.subject}/delete`}
+      ><></></Banner>
      </div>
 
 

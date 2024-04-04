@@ -1,12 +1,23 @@
+"use client"
 import React, { ReactNode } from 'react'
+import { Button } from './ui/button';
+import { useRouter } from 'next/navigation';
 interface Bannerprops{
   title:string;
   children:ReactNode
+  isChange?:boolean;
+  editUrl?:string;
+  deleteUrl?:string;
 
 }
-const Banner:React.FC<Bannerprops> = ({title,children}) => {
+const Banner:React.FC<Bannerprops> = ({title,children,isChange,editUrl,deleteUrl}) => {
+  const router=useRouter();
   return (
-    <div className="w-full rounded-[10px] flex justify-center  p-2  py-6 lg:py-10 bg-[url('../public/lightBanner.png')] dark:bg-[url('../public/darkBanner.png')] ">
+    <div className="w-full rounded-[10px] flex justify-center  p-2   lg:py-10 bg-[url('../public/lightBanner.png')] dark:bg-[url('../public/darkBanner.png')] ">
+      {isChange?<div className="w-full flex  justify-end px-4">
+        <Button variant="outline" onClick={()=>{router.push(editUrl||"/")}}>Edit</Button>
+        <Button variant="outline" onClick={()=>{router.push(deleteUrl||"/")}}>Delete </Button>
+      </div>:""}
       <div className='space-y-4'>
     
     <div className="flex  justify-center items-center ">
