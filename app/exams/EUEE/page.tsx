@@ -2,7 +2,7 @@
 import Banner from '@/components/banner'
 import ExamsCategoryCard from '@/components/card/examscategoryCard'
 import Navbar from '@/components/navbar/Navbar'
-import { eueeSubjects } from '@/lib/eueeSubjects'
+
 import React from 'react'
 import BuyExamButton from '../buyExamButton'
 import { getCurrentUser } from '@/actions/users/currentUser'
@@ -31,14 +31,16 @@ const department=await getDepartmentByName("Highschool")
 
       <div className="flex justify-center p-4">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-         {eueeSubjects.map((euee:any,index:number)=>{
+        {department?.subject.map((euee:any,index:number)=>{
           return  <ExamsCategoryCard
           key={index}
-           name={euee.subject}
-           url={`/exams/EUEE/${euee.url}`}
-           image={euee.cover}
+           name={euee.subjectName}
+           url={`/exams/EUEE/${euee.id}`}
+           image={euee?.cover? euee?.cover.public_url:""}
            />
          })}
+
+        
          
         </div>
       </div>

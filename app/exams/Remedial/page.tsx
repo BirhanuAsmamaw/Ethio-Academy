@@ -29,12 +29,14 @@ const RemedialExamPage = async() => {
 
       <div className="flex justify-center p-4">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-         {remedialSubjects.map((remedial:any,index:number)=>{
+         
+
+{department?.subject.map((remedial:any,index:number)=>{
           return  <ExamsCategoryCard
           key={index}
-           name={remedial.subject}
-           url={`/exams/Remedial/${remedial.url}`}
-           image={remedial.cover}
+           name={remedial.subjectName}
+           url={`/exams/Remedial/${remedial.id}`}
+           image={remedial?.cover? remedial?.cover.public_url:""}
            />
          })}
          
