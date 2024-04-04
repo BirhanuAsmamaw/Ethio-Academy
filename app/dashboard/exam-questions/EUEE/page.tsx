@@ -10,6 +10,7 @@ import { getDepartmentByName } from '@/actions/departments/getDepartmentByName'
 const EUEEPage = async() => {
  
  const department=await getDepartmentByName("Highschool")
+
   return (
     <>
     <Header
@@ -21,9 +22,7 @@ const EUEEPage = async() => {
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner 
      title="Ethiopian University Entrance Exams"
-     isChange 
-     deleteUrl={`/dashboard/exams/type/${department?.id}/delete`}
-    editUrl={`/dashboard/exams/type/${department?.id}/update`}>
+     >
   
    <></>
      </Banner>
