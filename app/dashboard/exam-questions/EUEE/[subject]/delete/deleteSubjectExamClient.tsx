@@ -22,7 +22,7 @@ const DeleteSubjectClient:React.FC<DeletesubjectClientProps> = ({subject}) => {
         }
         
         toast.success("subject deleted successfully")
-        router.back();
+        router.push("/dashboard/exam-questions/EUEE");
         router.refresh()
         
       }).catch((errors)=>{
