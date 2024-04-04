@@ -11,10 +11,10 @@ const RemedialYearExamsPage = async({params}:{
   }
 }) => {
   
-
-  
-  const examQuestions=await getQuestionsByCategory("Remedial","Highschool",params.year,params.subject);
   const subject=await getSubjectById(params.subject);
+  
+  const examQuestions=await getQuestionsByCategory("Remedial","Highschool",params.year,subject?.subjectName);
+ 
   return (<>
   <RemedialYearExamsClientPage subject={subject} year={params.year} questions={examQuestions}/>
   </>)
