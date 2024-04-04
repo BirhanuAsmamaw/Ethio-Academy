@@ -16,8 +16,8 @@ const ExitDepartmentQuestionClient:React.FC<ExitDepartmentQuestionClientProps> =
      <Banner 
      title={`${department.departmentName}  Exit Exams`}
      isChange 
-     deleteUrl={`/dashboard/exams/type/${department?.id}/delete`}
-    editUrl={`/dashboard/exams/type/${department?.id}/update`}
+     deleteUrl={`/dashboard/department/${department?.id}/delete`}
+    editUrl={`/dashboard/department/${department?.id}/update`}
      >
 <></>
      </Banner>
