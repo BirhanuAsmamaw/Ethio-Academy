@@ -26,7 +26,7 @@ const Banner:React.FC<Bannerprops> = ({title,children,isChange,editUrl,deleteUrl
 
         <Button 
         variant="outline" 
-        className='bg-blue-600 hover:bg-blue-700 transition-all duration-300 text-white flex gap-2'
+        className='bg-red-600 hover:bg-red-700 transition-all duration-300 text-white flex gap-2'
         onClick={()=>{router.push(deleteUrl||"/")}}>
           <MdDelete size={24}/> 
         <p> Delete</p> </Button>
