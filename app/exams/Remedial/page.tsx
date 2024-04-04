@@ -10,14 +10,14 @@ import { getCurrentUser } from '@/actions/users/currentUser'
 import Header from '@/components/Header'
 
 const RemedialExamPage = async() => {
-  const department=await getDepartmentByName("Freshman")
+  const department=await getDepartmentByName("Remedial")
   const user=await getCurrentUser();
   const isCourseDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===department?.departmentName&&payedCourse?.status);
   return (<>
   <Header
     title={`Ethiopian University Remedial Exams`}
     description={`Remedial  Exams  || All Remedial  Exams   With Answer and  Detail Exaplanations!`}
-    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Remedial Exams, Online Education, Lifelong Learning'
+    keywords='Programming, High School Courses, Remedial Courses, Entrance Exams, Remedial Exams, Online Education, Lifelong Learning'
 />
   <Navbar/>
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>

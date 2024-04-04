@@ -7,6 +7,7 @@ import React from 'react'
 
 const RemedialExamSubjectPage = async({params}:{params:{subject:string}}) => {
   const subject=await getSubjectById(params.subject)
+  if(!subject) return null;
   return (<>
   <Navbar/>
   <div className='min-h-screen w-full flex flex-col gap-10 '>

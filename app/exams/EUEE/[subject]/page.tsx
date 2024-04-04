@@ -10,6 +10,7 @@ import React from 'react'
 
 const ExamSubjectPage = async({params}:{params:{subject:string}}) => {
   const subject=await getSubjectById(params.subject)
+  if(!subject) return null;
   return (<>
   <Header
     title={`${subject?.subjectName} Entrance Exams`}

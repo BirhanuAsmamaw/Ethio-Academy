@@ -22,7 +22,7 @@ let currentYear=Number(year)
       } else {
          currentYear=2015
       }
-      router.push(`/exams/EUEE/${subject.id}/${currentYear}`)
+      router.push(`/exams/EUEE/${subject?.id}/${currentYear}`)
      
     };
     
@@ -33,7 +33,7 @@ let currentYear=Number(year)
       } else {
          currentYear=2010
       }
-      router.push(`/exams/EUEE/${subject.id}/${currentYear}`)
+      router.push(`/exams/EUEE/${subject?.id}/${currentYear}`)
     };
 
 
@@ -41,23 +41,25 @@ let currentYear=Number(year)
 
 
 
-
+if(!subject){
+   return null;
+}
 
    return  <>
    <Header
-    title={`${subject.subjectName}  Exam in ${year} Year`}
-    description={` ${subject.subjectName} Entrance Exams in ${year} Year  || All ${subject.subjectName} Exams in in ${year} Year  With Answer and  Detail Exaplanations!`}
+    title={`${subject?.subjectName}  Exam in ${year} Year`}
+    description={` ${subject?.subjectName} Entrance Exams in ${year} Year  || All ${subject?.subjectName} Exams in in ${year} Year  With Answer and  Detail Exaplanations!`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
    <QuestionComponent 
    onNext={onNext} 
    onPrevious={onPreviousYear}
    Questions={Questions} 
-   notificationTitle={`There is No ${subject.subjectName} Exams in ${year} Year`} 
-   notificationUrl={`/exams/EUEE/${subject.id}`} 
+   notificationTitle={`There is No ${subject?.subjectName} Exams in ${year} Year`} 
+   notificationUrl={`/exams/EUEE/${subject?.id}`} 
    
-   notificationLabel={`Click Here and See ${subject.subjectName} Exams in Others Years`} 
-   examsTitle={`${subject.subjectName} Exams in ${year} Year`}/></>
+   notificationLabel={`Click Here and See ${subject?.subjectName} Exams in Others Years`} 
+   examsTitle={`${subject?.subjectName} Exams in ${year} Year`}/></>
 };
 
 export default EUEEYearExamsClientPage;
