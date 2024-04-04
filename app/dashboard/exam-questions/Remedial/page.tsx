@@ -31,7 +31,7 @@ const remedialPage = async() => {
           key={index}
            name={remedial.subjectName}
            url={`/dashboard/exam-questions/Remedial/${remedial.id}`}
-           image={""}
+           image={remedial?.cover.public_url}
            />
          })}
          

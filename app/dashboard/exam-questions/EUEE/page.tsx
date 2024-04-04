@@ -31,7 +31,7 @@ const EUEEPage = async() => {
           key={index}
            name={euee.subjectName}
            url={`/dashboard/exam-questions/EUEE/${euee.id}`}
-           image={""}
+           image={euee?.cover.public_url}
            />
          })}
          
