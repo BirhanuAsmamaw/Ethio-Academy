@@ -1,6 +1,7 @@
 
 import { getQuestionsByCategory } from "@/actions/questions/getQuestionsByCategory";
 import { RemedialYearExamsClientPage } from "./RemedialYearClient";
+import { getSubjectById } from "@/actions/subject/getSubjectById";
 
 
 const RemedialYearExamsPage = async({params}:{
@@ -13,8 +14,9 @@ const RemedialYearExamsPage = async({params}:{
 
   
   const examQuestions=await getQuestionsByCategory("Remedial","Highschool",params.year,params.subject);
+  const subject=await getSubjectById(params.subject);
   return (<>
-  <RemedialYearExamsClientPage subject={params.subject} year={params.year} questions={examQuestions}/>
+  <RemedialYearExamsClientPage subject={subject} year={params.year} questions={examQuestions}/>
   </>)
  
 };

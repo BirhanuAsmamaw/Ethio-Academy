@@ -14,7 +14,7 @@ import toast from 'react-hot-toast';
 interface  CreateExamsClientProps{
  
   department: any;
-  subject?: string|null;
+  subject?: any|null;
   year: string;
   
 }
@@ -162,7 +162,7 @@ const handleChooseSelection = (choose: string, value: string) => {
      <div className="flex flex-col gap-10 lg:gap-20">
      <div className="w-full">
     <div className="p-4">
-      <Heading title={`Write ${subject? subject:department.departmentName} in  ${year} Year Exam Question`}/>
+      <Heading title={`Write ${subject.subjectName? subject:department.departmentName} in  ${year} Year Exam Question`}/>
     </div>
 
 

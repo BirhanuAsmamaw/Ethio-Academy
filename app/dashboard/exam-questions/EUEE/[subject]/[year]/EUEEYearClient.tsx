@@ -46,7 +46,7 @@ import { useRouter } from "next/navigation"
 
 interface questionListprops{
   questions:any[]|null;
-  subject:string;
+  subject:any;
   year:string;
 }
 
@@ -287,7 +287,7 @@ export const EUEEYearExamsClientPage:React.FC<questionListprops>=({questions,sub
 
   return (<div className="w-full bg-white dark:bg-gray-800 p-4">
     <div className="w-full p-4">
-      <h1 className="text-lg font-semibold">{subject} in {year} year Questions List</h1>
+      <h1 className="text-lg font-semibold">{subject.subjectName} in {year} year Questions List</h1>
     </div>
       <div className="flex items-center py-4 gap-4">
         <Input
