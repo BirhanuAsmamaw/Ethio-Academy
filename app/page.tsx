@@ -14,7 +14,7 @@ import { getAllExamsCategory } from '@/actions/examsCategory/getAllExamsCategry'
 import ExamsCategoryCard from '@/components/card/examscategoryCard';
 import { getBanner } from '@/actions/banner/getbanner';
 import PaginationComponent from '@/components/pagination';
-import { pages } from 'next/dist/build/templates/app-page';
+
 
 
 

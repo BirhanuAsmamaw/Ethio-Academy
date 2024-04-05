@@ -11,7 +11,7 @@ import {
 const PaginationComponent = () => {
   const renderPaginationItems = () => {
     const items = [];
-    for (let i = 1; i <= 40; i++) {
+    for (let i = 1; i <= (40/4); i++) {
       items.push(
         <PaginationItem key={i} className="list-none">
           <PaginationLink className="no-underline" href="#">
@@ -26,11 +26,13 @@ const PaginationComponent = () => {
   return (
     <Pagination className="list-none">
       <PaginationContent>
-        <PaginationItem>
+       
           <PaginationPrevious href="#" />
+
           {renderPaginationItems()}
+
           <PaginationEllipsis />
-        </PaginationItem>
+       
         <PaginationItem>
           <PaginationNext href="#" />
         </PaginationItem>
