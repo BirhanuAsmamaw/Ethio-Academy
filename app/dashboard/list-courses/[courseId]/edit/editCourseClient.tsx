@@ -61,6 +61,7 @@ const router=useRouter();
   
     axios.put(`/api/course/${course.id}/update/content`,data).then(()=>{
       router.push("/dashboard/list-courses")
+      
       toast.success("Course updated successfully")
     })
     .catch((error)=>{

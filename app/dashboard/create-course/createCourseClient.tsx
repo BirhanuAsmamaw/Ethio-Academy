@@ -9,6 +9,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { Check } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FieldValues, useForm ,SubmitHandler} from "react-hook-form";
 import toast from "react-hot-toast";
@@ -34,7 +35,7 @@ const [open, setOpen] = useState(false);
   const [departmentValues, setDepartmentValues] = useState("");
   const [departmentData, setDepartment] = useState<any>(null);
 
-
+const router=useRouter()
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
      
@@ -68,6 +69,7 @@ const [open, setOpen] = useState(false);
     
   const course={...data,department:departmentData}
     axios.post('/api/course',course).then(()=>{
+      router.push("/dashboard/list-courses")
       toast.success("Course created successfully")
     })
     .catch((error)=>{
