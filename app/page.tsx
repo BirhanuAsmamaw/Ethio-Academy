@@ -87,7 +87,7 @@ const banner=await getBanner();
 
       </div>
       <div className="w-full flex p-4 justify-end">
-        <PaginationComponent paginationLength={courses?.count||0} page={searchParams?.page||'1'}/>
+        <PaginationComponent paginationLength={courses?.count||0} page={searchParams?.page||'1'} pageUrl='page'/>
       </div>
 </div>
 </div>
@@ -116,7 +116,7 @@ const banner=await getBanner();
 
       </div>
       <div className="w-full flex p-4 justify-end">
-        <PaginationComponent paginationLength={courses?.count||0} page={searchParams?.page||'1'}/>
+        <PaginationComponent paginationLength={courses?.count||0} page={searchParams?.newpage||'1'} pageUrl='newpage'/>
       </div>
     </div>
    </div>
