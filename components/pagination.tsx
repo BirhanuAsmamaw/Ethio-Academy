@@ -30,18 +30,18 @@ const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLengt
     return items;
   };
 
-  return (<div className="">
+  return (<div className=" z-20">
     <Pagination className="list-none">
       <PaginationContent>
        
-          <PaginationPrevious href="#" />
+          <PaginationPrevious className=" no-underline" href={`/?page=${Number(page)<1?-1:Number(page)-1}#courseslist`}/>
 
           {renderPaginationItems()}
 
           <PaginationEllipsis />
        
-        <PaginationItem>
-          <PaginationNext href="#" />
+        <PaginationItem  className=" list-none">
+          <PaginationNext  className=" no-underline"href={`/?page=${Number(page)>paginationLength?1:Number(page)+1}#courseslist`}/>
         </PaginationItem>
       </PaginationContent>
     </Pagination>
