@@ -14,7 +14,7 @@ const PaginationComponent = () => {
     for (let i = 1; i <= (40/4); i++) {
       items.push(
         <PaginationItem key={i} className="list-none">
-          <PaginationLink className="no-underline" href={`/#courseslist?page=${i}`}>
+          <PaginationLink className="no-underline" href={`/?page=${i}#courseslist`}>
             {i}
           </PaginationLink>
         </PaginationItem>
