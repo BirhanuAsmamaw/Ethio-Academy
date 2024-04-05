@@ -8,19 +8,20 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { usePathname } from "next/navigation";
+
 
 interface PaginationInterfaceProps{
   paginationLength: number;
+  page: string;
 }
-const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLength}) => {
-  const pathName=usePathname();
+const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLength,page}) => {
+ 
   const renderPaginationItems = () => {
     const items = [];
     for (let i = 1; i <= (Math.ceil(paginationLength/4)); i++) {
       items.push(
-        <PaginationItem key={i} className="list-none">
-          <PaginationLink className="no-underline" href={`/?page=${i}#courseslist`}>
+        <PaginationItem key={i} className="list-none" >
+          <PaginationLink isActive={`${i}`===page} className="no-underline" href={`/?page=${i}#courseslist`}>
             {i}
           </PaginationLink>
         </PaginationItem>
@@ -30,8 +31,7 @@ const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLengt
   };
 
   return (
-   <div className="">
-    <h1>{pathName}</h1>
+  
      <Pagination className="list-none">
       <PaginationContent>
        
@@ -46,7 +46,7 @@ const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLengt
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-   </div>
+  
   );
 };
 
