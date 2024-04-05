@@ -1,4 +1,5 @@
 import { getCourses } from "@/actions/courses/getCourses";
+import { getCoursesBySubject } from "@/actions/courses/getCoursesBySubject";
 import { getDepartmentByCode } from "@/actions/departments/getDepartmentByCode";
 import Banner from "@/components/banner";
 import Card from "@/components/card/card";
@@ -14,10 +15,10 @@ interface IPrams{
 const Category =async ({params}:{params:IPrams}) => {
   
 
-  const courses=await getCourses(2);
+  
   const department = await getDepartmentByCode(params.category);
-  const selectedCourses=courses?.courses?.filter((course)=>course.department.code===params.category);
-  if(!courses){
+  const selectedCourses=await getCoursesBySubject(params.category)
+  if(!selectedCourses){
     return <div className="w-full h-screen flex justify-center items-center">
       <Spinning/>
     </div>

@@ -54,7 +54,7 @@ const {carts}=useCart()
       <AvatarImage src={`https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png`} alt="EEA" />
       <AvatarFallback>EEA</AvatarFallback>
     </Avatar>
-     <h1 className="hidden md:block font-semibold text-xl md:text-2xl py-2 overflow-hidden">
+     <h1 className="hidden md:block font-semibold text-xl md:text-lg lg:text-2xl  py-2 overflow-hidden">
       <span className="text-blue-600">Ethio</span>
       <span className="text-rose-600"> Exams</span>
     <span className="text-teal-600"> Academy</span>
