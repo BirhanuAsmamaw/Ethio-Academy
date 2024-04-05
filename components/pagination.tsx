@@ -43,7 +43,7 @@ const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLengt
           <PaginationEllipsis />
        
         <PaginationItem  className=" list-none">
-          <PaginationNext  className=" no-underline"href={`/?${pageUrl}=${(Number(page)>=Math.ceil(paginationLength/4)-1)? 1:Number(page)+1}#courseslist`}/>
+          <PaginationNext  className=" no-underline"href={`/?${pageUrl}=${(Number(page)>=Math.ceil(paginationLength/4))? 1:Number(page)+1}#courseslist`}/>
         </PaginationItem>
       </PaginationContent>
     </Pagination>

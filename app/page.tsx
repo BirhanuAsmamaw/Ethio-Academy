@@ -28,10 +28,10 @@ export default async function Home({
   searchParams?:{ [key: string]: string | undefined };
 }) {
 
-  console.log("context",{searchParams});
+ 
 
 const courses=await getCourses(Number(searchParams?.page||'1'))
-const newCourses=await getNewCourses(Number(searchParams?.page||'1'))
+const newCourses=await getNewCourses(Number(searchParams?.newpage||'1'))
 const examsCategory=await getAllExamsCategory();
 const banner=await getBanner();
 
