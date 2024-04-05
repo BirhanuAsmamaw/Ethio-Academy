@@ -1,7 +1,7 @@
 // Assuming you have a PrismaClient instance in "@/lib/prismadb"
 import prisma from "@/lib/prismadb";
 
-export async function getCoursesBySubject(subject:string, page = 1, pageSize = 10) {
+export async function getCoursesBySubject(subject:string, page = 1, pageSize = 4) {
   try {
     const courses = await prisma.course.findMany({
       where: {

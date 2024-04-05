@@ -13,6 +13,7 @@ import { getCourses } from '@/actions/courses/getCourses';
 import { getAllExamsCategory } from '@/actions/examsCategory/getAllExamsCategry';
 import ExamsCategoryCard from '@/components/card/examscategoryCard';
 import { getBanner } from '@/actions/banner/getbanner';
+import PaginationComponent from '@/components/pagination';
 
 
 
@@ -76,6 +77,9 @@ const banner=await getBanner();
 
 
       </div>
+      <div className="w-full flex p-4 justify-end">
+        <PaginationComponent/>
+      </div>
 </div>
 </div>
 
@@ -101,6 +105,9 @@ const banner=await getBanner();
         })}
 
 
+      </div>
+      <div className="w-full flex p-4 justify-end">
+        <PaginationComponent/>
       </div>
     </div>
    </div>
