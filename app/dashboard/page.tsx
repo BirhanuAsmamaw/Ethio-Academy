@@ -11,7 +11,7 @@ import TotalPricesInMonth from "./charts/totalPriceChart";
 
 const Dashboard = async() => {
   const users=await getAllUsers();
-  const courses=await getCourses();
+  const courses=await getCourses(2);
   const boughtCourses=await getAllPayments();
   return ( <div className="py-20 flex flex-col items-center gap-20 w-full">
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 items-center text-center gap-4 justify-center w-full">
