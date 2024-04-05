@@ -1,6 +1,6 @@
 import prisma from "@/lib/prismadb"
 
-export async function getCourses(){
+export async function getCourses(page: number){
   try{
     const courses = await prisma.course.findMany({
       orderBy:{
@@ -14,7 +14,7 @@ rating:"desc"
           }
         }
       },
-      skip: (2- 1) * 4,
+      skip: (page- 1) * 4,
       take: 4,
       
     });
