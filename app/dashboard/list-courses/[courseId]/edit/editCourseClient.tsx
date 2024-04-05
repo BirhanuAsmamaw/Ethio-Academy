@@ -46,7 +46,9 @@ const router=useRouter();
     setValue('requirements',requirement)
     setValue('whoShouldTake',courseUsers)
    
-  },[description, requirement, courseUsers]);
+   
+   
+  },[description, requirement, courseUsers,setValue]);
 
 
 
