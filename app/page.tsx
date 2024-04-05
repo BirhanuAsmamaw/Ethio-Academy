@@ -60,7 +60,7 @@ const banner=await getBanner();
    {/* Courses */}
     <div id="courseslist" className=" min-h-screen flex flex-col gap-10 overflow-hidden">
 
-<div className="text-3xl">context:- {`${searchParams}`}</div>
+<div className="text-3xl">context:- {`${searchParams?.page}`}</div>
     <div className="flex justify-center w-full">
     <div className="w-full lg:w-11/12 xl:px-20 space-y-4">
       <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
