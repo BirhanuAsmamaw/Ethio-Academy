@@ -85,7 +85,7 @@ const banner=await getBanner();
 
       </div>
       <div className="w-full flex p-4 justify-end">
-        <PaginationComponent/>
+        <PaginationComponent paginationLength={courses?.count||0}/>
       </div>
 </div>
 </div>
@@ -114,7 +114,7 @@ const banner=await getBanner();
 
       </div>
       <div className="w-full flex p-4 justify-end">
-        <PaginationComponent/>
+        <PaginationComponent paginationLength={courses?.count||0}/>
       </div>
     </div>
    </div>
