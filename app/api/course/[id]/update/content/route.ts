@@ -6,7 +6,7 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
   const id=params.id;
   const body = await req.json();
   const {subject,
-    department,
+ 
      price,
      descriptions,
      requirements,
@@ -33,7 +33,7 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
       where: {id:id},
       data:{
         subject:subject,
-        department:department,
+       
        
         price:price,
         descriptions:descriptions,
