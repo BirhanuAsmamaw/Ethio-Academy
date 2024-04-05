@@ -30,9 +30,8 @@ const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLengt
     return items;
   };
 
-  return (
-  
-     <Pagination className="list-none">
+  return (<div className="">
+    <Pagination className="list-none">
       <PaginationContent>
        
           <PaginationPrevious href="#" />
@@ -46,6 +45,9 @@ const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLengt
         </PaginationItem>
       </PaginationContent>
     </Pagination>
+  </div>
+  
+     
   
   );
 };

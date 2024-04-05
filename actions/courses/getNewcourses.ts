@@ -1,6 +1,6 @@
 import prisma from "@/lib/prismadb"
 
-export async function getNewCourses(page:number,pageSize:number){
+export async function getNewCourses(page:number){
   try{
     const courses = await prisma.course.findMany({
      
@@ -12,11 +12,13 @@ export async function getNewCourses(page:number,pageSize:number){
           }
         }
       },
-      skip: (page - 1) * pageSize,
-      take: pageSize,
+      skip: (page - 1) * 4,
+      take: 4,
       
     });
-  return courses
+    const count = await prisma.course.count(); // Count of app instances
+
+    return { courses, count }; 
   }catch(e){
     return null;
   }
