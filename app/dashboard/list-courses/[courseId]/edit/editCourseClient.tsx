@@ -46,7 +46,7 @@ const router=useRouter();
     setValue('requirements',requirement)
     setValue('whoShouldTake',courseUsers)
    
-  },[description, requirement, courseUsers, setValue]);
+  },[description, requirement, courseUsers]);
 
 
 
@@ -63,10 +63,10 @@ const router=useRouter();
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
    
-    
+   
 
-  const courseData={...data}
-    axios.put(`/api/course/${course.id}/update/content`,courseData).then(()=>{
+  
+    axios.put(`/api/course/${course.id}/update/content`,data).then(()=>{
       router.push("/dashboard/list-courses")
       toast.success("Course updated successfully")
     })
