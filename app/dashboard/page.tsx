@@ -16,7 +16,7 @@ const Dashboard = async() => {
   return ( <div className="py-20 flex flex-col items-center gap-20 w-full">
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 items-center text-center gap-4 justify-center w-full">
     <DashboardCard icon={BsPeople} content={`${users?.length ||0 }`} label="Students"/>
-    <DashboardCard icon={SiCoursera} content={`${courses?.length ||0 }`} label="courses"/>
+    <DashboardCard icon={SiCoursera} content={`${courses?.count ||0 }`} label="courses"/>
     <DashboardCard  icon={FaBuyNLarge} content={`${boughtCourses?.length ||0 }`} label="Payed Courses"/>
     <DashboardCard  icon={IoIosPricetags} content="64,000" label="Total Price(ETB)"/>
 

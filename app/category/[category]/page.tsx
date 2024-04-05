@@ -16,7 +16,7 @@ const Category =async ({params}:{params:IPrams}) => {
 
   const courses=await getCourses(2);
   const department = await getDepartmentByCode(params.category);
-  const selectedCourses=courses?.filter((course)=>course.department.code===params.category);
+  const selectedCourses=courses?.courses?.filter((course)=>course.department.code===params.category);
   if(!courses){
     return <div className="w-full h-screen flex justify-center items-center">
       <Spinning/>

@@ -18,7 +18,10 @@ rating:"desc"
       take: 4,
       
     });
-  return courses
+    const count = await prisma.course.count(); // Count of app instances
+
+    return { courses, count }; 
+ 
   }catch(e){
     return null;
   }

@@ -67,7 +67,7 @@ const banner=await getBanner();
   
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
-        {courses?.map((course:any)=>{
+        {courses?.courses?.map((course:any)=>{
           return course.cover&&<Card
           key={course.id}
               id={course.id}
@@ -98,7 +98,7 @@ const banner=await getBanner();
     <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming  Courses</h1>
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
-        {courses?.map((course,index)=>{
+        {courses?.courses?.map((course,index)=>{
           return course.cover&&<Card
           key={index}
               id={course.id}

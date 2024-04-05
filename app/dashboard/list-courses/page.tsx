@@ -6,7 +6,7 @@ const ListCourses = async() => {
 
   const courses=await getCourses(2);
   return ( <div className="px-4 py-10">
-    <CourseListClient courses={courses}/>
+    <CourseListClient courses={courses?.courses||null}/>
   </div> );
 }
  
