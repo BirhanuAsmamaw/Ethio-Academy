@@ -30,7 +30,7 @@ const router=useRouter();
 
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-      descriptions:course.descriptions,
+      
       subject:course.subject,
       price:course.price,
       }})
@@ -65,8 +65,7 @@ const router=useRouter();
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
    
-   
-console.log("data",data);
+
   
     axios.put(`/api/course/${course.id}/update/content`,data).then(()=>{
       router.push("/dashboard/list-courses")
