@@ -30,7 +30,7 @@ const router=useRouter();
 
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-     
+      descriptions:course.descriptions,
       subject:course.subject,
       price:course.price,
       }})
