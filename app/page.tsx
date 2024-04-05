@@ -21,7 +21,9 @@ import PaginationComponent from '@/components/pagination';
 
 
 
-export default async function Home() {
+export default async function Home(context:any) {
+
+  console.log("context",{context});
 
 const courses=await getCourses()
 const examsCategory=await getAllExamsCategory();
