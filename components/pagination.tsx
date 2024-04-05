@@ -34,14 +34,14 @@ const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLengt
     <Pagination className="list-none">
       <PaginationContent>
        
-          <PaginationPrevious className=" no-underline" href={`/?page=${(Number(page)<1)?-1:Number(page)-1}#courseslist`}/>
+          <PaginationPrevious className=" no-underline" href={`/?page=${(Number(page)<=1)?Math.ceil(paginationLength/4):Number(page)-1}#courseslist`}/>
 
           {renderPaginationItems()}
 
           <PaginationEllipsis />
        
         <PaginationItem  className=" list-none">
-          <PaginationNext  className=" no-underline"href={`/?page=${(Number(page)>paginationLength)? 1:Number(page)+1}#courseslist`}/>
+          <PaginationNext  className=" no-underline"href={`/?page=${(Number(page)>=paginationLength)? 1:Number(page)+1}#courseslist`}/>
         </PaginationItem>
       </PaginationContent>
     </Pagination>
