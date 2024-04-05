@@ -8,7 +8,7 @@ import TextEditor from "@/components/editor/editor";
 import Input from "@/components/input/input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FieldValues, useForm ,SubmitHandler} from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -30,7 +30,9 @@ const router=useRouter();
 
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-      
+      descriptions:description||course.descriptions,
+      requirements:requirement||course.requirements,
+      whoShouldTake:courseUsers||course.whoShouldTake,
       subject:course.subject,
       price:course.price,
       }})
@@ -41,17 +43,7 @@ const router=useRouter();
  const courseData=getValues();
 
 
-  useEffect(() =>{
-    setValue('descriptions',description)
-    setValue('requirements',requirement)
-    setValue('whoShouldTake',courseUsers)
-   
-   
-   
-  },[description, requirement, courseUsers,setValue]);
-
-
-
+ 
 
 
   const onNextButton=()=>{setIsNext((prev)=>!prev)}
