@@ -14,7 +14,7 @@ interface IPrams{
 const Category =async ({params}:{params:IPrams}) => {
   
 
-  const courses=await getCourses();
+  const courses=await getCourses(2);
   const department = await getDepartmentByCode(params.category);
   const selectedCourses=courses?.filter((course)=>course.department.code===params.category);
   if(!courses){
