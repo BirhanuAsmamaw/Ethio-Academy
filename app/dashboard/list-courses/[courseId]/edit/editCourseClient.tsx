@@ -64,7 +64,7 @@ const router=useRouter();
     setIsLoading(true)
    
    
-
+console.log("data",data);
   
     axios.put(`/api/course/${course.id}/update/content`,data).then(()=>{
       router.push("/dashboard/list-courses")
