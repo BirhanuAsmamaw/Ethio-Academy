@@ -42,6 +42,7 @@ const ExitModelYearExamsClientPage:React.FC<ExitYearExamsClientPageProps> = ({de
   
   
   return (<QuestionComponent 
+   university={{"name":"Addis Ababa"}}
     onNext={onNext} 
     onPrevious={onPreviousYear}
     Questions={Questions}

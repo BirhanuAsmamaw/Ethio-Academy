@@ -45,6 +45,18 @@ const ExitDepartmentClient:React.FC<ExitDepartmentClientProps> = ({department,is
 
 
   <TabsContent value="model">
+  <div className="w-full flex flex-col md:flex-row gap-20">
+    <div className=" border-2 p-4">
+      <p>university</p>
+      <p>university</p>
+      <p>university</p>
+      <p>university</p>
+      <p>university</p>
+      <p>university</p>
+      <p>university</p>
+      <p>university</p>
+      <p>university</p>
+    </div>
   <div className="flex justify-center p-4 py-20">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {exitExamYears.map((year,index)=>{
@@ -55,6 +67,7 @@ const ExitDepartmentClient:React.FC<ExitDepartmentClientProps> = ({department,is
           
         </div>
       </div>
+  </div>
   </TabsContent>
 
  
