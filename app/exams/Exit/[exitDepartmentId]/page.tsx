@@ -6,6 +6,7 @@ import { getCurrentUser } from '@/actions/users/currentUser'
 import Header from '@/components/Header'
 
 const ExitExamDepartment = async({params}:{params:{exitDepartmentId:string}}) => {
+  
   const department=await getDepartmentById(params.exitDepartmentId)
   const user=await getCurrentUser();
   const isCourseDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===department?.departmentName&&payedCourse?.status);

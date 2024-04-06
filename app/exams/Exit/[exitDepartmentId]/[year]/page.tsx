@@ -1,10 +1,10 @@
 import Navbar from "@/components/navbar/Navbar";
 import ExitYearExamsClientPage from "./yearClient";
-import { getQuestionsByCategory } from "@/actions/questions/getQuestionsByCategory";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import BlurComponent from "@/components/blurcomponent";
 import { getDepartmentById } from "@/actions/departments/getDepartmentById";
 import Header from "@/components/Header";
+import { getModelQuestionsByCategory } from "@/actions/questions/getModelByCategory";
 
 
 const ExitYearExamsPage = async({params}:{
@@ -18,7 +18,7 @@ const ExitYearExamsPage = async({params}:{
   const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.url===params.exitDepartmentId&&payedCourse?.status);
 
 const department=await getDepartmentById(params.exitDepartmentId)
-  const examQuestions=await getQuestionsByCategory("Exit",department?.departmentName||"",params.year);
+  const examQuestions=await getModelQuestionsByCategory("Exit",department?.departmentName||"",params.year,false,'');
   return (<>
   <Header
     title={`${department?.departmentName} Exit Exams in ${params.year} year`}

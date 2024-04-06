@@ -1,11 +1,11 @@
 import prisma from "@/lib/prismadb";
 
 
-export async function getModelQuestionsByCategory(type: string, department: string, year: string, subject?: string) {
+export async function getModelQuestionsByCategory(type: string, department: string, year: string,isModel?:boolean, subject?: string) {
   try {
     const whereClause: any = {
       year: year,
-      isModel:true,
+      isModel:isModel,
       department: {
         departmentName: department,
         exam: {

@@ -7,18 +7,20 @@ import ExitModelYearExamsClientPage from "./exitModelYearClient";
 import { getModelQuestionsByCategory } from "@/actions/questions/getModelByCategory";
 
 
-const ExitModelYearExamsPage = async({params}:{
+const ExitModelYearExamsPage = async({params,searchParams,}:{
   params:{
    exitDepartmentId:string,
     year:string
-  }
+  },
+  searchParams?:{ [key: string]: string | undefined };
 }) => {
   
+ 
   const user=await getCurrentUser();
   const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===params.exitDepartmentId&&payedCourse?.status);
 
 const department=await getDepartmentById(params.exitDepartmentId)
-  const examQuestions=await getModelQuestionsByCategory("Exit",department?.departmentName||"",params.year);
+  const examQuestions=await getModelQuestionsByCategory("Exit",department?.departmentName||"",params.year,true,'');
   return (<>
   <Header
     title={`${department?.departmentName} Exit Exams in ${params.year} year`}
@@ -27,7 +29,10 @@ const department=await getDepartmentById(params.exitDepartmentId)
 />
   <Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Exit Exam Now!"} />}
+  <div className="bg-white dark:bg-gray-800">
+    <h1>{searchParams?.university?searchParams?.university:"no"}</h1>
   <ExitModelYearExamsClientPage department={department} year={params.year} Questions={examQuestions}/>
+  </div>
   </>)
  
 };
