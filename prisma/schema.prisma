@@ -124,6 +124,8 @@ model Question{
    lessonId String? @db.ObjectId
    department    Department?     @relation( fields: [departmentId], references: [id], onDelete: Cascade)
    departmentId String? @db.ObjectId
+   university    University?     @relation( fields: [universityId], references: [id], onDelete: Cascade)
+   universityId String? @db.ObjectId
    title String
    title_two String? 
    q_image File?
@@ -140,6 +142,17 @@ type Choose{
   text String
 }
 
+
+model University{
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+   name String
+   code String
+   logo File?
+   question Question[]
+
+}
 
 model Category{
    id            String    @id @default(auto()) @map("_id") @db.ObjectId

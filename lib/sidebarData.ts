@@ -4,7 +4,7 @@ import { PiUsersFourLight } from "react-icons/pi";
 import { PiBankLight } from "react-icons/pi";
 import { GiHeron } from "react-icons/gi";
 
-
+import { FaUniversity } from "react-icons/fa";
 export const sidebarData=[
   // {
   //   title:"Dashboard",
@@ -79,7 +79,22 @@ export const sidebarData=[
       
     ]
   },
-
+  {
+    title:"Univeristy",
+    icon:FaUniversity,
+    items:[
+      {
+        label:"Create Univeristy",
+        url:"/dashboard/univeristy/create"
+      },
+      {
+        label:"Univeristy List",
+        url:"/dashboard/univeristy/list"
+      },
+      
+      
+    ]
+  },
 
   {
     title:"Banner",
