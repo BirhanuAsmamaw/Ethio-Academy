@@ -148,7 +148,7 @@ model University{
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
    name String
-   code String
+   code String @unique
    logo File?
    question Question[]
 

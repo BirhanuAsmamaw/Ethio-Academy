@@ -18,7 +18,7 @@ const ExitYearExamsPage = async({params}:{
   const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.url===params.exitDepartmentId&&payedCourse?.status);
 
 const department=await getDepartmentById(params.exitDepartmentId)
-  const examQuestions=await getModelQuestionsByCategory("Exit",department?.departmentName||"",params.year,false,'');
+  const examQuestions=await getModelQuestionsByCategory("Exit",department?.departmentName||"",params.year,false,'','');
   return (<>
   <Header
     title={`${department?.departmentName} Exit Exams in ${params.year} year`}

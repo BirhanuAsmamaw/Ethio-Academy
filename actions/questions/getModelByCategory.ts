@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb";
 
 
-export async function getModelQuestionsByCategory(type: string, department: string, year: string,isModel?:boolean, subject?: string) {
+export async function getModelQuestionsByCategory(type: string, department: string, year: string,isModel?:boolean, subject?: string,code?: string){
   try {
     const whereClause: any = {
       year: year,
@@ -18,6 +18,9 @@ export async function getModelQuestionsByCategory(type: string, department: stri
     if (subject) {
       whereClause.subject = subject;
       
+    }
+    if(code){
+      whereClause.university = {code:code};
     }
 
     const selectedQuestion = await prisma.question.findMany({
