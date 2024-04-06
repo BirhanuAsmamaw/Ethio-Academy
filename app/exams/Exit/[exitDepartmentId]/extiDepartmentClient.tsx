@@ -49,9 +49,9 @@ const ExitDepartmentClient:React.FC<ExitDepartmentClientProps> = ({universities,
 
   <TabsContent value="model"  className="w-full md:px-10 lg:px-20 flex flex-col md:flex-row gap-20">
 
-   <div className="w-[300px] p-2 bg-white dark:bg-gray-800 h-[500px] overflow-y-auto">
-   <div className=" border-2 p-0 flex flex-col gap-1">
-   <button className={`border-b p-2 ${!universityCode&&'bg-green-200 dark:bg-green-900'}`} onClick={()=>{setUniversityCode(null)}}>All University Exam</button>
+   <div className="w-[300px] p-2 bg-white dark:bg-slate-800 h-[500px] overflow-y-auto">
+   <div className="  p-0 flex flex-col ">
+   <button className={`border-b p-2 ${!universityCode&&'bg-slate-100 dark:bg-slate-700'}`} onClick={()=>{setUniversityCode(null)}}>All University Exam</button>
      {universities?.map((university:any)=>{
       return <button className={`border-b p-2 ${(universityCode===university.code)&&'bg-green-200 dark:bg-green-900'}`} key={university?.id} onClick={()=>{setUniversityCode(university.code)}}>{university?.name}</button>
      })}
