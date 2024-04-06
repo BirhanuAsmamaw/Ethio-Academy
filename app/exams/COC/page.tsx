@@ -17,14 +17,14 @@ const department=await getDepartmentByName("Freshman")
   return (
     <>
     <Header
-    title='Ethiopian University Entrance Exams'
-    description='Ethiopian University Entrance Exams || All Exams With Answer and  Detail Exaplanations!'
-    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+    title='Ethiopian University COC  Exams'
+    description='Ethiopian University COC  Exams || All Exams With Answer and  Detail Exaplanations!'
+    keywords='Programming, High School Courses, Freshman Courses, COC  Exams, Exit Exams, Online Education, Lifelong Learning'
 />
     <Navbar/>
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10 pb-20'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
-     <Banner title="Ethiopian University Entrance Exams">
+     <Banner title="Ethiopian University COC  Exams">
      {isCoursePDepartment? <></>:<BuyExamButton department={department} />}
      </Banner>
      </div>
