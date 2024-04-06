@@ -10,7 +10,7 @@ const YearExamCard:React.FC<YearExamCardProps> = ({year,url}) => {
   const router=useRouter();
   const onCheckRight=()=>{
     
-    router.push(`/exams/${url}?right=${true}`)
+    router.push(`/exams/${url}right=${true}`)
   }
 
   const onShowAnswer=()=>{router.push(`/exams/${url}`)}
