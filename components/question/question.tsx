@@ -82,9 +82,9 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({university,onPrevio
   }
   return (<MainLayout>
       <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
-        {university?<div className={`p-4 w-full flex flex-col md:flex-row border-b-2 border-dashed ${university.logo?'justify-start':'justify-center'}`}>
-          {university.log?<div className="p-2">
-            <Image height={100} width={100} src={university.logo.public_url} alt={university.name}/>
+        {university?<div className={`p-4 w-full flex flex-col md:flex-row border-b-2 border-dashed ${university.logo?'justify-center md:justify-start':'justify-center'}`}>
+          {university.log?<div className="">
+            <Image height={120} width={120} src={university?.logo?.public_url} alt={university.name}/>
           </div>:""}
           <div className="">
             <h1  className="text-lg md:text-xl lg:text-2xl font-semibold">{university.name}({university.code})</h1>
