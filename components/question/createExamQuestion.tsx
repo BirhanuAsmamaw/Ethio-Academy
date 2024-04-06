@@ -199,19 +199,19 @@ const handleChooseSelection = (choose: string, value: string) => {
 
   {(isModel&&university)?<div className="p-6 flex">
 <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild  className="w-[200px] justify-between" >
+      <PopoverTrigger asChild  className="w-[200px] " >
         <button
           
           aria-expanded={open}
           
-          className=" w-full"
+          className=" w-full flex justify-between"
         >
-          {value
+          <p>{value
             ? value
-            : "Select the  university..."}
- 
+            : "Select the  university..."}</p>
+ <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </button>
-        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        
       </PopoverTrigger>
      
     
