@@ -5,6 +5,7 @@ import { getDepartmentById } from "@/actions/departments/getDepartmentById";
 import Header from "@/components/Header";
 import ExitModelYearExamsClientPage from "./exitModelYearClient";
 import { getModelQuestionsByCategory } from "@/actions/questions/getModelByCategory";
+import { getLeftSide } from "@/lib/getleftSideWord";
 
 
 const ExitModelYearExamsPage = async({params,searchParams,}:{
@@ -15,7 +16,7 @@ const ExitModelYearExamsPage = async({params,searchParams,}:{
   searchParams?:{ [key: string]: string | undefined };
 }) => {
   
- 
+  const universityId=getLeftSide(searchParams?.university||"")
   const user=await getCurrentUser();
   const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===params.exitDepartmentId&&payedCourse?.status);
 
@@ -30,7 +31,7 @@ const department=await getDepartmentById(params.exitDepartmentId)
   <Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Exit Exam Now!"} />}
   <div className="bg-white dark:bg-gray-800">
-    <h1>{searchParams?.university?searchParams?.university:"no"}</h1>
+    <h1>{universityId}</h1>
   <ExitModelYearExamsClientPage department={department} year={params.year} Questions={examQuestions}/>
   </div>
   </>)
