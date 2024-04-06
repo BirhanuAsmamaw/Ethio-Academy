@@ -199,24 +199,22 @@ const handleChooseSelection = (choose: string, value: string) => {
 
   {(isModel&&university)?<div className="p-6 flex">
 <Popover open={open} onOpenChange={setOpen}>
-    <div className="flex w-full   md:min-w-[500px] max-w-[800px] shadow-md dark:shadow-black bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] overflow-hidden">
       <PopoverTrigger asChild  className="w-[200px] justify-between" >
         <button
           
           aria-expanded={open}
           
-          className=" w-full   md:min-w-[500px] max-w-[800px] justify-between"
+          className=" w-full"
         >
           {value
             ? value
             : "Select the  university..."}
-
-<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
  
         </button>
+        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </PopoverTrigger>
      
-      </div>
+    
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
           <CommandInput  placeholder="Search the university..." />
