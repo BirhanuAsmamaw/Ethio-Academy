@@ -6,8 +6,9 @@ interface ExitYearExamsClientPageProps{
     year:string,
     Questions:any[];
     department:any;
+    univerity:any;
 }
-const ExitModelYearExamsClientPage:React.FC<ExitYearExamsClientPageProps> = ({department,year,Questions}) => {
+const ExitModelYearExamsClientPage:React.FC<ExitYearExamsClientPageProps> = ({univerity,department,year,Questions}) => {
  
 
 
@@ -42,7 +43,7 @@ const ExitModelYearExamsClientPage:React.FC<ExitYearExamsClientPageProps> = ({de
   
   
   return (<QuestionComponent 
-   university={{"name":"Addis Ababa"}}
+   university={univerity}
     onNext={onNext} 
     onPrevious={onPreviousYear}
     Questions={Questions}

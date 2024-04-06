@@ -82,15 +82,26 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({university,onPrevio
   }
   return (<MainLayout>
       <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
-        {university?<div className="p-4 w-full flex flex-col md:flex-row">
-          <div className="">Logo</div>
+        {university?<div className="p-4 w-full flex flex-col md:flex-row border-b-2 border-dashed">
+          <div className="p-4">Logo</div>
           <div className="">
-            <h1  className="text-lg md:text-xl lg:text-2xl font-semibold">Addis Ababa University</h1>
-            <h2 className="text-lg font-semibold">Software Engineering Exit Model Exam</h2>
+            <h1  className="text-lg md:text-xl lg:text-2xl font-semibold">{university.name}({university.code})</h1>
+           
+            <h2 className="text-lg font-semibold">{examsTitle}</h2>
           </div>
           </div>:""}
         <div className="pt-6" id="quiz">
-        <button onClick={()=>router.back()} type="button" className="flex gap-2 py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+        <button onClick={()=>router.back()} 
+        type="button" 
+        className="flex gap-2 py-2.5 px-5 me-2 mb-2 
+        text-sm font-medium text-gray-900 
+        focus:outline-none bg-white rounded-lg border
+         border-gray-200 hover:bg-gray-100 hover:text-blue-700 
+         focus:z-10 focus:ring-4 focus:ring-gray-100
+          dark:focus:ring-gray-700
+          dark:bg-gray-800 dark:text-gray-400
+           dark:border-gray-600 dark:hover:text-white
+           dark:hover:bg-gray-700">
          <IoIosArrowRoundBack size={24}/>
          <p> Back to Exams List</p>
           </button>
@@ -113,9 +124,7 @@ Next Year Exam
 </span>
 </button>
             </div>
-            <h4 className="text-lg  font-semibold border-b-2 border-dashed">
-           {examsTitle}
-            </h4>
+           
           </div>
           {Questions.map((question: any, index:number) => {
             return (

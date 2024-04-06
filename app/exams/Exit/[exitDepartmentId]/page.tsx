@@ -4,13 +4,14 @@ import { getDepartmentById } from '@/actions/departments/getDepartmentById'
 import Navbar from '@/components/navbar/Navbar'
 import { getCurrentUser } from '@/actions/users/currentUser'
 import Header from '@/components/Header'
+import { getAllUniversity } from '@/actions/university/getAllUniversity'
 
 const ExitExamDepartment = async({params}:{params:{exitDepartmentId:string}}) => {
   
   const department=await getDepartmentById(params.exitDepartmentId)
   const user=await getCurrentUser();
   const isCourseDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===department?.departmentName&&payedCourse?.status);
-
+const universities=await getAllUniversity();
 
   return (<>
    <Header
@@ -19,7 +20,7 @@ const ExitExamDepartment = async({params}:{params:{exitDepartmentId:string}}) =>
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
   <Navbar/>
-  <ExitDepartmentClient department={department} isCourseDepartment={isCourseDepartment}/>
+  <ExitDepartmentClient universities={universities} department={department} isCourseDepartment={isCourseDepartment}/>
   </>
   )
 }

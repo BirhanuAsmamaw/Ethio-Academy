@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import ExitModelYearExamsClientPage from "./exitModelYearClient";
 import { getModelQuestionsByCategory } from "@/actions/questions/getModelByCategory";
 import { getLeftSide } from "@/lib/getleftSideWord";
+import { getUniversityByCode } from "@/actions/university/getUniversityByCode";
 
 
 const ExitModelYearExamsPage = async({params,searchParams,}:{
@@ -19,7 +20,7 @@ const ExitModelYearExamsPage = async({params,searchParams,}:{
   const universityId=getLeftSide(searchParams?.university||"")
   const user=await getCurrentUser();
   const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===params.exitDepartmentId&&payedCourse?.status);
-
+ const university=await getUniversityByCode(universityId)
 const department=await getDepartmentById(params.exitDepartmentId)
   const examQuestions=await getModelQuestionsByCategory("Exit",department?.departmentName||"",params.year,true,'');
   return (<>
@@ -32,7 +33,7 @@ const department=await getDepartmentById(params.exitDepartmentId)
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Exit Exam Now!"} />}
   <div className="bg-white dark:bg-gray-800">
     <h1>{universityId}</h1>
-  <ExitModelYearExamsClientPage department={department} year={params.year} Questions={examQuestions}/>
+  <ExitModelYearExamsClientPage univerity={university} department={department} year={params.year} Questions={examQuestions}/>
   </div>
   </>)
  
