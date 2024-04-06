@@ -227,7 +227,7 @@ const handleChooseSelection = (choose: string, value: string) => {
                   value={un.name.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    setuniversityId(un.id);
+                    setuniversityId(isModel? un.id:null);
                     setOpen(false);
                   }}
                 >
