@@ -197,9 +197,9 @@ const handleChooseSelection = (choose: string, value: string) => {
 </div>
   </div>
 
-  {(isModel&&university)?<div className="p-6 flex">
-<Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild  className="w-[200px] " >
+  {(isModel&&university)?<div className="p-6 flex  w-[350px]" >
+<Popover open={open} onOpenChange={setOpen} >
+      <PopoverTrigger asChild   >
         <button
           
           aria-expanded={open}
