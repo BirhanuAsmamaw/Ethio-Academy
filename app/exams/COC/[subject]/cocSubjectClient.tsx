@@ -14,14 +14,7 @@ interface ExamSubjectPageProps{
 const ExamSubjectClientPage:React.FC<ExamSubjectPageProps> = ({subject,universities}) => {
 
  const [universityCode,setUniversityCode]=useState<string|null>(null)
-  return (<>
-  <Header
-    title={`${subject?.subjectName} COC Exams`}
-    description={` ${subject?.subjectName} COC Exams || All ${subject?.subjectName} Exams With Answer and  Detail Exaplanations!`}
-    keywords='Programming, High School Courses, Freshman Courses, COC Exams, Exit Exams, Online Education, Lifelong Learning'
-/>
-  <Navbar/>
-  <div className='min-h-screen w-full flex flex-col gap-10 '>
+  return ( <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title={`${subject?.subjectName} COC Exams`}><></></Banner>
      </div>
@@ -61,7 +54,7 @@ const ExamSubjectClientPage:React.FC<ExamSubjectPageProps> = ({subject,universit
 
      
 
-    </div></>
+    </div>
     
   )
 }
