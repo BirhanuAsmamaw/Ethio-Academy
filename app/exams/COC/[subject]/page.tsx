@@ -9,7 +9,7 @@ import { getAllUniversity } from '@/actions/university/getAllUniversity'
 const ExamSubjectPage = async({params}:{params:{subject:string}}) => {
   const subject=await getSubjectById(params.subject)
   const universities=await getAllUniversity()
-  if(!subject) return null;
+ 
   return (<>
   <Header
     title={`${subject?.subjectName} COC Exams`}
