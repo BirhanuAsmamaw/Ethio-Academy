@@ -10,6 +10,7 @@ export async function POST(req:Request) {
     title_two,
     isModel,
     chooses ,
+    universityId,
     year,
     explanation
   } =body;
@@ -26,6 +27,7 @@ export async function POST(req:Request) {
        data:{
         subject:subject,
         departmentId: departmentId,
+        universityId:universityId,
         lessonId:lessonId,
         title:title,
         chooses:chooses,

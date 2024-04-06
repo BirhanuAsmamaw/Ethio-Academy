@@ -1,4 +1,5 @@
 import { getDepartmentById } from "@/actions/departments/getDepartmentById";
+import { getAllUniversity } from "@/actions/university/getAllUniversity";
 import CreateExamsClient from "@/components/question/createExamQuestion";
 
 
@@ -12,10 +13,11 @@ const AddExitQuestionPage = async({params}:{
 }) => {
 
   const department = await getDepartmentById(params.departmentId);
+  const university=await getAllUniversity();
 
 
 
-  return ( <CreateExamsClient department={department} year={params.year}/> );
+  return ( <CreateExamsClient department={department} university={university} year={params.year}/> );
 }
  
 export default AddExitQuestionPage;

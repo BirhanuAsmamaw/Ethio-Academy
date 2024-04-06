@@ -8,21 +8,27 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '../ui/command';
+import { cn } from '@/lib/utils';
+import { Check } from 'lucide-react';
 
 
  
 interface  CreateExamsClientProps{
- 
+  university?:any[]|null;
   department: any;
   subject?: any|null;
   year: string;
   
 }
-const CreateExamsClient:React.FC<CreateExamsClientProps> = ({department,subject,year}) => {
+const CreateExamsClient:React.FC<CreateExamsClientProps> = ({department,subject,year,university}) => {
   const [isModel,setModel]=useState(false)
  
   
-
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+  const [universityId, setuniversityId] = useState<string|null>(null);
 
 
 
@@ -73,6 +79,7 @@ D:{
 
 
 const qData={
+  universityId:universityId,
   departmentId:department.id,
   subject:subject,
   year:year,
@@ -90,7 +97,7 @@ const onSubmit=() => {
   setLoading(true);
 
   
-console.log('questionData',qData)
+
 
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
@@ -178,6 +185,58 @@ const handleChooseSelection = (choose: string, value: string) => {
     <input  checked={isModel}  onChange={(event) => setModel(true)}  id="model-1" type="radio" value="" name="model" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-700 dark:ring-offset-gray-800  rounded-full focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
     <label htmlFor="model-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Model?</label>
 </div>
+
+{(isModel&&university)?<div className="p-6 flex">
+<Popover open={open} onOpenChange={setOpen}>
+    <div className="flex w-full   md:min-w-[500px] max-w-[800px] shadow-md dark:shadow-black bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] overflow-hidden">
+      <PopoverTrigger asChild className="p-3" >
+        <button
+          
+          aria-expanded={open}
+          
+          className=" w-full   md:min-w-[500px] max-w-[800px] justify-between"
+        >
+          {value
+            ? value
+            : "Select your university..."}
+ 
+        </button>
+      </PopoverTrigger>
+     
+      </div>
+      <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
+        <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
+          <CommandInput  placeholder="Search your university..." />
+          <CommandList>
+            <CommandEmpty>No university found.</CommandEmpty>
+            <CommandGroup>
+              {university?.map((un) => (
+                <CommandItem
+                  key={un.id}
+                  value={un.name.toLowerCase()}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? "" : currentValue);
+                    setuniversityId(un.id);
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      value === un.name.toLowerCase()? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  {un.name}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover> 
+</div>:""}
+
+
 <div className="flex items-center">
     <input checked={!isModel}   onChange={(event) => setModel(false)} id="model-2" type="radio" value="" name="model" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-700 dark:ring-offset-gray-800 rounded-full  focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
     <label htmlFor="default-radio-2" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Not Model?</label>
