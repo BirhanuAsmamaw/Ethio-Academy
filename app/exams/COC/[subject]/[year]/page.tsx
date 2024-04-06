@@ -21,7 +21,7 @@ const COCYearExamsPage = async({params}:{
 const department=await getDepartmentByName("Freshman")
   const examQuestions=await getQuestionsByCategory("COC","Freshman",params.year,subject?.subjectName);
   return (<><Navbar/>
-  {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All COC Exam Now!"} />}
+  {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy COC Exam Now!"} />}
   <COCYearExamsClientPage subject={subject} year={params.year} Questions={examQuestions}/>
   </>)
  
