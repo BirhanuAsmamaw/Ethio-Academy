@@ -204,7 +204,7 @@ const handleChooseSelection = (choose: string, value: string) => {
           
           aria-expanded={open}
           
-          className=" w-full flex justify-between"
+          className=" w-full flex justify-between border p-2 rounded-[5px] dark:border-gray-700"
         >
           <p>{value
             ? value
@@ -215,7 +215,7 @@ const handleChooseSelection = (choose: string, value: string) => {
       </PopoverTrigger>
      
     
-      <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
+      <PopoverContent className=" p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
           <CommandInput  placeholder="Search the university..." />
           <CommandList>
