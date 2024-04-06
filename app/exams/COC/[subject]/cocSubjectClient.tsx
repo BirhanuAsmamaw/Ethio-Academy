@@ -34,9 +34,9 @@ const ExamSubjectClientPage:React.FC<ExamSubjectPageProps> = ({subject,universit
 <div className="w-[300px] p-2 py-6 bg-white dark:bg-slate-800 h-[500px] overflow-y-auto">
    <div className="  p-0 flex flex-col ">
    <button className={`border-b dark:border-gray-600 p-2 hover:bg-slate-100 hover:dark:bg-slate-700  transition-all duration-300  ${!universityCode&&'bg-slate-100 dark:bg-slate-700 font-semibold'}`} onClick={()=>{setUniversityCode(null)}}>All University Exam</button>
-     {universities?.map((university:any)=>{
+     {universities?universities?.map((university:any)=>{
       return <button className={`border-b dark:border-gray-600 p-2 hover:bg-slate-100 hover:dark:bg-slate-700  transition-all duration-300 ${(universityCode===university.code)&&'bg-slate-100 dark:bg-slate-700 font-semibold'}`} key={university?.id} onClick={()=>{setUniversityCode(university.code)}}>{university?.name}</button>
-     })}
+     }):""}
     </div>
    </div>
   
@@ -46,7 +46,7 @@ const ExamSubjectClientPage:React.FC<ExamSubjectPageProps> = ({subject,universit
           return <YearExamCard 
           key={index}
            year={year}  
-           url={`/COC/${subject.id}/${year}${universityCode?`?university=${universityCode}&`:'?'}`}/>
+           url={`/COC/${subject?.id}/${year}${universityCode?`?university=${universityCode}&`:'?'}`}/>
          })}
          
           
