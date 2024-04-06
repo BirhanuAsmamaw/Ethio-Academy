@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '../ui/command';
 import { cn } from '@/lib/utils';
-import { Check } from 'lucide-react';
+import { Check, ChevronsUpDown } from "lucide-react"
 
 
  
@@ -186,10 +186,21 @@ const handleChooseSelection = (choose: string, value: string) => {
     <label htmlFor="model-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Model?</label>
 </div>
 
-{(isModel&&university)?<div className="p-6 flex">
+
+
+<div className="flex items-center">
+    <input checked={!isModel}   onChange={(event) => setModel(false)} id="model-2" type="radio" value="" name="model" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-700 dark:ring-offset-gray-800 rounded-full  focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-2" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Not Model?</label>
+</div>
+
+  
+</div>
+  </div>
+
+  {(isModel&&university)?<div className="p-6 flex">
 <Popover open={open} onOpenChange={setOpen}>
     <div className="flex w-full   md:min-w-[500px] max-w-[800px] shadow-md dark:shadow-black bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] overflow-hidden">
-      <PopoverTrigger asChild className="p-3" >
+      <PopoverTrigger asChild  className="w-[200px] justify-between" >
         <button
           
           aria-expanded={open}
@@ -198,7 +209,9 @@ const handleChooseSelection = (choose: string, value: string) => {
         >
           {value
             ? value
-            : "Select your university..."}
+            : "Select the  university..."}
+
+<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
  
         </button>
       </PopoverTrigger>
@@ -206,7 +219,7 @@ const handleChooseSelection = (choose: string, value: string) => {
       </div>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
-          <CommandInput  placeholder="Search your university..." />
+          <CommandInput  placeholder="Search the university..." />
           <CommandList>
             <CommandEmpty>No university found.</CommandEmpty>
             <CommandGroup>
@@ -235,17 +248,6 @@ const handleChooseSelection = (choose: string, value: string) => {
       </PopoverContent>
     </Popover> 
 </div>:""}
-
-
-<div className="flex items-center">
-    <input checked={!isModel}   onChange={(event) => setModel(false)} id="model-2" type="radio" value="" name="model" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-700 dark:ring-offset-gray-800 rounded-full  focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-    <label htmlFor="default-radio-2" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Not Model?</label>
-</div>
-
-  
-</div>
-  </div>
-
 
 
 <div className="space-y-2">
