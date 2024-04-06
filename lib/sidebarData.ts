@@ -85,11 +85,11 @@ export const sidebarData=[
     items:[
       {
         label:"Create Univeristy",
-        url:"/dashboard/univeristy/create"
+        url:"/dashboard/university/create"
       },
       {
         label:"Univeristy List",
-        url:"/dashboard/univeristy/list"
+        url:"/dashboard/university/list"
       },
       
       
