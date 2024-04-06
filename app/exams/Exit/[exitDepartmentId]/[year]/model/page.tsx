@@ -31,10 +31,9 @@ const department=await getDepartmentById(params.exitDepartmentId)
 />
   <Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Exit Exam Now!"} />}
-  <div className="bg-white dark:bg-gray-800">
-    <h1>{universityId}</h1>
+  
   <ExitModelYearExamsClientPage univerity={university} department={department} year={params.year} Questions={examQuestions}/>
-  </div>
+ 
   </>)
  
 };
