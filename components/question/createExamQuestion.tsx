@@ -20,9 +20,10 @@ interface  CreateExamsClientProps{
   department: any;
   subject?: any|null;
   year: string;
+  isCoc?: boolean;
   
 }
-const CreateExamsClient:React.FC<CreateExamsClientProps> = ({department,subject,year,university}) => {
+const CreateExamsClient:React.FC<CreateExamsClientProps> = ({isCoc,department,subject,year,university}) => {
   const [isModel,setModel]=useState(false)
  
   
@@ -197,7 +198,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 </div>
   </div>
 
-  {(isModel&&university)?<div className="p-6 flex  w-[350px]" >
+  {((isModel&&university)||isCoc)?<div className="p-6 flex  w-[350px]" >
 <Popover open={open} onOpenChange={setOpen} >
       <PopoverTrigger asChild   >
         <button
@@ -227,7 +228,7 @@ const handleChooseSelection = (choose: string, value: string) => {
                   value={un.name.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    setuniversityId(isModel? un.id:null);
+                    setuniversityId((isModel||isCoc)? un.id:null);
                     setOpen(false);
                   }}
                 >
