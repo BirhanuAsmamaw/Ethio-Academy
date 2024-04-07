@@ -92,10 +92,10 @@ const qData={
 
 }
 
-console.log("questions Data",qData);
+
 const onSubmit=() => {
 
-
+  console.log("questions Data one",qData);
   setLoading(true);
 
   
@@ -103,6 +103,7 @@ const onSubmit=() => {
 
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
+    console.log("questions Data two",qData);
     router.back();
     router.refresh();
   }).catch((error:any)=>{
