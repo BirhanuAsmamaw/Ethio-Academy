@@ -92,6 +92,7 @@ const qData={
 
 }
 
+console.log("questions Data",qData);
 const onSubmit=() => {
 
 
