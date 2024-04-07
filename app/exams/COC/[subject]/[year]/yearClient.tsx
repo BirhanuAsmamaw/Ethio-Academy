@@ -48,9 +48,9 @@ if(!subject){
 
    return  <>
    <Header
-    title={`${subject?.subjectName}  Exam in ${year} Year`}
-    description={` ${subject?.subjectName} Entrance Exams in ${year} Year  || All ${subject?.subjectName} Exams in in ${year} Year  With Answer and  Detail Exaplanations!`}
-    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+    title={`${university? university?.code:""} ${subject?.subjectName}  Exam in ${year} Year`}
+    description={`${university? university?.name:""}  ${subject?.subjectName} COC Exams in ${year} Year  || All ${subject?.subjectName} Exams in in ${year} Year  With Answer and  Detail Exaplanations!`}
+    keywords='Programming, High School Courses, Freshman Courses, COC Exams, Exit Exams, Online Education, Lifelong Learning'
 />
    <QuestionComponent 
    university={university}
