@@ -65,8 +65,9 @@ model Course{
    id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
    updatedAt     DateTime  @updatedAt
-   subject String
-  department DepartmentType
+   course String
+  subject Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  subjectId  String @db.ObjectId
    cover File?
    videoUrl File?
    videoThumbnail File?
@@ -83,10 +84,7 @@ model Course{
 
 }
 
-type DepartmentType{
-  code String 
-  name String 
-}
+
 
 
 model Chapter{
@@ -132,7 +130,8 @@ model Question{
    chooses Choose[]
    year String
    explanation String?
-   subject String?
+    subject Subject?  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  subjectId  String? @db.ObjectId
    isModel Boolean @default(false)
 
 }
@@ -267,6 +266,8 @@ model Subject{
   department    Department    @relation( fields: [departmentId], references: [id], onDelete: Cascade)
    departmentId String  @db.ObjectId
    subjectName  String  
+   questions Question[]
+   course  Course[]
    cover File?
    banner File?
 }
