@@ -14,9 +14,12 @@ const EUEEYearExamsPage = async({params}:{
 
   const subject=await getSubjectById(params.subject)
   const examQuestions=await getQuestionsByCategory("EUEE","Highschool",params.year,subject?.subjectName);
+  const modifiedExamQuestions=examQuestions.map((question)=>{
+    return{...question,subject:params.subject}
+  })
   
   return (<>
-  <EUEEYearExamsClientPage subject={subject} year={params.year} questions={examQuestions}/>
+  <EUEEYearExamsClientPage subject={subject} year={params.year} questions={modifiedExamQuestions}/>
   </>)
  
 };

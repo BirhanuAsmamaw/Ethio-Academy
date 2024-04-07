@@ -15,9 +15,12 @@ const COCYearExamsPage = async({params}:{
 
   const subject=await getSubjectById(params.subject)
   const examQuestions=await getQuestionsByCategory("COC","Freshman",params.year,subject?.subjectName);
+  const modifiedExamQuestions=examQuestions.map((question)=>{
+    return{...question,subject:params.subject}
+  })
   
   return (<>
-  <COCYearExamsClientPage subject={subject} year={params.year} questions={examQuestions}/>
+  <COCYearExamsClientPage subject={subject} year={params.year} questions={modifiedExamQuestions}/>
   </>)
  
 };
