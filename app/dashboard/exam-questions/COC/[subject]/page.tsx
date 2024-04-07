@@ -13,17 +13,17 @@ const ExamSubjectPage = async({params}:{params:{subject:string}}) => {
   }
   return (<>
   <Header
-    title={`${subject?.subjectName} Entrance Exams`}
-    description={` ${subject?.subjectName} Entrance Exams || All ${subject?.subjectName} Exams With Answer and  Detail Exaplanations!`}
-    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+    title={`${subject?.subjectName} COC Exams`}
+    description={` ${subject?.subjectName} COC Exams || All ${subject?.subjectName} Exams With Answer and  Detail Exaplanations!`}
+    keywords='Programming, High School Courses, Freshman Courses, COC Exams, Exit Exams, Online Education, Lifelong Learning'
 />
   
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
-     <Banner title={`${subject?.subjectName} Entrance Exams`} 
+     <Banner title={`${subject?.subjectName} COC Exams`} 
      isChange
-      editUrl={`/dashboard/exam-questions/EUEE/${subject?.id}/update`}
-      deleteUrl={`/dashboard/exam-questions/EUEE/${subject?.id}/delete`}
+      editUrl={`/dashboard/exam-questions/COC/${subject?.id}/update`}
+      deleteUrl={`/dashboard/exam-questions/COC/${subject?.id}/delete`}
       ><></></Banner>
      </div>
 
@@ -32,7 +32,7 @@ const ExamSubjectPage = async({params}:{params:{subject:string}}) => {
   <div className="flex justify-center p-4 py-20">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
-          return <DashboardYearExamsCard key={index} year={year} url={`/dashboard/exam-questions/EUEE/${params.subject}/${year}`}/>
+          return <DashboardYearExamsCard key={index} year={year} url={`/dashboard/exam-questions/COC/${params.subject}/${year}`}/>
          })}
          
           
