@@ -5,7 +5,7 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 export async function PUT(req: Request, {params}:{params:{id:string}}){
   const id=params.id;
   const body = await req.json();
-  const {subject,
+  const {course,
  
      price,
      descriptions,
@@ -22,19 +22,17 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
       return NextResponse.json({status:false, message:"unathorized"});
     }
 
-    const course=await prisma.course.findUnique({
+    const courseData=await prisma.course.findUnique({
       where: {id:id}
     })
-    if(!course){
+    if(!courseData){
       return NextResponse.json({status:false, message:"course not found"});
     }
 
     const updatedCourse=await prisma.course.update({
       where: {id:id},
       data:{
-        subject:subject,
-       
-       
+        course:course,
         price:price,
         descriptions:descriptions,
         requirements:requirements,
