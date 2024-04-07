@@ -9,8 +9,9 @@ interface COCYearExamsClientPageProps{
   subject:any,
     year:string,
     Questions:any[];
+    university:any
 }
-const COCYearExamsClientPage:React.FC<COCYearExamsClientPageProps> = ({subject,year,Questions}) => {
+const COCYearExamsClientPage:React.FC<COCYearExamsClientPageProps> = ({university,subject,year,Questions}) => {
 
 
 const router=useRouter()
@@ -52,10 +53,11 @@ if(!subject){
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
    <QuestionComponent 
+   university={university}
    onNext={onNext} 
    onPrevious={onPreviousYear}
    Questions={Questions} 
-   notificationTitle={`There is No ${subject?.subjectName} Exams in ${year} Year`} 
+   notificationTitle={`There is No ${subject?.subjectName} Exams in ${year} Year ${university? university?.name:""}`} 
    notificationUrl={`/exams/COC/${subject?.id}`} 
    
    notificationLabel={`Click Here and See ${subject?.subjectName} Exams in Others Years`} 
