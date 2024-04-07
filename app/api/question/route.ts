@@ -4,7 +4,7 @@ export async function POST(req:Request) {
   const body=await req.json();
   const {
     departmentId,
-    subject,
+    subjectId,
     lessonId,
     title ,
     title_two,
@@ -25,7 +25,8 @@ export async function POST(req:Request) {
 
      const newQuestions= await prisma.question.create({
        data:{
-        subject:subject,
+        subjectId:subjectId,
+        
         departmentId: departmentId,
         universityId:universityId,
         lessonId:lessonId,
@@ -40,6 +41,6 @@ export async function POST(req:Request) {
      return NextResponse.json(newQuestions);
     }
     catch(err) {
-      console.log(err);
+     
     }
 }

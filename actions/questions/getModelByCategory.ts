@@ -16,7 +16,9 @@ export async function getModelQuestionsByCategory(type: string, department: stri
     };
 
     if (subject) {
-      whereClause.subject = subject;
+      whereClause.subject = {
+        subjectName: subject
+      };
       
     }
     if(code){
@@ -24,7 +26,7 @@ export async function getModelQuestionsByCategory(type: string, department: stri
     }
 
     const selectedQuestion = await prisma.question.findMany({
-      where: whereClause,
+      where:whereClause
     });
 
     return selectedQuestion;

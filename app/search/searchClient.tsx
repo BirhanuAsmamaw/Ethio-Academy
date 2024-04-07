@@ -33,11 +33,11 @@ const SearchClient = () => {
           key={course.id}
               id={course.id}
               no_reviews={course.reviews.length}
-              category={course.department.name}
-              url={course.department.code}
+              url={course.subject.department.departmentName}
+              category={course.subject.department.url}
               price={course.price}
-              subject={course.subject}
-              rating={course?.rating}
+              subject={course.course}
+              rating={course?.rating??0}
               cover={course.cover?.public_url}
                />
         })}

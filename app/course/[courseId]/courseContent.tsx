@@ -8,7 +8,7 @@ import {
 
 
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react";
+
 interface courseContentProps{
   course: any|null;
 }

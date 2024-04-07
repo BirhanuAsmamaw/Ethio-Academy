@@ -43,7 +43,7 @@ const [isExpand,setExpand]=useState(false);
 
   <SubLayout>
 
-  <h1 className="text-xl  font-semibold">{course.subject}</h1>
+  <h1 className="text-xl  font-semibold">{course.course}</h1>
   {(course.videoThumbnail&&course?.videoUrl)?<div>
     <video
         className="w-full rounded-lg shadow-lg"

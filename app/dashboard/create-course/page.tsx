@@ -1,9 +1,10 @@
-import { getAllDepartments } from "@/actions/departments/getAllDepartments";
+
 import CreateCourseClient from "./createCourseClient";
+import { getAllSubject } from "@/actions/subject/getAllSubject";
 
 const CreateCourse = async() => {
-  const departments=await getAllDepartments();
-  return (  <CreateCourseClient departments={departments}/>);
+  const subjects=await  getAllSubject()
+  return (  <CreateCourseClient subjects={subjects}/>);
 }
  
 export default CreateCourse;

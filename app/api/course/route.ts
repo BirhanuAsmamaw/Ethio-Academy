@@ -16,25 +16,26 @@ export async function POST(req:Request){
   }
 
   const {
-    subject,
-    department,
+   
      price,
      descriptions,
      requirements,
      whoShouldTake,
+     subjectId,
+     course
   }=body;
 
 
 
-  if (!subject || !department ||  !price || !descriptions || !requirements || !whoShouldTake ){
+  if (!subjectId || !descriptions || !requirements || !whoShouldTake|| !course ){
     return NextResponse.json({status:false, message:"invalid course parameters"});
 
   }
   const newCourse=await prisma.course.create({
     data:{
+      subjectId:subjectId,
       creatorId:user.id,
-      subject:subject,
-      department:department,
+      course:course,
       price:parseFloat(price),
       rating:0,
       descriptions:descriptions,

@@ -21,7 +21,7 @@ const CoursePage = async({params}:{params:IPrams}) => {
   return ( <>
   <Navbar/>
   <Header
-    title={`EEA || ${course?.subject}`}
+    title={`EEA || ${course?.course}`}
     description={`${course?.descriptions}`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />

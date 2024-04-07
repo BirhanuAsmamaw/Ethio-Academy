@@ -4,7 +4,7 @@ import { CourseListClient } from "./courseListClient";
 
 const ListCourses = async() => {
 
-  const courses=await getCourses(2);
+  const courses=await getCourses(1);
   return ( <div className="px-4 py-10">
     <CourseListClient courses={courses?.courses||null}/>
   </div> );

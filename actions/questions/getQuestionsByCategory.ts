@@ -16,7 +16,9 @@ export async function getQuestionsByCategory(type: string, department: string, y
     };
 
     if (subject) {
-      whereClause.subject = subject;
+      whereClause.subject = {
+      subjectName: subject
+    };
       
     }
 

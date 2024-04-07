@@ -19,10 +19,10 @@ import { IoChevronDown } from "react-icons/io5";
 
 
 interface CreateCourseClientProps{
-  departments:any[]| null;
+  subjects:any[]| null;
 }
 
-const CreateCourseClient:React.FC<CreateCourseClientProps> = ({departments}) => {
+const CreateCourseClient:React.FC<CreateCourseClientProps> = ({subjects}) => {
 const [requirement, setRequirement]=useState("")
 const [description, setDescription]=useState("")
 const [courseUsers, setCourseUsers]=useState("")
@@ -32,16 +32,15 @@ const [isLoading, setIsLoading]=useState(false)
 
 
 const [open, setOpen] = useState(false);
-  const [departmentValues, setDepartmentValues] = useState("");
-  const [departmentData, setDepartment] = useState<any>(null);
+  const [subjectValues, setSubjectValues] = useState("");
+  const [subjectId, setSubjectId] = useState<any>(null);
 
 const router=useRouter()
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-     
-      subject:null,
       price:0,
-      category:null}})
+     subjectId:'',
+     course:''}})
 
 
 
@@ -67,7 +66,7 @@ const router=useRouter()
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
     setIsLoading(true)
     
-  const course={...data,department:departmentData}
+  const course={...data,subjectId:subjectId}
     axios.post('/api/course',course).then(()=>{
       router.push("/dashboard/list-courses")
       toast.success("Course created successfully")
@@ -113,11 +112,11 @@ const router=useRouter()
           
           className=" w-full  flex  items-center justify-between"
         >
-          <p>{departmentValues
+          <p>{subjectValues
           
-            ? departmentValues
-            : "Category"}</p>
-            {!departmentValues&&<IoChevronDown size={24}/>}
+            ? subjectValues
+            : "Choose Subject"}</p>
+            {!subjectValues&&<IoChevronDown size={24}/>}
  
         </button>
       </PopoverTrigger>
@@ -128,25 +127,25 @@ const router=useRouter()
         <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
           <CommandInput  placeholder="Search your department..." />
           <CommandList>
-            <CommandEmpty>No Category found.</CommandEmpty>
+            <CommandEmpty>No Subject found.</CommandEmpty>
             <CommandGroup>
-              {departments?.map((department) => (
+              {subjects?.map((subject) => (
                 <CommandItem
-                  key={department.id}
-                  value={department.departmentName.toLowerCase()}
+                  key={subject.id}
+                  value={subject.subjectName.toLowerCase()}
                   onSelect={(currentValue) => {
-                    setDepartmentValues(currentValue === departmentValues ? "" : currentValue);
-                    setDepartment({code:department.url,name:department.departmentName});
+                    setSubjectValues(currentValue === subjectValues ? "" : currentValue);
+                    setSubjectId(subject.id);
                     setOpen(false);
                   }}
                 >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      departmentValues === department.departmentName.toLowerCase()? "opacity-100" : "opacity-0"
+                      subjectValues === subject.subjectName.toLowerCase()? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {department.departmentName}
+                  {subject.subjectName}
                 </CommandItem>
               ))}
             </CommandGroup>
@@ -159,7 +158,7 @@ const router=useRouter()
        <div className="w-full  lg:w-8/12 flex flex-col md:flex-row px-4  gap-10 justify-between">
 
        <div className="w-full  ">
-            <Input id="subject" register={register} errors={errors}  label="Subject" type="text" required/>
+            <Input id="course" register={register} errors={errors}  label="Write Course Name" type="text" required/>
             </div>
 
 
@@ -204,7 +203,7 @@ const router=useRouter()
       isnext&&<Container
       childern={
         <div className="flex flex-col gap-10 p-2">
- <Heading title={courseData?.subject}/>
+ <Heading title={courseData?.course}/>
 
  <div className="flex flex-col gap-2 p-2">
  <Heading title="About Course"/>

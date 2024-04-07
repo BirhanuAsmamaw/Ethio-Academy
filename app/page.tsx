@@ -69,16 +69,16 @@ const banner=await getBanner();
   
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
-        {courses?.courses?.map((course:any)=>{
+        {courses?.courses?.map((course)=>{
           return course.cover&&<Card
           key={course.id}
               id={course.id}
               no_reviews={course.reviews.length}
-              category={course.department.name}
-              url={course.department.code}
+              url={course.subject.department.departmentName}
+              category={course.subject.department.url}
               price={course.price}
-              subject={course.subject}
-              rating={course?.rating}
+              subject={course.course}
+              rating={course?.rating??0}
               cover={course.cover.public_url} 
                />
       
@@ -104,10 +104,10 @@ const banner=await getBanner();
           return course.cover&&<Card
           key={index}
               id={course.id}
-              url={course.department.code}
-              category={course.department.name}
+              url={course.subject.department.departmentName}
+              category={course.subject.department.url}
               price={course.price}
-              subject={course.subject}
+              subject={course.course}
               rating={course?.rating??0}
               cover={course.cover?.public_url}  />
       

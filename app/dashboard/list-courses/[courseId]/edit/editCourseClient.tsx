@@ -33,7 +33,7 @@ const router=useRouter();
       descriptions:description||course.descriptions,
       requirements:requirement||course.requirements,
       whoShouldTake:courseUsers||course.whoShouldTake,
-      subject:course.subject,
+      course:course.course,
       price:course.price,
       }})
 
@@ -103,7 +103,7 @@ const router=useRouter();
           
           </div>
           <div className="w-full  lg:w-8/12">
-            <Input id="subject"  defaultValue={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Subject" type="text" required/></div>
+            <Input id="course"  defaultValue={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Course Name" type="text" required/></div>
 
 
 

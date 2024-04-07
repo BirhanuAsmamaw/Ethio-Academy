@@ -49,7 +49,7 @@ interface CourseListprops{
 type CourseType={
  id:string, 
 
-subject: string,
+course: string,
 
 price: number,
 
@@ -96,7 +96,7 @@ export const columns: ColumnDef<CourseType>[] = [
 
 
   {
-    accessorKey: "subject",
+    accessorKey: "course",
     header: ({ column }) => {
       return (
         <Button
@@ -108,7 +108,7 @@ export const columns: ColumnDef<CourseType>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("subject")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("course")}</div>,
   },
 
 
