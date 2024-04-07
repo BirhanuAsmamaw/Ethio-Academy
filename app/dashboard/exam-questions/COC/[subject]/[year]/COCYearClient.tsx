@@ -331,7 +331,7 @@ export const COCYearExamsClientPage:React.FC<questionListprops>=({questions,subj
 
 
 <Button variant="outline" onClick={()=>{
-  router.push(`/dashboard/exam-questions/COC/${subject}/${year}/add-question`)
+  router.push(`/dashboard/exam-questions/COC/${subject.id}/${year}/add-question`)
 }}>Add Question</Button>
 
 
