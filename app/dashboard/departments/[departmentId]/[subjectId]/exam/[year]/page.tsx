@@ -20,7 +20,7 @@ const YearExamsPage = async({params}:{
     return{...question,subjectId:params.subjectId}
   })
   
-  
+  console.log("data",modifiedExamQuestions);
   return (<>
   <ExamYearClientPage departmentId={params.departmentId} subject={subject} year={params.year} questions={modifiedExamQuestions}/>
   </>)
