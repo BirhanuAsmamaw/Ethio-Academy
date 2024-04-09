@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { MdModeEdit} from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
-import { IoIosArrowBack } from "react-icons/io";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 interface Bannerprops{
   title:string;
   children:ReactNode
@@ -33,16 +33,16 @@ const Banner:React.FC<Bannerprops> = ({title,backUrl,children,isChange,editUrl,d
    
 </div>
 
-<div className='w-full justify-between'>
+<div className='w-full justify-between px-4'>
 <Button 
         variant="outline" 
-        className='flex justify-center rounded-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 text-white ' 
+        className='flex justify-center ' 
         onClick={()=>{router.push(backUrl||"/")}}>
-         <IoIosArrowBack size={24}/> 
+         <MdOutlineKeyboardBackspace size={24}/> 
           </Button>
 
 
-  {isChange?<div className="w-full flex  gap-4 justify-end px-4">
+  {isChange?<div className="w-full flex  gap-4 justify-end ">
 
 <Button 
         variant="outline" 
