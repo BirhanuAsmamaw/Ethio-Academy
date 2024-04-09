@@ -332,7 +332,7 @@ export const ExamYearClientPage:React.FC<questionListprops>=({questions,subject,
 
 
 <Button variant="outline" onClick={()=>{
-  router.push(`/dashboard/departments/${departmentId}/${subject.id}/${year}/add-question`)
+  router.push(`/dashboard/departments/${departmentId}/${subject.id}/exam/${year}/add-question`)
 }}>Add Question</Button>
 
 
