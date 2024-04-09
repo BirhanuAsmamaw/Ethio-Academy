@@ -55,7 +55,7 @@ interface questionListprops{
 type QuestionType={
  id:string, 
 
-subject?: any,
+ subjectId?:string,
 isModel?:boolean,
 
 title: string,
@@ -71,31 +71,6 @@ year?: string,
 
 
 export const columns: ColumnDef<QuestionType>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${row.getIsSelected()? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
 
 
 
@@ -166,14 +141,14 @@ export const columns: ColumnDef<QuestionType>[] = [
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/exam-questions/EUEE/${question?.subject?question?.subject?.id:''}/${question.year}/${question.id}/edit`}>Edit question</Link>
+               href={`/dashboard/exam-questions/EUEE/${question?.subjectId}/${question.year}/${question.id}/edit`}>Edit question</Link>
             </DropdownMenuItem>
 
            
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/exam-questions/EUEE/${question?.subject?question?.subject?.id:''}/${question.year}/${question.id}/delete`}>Delete</Link>
+              href={`/dashboard/exam-questions/EUEE/${question?.subjectId}/${question.year}/${question.id}/delete`}>Delete</Link>
               </DropdownMenuItem>?
           </DropdownMenuContent>
 

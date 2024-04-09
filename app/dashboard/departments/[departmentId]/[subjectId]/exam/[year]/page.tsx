@@ -16,9 +16,12 @@ const YearExamsPage = async({params}:{
 
   const subject=await getSubjectById(params.subjectId)
   const examQuestions=await getQuestionsByCategory(subject?.department?.exam?.url||"",subject?.department.url||"",params.year,subject?.id);
-
+  const modifiedExamQuestions=examQuestions.map((question)=>{
+    return{...question,subjectId:params.subjectId}
+  })
+  
   return (<>
-  <ExamYearClientPage departmentId={params.departmentId} subject={subject} year={params.year} questions={examQuestions}/>
+  <ExamYearClientPage departmentId={params.departmentId} subject={subject} year={params.year} questions={modifiedExamQuestions}/>
   </>)
  
 };
