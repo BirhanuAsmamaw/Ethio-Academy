@@ -36,9 +36,9 @@ const ExamSubjectPage = async({params}:{params:{subjectId:string,departmentId:st
     {subject?.course?.map((course:any,index:number)=>{
      return  <ExamsCategoryCard
      key={index}
-      name={course.course}
-      url={`/dashboard/departments/${course.department.id}/${subject.id}/course`}
-      image={subject?.cover?.public_url? subject?.cover?.public_url:""}
+      name={course?.course}
+      url={`/dashboard/departments/${subject.department.id}/${subject.id}/course`}
+      image={course?.cover?.public_url? course?.cover?.public_url:""}
       />
     })}
     
