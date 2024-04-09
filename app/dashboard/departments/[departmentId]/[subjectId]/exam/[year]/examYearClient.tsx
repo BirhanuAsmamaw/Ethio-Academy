@@ -22,7 +22,7 @@ import {
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -54,7 +54,7 @@ interface questionListprops{
 
 type QuestionType={
  id:string, 
-
+subject?:any;
 
 isModel?:boolean,
 
@@ -141,14 +141,14 @@ export const columns: ColumnDef<QuestionType>[] = [
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/exam-questions/EUEE/${question?.id}/${question.year}/${question.id}/edit`}>Edit question</Link>
+               href={`/dashboard/exam-questions/EUEE/${question?.subject.id}/${question.year}/${question.id}/edit`}>Edit question</Link>
             </DropdownMenuItem>
 
            
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/exam-questions/EUEE/${question?.id}/${question.year}/${question.id}/delete`}>Delete</Link>
+              href={`/dashboard/exam-questions/EUEE/${question?.subject.id}/${question.year}/${question.id}/delete`}>Delete</Link>
               </DropdownMenuItem>?
           </DropdownMenuContent>
 
@@ -175,8 +175,6 @@ export const ExamYearClientPage:React.FC<questionListprops>=({questions,subject,
 
 
 
-
-console.log("questions", questions)
 
 
 
