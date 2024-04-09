@@ -46,7 +46,7 @@ const Banner:React.FC<Bannerprops> = ({title,backUrl,children,isChange,editUrl,d
 
 
 
-  {isChange?<div className=" flex  flex-col md:flex-row gap-4 justify-end ">
+  {isChange?<div className=" flex   flex-wrap gap-2 md:gap-4 justify-end ">
 
 <Button 
         variant="outline" 
