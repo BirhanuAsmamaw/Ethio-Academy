@@ -4,7 +4,9 @@ import AddSubjectClinet from './addSubjectClient'
 
 const AddSubjectPage = async({params}:{params:{departmentId:string}}) => {
  const department=await getDepartmentById(params.departmentId)
-  return ( <AddSubjectClinet department={department}/>)
+  return (<div className=' h-screen w-screen flex justify-center items-center'>
+    <AddSubjectClinet department={department}/>
+  </div>)
 }
 
 export default AddSubjectPage
