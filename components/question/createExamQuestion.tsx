@@ -82,7 +82,7 @@ D:{
 const qData={
   universityId:universityId,
   departmentId:department.id,
-  subjectId:subject?subject.id:null,
+  subjectId:subject? subject.id:null,
   year:year,
   explanation:explanation,
   title:question.Q,

@@ -1,7 +1,7 @@
 import prisma from "@/lib/prismadb";
 
 
-export async function getQuestionsByCategory(type: string, department: string, year: string, subject?: string) {
+export async function getQuestionsByCategory(type: string, department: string, year: string, subjectId?: string) {
   try {
     const whereClause: any = {
       year: year,
@@ -15,9 +15,9 @@ export async function getQuestionsByCategory(type: string, department: string, y
       
     };
 
-    if (subject) {
+    if (subjectId) {
       whereClause.subject = {
-      subjectName: subject
+      id: subjectId
     };
       
     }
