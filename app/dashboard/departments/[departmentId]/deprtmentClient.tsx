@@ -15,7 +15,7 @@ const DepartmentClient:React.FC<DepartmentClientProps> = ({department}) => {
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner 
-     title={`${department.departmentName}  Exit Exams`}
+     title={`${department?.departmentName}  Exit Exams`}
      isChange 
      deleteUrl={`/dashboard/department/${department?.id}/delete`}
     editUrl={`/dashboard/department/${department?.id}/update`}
@@ -27,7 +27,7 @@ const DepartmentClient:React.FC<DepartmentClientProps> = ({department}) => {
 
      
      <div className="flex justify-center p-4">
-        <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {department?.subject?<div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {department?.subject.map((subject:any,index:number)=>{
           return  <ExamsCategoryCard
           key={index}
@@ -37,7 +37,7 @@ const DepartmentClient:React.FC<DepartmentClientProps> = ({department}) => {
            />
          })}
          
-        </div>
+        </div>:""}
       </div>
  
   
