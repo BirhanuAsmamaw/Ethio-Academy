@@ -3,6 +3,7 @@ import { getSubjectById } from '@/actions/subject/getSubjectById'
 import Header from '@/components/Header'
 import Banner from '@/components/banner'
 import DashboardYearExamsCard from '@/components/card/DashboardYearExamsCard'
+import ExamsCategoryCard from '@/components/card/examscategoryCard'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
 
@@ -29,6 +30,21 @@ const ExamSubjectPage = async({params}:{params:{subjectId:string,departmentId:st
       ><></></Banner>
      </div>
 
+
+{subject?.course?<div className="flex justify-center p-4">
+   <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    {subject?.course?.map((course:any,index:number)=>{
+     return  <ExamsCategoryCard
+     key={index}
+      name={course.course}
+      url={`/dashboard/departments/${course.department.id}/${subject.id}/course`}
+      image={subject?.cover?.public_url? subject?.cover?.public_url:""}
+      />
+    })}
+    
+   </div>
+ </div>:""
+}
 
   
   <div className="flex justify-center p-4 py-20">
