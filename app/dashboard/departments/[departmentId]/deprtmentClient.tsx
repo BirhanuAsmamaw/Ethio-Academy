@@ -17,6 +17,8 @@ const DepartmentClient:React.FC<DepartmentClientProps> = ({department}) => {
      <Banner 
      title={`${department?.departmentName}  Exit Exams`}
      isChange 
+     addName='Subject'
+     addUrl={`/dashboard/departments/${department?.id}/add-subject`}
      deleteUrl={`/dashboard/department/${department?.id}/delete`}
     editUrl={`/dashboard/department/${department?.id}/update`}
      >
