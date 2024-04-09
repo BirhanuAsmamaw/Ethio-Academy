@@ -6,8 +6,8 @@ import DashboardYearExamsCard from '@/components/card/DashboardYearExamsCard'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
 
-const ExamSubjectPage = async({params}:{params:{subject:string}}) => {
-  const subject=await getSubjectById(params.subject)
+const ExamSubjectPage = async({params}:{params:{subjectId:string}}) => {
+  const subject=await getSubjectById(params.subjectId)
   if(!subject){
     return null
   }
