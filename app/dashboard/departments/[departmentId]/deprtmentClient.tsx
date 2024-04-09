@@ -15,8 +15,9 @@ const DepartmentClient:React.FC<DepartmentClientProps> = ({department}) => {
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner 
-     title={`${department?.departmentName}  Exit Exams`}
+     title={`${department?.departmentName} `}
      isChange 
+     backUrl='/dashboard/departments'
      addName='Subject'
      addUrl={`/dashboard/departments/${department?.id}/add-subject`}
      deleteUrl={`/dashboard/department/${department?.id}/delete`}

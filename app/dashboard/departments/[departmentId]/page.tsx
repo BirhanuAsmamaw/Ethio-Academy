@@ -15,8 +15,8 @@ const ExitExamDepartment = async({params}:{params:{departmentId:string}}) => {
 
   return (<>
    <Header
-    title={`${department?.departmentName} Exit Exams`}
-    description={` ${department?.departmentName} Exit  Exams  || All ${department?.departmentName}  Exit  Exams   With Answer and  Detail Exaplanations!`}
+    title={`${department?.departmentName}`}
+    description={` ${department?.departmentName}`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
 

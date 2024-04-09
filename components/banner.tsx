@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { MdModeEdit} from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 interface Bannerprops{
   title:string;
   children:ReactNode
@@ -13,9 +14,10 @@ interface Bannerprops{
   deleteUrl?:string;
   addUrl?:string;
   addName?:string;
+  backUrl?:string;
 
 }
-const Banner:React.FC<Bannerprops> = ({title,children,isChange,editUrl,deleteUrl,addName,addUrl}) => {
+const Banner:React.FC<Bannerprops> = ({title,backUrl,children,isChange,editUrl,deleteUrl,addName,addUrl}) => {
   const router=useRouter();
   return (
     <div className="w-full rounded-[10px] flex flex-col items-center justify-center  p-2   lg:py-10 bg-[url('../public/lightBanner.png')] dark:bg-[url('../public/darkBanner.png')] ">
@@ -31,7 +33,16 @@ const Banner:React.FC<Bannerprops> = ({title,children,isChange,editUrl,deleteUrl
    
 </div>
 
-{isChange?<div className="w-full flex  gap-4 justify-end px-4">
+<div className='w-full justify-between'>
+<Button 
+        variant="outline" 
+        className='flex justify-center rounded-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 text-white ' 
+        onClick={()=>{router.push(backUrl||"/")}}>
+         <IoIosArrowBack size={24}/> 
+          </Button>
+
+
+  {isChange?<div className="w-full flex  gap-4 justify-end px-4">
 
 <Button 
         variant="outline" 
@@ -55,6 +66,7 @@ const Banner:React.FC<Bannerprops> = ({title,children,isChange,editUrl,deleteUrl
           <MdDelete size={24}/> 
         <p> Delete</p> </Button>
       </div>:""}
+      </div>
     </div>
   )
 }

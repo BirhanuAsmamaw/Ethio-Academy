@@ -21,12 +21,13 @@ const ExamSubjectPage = async({params}:{params:{subjectId:string,departmentId:st
   
   <div className='min-h-screen w-full flex flex-col gap-10 '>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
-     <Banner title={`${subject?.subjectName} Entrance Exams`} 
+     <Banner title={`${subject?.subjectName}`} 
      isChange
+     backUrl={`/dashboard/departments/${params.departmentId}`}
      addName='Course'
      addUrl={`/dashboard/departments/${params.departmentId}/${subject?.id}/course/add-course`}
-      editUrl={`/dashboard/exam-questions/EUEE/${subject?.id}/update`}
-      deleteUrl={`/dashboard/exam-questions/EUEE/${subject?.id}/delete`}
+      editUrl={`/dashboard/departments/${params.departmentId}/${subject?.id}/update`}
+      deleteUrl={`/dashboard/departments/${params.departmentId}/${subject?.id}/delete`}
       ><></></Banner>
      </div>
 
