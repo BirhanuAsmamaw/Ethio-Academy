@@ -22,7 +22,7 @@ const DeleteQustionClient:React.FC<DeleteQustionClientProps> = ({question}) => {
         }
         
         toast.success("Question deleted successfully")
-        router.back();
+        router.push(`/dashboard/departments/${question?.departmentId}/${question?.subjectId}/exam/${question.year}`);
         router.refresh()
         
       }).catch((errors)=>{
