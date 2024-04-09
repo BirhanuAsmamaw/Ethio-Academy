@@ -166,14 +166,14 @@ export const columns: ColumnDef<QuestionType>[] = [
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/exam-questions/EUEE/${question?.subject?.di}/${question.year}/${question.id}/edit`}>Edit question</Link>
+               href={`/dashboard/exam-questions/EUEE/${question?.subject?question?.subject?.id:''}/${question.year}/${question.id}/edit`}>Edit question</Link>
             </DropdownMenuItem>
 
            
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/exam-questions/EUEE/${question.subject?.id}/${question.year}/${question.id}/delete`}>Delete</Link>
+              href={`/dashboard/exam-questions/EUEE/${question?.subject?question?.subject?.id:''}/${question.year}/${question.id}/delete`}>Delete</Link>
               </DropdownMenuItem>?
           </DropdownMenuContent>
 
