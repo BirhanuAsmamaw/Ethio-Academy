@@ -99,7 +99,7 @@ const onSubmit=() => {
   setLoading(true);
 
   
-
+console.log("data",qData);
 
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
