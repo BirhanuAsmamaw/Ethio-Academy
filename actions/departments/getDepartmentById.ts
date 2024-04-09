@@ -4,7 +4,8 @@ export async function getDepartmentById(id: string){
     const department = await prisma.department.findUnique({
       where:{id: id},
       include:{
-        exam:true
+        exam:true,
+        subject:true
       }
     })
     return department
