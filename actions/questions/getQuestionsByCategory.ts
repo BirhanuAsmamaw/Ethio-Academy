@@ -26,6 +26,11 @@ export async function getQuestionsByCategory(type: string, department: string, y
       where: whereClause,
       include:{
         subject:true,
+        department:{
+          include:{
+            exam:true,
+          }
+        }
       }
     });
 
