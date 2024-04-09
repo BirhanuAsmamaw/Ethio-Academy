@@ -24,6 +24,9 @@ export async function getQuestionsByCategory(type: string, department: string, y
 
     const selectedQuestion = await prisma.question.findMany({
       where: whereClause,
+      include:{
+        subject:true,
+      }
     });
 
     return selectedQuestion;
