@@ -50,15 +50,13 @@ const AddSubjectClinet:React.FC<AddSubjectClinetProps> = ({department}) => {
     <div className="p-4">
       <Heading title={`Add ${department.departmentName}s Subject`}/>
     </div>
-  <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between">
+  <div className="w-full  p-4">
   
-   
-
-    <div className="pt-10 flex-col items-center justify-center w-full ">
-
     <Input id="subject" register={register} errors={errors}  label="Add Subject" type="text" required/>
-    </div>
+  
   </div>
+
+  
   <div className="w-full flex justify-end  mt-6 py-6 px-4 ">
     <Button isDisabled={isLoading} title={isLoading?'Loading...':'Submit'} onClick={handleSubmit(onSubmit)}/>
   </div>
