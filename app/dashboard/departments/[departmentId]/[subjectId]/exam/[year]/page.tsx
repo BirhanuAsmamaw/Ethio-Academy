@@ -8,6 +8,7 @@ import { ExamYearClientPage } from "./examYearClient";
 const YearExamsPage = async({params}:{
   params:{
     subjectId:string,
+    departmentId:string
     year:string
   }
 }) => {
@@ -20,7 +21,7 @@ const YearExamsPage = async({params}:{
   })
   
   return (<>
-  <ExamYearClientPage subject={subject} year={params.year} questions={modifiedExamQuestions}/>
+  <ExamYearClientPage departmentId={params.departmentId} subject={subject} year={params.year} questions={modifiedExamQuestions}/>
   </>)
  
 };

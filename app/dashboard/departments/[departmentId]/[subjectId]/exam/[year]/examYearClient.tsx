@@ -47,6 +47,7 @@ import { useRouter } from "next/navigation"
 interface questionListprops{
   questions:any[]|null;
   subject:any;
+  departmentId:string;
   year:string;
 }
 
@@ -187,7 +188,7 @@ export const columns: ColumnDef<QuestionType>[] = [
 
 
 
-export const ExamYearClientPage:React.FC<questionListprops>=({questions,subject,year})=> {
+export const ExamYearClientPage:React.FC<questionListprops>=({questions,subject,year,departmentId})=> {
  const router=useRouter();
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -331,7 +332,7 @@ export const ExamYearClientPage:React.FC<questionListprops>=({questions,subject,
 
 
 <Button variant="outline" onClick={()=>{
-  router.push(`/dashboard/exam-questions/EUEE/${subject.id}/${year}/add-question`)
+  router.push(`/dashboard/departments/${departmentId}/${subject.id}/${year}/add-question`)
 }}>Add Question</Button>
 
 
