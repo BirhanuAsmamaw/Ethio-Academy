@@ -44,8 +44,8 @@ const Category =async ({params}:{params:IPrams}) => {
   return course.cover&&<Card
   key={index}
       id={course.id}
-      url={course.subject.department.departmentName}
-              category={course.subject.department.url}
+      url={course.subject.department.url}
+      category={course.subject.department.departmentName}
               price={course.price}
               subject={course.course}
               rating={course?.rating??0}

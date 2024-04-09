@@ -33,8 +33,8 @@ const SearchClient = () => {
           key={course.id}
               id={course.id}
               no_reviews={course.reviews.length}
-              url={course.subject.department.departmentName}
-              category={course.subject.department.url}
+              url={course.subject.department.url}
+              category={course.subject.department.departmentName}
               price={course.price}
               subject={course.course}
               rating={course?.rating??0}
