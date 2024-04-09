@@ -22,7 +22,7 @@ const YearExamsPage = async({params}:{
   
  
   return (<>
-  <ExamYearClientPage departmentId={params.departmentId} subject={subject} year={params.year} questions={modifiedExamQuestions}/>
+  <ExamYearClientPage departmentId={params.departmentId} subject={subject} year={params.year} questions={examQuestions}/>
   </>)
  
 };
