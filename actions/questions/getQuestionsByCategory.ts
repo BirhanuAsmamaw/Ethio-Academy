@@ -7,7 +7,7 @@ export async function getQuestionsByCategory(type: string, department: string, y
       year: year,
       
       department: {
-        departmentName: department,
+        url: department,
         exam: {
           url: type,
         },
