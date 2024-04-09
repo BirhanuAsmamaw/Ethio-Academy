@@ -61,7 +61,6 @@ isModel?:boolean,
 title: string,
 year?: string,
 
-examType:string,
 department:any
 
 
@@ -106,7 +105,9 @@ export const columns: ColumnDef<QuestionType>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className=" capitalize">{row.getValue("isModel")?"Model":row.getValue("examType")}</div>,
+    cell: ({ row }) => {
+      const question = row.original
+    return <div className=" capitalize">{row.getValue("isModel")?"Model":question?.department?.exam.url}</div>},
   },
 
 
