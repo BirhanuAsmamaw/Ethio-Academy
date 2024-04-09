@@ -176,7 +176,7 @@ export const ExamYearClientPage:React.FC<questionListprops>=({questions,subject,
 
 
 
-
+console.log("questions", questions)
 
 
 
