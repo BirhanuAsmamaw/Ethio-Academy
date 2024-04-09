@@ -33,7 +33,7 @@ const Banner:React.FC<Bannerprops> = ({title,backUrl,children,isChange,editUrl,d
    
 </div>
 
-<div className='w-full justify-between px-4'>
+<div className='w-full flex justify-between px-4'>
 
   <div className=" flex  gap-4 justify-end ">
   <Button 
