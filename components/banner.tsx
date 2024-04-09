@@ -34,15 +34,19 @@ const Banner:React.FC<Bannerprops> = ({title,backUrl,children,isChange,editUrl,d
 </div>
 
 <div className='w-full justify-between px-4'>
-<Button 
+
+  <div className=" flex  gap-4 justify-end ">
+  <Button 
         variant="outline" 
-        className='flex justify-center ' 
+        className='bg-sky-600 hover:bg-sky-700 transition-all duration-300 text-white ' 
         onClick={()=>{router.push(backUrl||"/")}}>
          <MdOutlineKeyboardBackspace size={24}/> 
           </Button>
+  </div>
 
 
-  {isChange?<div className="w-full flex  gap-4 justify-end ">
+
+  {isChange?<div className=" flex  gap-4 justify-end ">
 
 <Button 
         variant="outline" 
