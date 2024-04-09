@@ -5,6 +5,7 @@ import CreateCourseClient from "./createCourseClient";
 
 const CreateCourse = async({params}:{params:{subjectId:string}}) => {
   const subject=await  getSubjectById(params.subjectId);
+ 
   return (  <CreateCourseClient subject={subject}/>);
 }
  

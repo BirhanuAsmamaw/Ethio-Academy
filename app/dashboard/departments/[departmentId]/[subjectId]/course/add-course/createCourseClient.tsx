@@ -87,7 +87,7 @@ const router=useRouter()
       childern={
         <div className="flex flex-col gap-10 w-full  lg:mt-20   justify-center items-center p-2">
        <div className="py-5">
-       <Heading title="Create Courses"/>
+       <Heading title={`Add ${subject?.subjectName} in ${subject?.department?.departmentName} Course`}/>
        </div>
 
           
