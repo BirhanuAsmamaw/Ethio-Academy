@@ -3,9 +3,10 @@ import { getSubjectById } from '@/actions/subject/getSubjectById'
 import Header from '@/components/Header'
 import Banner from '@/components/banner'
 import DashboardYearExamsCard from '@/components/card/DashboardYearExamsCard'
-import ExamsCategoryCard from '@/components/card/examscategoryCard'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
+import { CourseListClient } from './course/courseListClient'
 
 const ExamSubjectPage = async({params}:{params:{subjectId:string,departmentId:string}}) => {
   const subject=await getSubjectById(params.subjectId)
@@ -16,7 +17,7 @@ const ExamSubjectPage = async({params}:{params:{subjectId:string,departmentId:st
   <Header
     title={`${subject?.subjectName} Entrance Exams`}
     description={` ${subject?.subjectName} Entrance Exams || All ${subject?.subjectName} Exams With Answer and  Detail Exaplanations!`}
-    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Course Exams, Online Education, Lifelong Learning'
 />
   
   <div className='min-h-screen w-full flex flex-col gap-10 '>
@@ -32,22 +33,23 @@ const ExamSubjectPage = async({params}:{params:{subjectId:string,departmentId:st
      </div>
 
 
-{subject&&subject?.course?<div className="flex justify-center p-4">
-   <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-    {subject?.course?.map((course:any,index:number)=>{
-     return  <ExamsCategoryCard
-     key={index}
-      name={course?.course}
-      url={`/dashboard/departments/${subject.department.id}/${subject.id}/course`}
-      image={course?.cover?.public_url? course?.cover?.public_url:""}
-      />
-    })}
-    
-   </div>
- </div>:""
-}
 
-  
+      <Tabs defaultValue="Course" className="w-full ">
+ <div className="flex w-fulll justify-center">
+ <TabsList className="grid w-full md:w-10/12 lg:w-8/12 xl:w-6/12 grid-cols-2 gap-4">
+    <TabsTrigger className=" rounded-full border-gray-600" value="Course">Courses</TabsTrigger>
+    <TabsTrigger  className=" rounded-full border-gray-600" value="exam">Exams</TabsTrigger>
+  </TabsList>
+ </div>
+
+  <TabsContent value="Course">
+  <CourseListClient courses={subject?.course||null}/>
+  </TabsContent>
+
+
+
+  <TabsContent value="exam"  className="w-full md:px-10 lg:px-20 flex flex-col md:flex-row gap-20">
+
   <div className="flex justify-center p-4 py-20">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
@@ -58,6 +60,10 @@ const ExamSubjectPage = async({params}:{params:{subjectId:string,departmentId:st
         </div>
       </div>
 
+  </TabsContent>
+
+ 
+</Tabs>
 
      
 
