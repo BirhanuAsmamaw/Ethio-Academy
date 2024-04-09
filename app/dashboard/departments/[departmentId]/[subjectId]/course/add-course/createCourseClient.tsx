@@ -62,7 +62,7 @@ const router=useRouter()
     
   const course={...data,subjectId:subject.id}
     axios.post('/api/course',course).then(()=>{
-      router.push("/dashboard/list-courses")
+      router.push(`/dashboard/departments/${subject?.department?.id}/${subject?.id}`)
       toast.success("Course created successfully")
     })
     .catch((error)=>{
@@ -87,7 +87,7 @@ const router=useRouter()
       childern={
         <div className="flex flex-col gap-10 w-full  lg:mt-20   justify-center items-center p-2">
        <div className="py-5">
-       <Heading title={`Add ${subject?.subjectName} in ${subject?.department?.departmentName} Course`}/>
+       <Heading title={`Add ${subject?.subjectName} Course  in ${subject?.department?.departmentName}`}/>
        </div>
 
           

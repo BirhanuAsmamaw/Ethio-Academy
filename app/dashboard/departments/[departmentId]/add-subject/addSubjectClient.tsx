@@ -34,7 +34,7 @@ const AddSubjectClinet:React.FC<AddSubjectClinetProps> = ({department}) => {
 
     
     axios.post('/api/subject',{...data,departmentId:department.id}).then(()=>{
-      router.push("/dashboard/exams")
+      router.push(`/dashboard/departments/${department.id}`)
       router.refresh()
       toast.success("Subject created successfully")
     })
