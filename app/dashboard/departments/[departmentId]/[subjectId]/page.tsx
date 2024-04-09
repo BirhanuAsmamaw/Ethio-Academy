@@ -42,16 +42,16 @@ const ExamSubjectPage = async({params}:{params:{subjectId:string,departmentId:st
   </TabsList>
  </div>
 
-  <TabsContent value="Course">
+  <TabsContent value="Course" className='p-10'>
   <CourseListClient courses={subject?.course||null}/>
   </TabsContent>
 
 
 
-  <TabsContent value="exam"  className="w-full md:px-10 lg:px-20 flex flex-col md:flex-row gap-20">
+  <TabsContent value="exam"  className="w-full md:p-10  flex flex-col md:flex-row ">
 
-  <div className="flex justify-center p-4 py-20">
-        <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  <div className="flex justify-center w-full">
+        <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
          {examsYears.map((year,index)=>{
           return <DashboardYearExamsCard key={index} year={year} url={`/dashboard/departments/${params.departmentId}/${params.subjectId}/exam/${year}`}/>
          })}
