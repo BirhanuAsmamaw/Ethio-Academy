@@ -262,7 +262,7 @@ export const ExamYearClientPage:React.FC<questionListprops>=({questions,subject,
   })
 
   return (<div className="w-full bg-white dark:bg-gray-800 p-4">
-    <div className="w-full p-4 flex gap-4">
+    <div className="w-full p-4 flex flex-col md:flex-row gap-4">
       <Button 
       variant="outline"
       onClick={()=>{
@@ -270,7 +270,7 @@ export const ExamYearClientPage:React.FC<questionListprops>=({questions,subject,
       }}> <MdOutlineKeyboardBackspace size={24}/> </Button>
       <h1 className="text-lg font-semibold">{subject.subjectName} in {year} year Questions List</h1>
     </div>
-      <div className="flex items-center py-4 gap-4">
+      <div className="flex flex-col md:flex-row items-center py-4 gap-4">
         <Input
           placeholder="Filter titles..."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
