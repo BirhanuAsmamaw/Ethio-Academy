@@ -6,7 +6,7 @@ import DashboardYearExamsCard from '@/components/card/DashboardYearExamsCard'
 import { examsYears } from '@/lib/examsYear'
 import React from 'react'
 
-const ExamSubjectPage = async({params}:{params:{subjectId:string}}) => {
+const ExamSubjectPage = async({params}:{params:{subjectId:string,departmentId:string}}) => {
   const subject=await getSubjectById(params.subjectId)
   if(!subject){
     return null
@@ -32,7 +32,7 @@ const ExamSubjectPage = async({params}:{params:{subjectId:string}}) => {
   <div className="flex justify-center p-4 py-20">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
-          return <DashboardYearExamsCard key={index} year={year} url={`/dashboard/exam-questions/EUEE/${params.subject}/${year}`}/>
+          return <DashboardYearExamsCard key={index} year={year} url={`/dashboard/departments/${params.departmentId}/${params.subjectId}/exam/${year}/add-question`}/>
          })}
          
           
