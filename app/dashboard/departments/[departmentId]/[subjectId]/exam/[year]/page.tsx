@@ -15,9 +15,10 @@ const YearExamsPage = async({params}:{
   
 
   const subject=await getSubjectById(params.subjectId)
+  
   const examQuestions=await getQuestionsByCategory(subject?.department?.exam?.url||"",subject?.department.url||"",params.year,subject?.id);
  
-  
+ 
   return (<>
   <ExamYearClientPage departmentId={params.departmentId} subject={subject} year={params.year} questions={examQuestions}/>
   </>)
