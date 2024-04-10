@@ -16,7 +16,7 @@ const SubjectCard:React.FC<SubjectCardProps> = ({name,url,image}) => {
     </div>
     <div className="">
     
-    <p className=" text-base text-gray-700 font-semibold  dark:text-gray-400 group-hover:dark:text-white ">{name} Exams</p>
+    <p className=" text-base text-gray-700 font-semibold  dark:text-gray-400 group-hover:dark:text-white ">{name}</p>
     </div>
   </div>
     </Link>
