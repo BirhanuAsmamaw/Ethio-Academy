@@ -13,12 +13,12 @@ const SubjectCard:React.FC<SubjectCardProps> = ({name,url,image}) => {
   <div className="flex gap-4 md:gap-6">
     <div className="h-full">
     <Image 
-    height={120} 
+    height={200} 
     width={100} 
     src={image} 
     alt={name}/>
     </div>
-    <div className="flex flex-col justify-center h-full justify-center">
+    <div className="flex flex-col  h-full justify-center">
     
     <p className=" w-full text-base text-gray-700 font-semibold  dark:text-gray-400 group-hover:dark:text-white ">{name}</p>
     </div>
