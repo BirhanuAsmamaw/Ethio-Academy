@@ -7,7 +7,13 @@ export async function GetCourseById(courseId: string){
        
         id:courseId,
       },
-      include:{chapters:{
+      include:{
+        subject:{
+          include:{
+department:true
+          }
+        },
+        chapters:{
         include:{
           lessons:{
             include:{

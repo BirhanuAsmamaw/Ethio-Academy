@@ -8,6 +8,7 @@ interface IParams{
 const EditCourse = async({params}:{params:IParams}) => {
 
   const course=await GetCourseById(params.courseId);
+  
   return (<EditCourseClient course={course}/> );
 }
  
