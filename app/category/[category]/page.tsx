@@ -18,7 +18,6 @@ interface IPrams{
 const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key: string]: string | undefined }}) => {
 
   const department = await getDepartmentByCode(params.category);
- 
   const selectedCourses=await getCoursesByDepartment(params.category)
   const  newSelectedCourses=await getNewCoursesByDepartment(params.category)
   if(!selectedCourses){
@@ -85,6 +84,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
       return course.cover&&<Card
       key={index}
           id={course.id}
+          no_reviews={course.reviews.length}
           url={course.subject.department.url}
           category={course.subject.department.departmentName}
           price={course.price}
@@ -106,7 +106,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 
 
 
-{department?.subject?.length?<div className="flex justify-center w-full ">
+{department?.subject?.length?<div className="flex mt-10 justify-center w-full ">
 <div className="w-full lg:w-11/12 space-y-4 xl:px-20">
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'> {department?.departmentName} Courses</h1>
 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>

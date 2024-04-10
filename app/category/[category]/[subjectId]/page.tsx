@@ -88,6 +88,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
       return course.cover&&<Card
       key={index}
           id={course.id}
+          no_reviews={course.reviews.length}
           url={course.subject.department.url}
           category={course.subject.department.departmentName}
           price={course.price}

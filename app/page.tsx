@@ -104,6 +104,7 @@ const banner=await getBanner();
           return course.cover&&<Card
           key={index}
               id={course.id}
+              no_reviews={course.reviews.length}
               url={course.subject.department.url}
               category={course.subject.department.departmentName}
               price={course.price}

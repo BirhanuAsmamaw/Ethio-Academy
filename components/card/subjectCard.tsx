@@ -18,9 +18,9 @@ const SubjectCard:React.FC<SubjectCardProps> = ({name,url,image}) => {
     src={image} 
     alt={name}/>
     </div>
-    <div className="flex flex-col  h-full justify-center">
+    <div className="flex flex-col  h-full items-center justify-center">
     
-    <p className=" w-full text-base text-gray-700 font-semibold  dark:text-gray-400 group-hover:dark:text-white ">{name}</p>
+    <p className=" w-full  text-gray-700 text-xl md:text-4xl font-semibold  dark:text-gray-400 group-hover:dark:text-white ">{name}</p>
     </div>
   </div>
     </Link>
