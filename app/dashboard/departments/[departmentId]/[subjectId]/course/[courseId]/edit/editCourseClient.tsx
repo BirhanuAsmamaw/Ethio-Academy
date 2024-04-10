@@ -43,7 +43,7 @@ const router=useRouter();
  const courseData=getValues();
 
 
- console.log("console data",courseData)
+
 
 
   const onNextButton=()=>{setIsNext((prev)=>!prev)}
@@ -75,9 +75,7 @@ const router=useRouter();
   }
 
 
-if(!course){
-  return null;
-}
+
 
   return ( <div className="flex flex-col w-full  ">
    
@@ -93,19 +91,9 @@ if(!course){
        <div className="py-5">
        <Heading title="Update Course"/>
        </div>
-          <div className="w-full  lg:w-8/12">
-            {/* <Select
-          defaultValue={ courseData.category? courseData.category:course.category}
-          id="category"
-          register={register}
-          errors={errors}
-
-          /> */}
           
-          
-          </div>
           <div className="w-full  lg:w-8/12">
-            <Input id="course"  defaultValue={courseData.subject? courseData.subject:course.subject} register={register} errors={errors}  label="Course Name" type="text" required/></div>
+            <Input id="course"  defaultValue={courseData.subject? courseData.subject:course?.subject} register={register} errors={errors}  label="Course Name" type="text" required/></div>
 
 
 
@@ -114,7 +102,7 @@ if(!course){
         
         <div className="lg:w-8/12">
           <Input 
-          defaultValue={`${courseData.price? courseData.price:course.price}`}
+          defaultValue={`${courseData.price? courseData.price:course?.price}`}
           register={register} errors={errors} label="Price" type="number" id="price" required/>
           </div>
           
@@ -126,18 +114,18 @@ if(!course){
           <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Update Course Description"/>
        
-          <TextEditor  value={description? description:course.descriptions} setValue={setDescription}/>
+          <TextEditor  value={description? description:course?.descriptions} setValue={setDescription}/>
           </div>
 
           <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Update Course Requiremnts"/>
-          <TextEditor value={requirement? requirement:course.requirements} setValue={setRequirement}/>
+          <TextEditor value={requirement? requirement:course?.requirements} setValue={setRequirement}/>
           </div>
         
 
           <div className="flex flex-col px-4 w-full  gap-1  pt-2 my-4">
             <Heading small title="Update who use This Course"/>
-          <TextEditor value={courseUsers? courseUsers:course.whoShouldTake} setValue={setCourseUsers}/>
+          <TextEditor value={courseUsers? courseUsers:course?.whoShouldTake} setValue={setCourseUsers}/>
           </div>
 
           <div className="p2 flex justify-end  mx-20 lg:p-20">
@@ -151,7 +139,7 @@ if(!course){
       isnext&&<Container
       childern={
         <div className="flex flex-col gap-10 p-2">
- <Heading title={courseData?.subject}/>
+ <Heading title={courseData?.course}/>
 
  <div className="flex flex-col gap-2 p-2">
  <Heading title="About Course"/>
