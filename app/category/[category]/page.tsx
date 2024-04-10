@@ -25,7 +25,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
       <Spinning/>
     </div>
   }
-  return (<><Navbar/> <div className="flex pb-20 w-full">
+  return (<><Navbar/> <div className="flex p-2 pb-20 w-full">
 <div className="flex flex-col gap-10 w-full items-center">
 
 
@@ -44,7 +44,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 
 
 {selectedCourses.length?<div className="flex justify-center w-full">
-<div className="w-full lg:w-11/12 xl:px-20 space-y-4">
+<div className="w-full lg:w-11/12  space-y-4">
   <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
 
   <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
@@ -76,7 +76,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 
 
 {newSelectedCourses?.length?<div className="flex bg-green-300 justify-center w-full ">
-<div className="w-full lg:w-11/12 space-y-4 xl:px-20">
+<div className="w-full lg:w-11/12 space-y-4 ">
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming  Courses</h1>
 <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
@@ -107,7 +107,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 
 
 {department?.subject?.length?<div className="flex mt-10  justify-center w-full ">
-<div className="w-full lg:w-11/12 space-y-4 xl:px-20">
+<div className="w-full lg:w-11/12 space-y-4 ">
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'> {department?.departmentName} Courses</h1>
 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
