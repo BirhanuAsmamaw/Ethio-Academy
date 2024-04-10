@@ -140,7 +140,7 @@ const CourseFileUpdateClient:React.FC<CourseFileUpdateClientProps>=({course})=> 
     <div className="space-y-10 w-full">
      <div className="space-y-2 w-full text-center">
     
-    <h1 className="text-xl font-semibold">{course.subject} Files</h1>
+    <h1 className="text-xl font-semibold">{course?.course} Files</h1>
     </div>
 
       <FileUploader
