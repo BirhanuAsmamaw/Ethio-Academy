@@ -4,7 +4,15 @@ export async function getSubjectById(subjectId: string){
     const subject = await prisma.subject.findUnique({
       where:{id:subjectId},
       include:{
-        course:true,
+        course:{
+          include:{
+            subject:{
+              include:{
+                department:true
+              }
+            }
+          }
+        },
         department:{
           include:{
             exam:true

@@ -50,6 +50,7 @@ type CourseType={
  id:string, 
 
 course: string,
+subject:any,
 
 price: number,
 
@@ -174,23 +175,23 @@ export const columns: ColumnDef<CourseType>[] = [
             <DropdownMenuItem>
              <Link 
              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/list-courses/${course.id}/chapter`}>Chapter</Link>
+             href={`/dashboard/departments/${course.subject.department.id}/${course.subject.id}/course/${course.id}/chapter`}>Chapter</Link>
             </DropdownMenuItem>
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-courses/${course.id}/edit`}>Edit Course</Link>
+               href={`/dashboard/departments/${course.subject.department.id}/${course.subject.id}/course/${course.id}/edit`}>Edit Course</Link>
             </DropdownMenuItem>
 
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/list-courses/${course.id}/course-file-update`}>Update Course Files</Link>
+               href={`/dashboard/departments/${course.subject.department.id}/${course.subject.id}/course/${course.id}/course-file-update`}>Update Course Files</Link>
             </DropdownMenuItem>
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/list-courses/${course.id}/delete`}>Delete</Link>
+              href={`/dashboard/departments/${course.subject.department.id}/${course.subject.id}/course/${course.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
