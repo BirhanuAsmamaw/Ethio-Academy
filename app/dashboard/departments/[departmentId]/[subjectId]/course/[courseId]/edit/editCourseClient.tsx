@@ -60,7 +60,7 @@ const router=useRouter();
 
   console.log("data received",data)
     axios.put(`/api/course/${course.id}/update/content`,data).then(()=>{
-      router.push(`/dashboard/departments/${course.subject.department.id}/${course.subject.id}/course`)
+      router.push(`/dashboard/departments/${course.subject.department.id}/${course.subject.id}`)
       
       toast.success("Course updated successfully")
     })
@@ -75,14 +75,16 @@ const router=useRouter();
   }
 
 
-
+if(!course){
+  return null;
+}
 
   return ( <div className="flex flex-col w-full  ">
    
     <div className="flex flex-col gap-10 w-full pb-6 mb-10">
     <div className="space-y-2 w-full flex flex-col items-center">
 
-    <h1 className="text-xl font-semibold">{course.subject} Contents</h1>
+    <h1 className="text-xl font-semibold">{course?.subject} Contents</h1>
     </div>
       
       {!isnext&&<Container
