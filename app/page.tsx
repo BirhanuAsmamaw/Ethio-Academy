@@ -60,10 +60,10 @@ const banner=await getBanner();
    
 
    {/* Courses */}
-    <div id="courseslist" className=" min-h-screen flex flex-col gap-10 overflow-hidden">
+    <div  className=" min-h-screen flex flex-col gap-10 overflow-hidden">
 
 
-    <div className="flex justify-center w-full">
+    {(courses?.courses?.length||0)?<div id="courseslist" className="flex justify-center w-full">
     <div className="w-full lg:w-11/12 xl:px-20 space-y-4">
       <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
   
@@ -86,16 +86,16 @@ const banner=await getBanner();
 
 
       </div>
-      <div className="w-full flex p-4 justify-end">
+      {((courses?.courses.length||0)>4)?<div className="w-full flex p-4 justify-end">
         <PaginationComponent paginationLength={courses?.count||0} page={searchParams?.page||'1'} pageUrl='page'/>
-      </div>
+      </div>:""}
 </div>
-</div>
+</div>:""}
 
 
 
 
-   <div className="flex justify-center w-full ">
+   {(courses?.courses?.length||0) ?<div id="newcourseslist" className="flex justify-center w-full ">
     <div className="w-full lg:w-11/12 space-y-4 xl:px-20">
     <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>New Coming  Courses</h1>
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
@@ -115,13 +115,17 @@ const banner=await getBanner();
 
 
       </div>
-      <div className="w-full flex p-4 justify-end">
+      {(newCourses?.count||0)>4?<div className="w-full flex p-4 justify-end">
         <PaginationComponent paginationLength={newCourses?.count||0} page={searchParams?.newpage||'1'} pageUrl='newpage'/>
-      </div>
+      </div>:""}
     </div>
-   </div>
+   </div>:""}
 
     </div>
+
+
+
+
 
 
 
