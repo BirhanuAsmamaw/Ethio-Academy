@@ -30,11 +30,11 @@ const router=useRouter();
 
   const {register,setValue,handleSubmit,getValues,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
-      descriptions:description||course.descriptions,
-      requirements:requirement||course.requirements,
-      whoShouldTake:courseUsers||course.whoShouldTake,
-      course:course.course,
-      price:course.price,
+      descriptions:description||course?.descriptions,
+      requirements:requirement||course?.requirements,
+      whoShouldTake:courseUsers||course?.whoShouldTake,
+      course:course?.course,
+      price:course?.price,
       }})
 
     
@@ -59,8 +59,8 @@ const router=useRouter();
    
 
   console.log("data received",data)
-    axios.put(`/api/course/${course.id}/update/content`,data).then(()=>{
-      router.push(`/dashboard/departments/${course.subject.department.id}/${course.subject.id}`)
+    axios.put(`/api/course/${course?.id}/update/content`,data).then(()=>{
+      router.push(`/dashboard/departments/${course?.subject?.department?.id}/${course?.subject?.id}`)
       
       toast.success("Course updated successfully")
     })
