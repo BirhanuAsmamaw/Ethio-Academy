@@ -82,7 +82,7 @@ const router=useRouter();
     <div className="flex flex-col gap-10 w-full pb-6 mb-10">
     <div className="space-y-2 w-full flex flex-col items-center">
 
-    <h1 className="text-xl font-semibold">{course?.subject} Contents</h1>
+    <h1 className="text-xl font-semibold">{course?.course} Contents</h1>
     </div>
       
       {!isnext&&<Container
