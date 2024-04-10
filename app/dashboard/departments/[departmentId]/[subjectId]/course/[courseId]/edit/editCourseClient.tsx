@@ -43,7 +43,7 @@ const router=useRouter();
  const courseData=getValues();
 
 
- 
+ console.log("console data",courseData)
 
 
   const onNextButton=()=>{setIsNext((prev)=>!prev)}

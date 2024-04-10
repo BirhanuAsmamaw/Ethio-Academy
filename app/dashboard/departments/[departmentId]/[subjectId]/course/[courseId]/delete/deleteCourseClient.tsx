@@ -30,7 +30,7 @@ const DeleteCourseClient:React.FC<DeleteCourseClientProps> = ({course}) => {
     await RemoveFile(course.videoUrl.public_key);
   }
       toast.success(`Course deleted successfully`);
-      router.push(`/dashboard/list-courses`);
+      router.push(`/dashboard/departments/${course?.subject?.department?.id}/${course?.subject?.id}`)
       router.refresh();
     }).catch((error)=>{
       toast.error(error.message);
@@ -39,7 +39,7 @@ const DeleteCourseClient:React.FC<DeleteCourseClientProps> = ({course}) => {
     });
 
   }
-  return (<DeleteComponent isLoading={isLoading} onDelete={onDelete} title={`${course.subject} Course`} />);
+  return (<DeleteComponent isLoading={isLoading} onDelete={onDelete} title={`${course.course} Course`} />);
 }
  
 export default DeleteCourseClient;
