@@ -116,7 +116,9 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
          
           url={`/category/${department.url}/${subject.id}`}
           name={subject.subjectName}
-         image={subject.cover?.public_url}  />
+         image={subject.cover?.public_url}  
+         
+         />
   
     })}
 
