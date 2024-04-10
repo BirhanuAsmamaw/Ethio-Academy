@@ -11,8 +11,10 @@ rating:"desc"
         subject:{
           include:{
             department:true
-          }
+          },
+          
         },
+        
         chapters:{
           include: {
             lessons:true,

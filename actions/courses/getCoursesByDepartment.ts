@@ -1,11 +1,10 @@
 import prisma from "@/lib/prismadb";
 
-export async function getCoursesBySubject(department: string,subject: string){
+export async function getCoursesByDepartment(department: string) {
   try {
     const ccourses = await prisma.course.findMany({
       where:{
         subject:{
-          id:subject,
           department:{
             url:department
           }

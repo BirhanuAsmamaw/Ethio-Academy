@@ -1,6 +1,6 @@
 import prisma from "@/lib/prismadb";
 
-export async function getCoursesBySubject(department: string,subject: string){
+export async function getNewCoursesBySubject(department: string,subject: string){
   try {
     const ccourses = await prisma.course.findMany({
       where:{
@@ -11,9 +11,6 @@ export async function getCoursesBySubject(department: string,subject: string){
           }
         }
       },
-      orderBy:{
-        rating:"desc"
-              },
       include:{
         reviews:true,
         subject:{
