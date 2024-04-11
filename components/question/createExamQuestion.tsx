@@ -21,9 +21,10 @@ interface  CreateExamsClientProps{
   subject?: any|null;
   year: string;
   isCoc?: boolean;
+  backUrl?:string,
   
 }
-const CreateExamsClient:React.FC<CreateExamsClientProps> = ({isCoc,department,subject,year,university}) => {
+const CreateExamsClient:React.FC<CreateExamsClientProps> = ({backUrl,isCoc,department,subject,year,university}) => {
   const [isModel,setModel]=useState(false)
  
   
@@ -104,7 +105,7 @@ console.log("data",qData);
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
     
-    router.back();
+    router.push(backUrl||`/dashboard/departments/${department?.id}/${subject?.id}`);
     router.refresh();
   }).catch((error:any)=>{
    
