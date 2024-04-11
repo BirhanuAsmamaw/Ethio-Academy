@@ -54,8 +54,8 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 <div className="w-full lg:w-11/12  space-y-4">
   <h1 className='w-full text-xl md:text-3xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>
     Most common 
-    <span className="text-blue-500 dark:text-green-400">{subject?.subjectName}</span> 
-    Courses</h1>
+     <span className="text-blue-500 dark:text-green-400"> {subject?.subjectName} </span> 
+     Courses</h1>
 
   <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
 
