@@ -231,7 +231,7 @@ const handleChooseSelection = (choose: string, value: string) => {
                   value={un.name.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    setuniversityId((isModel||isCoc)? un.id:null);
+                    setuniversityId((isModel||department.exam.url==="COC")? un.id:null);
                     setOpen(false);
                   }}
                 >
