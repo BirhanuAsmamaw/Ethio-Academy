@@ -200,7 +200,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 </div>
   </div>
 
-  {(((isModel&&department.url!=="Highschool")&&university)||isCoc)?<div className="p-6 flex  w-[350px]" >
+  {(((isModel&&department.url!=="Highschool")&&university)||department.exam.url==="COC")?<div className="p-6 flex  w-[350px]" >
 <Popover open={open} onOpenChange={setOpen} >
       <PopoverTrigger asChild   >
         <button
