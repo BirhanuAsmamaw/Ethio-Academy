@@ -17,14 +17,18 @@ export async function getCOCQuestionsByCategory(type: string, department: string
     };
    
     if(university){
-      whereClause.university = {code:university};
+      whereClause.university={
+        code:university
+      }
     } 
     whereClause.subject = {
       id: subject
     };
 
     const selectedQuestion = await prisma.question.findMany({
-      where: whereClause,
+      where: {department:{
+        
+      }},
 
     });
 
