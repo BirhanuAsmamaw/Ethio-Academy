@@ -104,9 +104,9 @@ console.log("data",qData);
 
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
-    
-    router.push(backUrl||`/dashboard/departments/${department?.id}/${subject?.id}/exam/${year}`);
     router.refresh();
+    router.push(backUrl||`/dashboard/departments/${department?.id}/${subject?.id}/exam/${year}`);
+    
   }).catch((error:any)=>{
    
     
