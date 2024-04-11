@@ -30,7 +30,7 @@ const department=await getDepartmentById(params.exitDepartmentId)
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
   <Navbar/>
-  {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Exit Exam Now!"} />}
+  {/* {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Exit Exam Now!"} />} */}
   
   <ExitModelYearExamsClientPage univerity={university} department={department} year={params.year} Questions={examQuestions}/>
  
