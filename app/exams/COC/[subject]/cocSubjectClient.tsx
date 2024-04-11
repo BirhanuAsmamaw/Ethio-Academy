@@ -1,9 +1,7 @@
 
 "use client"
-import Header from '@/components/Header'
 import Banner from '@/components/banner'
 import YearExamCard from '@/components/card/yearExamsCard'
-import Navbar from '@/components/navbar/Navbar'
 import { examsYears } from '@/lib/examsYear'
 import React, { useState } from 'react'
 

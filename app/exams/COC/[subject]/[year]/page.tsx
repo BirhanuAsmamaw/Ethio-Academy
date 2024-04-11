@@ -18,10 +18,11 @@ const COCYearExamsPage = async({params,searchParams}:{
 }) => {
   const universityId=getLeftSide(searchParams?.university||"")
   const user=await getCurrentUser();
+  const department=await getDepartmentByName("Freshman")
   const subject=await getSubjectById(params.subject)
-  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName==="Freshman"&&payedCourse?.status);
+  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===department?.id&&payedCourse?.status);
   const university=await getUniversityByCode(universityId)
-const department=await getDepartmentByName("Freshman")
+
   const examQuestions=await getCOCQuestionsByCategory("COC","Freshman",params.year,subject?.subjectName||"",university?.code);
   return (<><Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy COC Exam Now!"} />}
