@@ -86,7 +86,7 @@ const banner=await getBanner();
 
 
       </div>
-      {(courses?.courses?.length||0)>4?<div className="w-full flex p-4 justify-end">
+      {(courses?.count||0)>4?<div className="w-full flex p-4 justify-end">
         <PaginationComponent paginationLength={courses?.count||0} page={searchParams?.page||'1'} pageUrl='page'/>
       </div>:""}
 </div>
@@ -116,7 +116,7 @@ const banner=await getBanner();
 
 
       </div>
-      {(newCourses?.courses?.length||0)>4?<div className="w-full flex p-4 justify-end">
+      {(newCourses?.count||0)>4?<div className="w-full flex p-4 justify-end">
         <PaginationComponent paginationLength={newCourses?.count||0} page={searchParams?.newpage||'1'} pageUrl='newpage'/>
       </div>:""}
     </div>
