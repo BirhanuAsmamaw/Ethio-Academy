@@ -43,30 +43,30 @@ const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
        hover:dark:border-green-400 
        hover:dark:text-green-400 transition
         duration-300">
-          <HiOutlineShare size={30}/>
+          <HiOutlineShare size={40}/>
         </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[325px] bg-white dark:bg-gray-700 p-2 font-bold rounded-[10px]">
         <div className="flex flex-wrap gap-2 justify-center ">
         <TelegramShareButton url={url}>
-        <TelegramIcon size={30} round={true} />
+        <TelegramIcon size={40} round={true} />
       </TelegramShareButton>
 
       <FacebookShareButton url={url}>
-        <FacebookIcon size={30} round={true} />
+        <FacebookIcon size={40} round={true} />
       </FacebookShareButton>
       <LinkedinShareButton url={url}>
-        <LinkedinIcon size={30} round={true} />
+        <LinkedinIcon size={40} round={true} />
       </LinkedinShareButton>
 
 
       <TwitterShareButton url={url}>
-        <TwitterIcon size={30} round={true} />
+        <TwitterIcon size={40} round={true} />
       </TwitterShareButton>
 
 
       <WhatsappShareButton url={url}>
-        <WhatsappIcon size={30} round={true} />
+        <WhatsappIcon size={40} round={true} />
       </WhatsappShareButton>
 
         </div>
