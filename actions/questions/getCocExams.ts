@@ -15,7 +15,7 @@ export async function getCOCQuestionsByCategory(type: string, department: string
       },
       
     };
-
+   
     if(university){
       whereClause.university = {code:university};
     } 

@@ -22,10 +22,12 @@ const COCYearExamsPage = async({params,searchParams}:{
   const subject=await getSubjectById(params.subject)
   const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName===department?.id&&payedCourse?.status);
   const university=await getUniversityByCode(universityId)
+  
 
   const examQuestions=await getCOCQuestionsByCategory("COC","Freshman",params.year,subject?.id||"",university?.code);
   return (<><Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy COC Exam Now!"} />}
+  <h1>{university?.code}</h1>
   <COCYearExamsClientPage university={university} subject={subject} year={params.year} Questions={examQuestions}/>
   </>)
  
