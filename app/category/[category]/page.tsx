@@ -99,6 +99,8 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
   {newSelectedCourses?.length>4?<div className="w-full flex p-4 justify-end">
     <PaginationComponent paginationLength={newSelectedCourses?.length||0} page={searchParams?.newpage||'1'} pageUrl='newpage'/>
   </div>:""}
+
+  
 </div>
 </div>:""}
 

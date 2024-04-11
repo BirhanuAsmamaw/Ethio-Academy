@@ -10,7 +10,7 @@ interface SubjectCardProps{
 const SubjectCard:React.FC<SubjectCardProps> = ({name,url,image}) => {
   return ( <Link href={url}  className="z-30 no-underline block w-full md:max-w-sm  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 group">
     
-  <div className="flex gap-4 h-[200px] md:gap-6">
+  <div className="flex gap-4 h-[100px] md:gap-6">
     <div className="h-full rounded-l-lg overflow-hidden">
     <Image 
     height={200} 
