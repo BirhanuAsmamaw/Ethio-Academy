@@ -39,7 +39,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 <div className="p-4 md:p-6 lg:p-10 xl:p-20 w-full">
      <Banner title={`${subject?.subjectName} Courses`}>
     <div className="flex justify-center w-full text-xl md:text-2xl  xl:text-3xl font-semibold ">
-    [<Link href={`/category${department?.url}`} className=" drop-shadow-lg font-sans no-underline hover:underline ">{department?.departmentName} </Link>]
+    [<Link href={`/category/${department?.url}`} className=" drop-shadow-lg  font-sans no-underline hover:underline transition-all duration-300 ">{department?.departmentName} </Link>]
     </div>
      </Banner>
      </div>
