@@ -8,7 +8,7 @@ export async function getCOCQuestionsByCategory(type: string, department: string
       subject: subject,
       
       department: {
-        departmentName: department,
+        url: department,
         exam: {
           url: type,
         },
