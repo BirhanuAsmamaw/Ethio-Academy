@@ -17,7 +17,7 @@ export async function getModelQuestionsByCategory(type: string, department: stri
 
     if (subject) {
       whereClause.subject = {
-        subjectName: subject
+        id: subject
       };
       
     }
@@ -28,6 +28,7 @@ export async function getModelQuestionsByCategory(type: string, department: stri
     const selectedQuestion = await prisma.question.findMany({
       where:whereClause
     });
+
 
     return selectedQuestion;
   } catch (err) {

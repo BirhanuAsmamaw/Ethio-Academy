@@ -5,7 +5,7 @@ export async function getCOCQuestionsByCategory(type: string, department: string
   try {
     const whereClause: any = {
       year: year,
-      subject: subject,
+      
       
       department: {
         url: department,
@@ -18,10 +18,14 @@ export async function getCOCQuestionsByCategory(type: string, department: string
 
     if(university){
       whereClause.university = {code:university};
-    }
+    } 
+    whereClause.subject = {
+      id: subject
+    };
 
     const selectedQuestion = await prisma.question.findMany({
       where: whereClause,
+
     });
 
     return selectedQuestion;
