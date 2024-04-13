@@ -1,3 +1,4 @@
+"use client"
 import React, { ReactNode } from 'react'
 import {motion,AnimatePresence} from "framer-motion"
 interface CourseListProps{
@@ -8,7 +9,7 @@ const CourseList:React.FC<CourseListProps> = ({ children}) => {
      <motion.div 
      initial={{opacity: 0,translateX:-100}}
      whileInView={{opacity:1,translateX:0}}
-     
+
      
      className='
     grid 
