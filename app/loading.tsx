@@ -1,9 +1,12 @@
 import React from 'react'
-
+import Loading from "../public/loading.gif"
+import Image from 'next/image'
 const LoadingPage = () => {
   return (<div className=' h-screen w-full flex justify-center items-center'>
 
-    <h1 className='text-lg font-semibold'>Loading....</h1>
+    <div className="">
+      <Image fill src={Loading} alt="loading...."/>
+    </div>
   </div>
   )
 }
