@@ -1,7 +1,8 @@
+"use client"
 import { Rating } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import {motion} from "framer-motion"
+import {AnimatePresence, motion} from "framer-motion"
 import StarOutlined from "@mui/icons-material/StarOutlined";
 
 
@@ -21,7 +22,8 @@ no_reviews?:number; // Assuming
 
 
 const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating,no_reviews,url}) => {
-  return ( <motion.div  
+  return ( <AnimatePresence>
+    <motion.div  
     initial={{opacity: 0,translateX:-100}}
     whileInView={{opacity:1,translateX:0}} 
     transition={{delay:0.15,duration:0.25}}
@@ -81,6 +83,7 @@ rounded-[5px]
   </Link>
   </div>
 </motion.div>
+  </AnimatePresence>
  );
 }
  
