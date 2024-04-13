@@ -61,10 +61,10 @@ const banner=await getBanner();
    
 
    {/* Courses */}
-    <div  className=" min-h-screen flex flex-col gap-10 overflow-hidden">
+    <div id="courseslist" className=" min-h-screen flex flex-col gap-10 overflow-hidden">
 
 
-    {(courses?.courses?.length||0)?<div id="courseslist" className="flex justify-center w-full">
+    {(courses?.courses?.length||0)?<div  id='common-courselist' className="flex justify-center w-full">
     <div className="w-full lg:w-11/12 xl:px-20 space-y-4">
       <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
   
@@ -85,7 +85,7 @@ const banner=await getBanner();
         })}
      </CourseList>
       {(courses?.count||0)>4?<div className="w-full flex p-4 justify-end">
-        <PaginationComponent paginationLength={courses?.count||0} page={searchParams?.page||'1'} pageUrl='page'/>
+        <PaginationComponent paginationLength={courses?.count||0} page={searchParams?.page||'1'} pageUrl='page'id='common-courselist'/>
       </div>:""}
 </div>
 </div>:""}
@@ -115,7 +115,7 @@ const banner=await getBanner();
 
 </CourseList>
       {(newCourses?.count||0)>4?<div className="w-full flex p-4 justify-end">
-        <PaginationComponent paginationLength={newCourses?.count||0} page={searchParams?.newpage||'1'} pageUrl='newpage'/>
+        <PaginationComponent paginationLength={newCourses?.count||0} page={searchParams?.newpage||'1'} pageUrl='newpage' id='newcourseslist'/>
       </div>:""}
     </div>
    </div>:""}

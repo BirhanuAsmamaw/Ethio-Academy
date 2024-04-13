@@ -14,16 +14,17 @@ interface PaginationInterfaceProps{
   paginationLength: number;
   page: string;
   pageUrl: string;
+  id?: string;
 
 }
-const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLength,page,pageUrl}) => {
+const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLength,page,pageUrl,id}) => {
  
   const renderPaginationItems = () => {
     const items = [];
     for (let i = 1; i <= (Math.ceil(paginationLength/4)); i++) {
       items.push(
         <PaginationItem key={i} className="list-none" >
-          <PaginationLink isActive={`${i}`===page} className="no-underline" href={`/?${pageUrl}=${i}#courseslist`}>
+          <PaginationLink isActive={`${i}`===page} className="no-underline" href={`/?${pageUrl}=${i}#${id}`}>
             {i}
           </PaginationLink>
         </PaginationItem>
