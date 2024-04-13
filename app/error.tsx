@@ -1,3 +1,5 @@
+"use client"
+
 import CLink from '@/components/links/link'
 import React from 'react'
 
