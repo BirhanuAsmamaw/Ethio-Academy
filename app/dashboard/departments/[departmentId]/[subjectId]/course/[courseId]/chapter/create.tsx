@@ -10,10 +10,9 @@ import toast from "react-hot-toast";
 import { IoIosSend, IoMdAdd } from "react-icons/io";
 interface CreateChapterProps{
   course:any;
-  subjectId:string;
-  departmentId:string;
+ 
 }
-const CreateChapter:React.FC<CreateChapterProps> = ({course,subjectId,departmentId}) => {
+const CreateChapter:React.FC<CreateChapterProps> = ({course}) => {
   const [isLoading,setLoading]=useState(false)
   const [isAdd,setAdd]=useState(false)
   const router=useRouter();
