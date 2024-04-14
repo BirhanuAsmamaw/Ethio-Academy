@@ -4,7 +4,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import QuizClient from "./lessonQuestionClient";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import router from "next/navigation";
+import { useRouter } from "next/navigation";
+
 
 interface LessonClientProps{
   lesson:any;
@@ -12,6 +13,7 @@ interface LessonClientProps{
 const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
   const [feedbackVisible, setFeedbackVisible] = useState(false);
   const [showQuiz,setShowQuiz] = useState(false);
+  const router=useRouter();
   return ( <Tabs defaultValue="notes" className="w-full">
   <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-4">
     <TabsTrigger className=" rounded-full" value="notes">Notes</TabsTrigger>
