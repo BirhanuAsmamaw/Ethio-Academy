@@ -2,7 +2,6 @@
 import Banner from '@/components/banner'
 import ExamsCategoryCard from '@/components/card/examscategoryCard'
 import Navbar from '@/components/navbar/Navbar'
-import { remedialSubjects } from '@/lib/remedialSubjects'
 import React from 'react'
 import BuyExamButton from '../buyExamButton'
 import { getDepartmentByName } from '@/actions/departments/getDepartmentByName'
