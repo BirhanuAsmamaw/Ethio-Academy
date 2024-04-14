@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import {AnimatePresence,motion} from "framer-motion"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '../ui/command';
 import { cn } from '@/lib/utils';
 import { Check, ChevronsUpDown } from "lucide-react"
@@ -169,7 +170,12 @@ const handleChooseSelection = (choose: string, value: string) => {
 
 
 
-  return (<div className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
+  return (<AnimatePresence>
+    <motion.div 
+    initial={{opacity : 0,y:15}}
+    animate={{opacity :1,y:0}}
+    exit={{opacity : 0,y:15}}
+  className="py-10 flex  bg-white px-4 dark:bg-gray-800 flex-col gap-10 min-h-screen w-full">
      <div className="flex flex-col gap-10 lg:gap-20">
      <div className="w-full">
     <div className="p-4">
@@ -371,7 +377,8 @@ onClick={onSubmit}
 
 
      </div>
-  </div>
+  </motion.div>
+  </AnimatePresence>
  
   )
 }

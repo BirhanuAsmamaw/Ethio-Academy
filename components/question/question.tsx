@@ -1,5 +1,6 @@
 "use client";
 import MainLayout from "@/components/layouts/mainLayout";
+import {AnimatePresence,motion} from "framer-motion"
 import SubLayout from "@/components/layouts/subLayout";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import NoExamNotification from "@/components/notification/noExamNotification";
@@ -130,7 +131,11 @@ Next Year Exam
           </div>
           {Questions.map((question: any, index:number) => {
             return (
-              <div key={index} className="">
+              <motion.div 
+              initial={{opacity:0,y:15}}
+              whileInView={{opacity:1,y:0}}
+              exit={{opacity:0,y:15}}
+              key={index} className="">
                 <div className="flex border-b border-double border-green-600 justify-between">
                   <p className="text-xl font-bold">{index + 1}</p>
                   
@@ -212,7 +217,7 @@ Next Year Exam
                 ) : (
                   ""
                 )}
-              </div>
+              </motion.div>
             );
           })}
 

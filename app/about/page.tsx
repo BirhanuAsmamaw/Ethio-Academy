@@ -14,7 +14,7 @@ const About = () => {
           </div>
 
           <div className="flex justify-center mt-10">
-            <div className="border border-black border-2 p-2" dangerouslySetInnerHTML={{__html:requirement}}></div>
+            <div className="border border-black p-2" dangerouslySetInnerHTML={{__html:requirement}}></div>
           </div>
   </div>);
 }

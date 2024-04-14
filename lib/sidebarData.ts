@@ -57,10 +57,7 @@ export const sidebarData=[
         label:"Department List",
         url:"/dashboard/department"
       },
-      {
-        label:"Exam Questions",
-        url:"/dashboard/exam-questions/"
-      }
+      
       
     ]
   },{
