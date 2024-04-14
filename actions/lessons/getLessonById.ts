@@ -8,7 +8,13 @@ export async function getLessonById(lessonId:string){
         chapter:{
           include:{
             course:{
+
               include:{
+                subject:{
+                  include:{
+                    department:true
+                  }
+                },
                 chapters:{
                   include:{
                     lessons:true

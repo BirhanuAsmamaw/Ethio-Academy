@@ -74,7 +74,7 @@ const onSubmit=() => {
 
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
-    router.push(`dashboard/list-courses/${lesson.chapter.course.id}/chapter`)
+    router.push(`/dashboard/departments/${lesson?.chapter.course.subject.department.id}/${lesson?.chapter.course.subject.id}/course/${lesson?.chapter.course.id}/chapter`)
     router.refresh();
   }).catch((error:any)=>{
    
@@ -107,6 +107,33 @@ isAnswer:false,
 
  
 };
+
+
+
+const handleChooseSelection = (choose: string, value: string) => {
+  // Unmark previously selected option
+  Object.keys(question).forEach(key => {
+   if (key !== choose && question[key].isAnswer) {
+     setQuestion((prevQuestion:any )=> ({
+       ...prevQuestion,
+       [key]: {
+         ...prevQuestion[key],
+         isAnswer: false
+       }
+     }));
+   }
+ });
+
+ 
+ setQuestion((prevQuestion:any) => ({
+   ...prevQuestion,
+   [choose]: {
+     ...prevQuestion[choose],
+     isAnswer: value === "true"
+   }
+ }));
+};
+
 
 
   return (  <div className={`bg-white dark:bg-gray-800 pb-10 px-3 mb-10 min-h-screen flex flex-col items-center gap-6 w-full`}>
@@ -179,14 +206,13 @@ rows={4}
           id="A"
           onChange={(event) => setQuestion({ ...question, A: { ...question.A, text: event.target.value } })}
           label="A"
-
-          onAnswer={(event) => setQuestion({ ...question, A: { ...question.A, isAnswer: Boolean(event.target.value) } })}  />
+          onAnswer={(event) =>handleChooseSelection('A', event.target.value)} />
 
    <ChooseForm 
    id="B"
     label="B"
    onChange={(event)=>setQuestion({...question,B:{...question.B,text:event.target.value}})}
-   onAnswer={(event) => setQuestion({ ...question, B: { ...question.B,isAnswer: Boolean(event.target.value )} })} 
+   onAnswer={(event) =>handleChooseSelection('B', event.target.value)} 
    />
    
 
@@ -194,14 +220,14 @@ rows={4}
    id="C"
     label="C"
    onChange={(event)=>setQuestion({...question,C:{...question.C,text:event.target.value}})}
-   onAnswer={(event) => setQuestion({ ...question, C: {...question.C, isAnswer:  Boolean(event.target.value )} })} 
+   onAnswer={(event) =>handleChooseSelection('C', event.target.value)} 
    />
 
    <ChooseForm 
    id="D"
    label="D"
    onChange={(event)=>setQuestion({...question,D:{...question.D,text:event.target.value}})}
-   onAnswer={(event) => setQuestion({ ...question, D: {...question.D, isAnswer:  Boolean(event.target.value )} })} 
+   onAnswer={(event) =>handleChooseSelection('D', event.target.value)} 
    />
    <div className="flex flex-col px-4 w-full gap-1 my-4">
             <Heading small title="Write Answer Explanation"/>

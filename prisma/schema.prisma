@@ -80,6 +80,8 @@ model Course{
    creator       User      @relation("createdCourses", fields: [creatorId], references: [id], onDelete: Cascade)
    creatorId String @db.ObjectId
    reviews  Review[]
+  
+
    
 
 }
