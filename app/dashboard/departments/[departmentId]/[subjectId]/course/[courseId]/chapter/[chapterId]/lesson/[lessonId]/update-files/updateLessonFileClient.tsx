@@ -2,6 +2,7 @@
 import { RemoveFile } from "@/actions/file/removeFile";
 import FileUploader from "@/components/input/fileUploader";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import {  useState } from "react";
 import toast from "react-hot-toast";
 interface UpdateLessonFileClientProps{
@@ -9,7 +10,7 @@ interface UpdateLessonFileClientProps{
 }
 const UpdateLessonFileClient:React.FC<UpdateLessonFileClientProps>=({lesson})=> {
 
-
+const router=useRouter();
   const [thumbnailUrl, setthumbnailUrl] = useState(lesson?.videoThumbnail?lesson?.videoThumbnail.public_url :"");
   const [thumbnailKey, setthumbnailKey] = useState(lesson?.videoThumbnail? lesson?.videoThumbnail.public_key:"");
 
@@ -71,6 +72,7 @@ const UpdateLessonFileClient:React.FC<UpdateLessonFileClientProps>=({lesson})=> 
     setVideoUrl(lesson?.videoThumbnail?lesson?.videoThumbnail.public_url:"");
     setVideoKey(lesson?.videoThumbnail ?lesson?.videoThumbnail.public_key:"");
     toast.success("Lesson Thumbnail Uploaded successfully")
+    router.refresh()
     }).catch((error)=>{
       toast.error(error.message);
     });
@@ -90,6 +92,7 @@ const UpdateLessonFileClient:React.FC<UpdateLessonFileClientProps>=({lesson})=> 
 
    axios.put(`/api/lesson/${lesson.id}/update/video`,{video:videoData}).then(()=>{
     toast.success("Video Uploaded successfully")
+   router.refresh()
     setVideoUrl(lesson?.videoUrl?lesson?.videoUrl.public_url:"");
     setVideoKey(lesson?.videoUrl?lesson?.videoUrl.public_key:"");
     }).catch((error)=>{
@@ -103,8 +106,8 @@ const UpdateLessonFileClient:React.FC<UpdateLessonFileClientProps>=({lesson})=> 
     <div className="space-y-10 w-full">
      
     <div className="space-y-2 w-full flex flex-col items-center">
-      <h2 className="text-lg text-gray-600 dark:text-gray-400 font-semibold">{lesson.chapter.title} in {lesson.chapter.course.subject}</h2>
-    <h1 className="text-xl font-semibold">{lesson.title} Files</h1>
+      <h2 className="text-lg text-gray-600 dark:text-gray-400 font-semibold">{lesson.chapter.title} in {lesson?.chapter.course?.course}</h2>
+    <h1 className="text-xl font-semibold">{lesson?.title} Files</h1>
     </div>
 
 <FileUploader

@@ -41,10 +41,8 @@ export function ChapterList({course}:{course:CourseType|any}) {
   if (!course){
     return <div className="p-4 font-bold text-xl">No Chapter!</div>
   }
-  console.log("course Data",course)
-  return (
-
-    <Accordion type="single" collapsible className="w-fu">
+ 
+  return (<Accordion type="single" collapsible className="w-fu">
       {course.chapters.map((chapter:any,index:number)=>{
         return <AccordionItem className="dark:border-b-gray-600" key={index} value={`${index}`}>
         <AccordionTrigger className="hover:no-underline">

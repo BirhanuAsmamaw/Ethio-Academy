@@ -69,7 +69,7 @@ const dataValue=getValues();
  
     axios.put(`/api/lesson/${lesson.id}/update/content`,lessonData).then(()=>{
       toast.success("Lesson Updated  successfully")
-      router.push(`/dashboard/list-courses/${lesson.chapter.course.id}/chapter`)
+      router.push(`/dashboard/departments/${lesson?.chapter.course.subject.department.id}/${lesson?.chapter.course.subject.id}/course/${lesson?.chapter.course.id}/chapter`)
       router.refresh();
     })
     .catch((error)=>{
@@ -99,8 +99,8 @@ const onBack=()=>{
   return ( <><div className={`min-h-screen flex flex-col items-center gap-6 w-full ${isNext? 'opacity-0 -translate-x-[100%] hidden':'translate-x-0 opacity-100' } transition duration-300`}>
 
 <div className="space-y-2 w-full flex flex-col items-center">
-      <h2 className="text-lg text-gray-600 dark:text-gray-400 font-semibold">{lesson.chapter.title} in {lesson.chapter.course.subject}</h2>
-    <h1 className="text-xl font-semibold">{lesson.title} Contents</h1>
+      <h2 className="text-lg text-gray-600 dark:text-gray-400 font-semibold">{lesson.chapter.title} in {lesson?.chapter.course?.course}</h2>
+    <h1 className="text-xl font-semibold">{lesson?.title} Contents</h1>
     </div>
 
 
