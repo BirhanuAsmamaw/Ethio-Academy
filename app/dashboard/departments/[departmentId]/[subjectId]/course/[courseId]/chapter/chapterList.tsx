@@ -37,7 +37,7 @@ import UpdateChapter from "./updateChapter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import DeleteChapter from "./deleteChapter";
-export function ChapterList({course}:{course:CourseType|any}) {
+export function ChapterList({course,subjectId,departmentId}:{course:CourseType|any,subjectId:string,departmentId:string}) {
   if (!course){
     return <div className="p-4 font-bold text-xl">No Chapter!</div>
   }
@@ -90,7 +90,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 <div className="px-4 flex  w-full justify-end">
             <ActionButton 
             label="Add Lesson"
-            url={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson`}
+            url={`/dashboard/departments/${departmentId}/${subjectId}/course/${course.id}/chapter/${chapter.id}/lesson`}
             icon={IoMdAdd}/>
           </div>
   <div className="-m-1.5 overflow-x-auto">
@@ -127,17 +127,17 @@ export function ChapterList({course}:{course:CourseType|any}) {
         </DropdownMenuItem>
         <DropdownMenuItem >
           <Link 
-                href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/add-questions`}
+                href={`/dashboard/departments/${departmentId}/${subjectId}/course/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/add-questions`}
                  className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><GoQuestion size={20}/> <p>Lesson Questions</p></Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
         <Link
-        href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/update-content`} 
+        href={`/dashboard/departments/${departmentId}/${subjectId}/course/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/update-content`} 
         className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><MdEditNote size={20}/> <p>Edit Lesson</p></Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
         <Link 
-        href={`/dashboard/list-courses/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/update-files`}      
+        href={`/dashboard/departments/${departmentId}/${subjectId}/course/${course.id}/chapter/${chapter.id}/lesson/${lesson.id}/update-files`}      
          className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><MdEditDocument size={20}/> <p>Edit Lesson Files</p></Link>
         </DropdownMenuItem>
 
