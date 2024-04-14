@@ -29,6 +29,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
             setFeedbackVisible(true);
             setShowQuiz(true);
             router.push(`/course/${lesson.chapter.course.id}/${lesson.chapter.id}/${lesson.id}#quiz`);
+            router.refresh();
             
          }}
           className="text-white bg-green-500 px-4 py-2 rounded-[5px] mr-2 hover:bg-green-600 focus:outline-none"
@@ -40,6 +41,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
             setFeedbackVisible(false);
             setShowQuiz(true);
             router.push(`/course/${lesson.chapter.course.id}/${lesson.chapter.id}/${lesson.id}#quiz`);
+            router.refresh();
           }}
           className="text-white bg-blue-500 px-4 py-2 rounded-[5px] hover:bg-blue-600 focus:outline-none"
         >
