@@ -41,6 +41,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
   if (!course){
     return <div className="p-4 font-bold text-xl">No Chapter!</div>
   }
+  console.log("course Data",course)
   return (
 
     <Accordion type="single" collapsible className="w-fu">
