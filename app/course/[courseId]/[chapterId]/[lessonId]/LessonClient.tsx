@@ -3,7 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import QuizClient from "./lessonQuestionClient";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
 
 
@@ -24,7 +24,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
   </DialogTrigger>
   <DialogContent className="bg-white dark:bg-gray-700 rounded-[10px]" >
   <div className="p-10 flex flex-col gap-4">
-        <button
+        <DialogClose><button
           onClick={()=>{
             setFeedbackVisible(true);
             setShowQuiz(true);
@@ -35,8 +35,8 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
           className="text-white bg-green-500 px-4 py-2 rounded-[5px] mr-2 hover:bg-green-600 focus:outline-none"
         >
           Check Right Answer Now!
-        </button>
-        <button
+        </button></DialogClose>
+       <DialogClose> <button
           onClick={()=>{
             setFeedbackVisible(false);
             setShowQuiz(true);
@@ -46,7 +46,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
           className="text-white bg-blue-500 px-4 py-2 rounded-[5px] hover:bg-blue-600 focus:outline-none"
         >
           Show Answers After Quiz
-        </button>
+        </button></DialogClose>
       </div>
   </DialogContent>
 </Dialog>
