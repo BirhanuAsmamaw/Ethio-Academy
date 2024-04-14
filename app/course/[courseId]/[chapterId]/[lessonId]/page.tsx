@@ -5,14 +5,12 @@ import Navbar from "@/components/navbar/Navbar";
 
 import { getLessonById } from "@/actions/lessons/getLessonById";
 
-import QuizClient from "./lessonQuestionClient";
 import LessonClient from "./LessonClient";
 import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
 import CourseContent from "../../courseContent";
 import Header from "@/components/Header";
 import CustomeSheet from "@/components/customSheet";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import LessonBlur from "./lessonBlur";
 import { getCurrentUser } from "@/actions/users/currentUser";
 
@@ -69,41 +67,8 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 
 
 
-<Tabs defaultValue="notes" className="w-full">
-  <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-4">
-    <TabsTrigger className=" rounded-full" value="notes">Notes</TabsTrigger>
-    <TabsTrigger  className=" rounded-full" value="exam">Exam</TabsTrigger>
-    <TabsTrigger  className=" rounded-full hidden" value="handout">handout</TabsTrigger>
-    <TabsTrigger  className=" rounded-full hidden" value="Q&A">Q&A</TabsTrigger>
-  </TabsList>
 
-  <TabsContent value="notes">
- <div className="mt-20">
- <LessonClient lesson={lesson}/>
- </div>
-  </TabsContent>
-
-
-
-  <TabsContent value="exam">
-  <div className="mt-20">
-  <QuizClient lesson={lesson}/>
-  </div>
-  </TabsContent>
-
-  <TabsContent className="hidden" value="handout">
-  <div className="mt-20">
-  <p className="text-2xl font-bold p-2">handouts  like pdf ppt</p>
-  </div>
-  </TabsContent>
-
-  <TabsContent className="hidden" value="Q&A">
-  <div className="mt-20">
-  <p>Question and Answers</p>
-  </div>
-  </TabsContent>
-</Tabs>
-
+<LessonClient lesson={lesson}/>
 
 
       </SubLayout>
