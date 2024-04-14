@@ -42,7 +42,7 @@ setAdd((prev)=>!prev)
   }
   return ( <div className="space-y-2">
     <div className="flex flex-col md:flex-row w-full px-4 justify-between">
-      <h2 className="text-lg font-semibold">{course.subject}</h2>
+      <h2 className="text-lg font-semibold">{course?.course}</h2>
       <button   
       onClick={onAddChapter}
       className="py-2 md:py-2.5 px-3 md:px-5 me-2 mb-2
