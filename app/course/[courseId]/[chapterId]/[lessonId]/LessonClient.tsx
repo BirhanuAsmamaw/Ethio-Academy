@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import QuizClient from "./lessonQuestionClient";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import router from "next/router";
+import router from "next/navigation";
 
 interface LessonClientProps{
   lesson:any;
@@ -27,6 +27,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
             setFeedbackVisible(true);
             setShowQuiz(true);
             router.push(`/course/${lesson.chapter.course.id}/${lesson.chapter.id}/${lesson.id}#quiz`);
+            
          }}
           className="text-white bg-green-500 px-4 py-2 rounded-[5px] mr-2 hover:bg-green-600 focus:outline-none"
         >
