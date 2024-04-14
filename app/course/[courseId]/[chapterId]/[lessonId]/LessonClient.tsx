@@ -18,8 +18,8 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
   <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-4">
     <TabsTrigger className=" rounded-full" value="notes">Notes</TabsTrigger>
     <TabsTrigger  className=" rounded-full" value="exam">
-    <Dialog>
-  <DialogTrigger className="w-full">
+    <Dialog >
+  <DialogTrigger className="w-full h-full">
   Exam
   </DialogTrigger>
   <DialogContent className="bg-white dark:bg-gray-700 rounded-[10px]" >
