@@ -1,11 +1,11 @@
 import React from 'react'
-import Loading from "../public/loading.gif"
-import Image from 'next/image'
+
+import { ScaleLoader } from 'react-spinners'
 const LoadingPage = () => {
   return (<div className=' h-screen w-full flex justify-center items-center'>
 
     <div className="">
-      <Image fill src={Loading} alt="loading...."/>
+    <ScaleLoader color="#36d7b7" className='' />
     </div>
   </div>
   )
