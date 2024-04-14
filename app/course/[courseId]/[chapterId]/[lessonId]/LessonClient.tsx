@@ -17,7 +17,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
     <TabsTrigger className=" rounded-full" value="notes">Notes</TabsTrigger>
     <TabsTrigger  className=" rounded-full" value="exam">
     <Dialog>
-  <DialogTrigger>
+  <DialogTrigger className="w-full">
   Exam
   </DialogTrigger>
   <DialogContent className="bg-white dark:bg-gray-700 rounded-[10px]" >
