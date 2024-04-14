@@ -5,7 +5,7 @@ const LoadingPage = () => {
   return (<div className=' h-screen w-full flex justify-center items-center'>
 
     <div className="">
-    <ScaleLoader color="#36d7b7" className='' />
+    <ScaleLoader color="#36d7b7" />
     </div>
   </div>
   )
