@@ -8,6 +8,7 @@ import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
 import CDropDown from "./dropdown/CustomeDropdown/CDropDown";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import CLink from "./link";
 interface UserProfileProps{
  
   user:any;
@@ -39,22 +40,24 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
            <p className="font-semibold text-gray-500 dark:text-gray-400 text-[16px]">{user.name}</p>
            <p className="text-gray-500 dark:text-gray-400 text-xs">{user.email}</p>
          </div>
-         <div className="flex flex-col">
-         <Link href="/mycourses" className="flex no-underline text-sm gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-          <IoBookOutline className="pt-1" size={20}/> <p>My Courses</p>
-         </Link>
-             <Link href="/settings" className="flex text-sm no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-          <CiSettings className="pt-1" size={20}/> <p>Settings</p>
-         </Link>
-         {user&&(user.role==='ADMIN')&&<Link href="/dashboard" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-          <MdOutlineDashboard className="pt-1" size={20}/> <p>Dashboard</p>
-         </Link>}
+         <div className="flex flex-col gap-2">
+         
+         <CLink url="/mycourses">
+        <> <IoBookOutline className="pt-1" size={22}/> <p>My Courses</p></>
+         </CLink>
+
+         <CLink url="/settings">
+         <><CiSettings className="pt-1" size={22}/> <p>Settings</p></>
+         </CLink>
+
+         {user&&(user.role==='ADMIN')&&<CLink url="/dashboard"><><MdOutlineDashboard className="pt-1" size={22}/> <p>Dashboard</p></></CLink>
+        }
            
          </div>
          <hr className="border-gray-100 dark:border-gray-700"/>
-         <Link href="/logout" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-          <CiLogout className="pt-1" size={20}/> <p>Logout</p>
-         </Link>
+         <CLink url="/logout">
+        <> <CiLogout className="pt-1" size={22}/> <p>Logout</p></>
+         </CLink>
        </div>
   }
   /> );
