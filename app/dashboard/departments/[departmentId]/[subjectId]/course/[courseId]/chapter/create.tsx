@@ -1,5 +1,6 @@
 "use client"
 
+import AddButton from "@/components/button/addButton";
 import Input from "@/components/input/input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -44,15 +45,7 @@ setAdd((prev)=>!prev)
   return ( <div className="space-y-2">
     <div className="flex flex-col md:flex-row w-full px-4 justify-between">
       <h2 className="text-lg font-semibold">{course?.course}</h2>
-      <button   
-      onClick={onAddChapter}
-      className="py-2 md:py-2.5 px-3 md:px-5 me-2 mb-2
-  text-sm font-medium text-gray-900 focus:outline-none
-   bg-white rounded-full border border-gray-200 
-   hover:bg-gray-100 hover:text-blue-700 focus:z-10 
-   focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700
-    dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600
-     dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center"><IoMdAdd size={24}/> <p>Add Chapter</p></button>
+     <AddButton onAddButton={onAddChapter} label="Add Chapter"/>
 
     </div>
 

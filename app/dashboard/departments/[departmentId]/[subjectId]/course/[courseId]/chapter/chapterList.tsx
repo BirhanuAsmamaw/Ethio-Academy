@@ -26,18 +26,22 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { IoMdAdd } from "react-icons/io";
+
 
 import { MdDelete } from "react-icons/md";
 import { GoQuestion } from "react-icons/go";
-import Link from "next/link"
+
 import { CourseType } from "@/types";
-import ActionButton from "@/components/button/actionButton";
+
 import UpdateChapter from "./updateChapter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import DeleteChapter from "./deleteChapter";
+import AddButton from "@/components/button/addButton";
+import { useRouter } from "next/navigation";
+import CLink from "@/components/link";
 export function ChapterList({course}:{course:CourseType|any}) {
+  const router=useRouter();
   if (!course){
     return <div className="p-4 font-bold text-xl">No Chapter!</div>
   }
@@ -87,10 +91,11 @@ export function ChapterList({course}:{course:CourseType|any}) {
 
 
 <div className="px-4 flex  w-full justify-end">
-            <ActionButton 
-            label="Add Lesson"
-            url={`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course.id}/chapter/${chapter.id}/lesson`}
-            icon={IoMdAdd}/>
+<AddButton onAddButton={()=>{
+  router.push(`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course.id}/chapter/${chapter.id}/lesson`)
+  router.refresh()
+}} label="Add Lesson"/>
+           
           </div>
   <div className="-m-1.5 overflow-x-auto">
     <div className="p-1.5 min-w-full inline-block align-middle relative">
@@ -119,30 +124,38 @@ export function ChapterList({course}:{course:CourseType|any}) {
       <DropdownMenuContent className="w-56 absolute right-0 top-2 bg-slate-100 dark:bg-slate-700 p-2">
         <DropdownMenuLabel>Lesson: {ind+1}</DropdownMenuLabel>
         <DropdownMenuSeparator />
+
         <DropdownMenuItem >
-          <Link 
-           href={`/course/${course.id}/${chapter.id}/${lesson.id}`}
-                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><GrFormView size={20}/> <p>View Detail</p></Link>
+          <CLink url={`/course/${course.id}/${chapter.id}/${lesson.id}`}>
+            <><GrFormView size={20}/> <p>View Detail</p></>
+          </CLink>
         </DropdownMenuItem>
+
         <DropdownMenuItem >
-          <Link 
-                href={`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/add-questions`}
-                 className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><GoQuestion size={20}/> <p>Add Questions</p></Link>
+        <CLink url={`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/add-questions`}>
+            <><GoQuestion size={20}/> <p>Add Questions</p></>
+          </CLink>
         </DropdownMenuItem>
+
+
         <DropdownMenuItem>
-        <Link
-        href={`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-content`} 
-        className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><MdEditNote size={20}/> <p>Edit Lesson</p></Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-        <Link 
-        href={`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-files`}      
-         className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><MdEditDocument size={20}/> <p>Edit Lesson Files</p></Link>
+        <CLink url={`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-content`} >
+            <><MdEditNote size={20}/> <p>Edit Lesson</p></>
+          </CLink>
         </DropdownMenuItem>
 
         <DropdownMenuItem>
-        <Link href={`/course`}      
-         className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2 items-center" ><AiOutlineDelete size={20}/> <p>Delete Lesson</p></Link>
+        <CLink url={`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-files`} >
+            <> <MdEditDocument size={20}/> 
+         <p>Edit Lesson Files</p></>
+          </CLink>
+        </DropdownMenuItem>
+
+
+        <DropdownMenuItem>
+        <CLink url={`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-files`} >
+            <><AiOutlineDelete size={20}/> <p>Delete Lesson</p></>
+          </CLink>
 
         </DropdownMenuItem>
         
