@@ -18,7 +18,7 @@ const CLink:React.FC<CLinkProps> = ({children,url}) => {
   return ( 
      <Link href={url} className={`
   flex no-underline  
-  text-[16px] 
+  text-[14px] 
   gap-2
    
    hover:scale-y-105

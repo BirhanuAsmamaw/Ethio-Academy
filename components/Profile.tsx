@@ -2,8 +2,6 @@
 import { CiSettings } from "react-icons/ci";
 import { IoBookOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
-import Link from "next/link";
-import Image from "next/image";
 import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
 import CDropDown from "./dropdown/CustomeDropdown/CDropDown";
@@ -40,7 +38,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
            <p className="font-semibold text-gray-500 dark:text-gray-400 text-[16px]">{user.name}</p>
            <p className="text-gray-500 dark:text-gray-400 text-xs">{user.email}</p>
          </div>
-         <div className="flex flex-col gap-2">
+         <div className="flex flex-col gap-1">
          
          <CLink url="/mycourses">
         <> <IoBookOutline className="pt-1" size={22}/> <p>My Courses</p></>
