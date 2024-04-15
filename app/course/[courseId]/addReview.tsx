@@ -51,9 +51,9 @@ useEffect(()=>{
 
 
 useEffect(()=>{
-  setNewRate((prev:number)=>(prev&&course.reviews.length)?(prev+isvalue)/(course.reviews.length):isvalue)
-  router.refresh();
-},[course.reviews.length, isvalue, router]);
+  setNewRate((prev:number)=>(prev&&course.reviews.length)?((prev+isvalue)/(course.reviews.length)):isvalue)
+  
+},[course.reviews.length, isvalue]);
 
 
 const onSubmit:SubmitHandler<FieldValues>=(data)=>{
