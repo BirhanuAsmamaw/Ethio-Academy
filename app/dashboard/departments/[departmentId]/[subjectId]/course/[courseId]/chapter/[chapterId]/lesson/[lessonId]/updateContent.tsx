@@ -12,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { DialogClose } from "@radix-ui/react-dialog"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 
@@ -72,7 +73,8 @@ const router=useRouter();
         <TextEditor  value={description? description:content?.content} setValue={setDescription}/>
         </div>
         <DialogFooter>
-          <Button onClick={handleSubmit(onSubmit)} disabled={isLoading} >title={isLoading?"Loading...":"Update"}</Button>
+      <DialogClose><Button variant="destructive" onClick={()=>{router.refresh()}} >Cancel</Button></DialogClose>
+        <Button onClick={handleSubmit(onSubmit)} disabled={isLoading} >{isLoading?"Loading...":"Update"}</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
