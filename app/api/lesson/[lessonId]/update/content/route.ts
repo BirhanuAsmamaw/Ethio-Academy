@@ -5,7 +5,7 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 export async function PUT(req: Request, {params}:{params:{lessonId:string}}){
   const lessonId=params.lessonId;
   const body = await req.json();
-  const {content,title} = body;
+  const {title} = body;
 
   try{
     const user=await  getCurrentUser();
@@ -28,7 +28,7 @@ export async function PUT(req: Request, {params}:{params:{lessonId:string}}){
       where: {id:lessonId},
       data:{
         title:title,
-       content:content
+      
       }
     })
     return NextResponse.json(updatedLesson);
