@@ -18,7 +18,7 @@ interface UpdateContentProps{
 const [isLoading,setIsLoading]=useState(false)
 
 const router=useRouter();
-  const {handleSubmit,setValue}=useForm<FieldValues>({
+  const {handleSubmit,setValue,reset}=useForm<FieldValues>({
     defaultValues: {
      content:description||content?.content
       
@@ -35,9 +35,9 @@ useEffect(()=>{
     
    
         axios.put(`/api/content/${content?.id}/update/content`,data).then(()=>{
-          
+        
           router.refresh()
-          
+          reset()
           toast.success("Content updated successfully")
         })
         .catch((error)=>{
