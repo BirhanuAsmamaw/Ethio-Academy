@@ -65,7 +65,7 @@ const router=useRouter();
 
 
       <PopoverContent className="w-full p-0">
-        <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
+        <Command >
           <CommandInput  placeholder="Search your department..." />
           <CommandList>
             <CommandEmpty>No Category found.</CommandEmpty>

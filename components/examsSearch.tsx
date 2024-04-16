@@ -59,7 +59,7 @@ const router=useRouter();
           </button>
       </div>
       <PopoverContent className="w-full md:min-w-[500px] max-w-[800px] p-0">
-        <Command className="bg-white dark:bg-gray-800 shadow-md dark:shadow-black border dark:border-gray-600">
+        <Command >
           <CommandInput  placeholder="Search your department..." />
           <CommandList>
             <CommandEmpty>No Departments found.</CommandEmpty>

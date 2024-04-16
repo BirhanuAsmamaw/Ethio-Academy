@@ -44,7 +44,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
     <DropdownMenuContent className="w-56">
       <DropdownMenuLabel className="flex w-full justify-center">
         <div className=" p-1">
-        <h6 className="font-semibold text-gray-500 dark:text-gray-400 text-[16px]">{user.name}</h6>
+        <p className="font-semibold text-gray-500 dark:text-gray-400 text-[16px]">{user.name}</p>
           <p className="text-gray-500 dark:text-gray-400 text-xs">{user.email}</p>
         </div>
       </DropdownMenuLabel>
