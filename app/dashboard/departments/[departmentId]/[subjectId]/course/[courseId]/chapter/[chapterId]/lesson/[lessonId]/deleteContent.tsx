@@ -1,13 +1,7 @@
 "use client"
 
 import { RemoveFile } from "@/actions/file/removeFile"
-import DeleteComponent from "@/components/deleteComponent"
-import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+import CModal from "@/components/customModal"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 
@@ -42,14 +36,15 @@ interface DeleteContentProps{
     
     }
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-       <Button>Delete</Button>
-      </DialogTrigger>
-      <DialogContent className="">
-      <DeleteComponent isLoading={isLoading}  onDelete={onSubmit} title="Lesson Content"/>
-      </DialogContent>
-    </Dialog>
+    <CModal 
+title="Delete Lesson Content"
+buttonLabel={isLoading? "Loading...":"Delete"}
+onClick={onSubmit}
+modalName="Delete">
+<div className="p-4">
+<p className="p-4 text-lg">Are You Sure to Delete This  Lesson Content?</p>
+</div>
+</CModal>
   )
 }
 

@@ -1,18 +1,8 @@
 "use client"
 
 
+import CModal from "@/components/customModal"
 import TextEditor from "@/components/editor/editor"
-import { Button } from "@/components/ui/button"
-
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { DialogClose } from "@radix-ui/react-dialog"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 
@@ -58,29 +48,16 @@ const router=useRouter();
       }
 
       
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-    <Button>Edit</Button>
-      </DialogTrigger>
-     
-      <DialogContent className="w-full overflow-y-auto">
-       
-        <DialogHeader>
-          <DialogTitle>Update Lesson Content</DialogTitle>
-       
-        </DialogHeader>
-     
-   
-        <TextEditor  value={description? description:content?.content} setValue={setDescription}/>
-       
-        <DialogFooter>
-      <DialogClose><Button variant="destructive" onClick={()=>{router.refresh()}} >Cancel</Button></DialogClose>
-        <Button onClick={handleSubmit(onSubmit)} disabled={isLoading} >{isLoading?"Loading...":"Update"}</Button>
-        </DialogFooter>
-      </DialogContent>
-   
-    </Dialog>
+  return (<CModal 
+title="Update Lesson Content"
+buttonLabel={isLoading? "Loading...":"Update"}
+onClick={handleSubmit(onSubmit)}
+modalName="Update">
+<div className="p-4">
+<TextEditor  value={description? description:content?.content} setValue={setDescription}/>
+</div>
+</CModal>
+    
   )
 }
 
