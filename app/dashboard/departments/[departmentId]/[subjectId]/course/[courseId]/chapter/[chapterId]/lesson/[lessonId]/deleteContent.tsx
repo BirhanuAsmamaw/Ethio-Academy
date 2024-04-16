@@ -44,9 +44,9 @@ interface DeleteContentProps{
   return (
     <Dialog>
       <DialogTrigger asChild>
-       <button>Delete</button>
+       <Button>Delete</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="flex justify-center">
       <DeleteComponent isLoading={isLoading}  onDelete={onSubmit} title="Lesson Content"/>
       </DialogContent>
     </Dialog>

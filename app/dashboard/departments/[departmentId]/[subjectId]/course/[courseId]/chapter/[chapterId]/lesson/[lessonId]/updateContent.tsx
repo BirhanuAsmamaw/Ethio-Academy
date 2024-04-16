@@ -1,7 +1,8 @@
 "use client"
 
-import Button from "@/components/button/button"
+
 import TextEditor from "@/components/editor/editor"
+import { Button } from "@/components/ui/button"
 
 import {
   Dialog,
@@ -59,9 +60,9 @@ const router=useRouter();
   return (
     <Dialog>
       <DialogTrigger asChild>
-       <button>Edit</button>
+    <Button>Edit</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="">
         <DialogHeader>
           <DialogTitle>Update Lesson Content</DialogTitle>
        
@@ -71,7 +72,7 @@ const router=useRouter();
         <TextEditor  value={description? description:content?.content} setValue={setDescription}/>
         </div>
         <DialogFooter>
-          <Button onClick={handleSubmit(onSubmit)} isDisabled={isLoading} title={isLoading?"Loading...":"Update"}/>
+          <Button onClick={handleSubmit(onSubmit)} disabled={isLoading} >title={isLoading?"Loading...":"Update"}</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
