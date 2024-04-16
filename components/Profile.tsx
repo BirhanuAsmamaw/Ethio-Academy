@@ -1,43 +1,23 @@
 'use client'
 import {
-  Cloud,
   CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
   LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
   Settings,
-  User,
-  UserPlus,
-  Users,
 } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { CiSettings } from "react-icons/ci";
-import { IoBookOutline } from "react-icons/io5";
-import { CiLogout } from "react-icons/ci";
 import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
-import CDropDown from "./dropdown/CustomeDropdown/CDropDown";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import CLink from "./link";
 interface UserProfileProps{
@@ -96,8 +76,8 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
 
       <DropdownMenuGroup>
       {user&&(user.role==='ADMIN')&&<CLink url="/dashboard">
-      <DropdownMenuItem className="w-full flex  gap-2">
-          <Users className="mr-2 h-4 w-4" />
+      <DropdownMenuItem className="w-full flex ">
+          <MdOutlineDashboard  className="mr-2 h-4 w-4" />
           <span>Dashboard</span>
         </DropdownMenuItem>
         </CLink>
