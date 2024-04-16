@@ -25,7 +25,7 @@ const router=useRouter();
       }})
 
 useEffect(()=>{
-  setValue("content",description)
+  setValue("content",description||content?.content)
 },[description])
 
 
