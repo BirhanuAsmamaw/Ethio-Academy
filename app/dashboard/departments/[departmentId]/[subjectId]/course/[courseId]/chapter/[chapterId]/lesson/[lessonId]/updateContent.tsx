@@ -63,7 +63,7 @@ const router=useRouter();
       <DialogTrigger asChild>
     <Button>Edit</Button>
       </DialogTrigger>
-      <DialogContent className="w-full">
+      <DialogContent className="w-full overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Update Lesson Content</DialogTitle>
        
