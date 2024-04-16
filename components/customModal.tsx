@@ -3,14 +3,16 @@ import React, { ReactNode, useState } from 'react'
 import {motion} from "framer-motion"
 import { GrClose } from "react-icons/gr";
 import { Button } from './ui/button';
+import { Loader2 } from "lucide-react"
 interface ModalProps{
   children:ReactNode;
   title:string;
   buttonLabel:string;
   onClick:() => void;
   modalName:string;
+  disabled?:boolean;
 }
-const CModal:React.FC<ModalProps> = ({children,title,buttonLabel,onClick,modalName}) => {
+const CModal:React.FC<ModalProps> = ({disabled,children,title,buttonLabel,onClick,modalName}) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -47,7 +49,7 @@ const CModal:React.FC<ModalProps> = ({children,title,buttonLabel,onClick,modalNa
                     <div className=" text-wrap"> {children}</div>
                       <div className="mt-4 p-4 w-full flex justify-end gap-6">
                         <Button onClick={() => setOpen(prev => !prev)} variant="destructive">Cancel</Button>
-                        <Button onClick={()=>onClick}>{buttonLabel}</Button>
+                        <Button disabled={disabled} onClick={onClick}>{disabled? <Loader2 className="mr-2 h-4 w-4 animate-spin" />:""}{buttonLabel}</Button>
                       </div>
                     </div>
                   </div>

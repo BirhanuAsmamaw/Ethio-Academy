@@ -38,6 +38,7 @@ interface DeleteContentProps{
   return (
     <CModal 
 title="Delete Lesson Content"
+disabled={isLoading}
 buttonLabel={isLoading? "Loading...":"Delete"}
 onClick={onSubmit}
 modalName="Delete">
