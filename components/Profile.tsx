@@ -96,7 +96,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
 
       <DropdownMenuGroup>
       {user&&(user.role==='ADMIN')&&<CLink url="/dashboard">
-      <DropdownMenuItem className="w-full flex justify-center">
+      <DropdownMenuItem className="w-full flex  gap-2">
           <Users className="mr-2 h-4 w-4" />
           <span>Dashboard</span>
         </DropdownMenuItem>
