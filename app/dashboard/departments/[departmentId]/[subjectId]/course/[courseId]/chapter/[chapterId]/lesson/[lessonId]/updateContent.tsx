@@ -63,8 +63,9 @@ const router=useRouter();
       <DialogTrigger asChild>
     <Button>Edit</Button>
       </DialogTrigger>
+      <div className=" overflow-y-auto w-full relative">
       <DialogContent className="w-full overflow-y-auto">
-        <div className=" overflow-y-auto w-full relative">
+       
         <DialogHeader>
           <DialogTitle>Update Lesson Content</DialogTitle>
        
@@ -77,8 +78,8 @@ const router=useRouter();
       <DialogClose><Button variant="destructive" onClick={()=>{router.refresh()}} >Cancel</Button></DialogClose>
         <Button onClick={handleSubmit(onSubmit)} disabled={isLoading} >{isLoading?"Loading...":"Update"}</Button>
         </DialogFooter>
-        </div>
       </DialogContent>
+      </div>
     </Dialog>
   )
 }
