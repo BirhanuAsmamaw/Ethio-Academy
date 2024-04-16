@@ -26,16 +26,17 @@ const router=useRouter();
 
 
 
-
+console.log("description",description);
       const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
         setIsLoading(true)
        
     
    
         axios.put(`/api/content/${content?.id}/update/content`,data).then(()=>{
+          console.log("conten data",data);
           router.refresh()
           
-          toast.success("Course updated successfully")
+          toast.success("Content updated successfully")
         })
         .catch((error)=>{
          
@@ -50,6 +51,7 @@ const router=useRouter();
       
   return (<CModal 
 title="Update Lesson Content"
+disabled={isLoading}
 buttonLabel={isLoading? "Loading...":"Update"}
 onClick={handleSubmit(onSubmit)}
 modalName="Update">
