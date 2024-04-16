@@ -6,7 +6,7 @@ import TextEditor from "@/components/editor/editor"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
@@ -18,22 +18,24 @@ interface UpdateContentProps{
 const [isLoading,setIsLoading]=useState(false)
 
 const router=useRouter();
-  const {handleSubmit}=useForm<FieldValues>({
+  const {handleSubmit,setValue}=useForm<FieldValues>({
     defaultValues: {
      content:description||content?.content
       
       }})
 
+useEffect(()=>{
+  setValue("content",description)
+},[description])
 
 
-console.log("description",description);
       const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
         setIsLoading(true)
        
     
    
         axios.put(`/api/content/${content?.id}/update/content`,data).then(()=>{
-          console.log("conten data",data);
+          
           router.refresh()
           
           toast.success("Content updated successfully")
