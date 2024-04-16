@@ -6,7 +6,7 @@ import {motion} from "framer-motion"
 
 
 interface AddButtonProps{
-  onAddButton:() => void
+  onAddButton?:() => void
   label: string
 }
 const AddButton:React.FC<AddButtonProps> = ({onAddButton,label}) => {

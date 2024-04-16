@@ -78,10 +78,7 @@ const router=useRouter();
 
   return ( <Dialog>
       <DialogTrigger asChild>
-      <AddButton onAddButton={()=>{
-
-  router.refresh()
-}} label="Add Lesson"/>
+      <AddButton label="Add Lesson"/>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
