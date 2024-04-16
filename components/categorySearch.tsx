@@ -65,7 +65,7 @@ const router=useRouter();
 
 
 
-      <PopoverContent className="w-full p-0">
+      <PopoverContent className="w-full p-0 mt-3">
         <Command >
           <CommandInput  placeholder="Search your department..." />
           <CommandList>
