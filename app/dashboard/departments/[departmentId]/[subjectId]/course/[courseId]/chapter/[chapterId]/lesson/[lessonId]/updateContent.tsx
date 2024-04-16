@@ -68,10 +68,10 @@ const router=useRouter();
           <DialogTitle>Update Lesson Content</DialogTitle>
        
         </DialogHeader>
-        <div className="w-full">
+     
    
         <TextEditor  value={description? description:content?.content} setValue={setDescription}/>
-        </div>
+       
         <DialogFooter>
       <DialogClose><Button variant="destructive" onClick={()=>{router.refresh()}} >Cancel</Button></DialogClose>
         <Button onClick={handleSubmit(onSubmit)} disabled={isLoading} >{isLoading?"Loading...":"Update"}</Button>
