@@ -40,6 +40,7 @@ import DeleteChapter from "./deleteChapter";
 import AddButton from "@/components/button/addButton";
 import { useRouter } from "next/navigation";
 import CLink from "@/components/link";
+import CreateLesson from "./createLesson";
 export function ChapterList({course}:{course:CourseType|any}) {
   const router=useRouter();
   if (!course){
@@ -91,10 +92,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 
 
 <div className="px-4 flex  w-full justify-end">
-<AddButton onAddButton={()=>{
-  router.push(`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course.id}/chapter/${chapter.id}/lesson`)
-  router.refresh()
-}} label="Add Lesson"/>
+<CreateLesson chapterId={chapter.id}/>
            
           </div>
   <div className="-m-1.5 overflow-x-auto">

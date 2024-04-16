@@ -1,16 +1,27 @@
 "use client"
-import Button from "@/components/button/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import Input from "@/components/input/input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { FieldValues, SubmitHandler,  useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { IoIosSend } from "react-icons/io";
-interface IParams{
+import { Button } from "@/components/ui/button";
+import AddButton from "@/components/button/addButton";
+interface LessonProps{
   chapterId: string;
 }
-const Lesson = ({params}:{params:IParams}) => {
+const CreateLesson:React.FC<LessonProps> = ({chapterId}) => {
 
 
   const [isLoading,setLoading]=useState(false);
@@ -21,7 +32,7 @@ const router=useRouter();
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues:{
       title:"",
-      chapterId:params.chapterId
+      chapterId:chapterId
     }
   })
 
@@ -45,8 +56,8 @@ const router=useRouter();
   const lessonData={...data}
  
     axios.post('/api/lesson',lessonData).then(()=>{
-      toast.success("Course created successfully")
-      router.push(`/dashboard/list-courses`)
+      toast.success("Lesson created successfully")
+    
       router.refresh();
     })
     .catch((error)=>{
@@ -65,17 +76,25 @@ const router=useRouter();
 
 
 
-  return ( <><div className={`min-h-screen flex flex-col items-center gap-6 w-full transition duration-300`}>
+  return ( <Dialog>
+      <DialogTrigger asChild>
+      <AddButton onAddButton={()=>{
 
-
-
-         <div className="flex w-full justify-center gap-1">
+  router.refresh()
+}} label="Add Lesson"/>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Add Chapter Lesson</DialogTitle>
+       
+        </DialogHeader>
+        <div className="flex w-full justify-center gap-1">
       
       <div className="w-8/12">
       <Input
       
       id="title"
-      label="Add Chapter Title"
+      label="Add Lesson Title"
       required
       register={register}
       errors={errors}
@@ -87,31 +106,15 @@ const router=useRouter();
       <button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>
        </div>
       </div>
-
+      <DialogFooter>
+        <DialogClose>
+          <Button variant="destructive">Close</Button>
+        </DialogClose>
+      </DialogFooter>
+      </DialogContent>
+    </Dialog>
          
-        
-
-
-         
-
-
-          <div className="w-full py-10 px-4 flex justify-end">
-
-          <Button 
-            isDisabled={isLoading}
-            onClick={handleSubmit(onSubmit)}
-            title={isLoading ? "Loading..." : "Submit"}
-            />
-
-</div>
-
-          
-
-  </div>
-
-
-
-   </>);
+);
 }
  
-export default Lesson;
+export default CreateLesson;
