@@ -20,7 +20,7 @@ const CLink:React.FC<CLinkProps> = ({children,url}) => {
   flex no-underline  
   text-[14px] 
   gap-2
-   
+   w-full
    hover:scale-y-105
     transition
      duration-300

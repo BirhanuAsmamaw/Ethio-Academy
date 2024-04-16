@@ -56,14 +56,14 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
 
     <DropdownMenu>
     <DropdownMenuTrigger asChild>
-    <Avatar className={`${!user?.image&&'hidden'} h-7 w-7 mt-2`}>
+    <Avatar className={`${!user?.image&&'hidden'} h-7 w-7 mt-3`}>
       <AvatarImage src={user?.image? user?.image:"/"} alt="image" />
       <AvatarFallback>{names[0]? names[0][0]:''}{names[1]?names[1][0]:''}</AvatarFallback>
     </Avatar>
     </DropdownMenuTrigger>
     <DropdownMenuContent className="w-56">
       <DropdownMenuLabel className="flex w-full justify-center">
-        <div className="space-y-2 p-4">
+        <div className=" p-1">
         <h6 className="font-semibold text-gray-500 dark:text-gray-400 text-[16px]">{user.name}</h6>
           <p className="text-gray-500 dark:text-gray-400 text-xs">{user.email}</p>
         </div>
@@ -71,7 +71,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
       <CLink url="/mycourses">
-     <DropdownMenuItem>
+     <DropdownMenuItem className="w-full flex justify-center">
           <CreditCard className="mr-2 h-4 w-4" />
           <span>My Courses</span>
           <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
@@ -81,7 +81,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
 
 
         <CLink url="/settings">
-        <DropdownMenuItem>
+        <DropdownMenuItem className="w-full flex justify-center">
           <Settings className="mr-2 h-4 w-4" />
           <span>Settings</span>
           <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
@@ -96,7 +96,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
 
       <DropdownMenuGroup>
       {user&&(user.role==='ADMIN')&&<CLink url="/dashboard">
-      <DropdownMenuItem>
+      <DropdownMenuItem className="w-full flex justify-center">
           <Users className="mr-2 h-4 w-4" />
           <span>Dashboard</span>
         </DropdownMenuItem>
@@ -107,7 +107,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
      
       
       <DropdownMenuSeparator />
-     <CLink url="/logout"> <DropdownMenuItem>
+     <CLink url="/logout"> <DropdownMenuItem className="w-full flex justify-center">
         <LogOut className="mr-2 h-4 w-4" />
         <span>Log out</span>
         <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
