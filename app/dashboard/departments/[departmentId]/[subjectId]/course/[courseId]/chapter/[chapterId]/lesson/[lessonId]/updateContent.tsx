@@ -63,12 +63,12 @@ const router=useRouter();
       <DialogTrigger asChild>
     <Button>Edit</Button>
       </DialogTrigger>
-      <DialogContent className="">
+      <DialogContent className="w-full">
         <DialogHeader>
           <DialogTitle>Update Lesson Content</DialogTitle>
        
         </DialogHeader>
-        <div className="">
+        <div className="w-full">
    
         <TextEditor  value={description? description:content?.content} setValue={setDescription}/>
         </div>
