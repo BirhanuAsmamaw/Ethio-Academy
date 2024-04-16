@@ -42,7 +42,7 @@ const router=useRouter();
         </Button>
          
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56 mt-3">
+        <DropdownMenuContent className="w-56 mt-2">
           <DropdownMenuGroup>
     
           {notifications?.length?<div>

@@ -13,13 +13,13 @@ const ExamsCDrobDown:React.FC<ExamsCDrobDownProps> = ({exams}) => {
  
   return ( <DropdownMenu>
     <DropdownMenuTrigger asChild>
-      <Button variant="ghost" className="flex gap-2 mt-1">
+      <Button variant="ghost" className="flex gap-2 mt-2">
         <span>Exam</span>
        
         <ChevronDown className="h-4 w-4 "/>
       </Button>
     </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56 mt-3">
+    <DropdownMenuContent className="w-56 mt-2">
       <DropdownMenuGroup>
       {exams?.map((c,index)=>{
             return <><CLink key={index} url={`/exams/${c.url}`} >
