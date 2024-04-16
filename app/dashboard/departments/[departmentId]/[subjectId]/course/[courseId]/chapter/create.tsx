@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
-import { IoIosSend, IoMdAdd } from "react-icons/io";
+import { IoIosSend} from "react-icons/io";
 interface CreateChapterProps{
   course:any;
  

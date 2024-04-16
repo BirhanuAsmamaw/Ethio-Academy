@@ -5,6 +5,7 @@ export async function getLessonById(lessonId:string){
     const lesson = await prisma.lesson.findUnique({
       where:{id:lessonId},
       include:{
+        contents:true,
         chapter:{
           include:{
             course:{

@@ -60,9 +60,14 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
  <div className="flex flex-col   gap-20">
   
 
-<div className="">
-      <div className="" dangerouslySetInnerHTML={{ __html: lesson.content}}></div>
-      </div>
+{lesson?.contents?.length?<div className="space-y-2">
+  {
+     lesson?.contents?.map((content:any)=>{
+return <div key={content?.id} className="" dangerouslySetInnerHTML={{ __html: lesson.content}}></div>
+     })
+  }
+      
+      </div>:<div>No Contents</div>}
 
   </div> 
  </div>

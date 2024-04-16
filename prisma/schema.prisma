@@ -110,11 +110,21 @@ model Lesson{
    title String
    videoUrl File?
    videoThumbnail File?
-   content String
+   contents Content[]
    questions Question []
 
 }
 
+
+model Content{
+   id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+   lesson Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+   lessonId String @db.ObjectId
+   image File?
+   content String?
+}
 
 model Question{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId

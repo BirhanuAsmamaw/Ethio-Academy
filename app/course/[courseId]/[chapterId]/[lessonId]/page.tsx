@@ -21,6 +21,7 @@ interface IParams{
 const LessonPage = async({params}:{params:IParams}) => {
 
   const lesson=await getLessonById(params.lessonId);
+ 
 
   const user=await getCurrentUser();
   
