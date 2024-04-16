@@ -2,7 +2,7 @@
 import { CiSearch } from "react-icons/ci";
 import { IoChevronDown } from "react-icons/io5";
 import * as React from "react";
-import { Check} from "lucide-react";
+import { Check, ChevronDown} from "lucide-react";
 import {ClipLoader} from "react-spinners"
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -37,6 +37,7 @@ const router=useRouter();
   return (<Popover open={open} onOpenChange={setOpen} >
     <div className={`flex w-full overflow-x-auto  rounded-[5px]  ${value&&'border bg-slate-100 dark:bg-gray-800 border-slate-300 dark:border-gray-600'} `}>
       <PopoverTrigger asChild >
+     
         <Button
           variant="ghost"
           role="combobox"
@@ -48,7 +49,7 @@ const router=useRouter();
           
             ? value
             : "Category"}</p>
-            {!value&&<IoChevronDown size={24}/>}
+            {!value&&<ChevronDown className="h-4 w-4 "/>}
  
         </Button>
       </PopoverTrigger>

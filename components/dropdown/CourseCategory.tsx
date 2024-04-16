@@ -1,6 +1,6 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from "../ui/dropdown-menu";
 
-import { ChevronDown,ChevronUp } from "lucide-react";
+import { ChevronDown} from "lucide-react";
 import { Button } from "../ui/button";
 import CLink from "../link";
 
@@ -13,21 +13,23 @@ const ExamsCDrobDown:React.FC<ExamsCDrobDownProps> = ({exams}) => {
  
   return ( <DropdownMenu>
     <DropdownMenuTrigger asChild>
-      <Button className="">
+      <Button variant="ghost" className="flex gap-2">
         <span>Exam</span>
-        <ChevronUp className="h-4 w-4 ml-2 data-[state=close]:hidden"/>
-        <ChevronDown className="h-4 w-4 ml-2 data-[state=open]:hidden"/>
+       
+        <ChevronDown className="h-4 w-4 "/>
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent className="w-56">
       <DropdownMenuGroup>
       {exams?.map((c,index)=>{
-            return <CLink key={index} url={`/exams/${c.url}`} >
+            return <><CLink key={index} url={`/exams/${c.url}`} >
                 <DropdownMenuItem className="w-full">
                 {c.examType}
       </DropdownMenuItem>
             
            </CLink>
+                   <DropdownMenuSeparator />
+            </>
           })}
       </DropdownMenuGroup>
      
