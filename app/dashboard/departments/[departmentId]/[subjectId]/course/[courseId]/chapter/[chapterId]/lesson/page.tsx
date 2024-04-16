@@ -12,13 +12,13 @@ interface IParams{
 }
 const Lesson = ({params}:{params:IParams}) => {
 
-  const [isDisabled,setDisabled]=useState(true);
+
   const [isLoading,setLoading]=useState(false);
   
 
 
 const router=useRouter();
-  const {register,handleSubmit,setValue,getValues,formState:{errors}}=useForm<FieldValues>({
+  const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues:{
       title:"",
       chapterId:params.chapterId
@@ -30,18 +30,6 @@ const router=useRouter();
 
 
 
-
-const dataValue=getValues();
-
-
-  useEffect(() =>{
-    if(!dataValue.title || !dataValue.content || !dataValue.chapterId ){
-      setDisabled(true);
-    }
-    else{
-      setDisabled(false);
-    }
-  },[dataValue.title,dataValue.content,dataValue.chapterId])
 
 
 
