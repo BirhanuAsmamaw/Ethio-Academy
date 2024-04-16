@@ -13,7 +13,7 @@ const ExamsCDrobDown:React.FC<ExamsCDrobDownProps> = ({exams}) => {
  
   return ( <DropdownMenu>
     <DropdownMenuTrigger asChild>
-      <Button variant="ghost" className="flex gap-2">
+      <Button variant="ghost" className="flex gap-2 mt-3">
         <span>Exam</span>
        
         <ChevronDown className="h-4 w-4 "/>
