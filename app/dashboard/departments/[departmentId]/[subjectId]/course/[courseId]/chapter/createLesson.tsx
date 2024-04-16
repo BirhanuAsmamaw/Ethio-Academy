@@ -73,12 +73,12 @@ const router=useRouter();
 
 
 
-{/* <AddButton label="Add Lesson"/> */}
+
 
 
   return ( <Dialog>
       <DialogTrigger asChild>
-     <Button>Lesson</Button>
+      <AddButton label="Add Lesson"/> 
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
