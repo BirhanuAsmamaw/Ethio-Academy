@@ -63,7 +63,7 @@ const router=useRouter();
       <DialogTrigger asChild>
     <Button>Edit</Button>
       </DialogTrigger>
-      <div className=" overflow-y-auto w-full relative">
+     
       <DialogContent className="w-full overflow-y-auto">
        
         <DialogHeader>
@@ -79,7 +79,7 @@ const router=useRouter();
         <Button onClick={handleSubmit(onSubmit)} disabled={isLoading} >{isLoading?"Loading...":"Update"}</Button>
         </DialogFooter>
       </DialogContent>
-      </div>
+   
     </Dialog>
   )
 }
