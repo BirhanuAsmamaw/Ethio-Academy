@@ -5,6 +5,7 @@ import QuizClient from "./lessonQuestionClient";
 import { useState } from "react";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 
 interface LessonClientProps{
@@ -63,7 +64,14 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
 {lesson?.contents?.length?<div className="space-y-2">
   {
      lesson?.contents?.map((content:any)=>{
-return <div key={content?.id} className="" dangerouslySetInnerHTML={{ __html: content.content}}></div>
+return <div key={content?.id}  className="space-y-6">
+
+  {content?.content?<div className="" dangerouslySetInnerHTML={{ __html: content.content}}></div>:""}
+ {content?.image? <div className="">
+    <Image height={400} width={500} src={content?.image.public_url} alt="content image"/>
+  </div>:""}
+
+</div>
      })
   }
       

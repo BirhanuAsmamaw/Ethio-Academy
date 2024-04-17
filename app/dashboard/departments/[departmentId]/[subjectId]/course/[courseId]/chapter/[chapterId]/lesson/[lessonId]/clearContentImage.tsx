@@ -32,7 +32,7 @@ const ClearContentImage:React.FC<ClearcontentFileProps> = ({isAdd,content,depart
       
       router.push(`/dashboard/departments/${departmentId}/${subjectId}/course/${courseId}/chapter/${chapterId}/lesson/${content.lessonId}/update-content`)
       router.refresh();
-      toast.success("content image uploaded successfully")
+      toast.success("content image deleted successfully")
       }).catch((error)=>{
     
         toast.error(error.message);
