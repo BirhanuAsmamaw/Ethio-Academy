@@ -5,6 +5,7 @@
 "use client"
 
 import * as React from "react"
+import { MdContentPaste } from "react-icons/md";
 import { GrFormView } from "react-icons/gr";
 import { AiOutlineDelete } from "react-icons/ai"
 import { Button } from "@/components/ui/button"
@@ -138,7 +139,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 
         <DropdownMenuItem>
         <CLink url={`/dashboard/departments/${course?.subject?.department.id}/${course?.subject.id}/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-content`} >
-            <><MdEditNote size={20}/> <p>Edit Lesson</p></>
+            <><MdContentPaste size={20}/> <p> Contents</p></>
           </CLink>
         </DropdownMenuItem>
 

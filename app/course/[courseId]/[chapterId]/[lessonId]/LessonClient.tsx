@@ -64,7 +64,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
 {lesson?.contents?.length?<div className="space-y-2">
   {
      lesson?.contents?.map((content:any)=>{
-return <div key={content?.id}  className="space-y-6">
+return <div key={content?.id}  className="space-y-10">
 
   {content?.content?<div className="" dangerouslySetInnerHTML={{ __html: content.content}}></div>:""}
  {content?.image? <div className="w-full flex justify-center">

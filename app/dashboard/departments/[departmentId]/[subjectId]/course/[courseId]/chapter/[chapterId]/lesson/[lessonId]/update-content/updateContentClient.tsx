@@ -70,7 +70,7 @@ const router=useRouter();
 
 
 
-  return ( <><div className={` flex flex-col items-center gap-6 w-full  transition duration-300`}>
+  return ( <><div className={` overflow-x-hidden  flex flex-col items-center gap-6 w-full  transition duration-300`}>
 
 <div className="space-y-2 w-full flex flex-col items-center">
       <h2 className="text-lg text-gray-600 dark:text-gray-400 font-semibold">{lesson.chapter.title} in {lesson?.chapter.course?.course}</h2>
