@@ -39,7 +39,7 @@ const CreateContent:React.FC<CreateContentProps> = ({lesson}) => {
  
     axios.post('/api/content',contentData).then(()=>{
       toast.success("Lesson Content successfully")
-      router.push(`/dashboard/list-courses`)
+      router.push(`/dashboard/departments/${lesson?.chapter.course.subject.departmentId}/${lesson?.chapter.course.subjectId}/course/${lesson?.chapter?.courseId}/chapter/${lesson?.chapterId}/lesson/${lesson?.id}/update-content`)
       router.refresh();
     })
     .catch((error)=>{
