@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import CreateContentImage from './createContentImage'
 
 interface  CreateContentProps{
   lesson:any
@@ -54,9 +55,14 @@ const CreateContent:React.FC<CreateContentProps> = ({lesson}) => {
   return (<div className="flex flex-col px-4 w-full  gap-1  pt-2 my-4">
   <Heading small title="Add Lesson Content"/>
 <TextEditor value={description} setValue={setDescription}/>
+<div className="w-full mt-4 flex justify-start px-4">
+  <CreateContentImage lesson={lesson}/>
+</div>
 <div className="flex w-full justify-end p-4">
   <Button onClick={handleSubmit(onSubmit)} title={isLoading? "Loading...":"Submit"} isDisabled={isLoading}/>
 </div>
+
+
 </div>
   )
 }

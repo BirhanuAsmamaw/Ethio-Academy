@@ -72,8 +72,7 @@ const UpdateContentImage:React.FC<UpdatecontentFileProps> = ({content,department
 
 
   
-  return (
-    <CModal 
+  return ( <CModal 
 
 modalName="Upload Image">
  <FileUploader

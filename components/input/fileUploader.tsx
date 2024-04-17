@@ -7,8 +7,8 @@ import toast from "react-hot-toast";
 interface FileUploaderProps{
   label:string;
   endpoint:any;
-  file:any;
-  handleMediaChange:() => void;
+  file?:any;
+  handleMediaChange?:() => void;
    mediaType:string;
     
     onClientUploadComplete:(res:any[]) => void;

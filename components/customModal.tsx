@@ -9,7 +9,7 @@ interface ModalProps{
   title?:string;
   buttonLabel?:string;
   onClick?:() => void;
-  modalName:string;
+  modalName:ReactNode;
   disabled?:boolean;
 }
 const CModal:React.FC<ModalProps> = ({disabled,children,title,buttonLabel,onClick,modalName}) => {
