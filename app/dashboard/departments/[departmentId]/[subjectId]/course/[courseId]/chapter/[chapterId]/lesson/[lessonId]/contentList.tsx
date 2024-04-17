@@ -21,13 +21,31 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
       <div className="hidden  group-hover:block  absolute left-[10%] top-[25%]  w-full">
  <div className="flex justify-center gap-10 w-full">
  
- <UpdateContentImage content={content} departmentId={lesson?.chapter.course.subject.departmentId} subjectId={lesson?.chapter.course.subjectId } courseId={lesson?.chapter.courseId} chapterId={lesson?.chapterId}/>
-<UpdateContent content={content}/>
-<DeleteContent content={content}/>
+ {!content?.image?<UpdateContentImage 
+ content={content} 
+ departmentId={lesson?.chapter.course.subject.departmentId} 
+ subjectId={lesson?.chapter.course.subjectId } 
+ courseId={lesson?.chapter.courseId} 
+ chapterId={lesson?.chapterId}/>:""}
+
+{content.content?<UpdateContent content={content}/>:""}
+{content.content?<DeleteContent content={content}/>:""}
  </div>
       </div>
-      {content?.content?<div  className="" dangerouslySetInnerHTML={{__html:content.content}}></div>:""}
-      {content?.image?<div className="">
+      {content?.content?<div  
+      className="" 
+      dangerouslySetInnerHTML={{__html:content.content}}></div>:""}
+      {content?.image?<div className="relative">
+        <div className="absolute top-2 left-2 flex gap-2">
+        {content?.image?<UpdateContentImage 
+ content={content} 
+ departmentId={lesson?.chapter.course.subject.departmentId} 
+ subjectId={lesson?.chapter.course.subjectId } 
+ courseId={lesson?.chapter.courseId} 
+ chapterId={lesson?.chapterId}/>:""}
+ {!content.content?<UpdateContent content={content}/>:""}
+{!content.content?<DeleteContent content={content}/>:""}
+        </div>
         <Image height={400} width={500} src={ content?.image?.public_url} alt='content Image'/>
       </div>:""}
     </div>
