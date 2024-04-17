@@ -5,15 +5,16 @@ import CModal from "@/components/customModal"
 import TextEditor from "@/components/editor/editor"
 import axios from "axios"
 import { useRouter } from "next/navigation"
-
+import { IoMdAdd } from "react-icons/io";
 import { useEffect, useState } from "react"
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form"
 import toast from "react-hot-toast"
-
+import { MdModeEditOutline } from "react-icons/md";
 interface UpdateContentProps{
   content:any
+  isAdd?:boolean
 }
- const UpdateContent:React.FC<UpdateContentProps>=({content})=> {
+ const UpdateContent:React.FC<UpdateContentProps>=({isAdd,content})=> {
   const [description, setDescription]=useState<string|null>(null)
 const [isLoading,setIsLoading]=useState(false)
 
@@ -52,11 +53,22 @@ useEffect(()=>{
 
       
   return (<CModal 
+    variant="secondary"
 title="Update Lesson Content"
 disabled={isLoading}
 buttonLabel={isLoading? "Loading...":"Update"}
 onClick={handleSubmit(onSubmit)}
-modalName="Update">
+modalName={<div className="flex gap-2">{isAdd?<IoMdAdd 
+  className='text-gray-600
+  dark:text-gray-400
+  hover:text-gray-900
+   hover:dark:text-gray-100 transition'
+size={24}/>:<MdModeEditOutline
+className='text-gray-600
+dark:text-gray-400
+hover:text-gray-900
+ hover:dark:text-gray-100 transition'
+ size={24}/>} <p>Content</p></div>}>
 <div className="p-4">
 <TextEditor  value={description? description:content?.content} setValue={setDescription}/>
 </div>

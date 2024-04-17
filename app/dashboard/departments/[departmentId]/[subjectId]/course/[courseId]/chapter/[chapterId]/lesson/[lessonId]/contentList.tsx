@@ -22,6 +22,7 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
  <div className="flex justify-center gap-10 w-full">
  
  {!content?.image?<UpdateContentImage 
+ isAdd
  content={content} 
  departmentId={lesson?.chapter.course.subject.departmentId} 
  subjectId={lesson?.chapter.course.subjectId } 
@@ -43,7 +44,7 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
  subjectId={lesson?.chapter.course.subjectId } 
  courseId={lesson?.chapter.courseId} 
  chapterId={lesson?.chapterId}/>:""}
- {!content.content?<UpdateContent content={content}/>:""}
+ {!content.content?<UpdateContent isAdd content={content}/>:""}
 {!content.content?<DeleteContent content={content}/>:""}
         </div>
         <Image height={400} width={500} src={ content?.image?.public_url} alt='content Image'/>

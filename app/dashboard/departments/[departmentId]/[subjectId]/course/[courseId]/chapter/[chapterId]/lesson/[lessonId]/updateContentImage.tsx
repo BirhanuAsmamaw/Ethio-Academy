@@ -6,16 +6,17 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
-
-
+import { RiImageEditFill } from "react-icons/ri";
+import { BiImageAdd } from "react-icons/bi";
 interface UpdatecontentFileProps{
   content: any;
   departmentId: string;
   subjectId: string;
   courseId: string;
   chapterId: string;
+  isAdd?:boolean;
 }
-const UpdateContentImage:React.FC<UpdatecontentFileProps> = ({content,departmentId,subjectId,courseId,chapterId}) => {
+const UpdateContentImage:React.FC<UpdatecontentFileProps> = ({isAdd,content,departmentId,subjectId,courseId,chapterId}) => {
   const [imageUrl, setimageUrl] = useState(content?.image?content?.image.public_url:"");
   const [imageKey, setimageKey] = useState(content?.image?content?.image.public_key:"");
 
@@ -73,8 +74,16 @@ const UpdateContentImage:React.FC<UpdatecontentFileProps> = ({content,department
 
   
   return ( <CModal 
-
-modalName="Upload Image">
+variant="secondary"
+modalName={isAdd?<BiImageAdd size={24} 
+className='text-gray-600
+ dark:text-gray-400
+ hover:text-gray-900
+  hover:dark:text-gray-100 transition'/>:<RiImageEditFill size={24} 
+  className='text-gray-600
+   dark:text-gray-400
+   hover:text-gray-900
+    hover:dark:text-gray-100 transition'/>}>
  <FileUploader
       onClientUploadComplete={oncontentimageComplete}
       label="Upload content image"

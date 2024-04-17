@@ -11,13 +11,14 @@ interface ModalProps{
   onClick?:() => void;
   modalName:ReactNode;
   disabled?:boolean;
+  variant?:"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined;
 }
-const CModal:React.FC<ModalProps> = ({disabled,children,title,buttonLabel,onClick,modalName}) => {
+const CModal:React.FC<ModalProps> = ({variant,disabled,children,title,buttonLabel,onClick,modalName}) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
     <>
-      <Button onClick={() => setOpen(prev => !prev)} className='text-lg'>
+      <Button variant={variant} onClick={() => setOpen(prev => !prev)} className='text-lg'>
        {modalName}
       </Button>
       {isOpen && (

@@ -37,6 +37,7 @@ interface DeleteContentProps{
     }
   return (
     <CModal 
+    variant="destructive"
 title="Delete Lesson Content"
 disabled={isLoading}
 buttonLabel={isLoading? "Loading...":"Delete"}
