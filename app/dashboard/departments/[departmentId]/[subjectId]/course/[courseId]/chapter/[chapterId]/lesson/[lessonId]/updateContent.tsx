@@ -54,11 +54,11 @@ useEffect(()=>{
       
   return (<CModal 
     variant="secondary"
-title="Update Lesson Content"
+title={`${isAdd?"Add":"Update"}Lesson Content`}
 disabled={isLoading}
 buttonLabel={isLoading? "Loading...":"Update"}
 onClick={handleSubmit(onSubmit)}
-modalName={<div className="flex gap-2">{isAdd?<IoMdAdd 
+modalName={isAdd?<IoMdAdd 
   className='text-gray-600
   dark:text-gray-400
   hover:text-gray-900
@@ -68,7 +68,7 @@ className='text-gray-600
 dark:text-gray-400
 hover:text-gray-900
  hover:dark:text-gray-100 transition'
- size={24}/>} <p>Content</p></div>}>
+ size={24}/>}>
 <div className="p-4">
 <TextEditor  value={description? description:content?.content} setValue={setDescription}/>
 </div>

@@ -5,6 +5,8 @@ import UpdateContent from './updateContent'
 import DeleteContent from './deleteContent'
 import UpdateContentImage from './updateContentImage'
 import Image from 'next/image'
+import ClearContent from './clearContent'
+import ClearContentImage from './clearContentImage'
 
 
 interface ContentListProps{
@@ -30,9 +32,14 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
  chapterId={lesson?.chapterId}/>:""}
 
 {content.content?<UpdateContent content={content}/>:""}
-{content.content?<DeleteContent content={content}/>:""}
+{content.content?<ClearContent content={content}/>:""}
  </div>
       </div>
+
+      {content?<div className=" absolute bottom-2 right-2 flex justify-center p-2">
+     <DeleteContent content={content}/>
+      </div>:""}
+      
       {content?.content?<div  
       className="" 
       dangerouslySetInnerHTML={{__html:content.content}}></div>:""}
@@ -45,7 +52,12 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
  courseId={lesson?.chapter.courseId} 
  chapterId={lesson?.chapterId}/>:""}
  {!content.content?<UpdateContent isAdd content={content}/>:""}
-{!content.content?<DeleteContent content={content}/>:""}
+{content.image?<ClearContentImage 
+content={content} 
+departmentId={lesson?.chapter.course.subject.departmentId} 
+ subjectId={lesson?.chapter.course.subjectId } 
+ courseId={lesson?.chapter.courseId} 
+ chapterId={lesson?.chapterId}/>:""}
         </div>
         <Image height={400} width={500} src={ content?.image?.public_url} alt='content Image'/>
       </div>:""}
