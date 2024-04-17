@@ -1,11 +1,13 @@
 "use client"
-import CModal from '@/components/customModal'
 import FileUploader from '@/components/input/fileUploader'
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import axios from 'axios'
+
 import { useRouter } from 'next/navigation'
+
 import toast from 'react-hot-toast'
-import { IoMdAdd } from 'react-icons/io'
+import {  IoMdAdd } from 'react-icons/io'
 
 interface  CreateContentImageProps{
   lesson:any
@@ -23,7 +25,7 @@ const CreateContentImage:React.FC<CreateContentImageProps> = ({lesson}) => {
       public_url:url
     }
 
-   axios.put(`/api/content`,{image:imageData,lessonId:lesson.id}).then(()=>{
+   axios.post(`/api/content`,{image:imageData, lessonId:lesson.id}).then(()=>{
     router.push(`/dashboard/departments/${lesson?.chapter?.course.subject.departmentId}/${lesson?.chapter?.course.subjectId}/course/${lesson?.chapter.courseId}/chapter/${lesson?.chapter.id}/lesson/${lesson?.id}/update-content`)
     router.refresh();
     toast.success("Lesson content image uploaded successfully")
@@ -37,9 +39,9 @@ const CreateContentImage:React.FC<CreateContentImageProps> = ({lesson}) => {
 
 
 
-  return ( <CModal 
-
-    modalName={ <Button
+  return ( <Dialog>
+      <DialogTrigger asChild>
+      <Button
       variant="ghost"
     className="py-2 md:py-2.5 px-3 md:px-5 me-2 mb-2
 text-sm font-medium text-gray-900 focus:outline-none
@@ -47,14 +49,25 @@ text-sm font-medium text-gray-900 focus:outline-none
  hover:bg-gray-100 hover:text-blue-700 focus:z-10 
  focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700
   dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600
-   dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center"><IoMdAdd size={24}/> <p>Image</p></Button> }>
-     <FileUploader
+   dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center"><IoMdAdd size={24}/> <p>Lesson</p></Button> 
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <FileUploader
           onClientUploadComplete={oncontentimageComplete}
           label="Upload content image"
             endpoint="imageUploader"
             mediaType="image"
           />
-    </CModal>
+      <DialogFooter>
+        <DialogClose>
+          <Button variant="destructive">Close</Button>
+        </DialogClose>
+      </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  
+  
+
   )
 }
 
