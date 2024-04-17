@@ -67,7 +67,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
 return <div key={content?.id}  className="space-y-6">
 
   {content?.content?<div className="" dangerouslySetInnerHTML={{ __html: content.content}}></div>:""}
- {content?.image? <div className="">
+ {content?.image? <div className="w-full flex justify-center">
     <Image height={400} width={500} src={content?.image.public_url} alt="content image"/>
   </div>:""}
 

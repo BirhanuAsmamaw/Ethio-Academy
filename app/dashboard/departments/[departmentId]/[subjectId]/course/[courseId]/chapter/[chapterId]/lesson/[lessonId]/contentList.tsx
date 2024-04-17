@@ -43,7 +43,7 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
       {content?.content?<div  
       className="" 
       dangerouslySetInnerHTML={{__html:content.content}}></div>:""}
-      {content?.image?<div className="relative">
+      {content?.image?<div className="relative w-full flex justify-center">
         <div className="absolute top-2 left-2 flex gap-2">
         {content?.image?<UpdateContentImage 
  content={content} 
