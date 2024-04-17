@@ -63,6 +63,7 @@ const UpdateContentImage:React.FC<UpdatecontentFileProps> = ({content,department
     router.refresh();
     toast.success("content image uploaded successfully")
     }).catch((error)=>{
+  
       toast.error(error.message);
     });
    
@@ -73,7 +74,7 @@ const UpdateContentImage:React.FC<UpdatecontentFileProps> = ({content,department
   
   return (
     <CModal 
-title="Update Content Image"
+
 modalName="Upload Image">
  <FileUploader
       onClientUploadComplete={oncontentimageComplete}

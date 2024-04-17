@@ -2,8 +2,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
-export async function PUT(req: Request, {params}:{params:{imageId:string}}){
-  const imageId=params.imageId;
+export async function PUT(req: Request, {params}:{params:{contentId:string}}){
+  const contentId=params.contentId;
   const body = await req.json();
   const {image} = body;
 
@@ -18,14 +18,14 @@ export async function PUT(req: Request, {params}:{params:{imageId:string}}){
     }
 
     const imageData=await prisma.content.findUnique({
-      where: {id:imageId}
+      where: {id:contentId}
     })
     if(!imageData){
       return NextResponse.json({status:false, message:"image not found"});
     }
 
     const updatedimage=await prisma.content.update({
-      where: {id:imageId},
+      where: {id:contentId},
       data:{
         image:image,
        

@@ -6,7 +6,7 @@ import { Button } from './ui/button';
 import { Loader2 } from "lucide-react"
 interface ModalProps{
   children:ReactNode;
-  title:string;
+  title?:string;
   buttonLabel?:string;
   onClick?:() => void;
   modalName:string;
@@ -40,7 +40,7 @@ const CModal:React.FC<ModalProps> = ({disabled,children,title,buttonLabel,onClic
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <div className="mt-2">
                       <div className="w-full flex justify-between p-4">
-                      <h3 className="text-lg leading-6 font-semibold text-gray-900 dark:text-white mt-2">{title}</h3>
+                      {title?<h3 className="text-lg leading-6 font-semibold text-gray-900 dark:text-white mt-2">{title}</h3>:""}
                       <Button variant="ghost" onClick={() => setOpen(prev => !prev)} className="text-red-500 hover:text-red-700  font-bold py-2 px-4 rounded">
                         <GrClose size={24}/>
                       </Button>
@@ -49,7 +49,7 @@ const CModal:React.FC<ModalProps> = ({disabled,children,title,buttonLabel,onClic
                     <div className=" text-wrap"> {children}</div>
                       <div className="mt-4 p-4 w-full flex justify-end gap-6">
                         <Button onClick={() => setOpen(prev => !prev)} variant="destructive">Cancel</Button>
-                        <Button disabled={disabled} onClick={onClick}>{disabled? <Loader2 className="mr-2 h-4 w-4 animate-spin" />:""}{buttonLabel}</Button>
+                      {buttonLabel?  <Button disabled={disabled} onClick={onClick}>{disabled? <Loader2 className="mr-2 h-4 w-4 animate-spin" />:""}{buttonLabel}</Button>:""}
                       </div>
                     </div>
                   </div>
