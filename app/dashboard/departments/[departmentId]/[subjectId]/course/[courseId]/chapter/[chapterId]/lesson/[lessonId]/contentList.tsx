@@ -19,7 +19,7 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
   }
   return (<div className='flex flex-col gap-4 w-full'>
    {lesson?.contents?.map((content:any) =>{
-    return  <div key={content?.id}  className="p-4relative w-full bg-white dark:bg-gray-800 hover:border-2 rounded-[10px] hover:border-sky-400 hover:border-dashed  transition duration-300 group">
+    return  <div key={content?.id}  className="p-4 relative w-full bg-white dark:bg-gray-800 hover:border-2 rounded-[10px] hover:border-sky-400 hover:border-dashed  transition duration-300 group">
       <div className="hidden  z-30 group-hover:block  absolute  right-4  top-2  w-full">
  <div className="flex justify-center gap-10 w-full">
  
@@ -43,7 +43,7 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
       {content?.content?<div  
       className="" 
       dangerouslySetInnerHTML={{__html:content.content}}></div>:""}
-      {content?.image?<div className="relative w-full flex justify-center">
+      {content?.image?<div className="relative ">
         <div className="absolute z-30 top-2 left-2 flex gap-2">
         {content?.image?<UpdateContentImage 
  content={content} 
