@@ -86,7 +86,7 @@ className='text-gray-600
     hover:dark:text-gray-100 transition'/>}>
  <FileUploader
       onClientUploadComplete={oncontentimageComplete}
-      label="Upload content image"
+      label={`${isAdd?"Upload":"Edit"} content image`}
         file={imageUrl}
         handleMediaChange={handleimageChange}
         endpoint="imageUploader"
