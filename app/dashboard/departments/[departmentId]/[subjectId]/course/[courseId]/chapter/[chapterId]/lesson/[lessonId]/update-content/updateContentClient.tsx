@@ -11,8 +11,10 @@ import CreateContent from "../createContent";
 import { IoIosSend } from "react-icons/io";
 
 
+
 interface UpdateLessonContentClientProps{
   lesson:any
+
 }
 const UpdateLessonContentClient:React.FC<UpdateLessonContentClientProps> = ({lesson}) => {
 
@@ -104,7 +106,8 @@ const router=useRouter();
        </div>
       </div>
 
-         
+           
+          
          <ContentList lesson={lesson}/>
     <CreateContent lesson={lesson}/>
 

@@ -7,6 +7,8 @@ interface IParams{
 }
 const UpdateLessonContent = async({params}:{params:IParams}) => {
   const lesson=await getLessonById(params.lessonId)
+ 
+
   return (<UpdateLessonContentClient lesson={lesson}/>
   )
 }

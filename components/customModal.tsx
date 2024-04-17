@@ -7,8 +7,8 @@ import { Loader2 } from "lucide-react"
 interface ModalProps{
   children:ReactNode;
   title:string;
-  buttonLabel:string;
-  onClick:() => void;
+  buttonLabel?:string;
+  onClick?:() => void;
   modalName:string;
   disabled?:boolean;
 }

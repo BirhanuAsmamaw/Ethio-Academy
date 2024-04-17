@@ -53,9 +53,7 @@ const router=useRouter();
     setLoading(true)
     
 
-  const lessonData={...data}
- 
-    axios.post('/api/lesson',lessonData).then(()=>{
+    axios.post('/api/lesson',data).then(()=>{
       toast.success("Lesson created successfully")
     
       router.refresh();
@@ -79,6 +77,7 @@ const router=useRouter();
   return ( <Dialog>
       <DialogTrigger asChild>
       <Button
+      variant="ghost"
     className="py-2 md:py-2.5 px-3 md:px-5 me-2 mb-2
 text-sm font-medium text-gray-900 focus:outline-none
  bg-white rounded-full border border-gray-200 
