@@ -1,10 +1,7 @@
 "use client"
-import Button from '@/components/button/button';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
-import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import AssignPermissions from '../../assign/assignPermissions';
 import AssignPermissionLists from '../../assign/assignPermissionLists';
@@ -57,9 +54,9 @@ const [isLoading,setIsLoading]=useState(false)
   
   
   return (<div className="w-full min-h-screen flex justify-center items-center">
-    <div className=" w-full md:w-3/4   lg:w-3/5  xl:w-1/2 bg-white dark:bg-gray-800  shadow  dark:shadow-black">
+    <div className=" w-full md:w-3/4   lg:w-3/5  xl:w-1/2 bg-white dark:bg-black shadow  dark:shadow-black">
   <div className="flex p-4 border-b-2  dark:border-gray-700 justify-center">
-  <h6 className=' leading-6 font-xl font-semibold'>{user.name}</h6>
+  <h6 className=' leading-6 font-xl font-semibold'>{user?.name}</h6>
   </div>
    <div className='w-full  grid grid-cols-2'>
 
