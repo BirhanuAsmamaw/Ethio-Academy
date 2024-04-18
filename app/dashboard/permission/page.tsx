@@ -33,7 +33,7 @@ const roles=await getAllRoles()
 
   <div className="relative flex justify-center ">
   <div className="w-full     md:absolute h-[700px]  overflow-y-auto   ">
-  <div className="p-4 flex flex-col justify-center items-center gap-20  dark:bg-gray-800 py-6 shadow-md dark:shadow-black border dark:border-gray-700 ">
+  <div className="p-4 flex flex-col justify-center items-center gap-20 bg-white dark:bg-gray-800 py-6 shadow-md dark:shadow-black border dark:border-gray-700 ">
   
    <CreateRole/>
    <RolesListClient roles={roles}/>
