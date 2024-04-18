@@ -15,7 +15,7 @@ const AssignRoleLists:React.FC<AssignRoleListsProps> = ({roles}) => {
   const router=useRouter();
   const onRemove=(id:string)=>{
   
-    axios.delete(`/api/authorization/userRole/${id}`).then(()=>{
+    axios.delete(`/api/authorization/userRole/delete/${id}`).then(()=>{
         toast.success("Role  deleted successfully")
         router.refresh()
 

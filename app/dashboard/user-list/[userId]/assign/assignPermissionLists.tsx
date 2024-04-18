@@ -17,7 +17,7 @@ const AssignPermissionLists:React.FC<AssignPermissionListsProps> = ({permissions
 const router=useRouter();
   const onRemove=(id:string)=>{
   
-    axios.delete(`/api/authorization/userPermission/${id}`).then(()=>{
+    axios.delete(`/api/authorization/userPermission/delete/${id}`).then(()=>{
         toast.success("Permission deleted successfully")
         router.refresh()
 
