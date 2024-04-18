@@ -2,8 +2,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
-export async function DELETE(req: Request, {params}:{params:{userRoleId:string}}){
-  const userRoleId=params.userRoleId;
+export async function DELETE(req: Request, {params}:{params:{userroleId:string}}){
+  const userRoleId=params.userroleId;
  
 
   try{
