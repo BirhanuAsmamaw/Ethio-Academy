@@ -7,6 +7,7 @@ const UpdateUserRole = async({params}:{params:{userId:string}}) => {
   const user = await getUserById(params.userId)
 
 const permissions = await getAllPermission()
+
 const roles= await getAllRoles()
   return (<UpdateUserRoleClient user={user} permissions={permissions} roles={roles}/>)
   

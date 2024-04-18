@@ -69,7 +69,7 @@ const router=useRouter();
               value={permission?.action}
               onSelect={(currentValue) => {
                 setValue(currentValue === value ? "" : currentValue)
-                setPermissionId(permission?.id)
+                setPermissionId(permission.id)
                 setOpen(false)
               }}
             >

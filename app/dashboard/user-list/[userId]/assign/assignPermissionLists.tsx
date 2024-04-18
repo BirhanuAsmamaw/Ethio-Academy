@@ -16,7 +16,7 @@ if(!permissions?.length){
 }
   return (<div className="flex  mt-3 gap-3 flex-wrap">
   
- {permissions.map((permission,index) =>{
+ {permissions?.map((permission,index) =>{
 return  <motion.div
 key={index}
 whileInView={{opacity: 1}}

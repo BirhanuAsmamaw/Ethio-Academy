@@ -25,8 +25,8 @@ const UpdateUserRoleClient:React.FC<UpdateUserRoleClient> = ({user,permissions,r
    <div className='w-full  grid grid-cols-2'>
 
  <div className="w-full space-y-6  text-center border-r dark:border-gray-700 p-4">
- <AssignPermissions permissions={permissions||null} userId={user.id}/>
-  <AssignPermissionLists permissions={[]}/>
+ <AssignPermissions permissions={permissions} userId={user.id}/>
+  <AssignPermissionLists permissions={user?.permissions}/>
  </div>
 
 
