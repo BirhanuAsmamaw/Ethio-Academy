@@ -22,16 +22,16 @@ const UpdateUserRoleClient:React.FC<UpdateUserRoleClient> = ({user,permissions,r
   <div className="flex p-4 border-b-2  dark:border-gray-700 justify-center">
   <h6 className=' leading-6 font-xl font-semibold'>{user?.name}</h6>
   </div>
-   <div className='w-full  grid grid-cols-2'>
+   <div className='w-full  grid grid-cols-1 md:grid-cols-2'>
 
- <div className="w-full space-y-6  text-center border-r dark:border-gray-700 p-4">
+ <div className="w-full space-y-6  text-center border-b md:border-r dark:border-gray-700 p-4">
  <AssignPermissions permissions={permissions} userId={user.id}/>
   <AssignPermissionLists permissions={user?.permissions}/>
  </div>
 
 
 
- <div className="w-full space-y-6  text-center dark:border-gray-700 border-l p-4">
+ <div className="w-full space-y-6  text-center dark:border-gray-700 border-t md:border-l p-4">
   <AssignRoles roles={roles} userId={user.id}/>
   <AssignRoleLists roles={user?.roles}/>
  </div>
