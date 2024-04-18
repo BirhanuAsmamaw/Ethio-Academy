@@ -1,61 +1,61 @@
 "use client"
-import React, { useState } from 'react'
 
-import { Check, ChevronsUpDown, Command } from 'lucide-react'
-
-import { cn } from '@/lib/utils'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Button } from '@/components/ui/button'
-import { CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
-
-
+import React from 'react'
+import { cn } from '@/lib/utils';
+import { ChevronsUpDown, Check, Command } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Button } from '@/components/ui/button';
+import { CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
+const frameworks = [
+  {
+    value: "next.js",
+    label: "Next.js",
+  },
+  {
+    value: "sveltekit",
+    label: "SvelteKit",
+  },
+  {
+    value: "nuxt.js",
+    label: "Nuxt.js",
+  },
+  {
+    value: "remix",
+    label: "Remix",
+  },
+  {
+    value: "astro",
+    label: "Astro",
+  },
+]
 const AssignRoles = () => {
-  const [open, setOpen] = useState(false)
-  const [value, setValue] = useState("")
-  const frameworks = [
-    {
-      value: "next.js",
-      label: "Next.js",
-    },
-    {
-      value: "sveltekit",
-      label: "SvelteKit",
-    },
-    {
-      value: "nuxt.js",
-      label: "Nuxt.js",
-    },
-    {
-      value: "remix",
-      label: "Remix",
-    },
-    {
-      value: "astro",
-      label: "Astro",
-    },
-  ]
-  return (<div className="">
-    <Popover open={open} onOpenChange={setOpen}>
+ 
+  const [open, setOpen] = React.useState(false)
+  const [value, setValue] = React.useState("")
+ 
+  return (<Popover open={open} onOpenChange={setOpen}>
+    <div className="flex gap-2">
     <PopoverTrigger asChild>
       <Button
         variant="outline"
         role="combobox"
         aria-expanded={open}
-        className="w-[200px] justify-between"
+        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
       >
         {value
-          ? frameworks?.find((framework) => framework.value === value)?.label
-          : "Assign Roles..."}
+          ? frameworks.find((framework) => framework.value === value)?.label
+          : "Roles"}
         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
     </PopoverTrigger>
+    {value?<Button>Assign</Button>:""}
+    </div>
     <PopoverContent className="w-[200px] p-0">
       <Command>
         <CommandInput placeholder="Assign Roles..." />
-        <CommandList>
-        <CommandEmpty>No Roles found.</CommandEmpty>
+       <CommandList> <CommandEmpty>No Roles found.</CommandEmpty>
         <CommandGroup>
-          {frameworks?.map((framework) => (
+          {frameworks.map((framework) => (
             <CommandItem
               key={framework.value}
               value={framework.value}
@@ -73,14 +73,11 @@ const AssignRoles = () => {
               {framework.label}
             </CommandItem>
           ))}
-        </CommandGroup>
-        </CommandList>
+        </CommandGroup></CommandList>
       </Command>
     </PopoverContent>
   </Popover>
-  </div>
-
-  )
+)
 }
 
 export default AssignRoles
