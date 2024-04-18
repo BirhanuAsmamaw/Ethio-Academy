@@ -34,8 +34,7 @@ const CreatePermission = () => {
   
   }
   return (<div className="grid grid-cols-2 w-full justify-center gap-1">
-      
-  <div className="w-8/12">
+ 
   <Input
   
   id="action"
@@ -46,11 +45,10 @@ const CreatePermission = () => {
   disabled={isLoading}
   type="text"
   />
-  </div>
-   <div className="flex pt-4 justify-center  items-center">
+
   <button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>
    </div>
-  </div>
+
   )
 }
 
