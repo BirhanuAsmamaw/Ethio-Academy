@@ -16,6 +16,7 @@ const AssignRoleLists:React.FC<AssignRoleListsProps> = ({roles}) => {
   const onRemove=(id:string)=>{
   
     axios.delete(`/api/authorization/userRole/delete/${id}`).then(()=>{
+      console.log("role id",id);
         toast.success("Role  deleted successfully")
         router.refresh()
 
@@ -34,7 +35,7 @@ return  <motion.div
 key={index}
 whileInView={{opacity: 1}}
 whileTap={{opacity: 0,translateY:-8}}
- className=""><Badge onClick={()=>{onRemove(role.role.id)}} variant="secondary">{role.role.name} <RxCross1 className='h-4 w-4 ml-2 '/> </Badge>
+ className=""><Badge onClick={()=>onRemove(role.role.id)} variant="secondary">{role.role.name} <RxCross1 className='h-4 w-4 ml-2 '/> </Badge>
  </motion.div>
  })}
   
