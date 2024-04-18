@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import Link from "next/link";
+import CLink from "../link";
 
 interface SideBarItemsPops{
   sidebarData:any[];
@@ -26,9 +26,9 @@ const SideBarItems:React.FC<SideBarItemsPops> = ({sidebarData}) => {
       <AccordionContent className="mx-2">
         <div className="flex flex-col gap-2 border-l-[1.5px] border-gray-200 dark:border-gray-600 ">
         {sidebar.items.map((item:any,ind:number) =>{
-          return <Link
-          className="no-underline text-sm text-gray-500 dark:text-gray-400 px-2 hover:border-l-[1.5px] hover:border-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-          key={ind} href={item.url}>{item.label}</Link>
+          return <CLink key={ind} url={item.url}>{item.label}</CLink>
+          
+          
         })}
         </div>
       </AccordionContent>
