@@ -22,7 +22,7 @@ const CreateRole = () => {
     setIsLoading(true);
     axios.post('/api/authorization/role',data).then(()=>{
       toast.success("Role  created  successfully")
-      router.push("/dashboard/Permission")
+      router.push("/dashboard/permission")
       router.refresh()
       reset();
     }).catch((errors)=>{

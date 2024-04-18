@@ -73,7 +73,7 @@ export const columns: ColumnDef<PermissionType>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("action")}</div>,
+    cell: ({ row }) => <div className="">{row.getValue("action")}</div>,
   },
 
  
