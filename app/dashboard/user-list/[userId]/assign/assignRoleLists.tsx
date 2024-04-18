@@ -3,26 +3,23 @@ import React from 'react'
 import { RxCross1 } from 'react-icons/rx'
 import{motion} from "framer-motion"
 import { Badge } from '@/components/ui/badge'
-const AssignRoleLists = () => {
-  const actionList = [
-    {action: "CanDeleteUser"},
-    {action: "CanCreateCourse"},
-    {action: "CanUpdateBanner"},
-    {action: "CanEditProfile"},
-    {action: "CanViewDashboard"},
-    {action: "CanSendMessage"},
-    {action: "CanManageSettings"},
-    {action: "CanApproveComments"}
-];
 
+interface AssignRoleListsProps{
+  roles:any[];
+}
+const AssignRoleLists:React.FC<AssignRoleListsProps> = ({roles}) => {
+
+if(!roles?.length){
+  return <div className="">No Roles found!</div>
+}
   return (<div className="flex  mt-3 gap-3 flex-wrap">
   
- {actionList.map((action,index) =>{
+ {roles.map((role,index) =>{
 return  <motion.div
 key={index}
 whileInView={{opacity: 1}}
 whileTap={{opacity: 0,translateY:-8}}
- className=""><Badge variant="secondary">{action.action} <RxCross1 className='h-4 w-4 ml-2 '/> </Badge>
+ className=""><Badge variant="secondary">{role.name} <RxCross1 className='h-4 w-4 ml-2 '/> </Badge>
  </motion.div>
  })}
   

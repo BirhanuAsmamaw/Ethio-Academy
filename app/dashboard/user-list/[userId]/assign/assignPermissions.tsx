@@ -7,33 +7,34 @@ import { ChevronsUpDown, Check} from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { Command ,CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
-const AssignPermission = () => {
+
+interface AssignPermissionProps{
+  permissions:any[];
+  userId:string;
+}
+const AssignPermission:React.FC<AssignPermissionProps> = ({permissions,userId}) => {
  
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [permissionId,setPermissionId] = React.useState<string|null>(null)
+const router=useRouter();
+  const onAssign=()=>{
+    setIsLoading(true)
+    axios.post("/api/authorization/userPermission",{userId:userId,
+      permissionId:permissionId}).then(()=>{
+        toast.success("Permission assigned successfully")
+        router.prefetch(`dashboard/user-list/${userId}/update/role`)
+
+      }).catch((error)=>{
+        toast.error("Error in assignment of permission")
+      }).finally(()=>{ setIsLoading(false)})
+
+  }
  
   return (<Popover open={open} onOpenChange={setOpen}>
     <div className="flex gap-2">
@@ -45,34 +46,40 @@ const AssignPermission = () => {
         className="w-[200px] justify-between text-[14px] font-semibold leading-4"
       >
         {value
-          ? frameworks.find((framework) => framework.value === value)?.label
+          ? permissions?.find((permission) => permission.action === value)?.action
           : "Permissions"}
         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </Button>
     </PopoverTrigger>
-    {value?<Button>Assign</Button>:""}
+    {value?<Button
+    onClick={onAssign}
+    disabled={isLoading}
+    >
+      {isLoading?"Loading...":"Assign"}
+    </Button>:""}
     </div>
     <PopoverContent className="w-[200px] p-0">
       <Command>
         <CommandInput placeholder="Assign Permission..." />
        <CommandList> <CommandEmpty>No Permissions found.</CommandEmpty>
         <CommandGroup>
-          {frameworks.map((framework) => (
+          {permissions?.map((permission) => (
             <CommandItem
-              key={framework.value}
-              value={framework.value}
+              key={permission?.action}
+              value={permission?.action}
               onSelect={(currentValue) => {
                 setValue(currentValue === value ? "" : currentValue)
+                setPermissionId(permission?.id)
                 setOpen(false)
               }}
             >
               <Check
                 className={cn(
                   "mr-2 h-4 w-4",
-                  value === framework.value ? "opacity-100" : "opacity-0"
+                  value === permission?.action ? "opacity-100" : "opacity-0"
                 )}
               />
-              {framework.label}
+              {permission?.action}
             </CommandItem>
           ))}
         </CommandGroup></CommandList>

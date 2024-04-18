@@ -1,8 +1,6 @@
 "use client"
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
-import toast from 'react-hot-toast';
+
+import React from 'react'
 import AssignPermissions from '../../assign/assignPermissions';
 import AssignPermissionLists from '../../assign/assignPermissionLists';
 import AssignRoles from '../../assign/assignRoles';
@@ -13,43 +11,7 @@ interface UpdateUserRoleClient{
   user:any;
 }
 const UpdateUserRoleClient:React.FC<UpdateUserRoleClient> = ({user}) => {
-const [isLoading,setIsLoading]=useState(false)
-  const [userRole,setUserRole]=useState(user.role)
-
-
-
-
-  const router=useRouter()
   
-  
-
-  
-
-
-
-
-
-
-
-  const onUpdateRole=async()=>{
-    setIsLoading(true)
-   
-    
-    axios.put(`/api/user/${user.id}/update/role`,{role:userRole}).then(()=>{
-      toast.success("User Role updated successfully")
-      router.push("/dashboard/user-list");
-      router.refresh()
-
-    })
-    .catch((error)=>{
-      toast.error(error.message)
-    
-    }).finally(()=>{
-      setIsLoading(false)
-    });
-
-  }
-
 
   
   
@@ -61,13 +23,15 @@ const [isLoading,setIsLoading]=useState(false)
    <div className='w-full  grid grid-cols-2'>
 
  <div className="w-full space-y-6  text-center border-r dark:border-gray-700 p-4">
- <AssignPermissions/>
-  <AssignPermissionLists/>
+ <AssignPermissions permissions={user?.permissions} userId={user.id}/>
+  <AssignPermissionLists permissions={[]}/>
  </div>
 
+
+
  <div className="w-full space-y-6  text-center dark:border-gray-700 border-l p-4">
-  <AssignRoles/>
-  <AssignRoleLists/>
+  <AssignRoles roles={null} userId={user.id}/>
+  <AssignRoleLists roles={user?.roles}/>
  </div>
 
     </div>
