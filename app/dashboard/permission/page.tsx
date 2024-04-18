@@ -16,7 +16,7 @@ const roles=await getAllRoles()
 {/* PERMISSION */}
   <div className="relative flex justify-center">
 
-    <div className="w-full md:w-4/12   h-[500px] bg-violet-400 md:fixed  overflow-y-auto ">
+    <div className="w-full md:w-4/12   h-[700px] bg-violet-400 md:absolute overflow-y-auto ">
      <div className="w-full p-4 shadow-md  dark:shadow-black bg-white dark:bg-gray-800 py-6 flex flex-col justify-center items-center gap-20 border dark:border-gray-700 ">
      <CreatePermission/>
      <PermissionsListClient permissions={permissions}/>
@@ -32,7 +32,7 @@ const roles=await getAllRoles()
 {/* ROLE */}
 
   <div className="relative flex justify-center ">
-  <div className="w-full md:w-4/12    md:fixed h-[500px] bg-green-400 overflow-y-auto   ">
+  <div className="w-full md:w-4/12    md:absolute h-[700px] bg-green-400 overflow-y-auto   ">
   <div className="p-4 flex flex-col justify-center items-center gap-20 bg-white dark:bg-gray-800 py-6 shadow-md dark:shadow-black border dark:border-gray-700 ">
   
    <CreateRole/>
