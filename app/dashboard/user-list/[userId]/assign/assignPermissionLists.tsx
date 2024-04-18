@@ -36,7 +36,7 @@ return  <motion.div
 key={index}
 whileInView={{opacity: 1}}
 whileTap={{opacity: 0,translateY:-8}}
- className=""><Badge  onClick={()=>onRemove(permission.permission.id)} variant="secondary">{permission.permission.action} <RxCross1 className='h-4 w-4 ml-2 '/> </Badge>
+ className=""><Badge  onClick={()=>{onRemove(permission.permission.id)}} variant="secondary">{permission.permission.action} <RxCross1 className='h-4 w-4 ml-2 '/> </Badge>
  </motion.div>
  })}
   
