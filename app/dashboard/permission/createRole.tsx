@@ -33,7 +33,7 @@ const CreateRole = () => {
    
   
   }
-  return (<div className="flex w-full justify-center gap-1">
+  return (<div className="grid grid-cols-2 w-full justify-center gap-1">
       
   <div className="w-8/12">
   <Input
