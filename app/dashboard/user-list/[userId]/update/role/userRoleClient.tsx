@@ -9,8 +9,10 @@ import AssignRoleLists from '../../assign/assignRoleLists';
 
 interface UpdateUserRoleClient{
   user:any;
+  permissions:any[]|null;
+  roles:any[]|null;
 }
-const UpdateUserRoleClient:React.FC<UpdateUserRoleClient> = ({user}) => {
+const UpdateUserRoleClient:React.FC<UpdateUserRoleClient> = ({user,permissions,roles}) => {
   
 
   
@@ -23,14 +25,14 @@ const UpdateUserRoleClient:React.FC<UpdateUserRoleClient> = ({user}) => {
    <div className='w-full  grid grid-cols-2'>
 
  <div className="w-full space-y-6  text-center border-r dark:border-gray-700 p-4">
- <AssignPermissions permissions={user?.permissions} userId={user.id}/>
+ <AssignPermissions permissions={permissions||null} userId={user.id}/>
   <AssignPermissionLists permissions={[]}/>
  </div>
 
 
 
  <div className="w-full space-y-6  text-center dark:border-gray-700 border-l p-4">
-  <AssignRoles roles={null} userId={user.id}/>
+  <AssignRoles roles={roles} userId={user.id}/>
   <AssignRoleLists roles={user?.roles}/>
  </div>
 

@@ -13,7 +13,7 @@ import toast from 'react-hot-toast';
 
 
 interface AssignPermissionProps{
-  permissions:any[];
+  permissions:any[]|null;
   userId:string;
 }
 const AssignPermission:React.FC<AssignPermissionProps> = ({permissions,userId}) => {
