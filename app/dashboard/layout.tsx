@@ -42,7 +42,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
           flex-col 
           gap-10">
        
-        <Sidebar/>
+        <Sidebar user={user}/>
         </div>
     </div>
 

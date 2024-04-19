@@ -7,8 +7,10 @@ import { FaCriticalRole } from "react-icons/fa";
 import { TbCategoryPlus } from "react-icons/tb";
 import CLink from "../link";
 
-
-const Sidebar = () => {
+interface SidebarProps{
+  user?:any;
+}
+const Sidebar:React.FC<SidebarProps> = ({user}) => {
 
   
   return ( <div className="flex flex-col gap-4 pt-10">
@@ -18,7 +20,7 @@ const Sidebar = () => {
 
 
 
-     <SideBarItems sidebarData={sidebarData}/>
+     <SideBarItems sidebarData={sidebarData} user={user}/>
      
           
 
