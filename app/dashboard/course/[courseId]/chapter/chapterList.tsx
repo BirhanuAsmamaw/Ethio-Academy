@@ -9,7 +9,6 @@ import { MdContentPaste } from "react-icons/md";
 import { GrFormView } from "react-icons/gr";
 import { AiOutlineDelete } from "react-icons/ai"
 import { Button } from "@/components/ui/button"
-import { MdEditNote } from "react-icons/md";
 import { MdEditDocument } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 import { MdModeEdit } from "react-icons/md";
@@ -38,7 +37,6 @@ import UpdateChapter from "./updateChapter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import DeleteChapter from "./deleteChapter";
-import AddButton from "@/components/button/addButton";
 import { useRouter } from "next/navigation";
 import CLink from "@/components/link";
 import CreateLesson from "./createLesson";
@@ -93,7 +91,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 
 
 <div className="px-4 flex  w-full justify-end">
-<CreateLesson chapterId={chapter.id}/>
+<CreateLesson chapterId={chapter?.id}/>
            
           </div>
   <div className="-m-1.5 overflow-x-auto">
@@ -109,7 +107,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
           </thead>
           <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
            {
-            chapter.lessons.map((lesson:any,ind:number)=>{
+            chapter?.lessons?.map((lesson:any,ind:number)=>{
               return  <tr key={ind} className="hover:bg-gray-100 dark:hover:bg-gray-700">
               <td className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">Lesson: {ind+1}</td>
               <td className="px-6 py-2 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{lesson.title}</td>

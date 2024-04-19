@@ -18,6 +18,7 @@ const Chapter = async({params}:{params:IParams}) => {
 
   const course= await GetCourseById(params.courseId);
  
+ 
 
 
  if(!course){

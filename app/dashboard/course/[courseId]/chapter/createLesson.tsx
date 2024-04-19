@@ -54,6 +54,7 @@ const router=useRouter();
     
 
     axios.post('/api/lesson',data).then(()=>{
+      console.log("lesson",data)
       toast.success("Lesson created successfully")
     
       router.refresh();
