@@ -14,7 +14,7 @@ export async function DELETE(req: Request, {params}:{params:{userpermissionId:st
       where: {id:userPermissionId}
     })
     if(!userPermission){
-      return NextResponse.json({status:false, message:"userPermission not found"});
+     throw new Error("User permission not found")
     }
 
  await prisma.userPermission.delete({
@@ -27,6 +27,6 @@ export async function DELETE(req: Request, {params}:{params:{userpermissionId:st
     });
   }
   catch(err){
-    console.log(err);
+   throw new Error("something went wrong")
   }
 }

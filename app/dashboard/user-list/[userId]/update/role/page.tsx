@@ -5,6 +5,7 @@ import { getAllRoles } from "@/actions/authorization/getAllRole"
 
 const UpdateUserRole = async({params}:{params:{userId:string}}) => {
   const user = await getUserById(params.userId)
+ 
 
 const permissions = await getAllPermission()
 

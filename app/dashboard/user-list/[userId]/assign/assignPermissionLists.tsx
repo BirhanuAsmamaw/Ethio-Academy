@@ -19,7 +19,6 @@ const router=useRouter();
 
  axios.delete(`/api/authorization/userPermission/${id}/delete`).then(()=>{
         toast.success("Permission deleted successfully")
-        console.log("permission  id: " + id);
         router.refresh()
 
       }).catch((error)=>{
@@ -37,7 +36,7 @@ return  <motion.div
 key={index}
 whileInView={{opacity: 1}}
 whileTap={{opacity: 0,translateY:-8}}
- className=""><Badge  onClick={()=>onRemove(permission.permission.id)} variant="secondary">{permission.permission.action} <RxCross1 className='h-4 w-4 ml-2 '/> </Badge>
+ className=""><Badge  onClick={()=>onRemove(permission.id)} variant="secondary">{permission.permission.action} <RxCross1 className='h-4 w-4 ml-2 '/> </Badge>
  </motion.div>
  })}
   

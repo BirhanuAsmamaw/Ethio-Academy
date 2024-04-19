@@ -2,8 +2,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
-export async function DELETE(req: Request, {params}:{params:{userroleId:string}}){
-  const userRoleId=params.userroleId;
+export async function DELETE(req: Request, {params}:{params:{userRoleId:string}}){
+  const userRoleId=params.userRoleId;
  
 
   try{
@@ -14,7 +14,7 @@ export async function DELETE(req: Request, {params}:{params:{userroleId:string}}
       where: {id:userRoleId}
     })
     if(!userRole){
-      return NextResponse.json({status:false, message:"userRole not found"});
+     throw new Error("User role not found")
     }
 
  await prisma.userRole.delete({
@@ -27,6 +27,6 @@ export async function DELETE(req: Request, {params}:{params:{userroleId:string}}
     });
   }
   catch(err){
-    console.log(err);
+    throw new Error("something went wrong")
   }
 }
