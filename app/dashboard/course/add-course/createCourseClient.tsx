@@ -111,7 +111,7 @@ const router=useRouter()
 <button
 
 aria-expanded={dOpen}
-className="w-[200px] flex gap-2 justify-between text-[14px] border bg-gray-100 dark:bg-gray-700 dark:border-gray-600 font-semibold leading-4"
+className="w-[200px] flex gap-2 p-2 rounded-[5px] justify-between text-[14px] border bg-gray-100 dark:bg-gray-700 dark:border-gray-600 font-semibold leading-4"
 >
 <p>{dValue
   ? departments?.find((department) => department?.departmentName === dValue)?.departmentName
@@ -163,11 +163,11 @@ className="w-[200px] flex gap-2 justify-between text-[14px] border bg-gray-100 d
 <button
 
 aria-expanded={sOpen}
-className="w-[200px] flex gap-2 justify-between text-[14px] border bg-gray-100 dark:bg-gray-700 dark:border-gray-600 font-semibold leading-4"
+className="w-[200px] flex gap-2 justify-between text-[14px] p-2 rounded-[5px]   border bg-gray-100 dark:bg-gray-700 dark:border-gray-600 font-semibold leading-4"
 >
 <p>{dValue
  ? subjects?.find((subject) => subject?.subjectName === sValue)?.subjectName
- : "Select Department"}</p>
+ : "Select Subject"}</p>
 <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 </button>
 </PopoverTrigger>
