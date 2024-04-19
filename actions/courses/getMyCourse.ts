@@ -8,7 +8,10 @@ const user=await getCurrentUser();
 if(!user){
   throw new Error("User not found");
 }
-
+const isDataAccessed=user?.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" || permission.permission.action === "CanViewOwnCourse")
+if(!isDataAccessed){
+  throw new Error("Unauthorized access");
+}
 const myCourses=await prisma.course.findMany({
   where:{
     creatorId: user.id

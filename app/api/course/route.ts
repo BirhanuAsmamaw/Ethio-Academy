@@ -6,12 +6,15 @@ export async function POST(req:Request){
   const body = await req.json();
 
   const user =await getCurrentUser();
+
   if (!user){
     return NextResponse.json({status:false, message:"unauthorized"});
   }
 
-  if (user.role!=="ADMIN"){
-    return NextResponse.json({status:false, message:"unauthorized"});
+  const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageCourse" || permission.permission.action === "CanCreateCourse")
+
+  if (!isDataAccessed){
+  throw new Error("Unathorized")
 
   }
 

@@ -7,6 +7,7 @@ import { GetCourseById } from "@/actions/courses/getCourseById";
 import CreateChapter from "./create";
 import Spinning from "@/components/spinning";
 import { ChapterList } from "./chapterList";
+import { getCurrentUser } from "@/actions/users/currentUser";
 
 interface IParams{
   courseId: string;
@@ -18,8 +19,9 @@ const Chapter = async({params}:{params:IParams}) => {
 
   const course= await GetCourseById(params.courseId);
  
+ const user=await getCurrentUser();
+ const isDataAccessed=user?.permissions.some((permission)=>permission.permission.action === "CanManageCourse" || permission.permission.action === "CanCreateCourse")
  
-
 
  if(!course){
   <div className="flex h-screen w-full justify-center items-center">

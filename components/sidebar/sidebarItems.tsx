@@ -9,14 +9,16 @@ import CLink from "../link";
 
 interface SideBarItemsPops{
   sidebarData:any[];
+  user?:any;
 }
-const SideBarItems:React.FC<SideBarItemsPops> = ({sidebarData}) => {
+const SideBarItems:React.FC<SideBarItemsPops> = ({sidebarData,user}) => {
+  const isCourseAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageOwnCourse" || permission.permission.action === "CanViewOwnCourse"|| permission.permission.action === "CanCreateCourse")
   return ( 
     <Accordion type="single" collapsible className="w-full " >
     {sidebarData.map((sidebar,index) =>{
 
       return <AccordionItem className="border-none" key={index} value={`${index}`}>
-      <AccordionTrigger className="hover:no-underline">
+      <AccordionTrigger className={`hover:no-underline ${!isCourseAccessed&& sidebar.title==="Course"&&'hidden'}`}>
         <div 
       className="  text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex gap-2">
         <p> {<sidebar.icon size={20}/>}</p> 
