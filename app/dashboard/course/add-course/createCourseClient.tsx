@@ -102,107 +102,111 @@ const router=useRouter()
        <Heading title={`Add Course`}/>
        </div>
 
+
+       <div className="w-full  lg:w-8/12  flex gap-10">
+
+<Popover open={dOpen} onOpenChange={setDOpen}>
+
+<PopoverTrigger asChild>
+<button
+
+aria-expanded={dOpen}
+className="w-[200px] flex gap-2 justify-between text-[14px] border bg-gray-100 dark:bg-gray-700 dark:border-gray-600 font-semibold leading-4"
+>
+<p>{dValue
+  ? departments?.find((department) => department?.departmentName === dValue)?.departmentName
+  : "Select Department"}</p>
+<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+</button>
+</PopoverTrigger>
+
+
+
+<PopoverContent className="w-[200px] p-0">
+<Command>
+<CommandInput placeholder="Assign Permission..." />
+<CommandList> <CommandEmpty>No Department found.</CommandEmpty>
+<CommandGroup>
+  {departments?.map((department) => (
+    <CommandItem
+      key={department?.departmentName}
+      value={department?.departmentName}
+      onSelect={(currentValue) => {
+        setDValue(currentValue === dValue ? "" : currentValue)
+      setSubjects(department?.subject)
+        setDOpen(false)
+      }}
+    >
+      <Check
+        className={cn(
+          "mr-2 h-4 w-4",
+          dValue === department?.departmentName ? "opacity-100" : "opacity-0"
+        )}
+      />
+      {department?.departmentName}
+    </CommandItem>
+  ))}
+</CommandGroup></CommandList>
+</Command>
+</PopoverContent>
+</Popover>
+
+
+
+
+
+
+
+{subjects?<Popover open={sOpen} onOpenChange={setSOpen}>
+
+<PopoverTrigger asChild>
+<button
+
+aria-expanded={sOpen}
+className="w-[200px] flex gap-2 justify-between text-[14px] border bg-gray-100 dark:bg-gray-700 dark:border-gray-600 font-semibold leading-4"
+>
+<p>{dValue
+ ? subjects?.find((subject) => subject?.subjectName === sValue)?.subjectName
+ : "Select Department"}</p>
+<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+</button>
+</PopoverTrigger>
+
+<PopoverContent className="w-[200px] p-0">
+<Command>
+<CommandInput placeholder="Assign Permission..." />
+<CommandList> <CommandEmpty>No Subject found.</CommandEmpty>
+<CommandGroup>
+  {subjects?.map((subject) => (
+    <CommandItem
+      key={subject?.subjectName}
+      value={subject?.subjectName}
+      onSelect={(currentValue) => {
+        setSValue(currentValue === sValue ? "" : currentValue)
+       setSubjectId(subject.id)
+        setSOpen(false)
+      }}
+    >
+      <Check
+        className={cn(
+          "mr-2 h-4 w-4",
+          sValue === subject?.subjectName ? "opacity-100" : "opacity-0"
+        )}
+      />
+      {subject?.subjectName}
+    </CommandItem>
+  ))}
+</CommandGroup></CommandList>
+</Command>
+</PopoverContent>
+</Popover>:""}
+</div>
+
+
+
+
           
        <div className="w-full  lg:w-8/12 flex flex-col md:flex-row px-4  gap-10 justify-between">
-        <div className="w-full flex gap-10">
-
-        <Popover open={dOpen} onOpenChange={setDOpen}>
-   
-    <PopoverTrigger asChild>
-      <button
-       
-        aria-expanded={dOpen}
-        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
-      >
-        {dValue
-          ? departments?.find((department) => department?.departmentName === dValue)?.departmentName
-          : "Select Department"}
-        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-      </button>
-    </PopoverTrigger>
-    
-
-
-    <PopoverContent className="w-[200px] p-0">
-      <Command>
-        <CommandInput placeholder="Assign Permission..." />
-       <CommandList> <CommandEmpty>No Department found.</CommandEmpty>
-        <CommandGroup>
-          {departments?.map((department) => (
-            <CommandItem
-              key={department?.departmentName}
-              value={department?.departmentName}
-              onSelect={(currentValue) => {
-                setDValue(currentValue === dValue ? "" : currentValue)
-              setSubjects(department?.subject)
-                setDOpen(false)
-              }}
-            >
-              <Check
-                className={cn(
-                  "mr-2 h-4 w-4",
-                  dValue === department?.departmentName ? "opacity-100" : "opacity-0"
-                )}
-              />
-              {department?.departmentName}
-            </CommandItem>
-          ))}
-        </CommandGroup></CommandList>
-      </Command>
-    </PopoverContent>
-  </Popover>
-
-
-
-
-
-
-
-  {subjects?<Popover open={sOpen} onOpenChange={setSOpen}>
-    
-    <PopoverTrigger asChild>
-    <button
-       
-       aria-expanded={sOpen}
-       className="w-[200px] justify-between text-[14px] font-semibold leading-4"
-     >
-       {dValue
-         ? subjects?.find((subject) => subject?.subjectName === sValue)?.subjectName
-         : "Select Subject"}
-       <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-     </button>
-    </PopoverTrigger>
-   
-    <PopoverContent className="w-[200px] p-0">
-      <Command>
-        <CommandInput placeholder="Assign Permission..." />
-       <CommandList> <CommandEmpty>No Subject found.</CommandEmpty>
-        <CommandGroup>
-          {subjects?.map((subject) => (
-            <CommandItem
-              key={subject?.subjectName}
-              value={subject?.subjectName}
-              onSelect={(currentValue) => {
-                setSValue(currentValue === sValue ? "" : currentValue)
-               setSubjectId(subject.id)
-                setSOpen(false)
-              }}
-            >
-              <Check
-                className={cn(
-                  "mr-2 h-4 w-4",
-                  sValue === subject?.subjectName ? "opacity-100" : "opacity-0"
-                )}
-              />
-              {subject?.subjectName}
-            </CommandItem>
-          ))}
-        </CommandGroup></CommandList>
-      </Command>
-    </PopoverContent>
-  </Popover>:""}
-        </div>
-
        <div className="w-full  ">
             <Input id="course" register={register} errors={errors}  label="Write Course Name" type="text" required/>
             </div>
