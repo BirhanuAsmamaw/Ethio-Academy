@@ -11,7 +11,7 @@ export async function POST(req:Request){
     return NextResponse.json({status:false, message:"unauthorized"});
   }
 
-  const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageCourse" || permission.permission.action === "CanCreateCourse")
+  const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageCourse" || permission.permission.action === "CanCreateCourse" || permission.permission.action === "CanManageOwnCourse" )
 
   if (!isDataAccessed){
   throw new Error("Unathorized")
