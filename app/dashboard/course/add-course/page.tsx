@@ -1,12 +1,14 @@
 
 import { getSubjectById } from "@/actions/subject/getSubjectById";
 import CreateCourseClient from "./createCourseClient";
+import { getAllDepartments } from "@/actions/departments/getAllDepartments";
 
 
-const CreateCourse = async({params}:{params:{subjectId:string}}) => {
-  const subject=await  getSubjectById(params.subjectId);
+const CreateCourse = async() => {
+  const departments=await  getAllDepartments();
+
  
-  return (  <CreateCourseClient subject={subject}/>);
+  return (  <CreateCourseClient departments={departments}/>);
 }
  
 export default CreateCourse;
