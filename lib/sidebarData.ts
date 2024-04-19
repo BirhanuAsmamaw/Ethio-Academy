@@ -18,11 +18,11 @@ export const sidebarData=[
     items:[
       {
         label:"Course List",
-        url:"/dashboard/list-courses"
+        url:"/dashboard/course"
       },
       {
         label:"Create Course",
-        url:"/dashboard/create-course"
+        url:"/dashboard/course/add-course"
       }, {
         label:"Approved Course",
         url:"/dashboard/approved-courses"
