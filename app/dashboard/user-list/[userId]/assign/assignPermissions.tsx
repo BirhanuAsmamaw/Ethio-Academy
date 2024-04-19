@@ -28,7 +28,8 @@ const router=useRouter();
     axios.post("/api/authorization/userPermission",{userId:userId,
       permissionId:permissionId}).then(()=>{
         toast.success("Permission assigned successfully")
-        router.prefetch(`dashboard/user-list/${userId}/update/role`)
+        router.push(`/dashboard/user-list/${userId}/update/role`)
+        router.refresh()
 
       }).catch((error)=>{
         toast.error("Error in assignment of permission")
