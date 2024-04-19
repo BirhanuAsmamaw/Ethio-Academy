@@ -4,9 +4,7 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 export async function POST(req:Request) {
   const body=await req.json();
   const {chapterId,
-    title ,
-   
-    content }=body;
+    title }=body;
 
     const user =await getCurrentUser();
   if (!user){
@@ -18,11 +16,8 @@ export async function POST(req:Request) {
 
   }
 
-    if(!chapterId || !content || !title ) {
-      return NextResponse.json({
-        status: false,
-        message:"Invalid  parameters"
-      });
+    if(!chapterId || !title ) {
+     throw new Error("Invalid Parameters")
      }
 
      const newLesson= await prisma.lesson.create({
