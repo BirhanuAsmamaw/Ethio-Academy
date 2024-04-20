@@ -77,15 +77,15 @@ export const sidebarData=[
     ]
   },
   {
-    title:"Univeristy",
+    title:"University",
     icon:FaUniversity,
     items:[
       {
-        label:"Create Univeristy",
+        label:"Create University",
         url:"/dashboard/university/create"
       },
       {
-        label:"Univeristy List",
+        label:"University List",
         url:"/dashboard/university/list"
       },
       
