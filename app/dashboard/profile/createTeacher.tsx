@@ -48,7 +48,7 @@ const router=useRouter();
  
 
 
-if (user){
+if (!user){
 router.back()
 return null;
 }
