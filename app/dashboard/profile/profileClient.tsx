@@ -7,11 +7,11 @@ import EditAccount from "./editAccount";
 import EditPassword from "./editPassword";
 
 
-interface SettingsClientProps{
+interface ProfileClientProps{
   user:any;
 }
 
-const SettingsClient:React.FC<SettingsClientProps> = ({user}) => {
+const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 
 
 
@@ -46,4 +46,4 @@ const SettingsClient:React.FC<SettingsClientProps> = ({user}) => {
 </Tabs> );
 }
  
-export default SettingsClient;
+export default ProfileClient;

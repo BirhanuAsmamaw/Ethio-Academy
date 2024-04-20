@@ -17,7 +17,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
   const user=await getCurrentUser();
 
   
-  if(user&& user.role=="ADMIN"){
+  if(user){
   return ( <>
    <Navbar/>
     <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-20 w-full">

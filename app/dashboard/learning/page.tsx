@@ -1,21 +1,22 @@
-import Navbar from "@/components/navbar/Navbar";
-
 
 import { getCurrentUser } from "@/actions/users/currentUser";
-
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { getDepartmentById } from "@/actions/departments/getDepartmentById";
 
 
-const MyCourses = async() => {
+
+const MyLearning = async() => {
 
 
 const user=await getCurrentUser();
 
+
+if (!user) {
+  return null;
+}
+
  
   return ( <>
-  <Navbar/>
   <div className="flex justify-center min-h-screen p-4 w-full">
  <div className="flex flex-col md:flex-row  items-center text-center justify-center gap-20">
 
@@ -144,4 +145,4 @@ rounded-[10px] flex flex-col
   </> );
 }
  
-export default MyCourses;
+export default MyLearning;

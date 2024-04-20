@@ -9,7 +9,8 @@ import { SiCoursera } from "react-icons/si";
 import CoursesBoughtChart from "./charts/courseBoughtChart";
 import TotalPricesInMonth from "./charts/totalPriceChart";
 
-const Dashboard = async() => {
+
+const DashboardAnalytics = async() => {
   const users=await getAllUsers();
   const courses=await getCourses(2);
   const boughtCourses=await getAllPayments();
@@ -50,4 +51,4 @@ const Dashboard = async() => {
   </div> );
 }
  
-export default Dashboard;
+export default DashboardAnalytics;

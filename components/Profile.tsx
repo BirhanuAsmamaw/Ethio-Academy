@@ -49,36 +49,13 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
         </div>
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuGroup>
-      <CLink url="/mycourses">
-     <DropdownMenuItem className="w-full flex justify-center">
-          <CreditCard className="mr-2 h-4 w-4" />
-          <span>My Courses</span>
-          <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
-        </DropdownMenuItem>
-        </CLink>
-        
-
-
-        <CLink url="/settings">
-        <DropdownMenuItem className="w-full flex justify-center">
-          <Settings className="mr-2 h-4 w-4" />
-          <span>Settings</span>
-          <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-        </DropdownMenuItem>
-       </CLink>
-        
-
-       
-      </DropdownMenuGroup>
-
-      <DropdownMenuSeparator />
 
       <DropdownMenuGroup>
-      {user&&(user.role==='ADMIN')&&<CLink url="/dashboard">
-      <DropdownMenuItem className="w-full flex ">
+      {user&&<CLink url="/dashboard/profile">
+      <DropdownMenuItem className="w-full flex justify-center ">
           <MdOutlineDashboard  className="mr-2 h-4 w-4" />
           <span>Dashboard</span>
+          <DropdownMenuShortcut>⇧⌘D</DropdownMenuShortcut>
         </DropdownMenuItem>
         </CLink>
        }
