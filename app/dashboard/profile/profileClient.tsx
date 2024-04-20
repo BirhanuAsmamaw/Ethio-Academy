@@ -16,7 +16,7 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 
 
   if(!user){
-    return <div className="w-full h-screen flex justify-center items-center">
+    return <div className="w-full  flex justify-center items-center">
       <Spinning/>
     </div>
   }

@@ -11,9 +11,14 @@ const MyLearning = async() => {
 const user=await getCurrentUser();
 
 
+
 if (!user) {
   return null;
 }
+
+const myPayedCourses=user.payedCourses.flatMap((course=>course.courses))
+
+
 
  
   return ( <>

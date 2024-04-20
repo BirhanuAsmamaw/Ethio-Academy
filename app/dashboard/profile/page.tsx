@@ -9,7 +9,7 @@ const ProfilePage = async() => {
     return null;
   }
   return ( <>
-  <div className="min-h-screen w-full flex justify-center items-center">
+  <div className="w-full flex justify-center items-center">
     <ProfileClient user={user}/>
   </div></> );
 }
