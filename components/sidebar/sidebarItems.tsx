@@ -31,6 +31,7 @@ const SideBarItems:React.FC<SideBarItemsPops> = ({sidebarData,user}) => {
         !isBannerAccessed&& sidebar.title==="Banner" ||
         !isBankAccessed&& sidebar.title==="Bank"||
         !isUniversityAccessed&& sidebar.title==="University" ||
+        !isUserAccessed&& sidebar.title==="User"||
         !isExamsAccessed&& sidebar.title==="Exams"
       )
       &&'hidden'}`}>
