@@ -5,6 +5,7 @@ import Spinning from "@/components/spinning";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import EditAccount from "./editAccount";
 import EditPassword from "./editPassword";
+import CreateTeacher from "./createTeacher";
 
 
 interface ProfileClientProps{
@@ -30,7 +31,7 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
   <TabsList className=" flex flex-wrap w-full gap-4 p-2 ">
     <TabsTrigger className="rounded-full bg-slate-100 dark:bg-gray-800  data-[state=active]:text-white data-[state=active]:bg-[#4C6FFF]" value="account">Account</TabsTrigger>
     <TabsTrigger className="rounded-full bg-slate-100 dark:bg-gray-800  data-[state=active]:text-white data-[state=active]:bg-[#4C6FFF]"  value="password">Password</TabsTrigger>
-    <TabsTrigger className="rounded-full bg-slate-100 dark:bg-gray-800 data-[state=active]:text-white data-[state=active]:bg-[#4C6FFF]"  value="teacherForm">Teacher Form</TabsTrigger>
+    <TabsTrigger className="rounded-full bg-slate-100 dark:bg-gray-800 data-[state=active]:text-white data-[state=active]:bg-[#4C6FFF]"  value="teacherForm">Become A Teacher?</TabsTrigger>
   </TabsList>
 
   <TabsContent value="account" className="flex justify-center mt-6">
@@ -46,9 +47,7 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 
 
   <TabsContent value="teacherForm" className="flex justify-center mt-6">
- <div className="form">
-  <h1>teacher form</h1>
- </div>
+<CreateTeacher user={user}/>
   </TabsContent>
 
 </Tabs> );

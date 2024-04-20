@@ -47,7 +47,10 @@ model User {
   notifications  Notification[]
   roles UserRole[]
   permissions UserPermission[]
+  teacher  Teacher?
 }
+
+
 
 model Roles {
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
@@ -112,6 +115,21 @@ model VerificationToken{
 
 
 
+model Teacher{
+id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+   title String ?
+   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+   userId String @db.ObjectId @unique
+   accountVerified DateTime?
+   status Boolean @default(false)
+   accountName String?
+   bankAccount String?
+   logo File?
+   description String?
+}
+
 model Course{
    id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())
@@ -124,6 +142,7 @@ model Course{
    videoThumbnail File?
    price Float
    rating Float?
+    status Boolean @default(false)
    descriptions String
    requirements String
    whoShouldTake String?

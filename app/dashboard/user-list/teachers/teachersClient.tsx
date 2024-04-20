@@ -45,28 +45,27 @@ import TableSkeleton from "@/components/tableSkeleton"
 
 
 
-interface UserListProps{
-  users:any[] | null;
+interface TeacherListProps{
+  teachers:any[] | null;
 }
 
-type UserType={
+type teacherType={
   id:string, 
  image:string,
  name: string,
- price:number;
+
  
  email: string,
  
- role: string,
- 
- users:number
+ status:boolean;
+
  
  }
 
 
 
 
-export const columns: ColumnDef<UserType>[] = [
+export const columns: ColumnDef<teacherType>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -149,55 +148,23 @@ export const columns: ColumnDef<UserType>[] = [
 
  
 
-{
-    accessorKey: "role",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Role
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("role")}</div>,
-  },
-
-
   {
-    accessorKey: "courses",
+    accessorKey: "status",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Courses
+          Status
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("courses")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("status")? <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Approved</span>:
+    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Pending...</span>
+ }</div>,
   },
-
-  {
-    accessorKey: "price",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-         Price(ETB)
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("price")}</div>,
-  },
-
 
 
 
@@ -205,7 +172,7 @@ export const columns: ColumnDef<UserType>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const user = row.original
+      const teacher = row.original
 
       return (
         <DropdownMenu>
@@ -221,13 +188,13 @@ export const columns: ColumnDef<UserType>[] = [
             <DropdownMenuItem>
              <Link 
              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/user-list/${user.id}/update/role`}>Edit User Role</Link>
+             href={`/dashboard/teacher-list/${teacher.id}/update/role`}>Edit teacher Role</Link>
             </DropdownMenuItem>
             
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/user-list/${user.id}/delete`}>Delete User</Link>
+              href={`/dashboard/teacher-list/${teacher.id}/delete`}>Delete teacher</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
@@ -242,7 +209,7 @@ export const columns: ColumnDef<UserType>[] = [
 
 
 
-export const UserListClient:React.FC<UserListProps>=({users})=> {
+export const TeacherListClient:React.FC<TeacherListProps>=({teachers})=> {
  
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -259,7 +226,7 @@ export const UserListClient:React.FC<UserListProps>=({users})=> {
 
 
 
-  if (!users){
+  if (!teachers){
     return <TableSkeleton/>
   }
 
@@ -270,7 +237,7 @@ export const UserListClient:React.FC<UserListProps>=({users})=> {
   
  
 
-  const data:UserType[]=users
+  const data:teacherType[]=teachers
 
 
 
