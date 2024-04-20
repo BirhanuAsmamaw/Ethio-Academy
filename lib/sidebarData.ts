@@ -37,6 +37,10 @@ export const sidebarData=[
       {
         label:"User List",
         url:"/dashboard/user-list"
+      },
+      {
+        label:"Teacher List",
+        url:"/dashboard/user-list/teachers"
       }
     ]
   },
