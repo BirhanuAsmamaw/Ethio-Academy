@@ -119,7 +119,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
 
    
     
-  return ( <div className="p-2 flex flex-col gap-4 w-full">
+  return ( <div className="p-2 flex flex-col gap-4 w-full md:w-[400px] bg-white dark:bg-black">
   <h1 className="text-lg font-semibold">Edit Your Account</h1>
   <div className="p-2 space-y-3">
 <div className="w-full flex justify-center">

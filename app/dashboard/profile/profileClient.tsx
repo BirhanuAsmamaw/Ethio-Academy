@@ -26,19 +26,19 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
   
 
 
-  return ( <Tabs defaultValue="account" className=" shadow-lg dark:shadow-black border dark:border-gray-700 rounded-[10px] min-w-[350px] max-w-[600px] bg-white dark:bg-gray-800">
-  <TabsList className="grid w-full grid-cols-2 gap-4 ">
+  return ( <Tabs defaultValue="account" className=" shadow-lg dark:shadow-black border dark:border-gray-700 rounded-[10px] w-full ">
+  <TabsList className="grid w-full grid-cols-2 gap-4 bg-white dark:bg-black p-2 ">
     <TabsTrigger className="rounded-full" value="account">Account</TabsTrigger>
     <TabsTrigger className="rounded-full"  value="password">Password</TabsTrigger>
   </TabsList>
 
-  <TabsContent value="account">
-    <EditAccount user={user}/>
+  <TabsContent value="account" className="flex justify-center">
+  <EditAccount user={user}/>
   </TabsContent>
 
 
 
-  <TabsContent value="password">
+  <TabsContent value="password" className="flex justify-center">
   <EditPassword user={user}/>
   </TabsContent>
 
