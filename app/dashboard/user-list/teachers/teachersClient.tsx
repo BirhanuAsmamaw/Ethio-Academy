@@ -188,7 +188,7 @@ export const columns: ColumnDef<teacherType>[] = [
             <DropdownMenuItem>
              <Link 
              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/teacher-list/${teacher.id}/update/role`}>Edit teacher Role</Link>
+             href={`/dashboard/user-list/teachers/${teacher.id}`}>Approve Status</Link>
             </DropdownMenuItem>
             
             <DropdownMenuItem> 
