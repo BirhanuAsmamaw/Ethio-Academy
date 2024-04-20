@@ -8,30 +8,49 @@ export async function PUT(req: Request, {params}:{params:{contentId:string}}){
   const {content} = body;
 
   try{
-    const user=await  getCurrentUser();
+    // authorization
+const user = await getCurrentUser();
+if(!user){
+  throw new Error("Unathorized")
+}
 
-    if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
+if(!contentId ) {
+throw new Error("Invalid  parameters");
+ }
 
-    const contentData=await prisma.content.findUnique({
-      where: {id:contentId}
-    })
-    if(!contentData){
-      return NextResponse.json({status:false, message:"content not found"});
+const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
+if(isDataAccessed){
+  throw new Error("Forbidden Resourse")
+}
+
+const contentData=await prisma.content.findFirst({
+  where:{
+    id:contentId,
+    lesson:{
+      chapter:{
+        course:{
+          creatorId:user.id
+        }
+      }
     }
+  }
+})
+
+
+if(!contentData){
+  throw new Error("No content Found!")
+}
 
     const updatedcontent=await prisma.content.update({
-      where: {id:contentId},
+      where: {id:contentData.id},
       data:{
-        content:content,
+        content:content
        
       }
     })
     return NextResponse.json(updatedcontent);
   }
-  catch(err){}
+  catch(err){
+    throw new Error("Something went wrong")
+  }
 }

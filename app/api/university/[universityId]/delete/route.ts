@@ -8,19 +8,22 @@ export async function DELETE(req: Request, {params}:{params:{universityId:string
 
   try{
     const user=await  getCurrentUser();
-
+   
     if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
+      throw new Error("Unathorized")
     }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
+    
+    
+    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageUniversity" )
+    if(isDataAccessed){
+      throw new Error("Forbidden Resourse")
     }
-
+    
     const university=await prisma.university.findUnique({
       where: {id:universityId}
     })
     if(!university){
-      return NextResponse.json({status:false, message:"university not found"});
+   throw new Error("university not found");
     }
 
  await prisma.university.delete({
@@ -33,6 +36,6 @@ export async function DELETE(req: Request, {params}:{params:{universityId:string
     });
   }
   catch(err){
-    console.log(err);
+    throw new Error("Something went wrong")
   }
 }

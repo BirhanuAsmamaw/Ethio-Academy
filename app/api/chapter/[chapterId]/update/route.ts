@@ -8,22 +8,29 @@ export async function PUT(req: Request, {params}:{params:{chapterId:string}}){
   const {title} = body;
 
   try{
-    const user=await  getCurrentUser();
+       // authorization
+const user = await getCurrentUser();
+if(!user){
+  throw new Error("Unathorized")
+}
 
-    if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
+const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
+if(isDataAccessed){
+  throw new Error("Forbidden Resourse")
+}
+
+const Chapter=await prisma.chapter.findFirst({
+  where:{
+    id:chapterId,
+    course:{
+      creatorId:user.id
     }
 
-    const chapter=await prisma.chapter.findUnique({
-      where: {id:chapterId}
-    })
-    if(!chapter){
-      return NextResponse.json({status:false, message:"chapter not found"});
-    }
-
+  }
+})
+if(!Chapter){
+  throw new Error("No Chapter found")
+}
     const updatedChapter=await prisma.chapter.update({
       where: {id:chapterId},
       data:{

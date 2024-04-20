@@ -8,20 +8,23 @@ export async function PUT(req: Request, {params}:{params:{heroId:string}}){
   const {logo} = body;
 
   try{
-    const user=await  getCurrentUser();
-
+    const user = await getCurrentUser();
     if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
+      throw new Error("Unathorized")
     }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
+    
+    
+    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageBanner" )
+    if(isDataAccessed){
+      throw new Error("Forbidden Resourse")
     }
 
     const heroData=await prisma.hero.findUnique({
       where: {id:heroId}
     })
     if(!heroData){
-      return NextResponse.json({status:false, message:"hero not found"});
+   
+       throw new Error("Hero not found")
     }
 
     const updatedhero=await prisma.hero.update({
@@ -32,5 +35,7 @@ export async function PUT(req: Request, {params}:{params:{heroId:string}}){
     })
     return NextResponse.json(updatedhero);
   }
-  catch(err){}
+  catch(err){
+     throw new Error(" Something went wrong")
+  }
 }

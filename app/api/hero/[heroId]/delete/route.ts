@@ -7,20 +7,21 @@ export async function DELETE(req: Request, {params}:{params:{heroId:string}}){
  
 
   try{
-    const user=await  getCurrentUser();
-
+    const user = await getCurrentUser();
     if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
+      throw new Error("Unathorized")
     }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
+    
+    
+    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageBanner" )
+    if(isDataAccessed){
+      throw new Error("Forbidden Resourse")
     }
-
     const hero=await prisma.hero.findUnique({
       where: {id:heroId}
     })
     if(!hero){
-      return NextResponse.json({status:false, message:"hero not found"});
+     throw new Error("Hero not found")
     }
 
  await prisma.hero.delete({
@@ -33,6 +34,6 @@ export async function DELETE(req: Request, {params}:{params:{heroId:string}}){
     });
   }
   catch(err){
-    console.log(err);
+  throw new Error("Something went wrong")
   }
 }

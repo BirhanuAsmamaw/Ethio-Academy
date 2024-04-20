@@ -7,15 +7,17 @@ export async function DELETE(req: Request, {params}:{params:{examId:string}}){
  
 
   try{
-    const user=await  getCurrentUser();
-
-    if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
-
+   // authorization
+   const user = await getCurrentUser();
+   if(!user){
+     throw new Error("Unathorized")
+   }
+   
+   
+   const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageExamType" )
+   if(isDataAccessed){
+     throw new Error("Forbidden Resourse")
+   }
     const exam=await prisma.exam.findUnique({
       where: {id:examId}
     })
@@ -33,6 +35,6 @@ export async function DELETE(req: Request, {params}:{params:{examId:string}}){
     });
   }
   catch(err){
-    console.log(err);
+   throw new Error("Something went wrong")
   }
 }

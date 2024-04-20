@@ -7,8 +7,17 @@ export async function DELETE(req: Request, {params}:{params:{userpermissionId:st
  
 
   try{
-    const user=await  getCurrentUser();
+   
+// authorization
+const user = await getCurrentUser();
+if(!user){
+  throw new Error("Unathorized")
+}
 
+const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanRemovePermission" )
+if(isDataAccessed){
+  throw new Error("Forbidden Resourse")
+}
    
     const userPermission=await prisma.userPermission.findUnique({
       where: {id:userPermissionId}

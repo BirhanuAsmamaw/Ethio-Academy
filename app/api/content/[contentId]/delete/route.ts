@@ -7,24 +7,41 @@ export async function DELETE(req: Request, {params}:{params:{contentId:string}})
  
 
   try{
-    const user=await  getCurrentUser();
+      // authorization
+const user = await getCurrentUser();
+if(!user){
+  throw new Error("Unathorized")
+}
 
-    if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
+if(!contentId ) {
+throw new Error("Invalid  parameters");
+ }
 
-    const content=await prisma.content.findUnique({
-      where: {id:contentId}
-    })
-    if(!content){
-      return NextResponse.json({status:false, message:"content not found"});
+const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
+if(isDataAccessed){
+  throw new Error("Forbidden Resourse")
+}
+
+const content=await prisma.content.findFirst({
+  where:{
+    id:contentId,
+    lesson:{
+      chapter:{
+        course:{
+          creatorId:user.id
+        }
+      }
     }
+  }
+})
+
+
+if(!content){
+  throw new Error("No content Found!")
+}
 
  await prisma.content.delete({
-      where: {id:contentId},
+      where: {id:content.id},
       
     })
     return NextResponse.json({
@@ -33,6 +50,7 @@ export async function DELETE(req: Request, {params}:{params:{contentId:string}})
     });
   }
   catch(err){
+    throw new Error("Something went wrong")
  
   }
 }

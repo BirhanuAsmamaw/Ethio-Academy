@@ -8,20 +8,21 @@ export async function PUT(req: Request, {params}:{params:{subjectId:string}}){
   const {banner} = body;
 
   try{
-    const user=await  getCurrentUser();
-
+    const user = await getCurrentUser();
     if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
+      throw new Error("Unathorized")
     }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
+    
+    
+    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageSubject" )
+    if(isDataAccessed){
+      throw new Error("Forbidden Resourse")
     }
-
     const subjectData=await prisma.subject.findUnique({
       where: {id:subjectId}
     })
     if(!subjectData){
-      return NextResponse.json({status:false, message:"subject not found"});
+     throw new Error("subject not found");
     }
 
     const updatedsubject=await prisma.subject.update({
@@ -33,5 +34,7 @@ export async function PUT(req: Request, {params}:{params:{subjectId:string}}){
     })
     return NextResponse.json(updatedsubject);
   }
-  catch(err){}
+  catch(err){
+    throw new Error("Something went wrong")
+  }
 }

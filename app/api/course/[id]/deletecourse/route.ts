@@ -12,12 +12,12 @@ export async function DELETE(req: Request, {params}:{params:{id:string}}){
     if(!user){
       return NextResponse.json({status:false, message:"unathorized"});
     }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
-
+    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
+if(isDataAccessed){
+  throw new Error("Forbidden resource")
+}
     const course=await prisma.course.findUnique({
-      where: {id:id}
+      where: {id:id,creatorId:user.id}
     })
     if(!course){
       return NextResponse.json({status:false, message:"course not found"});

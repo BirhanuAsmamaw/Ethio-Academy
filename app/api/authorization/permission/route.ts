@@ -1,3 +1,4 @@
+import { getCurrentUser } from "@/actions/users/currentUser";
 import prisma from "@/lib/prismadb"
 import { NextResponse } from "next/server";
 export async function POST(req: Request, res: Response){
@@ -7,13 +8,25 @@ const {
   action
 }=body;
 
+// authorization
+const user = await getCurrentUser();
+if(!user){
+  throw new Error("Unathorized")
+}
+
+const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManagePermission" )
+if(isDataAccessed){
+  throw new Error("Forbidden Resourse")
+}
+
 if(!action){
   throw new Error("Invalid action passed")
 }
-//authorized
+
 
 //create PERMISSION
 const newPermission=await prisma.permission.create({
+
   data:{action:action}
 });
 

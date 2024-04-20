@@ -8,14 +8,17 @@ export async function PUT(req: Request, {params}:{params:{departmentId:string}})
   const {cover} = body;
 
   try{
-    const user=await  getCurrentUser();
+        // authorization
+const user = await getCurrentUser();
+if(!user){
+  throw new Error("Unathorized")
+}
 
-    if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
+
+const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageDepartment" )
+if(isDataAccessed){
+  throw new Error("Forbidden Resourse")
+}
 
     const departmentData=await prisma.department.findUnique({
       where: {id:departmentId}
@@ -32,5 +35,7 @@ export async function PUT(req: Request, {params}:{params:{departmentId:string}})
     })
     return NextResponse.json(updatedDepartment);
   }
-  catch(err){}
+  catch(err){
+    throw new Error("Something went wrong")
+  }
 }

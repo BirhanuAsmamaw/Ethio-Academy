@@ -18,12 +18,13 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
     if(!user){
       return NextResponse.json({status:false, message:"unathorized"});
     }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
+    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
+if(isDataAccessed){
+  throw new Error(" forbidden resource")
+}
 
     const courseData=await prisma.course.findUnique({
-      where: {id:id}
+      where: {id:id,creatorId:user.id},
     })
     if(!courseData){
       return NextResponse.json({status:false, message:"course not found"});

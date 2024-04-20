@@ -9,19 +9,23 @@ export async function PUT(req: Request, {params}:{params:{universityId:string}})
 
   try{
     const user=await  getCurrentUser();
-
+   
     if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
+      throw new Error("Unathorized")
     }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
+    
+    
+    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageUniversity" )
+    if(isDataAccessed){
+      throw new Error("Forbidden Resourse")
     }
+    
 
     const universityData=await prisma.university.findUnique({
       where: {id:universityId}
     })
     if(!universityData){
-      return NextResponse.json({status:false, message:"course not found"});
+     throw new Error("University not found");
     }
 
     const updateduniversity=await prisma.university.update({
@@ -33,5 +37,7 @@ export async function PUT(req: Request, {params}:{params:{universityId:string}})
     })
     return NextResponse.json(updateduniversity);
   }
-  catch(err){}
+  catch(err){
+    throw new Error("Something went wrong")
+  }
 }
