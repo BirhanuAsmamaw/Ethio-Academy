@@ -15,7 +15,7 @@ if(!user){
 }
 
 const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanRemovePermission" )
-if(isDataAccessed){
+if(!isDataAccessed){
   throw new Error("Forbidden Resourse")
 }
    

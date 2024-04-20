@@ -16,7 +16,7 @@ export async function PUT(req: Request, {params}:{params:{examId:string}}){
   
   
   const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageExamType" )
-  if(isDataAccessed){
+  if(!isDataAccessed){
     throw new Error("Forbidden Resourse")
   }
 

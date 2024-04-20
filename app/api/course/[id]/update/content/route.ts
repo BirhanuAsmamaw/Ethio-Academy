@@ -19,7 +19,7 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
       return NextResponse.json({status:false, message:"unathorized"});
     }
     const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
-if(isDataAccessed){
+if(!isDataAccessed){
   throw new Error(" forbidden resource")
 }
 

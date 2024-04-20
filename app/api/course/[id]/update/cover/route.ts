@@ -11,7 +11,7 @@ if(!user){
   throw new Error("Unathorized")
 }
 const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
-if(isDataAccessed){
+if(!isDataAccessed){
   throw new Error("Forbidden Resourse")
 }
    if(!cover){

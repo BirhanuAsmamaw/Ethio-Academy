@@ -15,7 +15,7 @@ export async function POST(req:Request) {
      
      
      const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageExamType" )
-     if(isDataAccessed){
+     if(!isDataAccessed){
        throw new Error("Forbidden Resourse")
      }
 

@@ -15,7 +15,7 @@ export async function DELETE(req: Request, {params}:{params:{universityId:string
     
     
     const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageUniversity" )
-    if(isDataAccessed){
+    if(!isDataAccessed){
       throw new Error("Forbidden Resourse")
     }
     

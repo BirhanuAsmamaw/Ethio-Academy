@@ -15,7 +15,7 @@ export async function PUT(req: Request, {params}:{params:{heroId:string}}){
     
     
     const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageBanner" )
-    if(isDataAccessed){
+    if(!isDataAccessed){
       throw new Error("Forbidden Resourse")
     }
     const heroData=await prisma.hero.findUnique({

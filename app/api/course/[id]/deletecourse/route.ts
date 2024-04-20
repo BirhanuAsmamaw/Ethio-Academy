@@ -13,7 +13,7 @@ export async function DELETE(req: Request, {params}:{params:{id:string}}){
       return NextResponse.json({status:false, message:"unathorized"});
     }
     const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
-if(isDataAccessed){
+if(!isDataAccessed){
   throw new Error("Forbidden resource")
 }
     const course=await prisma.course.findUnique({

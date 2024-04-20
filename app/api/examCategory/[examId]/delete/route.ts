@@ -15,7 +15,7 @@ export async function DELETE(req: Request, {params}:{params:{examId:string}}){
    
    
    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageExamType" )
-   if(isDataAccessed){
+   if(!isDataAccessed){
      throw new Error("Forbidden Resourse")
    }
     const exam=await prisma.exam.findUnique({

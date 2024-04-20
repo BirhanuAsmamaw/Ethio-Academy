@@ -15,7 +15,7 @@ export async function PUT(req: Request, {params}:{params:{subjectId:string}}){
     
     
     const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageSubject" )
-    if(isDataAccessed){
+    if(!isDataAccessed){
       throw new Error("Forbidden Resourse")
     }
 

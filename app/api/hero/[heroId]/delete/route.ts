@@ -14,7 +14,7 @@ export async function DELETE(req: Request, {params}:{params:{heroId:string}}){
     
     
     const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageBanner" )
-    if(isDataAccessed){
+    if(!isDataAccessed){
       throw new Error("Forbidden Resourse")
     }
     const hero=await prisma.hero.findUnique({

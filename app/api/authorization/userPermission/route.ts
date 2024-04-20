@@ -16,7 +16,7 @@ if(!user){
 }
 
 const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanAssignPermission" )
-if(isDataAccessed){
+if(!isDataAccessed){
   throw new Error("Forbidden Resourse")
 }
 if(!userId || !permissionId){

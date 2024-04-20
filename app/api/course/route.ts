@@ -31,7 +31,7 @@ export async function POST(req:Request){
 
 
   if (!subjectId || !descriptions || !requirements || !whoShouldTake|| !course ){
-    return NextResponse.json({status:false, message:"invalid course parameters"});
+    throw new Error("invalid  parameters")
 
   }
   const newCourse=await prisma.course.create({

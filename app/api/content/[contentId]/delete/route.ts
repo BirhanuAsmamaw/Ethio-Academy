@@ -18,7 +18,7 @@ throw new Error("Invalid  parameters");
  }
 
 const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
-if(isDataAccessed){
+if(!isDataAccessed){
   throw new Error("Forbidden Resourse")
 }
 
