@@ -1,6 +1,7 @@
 import { getTeacherById } from '@/actions/teacher/getTeacherById'
 import Card from '@/components/card/card'
 import CourseList from '@/components/lists/courseList'
+import Navbar from '@/components/navbar/Navbar'
 import PaginationComponent from '@/components/pagination'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import React from 'react'
@@ -11,7 +12,8 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
   if(!teacher){
     return null;
   }
-  return (
+  return (<>
+  <Navbar/>
        <div className="flex justify-center">
           <div className='flex flex-col items-center min-h-screen gap-20  p-4 w-full md:w-11/12 lg:w-10/12 xl:w-8/12 '>
 
@@ -62,7 +64,7 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
 
 
           </div>
-       </div>
+       </div></>
   )
 }
 
