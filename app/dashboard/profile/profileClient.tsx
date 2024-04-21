@@ -6,6 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import EditAccount from "./editAccount";
 import EditPassword from "./editPassword";
 import CreateTeacher from "./createTeacher";
+import UpdateTeacherLogo from "./updateTeacherLogo";
+import UpdateTeacherContent from "./updateTeacherContent";
 
 
 interface ProfileClientProps{
@@ -47,7 +49,11 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 
 
   <TabsContent value="teacherForm" className="flex justify-center mt-6">
-<CreateTeacher user={user}/>
+{user?.teacher? <div className="flex gap-6">
+  <UpdateTeacherLogo user={user}/>
+  <UpdateTeacherContent user={user}/>
+
+</div>:<CreateTeacher user={user}/>}
   </TabsContent>
 
 </Tabs> );
