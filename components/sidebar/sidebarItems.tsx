@@ -12,13 +12,14 @@ interface SideBarItemsPops{
   user?:any;
 }
 const SideBarItems:React.FC<SideBarItemsPops> = ({sidebarData,user}) => {
-  const isCourseAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageOwnCourse" || permission.permission.action === "CanViewOwnCourse"|| permission.permission.action === "CanCreateCourse")
+  const isCourseAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageOwnCourse" || permission.permission.action === "CanViewOwnCourse"|| permission.permission.action === "CanCreateCourse")&&user?.teacher&&user?.teacher?.status
   const isBannerAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageBanner")
   const isBankAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageBank")
   const isUniversityAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageUniversity")
   const isUserAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageUser")
   const isExamsAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageExamType")
-   
+ 
+
  
   return ( 
     <Accordion type="single" collapsible className="w-full " >

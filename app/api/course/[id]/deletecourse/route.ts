@@ -16,8 +16,17 @@ export async function DELETE(req: Request, {params}:{params:{id:string}}){
 if(!isDataAccessed){
   throw new Error("Forbidden resource")
 }
+
+if(!user.teacher){
+  throw new Error("Unathorized")
+}
+
+if(!user.teacher.status){
+  throw new Error("Unathorized")
+}
+
     const course=await prisma.course.findUnique({
-      where: {id:id,creatorId:user.id}
+      where: {id:id,instructorId:user.teacher.id}
     })
     if(!course){
       return NextResponse.json({status:false, message:"course not found"});

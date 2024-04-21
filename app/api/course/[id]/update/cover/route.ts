@@ -18,8 +18,15 @@ if(!isDataAccessed){
     throw new Error('Cover not Empty');
    }
 
+   if(!user.teacher){
+    throw new Error("Unathorized")
+  }
+
+  if(!user.teacher.status){
+    throw new Error("Unathorized")
+  }
    const course=await prisma.course.update({
-    where: {id:id,creatorId:user.id},
+    where: {id:id,instructorId:user.teacher.id},
     data:{cover:cover}
 
    })

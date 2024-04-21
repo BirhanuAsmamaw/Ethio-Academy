@@ -22,13 +22,20 @@ if(!isDataAccessed){
   throw new Error("Forbidden Resourse")
 }
 
+if(!user.teacher){
+  throw new Error("Unathorized")
+}
+
+if(!user.teacher.status){
+  throw new Error("Unathorized")
+}
 const content=await prisma.content.findFirst({
   where:{
     id:contentId,
     lesson:{
       chapter:{
         course:{
-          creatorId:user.id
+          instructorId:user.teacher.id
         }
       }
     }

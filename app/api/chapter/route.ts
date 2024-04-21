@@ -21,9 +21,16 @@ const isDataAccessed=user.permissions.some((permission)=>permission.permission.a
 if(!isDataAccessed){
   throw new Error("Forbidden Resourse")
 }
+if(!user.teacher){
+  throw new Error("Unathorized")
+}
+
+if(!user.teacher.status){
+  throw new Error("Unathorized")
+}
 
 const course=await prisma.course.findFirst({
-  where:{id:courseId,creatorId:user.id}
+  where:{id:courseId,instructorId:user.teacher.id}
 })
 if(!course){
   throw new Error("No Course found")

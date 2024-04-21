@@ -16,6 +16,11 @@ export async function getCurrentUser() {
   const currentUser=await prisma.user.findUnique({
     where:{email:session.user.email},
     include:{
+      teacher:{
+        include:{
+          courses:true
+        }
+      },
       roles:{
         include:{
           role:true
@@ -27,7 +32,7 @@ export async function getCurrentUser() {
         },
         
       },
-      createdCourses:true,
+     
      payedCourses:{
       include:{
         department:{

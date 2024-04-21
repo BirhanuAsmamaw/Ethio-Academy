@@ -18,6 +18,16 @@ export async function POST(req:Request){
 
   }
 
+
+
+  if(!user.teacher){
+    throw new Error("Unathorized")
+  }
+
+  if(!user.teacher.status){
+    throw new Error("Unathorized")
+  }
+  
   const {
    
      price,
@@ -37,7 +47,7 @@ export async function POST(req:Request){
   const newCourse=await prisma.course.create({
     data:{
       subjectId:subjectId,
-      creatorId:user.id,
+      instructorId:user.teacher.id,
       course:course,
       price:parseFloat(price),
       rating:0,
