@@ -88,7 +88,7 @@ rounded-[5px]
     </Avatar>:""}
 
       {instructorName?<div className="">
-        <h6 className="text-[14px] font-medium leading-6">Der</h6>
+        <p className=" p-1 text-[14px] font-medium leading-6">{instructorName}</p>
   {instructorTitle?      <p className="text-gray-500 dark:text-gray-400 text-xs leading-3">{instructorTitle}</p>:""}
       </div>:""}
     </div>:""}
