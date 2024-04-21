@@ -54,7 +54,7 @@ return null;
 }
 
   return (
-<div className="m-2 border border-gray-200 dark:border-gray-600  rounded-[10px] bg-white dark:bg-black px-2 pt-4 pb-10 w-full md:max-w-md flex flex-col gap-2">
+<div className="m-2 border border-gray-200 dark:border-gray-600  w-full p-2 flex justify-center bg-white shadow-md  dark:bg-black px-2 pt-4 pb-10  md:max-w-md flex-col gap-2">
 
 <div className="flex flex-col gap-6">
 <div className="py-4">
