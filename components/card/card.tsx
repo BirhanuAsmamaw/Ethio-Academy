@@ -13,6 +13,7 @@ interface CardProps{
   id: string;
   subject: string;
   category: string;
+  subjectCat?: string;
   cover: any; // Assuming cover is the path to the image
   price: number;
 no_reviews?:number; // Assuming
@@ -26,7 +27,7 @@ no_reviews?:number; // Assuming
 }
 
 
-const Card:React.FC<CardProps> = ({logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
+const Card:React.FC<CardProps> = ({subjectCat,logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
   return ( <AnimatePresence>
     <motion.div  
     initial={{opacity: 0,translateX:-100}}
@@ -49,7 +50,10 @@ rounded-[5px]
    shadow 
    
    ">
-  <Link href={`/course/${id}`} className="no-underline  overflow-hidden">
+  <Link href={`/course/${id}`} className="no-underline  relative overflow-hidden">
+{subjectCat?    <div className="p-2 absolute top-1 left-1 bg-white dark:bg-black  bg-opacity-95 dark:bg-opacity-95 flex justify-center">
+      <p>{subjectCat}</p>
+    </div>:""}
     <Image src={cover} alt={subject} 
     height={100}
     width={200}

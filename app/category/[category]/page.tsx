@@ -60,6 +60,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
           subject={course.course}
           rating={course?.rating??0}
           cover={course.cover.public_url} 
+          subjectCat={course?.subject.subjectName}
           instructorName={course?.instructor?.accountName?course?.instructor?.accountName:course?.instructor?.user.name || ""}
           instructorTitle={course?.instructor?.title||""}
           logo={course?.instructor?.logo? course?.instructor?.logo:course.instructor?.user.image||null}
@@ -96,6 +97,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
           cover={course.cover?.public_url} 
           instructorName={course?.instructor?.accountName?course?.instructor?.accountName:course?.instructor?.user.name || ""}
           instructorTitle={course?.instructor?.title||""}
+          subjectCat={course?.subject.subjectName}
           logo={course?.instructor?.logo? course?.instructor?.logo:course.instructor?.user.image||null} />
   
     })}

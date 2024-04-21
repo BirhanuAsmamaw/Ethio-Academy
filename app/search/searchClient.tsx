@@ -39,6 +39,10 @@ const SearchClient = () => {
               subject={course.course}
               rating={course?.rating??0}
               cover={course.cover?.public_url}
+              subjectCat={course?.subject.subjectName}
+              instructorName={course?.instructor?.accountName?course?.instructor?.accountName:course?.instructor?.user.name || ""}
+              instructorTitle={course?.instructor?.title||""}
+              logo={course?.instructor?.logo? course?.instructor?.logo:course.instructor?.user.image||null}
                />
         })}
        </div>
