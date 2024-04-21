@@ -36,7 +36,7 @@ const router=useRouter();
   return (  
     <DropdownMenu>
         <DropdownMenuTrigger asChild>
-        <Button variant="ghost"  onClick={onRead} className="mt-2">
+        <Button variant="ghost"  onClick={onRead} className="mt-2 relative">
     <IoMdNotificationsOutline size={24} />
     <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
         </Button>
@@ -45,7 +45,7 @@ const router=useRouter();
         <DropdownMenuContent className="w-56 mt-2">
           <DropdownMenuGroup>
     
-          {notifications?.length?<div>
+          {notifications?.length?<div className=" overflow-y-auto">
           {notifications?.map((notification)=>{
             return <div key={notification.id} id="alert-additional-content-3"
              className={`p-4  mb-4 border rounded-[5px]  dark:bg-gray-800 
