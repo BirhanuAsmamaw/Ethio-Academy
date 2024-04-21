@@ -5,6 +5,7 @@ import Link from "next/link";
 import {AnimatePresence, motion} from "framer-motion"
 import StarOutlined from "@mui/icons-material/StarOutlined";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import ChannelVerfiedComponent from "../ChannelVerfiedComponent";
 
 
 
@@ -93,7 +94,7 @@ rounded-[5px]
     </Avatar>:""}
 
       {instructorName?<div className="">
-        <p className=" text-[14px] font-medium text-gray-900 dark:text-gray-200 leading-6">{instructorName}</p>
+        <p className=" text-[14px] font-medium text-gray-900 dark:text-gray-200 leading-6">{instructorName} <ChannelVerfiedComponent/></p>
   {instructorTitle?      <p className="text-gray-500 dark:text-gray-400 text-xs leading-3">{instructorTitle}</p>:""}
       </div>:""}
     </Link>:""}

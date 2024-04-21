@@ -6,6 +6,7 @@ import PaginationComponent from '@/components/pagination'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import React from 'react'
 import { EB_Garamond } from 'next/font/google'
+import ChannelVerfiedComponent from '@/components/ChannelVerfiedComponent'
 const eb_garamound= EB_Garamond({ subsets: ['latin'] ,weight:['400', '500','600','700']})
 const InstructorPage = async({params}:{params:{instructorId:string}}) => {
   const teacher= await getTeacherById(params.instructorId)
@@ -25,8 +26,8 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
       <AvatarImage src={teacher.logo? teacher?.logo.public_url: teacher.user?.image||""} alt="image" />
       <AvatarFallback>{names? names[0][0]:''}{names?names[1][0]:''}</AvatarFallback>
     </Avatar>
-            <div className="">
-              <p className='text-xl md:text-2xl  xl:text-3xl leading-10 font-semibold'>{teacher?.accountName? teacher?.accountName:teacher?.user.name}</p>
+            <div className="mt-1">
+              <p className='text-xl md:text-2xl  xl:text-3xl leading-10 font-semibold'>{teacher?.accountName? teacher?.accountName:teacher?.user.name} <ChannelVerfiedComponent/></p>
               {teacher?.title?<p className={`
               ${eb_garamound.className}
               text-lg md:text-xl  xl:text-2xl  leading-6
