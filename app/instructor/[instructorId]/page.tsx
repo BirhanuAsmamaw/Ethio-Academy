@@ -16,15 +16,15 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
           <div className='flex flex-col items-center min-h-screen gap-20  p-4 w-full md:w-11/12 lg:w-10/12 xl:w-8/12 '>
 
 
-         <div className="bg-blue-600 text-white h-64  w-full rounded-[10px] flex justify-center">
+         <div className=" bg-blue-600 p-4 text-white h-64  w-full rounded-[10px] flex justify-center items-center">
           <div className="flex flex-col md:flex-row w-full gap-10 ">
-          <Avatar className={`${!teacher?.user?.image&&'hidden'} h-20 w-20 `}>
+          <Avatar className={`${!teacher?.user?.image&&'hidden'}  h-24 w-24 `}>
       <AvatarImage src={teacher.logo? teacher?.logo.public_url: teacher.user?.image||""} alt="image" />
       <AvatarFallback>{names? names[0][0]:''}{names?names[1][0]:''}</AvatarFallback>
     </Avatar>
             <div className="">
-              <p className='text-xl leading-6 font-semibold'>{teacher?.accountName? teacher?.accountName:teacher?.user.name}</p>
-              {teacher?.title?<p className='text-lg text-gray-200 font-medium leading-4'> {teacher?.title}</p>:""}
+              <p className='text-xl md:text-2xl  xl:text-3xl leading-10 font-semibold'>{teacher?.accountName? teacher?.accountName:teacher?.user.name}</p>
+              {teacher?.title?<p className='text-lg md:text-xl  xl:text-2xl  leading-6  text-gray-200 font-medium '> {teacher?.title}</p>:""}
 
             </div>
           </div>

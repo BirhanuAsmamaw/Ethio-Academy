@@ -86,14 +86,14 @@ rounded-[5px]
    
     </div>:""}
 
-    {instructorName?<Link href={`/instructor/${instructorId}`} className="hover:text-blue-600 transition py-2 flex gap-2">
+    {instructorName?<Link href={`/instructor/${instructorId}`} className="hover:underline no-underline transition py-2 flex gap-2">
       {logo?<Avatar className={`${!logo&&'hidden'} h-6 w-6  mt-1`}>
       <AvatarImage src={logo?logo:"/"} alt="image" />
       <AvatarFallback>{instructorName[0]}</AvatarFallback>
     </Avatar>:""}
 
       {instructorName?<div className="">
-        <p className=" text-[14px] font-medium leading-6">{instructorName}</p>
+        <p className=" text-[14px] font-medium text-gray-900 dark:text-gray-200 leading-6">{instructorName}</p>
   {instructorTitle?      <p className="text-gray-500 dark:text-gray-400 text-xs leading-3">{instructorTitle}</p>:""}
       </div>:""}
     </Link>:""}
