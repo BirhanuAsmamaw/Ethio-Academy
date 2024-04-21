@@ -81,6 +81,7 @@ const banner=await getBanner();
               instructorName={course?.instructor?.accountName?course?.instructor?.accountName:course?.instructor?.user.name || ""}
               instructorTitle={course?.instructor?.title||""}
               logo={course?.instructor?.logo? course?.instructor?.logo:course.instructor?.user.image||null}
+              instructorId={course?.instructorId}
                />
       
         })}
@@ -115,6 +116,7 @@ const banner=await getBanner();
               instructorTitle={course?.instructor?.title||""}
               logo={course?.instructor?.logo? course?.instructor?.logo:course.instructor?.user.image||null}
               subjectCat={course?.subject.subjectName}
+              instructorId={course?.instructorId}
               />
       
         })}

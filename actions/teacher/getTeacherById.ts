@@ -4,6 +4,17 @@ try{
   const teacher=await prisma.teacher.findUnique({
     where:{id:id},
     include:{
+      courses:{
+        include:{
+          reviews:true,
+          subject:{
+            include:{
+              department:true,
+            }
+          },
+          
+        }
+      },
       user:true,
     }
   })
