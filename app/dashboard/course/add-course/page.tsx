@@ -8,17 +8,10 @@ import { getCurrentUser } from "@/actions/users/currentUser";
 const CreateCourse = async() => {
   const departments=await  getAllDepartments();
   const user=await getCurrentUser();
-  const isDataAccessed=user?.permissions.some((permission)=>permission.permission.action === "CanManageCourse" || permission.permission.action === "CanCreateCourse")
+  const isDataAccessed=user?.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse"||permission.permission.action === "CanManageCourse" || permission.permission.action === "CanCreateCourse")
 
-  if(!user?.teacher){
-    return null;
-  }
-
-  if(!user?.teacher.status){
-   return null;
-  }
-
-  if(!isDataAccessed){
+ 
+  if(!isDataAccessed || !user?.teacher || !user?.teacher.status){
     return null;
   }
 
