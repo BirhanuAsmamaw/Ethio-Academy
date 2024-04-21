@@ -11,6 +11,11 @@ export async function getNewCoursesByDepartment(department: string) {
         }
       },
       include:{
+        instructor:{
+          include:{
+            user:true
+          }
+                  },
         reviews:true,
         subject:{
           include:{

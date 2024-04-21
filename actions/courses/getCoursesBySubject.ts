@@ -15,6 +15,11 @@ export async function getCoursesBySubject(department: string,subject: string){
         rating:"desc"
               },
       include:{
+        instructor:{
+          include:{
+            user:true
+          }
+                  },
         reviews:true,
         subject:{
           include:{

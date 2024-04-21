@@ -7,6 +7,11 @@ export async function getCourses(page: number){
 rating:"desc"
       },
       include:{
+        instructor:{
+include:{
+  user:true
+}
+        },
         reviews:true,
         subject:{
           include:{

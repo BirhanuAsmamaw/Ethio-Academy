@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {AnimatePresence, motion} from "framer-motion"
 import StarOutlined from "@mui/icons-material/StarOutlined";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 
 
@@ -17,11 +18,15 @@ interface CardProps{
 no_reviews?:number; // Assuming
   rating: number;
   url: string;
+  instructorName?: string;
+  instructorTitle?:string;
+  logo?: any;
+
   
 }
 
 
-const Card:React.FC<CardProps> = ({id,subject,category,cover,price,rating,no_reviews,url}) => {
+const Card:React.FC<CardProps> = ({logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
   return ( <AnimatePresence>
     <motion.div  
     initial={{opacity: 0,translateX:-100}}
@@ -76,7 +81,20 @@ rounded-[5px]
    
     </div>:""}
 
+    {instructorName?<div className="py-2 flex gap-2">
+      {logo?<Avatar className={`${!logo&&'hidden'} h-6 w-6 `}>
+      <AvatarImage src={logo?logo:"/"} alt="image" />
+      <AvatarFallback>{instructorName[0]}</AvatarFallback>
+    </Avatar>:""}
+
+      {instructorName?<div className="">
+        <h6 className="text-[14px] font-medium leading-6">Der</h6>
+  {instructorTitle?      <p className="text-gray-500 dark:text-gray-400 text-xs leading-3">{instructorTitle}</p>:""}
+      </div>:""}
+    </div>:""}
+
   </div>
+
   <div className="m-3">
   <Link href={`/course/${id}`} className="no-underline w-full flex justify-center border border-gray-200  dark:border-gray-600 hover:bg-gray-200  hover:dark:bg-gray-600  rounded  duration-300 p-2">
     <p className="text-base font-medium ">Get started</p>

@@ -6,6 +6,11 @@ export async function getNewCourses(page:number){
      
       include:{
         reviews:true,
+        instructor:{
+          include:{
+            user:true
+          }
+                  },
         subject:{
           include:{
             department:true

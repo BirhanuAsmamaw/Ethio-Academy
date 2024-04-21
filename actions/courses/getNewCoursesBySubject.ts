@@ -12,6 +12,11 @@ export async function getNewCoursesBySubject(department: string,subject: string)
         }
       },
       include:{
+        instructor:{
+          include:{
+            user:true
+          }
+                  },
         reviews:true,
         subject:{
           include:{

@@ -5,10 +5,6 @@ import Navbar from '@/components/navbar/Navbar'
 import React from "react";
 
 import Header from '@/components/Header'
-
-
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { AboutAcademy } from '@/lib/aboutAcademy';
 import { getCourses } from '@/actions/courses/getCourses';
 import { getAllExamsCategory } from '@/actions/examsCategory/getAllExamsCategry';
 import ExamsCategoryCard from '@/components/card/examscategoryCard';
@@ -81,6 +77,9 @@ const banner=await getBanner();
               subject={course.course}
               rating={course?.rating??0}
               cover={course.cover.public_url} 
+              instructorName={course?.instructor?.accountName?course?.instructor?.accountName:course?.instructor?.user.name || ""}
+              instructorTitle={course?.instructor?.title||""}
+              logo={course?.instructor?.logo? course?.instructor?.logo:course.instructor?.user.image||null}
                />
       
         })}
@@ -110,7 +109,11 @@ const banner=await getBanner();
               price={course.price}
               subject={course.course}
               rating={course?.rating??0}
-              cover={course.cover?.public_url}  />
+              cover={course.cover?.public_url}  
+              instructorName={course?.instructor?.accountName?course?.instructor?.accountName:course?.instructor?.user.name || ""}
+              instructorTitle={course?.instructor?.title||""}
+              logo={course?.instructor?.logo? course?.instructor?.logo:course.instructor?.user.image||null}
+              />
       
         })}
 
