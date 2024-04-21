@@ -94,7 +94,7 @@ rounded-[5px]
     </Avatar>:""}
 
       {instructorName?<div className="">
-        <div className=" text-[14px] font-medium w-full text-gray-900 dark:text-gray-200 leading-6 flex gap-2"><p>{instructorName}</p> <div className="ml-1 relative"><ChannelVerfiedComponent/></div></div>
+        <div className=" text-[14px] font-medium text-gray-900 dark:text-gray-200 leading-6 flex gap-2"><p>{instructorName}</p> <ChannelVerfiedComponent/></div>
   {instructorTitle?      <p className="text-gray-500 dark:text-gray-400 text-xs leading-3">{instructorTitle}</p>:""}
       </div>:""}
     </Link>:""}

@@ -27,9 +27,7 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
       <AvatarFallback>{names? names[0][0]:''}{names?names[1][0]:''}</AvatarFallback>
     </Avatar>
             <div className="mt-1">
-              <div className='text-xl md:text-2xl  xl:text-3xl leading-10 font-semibold flex gap-2 w-full'><p>{teacher?.accountName? teacher?.accountName:teacher?.user.name}</p> 
-              <div className="ml-2 relative"><ChannelVerfiedComponent/></div>
-              </div>
+              <div className='text-xl md:text-2xl  xl:text-3xl leading-10 font-semibold flex gap-2 w-full'><p>{teacher?.accountName? teacher?.accountName:teacher?.user.name}</p> <ChannelVerfiedComponent/></div>
               {teacher?.title?<p className={`
               ${eb_garamound.className}
               text-lg md:text-xl  xl:text-2xl  leading-6
