@@ -51,7 +51,7 @@ rounded-[5px]
    
    ">
   <Link href={`/course/${id}`} className="no-underline  relative overflow-hidden">
-{subjectCat?    <div className="p-2 absolute top-1 left-0 bg-white dark:bg-gray-800 leading-5 text-sm font-medium shadow-md dark:shadow-black text-gray-600 dark:text-gray-400 bg-opacity-90 dark:bg-opacity-90 flex justify-center">
+{subjectCat?    <div className="p-2 absolute top-1 left-0 bg-white dark:bg-gray-800 leading-5 text-sm font-medium shadow-md drop-shadow-md text-gray-600 dark:text-gray-400 bg-opacity-90 dark:bg-opacity-90 flex justify-center">
       <p>{subjectCat}</p>
     </div>:""}
     <Image src={cover} alt={subject} 
