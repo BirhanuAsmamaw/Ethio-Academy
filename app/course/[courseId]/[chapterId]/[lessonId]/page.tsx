@@ -13,6 +13,8 @@ import Header from "@/components/Header";
 import CustomeSheet from "@/components/customSheet";
 import LessonBlur from "./lessonBlur";
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 
 
 interface IParams{
@@ -44,13 +46,21 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 />
   <MainLayout>
    
-      <CustomeSheet selectedLabel={<></>} unselectedLabel={<div  className="lg:hidden fixed  h-screen overflow-y-auto right-0 top-14 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-xl z-50 p-1 md:p-2 rounded-l-full border-l-2 ">
-        <p className=" font-semibold">Content</p>
-      </div>}>
-        <div className="space-y-2 w-full overflow-y-auto">
+     
+      <div className=" hidden lg:block fixed right-1 top-14">
+      <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">contents</Button>
+      </SheetTrigger>
+      <SheetContent className="overflow-y-auto">
+        <SheetHeader>
+          <SheetTitle>{lesson?.chapter?.course.course}</SheetTitle>
+         
+        </SheetHeader>
         <CourseContent course={lesson.chapter.course}/>
-        </div>
-      </CustomeSheet>
+      </SheetContent>
+    </Sheet>
+      </div>
     
 
 <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
@@ -74,7 +84,7 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 
       </SubLayout>
 
-    <div className="fixed w-[400px]  h-[700px] hidden   overflow-y-auto lg:block top-16 right-4">
+    <div className="fixed w-[400px]  h-[500px] hidden   overflow-y-auto lg:block top-16 right-4">
       <CourseContent course={lesson.chapter.course}/>
     </div>
     </MainLayout></> );
