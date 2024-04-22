@@ -14,12 +14,7 @@ export async function DeleteCourseById(courseId: string){
         message:"unathorized",
       };;
     }
-    if(user.role!=="ADMIN"){
-      return  {
-        status: false,
-        message:"unathorized",
-      };
-    }
+   
 
     const course=await prisma.course.findUnique({
       where: {id:courseId}
