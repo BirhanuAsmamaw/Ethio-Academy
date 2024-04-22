@@ -49,7 +49,7 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
       <div className="  lg:hidden fixed right-1 top-14">
       <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">contents</Button>
+        <Button variant="outline" className="z-10 shadow-lg">contents</Button>
       </SheetTrigger>
       <SheetContent className="overflow-y-auto">
         <SheetHeader>
@@ -83,7 +83,7 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 
       </SubLayout>
 
-    <div className="fixed w-[400px]  h-[560px] hidden   overflow-y-auto lg:block top-16 right-4">
+    <div className="fixed w-[400px]  h-[560px] hidden  overflow-y-auto lg:block top-16 right-4">
       <CourseContent course={lesson.chapter.course}/>
     </div>
     </MainLayout></> );
