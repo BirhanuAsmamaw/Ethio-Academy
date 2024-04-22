@@ -20,7 +20,7 @@ import { examsYears } from '@/lib/examsYear';
 interface  CreateExamsClientProps{
   university?:any[]|null;
  
-  exams:any[];
+  exams:any[]|null;
 }
 const CreateExamsClient:React.FC<CreateExamsClientProps>= ({exams,university}) => {
   const [isModel,setModel]=useState(false)
@@ -425,7 +425,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 
 
 
-  {(((isModel&&department.url!=="Highschool")&&university)||department.exam.url==="COC")?<div className="p-6 flex  w-[350px]" >
+  {(((isModel&&department.url!=="Highschool")&&university)||department?.exam.url==="COC")?<div className="p-6 flex  w-[350px]" >
 <Popover open={open} onOpenChange={setOpen} >
       <PopoverTrigger asChild   >
         <button

@@ -14,11 +14,8 @@ const AddExitQuestionPage = async() => {
 
  
 
-if(!exams||exams.length){
-    return null;
-}
 
-  return ( <CreateExamsClient exams={exams} university={university} /> );
+  return ( <CreateExamsClient exams={exams|| null} university={university} /> );
 }
  
 export default AddExitQuestionPage;
