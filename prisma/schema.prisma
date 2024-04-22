@@ -41,7 +41,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   payedCourses  Payment[]
   
-  role   Role @default(USER)
+
   accounts      Account[]
   reviews  Review[]
   notifications  Notification[]
@@ -389,10 +389,4 @@ model Hero{
 type File{
   public_key String
   public_url String
-}
-enum Role{
-   USER
-   TEACHER
-    ADMIN
-   
 }

@@ -53,13 +53,13 @@ type UserType={
   id:string, 
  image:string,
  name: string,
- price:number;
+
  
  email: string,
  
- role: string,
+
  
- users:number
+
  
  }
 
@@ -149,55 +149,9 @@ export const columns: ColumnDef<UserType>[] = [
 
  
 
-{
-    accessorKey: "role",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Role
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("role")}</div>,
-  },
 
 
-  {
-    accessorKey: "courses",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Courses
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("courses")}</div>,
-  },
-
-  {
-    accessorKey: "price",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-         Price(ETB)
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("price")}</div>,
-  },
-
+ 
 
 
 
