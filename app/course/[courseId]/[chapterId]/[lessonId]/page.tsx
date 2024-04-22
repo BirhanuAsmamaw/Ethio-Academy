@@ -74,7 +74,7 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 
       </SubLayout>
 
-    <div className="fixed w-[400px]  hidden lg:block top-20 right-4">
+    <div className="fixed w-[400px]  h-[800px]  overflow-y-auto lg:block top-20 right-4">
       <CourseContent course={lesson.chapter.course}/>
     </div>
     </MainLayout></> );
