@@ -7,14 +7,16 @@ export async function DELETE(req: Request, {params}:{params:{bankId:string}}){
  
 
   try{
-    const user=await  getCurrentUser();
+       // authorization
+const user = await getCurrentUser();
+if(!user){
+  throw new Error("Unathorized")
+}
 
-    if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
-    }
+const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageBank" )
+if(!isDataAccessed){
+  throw new Error("Forbidden Resourse")
+}
 
     const bank=await prisma.bank.findUnique({
       where: {id:bankId}
