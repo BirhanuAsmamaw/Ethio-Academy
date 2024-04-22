@@ -57,19 +57,6 @@ const CreateExamsClient:React.FC<CreateExamsClientProps>= ({exams,university}) =
 const [yeOpen, setyeOpen] = useState(false);
 const [yeValue, setyeValue] = useState("");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   const router=useRouter();
    const [isLoading,setLoading]=useState(false);
    const [explanation,setExplanation]=useState("")
@@ -97,7 +84,6 @@ D:{
     isAnswer:false,
 },
 });
-
 
 
 
@@ -217,7 +203,7 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={examOpen}
-        className="w-[200px] justify-between text-[14px] flex gap-2 font-semibold leading-4"
+        className="w-auto p-1 rounded-[5px] bg-slate-200 dark:bg-black  justify-between text-[14px] flex gap-2 font-semibold leading-4"
       >
         <p>{examValue
           ? exams?.find((exam) => exam.examType === examValue)?.examType
@@ -263,7 +249,7 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={depOpen}
-        className="w-[200px] justify-between text-[14px] flex gap-2 font-semibold leading-4"
+        className="w-auto justify-between  p-1 rounded-[5px] bg-slate-200 dark:bg-black text-[14px] flex gap-2 font-semibold leading-4"
       >
        <p> {depValue
           ? departments?.find((department) => department.departmentName === depValue)?.departmentName
@@ -312,7 +298,7 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={subOpen}
-        className="w-[200px] flex gap-2 justify-between text-[14px] font-semibold leading-4"
+        className="w-auto p-1 rounded-[5px] bg-slate-200 dark:bg-black   flex gap-2 justify-between text-[14px] font-semibold leading-4"
       >
         <p>{subValue
           ? subjects?.find((subject) => subject.subjectName === subValue)?.subjectName
@@ -360,7 +346,7 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={yeOpen}
-        className="w-[200px] flex gap-2 justify-between text-[14px] font-semibold leading-4"
+        className="w-auto p-1 rounded-[5px] bg-slate-200 dark:bg-black   flex gap-2 justify-between text-[14px] font-semibold leading-4"
       >
         <p>{yeValue
           ? yeValue
