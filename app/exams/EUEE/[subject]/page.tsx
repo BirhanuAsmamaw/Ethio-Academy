@@ -38,7 +38,7 @@ const ExamSubjectPage = async({params}:{params:{subject:string}}) => {
   <div className="flex justify-center p-4 py-20">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
-          return <YearExamCard key={index} year={year} url={`/EUEE/${params.subject}/${year}`}/>
+          return <YearExamCard key={index} year={year} url={`/EUEE/${params.subject}/${year}?`}/>
          })}
          
           
@@ -54,7 +54,7 @@ const ExamSubjectPage = async({params}:{params:{subject:string}}) => {
   <div className="flex justify-center p-4 py-20">
         <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
-          return <YearExamCard key={index} year={year} url={`/EUEE/${params.subject}/${year}/model`}/>
+          return <YearExamCard key={index} year={year} url={`/EUEE/${params.subject}/${year}/model?`}/>
          })}
          
           

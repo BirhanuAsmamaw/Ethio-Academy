@@ -20,7 +20,7 @@ const RemedialYearExamsPage = async({params}:{
 
 const department=await getDepartmentByName("Remedial")
 
-  const examQuestions=await getQuestionsByCategory("Remedial","Remedial",params.year,subject?.subjectName);
+  const examQuestions=await getQuestionsByCategory("Remedial","Remedial",params.year,subject?.id);
   return (<><Navbar/>
      {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Remedial Exam Now!"} />}
   <RemedialYearExamsClientPage subject={subject} year={params.year} Questions={examQuestions}/>
