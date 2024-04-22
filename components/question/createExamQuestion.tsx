@@ -196,14 +196,14 @@ const handleChooseSelection = (choose: string, value: string) => {
 <div className="w-full pt-10 space-y-4">
 
 
-  <div className="grid w-full grid-cols-1 md:grid-cols-4">
+  <div className="grid w-full grid-cols-1 md:grid-cols-4 gap-10">
 
     {/* Exam Types */}
     <Popover open={examOpen} onOpenChange={setExamOpen}>
     <PopoverTrigger asChild>
       <button
         aria-expanded={examOpen}
-        className="w-auto p-1 rounded-[5px] bg-slate-200 dark:bg-black  justify-between text-[14px] flex gap-2 font-semibold leading-4"
+        className=" p-1 rounded-[5px] bg-slate-200 dark:bg-black  justify-between text-[14px] flex gap-2 font-semibold leading-4"
       >
         <p>{examValue
           ? exams?.find((exam) => exam.examType === examValue)?.examType
@@ -249,7 +249,7 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={depOpen}
-        className="w-auto justify-between  p-1 rounded-[5px] bg-slate-200 dark:bg-black text-[14px] flex gap-2 font-semibold leading-4"
+        className=" justify-between  p-1 rounded-[5px] bg-slate-200 dark:bg-black text-[14px] flex gap-2 font-semibold leading-4"
       >
        <p> {depValue
           ? departments?.find((department) => department.departmentName === depValue)?.departmentName
@@ -298,7 +298,7 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={subOpen}
-        className="w-auto p-1 rounded-[5px] bg-slate-200 dark:bg-black   flex gap-2 justify-between text-[14px] font-semibold leading-4"
+        className=" p-1 rounded-[5px] bg-slate-200 dark:bg-black   flex gap-2 justify-between text-[14px] font-semibold leading-4"
       >
         <p>{subValue
           ? subjects?.find((subject) => subject.subjectName === subValue)?.subjectName
@@ -346,7 +346,7 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={yeOpen}
-        className="w-auto p-1 rounded-[5px] bg-slate-200 dark:bg-black   flex gap-2 justify-between text-[14px] font-semibold leading-4"
+        className=" p-1 rounded-[5px] bg-slate-200 dark:bg-black   flex gap-2 justify-between text-[14px] font-semibold leading-4"
       >
         <p>{yeValue
           ? yeValue
