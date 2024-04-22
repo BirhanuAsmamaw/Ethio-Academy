@@ -54,6 +54,10 @@ export const sidebarData=[
         url:"/dashboard/exams"
       },
       {
+        label:"Create Exam Question",
+        url:"/dashboard/exams/create-question"
+      },
+      {
         label:"Exam Type List",
         url:"/dashboard/exams/type"
       },
