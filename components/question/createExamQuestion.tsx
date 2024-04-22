@@ -34,7 +34,7 @@ const CreateExamsClient:React.FC<CreateExamsClientProps>= ({exams,university}) =
   // exam type
   const [examOpen, setExamOpen] = useState(false);
   const [examValue, setExamValue] = useState("");
-  
+  const [exam, setexam] = useState<any>(null);
 
 
 
@@ -217,11 +217,11 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={examOpen}
-        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
+        className="w-[200px] justify-between text-[14px] flex gap-2 font-semibold leading-4"
       >
-        {examValue
+        <p>{examValue
           ? exams?.find((exam) => exam.examType === examValue)?.examType
-          : "exams"}
+          : "exams"}</p>
         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </button>
     </PopoverTrigger>
@@ -238,6 +238,7 @@ const handleChooseSelection = (choose: string, value: string) => {
               onSelect={(currentValue) => {
                 setExamValue(currentValue === examValue ? "" : currentValue)
                setDepartments(exam?.departments)
+               setexam(exam)
                 setExamOpen(false)
               }}
             >
@@ -262,11 +263,11 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={depOpen}
-        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
+        className="w-[200px] justify-between text-[14px] flex gap-2 font-semibold leading-4"
       >
-        {depValue
+       <p> {depValue
           ? departments?.find((department) => department.departmentName === depValue)?.departmentName
-          : "departments"}
+          : "departments"}</p>
         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </button>
     </PopoverTrigger>
@@ -311,11 +312,11 @@ const handleChooseSelection = (choose: string, value: string) => {
     <PopoverTrigger asChild>
       <button
         aria-expanded={subOpen}
-        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
+        className="w-[200px] flex gap-2 justify-between text-[14px] font-semibold leading-4"
       >
-        {subValue
+        <p>{subValue
           ? subjects?.find((subject) => subject.subjectName === subValue)?.subjectName
-          : "subjects"}
+          : "subjects"}</p>
         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </button>
     </PopoverTrigger>
@@ -355,22 +356,23 @@ const handleChooseSelection = (choose: string, value: string) => {
     {/* Year */}
 
     <Popover open={yeOpen} onOpenChange={setyeOpen}>
+
     <PopoverTrigger asChild>
       <button
         aria-expanded={yeOpen}
-        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
+        className="w-[200px] flex gap-2 justify-between text-[14px] font-semibold leading-4"
       >
-        {yeValue
+        <p>{yeValue
           ? yeValue
-          : "Years"}
+          : "Years"}</p>
         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
       </button>
     </PopoverTrigger>
   
     <PopoverContent className="w-[200px] p-0">
       <Command>
-        <CommandInput placeholder=" Years..." />
-       <CommandList> <CommandEmpty>No Years found.</CommandEmpty>
+        <CommandInput placeholder=" years..." />
+       <CommandList> <CommandEmpty>No years found.</CommandEmpty>
         <CommandGroup>
           {examsYears?.map((year) => (
             <CommandItem
@@ -378,14 +380,14 @@ const handleChooseSelection = (choose: string, value: string) => {
               value={year}
               onSelect={(currentValue) => {
                 setyeValue(currentValue === yeValue? "" : currentValue)
-             
+               setyeValue(year)
                 setyeOpen(false)
               }}
             >
               <Check
                 className={cn(
                   "mr-2 h-4 w-4",
-                  yeValue === year? "opacity-100" : "opacity-0"
+                  value === year ? "opacity-100" : "opacity-0"
                 )}
               />
               {year}
@@ -399,14 +401,13 @@ const handleChooseSelection = (choose: string, value: string) => {
 
 
 
-  </div>
 
-<div className="flex justify-center pb-10 w-full gap-10">
 
- 
-<div className="flex gap-4">
+    </div>
 
-<div className="flex items-center ">
+<div>
+    <div className='flex  w-full justify-end'>
+          <div className="flex justify-end  gap-2 items-center" >   
     <input  checked={isModel}  onChange={(event) => setModel(true)}  id="model-1" type="radio" value="" name="model" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-700 dark:ring-offset-gray-800  rounded-full focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
     <label htmlFor="model-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is Model?</label>
 </div>
@@ -425,7 +426,7 @@ const handleChooseSelection = (choose: string, value: string) => {
 
 
 
-  {(((isModel&&department.url!=="Highschool")&&university)||department?.exam.url==="COC")?<div className="p-6 flex  w-[350px]" >
+  {(((isModel&&department&&department?.url!=="Highschool")&&university)||exam&&exam?.url==="COC")?<div className="p-6 flex  w-[350px]" >
 <Popover open={open} onOpenChange={setOpen} >
       <PopoverTrigger asChild   >
         <button
@@ -455,7 +456,7 @@ const handleChooseSelection = (choose: string, value: string) => {
                   value={un.name.toLowerCase()}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
-                    setuniversityId((isModel||department.exam.url==="COC")? un.id:null);
+                    setuniversityId((isModel||exam&&exam?.url==="COC")? un.id:null);
                     setOpen(false);
                   }}
                 >
