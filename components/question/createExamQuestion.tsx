@@ -13,27 +13,49 @@ import {AnimatePresence,motion} from "framer-motion"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '../ui/command';
 import { cn } from '@/lib/utils';
 import { Check, ChevronsUpDown } from "lucide-react"
+import { examsYears } from '@/lib/examsYear';
 
 
  
 interface  CreateExamsClientProps{
   university?:any[]|null;
-  department: any;
-  subject?: any|null;
-  year: string;
-  isCoc?: boolean;
-  backUrl?:string,
-  
+ 
+  exams:any[];
 }
-const CreateExamsClient:React.FC<CreateExamsClientProps> = ({backUrl,isCoc,department,subject,year,university}) => {
+const CreateExamsClient:React.FC<CreateExamsClientProps>= ({exams,university}) => {
   const [isModel,setModel]=useState(false)
  
   
+  // university
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [universityId, setuniversityId] = useState<string|null>(null);
 
+  // exam type
+  const [examOpen, setExamOpen] = useState(false);
+  const [examValue, setExamValue] = useState("");
+  
 
+
+
+  // departemts
+  const [depOpen, setDepOpen] = useState(false);
+  const [depValue, setDepValue] = useState("");
+  const [department, setdepartment] = useState<any>(null);
+  const [departments, setDepartments] = useState<any[]|null>(null);
+
+
+  // subjects
+  const [subOpen, setSubOpen] = useState(false);
+  const [subValue, setSubValue] = useState("");
+  const [subjectId, setsubjectId] = useState<string|null>(null);
+  const [subjects, setsubjects] = useState<any[]|null>(null);
+
+
+
+// year
+const [yeOpen, setyeOpen] = useState(false);
+const [yeValue, setyeValue] = useState("");
 
 
 
@@ -83,9 +105,9 @@ D:{
 
 const qData={
   universityId:universityId,
-  departmentId:department.id,
-  subjectId:subject? subject.id:null,
-  year:year,
+  departmentId:department?.id,
+  subjectId:subjectId? subjectId:null,
+  year:yeValue,
   explanation:explanation,
   title:question.Q,
   title_two:question.Q2||null,
@@ -106,7 +128,7 @@ console.log("data",qData);
   axios.post('/api/question',qData).then(()=>{
     toast.success("Question created successfully")
     router.refresh();
-    router.push(backUrl||`/dashboard/departments/${department?.id}/${subject?.id}/exam/${year}`);
+    router.push("/");
     
   }).catch((error:any)=>{
    
@@ -179,7 +201,7 @@ const handleChooseSelection = (choose: string, value: string) => {
      <div className="flex flex-col gap-10 lg:gap-20">
      <div className="w-full">
     <div className="p-4">
-      <Heading title={`Write ${subject? subject?.subjectName:department.departmentName} in  ${year} Year Exam Question`}/>
+      <Heading title={`Write  Exam Question`}/>
     </div>
 
 
@@ -187,7 +209,200 @@ const handleChooseSelection = (choose: string, value: string) => {
 {/* add exams question */}
 <div className="w-full pt-10 space-y-4">
 
+
+  <div className="grid w-full grid-cols-1 md:grid-cols-4">
+
+    {/* Exam Types */}
+    <Popover open={examOpen} onOpenChange={setExamOpen}>
+    <PopoverTrigger asChild>
+      <button
+        aria-expanded={examOpen}
+        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
+      >
+        {examValue
+          ? exams?.find((exam) => exam.examType === examValue)?.examType
+          : "exams"}
+        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+      </button>
+    </PopoverTrigger>
+  
+    <PopoverContent className="w-[200px] p-0">
+      <Command>
+        <CommandInput placeholder=" exam..." />
+       <CommandList> <CommandEmpty>No exams found.</CommandEmpty>
+        <CommandGroup>
+          {exams?.map((exam) => (
+            <CommandItem
+              key={exam?.examType}
+              value={exam?.examType}
+              onSelect={(currentValue) => {
+                setExamValue(currentValue === examValue ? "" : currentValue)
+               setDepartments(exam?.departments)
+                setExamOpen(false)
+              }}
+            >
+              <Check
+                className={cn(
+                  "mr-2 h-4 w-4",
+                  examValue === exam?.examType ? "opacity-100" : "opacity-0"
+                )}
+              />
+              {exam?.examType}
+            </CommandItem>
+          ))}
+        </CommandGroup></CommandList>
+      </Command>
+    </PopoverContent>
+  </Popover>
+
+
+    {/* Departments */}
+
+    <Popover open={depOpen} onOpenChange={setDepOpen}>
+    <PopoverTrigger asChild>
+      <button
+        aria-expanded={depOpen}
+        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
+      >
+        {depValue
+          ? departments?.find((department) => department.departmentName === depValue)?.departmentName
+          : "departments"}
+        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+      </button>
+    </PopoverTrigger>
+  
+    <PopoverContent className="w-[200px] p-0">
+      <Command>
+        <CommandInput placeholder=" department..." />
+       <CommandList> <CommandEmpty>No departments found.</CommandEmpty>
+        <CommandGroup>
+          {departments?.map((department) => (
+            <CommandItem
+              key={department?.departmentName}
+              value={department?.departmentName}
+              onSelect={(currentValue) => {
+                setDepValue(currentValue === depValue ? "" : currentValue)
+               setdepartment(department)
+               setsubjects(department?.subject)
+                setDepOpen(false)
+              }}
+            >
+              <Check
+                className={cn(
+                  "mr-2 h-4 w-4",
+                  depValue === department?.departmentName ? "opacity-100" : "opacity-0"
+                )}
+              />
+              {department?.departmentName}
+            </CommandItem>
+          ))}
+        </CommandGroup></CommandList>
+      </Command>
+    </PopoverContent>
+  </Popover>
+
+
+
+
+
+    {/* Subjects */}
+
+    <Popover open={subOpen} onOpenChange={setSubOpen}>
+    <PopoverTrigger asChild>
+      <button
+        aria-expanded={subOpen}
+        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
+      >
+        {subValue
+          ? subjects?.find((subject) => subject.subjectName === subValue)?.subjectName
+          : "subjects"}
+        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+      </button>
+    </PopoverTrigger>
+  
+    <PopoverContent className="w-[200px] p-0">
+      <Command>
+        <CommandInput placeholder=" subject..." />
+       <CommandList> <CommandEmpty>No subjects found.</CommandEmpty>
+        <CommandGroup>
+          {subjects?.map((subject) => (
+            <CommandItem
+              key={subject?.subjectName}
+              value={subject?.subjectName}
+              onSelect={(currentValue) => {
+                setSubValue(currentValue === subValue? "" : currentValue)
+               setsubjectId(subject?.id)
+                setSubOpen(false)
+              }}
+            >
+              <Check
+                className={cn(
+                  "mr-2 h-4 w-4",
+                  value === subject?.subjectName ? "opacity-100" : "opacity-0"
+                )}
+              />
+              {subject?.subjectName}
+            </CommandItem>
+          ))}
+        </CommandGroup></CommandList>
+      </Command>
+    </PopoverContent>
+  </Popover>
+
+
+
+
+    {/* Year */}
+
+    <Popover open={yeOpen} onOpenChange={setyeOpen}>
+    <PopoverTrigger asChild>
+      <button
+        aria-expanded={yeOpen}
+        className="w-[200px] justify-between text-[14px] font-semibold leading-4"
+      >
+        {yeValue
+          ? yeValue
+          : "Years"}
+        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+      </button>
+    </PopoverTrigger>
+  
+    <PopoverContent className="w-[200px] p-0">
+      <Command>
+        <CommandInput placeholder=" Years..." />
+       <CommandList> <CommandEmpty>No Years found.</CommandEmpty>
+        <CommandGroup>
+          {examsYears?.map((year) => (
+            <CommandItem
+              key={year}
+              value={year}
+              onSelect={(currentValue) => {
+                setyeValue(currentValue === yeValue? "" : currentValue)
+             
+                setyeOpen(false)
+              }}
+            >
+              <Check
+                className={cn(
+                  "mr-2 h-4 w-4",
+                  yeValue === year? "opacity-100" : "opacity-0"
+                )}
+              />
+              {year}
+            </CommandItem>
+          ))}
+        </CommandGroup></CommandList>
+      </Command>
+    </PopoverContent>
+  </Popover>
+
+
+
+
+  </div>
+
 <div className="flex justify-center pb-10 w-full gap-10">
+
  
 <div className="flex gap-4">
 
@@ -206,6 +421,9 @@ const handleChooseSelection = (choose: string, value: string) => {
   
 </div>
   </div>
+
+
+
 
   {(((isModel&&department.url!=="Highschool")&&university)||department.exam.url==="COC")?<div className="p-6 flex  w-[350px]" >
 <Popover open={open} onOpenChange={setOpen} >

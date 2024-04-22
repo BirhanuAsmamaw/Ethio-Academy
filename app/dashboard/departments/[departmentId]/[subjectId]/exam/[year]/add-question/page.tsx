@@ -1,7 +1,7 @@
 import { getDepartmentById } from "@/actions/departments/getDepartmentById";
 import { getSubjectById } from "@/actions/subject/getSubjectById";
 import { getAllUniversity } from "@/actions/university/getAllUniversity";
-import CreateExamsClient from "@/components/question/createExamQuestion";
+
 
 
 
@@ -20,7 +20,9 @@ const AddExitQuestionPage = async({params}:{
 
 
 
-  return ( <CreateExamsClient subject={subject} department={department} university={university} year={params.year}/> );
+  return ( <div>
+    <h1> un iumportant page!!!!!!</h1>
+  </div>);
 }
  
 export default AddExitQuestionPage;
