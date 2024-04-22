@@ -16,10 +16,10 @@ const EUEEYearExamsPage = async({params}:{
   
   const user=await getCurrentUser();
   const subject=await getSubjectById(params.subject)
-  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName==="Highschool"&&payedCourse?.status);
+  const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse?.department?.departmentName==="Highschool"&&payedCourse?.status);
 
 const department=await getDepartmentByName("Highschool")
-  const examQuestions=await getQuestionsByCategory("EUEE","Highschool",params.year,subject?.subjectName);
+  const examQuestions=await getQuestionsByCategory("EUEE","Highschool",params.year,subject?.id);
   return (<><Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Subjects Exam Now!"} />}
   <EUEEYearExamsClientPage subject={subject} year={params.year} Questions={examQuestions}/>

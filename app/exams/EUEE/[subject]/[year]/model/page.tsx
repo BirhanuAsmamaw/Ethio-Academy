@@ -19,7 +19,7 @@ const EUEEYearExamsPage = async({params}:{
   const isCoursePDepartment=user?.payedCourses.some((payedCourse) =>payedCourse.department?.departmentName==="Highschool"&&payedCourse?.status);
 
 const department=await getDepartmentByName("Highschool")
-  const examQuestions=await getModelQuestionsByCategory("EUEE","Highschool",params.year,true,subject?.subjectName,'');
+  const examQuestions=await getModelQuestionsByCategory("EUEE","Highschool",params.year,true,subject?.id,'');
   return (<><Navbar/>
   {isCoursePDepartment?"":<BlurComponent department={department} user={user} buyLabel={"Buy All Subjects Exam Now!"} />}
  
