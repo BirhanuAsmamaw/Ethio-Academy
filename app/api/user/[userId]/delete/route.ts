@@ -8,12 +8,15 @@ export async function DELETE(req: Request, {params}:{params:{userId:string}}){
 
   try{
     const user=await  getCurrentUser();
-
+   
     if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
+      throw new Error("Unathorized")
     }
-    if(user.role!=="ADMIN"){
-      return NextResponse.json({status:false, message:"unathorized"});
+    
+    
+    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageUser" )
+    if(!isDataAccessed){
+      throw new Error("Forbidden Resourse")
     }
 
     const userData=await prisma.user.findUnique({

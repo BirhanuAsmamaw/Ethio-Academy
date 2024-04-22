@@ -13,12 +13,7 @@ const Payment = async() => {
   const users=await getAllUsers();
   const banks=await getAllBanks();
 
-  const admins=users?.filter((u)=>u.role ==='ADMIN').map((a)=>{
-    return {
-      id:a.id,
-     name:a.name,
-    }
-  });
+  const admins=users
   return ( <>
   <Navbar/>
   <div className="p-2 pt-10 flex flex-col gap-10 w-full justify-center pb-20">
