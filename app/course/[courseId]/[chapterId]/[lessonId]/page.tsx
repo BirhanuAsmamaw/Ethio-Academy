@@ -10,7 +10,6 @@ import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
 import CourseContent from "../../courseContent";
 import Header from "@/components/Header";
-import CustomeSheet from "@/components/customSheet";
 import LessonBlur from "./lessonBlur";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -47,7 +46,7 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
   <MainLayout>
    
      
-      <div className=" hidden lg:block fixed right-1 top-14">
+      <div className="  lg:hidden fixed right-1 top-14">
       <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline">contents</Button>
@@ -84,7 +83,7 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 
       </SubLayout>
 
-    <div className="fixed w-[400px]  h-[500px] hidden   overflow-y-auto lg:block top-16 right-4">
+    <div className="fixed w-[400px]  h-[560px] hidden   overflow-y-auto lg:block top-16 right-4">
       <CourseContent course={lesson.chapter.course}/>
     </div>
     </MainLayout></> );
