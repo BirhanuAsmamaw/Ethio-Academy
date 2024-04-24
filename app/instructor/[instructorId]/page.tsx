@@ -40,11 +40,14 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
 
 {/* COURSES */}
 {(teacher?.courses?.length||0)?<div  id='common-courselist' className="flex justify-center w-full">
-    <div className="w-full lg:w-11/12 xl:px-20 space-y-4">
+    <div className="w-full  space-y-4">
       <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
-  
-     <CourseList>
-     {teacher?.courses?.map((course)=>{
+  <div className="grid 
+    grid-cols-1 
+    gap-6
+    md:grid-cols-2 
+    lg:grid-cols-3">
+       {teacher?.courses?.map((course)=>{
           return course.cover&&<Card
           key={course.id}
               id={course.id}
@@ -60,7 +63,8 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
                />
       
         })}
-     </CourseList>
+    </div>
+   
       {(teacher?.courses?.length||0)>4?<div className="w-full flex p-4 justify-end">
         <PaginationComponent paginationLength={teacher?.courses?.length||0} page={'1'} pageUrl='page'id='common-courselist'/>
       </div>:""}
