@@ -7,7 +7,7 @@ const FooterClient = () => {
     const pathName=usePathname();
   return ( <>
   {
-    pathName!=="/dashboard/*"?<Footer/>:""}
+   pathName?.startsWith('/dashboard')?"":<Footer/>}
   </>
   )
 }
