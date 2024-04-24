@@ -7,6 +7,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Sidebar from "@/components/sidebar/sidebar";
 import { ReactNode } from "react";
 import DashboardSheet from "./dashboardSheet";
+import Footer from "@/components/footer/footer";
 
 interface DashboardLayoutProbs{
   children: ReactNode
@@ -48,7 +49,14 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
 
 
 
-    <div className="md:px-6 py-4 lg:col-span-9 xl:col-span-10 ">{children}</div>
+    <div className="md:px-6 py-4 lg:col-span-9 xl:col-span-10 ">{children}
+    
+    
+
+    <div className=" pt-20">
+      <Footer/>
+    </div>
+    </div>
   </div>
 
   </> );}
