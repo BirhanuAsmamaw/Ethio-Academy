@@ -88,8 +88,8 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({university,onPrevio
             <Image height={200} width={200} src={university?.logo?.public_url} alt={university?.name}/>
           </div>:""}
           <div className="">
-          {university?<h1  className="text-lg md:text-xl lg:text-2xl font-semibold">{university?.name}({university?.code})</h1>:""}
-             <h2 className="text-lg font-semibold">{examsTitle}</h2>
+          {university?<h1  className="text-lg md:text-xl lg:text-2xl leading-10 font-semibold">{university?.name}({university?.code})</h1>:""}
+             <h2 className={`font-semibold leading-6 ${university? 'text-lg ':' text-2xl'}`}>{examsTitle}</h2>
           </div>
           </div>
         <div className="pt-6" id="quiz">
