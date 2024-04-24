@@ -83,16 +83,15 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({university,onPrevio
   }
   return (<MainLayout>
       <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
-        {university?<div className={`p-4 w-full flex flex-col md:flex-row border-b-2 border-dashed ${university.logo?'justify-center md:justify-start':'justify-center'}`}>
+      <div className={`p-4 w-full flex flex-col md:flex-row border-b-2 border-dashed ${university.logo?'justify-center md:justify-start':'justify-center'}`}>
           {university.log?<div className="w-40 h-40">
             <Image height={200} width={200} src={university?.logo?.public_url} alt={university?.name}/>
           </div>:""}
           <div className="">
-            <h1  className="text-lg md:text-xl lg:text-2xl font-semibold">{university?.name}({university?.code})</h1>
-           
-            <h2 className="text-lg font-semibold">{examsTitle}</h2>
+          {university?<h1  className="text-lg md:text-xl lg:text-2xl font-semibold">{university?.name}({university?.code})</h1>:""}
+             <h2 className="text-lg font-semibold">{examsTitle}</h2>
           </div>
-          </div>:""}
+          </div>
         <div className="pt-6" id="quiz">
         <button onClick={()=>router.back()} 
         type="button" 
