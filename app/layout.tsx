@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import {IBM_Plex_Sans} from 'next/font/google'
 import './globals.css'
 import AppProvider from '@/providers/appProvider'
-import Footer from '@/components/footer/footer'
+
 
 import { Toaster } from 'react-hot-toast'
+import FooterClient from '@/components/footer/footerClient'
 
 
 const IBM_plex_sans= IBM_Plex_Sans({ subsets: ['latin'] ,weight:['400', '500','600','700']})
@@ -36,7 +37,7 @@ export default function RootLayout({
         <div className="">
         {children}
         </div>
-        <Footer/>
+        <FooterClient/>
         </div>
         </AppProvider>
         </body>
