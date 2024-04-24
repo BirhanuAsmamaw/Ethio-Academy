@@ -137,7 +137,7 @@ Next Year Exam
               key={index} className="">
                 <div className="flex border-b border-double border-green-600 justify-between">
                   <p className="text-xl font-bold">{index + 1}</p>
-                  
+                  {question?.subject?<p className="text-sm text-gray-500 dark:text-gray-400 font-medium">{question?.subject.subjectName}</p>:""}
                 </div>
                 <div className="">
                 <p className="p-2">{question.title}</p>
