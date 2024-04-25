@@ -7,7 +7,7 @@ import { servicesData } from '@/lib/serviceData';
 
 const ServicesComponent = () => {
   return (
-    <div id='service' className='bg-zinc-100 dark:bg-zinc-800 p-4 md:p-10 flex justify-center w-full'>
+    <div id='service' className='bg-zinc-100 dark:bg-zinc-900 p-4 md:p-10 flex justify-center w-full'>
         <div className="">
    <h1 className='text-3xl font-semibold leading-10 p-4'>Services</h1>
             <div className="flex justify-center w-full">
