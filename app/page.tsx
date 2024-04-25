@@ -15,6 +15,7 @@ import CourseList from '@/components/lists/courseList';
 import FAQComponent from '@/components/faq';
 import AboutComponent from '@/components/about/about';
 import ServicesComponent from '@/components/services/service';
+import DevicesComponent from '@/components/devices/devices';
 
 
 
@@ -164,6 +165,8 @@ EXAMS CATEGORY */}
 <ServicesComponent/>
 {/* FAQ */}
 <FAQComponent/>
+
+<DevicesComponent/>
     
     </main>
 
