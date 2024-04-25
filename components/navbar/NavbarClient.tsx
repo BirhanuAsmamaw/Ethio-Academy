@@ -15,6 +15,7 @@ import Search from "../search/search";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import CategorySearch from "../categorySearch";
 import ExamsCDrobDown from "../dropdown/CourseCategory";
+import Logo from "../logo";
 
 interface NavbarClientProps{
   user:any;
@@ -53,18 +54,12 @@ const {setTheme}=useTheme();
 
 const {carts}=useCart()
 
+//logo
+//https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png
+
   return ( <div className={` w-full px-4 md:px-6 z-50 h-14 items-center   flex justify-between   ${isFixed? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-white dark:bg-gray-900  ":"bg-stone-200 dark:bg-gray-900 "} duration-300 z-50`}>
    <div className="p-2">
-   <Link href="/" className=" no-underline flex gap-2">
-      <Avatar className={` h-10 w-10 `}>
-      <AvatarImage src={`https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png`} alt="EEA" />
-      <AvatarFallback>EEA</AvatarFallback>
-    </Avatar>
-     <h1 className="hidden md:block font-semibold text-xl md:text-lg lg:text-2xl  py-2 overflow-hidden">
-      <span className="text-blue-600">Ethio</span>
-      <span className="text-rose-600"> Exams</span>
-    <span className="text-teal-600"> Academy</span>
-     </h1></Link>
+   <Logo/>
    </div>
 
      

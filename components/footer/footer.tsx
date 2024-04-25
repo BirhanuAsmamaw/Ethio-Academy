@@ -1,6 +1,7 @@
 
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import Logo from '../logo';
 const Footer = () => {
   return ( 
 
@@ -8,13 +9,7 @@ const Footer = () => {
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div className="md:flex md:justify-between">
               <div className="mb-6 md:mb-0">
-                  <Link href="/" className="no-underline flex items-center">
-                  <Avatar className={` h-10 w-10`}>
-      <AvatarImage src={`https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png`} alt="EEA" />
-      <AvatarFallback>EEA</AvatarFallback>
-    </Avatar>
-                      <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><span className="text-blue-600">Ethio</span> <span>Exams</span><span className="text-green-600">Academy</span></span>
-                  </Link>
+              <Logo/>
               </div>
               <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                   
