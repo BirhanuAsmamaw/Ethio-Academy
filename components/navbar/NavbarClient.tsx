@@ -69,7 +69,12 @@ const {carts}=useCart()
      <div className="flex   justify-center">
     <div className=" hidden md:block">
       <div className="flex gap-2 ">
-      <Link href="/#about" className="p-2  mt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">AboutUs</Link>
+      <Link href="/#about" className="p-2  mt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+       hover:text-rose-400 transition duration-300 font-medium">AboutUs</Link>
+
+<Link href="/#service" className="p-2  mt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+       hover:text-rose-400 transition duration-300 font-medium">Service</Link>
+
       <Link href="/#courseslist" className="p-2  mt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">Courses</Link>
         <div className=" no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <ExamsCDrobDown exams={exams}/>

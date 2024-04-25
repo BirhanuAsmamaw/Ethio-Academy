@@ -16,7 +16,7 @@ students and educators, ensuring academic excellence and success.</p>
    </AboutContainer>
 
 
-   <AboutContainer title='Platform Overview 🌐:'className='bg-rose-100 dark:bg-slate-800'>
+   <AboutContainer title='Platform Overview 🌐:'className='bg-blue-100 dark:bg-zinc-800'>
    <p className='text-lg'>
 Ethio Exams Academy serves as a comprehensive educational hub, where instructors can not only freely create and sell 
 their own courses but also earn money easily through our website. 
@@ -29,7 +29,7 @@ It&apos;s a vibrant community where teachers and students come together to learn
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-<AboutContainer title='Key Features 🌟:'className='bg-blue-100 dark:bg-stone-800'>
+<AboutContainer title='Key Features 🌟:'className='bg-green-100 dark:bg-gray-800'>
    <ul className=' space-y-2  list-decimal leading-relaxed list-inside '>
     <li>Instructors can sell their courses and earn money easily through our platform. 💰</li>
     <li>Students access high-quality learning resources and receive certificates for their participation, fostering a sense of achievement and recognition. 🏆</li>
@@ -40,7 +40,7 @@ It&apos;s a vibrant community where teachers and students come together to learn
    </AboutContainer>
 
 
-   <AboutContainer title='Vision 🔮:'className='bg-zinc-100  dark:bg-zinc-800'>
+   <AboutContainer title='Vision 🔮:'className='bg-blue-100 dark:bg-zinc-800'>
    <p className='text-lg  '>
    
 At Ethio Exams Academy, we envision a future where education is accessible to all and where both students and educators are empowered to reach their full potential. Join us in our mission to redefine academic success and inspire a generation of Ethiopian scholars to excel and thrive.
