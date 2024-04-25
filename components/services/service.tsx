@@ -34,7 +34,7 @@ const ServicesComponent = () => {
                     whileInView={{opacity:1,y:0}}
                     
                      key={index} className="bg-white  dark:bg-slate-900 shadow-md rounded-[10px] space-y-6 p-4">
-                    <h2 className='text-xl leading-6 font-semibold'>{service.title}</h2>
+                    <h2 className='text-2xl leading-6 font-semibold'>{service.title}</h2>
                     <div className={`  grid grid-cols-1 lg:grid-cols-2 gap-10  w-full `}>
                         <motion.div 
                         initial={isDesktop?{opacity:0,x:-100}:""}
@@ -43,7 +43,7 @@ const ServicesComponent = () => {
                         className={`${isEven ? '' : 'lg:order-last'} flex justify-center items-center`}>
                          <ul className=' space-y-4 list-disc list-inside'>
                             {service.description.map((des,ind)=>{
-                                return <li className='flex items-center' key={ind}>
+                                return <li className='flex text-lg items-center' key={ind}>
                                     <svg className="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
          </svg>
