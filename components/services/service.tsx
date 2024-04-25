@@ -1,11 +1,25 @@
 "use client"
 
 import Image from 'next/image';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {motion} from "framer-motion"
 import { servicesData } from '@/lib/serviceData';
 
 const ServicesComponent = () => {
+    const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 640);
+    };
+
+    handleResize(); // Check on initial render
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <div id='service' className='bg-zinc-100 z-20 dark:bg-zinc-900 p-4 md:p-10 flex justify-center w-full'>
         <div className="">
@@ -23,7 +37,7 @@ const ServicesComponent = () => {
                     <h2 className='text-xl leading-6 font-semibold'>{service.title}</h2>
                     <div className={`  grid grid-cols-1 lg:grid-cols-2 gap-10  w-full `}>
                         <motion.div 
-                        initial={{opacity:0,x:-100}}
+                        initial={isDesktop?{opacity:0,x:-100}:{}}
                         whileInView={{opacity:1,x:0}}
                         transition={{delay:0.2, duration:0.5}}
                         className={`${isEven ? '' : 'lg:order-last'} flex justify-center items-center`}>
@@ -39,7 +53,7 @@ const ServicesComponent = () => {
                         </motion.div>
 
                         <motion.div 
-                        initial={{opacity:0,translateX:100}}
+                       initial={isDesktop?{opacity:0,x:100}:{}}
                         whileInView={{opacity:1,translateX:0}}
                         transition={{delay:0.2, duration:0.5}}
                         className="w-full">
