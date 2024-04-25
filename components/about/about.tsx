@@ -40,7 +40,7 @@ It&apos;s a vibrant community where teachers and students come together to learn
    </AboutContainer>
 
 
-   <AboutContainer title='Vision 🔮:'className='bg-zinc-100  bg-zinc-800'>
+   <AboutContainer title='Vision 🔮:'className='bg-zinc-100  dark:bg-zinc-800'>
    <p className='text-lg  '>
    
 At Ethio Exams Academy, we envision a future where education is accessible to all and where both students and educators are empowered to reach their full potential. Join us in our mission to redefine academic success and inspire a generation of Ethiopian scholars to excel and thrive.
