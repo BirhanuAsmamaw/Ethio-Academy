@@ -1,8 +1,10 @@
 "use client"
-import { ethioServices } from '@/lib/service';
+
 import Image from 'next/image';
 import React from 'react'
 import {motion} from "framer-motion"
+import { servicesData } from '@/lib/serviceData';
+
 const ServicesComponent = () => {
   return (
     <div id='service' className='bg-zinc-100 dark:bg-zinc-800 p-4 md:p-10 flex justify-center w-full'>
@@ -11,7 +13,7 @@ const ServicesComponent = () => {
             <div className="flex justify-center w-full">
             <div className="flex flex-col gap-10 w-full md:w-11/12 lg:w-10/12 xl:w-8/12 ">
                 {
-                   ethioServices.map((service,index) =>{
+                   servicesData.map((service,index) =>{
                     const isEven = index % 2 === 0;
                     return  <motion.div
                     initial={{opacity:0,y:15}}
