@@ -4,7 +4,7 @@ import TabletComponent from './tablet'
 import PcComponent from './pc'
 
 const DevicesComponent = () => {
-  return (<div className="dark:bg-black p-10 md:p-20 bg-white">
+  return (<div className="dark:bg-black p-10 md:p-20 bg-slate-100">
     <h1 className='text-xl leading-6 p-4 font-semibold'>Our website Access Easily By these devices</h1>
 
     <div className="flex flex-wrap justify-center ">
