@@ -19,9 +19,9 @@ const ServicesComponent = () => {
                     initial={{opacity:0,y:15}}
                     whileInView={{opacity:1,y:0}}
                     
-                     key={index} className="bg-white dark:bg-slate-900 shadow-md rounded-[10px] space-y-6 p-4">
+                     key={index} className="bg-white relative dark:bg-slate-900 shadow-md rounded-[10px] space-y-6 p-4">
                     <h2 className='text-xl leading-6 font-semibold'>{service.title}</h2>
-                    <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10  w-full `}>
+                    <div className={` absolute grid grid-cols-1 lg:grid-cols-2 gap-10  w-full `}>
                         <motion.div 
                         initial={{opacity:0,translateX:-100}}
                         whileInView={{opacity:1,translateX:0}}
