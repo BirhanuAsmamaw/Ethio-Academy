@@ -24,30 +24,36 @@ interface NavbarClientProps{
  
 }
 const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,departments,exams}) => {
-  const [isScroll,setScroll] =useState(false);
+  const [isFixed, setIsFixed] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 80) {
-        setScroll(true);
+      const currentScrollPos = window.scrollY;
+      const isScrollingDown = currentScrollPos > prevScrollPos;
+
+      if (currentScrollPos > 100 && isScrollingDown) {
+        setIsFixed(false);
       } else {
-        setScroll(false);
+        setIsFixed(true);
       }
+      
+      setPrevScrollPos(currentScrollPos);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
-    // Cleanup the event listener when the component unmounts
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [prevScrollPos]);
 
 const {setTheme}=useTheme();
 
 
 const {carts}=useCart()
 
-  return ( <div className={` w-full px-4 md:px-6 z-50 h-14 items-center   flex justify-between   ${isScroll? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-white dark:bg-gray-900  ":"bg-stone-200 dark:bg-gray-900 "} duration-300 z-50`}>
+  return ( <div className={` w-full px-4 md:px-6 z-50 h-14 items-center   flex justify-between   ${isFixed? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-white dark:bg-gray-900  ":"bg-stone-200 dark:bg-gray-900 "} duration-300 z-50`}>
    <div className="p-2">
    <Link href="/" className=" no-underline flex gap-2">
       <Avatar className={` h-10 w-10 `}>
