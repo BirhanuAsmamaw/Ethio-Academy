@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import React from 'react'
-
+import DarkPc from "../../public/dark.pc.png"
+import LightPc from "../../public/light.pc.png"
 const PcComponent = () => {
   return (<div>
 
 <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
     <div className="rounded-lg overflow-hidden h-[156px] md:h-[278px] bg-white dark:bg-gray-800">
-        <Image height={156} width={300} src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen.png" className="dark:hidden h-[156px] md:h-[278px] w-full rounded-xl" alt=""/>
-        <Image height={156} width={300}  src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen-dark.png" className="hidden dark:block h-[156px] md:h-[278px] w-full rounded-lg" alt=""/>
+        <Image height={156} width={300} src={LightPc} className="dark:hidden h-[156px] md:h-[278px] w-full rounded-xl" alt=""/>
+        <Image height={156} width={300}  src={DarkPc} className="hidden dark:block h-[156px] md:h-[278px] w-full rounded-lg" alt=""/>
     </div>
 </div>
 <div className="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl rounded-t-sm h-[17px] max-w-[351px] md:h-[21px] md:max-w-[597px]">

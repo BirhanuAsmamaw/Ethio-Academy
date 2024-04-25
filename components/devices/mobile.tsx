@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-
+import DarkMobile from "../../public/mobile.dark.png"
+import LightMobile from "../../public/mobile.light.png"
 const MobileComponent = () => {
   return (<>
   <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-xl h-[600px] w-[300px] shadow-xl">
@@ -13,10 +14,10 @@ const MobileComponent = () => {
         <Image
          width={272} 
          height={572} 
-        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-light.png" className="dark:hidden w-[272px] h-[572px]" alt=""/>
+        src={LightMobile} className="dark:hidden w-[272px] h-[572px]" alt=""/>
         <Image 
         width={272}  height={572}
-        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-dark.png" className="hidden dark:block w-[272px] h-[572px]" alt=""/>
+        src={DarkMobile} className="hidden dark:block w-[272px] h-[572px]" alt=""/>
     </div>
 </div></>
 
