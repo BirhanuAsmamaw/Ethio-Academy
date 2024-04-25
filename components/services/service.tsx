@@ -19,12 +19,12 @@ const ServicesComponent = () => {
                     initial={{opacity:0,y:15}}
                     whileInView={{opacity:1,y:0}}
                     
-                     key={index} className="bg-white relative dark:bg-slate-900 shadow-md rounded-[10px] space-y-6 p-4">
+                     key={index} className="bg-white  dark:bg-slate-900 shadow-md rounded-[10px] space-y-6 p-4">
                     <h2 className='text-xl leading-6 font-semibold'>{service.title}</h2>
-                    <div className={` absolute grid grid-cols-1 lg:grid-cols-2 gap-10  w-full `}>
+                    <div className={`  grid grid-cols-1 lg:grid-cols-2 gap-10  w-full `}>
                         <motion.div 
-                        initial={{opacity:0,translateX:-100}}
-                        whileInView={{opacity:1,translateX:0}}
+                        initial={{opacity:0,x:-100}}
+                        whileInView={{opacity:1,x:0}}
                         transition={{delay:0.2, duration:0.5}}
                         className={`${isEven ? '' : 'lg:order-last'} flex justify-center items-center`}>
                          <ul className=' space-y-4 list-disc list-inside'>
