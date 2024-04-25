@@ -2,11 +2,7 @@ import React from 'react'
 import AboutContainer from './aboutContainer';
 
 const AboutComponent = () => {
-  return (
-
-
-       
-        <div className=" space-y-20 bg-pink-50 dark:bg-black p-10">
+  return (<div id='about' className=" space-y-20 bg-pink-50 dark:bg-black p-10">
 
          <h1 className='text-3xl font-semibold leading-10'>About</h1>
 

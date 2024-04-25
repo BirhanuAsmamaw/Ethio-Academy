@@ -13,7 +13,7 @@ import PaginationComponent from '@/components/pagination';
 import { getNewCourses } from '@/actions/courses/getNewcourses';
 import CourseList from '@/components/lists/courseList';
 import FAQComponent from '@/components/faq';
-import About from './about/page';
+import AboutComponent from '@/components/about/about';
 
 
 
@@ -158,7 +158,7 @@ EXAMS CATEGORY */}
 
 
 
-<About/>
+<AboutComponent/>
 {/* FAQ */}
 <FAQComponent/>
     
