@@ -56,8 +56,8 @@ const ServicesComponent = () => {
                         </motion.div>
 
                         <motion.div 
-                       initial={{opacity:0,x:100}}
-                        whileInView={{opacity:1,translateX:0}}
+                       initial={isMobile?"":{opacity:0,x:100}}
+                       whileInView={{opacity:1,x:0}}
                         transition={{delay:0.2, duration:0.5}}
                         className="w-full">
                             <Image height={400} width={400} src={service.image} alt='service image'/>
