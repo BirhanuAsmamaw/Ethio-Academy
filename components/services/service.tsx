@@ -6,11 +6,11 @@ import {motion} from "framer-motion"
 import { servicesData } from '@/lib/serviceData';
 
 const ServicesComponent = () => {
-    const [isDesktop, setIsDesktop] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth > 640);
+      setIsMobile(window.innerWidth < 640);
     };
 
     handleResize(); // Check on initial render
@@ -19,7 +19,7 @@ const ServicesComponent = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [isDesktop]);
+  }, [isMobile]);
 
 
 
@@ -40,7 +40,7 @@ const ServicesComponent = () => {
                     <h2 className='text-2xl leading-6 font-semibold'>{service.title}</h2>
                     <div className={`  grid grid-cols-1 lg:grid-cols-2 gap-10  w-full `}>
                         <motion.div 
-                        initial={isDesktop?{opacity:0,x:-100}:""}
+                        initial={isMobile?"":{opacity:0,x:-100}}
                         whileInView={{opacity:1,x:0}}
                         transition={{delay:0.2, duration:0.5}}
                         className={`${isEven ? '' : 'lg:order-last'} flex justify-center items-center`}>
@@ -56,7 +56,7 @@ const ServicesComponent = () => {
                         </motion.div>
 
                         <motion.div 
-                       initial={isDesktop?{opacity:0,x:100}:""}
+                       initial={isMobile?"":{opacity:0,x:100}}
                         whileInView={{opacity:1,translateX:0}}
                         transition={{delay:0.2, duration:0.5}}
                         className="w-full">
