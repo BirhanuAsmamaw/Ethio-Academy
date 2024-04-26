@@ -19,7 +19,7 @@ const ServicesComponent = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isDesktop]);
 
 
 
