@@ -6,11 +6,17 @@ import {motion} from "framer-motion"
 import { servicesData } from '@/lib/serviceData';
 
 const ServicesComponent = () => {
-    const [isMobile, setIsMobile] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
+      if(window.innerWidth < 640){
+        setIsMobile(true);
+      }
+      else{
+        setIsMobile(false);
+      }
+     
     };
 
     handleResize(); // Check on initial render
