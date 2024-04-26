@@ -6,7 +6,7 @@ import {motion} from "framer-motion"
 import { servicesData } from '@/lib/serviceData';
 
 const ServicesComponent = () => {
-    const [isDesktop, setIsDesktop] = useState(true);
+    const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -20,6 +20,9 @@ const ServicesComponent = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+
+
   return (
     <div id='service' className='bg-green-200 z-20 dark:bg-zinc-900 p-4 md:p-10 flex justify-center w-full'>
         <div className="">
