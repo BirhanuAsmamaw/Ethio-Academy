@@ -27,7 +27,9 @@ const examsTaken=user.payedCourses.map((course=>({
 
 
  
-  return (<LearningClient courses={myPayedCourses} exams={examsTaken}/>);
+  return (<div className="w-full flex justify-center p-4">
+    <LearningClient courses={myPayedCourses} exams={examsTaken}/>
+  </div>);
 }
  
 export default MyLearning;
