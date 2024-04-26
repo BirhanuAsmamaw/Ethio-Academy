@@ -6,7 +6,7 @@ import {motion} from "framer-motion"
 import { servicesData } from '@/lib/serviceData';
 
 const ServicesComponent = () => {
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
