@@ -19,7 +19,7 @@ const FilteredCourse:React.FC<FilteredCourseProps> = ({courses,pagination,onPage
   return (
     <div className=' grid grid-cols-12'>
 
-         <div className="col-span-4  px-20">
+         <div className="col-span-4  flex flex-col pl-20 justify-end items-end">
           <h1 className='text-lg font-semibold leading-6 p-4'>{searchData}</h1>
          <Accordion type="single" collapsible  className="w-full">
          {filterCourseData.map((data,index) =>{
