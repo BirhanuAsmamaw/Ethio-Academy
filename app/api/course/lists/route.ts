@@ -1,5 +1,5 @@
 import prisma from "@/lib/prismadb";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
@@ -60,7 +60,7 @@ export async function GET(req: NextRequest) {
     const hasNextPage = page < totalPages;
     const hasPreviousPage = page > 1;
 
-    return {
+    return NextResponse.json({
       courses,
       pagination: {
         currentPage: page,
@@ -68,9 +68,9 @@ export async function GET(req: NextRequest) {
         hasNextPage,
         hasPreviousPage,
       },
-    };
+    });
   } catch (e) {
     console.error("Error:", e);
-    return null;
+     throw new Error("Something went wrong");
   }
 }
