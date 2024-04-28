@@ -20,13 +20,13 @@ const FilteredCourse:React.FC<FilteredCourseProps> = ({courses,pagination,onPage
     <div className=' z-20 grid grid-cols-12'>
 
          <div className="col-span-3  flex flex-col pl-20  items-end">
-          <h1 className='text-lg font-semibold leading-6 p-4'>{searchData}</h1>
+
 
          
 
 
 
-         <Accordion type="single" collapsible  className="w-full">
+         <Accordion type="single" collapsible  className="w-[300px">
          {filterCourseData.map((data,index) =>{
   return  <AccordionItem key={index} value={`${index}`}>
   <AccordionTrigger>
