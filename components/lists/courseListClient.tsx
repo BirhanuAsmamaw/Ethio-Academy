@@ -12,7 +12,7 @@ const CourseListClientComponent = () => {
   const [courses, setCourses] = useState<any[]>([]);
   const [pagination, setPagination] = useState<any>(null);
 
-  const handlePageChange = (page:any) => {
+  const handlePageChange = (page:number) => {
     setCurrentPage(page);
   };
 
