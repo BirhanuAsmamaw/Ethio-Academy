@@ -23,16 +23,16 @@ const FilteredCourse:React.FC<FilteredCourseProps> = ({courses,pagination,onPage
           <h1 className='text-lg font-semibold leading-6 p-4'>{searchData}</h1>
          <Accordion type="single" collapsible  className="w-full">
          {filterCourseData.map((data,index) =>{
-  return  <AccordionItem key={index} value='1'>
+  return  <AccordionItem key={index} value={`${index}`}>
   <AccordionTrigger>
- <h6 className='text-lg  font-semibold leading-6'>{data.name}</h6>
+ <h6 className='text-lg   font-semibold leading-10'>{data.name}</h6>
   </AccordionTrigger>
   <AccordionContent>
     <RadioGroup>
   {data.subCategory.map((cat,ind)=>{
     return <div key={ind} className="flex items-center space-x-2">
-    <RadioGroupItem value={`${cat.value}`} id={`${index+ind}`} />
-    <Label htmlFor={`${index+ind}`}>{cat.name}</Label>
+    <RadioGroupItem value={`${cat.value}`} id={`${index+ind} `} className='h-4 w-4' />
+    <Label htmlFor={`${index+ind}`} className=''>{cat.name}</Label>
     </div>
   })}
   </RadioGroup>
