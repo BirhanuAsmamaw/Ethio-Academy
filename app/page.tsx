@@ -61,7 +61,7 @@ const banner=await getBanner();
     <Hero banner={banner}/>
    
    <CourseListClientComponent/>
-<FilteredCourse/>
+
    
 
 
