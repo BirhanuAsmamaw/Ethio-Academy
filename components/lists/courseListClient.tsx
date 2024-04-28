@@ -28,7 +28,11 @@ const CourseListClientComponent = () => {
   // Include searchData in the dependency array
 
   return (<div>
-    {searchData?<FilteredCourse/>:<CourseListLayout 
+    {searchData?<FilteredCourse
+     courses={courses} 
+     pagination={pagination} 
+     onPageChange={handlePageChange}
+    />:<CourseListLayout 
     courses={courses} 
     pagination={pagination} 
     onPageChange={handlePageChange}/>}

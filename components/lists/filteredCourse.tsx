@@ -7,8 +7,14 @@ import { AccordionContent, AccordionTrigger } from '@radix-ui/react-accordion'
 import { filterCourseData } from '@/lib/filterCourseData'
 import { useSelector } from 'react-redux'
 import { RooState } from '@/redux/store'
+import FilterCourseCard from '../card/filterCourseCard'
 
-const FilteredCourse = () => {
+interface FilteredCourseProps{
+  courses:any[];
+  pagination:any;
+  onPageChange: (page: number) => void;
+}
+const FilteredCourse:React.FC<FilteredCourseProps> = ({courses,pagination,onPageChange}) => {
   const searchData=useSelector((state:RooState)=>state.search.search);
   return (
     <div className=' grid grid-cols-12'>
@@ -35,12 +41,26 @@ const FilteredCourse = () => {
          </div>
 
          <div className=" col-span-6 space-y-6">
-          <div className="bg-white border rounded-[10px] h-[200px] w-full">Course Title</div>
-          <div className="bg-white border rounded-[10px] h-[200px] w-full">Course Title</div>
-          <div className="bg-white border rounded-[10px] h-[200px] w-full">Course Title</div>
-          <div className="bg-white border rounded-[10px] h-[200px] w-full">Course Title</div>
-          <div className="bg-white border rounded-[10px] h-[200px] w-full">Course Title</div>
-          <div className="bg-white border rounded-[10px] h-[200px] w-full">Course Title</div>
+         {courses?.map((course:any)=>{
+      
+        return course.cover&&<FilterCourseCard
+        key={course.id}
+            id={course.id}
+            no_reviews={course.reviews.length}
+            url={course.subject.department.url}
+            category={course.subject.department.departmentName}
+            price={course.price}
+            subject={course.course}
+            rating={course?.rating??0}
+            cover={course.cover.public_url} 
+            subjectCat={course?.subject.subjectName}
+            instructorName={course?.instructor?.accountName?course?.instructor?.accountName:course?.instructor?.user.name || ""}
+            instructorTitle={course?.instructor?.title||""}
+            logo={course?.instructor?.logo? course?.instructor?.logo:course.instructor?.user.image||null}
+            instructorId={course?.instructorId}
+             />
+    
+      })}
 
          </div>
     </div>
