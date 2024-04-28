@@ -13,7 +13,7 @@ const FilteredCourse = () => {
   return (
     <div className=' grid grid-cols-12'>
 
-         <div className="col-span-4">
+         <div className="col-span-4 bg-green-400 px-20">
           <h1 className='text-lg font-semibold leading-6 p-4'>{searchData}</h1>
          <Accordion type="single"  className="w-full">
          {filterCourseData.map((data,index) =>{

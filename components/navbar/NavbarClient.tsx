@@ -57,7 +57,7 @@ const {carts}=useCart()
 //logo
 //https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png
 
-  return ( <div className={` w-full px-4 md:px-6 z-50 h-14 items-center   flex justify-between   ${isFixed? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-white dark:bg-gray-900  ":"bg-stone-200 dark:bg-gray-900 "} duration-300 z-50`}>
+  return ( <div className={` w-full px-4 md:px-6 z-50 h-16 items-center   flex justify-between   ${isFixed? "shadow-md shadow-slate-300 dark:shadow-black fixed bg-white dark:bg-gray-900  ":"bg-stone-200 dark:bg-gray-900 "} duration-300 z-50`}>
    <div className="p-2 mt-2">
    <Logo/>
    </div>
