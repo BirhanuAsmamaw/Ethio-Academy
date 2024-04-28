@@ -2,8 +2,8 @@
 import React from 'react'
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
 import { Label } from '../ui/label'
-import { Accordion, AccordionItem } from '../ui/accordion'
-import { AccordionContent, AccordionTrigger } from '@radix-ui/react-accordion'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
+
 import { filterCourseData } from '@/lib/filterCourseData'
 import { useSelector } from 'react-redux'
 import { RooState } from '@/redux/store'
@@ -17,16 +17,21 @@ interface FilteredCourseProps{
 const FilteredCourse:React.FC<FilteredCourseProps> = ({courses,pagination,onPageChange}) => {
   const searchData=useSelector((state:RooState)=>state.search.search);
   return (
-    <div className=' grid grid-cols-12'>
+    <div className=' z-20 grid grid-cols-12'>
 
          <div className="col-span-2  flex flex-col pl-20 justify-end items-end">
           <h1 className='text-lg font-semibold leading-6 p-4'>{searchData}</h1>
+
+         
+
+
          <Accordion type="single" collapsible  className="w-full">
          {filterCourseData.map((data,index) =>{
   return  <AccordionItem key={index} value={`${index}`}>
   <AccordionTrigger>
  <h6 className='text-lg   font-semibold leading-10'>{data.name}</h6>
   </AccordionTrigger>
+  
   <AccordionContent>
     <RadioGroup>
   {data.subCategory.map((cat,ind)=>{
