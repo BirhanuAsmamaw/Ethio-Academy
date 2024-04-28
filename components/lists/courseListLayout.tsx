@@ -1,13 +1,15 @@
 "use client"
 import React from 'react'
 import CourseList from './courseList'
-import PaginationComponent from '../pagination'
+
 import Card from '../card/card';
+import PaginationComponent from './pagination';
 interface CourseListLayoutProps{
   courses:any[];
-  count:number;
+  pagination:any;
+  onPageChange: (page: number) => void;
 }
-const CourseListLayout:React.FC<CourseListLayoutProps>= ({courses,count}) => {
+const CourseListLayout:React.FC<CourseListLayoutProps>= ({courses,pagination,onPageChange}) => {
   return ( <div id="courseslist" className=" min-h-screen flex flex-col gap-10 overflow-hidden">
 
 
@@ -36,9 +38,16 @@ const CourseListLayout:React.FC<CourseListLayoutProps>= ({courses,count}) => {
     
       })}
    </CourseList>
-    {(count||0)>4?<div className="w-full flex p-4 justify-end">
-      <PaginationComponent paginationLength={count||0} page={'1'} pageUrl='page'id='common-courselist'/>
-    </div>:""}
+
+    {pagination && (
+        <PaginationComponent
+          currentPage={pagination.currentPage}
+          totalPages={pagination.totalPages}
+          hasNextPage={pagination.hasNextPage}
+          hasPreviousPage={pagination.hasPreviousPage}
+          onPageChange={onPageChange}
+        />
+      )}
 </div>
 </div>:""}
 
@@ -72,9 +81,7 @@ const CourseListLayout:React.FC<CourseListLayoutProps>= ({courses,count}) => {
       })}
 
 </CourseList>
-    {(count||0)>4?<div className="w-full flex p-4 justify-end">
-      <PaginationComponent paginationLength={count||0} page={'1'} pageUrl='newpage' id='newcourseslist'/>
-    </div>:""}
+   
   </div>
  </div>:""}
 

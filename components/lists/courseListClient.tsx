@@ -3,21 +3,36 @@ import { RooState } from '@/redux/store';
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import FilteredCourse from './filteredCourse';
+import CourseListLayout from './courseListLayout';
 
 const CourseListClientComponent = () => {
-  const [page, setPage] = useState(1); // Initialize page to 1
+  const [currentPage, setCurrentPage] = useState(1);// Initialize page to 1
   const searchData = useSelector((state: RooState) => state.search.search);
+  const [courses, setCourses] = useState<any[]>([]);
+  const [pagination, setPagination] = useState<any>(null);
+
+  const handlePageChange = (page:any) => {
+    setCurrentPage(page);
+  };
 
   useEffect(() => {
-    axios.get(`/api/course/lists?page=${page}&search=${searchData}`).then((response) => {
-      console.log("response Data:", response.data);
+    axios.get(`/api/course/lists?page=${currentPage}&search=${searchData}`).then((response) => {
+      setCourses(response.data.courses);
+      setPagination(response.data.pagination);
     }).catch((error) => {
       console.log("error", error);
     });
-  }, [page, searchData]); // Include searchData in the dependency array
+  }, [currentPage, searchData]);
+  
+  // Include searchData in the dependency array
 
-  return (
-    <div>CourseListClientComponent</div>
+  return (<div>
+    {searchData?<FilteredCourse/>:<CourseListLayout 
+    courses={courses} 
+    pagination={pagination} 
+    onPageChange={handlePageChange}/>}
+  </div>
   )
 }
 
