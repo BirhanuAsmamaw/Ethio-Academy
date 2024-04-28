@@ -14,7 +14,8 @@ interface AppProviderProps{
   children:ReactNode;
 }
 const AppProvider:React.FC<AppProviderProps> = ({children}) => {
-  return (  <Provider store={store}>{children}<ThemeProvider
+  return (  <Provider store={store}>
+    <ThemeProvider
     attribute="class"
     defaultTheme="system"
     enableSystem
@@ -23,7 +24,8 @@ const AppProvider:React.FC<AppProviderProps> = ({children}) => {
    <CartProvider>
  <ExamsIdProvider> {children}</ExamsIdProvider>
    </CartProvider>
-  </ToggleProvider> </ThemeProvider></Provider>);
+  </ToggleProvider> </ThemeProvider>
+  </Provider>);
 }
  
 export default AppProvider;
