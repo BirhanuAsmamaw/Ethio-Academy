@@ -3,7 +3,7 @@ import React from 'react'
 import CourseList from './courseList'
 
 import Card from '../card/card';
-import PaginationComponent from './pagination';
+import Pagination from './pagination';
 interface CourseListLayoutProps{
   courses:any[];
   pagination:any;
@@ -40,7 +40,7 @@ const CourseListLayout:React.FC<CourseListLayoutProps>= ({courses,pagination,onP
    </CourseList>
 
     {pagination && (
-        <PaginationComponent
+        <Pagination
           currentPage={pagination.currentPage}
           totalPages={pagination.totalPages}
           hasNextPage={pagination.hasNextPage}
