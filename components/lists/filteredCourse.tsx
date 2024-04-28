@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { RadioGroupItem } from '../ui/radio-group'
+import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
 import { Label } from '../ui/label'
 import { Accordion, AccordionItem } from '../ui/accordion'
 import { AccordionContent, AccordionTrigger } from '@radix-ui/react-accordion'
@@ -19,7 +19,7 @@ const FilteredCourse:React.FC<FilteredCourseProps> = ({courses,pagination,onPage
   return (
     <div className=' grid grid-cols-12'>
 
-         <div className="col-span-4 bg-green-400 px-20">
+         <div className="col-span-4  px-20">
           <h1 className='text-lg font-semibold leading-6 p-4'>{searchData}</h1>
          <Accordion type="single" collapsible  className="w-full">
          {filterCourseData.map((data,index) =>{
@@ -28,12 +28,14 @@ const FilteredCourse:React.FC<FilteredCourseProps> = ({courses,pagination,onPage
  <h6 className='text-lg  font-semibold leading-6'>{data.name}</h6>
   </AccordionTrigger>
   <AccordionContent>
+    <RadioGroup>
   {data.subCategory.map((cat,ind)=>{
     return <div key={ind} className="flex items-center space-x-2">
     <RadioGroupItem value={`${cat.value}`} id={`${index+ind}`} />
     <Label htmlFor={`${index+ind}`}>{cat.name}</Label>
     </div>
   })}
+  </RadioGroup>
   </AccordionContent>
 </AccordionItem>
          })}
