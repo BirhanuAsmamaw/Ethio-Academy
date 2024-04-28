@@ -15,7 +15,7 @@ const FilteredCourse = () => {
 
          <div className="col-span-4 bg-green-400 px-20">
           <h1 className='text-lg font-semibold leading-6 p-4'>{searchData}</h1>
-         <Accordion type="single"  className="w-full">
+         <Accordion type="single" collapsible  className="w-full">
          {filterCourseData.map((data,index) =>{
   return  <AccordionItem key={index} value='1'>
   <AccordionTrigger>

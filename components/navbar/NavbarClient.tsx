@@ -63,7 +63,7 @@ const {carts}=useCart()
    </div>
 
      
-       <div className="hidden  lg:block  flex-grow">
+       <div className="hidden  lg:block  flex-grow px-10">
        <Search />
        </div>
     

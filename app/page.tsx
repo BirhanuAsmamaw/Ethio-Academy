@@ -17,6 +17,7 @@ import AboutComponent from '@/components/about/about';
 import ServicesComponent from '@/components/services/service';
 import DevicesComponent from '@/components/devices/devices';
 import FilteredCourse from '@/components/lists/filteredCourse';
+import CourseListClientComponent from '@/components/lists/courseListClient';
 
 
 
@@ -59,7 +60,7 @@ const banner=await getBanner();
     <main className="w-full space-y-6 md:space-y-20">
     <Hero banner={banner}/>
    
-   
+   <CourseListClientComponent/>
 <FilteredCourse/>
    
 
