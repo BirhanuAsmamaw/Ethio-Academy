@@ -17,16 +17,16 @@ interface FilteredCourseProps{
 const FilteredCourse:React.FC<FilteredCourseProps> = ({courses,pagination,onPageChange}) => {
   const searchData=useSelector((state:RooState)=>state.search.search);
   return (
-    <div className=' z-20 grid grid-cols-12'>
+    <div className=' z-20 grid grid-cols-12 w-full'>
 
-         <div className="col-span-3  flex flex-col pl-20  items-end">
+         <div className="col-span-3  w-full flex flex-col pl-20  items-end">
 
 
          
 
 
 
-         <Accordion type="single" collapsible  className="w-[300px">
+         <Accordion type="single" collapsible  className="w-10/12">
          {filterCourseData.map((data,index) =>{
   return  <AccordionItem key={index} value={`${index}`}>
   <AccordionTrigger>
