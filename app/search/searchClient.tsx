@@ -1,53 +1,68 @@
 "use client"
-import Card from "@/components/card/card";
-import axios from "axios";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import FilterCardSceleton from '@/components/card/filterCardSceleton';
+import FilteredCourse from '@/app/search/filteredCourse';
+import Spinning from '@/components/spinning';
+import { RooState } from '@/redux/store';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import FilteredBar from './filteredBar';
+
+
+ // Correct the import path
 
 const SearchClient = () => {
-  const searchParam = useSearchParams();
-  const searchQueryData = searchParam?.get("q");
+  const [currentPage, setCurrentPage] = useState(1);
+  const FilterData = useSelector((state: RooState) => state.search); // Use RootState instead of RooState
   const [courses, setCourses] = useState<any[]>([]);
+  const [pagination, setPagination] = useState<any>(null);
+ 
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
   useEffect(() => {
     const fetchData = async () => {
+      const searchUrl=`${FilterData.search?`&search=${FilterData.search}`:''}${FilterData.rating?`&rating=${FilterData.rating}`:''}${FilterData.price?`&price=${FilterData.price}`:''}`
       try {
-        const response = await axios.get(`/api/course/coursesearch?subject=${searchQueryData}`);
-        // Assuming the data you want is in response.data, modify accordingly
-        setCourses(response.data);
+        const response = await axios.get(`/api/course/lists?page=${currentPage}`+searchUrl);
+        setCourses(response.data.courses);
+        setPagination(response.data.pagination);
       } catch (error) {
         console.error("Error fetching data:", error);
-        // Handle error appropriately (e.g., show an error message)
       }
     };
 
-    if (searchQueryData) {
-      fetchData();
-    }
-  }, [searchQueryData]);
+    fetchData();
+  }, [currentPage, FilterData.price,FilterData.search,FilterData.rating]);
+ 
 
-  return <div className="min-h-screen w-full flex justify-center items-center">
-       <div className="w-full md:w-10/12  xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 justify-center">
-        {courses.map((course) =>{
-          return course.cover&&<Card
-          key={course.id}
-              id={course.id}
-              no_reviews={course.reviews.length}
-              url={course?.subject?.department.url}
-              category={course?.subject?.department.departmentName}
-              price={course.price}
-              subject={course.course}
-              rating={course?.rating??0}
-              cover={course.cover?.public_url}
-              subjectCat={course?.subject.subjectName}
-              instructorId={course?.instructorId}
-              instructorName={course?.instructor?.accountName?course?.instructor?.accountName:course?.instructor?.user.name || ""}
-              instructorTitle={course?.instructor?.title||""}
-              logo={course?.instructor?.logo? course?.instructor?.logo:course.instructor?.user.image||null}
-               />
-        })}
+  return (<div className=" py-20">
+    <div className=' z-30 grid grid-cols-12 gap-10 w-full'>
+      
+    <FilteredBar/>
+
+
+    {courses.length?<FilteredCourse
+          courses={courses}
+          pagination={pagination}
+          onPageChange={handlePageChange}
+        />:<div className="col-span-6 py-10 lg:py-20 flex w-full justify-center ">
+        <div className=" col-span-6 space-y-6 relative">
+          <div className="absolute z-20 h-full w-full flex justify-center items-center">
+            <Spinning/>
+          </div>
+        <FilterCardSceleton/>
+        <FilterCardSceleton/>
+        <FilterCardSceleton/>
+        </div>
+      </div>}
+         </div>
+       
+         
        </div>
-  </div>;
+     
+  );
 };
 
 export default SearchClient;

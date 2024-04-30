@@ -30,6 +30,10 @@ const FilterCourseCard:React.FC<FilterCardProps> = ({instructorId,subjectCat,log
   return (
    <Link href={`/course/${id}`}  className="grid 
    grid-cols-1 md:grid-cols-3
+    no-underline
+    text-gray-800
+     
+    dark:text-gray-200
 
     w-full 
     hover:shadow
@@ -65,7 +69,7 @@ const FilterCourseCard:React.FC<FilterCardProps> = ({instructorId,subjectCat,log
     <div className=" space-y-2 md:col-span-2 pt-2 px-2">
     <div className=" flex justify-between ">
     <h1 className=" text-xl font-semibold leading-10 ">{subject}</h1>
-    <div  className="py-1 px-2   bg-teal-200 dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
+    <div  className="py-1 px-2 text-blue-600 dark:text-green-400   items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
     </div>
     <div className="">
     <p className='text-base leading-6 font-medium'>{subjectCat}</p>
@@ -89,7 +93,7 @@ const FilterCourseCard:React.FC<FilterCardProps> = ({instructorId,subjectCat,log
 
 
     {instructorName?<div className="flex justify-end w-full pt-2">
-  <div className="hover:underline no-underline transition py-2 flex gap-2">
+  <div className=" transition py-2 flex gap-2">
       {logo?<Avatar className={`${!logo&&'hidden'} h-6 w-6  mt-1`}>
       <AvatarImage src={logo?logo:"/"} alt="image" />
       <AvatarFallback>{instructorName[0]}</AvatarFallback>

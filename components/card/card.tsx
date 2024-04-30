@@ -32,9 +32,9 @@ no_reviews?:number; // Assuming
 const Card:React.FC<CardProps> = ({instructorId,subjectCat,logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
   return ( <AnimatePresence>
     <motion.div  
-    initial={{opacity: 0,translateX:-100}}
-    whileInView={{opacity:1,translateX:0}} 
-    transition={{delay:0.15,duration:0.25}}
+    initial={{opacity: 0,y:15}}
+    whileInView={{opacity:1,y:0}} 
+    transition={{delay:0.25,duration:0.5}}
     className="
   group
   z-30 

@@ -71,9 +71,9 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 
 
   </div>
-  {selectedCourses?.length>4?<div className="w-full flex p-4 justify-end">
+  {/* {selectedCourses?.length>4?<div className="w-full flex p-4 justify-end">
     <PaginationComponent paginationLength={selectedCourses?.length||0} page={searchParams?.page||'1'} pageUrl='page'/>
-  </div>:""}
+  </div>:""} */}
 </div>
 </div>:""}
 
@@ -106,9 +106,9 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 
 
   </div>
-  {newSelectedCourses?.length>4?<div className="w-full flex p-4 justify-end">
+  {/* {newSelectedCourses?.length>4?<div className="w-full flex p-4 justify-end">
     <PaginationComponent paginationLength={newSelectedCourses?.length||0} page={searchParams?.newpage||'1'} pageUrl='newpage'/>
-  </div>:""}
+  </div>:""} */}
 
   
 </div>
@@ -137,9 +137,9 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 
 
   </div>
-  {(newSelectedCourses?.length||0>4)?<div className="w-full flex p-4 justify-end">
+  {/* {(newSelectedCourses?.length||0>4)?<div className="w-full flex p-4 justify-end">
     <PaginationComponent paginationLength={newSelectedCourses?.length||0} page={searchParams?.newpage||'1'} pageUrl='newpage'/>
-  </div>:""}
+  </div>:""} */}
 </div>
 </div>:""}
 

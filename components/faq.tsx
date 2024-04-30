@@ -6,7 +6,7 @@ import { AboutAcademy } from '@/lib/aboutAcademy'
 
 const FAQComponent = () => {
   return (<AnimatePresence>
-    <div className="py-20 min-h-screen  flex justify-center w-full">
+    <div className="py-20 min-h-screen bg-[#EADBC8] dark:bg-[#0d0d0d]  flex justify-center w-full">
   <motion.div
   initial={{opacity:0, y:15}}
   whileInView={{opacity:1,y:0}}

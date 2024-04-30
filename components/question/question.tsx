@@ -82,8 +82,8 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({university,onPrevio
     </div>)
   }
   return (<MainLayout>
-      <SubLayout className="bg-white dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
-      <div className={`p-4 w-full flex flex-col md:flex-row border-b-2 border-dashed ${university&&university?.logo?'justify-center md:justify-start':'justify-center'}`}>
+      <SubLayout className="bg-white mt-20 dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
+      <div className={` w-full flex flex-col md:flex-row border-b-2 border-dashed ${university&&university?.logo?'justify-center md:justify-start':'justify-center'}`}>
           {university&&university.log?<div className="w-40 h-40">
             <Image height={200} width={200} src={university?.logo?.public_url} alt={university?.name}/>
           </div>:""}
@@ -92,7 +92,7 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({university,onPrevio
              <h2 className={`font-semibold leading-6 ${university? 'text-lg ':' text-2xl'}`}>{examsTitle}</h2>
           </div>
           </div>
-        <div className="pt-6" id="quiz">
+        <div className="pt-2" id="quiz">
         <button onClick={()=>router.back()} 
         type="button" 
         className="flex gap-2 py-2.5 px-5 me-2 mb-2 

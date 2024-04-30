@@ -21,7 +21,7 @@ const ServicesComponent = () => {
     };
   }, []);
   return (
-    <div id='service' className='bg-green-200 z-20 dark:bg-zinc-900 p-4 md:p-10 flex justify-center w-full'>
+    <div id='service' className='bg-[#8DECB4] z-20 dark:bg-zinc-900 p-4 md:p-10 flex justify-center w-full'>
         <div className="">
    <h1 className='text-3xl font-semibold leading-10 p-4'>Services</h1>
             <div className="flex justify-center w-full">

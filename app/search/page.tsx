@@ -8,7 +8,7 @@ const SearchPage =async () => {
   return (<>
   <Navbar/>
   <Suspense fallback={<div 
-  className="h-screen w-full flex justify-center items-center  gap-1 text-xl">
+  className=" min-h-screen my-20 w-full flex justify-center items-center  gap-1 text-xl">
     <Spinning/>
     <p>Searching...</p>
   </div>}>

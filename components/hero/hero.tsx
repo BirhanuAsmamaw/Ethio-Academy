@@ -73,7 +73,10 @@ const Hero:React.FC<HeroProps> = ({banner}) => {
        lg:text-4xl xl:text-5xl font-semibold 
        items-center z-10 justify-center text-center
         overflow-hidden">
-          <span className=" text-blue-600 dark:text-green-400">Ethio Exams Academy</span>
+          <span>
+            <span className="text-blue-500 dark:text-green-400">Ethio</span>
+            <span className="text-rose-500 dark:text-yellow-400">Academy</span>
+          </span>
           <span>,{banner?.title} </span>
           <span className="font-bold text-rose-500 dark:text-yellow-400 text-3xl md:text-5xl">!</span></motion.h1>
       <div className="font-medium md:text-lg flex flex-col gap-1 md:mx-10 ">
@@ -108,7 +111,7 @@ const Hero:React.FC<HeroProps> = ({banner}) => {
    variants={sliderVariants}
         initial="initial"
         animate="animate" className="md:w-1/3 items-center">
-      <Image  src={banner?.logo.public_url} alt="banner" className=""/>
+      <Image  src={banner?.logo.public_url} alt="banner" height={400} width={400} className=""/>
     </motion.div>
 
   </div> );

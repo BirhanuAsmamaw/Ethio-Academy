@@ -20,9 +20,9 @@ interface Bannerprops{
 const Banner:React.FC<Bannerprops> = ({title,backUrl,children,isChange,editUrl,deleteUrl,addName,addUrl}) => {
   const router=useRouter();
   return (
-    <div className="w-full rounded-[10px] flex flex-col items-center justify-center  p-2   lg:py-10 bg-[url('../public/lightBanner.png')] dark:bg-[url('../public/darkBanner.png')] ">
+    <div className="w-full mt-10 md:mt-4 lg:mt-0 rounded-[10px] flex flex-col items-center justify-center  p-4   lg:py-10 bg-[url('../public/lightBanner.png')] dark:bg-[url('../public/darkBanner.png')] ">
       
-      <div className='space-y-4'>
+      <div className='md:space-y-2'>
     
     <div className="flex  justify-center items-center ">
       <h1 className=' drop-shadow-lg text-xl md:text-2xl lg:text-4xl xl:text-6xl text-blue-700 

@@ -16,7 +16,7 @@ import FAQComponent from '@/components/faq';
 import AboutComponent from '@/components/about/about';
 import ServicesComponent from '@/components/services/service';
 import DevicesComponent from '@/components/devices/devices';
-import FilteredCourse from '@/components/lists/filteredCourse';
+import FilteredCourse from '@/app/search/filteredCourse';
 import CourseListClientComponent from '@/components/lists/courseListClient';
 
 
@@ -48,16 +48,12 @@ const banner=await getBanner();
 
 
    
-   <div className=" fixed bg-blue-200 dark:bg-slate-600 blur-3xl top-[100px] -right-4 h-40 rounded-full  w-40"></div>
-    <div className=" fixed bg-blue-200 dark:bg-slate-600 blur-3xl top-[100px] -left-4 h-40 rounded-full  w-40"></div>
-    <div className=" fixed bg-blue-200 dark:bg-slate-600 blur-3xl top-[50%] left-[50%] h-40 rounded-full  w-40"></div>
-    <div className=" fixed bg-blue-200 dark:bg-slate-600 blur-3xl bottom-0 -left-4 h-20  rounded-full  w-40"></div>
-    <div className=" fixed bg-blue-200 dark:bg-slate-600 blur-3xl bottom-0  -right-4  h-40 rounded-full  w-40"></div>
+
     
     
     <Navbar/>
 
-    <main className="w-full space-y-6 md:space-y-20">
+    <main className="w-full space-y-6 md:space-y-20 overflow-x-hidden">
     <Hero banner={banner}/>
    
    <CourseListClientComponent/>

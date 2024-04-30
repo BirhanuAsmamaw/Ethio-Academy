@@ -1,56 +1,76 @@
 "use client"
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import React from 'react';
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from './ui/pagination';
 
 
-interface PaginationInterfaceProps{
-  paginationLength: number;
-  page: string;
-  pageUrl: string;
-  id?: string;
-
-}
-const PaginationComponent:React.FC<PaginationInterfaceProps> = ({paginationLength,page,pageUrl,id}) => {
- 
-  const renderPaginationItems = () => {
-    const items = [];
-    for (let i = 1; i <= (Math.ceil(paginationLength/4)); i++) {
-      items.push(
-        <PaginationItem key={i} className="list-none" >
-          <PaginationLink isActive={`${i}`===page} className="no-underline" href={`/?${pageUrl}=${i}#${id}`}>
-            {i}
-          </PaginationLink>
-        </PaginationItem>
-      );
+interface PaginationProps {
+    currentPage: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+    onPageChange: (page: number) => void;
+  }
+const PaginationComponent:React.FC<PaginationProps> = ({ currentPage, totalPages, hasNextPage, hasPreviousPage, onPageChange }) => {
+  const handlePrevClick = () => {
+    if (hasPreviousPage) {
+      onPageChange(currentPage - 1);
     }
-    return items;
   };
 
-  return (<div className=" z-20">
-    <Pagination className="list-none">
+  const handleNextClick = () => {
+    if (hasNextPage) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
+  const handlePageClick = (page:any) => {
+    onPageChange(page);
+  };
+
+  // Calculate the list of three pages after the current page
+  const pagesAfterCurrent = [];
+ if(totalPages>3){
+  for (let i = currentPage ; i <= Math.min(currentPage + 3, totalPages); i++) {
+    pagesAfterCurrent.push(i);
+  }
+ }
+ else{
+  for (let i = 1 ; i <= totalPages; i++) {
+    pagesAfterCurrent.push(i);
+  }
+ }
+
+  return (
+
+<Pagination >
       <PaginationContent>
+        <PaginationItem className=' list-none underline-none' onClick={handlePrevClick} >
+          <PaginationPrevious 
+           className={` no-underline ${hasPreviousPage? 'text-gray-blue-400 dark:text-green-400':'text-gray-500 dark:text-gray-400 '}`}
+           />
+        </PaginationItem>
        
-          <PaginationPrevious className=" no-underline" href={`/?${pageUrl}=${(Number(page)<=1)?Math.ceil(paginationLength/4):Number(page)-1}#courseslist`}/>
 
-          {renderPaginationItems()}
-
+        {pagesAfterCurrent.map(page => (
+           <PaginationItem className=' list-none underline-none'  key={page} onClick={() => handlePageClick(page)}>
+           <PaginationLink    className={` rounded-full border-2 no-underline ${currentPage===page? 'text-gray-blue-400 dark:text-green-400 border-blue-400 dark:border-green-400':' border-gray-400 dark:border-gray-600 text-gray-500 dark:text-gray-400'}`}  isActive={currentPage===page}>
+           {page}
+           </PaginationLink>
+         </PaginationItem>
+        
+        ))}
+       
+        
+        <PaginationItem className='hidden md:block list-none underline-none'>
           <PaginationEllipsis />
-       
-        <PaginationItem  className=" list-none">
-          <PaginationNext  className=" no-underline"href={`/?${pageUrl}=${(Number(page)>=Math.ceil(paginationLength/4))? 1:Number(page)+1}#courseslist`}/>
+        </PaginationItem>
+
+        <PaginationItem className=' list-none underline-none' onClick={handleNextClick}>
+          <PaginationNext   className={` no-underline ${hasNextPage? 'text-gray-blue-400 dark:text-green-400':'text-gray-500 dark:text-gray-400'}`} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-  </div>
-  
-     
+
   
   );
 };

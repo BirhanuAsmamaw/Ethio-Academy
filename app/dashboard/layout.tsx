@@ -21,7 +21,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
   if(user){
   return ( <>
    <Navbar/>
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 gap-20 w-full">
+    <div className="min-h-screen  grid grid-cols-1 lg:grid-cols-12 gap-20 w-full">
 
 
      <div className="lg:hidden">
@@ -32,6 +32,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
       <div 
       className="fixed 
        h-screen
+       lg:py-20
         bg-white
         dark:bg-gray-800
          shadow
@@ -49,7 +50,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
 
 
 
-    <div className="md:px-6 py-4 lg:col-span-9 xl:col-span-10 ">{children}
+    <div className="md:px-6 lg:py-20 lg:col-span-9 xl:col-span-10 ">{children}
     
     
 

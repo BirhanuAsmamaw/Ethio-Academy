@@ -2,7 +2,6 @@
 
 import Heading from "@/components/Heading/Heading";
 import Container from "@/components/container/container";
-import { IoChevronUp,IoChevronDown } from "react-icons/io5";
 import React, { useState } from "react";
 import RatingPage from "./rating";
 import AddReviews from "./addReview";
@@ -13,7 +12,6 @@ import CourseSceleton from "./[chapterId]/courseSceleton";
 import CourseDescribeList from "../coursedescribeList";
 import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
-import { Button } from "@/components/ui/button";
 import OnExpand from "@/components/button/onExpand";
 
 interface ICourseId{
@@ -41,7 +39,7 @@ const [isExpand,setExpand]=useState(false);
  
 <MainLayout>
 
-  <SubLayout>
+  <SubLayout className="py-20">
 
   <h1 className="text-xl  font-semibold">{course.course}</h1>
   {(course.videoThumbnail&&course?.videoUrl)?<div>

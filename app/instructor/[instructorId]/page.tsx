@@ -16,7 +16,7 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
   }
   return (<>
   <Navbar/>
-       <div className="flex justify-center">
+       <div className="flex py-20 justify-center">
           <div className='flex flex-col items-center min-h-screen gap-20  p-4 w-full md:w-11/12 lg:w-10/12 xl:w-8/12 '>
 
 
@@ -65,9 +65,9 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
         })}
     </div>
    
-      {(teacher?.courses?.length||0)>4?<div className="w-full flex p-4 justify-end">
+      {/* {(teacher?.courses?.length||0)>4?<div className="w-full flex p-4 justify-end">
         <PaginationComponent paginationLength={teacher?.courses?.length||0} page={'1'} pageUrl='page'id='common-courselist'/>
-      </div>:""}
+      </div>:""} */}
 </div>
 </div>:""}
 

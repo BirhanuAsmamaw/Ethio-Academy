@@ -25,7 +25,7 @@ export const filterCourseData=[
         ]
     },
     {
-        name:"Prices",
+        name:"Prices(ETB)",
         subCategory:[
             {
                 name:"above 500",
@@ -43,8 +43,12 @@ export const filterCourseData=[
             }
 
             ,{
-                name:"above 100",
+                name:"above 100 ",
                 value:100
+            },
+            {
+                name:"Free",
+                value:0
             },
             
         ]

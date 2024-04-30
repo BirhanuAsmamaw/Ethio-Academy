@@ -16,7 +16,7 @@ const department=await getDepartmentByName("AAUMEC")
   return (
     <>
     <Navbar/>
-    <div className='min-h-screen w-full flex flex-col gap-10  pt-10'>
+    <div className='min-h-screen py-20 w-full flex flex-col gap-10  pt-10'>
      <div className="p-4 md:p-6 lg:p-10 xl:p-20">
      <Banner title='Addis Ababa University  Medicine Entrance COC Exams'>
      {isCoursePDepartment? <></>:<BuyExamButton department={department} />}

@@ -1,14 +1,13 @@
 "use client"
-import { RooState } from '@/redux/store';
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import FilteredCourse from './filteredCourse';
 import CourseListLayout from './courseListLayout';
+import CourseList from './courseList';
+import CardSceleton from '../card/cardSceleton';
+
 
 const CourseListClientComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);// Initialize page to 1
-  const searchData = useSelector((state: RooState) => state.search.search);
   const [courses, setCourses] = useState<any[]>([]);
   const [pagination, setPagination] = useState<any>(null);
 
@@ -17,26 +16,32 @@ const CourseListClientComponent = () => {
   };
 
   useEffect(() => {
-    axios.get(`/api/course/lists?page=${currentPage}&search=${searchData}`).then((response) => {
+    axios.get(`/api/course/lists?page=${currentPage}`).then((response) => {
       setCourses(response.data.courses);
       setPagination(response.data.pagination);
     }).catch((error) => {
       console.log("error", error);
     });
-  }, [currentPage, searchData]);
+  }, [currentPage]);
   
   // Include searchData in the dependency array
 
-  return (<div>
-    {searchData?<FilteredCourse
-     courses={courses} 
-     pagination={pagination} 
-     onPageChange={handlePageChange}
-    />:<CourseListLayout 
+  if(!courses.length){
+    return ( <div className='relative w-full p-10  flex justify-center'>
+      
+      <CourseList>
+      <><CardSceleton/>
+      <CardSceleton/>
+      <CardSceleton/>
+      <CardSceleton/>
+      </>
+    </CourseList>
+    </div>)
+  }
+  return (<CourseListLayout 
     courses={courses} 
     pagination={pagination} 
-    onPageChange={handlePageChange}/>}
-  </div>
+    onPageChange={handlePageChange}/>
   )
 }
 

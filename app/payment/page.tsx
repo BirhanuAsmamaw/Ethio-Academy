@@ -16,7 +16,7 @@ const Payment = async() => {
   const admins=users
   return ( <>
   <Navbar/>
-  <div className="p-2 pt-10 flex flex-col gap-10 w-full justify-center pb-20">
+  <div className="p-2 py-20 flex flex-col gap-10 w-full justify-center pb-20">
 
     <div className="p-4  w-full flex justify-center ">
       <div className="w-full md:w-[500px]">

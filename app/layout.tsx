@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast'
 import FooterClient from '@/components/footer/footerClient'
 
 
+
 const IBM_plex_sans= IBM_Plex_Sans({ subsets: ['latin'] ,weight:['400', '500','600','700']})
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${IBM_plex_sans.className} bg-[#E5E5E5] dark:text-gray-300 dark:bg-gray-900  `}>
+      <body className={`${IBM_plex_sans.className} bg-[#F8F4EC] dark:text-gray-300 dark:bg-gray-900 overflow-x-hidden  `}>
       <Toaster
   position="top-center"
   reverseOrder={false}
@@ -35,7 +36,9 @@ export default function RootLayout({
         <div className="">
           
         <div className="">
-        {children}
+   
+         {children}
+  
         </div>
         <FooterClient/>
         </div>
