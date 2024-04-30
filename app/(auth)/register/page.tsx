@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar/Navbar";
 
 const RegisterPage = async() => {
   const user=await getCurrentUser();
-  return ( <> <Navbar/><div className="flex h-screen w-full justify-center items-center">
+  return ( <> <Navbar/><div className="flex py-10 min-h-screen w-full justify-center items-center">
   <Signup user={user}/> 
 </div> </>);
 }

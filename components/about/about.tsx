@@ -29,8 +29,8 @@ It&apos;s a vibrant community where teachers and students come together to learn
 
 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-<AboutContainer title='Key Features 🌟:'className='bg-blue-100 dark:bg-zinc-800'>
-   <ul className=' space-y-2  list-decimal leading-relaxed list-inside '>
+<AboutContainer title='Key Features 🌟:'className='bg-blue-100 w-full dark:bg-zinc-800'>
+   <ul className=' space-y-4  list-decimal  list-inside '>
     <li>Instructors can sell their courses and earn money easily through our platform. 💰</li>
     <li>Students access high-quality learning resources and receive certificates for their participation, fostering a sense of achievement and recognition. 🏆</li>
      <li>Our platform fosters healthy competition, making heroes out of both students and teachers as they excel academically. 🏅</li>

@@ -33,8 +33,6 @@ export default async function Home({
 
  
 
-const courses=await getCourses(Number(searchParams?.page||'1'))
-const newCourses=await getNewCourses(Number(searchParams?.newpage||'1'))
 const examsCategory=await getAllExamsCategory();
 const banner=await getBanner();
 
@@ -53,7 +51,7 @@ const banner=await getBanner();
     
     <Navbar/>
 
-    <main className="w-full space-y-6 md:space-y-20 overflow-x-hidden">
+    <main className="w-full pt-10  space-y-6 md:space-y-20 overflow-x-hidden">
     <Hero banner={banner}/>
    
    <CourseListClientComponent/>

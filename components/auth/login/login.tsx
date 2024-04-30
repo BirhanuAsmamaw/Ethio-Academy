@@ -79,12 +79,13 @@ return null;
 
 
   return (
-    <div className="m-2 border border-gray-200 dark:border-gray-600  rounded-[10px] bg-white dark:bg-gray-800 px-2 pt-4 pb-10 w-full md:max-w-md flex flex-col gap-2">
+    <div className="my-10 shadow-md bg-white dark:bg-black px-2 pt-4 pb-10 w-full md:max-w-md flex flex-col gap-2">
 
 <div className="flex flex-col gap-4">
-  <div className="py-4">
-    <h1 className="font-semibold text-[16px]">Login Your Account</h1>
+<div className="py-4 w-full flex justify-center">
+    <h1 className="font-semibold text-[20px] leading-6 text-blue-500 dark:text-green-400">Login Your Account</h1>
   </div>
+  
   
   <Input
     id="email"
@@ -122,7 +123,7 @@ return null;
 </div>
 
 
-<p className="text-sm text-gray-500 dark:text-gray-400">Don&lsquo;t have an account? Join our community by <Link href="/register">signup</Link>!</p>
+<p className="text-sm text-gray-500 dark:text-gray-400">Don&lsquo;t have an account? Join our community by <Link href="/register" className="p-2 text-lg">signup</Link></p>
 
 <div className="flex mt-10 w-full relative px-2 py-4 line-clamp-5">
   <hr  className=" absolute left-0 w-5/12 border-[1.5px] border-gray-200 dark:border-gray-500"/>
@@ -130,7 +131,23 @@ return null;
   <hr className="absolute right-0  w-6/12 border-[1.5px] border-gray-200 dark:border-gray-500"/>
 </div>
 <div className="w-full flex justify-center">
-<button className="flex gap-2 hover:bg-opacity-80  bg-white text-black w-8/12 mx-2 px-2 py-1 border rounded-full border-gray-400 dark:border-gray-700 transition" onClick={signInWithGoogle}><FcGoogle size={24}/> <p className="text-base">Signin With Google</p></button>
+<button className="flex gap-2
+ hover:bg-opacity-70 
+ hover:dark:bg-opacity-70
+ bg-black 
+ text-white
+dark:bg-white
+
+ dark:text-black 
+ flex
+ justify-center
+  w-8/12 
+  mx-2 
+  text-center
+  px-2 
+  py-1 
+  border
+   rounded-full border-gray-400 dark:border-gray-700 transition" onClick={signInWithGoogle}><FcGoogle size={24}/> <p className="text-base">Signin With Google</p></button>
 </div>
 </div> 
 
