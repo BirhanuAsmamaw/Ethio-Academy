@@ -14,6 +14,7 @@ import LessonBlur from "./lessonBlur";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 
 interface IParams{
@@ -83,12 +84,12 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
 
       </SubLayout>
 
-    <div className="fixed w-[400px] h-screen py-20   hidden overflow-x-hidden  overflow-y-auto 
+    <ScrollArea className=" w-[400px] h-screen py-20   hidden overflow-x-hidden  overflow-y-auto 
     lg:block  right-2">
      <div className="my-20 pr-4">
      <CourseContent course={lesson.chapter.course}/>
      </div>
-    </div>
+    </ScrollArea>
     </MainLayout></> );
 }
  

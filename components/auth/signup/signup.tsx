@@ -149,7 +149,7 @@ dark:bg-white
   px-2 
   py-1 
   border
-   rounded-full border-gray-400 dark:border-gray-700 transition" onClick={signInWithGoogle}><FcGoogle size={24}/> <p className="text-base">Signin With Google</p></button>
+   rounded-full border-gray-400 dark:border-gray-700 transition" onClick={signInWithGoogle}><FcGoogle size={24}/> <p className="text-base">Signing With Google</p></button>
 </div>
 </div> 
 
