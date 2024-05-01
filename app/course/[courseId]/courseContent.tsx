@@ -21,7 +21,7 @@ router.push(`/course/${courseId}/${chapterId}/${lessonId}`)
 router.refresh()
   }
 
- const chapterId=pathName?.split("/")[3]
+ const chapterId=pathName?.split("/")[3]||'0'
 
 
   if(!course){
