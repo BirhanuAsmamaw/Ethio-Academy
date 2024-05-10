@@ -18,7 +18,7 @@ const CategoryNavigation:React.FC<CategoryNavigationProps> = ({departments}) => 
  
   const {data,isError,isLoading,isSuccess,refetch}=useFilteredCourseBySubjectQuery(subjectId);
  
-
+  const hoverLink='link decoration-none relative pb-1 hover:dark:text-green-400 hover:text-blue-500 hover:font-medium before:bg-yellow-400  '
   useEffect(() => {
     // Set isMounted to true once the component is mounted
     setIsMounted(true);
@@ -36,8 +36,9 @@ const CategoryNavigation:React.FC<CategoryNavigationProps> = ({departments}) => 
     return null;
   }
   return (<div className="relative group">
-    <button className="px-2 flex gap-2"><p className=''>category</p> <ChevronDown className='h-4 mt-1  w-4 group-hover:rotate-180 transition duration-300'/></button>
-    <div className="absolute  z-50 transform -translate-y-[200%] transition duration-300 group-hover:translate-y-0 pt-8 -left-16">
+    <button  className={`px-2 flex gap-2 mt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+       hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}><p >Category</p> <ChevronDown className='h-4 mt-1  w-4 group-hover:rotate-180 transition duration-300'/></button>
+    <div className="absolute  z-50 transform opacity-0 -translate-y-[100%] transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 pt-8 -left-16">
   <div className="bg-white scroll-y-auto p-2 dark:bg-black relative w-[300px] h-full border shadow-md  rounded-md">
   <div className="h-10 ">
    <div className="left-0 right-0 fixed  z-20 flex gap-2 border-b-2 overflow-x-hidden">
@@ -56,7 +57,7 @@ const CategoryNavigation:React.FC<CategoryNavigationProps> = ({departments}) => 
           
           <ChevronRight className="mr-2 h-4 w-4 group-hover/subject:dark:text-yellow-400 group-hover/subject:text-rose-500 group-hover/subject:-rotate-90 transition duration-300"/>
      
-          <div className="absolute hidden group-hover/subject:block z-50 left-full p-2 ">
+          <div className="absolute top-0 hidden group-hover/subject:block z-50 left-full p-2 ">
           <div className="bg-white scroll-y-auto p-2 dark:bg-black relative w-[300px] h-full border shadow-md  rounded-md">
   <div className="w-full flex gap-2 border-b-2 overflow-x-hidden">
    
@@ -75,7 +76,7 @@ const CategoryNavigation:React.FC<CategoryNavigationProps> = ({departments}) => 
           
           <ChevronRight className="mr-2 h-4 w-4 group-hover/course:dark:text-yellow-400 group-hover/course:text-rose-500 group-hover/course:-rotate-90 transition duration-300"/>
      
-          <div className="absolute hidden group-hover/course:block z-50 left-full p-2 ">
+          <div className="absolute top-0 hidden group-hover/course:block z-50 left-full p-2 ">
             <div className="bg-white scroll-y-auto p-2 dark:bg-black relative w-[300px] h-full border shadow-md  rounded-md">
             <div className="w-full flex gap-2 border-b-2 overflow-x-hidden">
    
@@ -90,7 +91,7 @@ const CategoryNavigation:React.FC<CategoryNavigationProps> = ({departments}) => 
    }
   ):<span>No Courses!</span>)}
   {isLoading&&<TableSkeleton/>}
-  {isError&&<span>Errpr Occured!</span>}
+  {isError&&<span>Error Occurred!</span>}
    </div>
             
             </div>
