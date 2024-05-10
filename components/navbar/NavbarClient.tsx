@@ -95,12 +95,12 @@ const hoverLink='link decoration-none relative pb-1 hover:dark:text-green-400 ho
     {user&&<div className=" no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
         <Profile user={user}/>
       </div>}
-      <div className="lg:hidden py-2">
+      <div className={`py-2 lg:hidden  `}>
        <Search />
        </div>
       <Link 
       href="/cart" 
-      className={`p-2  mt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+      className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>
         <IoCartOutline size={24}/>
        <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-blue-500 ${carts?.length? 'block':'hidden'}`}><p className="text-[10px]">{carts?.length?`${carts?.length}`:''}</p></div>
