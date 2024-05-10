@@ -16,6 +16,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import CategorySearch from "../categorySearch";
 import ExamsCDrobDown from "../dropdown/CourseCategory";
 import Logo from "../logo";
+import CategoryNavigation from "../categoryNavigation";
 
 interface NavbarClientProps{
   user:any;
@@ -62,7 +63,7 @@ const {carts}=useCart()
    <Logo/>
    </div>
 
-     
+     <CategoryNavigation departments={departments}/>
        <div className="hidden  lg:block  flex-grow px-10">
        <Search />
        </div>

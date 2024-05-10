@@ -51,7 +51,7 @@ const banner=await getBanner();
     
     <Navbar/>
 
-    <main className="w-full pt-10  space-y-6 md:space-y-20 overflow-x-hidden">
+    <main className="w-full  space-y-6 md:space-y-20 overflow-x-hidden">
     <Hero banner={banner}/>
    
    <CourseListClientComponent/>

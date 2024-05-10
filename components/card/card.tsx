@@ -46,6 +46,9 @@ const Card:React.FC<CardProps> = ({instructorId,subjectCat,logo,instructorName,i
    dark:border-gray-700
    dark:bg-gray-800 
 rounded-[5px]
+hover:border-x-rose-500 
+   hover:border-y-blue-500
+   hover:bg-slate-50 
    hover:dark:border-x-yellow-400 
    hover:dark:border-y-green-400 
    hover:dark:bg-gray-700

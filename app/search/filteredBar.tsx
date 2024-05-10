@@ -60,7 +60,7 @@ id={`${index+ind} `} className='h-4 w-4' />
  readOnly value={cat.value} 
  size="small"
  emptyIcon={
-   <StarOutlined fontSize="inherit" className="text-gray-100 dark:text-gray-600" />
+   <StarOutlined fontSize="inherit" className="text-gray-300 dark:text-gray-600" />
  }
  />:""}
 <Label htmlFor={`${index+ind}`} className=''>{cat.name}</Label>

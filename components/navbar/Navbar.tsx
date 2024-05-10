@@ -14,6 +14,7 @@ const Navbar =async () => {
   const departments=await getAllDepartments();
   const exams=await getAllExamsCategory();
   
+  
  
   const notificationSelected=notifications?.length? notifications?.filter((n)=>n.customers.some((c)=>c.id ===  currentUser?.id)):[]
   return (<NavbarClient exams={exams || null} departments={departments|| null} user={currentUser} notifications={notificationSelected} /> );

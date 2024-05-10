@@ -63,7 +63,7 @@ const Hero:React.FC<HeroProps> = ({banner}) => {
     initial="initial"
     animate="animate"className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></motion.div>
     {/* content */}
-    <div className="pt-10 md:pt-0 flex flex-col gap-20 justify-center items-center  md:w-2/3">
+    <div className="pt-20 md:pt-0 flex flex-col gap-20 justify-center items-center  md:w-2/3">
       <div className="flex flex-col gap-6">
       <motion.h1 
       variants={textVariants} 
