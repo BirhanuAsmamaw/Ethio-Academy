@@ -6,11 +6,11 @@ import { LearningCourseClient } from './learningCourse'
 import { ExamTakenClient } from './examsTaken'
 
 interface LearningClientProps{
-  courses:any[];
+  
   exams:any[];
 
 }
-const LearningClient:React.FC<LearningClientProps> = ({courses,exams}) => {
+const LearningClient:React.FC<LearningClientProps> = ({exams}) => {
   return (<Tabs defaultValue="courses" className=" w-full ">
   <TabsList className=" flex flex-wrap w-full gap-4 p-2 ">
     <TabsTrigger className="rounded-full bg-slate-100 dark:bg-gray-800  data-[state=active]:text-white data-[state=active]:bg-[#4C6FFF]" value="courses">Course</TabsTrigger>
@@ -19,7 +19,7 @@ const LearningClient:React.FC<LearningClientProps> = ({courses,exams}) => {
   </TabsList>
 
   <TabsContent value="courses" className="flex justify-center mt-6">
-  <LearningCourseClient courses={courses}/>
+  {/* <LearningCourseClient courses={courses}/> */}
   </TabsContent>
 
 

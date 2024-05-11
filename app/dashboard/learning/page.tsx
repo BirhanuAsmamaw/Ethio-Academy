@@ -15,8 +15,8 @@ if (!user) {
   return null;
 }
 
-const myPayedCourses=user.payedCourses.flatMap((course=>course.courses.map(c=>({...c,status:course.status}
-))))
+// const myPayedCourses=user.payedCourses.flatMap((course=>course.courses.map(c=>({...c,status:course.status}
+// ))))
 
 
 const examsTaken=user.payedCourses.map((course=>({
@@ -28,7 +28,7 @@ const examsTaken=user.payedCourses.map((course=>({
 
  
   return (<div className="w-full flex justify-center p-4">
-    <LearningClient courses={myPayedCourses} exams={examsTaken}/>
+    <LearningClient  exams={examsTaken}/>
   </div>);
 }
  
