@@ -59,7 +59,7 @@ const router=useRouter();
    
 
   console.log("data received",data)
-    axios.put(`/api/course/${course?.id}/update/content`,data).then(()=>{
+    axios.put(`/api/course/${course?.id}/update/content`,{...data,price:parseFloat(data.price)}).then(()=>{
       router.push(`/dashboard/departments/${course?.subject?.department?.id}/${course?.subject?.id}`)
       
       toast.success("Course updated successfully")
