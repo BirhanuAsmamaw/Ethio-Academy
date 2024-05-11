@@ -2,7 +2,7 @@
 
 import CourseSceleton from "../courseSceleton";
 import Navbar from "@/components/navbar/Navbar";
-
+import { IoListOutline } from "react-icons/io5";
 import { getLessonById } from "@/actions/lessons/getLessonById";
 
 import LessonClient from "./LessonClient";
@@ -12,7 +12,7 @@ import CourseContent from "../../courseContent";
 import Header from "@/components/Header";
 import LessonBlur from "./lessonBlur";
 import { getCurrentUser } from "@/actions/users/currentUser";
-import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet,  SheetContent,  SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -48,16 +48,18 @@ payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&p
    
      
       <div className=" min-h-screen  lg:hidden fixed right-1 top-14">
-      <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline" className="z-10 shadow-lg">contents</Button>
+      <Sheet >
+      <SheetTrigger asChild >
+<IoListOutline size={30} className="bg-white rounded-md dark:bg-black shadow-lg z-20 p-1 border mt-6"/>
       </SheetTrigger>
-      <SheetContent className="overflow-y-auto">
-        <SheetHeader>
-          <SheetTitle>{lesson?.chapter?.course.course}</SheetTitle>
+      <SheetContent className="overflow-y-auto p-1">
+        <SheetHeader className="w-full">
+          <SheetTitle><p className="text-[14px] pt-8 text-start">{lesson?.chapter?.course.course}</p></SheetTitle>
          
         </SheetHeader>
-        <CourseContent course={lesson.chapter.course}/>
+      
+      <CourseContent course={lesson.chapter.course}/>
+      
       </SheetContent>
     </Sheet>
       </div>

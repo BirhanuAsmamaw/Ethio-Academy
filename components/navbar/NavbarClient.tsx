@@ -14,7 +14,7 @@ import NotificationDropDown from "../dropdown/notificationDropDown";
 import Search from "../search/search";
 import ExamsCDrobDown from "../dropdown/CourseCategory";
 import Logo from "../logo";
-import CategoryNavigation from "../categoryNavigation";
+import CategoryNavigation from "./categoryNavigation";
 import ExamsLists from "./examsLists";
 
 interface NavbarClientProps{

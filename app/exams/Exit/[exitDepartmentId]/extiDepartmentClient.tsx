@@ -5,6 +5,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { exitExamYears } from '@/lib/examsYear'
 import React, { useState } from 'react'
 import BuyExamButton from '../../buyExamButton';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandShortcut } from '@/components/ui/command';
+
 interface ExitDepartmentClientProps{
   department:any;
   isCourseDepartment:any;
@@ -47,16 +49,41 @@ const ExitDepartmentClient:React.FC<ExitDepartmentClientProps> = ({universities,
 
 
 
-  <TabsContent value="model"  className="w-full md:px-10 lg:px-20 flex flex-col md:flex-row gap-20">
+  <TabsContent value="model"  className="w-full md:px-10 lg:px-20 flex flex-col md:flex-row gap-10">
 
-   <div className="w-[300px] p-2 py-6 bg-white dark:bg-slate-800 h-[500px] overflow-y-auto">
-   <div className="  p-0 flex flex-col ">
-   <button className={`border-b dark:border-gray-600 p-2 hover:bg-slate-100 hover:dark:bg-slate-700  transition-all duration-300  ${!universityCode&&'bg-slate-100 dark:bg-slate-700 font-semibold'}`} onClick={()=>{setUniversityCode(null)}}>All University Exam</button>
-     {universities?.map((university:any)=>{
-      return <button className={`border-b dark:border-gray-600 p-2 hover:bg-slate-100 hover:dark:bg-slate-700  transition-all duration-300 ${(universityCode===university.code)&&'bg-slate-100 dark:bg-slate-700 font-semibold'}`} key={university?.id} onClick={()=>{setUniversityCode(university.code)}}>{university?.name}</button>
+
+  <Command className="rounded-lg border w-full m-2 md:w-[400px] shadow-md">
+      <CommandInput placeholder="University search..." />
+      <CommandList>
+        <CommandEmpty>No University found.</CommandEmpty>
+        <CommandGroup >
+          <button className='w-full' onClick={()=>{setUniversityCode(null)}}>
+          <CommandItem  className={`${!universityCode&&'bg-slate-100 dark:bg-slate-700 font-semibold'}`}>
+          <span>All University Exam</span>
+            <CommandShortcut>All</CommandShortcut>
+          </CommandItem>
+          </button>
+
+          {universities?.map((university:any)=>{
+      return <button key={university?.id} 
+      className='w-full'
+       onClick={()=>{setUniversityCode(university.code)}}>
+        <CommandItem className={`${(universityCode===university.code)&&'bg-slate-100 dark:bg-slate-700 font-semibold'}`} >
+        <span >{university?.name}</span>
+      <CommandShortcut>{university.code}</CommandShortcut>
+      </CommandItem> 
+      </button> 
      })}
-    </div>
-   </div>
+          
+       
+        </CommandGroup>
+      </CommandList>
+    </Command>
+   
+
+    
+    
+ 
 
 
   <div className="flex w-full justify-center p-4 py-20">
