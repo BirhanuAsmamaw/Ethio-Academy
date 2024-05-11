@@ -25,9 +25,8 @@ const PaymentForm:React.FC<FormProps> = ({admins,user,banks}) => {
 
 const courses=carts?.map((course)=>{
   return{
-    id:course.id,
-    subject:course.subject,
-    price:course.price,}
+    id:course.id
+    }
 })
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
@@ -46,10 +45,6 @@ const courses=carts?.map((course)=>{
 
 
 
-useEffect(()=>{
- router.prefetch('/mycourses');
-},[router])
-
 
 
 
@@ -57,8 +52,12 @@ useEffect(()=>{
 
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
+    if(user){
+      
     setIsLoading(true)
    
+      
+    
     const notificationData = {
       url:`/dashboard/approved-courses`,
       type:'Success',
@@ -78,12 +77,15 @@ const departmentData={
 }
   const payment={...data, bank:selectedBank,
     courses:courses,departmentId:department?departmentData.id:null}
-   console.log("Payments data",payment);
+  
+
     axios.post('/api/payment',payment).then(()=>{
       toast.success("Thank you! Paid successfully")
       axios.post('/api/notification',notificationData);
-    router.push('/mycourses')
-    })
+    router.push('/learning')
+    }
+    
+  )
     .catch((error)=>{
       toast.error(error.message)
     
@@ -98,7 +100,11 @@ const departmentData={
 
     
 
-  }
+    }
+  else{
+    router.push("/login")
+    
+  }}
 
 
 

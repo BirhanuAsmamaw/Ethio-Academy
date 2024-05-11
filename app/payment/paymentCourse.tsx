@@ -30,7 +30,7 @@ const PaymentCourse = () => {
   <ul className="max-w-md text-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
 {carts?.map((cart:any,index) => {
   return <li key={index}>
-  {cart.subject}
+  {cart.course}
 </li>
 })}
    

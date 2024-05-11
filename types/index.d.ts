@@ -1,6 +1,6 @@
 export type CourseType= {
   id: string;
-  subject: string;
+  course: string;
   cover?: string;
   videoUrl?: string;
   price: number;

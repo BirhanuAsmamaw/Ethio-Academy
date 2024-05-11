@@ -24,9 +24,7 @@ const CartClient = () => {
                     Course name
                 </th>
                
-                <th scope="col" className="px-6 py-3">
-                    Category
-                </th>
+               
                 <th scope="col" className="px-6 py-3">
                     Price
                 </th>
@@ -39,12 +37,10 @@ const CartClient = () => {
             {carts&&carts.map((cart:any,index)=>{
                 return <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  {cart.subject}
+                  {cart.course}
                 </th>
                
-                <td className="px-6 py-4">
-                  {cart.category}
-                </td>
+                
                 <td className="px-6 py-4">
                     {cart.price}
                 </td>

@@ -1,16 +1,16 @@
 "use client"
 
 
-import { CourseType } from "@/types";
+
 import { createContext, useContext } from "react";
 
 
 interface CartProps{
-  carts: CourseType[]|null;
+  carts: any[]|null;
   totalPrice: number;
   department: any|null;
-  addToCart:(data:CourseType) => void;
-  addDepartment:(data:CourseType) => void;
+  addToCart:(data:any) => void;
+  addDepartment:(data:any) => void;
   removeAllFromCart:() => void;
   removeFromCart:(courseId:string) => void;
   

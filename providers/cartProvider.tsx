@@ -2,7 +2,7 @@
 "use client"
 
 import { Cart } from "@/hooks/use.cart";
-import { CourseType } from "@/types";
+
 import { ReactNode, useEffect, useState } from "react";
 interface CartProviderProps{
   children:ReactNode
@@ -53,7 +53,7 @@ const CartProvider:React.FC<CartProviderProps> = ({children}) => {
 
 
 
-  const addToCart = (data:CourseType)=>{
+  const addToCart = (data:any)=>{
     if (!carts){
       setCarts([data]);
     }

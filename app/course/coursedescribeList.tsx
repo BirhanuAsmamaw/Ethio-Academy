@@ -66,9 +66,8 @@ const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
 const {addToCart}=useCart();
 
 
-
 const onAddToCart=()=>{
-  addToCart(course)
+  addToCart({id:course?.id,course:course?.course,price:course?.price})
   router.push('/cart')
 }
 
