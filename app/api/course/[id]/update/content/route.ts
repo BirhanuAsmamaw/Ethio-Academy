@@ -41,7 +41,7 @@ if(!user.teacher.status){
       where: {id:id},
       data:{
         course:course,
-        price:price,
+        price:parseFloat(price),
         descriptions:descriptions,
         requirements:requirements,
         whoShouldTake:whoShouldTake
@@ -49,5 +49,8 @@ if(!user.teacher.status){
     })
     return NextResponse.json(updatedCourse);
   }
-  catch(err){}
+  catch(err:any){
+    console.log(err)
+    throw new Error(err)
+  }
 }
