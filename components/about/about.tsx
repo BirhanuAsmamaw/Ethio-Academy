@@ -2,7 +2,7 @@ import React from 'react'
 import AboutContainer from './aboutContainer';
 
 const AboutComponent = () => {
-  return (<div id='about' className=" z-20 space-y-20 bg-pink-50 dark:bg-black p-10">
+  return (<section id='about' className=" z-20 space-y-20 bg-zinc-50 dark:bg-black p-10 md:px-20 md:py-32">
 
          <h1 className='text-3xl font-semibold leading-10'>About</h1>
 
@@ -62,7 +62,7 @@ At Ethio Exams Academy, we envision a future where education is accessible to al
 
 
 
-        </div>
+        </section>
 
 
         

@@ -6,7 +6,7 @@ const lugrasimo=Lugrasimo({style:["normal"],subsets:["latin"],weight:["400"]} )
 const Oscript=Oleo_Script({style:["normal"],subsets:["latin"],weight:["400"]} )
 const Logo = () => {
   return (
-    <Link href="/" className='  no-underline hover:bg-gray-100  hover:underline'><div className={`text-xl flex  gap-2 lg:font-extrabold ${Oscript.className}`}>
+    <Link href="/" className='pt-1  no-underline hover:bg-gray-100   hover:bg-opacity-85'><div className={`text-xl flex  gap-2 lg:font-extrabold ${Oscript.className}`}>
     <div className="    lg:hidden rounded-full drop-shadow-2xl text-4xl">
      <span className='text-blue-500 dark:text-green-400'>E</span>
      <span className='text-rose-500 dark:text-yellow-400'>A</span>

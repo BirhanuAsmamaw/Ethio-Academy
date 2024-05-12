@@ -23,11 +23,7 @@ const PaymentForm:React.FC<FormProps> = ({admins,user,banks}) => {
   const [Loading,setIsLoading]=useState(false);
  
 
-const courses=carts?.map((course)=>{
-  return{
-    id:course.id
-    }
-})
+  const courses = carts?.map((course) => course.id);
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues: {
@@ -52,6 +48,7 @@ const courses=carts?.map((course)=>{
 
 
   const onSubmit:SubmitHandler<FieldValues>=async(data)=>{
+    console.log("payment Dta:-",data)
     if(user){
       
     setIsLoading(true)
@@ -75,18 +72,20 @@ const departmentData={
   
   
 }
-  const payment={...data, bank:selectedBank,
-    courses:courses,departmentId:department?departmentData.id:null}
+  const payment={...data, 
+    bank:selectedBank,
+    courses:courses?.length? courses:null,
+    departmentId:department?departmentData.id:null}
   
-
     axios.post('/api/payment',payment).then(()=>{
       toast.success("Thank you! Paid successfully")
       axios.post('/api/notification',notificationData);
-    router.push('/learning')
+    router.push('/dashboard/learning')
     }
     
   )
     .catch((error)=>{
+     console.log(error)
       toast.error(error.message)
     
     }).finally(()=>{

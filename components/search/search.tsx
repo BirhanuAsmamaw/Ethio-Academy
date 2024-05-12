@@ -65,7 +65,7 @@ const onSearchOpen=()=>{
    
    </div>
    <div className="xl:hidden   w-full">
-    <button onClick={onSearchOpen} className="pt-2 no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium" >
+    <button onClick={onSearchOpen} className=" no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium" >
     {isSearchOpen? <IoMdClose size={24}/>:<IoIosSearch size={24}/>}
     </button>
     <div className={`absolute  z-20 mt-1 top-13 w-11/12 p-3 left-2 right-2 ${!isSearchOpen?'bg-opacity-0 -translate-y-[200%]':'bg-opacity-100 translate-y-0'} transition duration-300`}>

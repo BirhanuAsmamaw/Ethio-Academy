@@ -36,7 +36,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
 
     <DropdownMenu>
     <DropdownMenuTrigger asChild>
-    <Avatar className={`${!user?.image&&'hidden'} h-7 w-7 mt-3`}>
+    <Avatar className={`${!user?.image&&'hidden'} h-7 w-7 `}>
       <AvatarImage src={user?.image? user?.image:"/"} alt="image" />
       <AvatarFallback>{names[0]? names[0][0]:''}{names[1]?names[1][0]:''}</AvatarFallback>
     </Avatar>

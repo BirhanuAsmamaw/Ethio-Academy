@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     } = body;
 
     // Validate required parameters
-    if (!transaction || !bank || !totalPrice || !courses || !Array.isArray(courses)) {
+    if (!transaction || !bank || !totalPrice ) {
       return NextResponse.json({
         status: false,
         message: "Invalid payment parameters",
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     }
 
     // Create payment entries for each course
-    const payments = await Promise.all(courses.map(async (courseId) => {
+    const payments = await Promise.all(courses?.map(async (courseId:string) => {
       const newPayment = await prisma.payment.create({
         data: {
           transaction: transaction,
@@ -51,10 +51,7 @@ export async function POST(req: Request) {
     }));
 
     // Return the created payment entries
-    return NextResponse.json({
-      status: true,
-      payments: payments,
-    });
+    return NextResponse.json(payments);
   } catch (error) {
     // Handle any errors
     console.error("Error creating payments:", error);
