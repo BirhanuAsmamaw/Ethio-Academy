@@ -23,14 +23,14 @@ const department=await getDepartmentByName("Highschool")
 />
     <Navbar/>
     <div className='min-h-screen w-full flex flex-col gap-10  pt-10 pb-20'>
-     <div className="p-4 md:p-6 lg:p-10 xl:p-20">
+     <div className="p-4 md:p-6 lg:p-10 mt-10 xl:p-20">
      <Banner title="Ethiopian University Entrance Exams">
      {isCoursePDepartment? <></>:<BuyExamButton department={department} />}
      </Banner>
      </div>
 
       <div className="flex justify-center p-4">
-        <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {department?.subject.map((euee:any,index:number)=>{
           return  <ExamsCategoryCard
           key={index}

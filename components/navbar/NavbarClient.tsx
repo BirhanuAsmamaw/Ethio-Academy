@@ -15,6 +15,7 @@ import Search from "../search/search";
 import Logo from "../logo";
 import CategoryNavigation from "./categoryNavigation";
 import ExamsLists from "./examsLists";
+import { usePathname } from "next/navigation";
 
 interface NavbarClientProps{
   user:any;
@@ -52,13 +53,13 @@ const {setTheme}=useTheme();
 
 
 const {carts}=useCart()
-
+const pathName=usePathname();
 const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-400 hover:text-blue-500 hover:font-medium before:bg-yellow-400  '
 
 //logo
 //https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png
 
-  return ( <nav className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isFixed? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-900  ":" "} duration-300 z-50 bg-slate-50  dark:shadow-black `}>
+  return ( <nav className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isFixed? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-900  ":" "} duration-300 z-50 bg-slate-50  dark:bg-black `}>
    
    <Logo/>
   
@@ -71,19 +72,19 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
      <div className="flex  space-x-2  justify-center items-center h-full">
     <div className=" hidden md:block ">
       <div className="flex gap-x-4 h-full items-center ">
-      <Link href="/#about" className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+      <Link href="/#about" className={`${pathName==="/#about"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>AboutUs</Link>
 
-<Link href="/#service" className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+<Link href="/#service" className={`${pathName==="/#service"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Service</Link>
 
-      <Link href="/#courseslist" className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+      <Link href="/#courseslist" className={`${pathName==="/#courseslist"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Courses</Link>
         <ExamsLists exams={exams}/>
 
-       {!user&&<Link href="/register" className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+       {!user&&<Link href="/register" className={`${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Signup</Link>}
-       {!user&&<Link href="/login" className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+       {!user&&<Link href="/login" className={`${pathName==="/login"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Login</Link>}
      
 
@@ -99,7 +100,7 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
        </div>
       <Link 
       href="/cart" 
-      className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+      className={` ${pathName==="/cart"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>
         <IoCartOutline size={24}/>
        <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-blue-500 ${carts?.length? 'block':'hidden'}`}><p className="text-[10px]">{carts?.length?`${carts?.length}`:''}</p></div>

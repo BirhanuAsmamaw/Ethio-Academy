@@ -16,6 +16,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 interface QuestionComponentProps{
     notificationTitle:string,
@@ -82,49 +83,42 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({university,onPrevio
     </div>)
   }
   return (<MainLayout>
-      <SubLayout className="bg-white mt-20 dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
+      <SubLayout className="bg-white mt-20 py-16 dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
       <div className={` w-full flex flex-col md:flex-row border-b-2 border-dashed ${university&&university?.logo?'justify-center md:justify-start':'justify-center'}`}>
           {university&&university.log?<div className="w-40 h-40">
             <Image height={200} width={200} src={university?.logo?.public_url} alt={university?.name}/>
           </div>:""}
           <div className="">
           {university?<h1  className="text-lg md:text-xl lg:text-2xl leading-10 font-semibold">{university?.name}({university?.code})</h1>:""}
-             <h2 className={`font-semibold leading-6 ${university? 'text-lg ':' text-2xl'}`}>{examsTitle}</h2>
+          
+
+          <div className="flex gap-x-4 "><Button variant="ghost" onClick={()=>router.back()} 
+        type="button" >
+      <IoIosArrowRoundBack size={30} className=""/></Button>
+      <h2 className={`font-semibold leading-6 ${university? 'text-lg ':' text-2xl'}`}>{examsTitle}</h2></div>
           </div>
           </div>
-        <div className="pt-2" id="quiz">
-        <button onClick={()=>router.back()} 
-        type="button" 
-        className="flex gap-2 py-2.5 px-5 me-2 mb-2 
-        text-sm font-medium text-gray-900 
-        focus:outline-none bg-white rounded-lg border
-         border-gray-200 hover:bg-gray-100 hover:text-blue-700 
-         focus:z-10 focus:ring-4 focus:ring-gray-100
-          dark:focus:ring-gray-700
-          dark:bg-gray-800 dark:text-gray-400
-           dark:border-gray-600 dark:hover:text-white
-           dark:hover:bg-gray-700">
-         <IoIosArrowRoundBack size={24}/>
-         <p> Back to Exams List</p>
-          </button>
-          <div className="p-2 space-y-2 py-6">
+        <div className="" id="quiz">
+        
+          <div className="p-2 space-y-2 ">
             <div className="flex justify-between md:px-10 pb-6">
 
-            <button 
-            onClick={onPrevious}
-            className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-<span className="relative  px-2 md:px-5 py-1 md:py-2.5  transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+            <Button
+            variant="ghost"
+            onClick={onPrevious}>
+<span className="relative  px-2 md:px-5 py-1 md:py-2.5  transition-all ease-in duration-75 bg-slate-50 dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
 Previuos Year Exam
 </span>
-</button>
+</Button>
 
-<button 
+<Button
+variant="ghost"
 onClick={onNext}
-className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-<span className="relative px-2 md:px-5 py-1 md:py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+>
+<span className="relative px-2 md:px-5 py-1 md:py-2.5 transition-all ease-in duration-75 bg-slate-50 dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
 Next Year Exam
 </span>
-</button>
+</Button>
             </div>
            
           </div>
@@ -137,7 +131,7 @@ Next Year Exam
               key={index} className="">
                 <div className="flex border-b border-double border-green-600 justify-between">
                   <p className="text-xl font-bold">{index + 1}</p>
-                  {question?.subject?<p className="text-sm text-gray-500 dark:text-gray-400 font-medium">{question?.subject.subjectName}</p>:""}
+                  {question?.subject?<p className="text-xs text-gray-500 dark:text-gray-400 font-thin tracking-tight ">{question?.subject.subjectName}</p>:""}
                 </div>
                 <div className="">
                 <p className="p-2">{question.title}</p>

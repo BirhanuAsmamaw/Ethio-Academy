@@ -20,13 +20,18 @@ interface Bannerprops{
 const Banner:React.FC<Bannerprops> = ({title,backUrl,children,isChange,editUrl,deleteUrl,addName,addUrl}) => {
   const router=useRouter();
   return (
-    <div className="w-full mt-10 md:mt-4 lg:mt-0 rounded-[10px] flex flex-col items-center justify-center  p-4   lg:py-10 bg-[url('../public/lightBanner.png')] dark:bg-[url('../public/darkBanner.png')] ">
+    <div className="w-full h-full mt-16  md:mt-4 lg:mt-0 rounded-[10px] flex flex-col items-center justify-center  p-2  py-4 md:py-8 bg-gradient-to-r from-blue-600 from-40% via-blue-500 via-20% to-blue-600 to-40% ">
       
-      <div className='md:space-y-2'>
+      <div className='w-full'>
     
-    <div className="flex  justify-center items-center ">
-      <h1 className=' drop-shadow-lg text-xl md:text-2xl lg:text-4xl xl:text-6xl text-blue-700 
-      dark:text-white font-bold xl:font-extra-bold'>{title}</h1>
+    <div className=" w-full h-full  items-center flex gap-4  md:gap-x-20 flex-row">
+    <Button 
+        variant="ghost"
+        className=' text-white  flex-shrink px-0 md:px-2  ' 
+        onClick={()=>{router.push(backUrl||"/")}}>
+         <MdOutlineKeyboardBackspace size={30} className='text-6xl font-bold'/> 
+          </Button>
+      <h1 className='w-full flex-grow drop-shadow-lg text-2xl tracking-tight !leading-tight md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl text-white font-semibold xl:font-extra-bold'>{title}</h1>
 
     </div>
     <div className="">{children}</div>
@@ -35,14 +40,7 @@ const Banner:React.FC<Bannerprops> = ({title,backUrl,children,isChange,editUrl,d
 
 <div className='w-full flex justify-between px-4'>
 
-  <div className=" flex  gap-4 justify-end ">
-  <Button 
-        variant="outline" 
-        className='bg-sky-600 hover:bg-sky-700 transition-all duration-300 text-white ' 
-        onClick={()=>{router.push(backUrl||"/")}}>
-         <MdOutlineKeyboardBackspace size={24}/> 
-          </Button>
-  </div>
+ 
 
 
 

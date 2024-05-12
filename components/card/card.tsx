@@ -86,7 +86,7 @@ hover:border-x-rose-500
         <StarOutlined fontSize="inherit" className="text-gray-100 dark:text-gray-600" />
       }
       />
-      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{no_reviews} reviews</p>
+      <p className="ms-1 text-[10px] mt-[2px] font-thin text-gray-500 dark:text-gray-400">{no_reviews} reviews</p>
    
     </div>:""}
 

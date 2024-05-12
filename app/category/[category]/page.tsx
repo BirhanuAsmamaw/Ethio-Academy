@@ -30,7 +30,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
 
 
 
-<div className="p-4 md:p-6 lg:p-10 xl:p-20 w-full">
+<div className="p-4 md:p-6 lg:p-10  md:mt-10 xl:p-20 w-full">
      <Banner title={`${department?.departmentName} Courses`}>
         
     <></>
@@ -40,7 +40,7 @@ const Category =async ({params,searchParams}:{params:IPrams,searchParams?:{ [key
    
 
    {/* Courses */}
-   <div id="courseCategory" className=" min-h-screen flex flex-col w-full gap-10 overflow-hidden">
+   <div id="courseCategory" className="mt-10 md:mt-2 min-h-screen flex flex-col w-full gap-10 overflow-hidden">
 
 
 {selectedCourses.length?<div className="flex justify-center w-full">

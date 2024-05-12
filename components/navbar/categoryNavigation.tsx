@@ -38,7 +38,7 @@ const CategoryNavigation:React.FC<CategoryNavigationProps> = ({departments}) => 
   return (<div className="relative hidden md:block group">
     <button  className={`px-2 flex gap-2  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}><p >Category</p> <ChevronDown className='h-4 mt-1  w-4 group-hover:rotate-180 transition duration-300'/></button>
-    <div className="absolute  z-50 transform opacity-0 -translate-y-[100%] transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 pt-8 -left-16">
+    <div className="absolute  z-50 transform opacity-0 -translate-y-[200%] transition duration-500 group-hover:translate-y-0 group-hover:opacity-100 pt-8 -left-16">
   <div className="bg-white scroll-y-auto p-2 dark:bg-black relative w-[300px] h-full border shadow-md  rounded-md">
   <div className="h-10 ">
    <div className="left-0 right-0 fixed  z-20 flex gap-2 border-b-2 overflow-x-hidden">

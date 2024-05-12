@@ -18,8 +18,8 @@ const ExamSubjectPage = async({params}:{params:{subject:string}}) => {
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
   <Navbar/>
-  <div className='min-h-screen w-full flex flex-col gap-10 '>
-     <div className="p-4 md:p-6 lg:p-10 xl:p-20">
+  <div className='min-h-screen w-full  pb-20 flex flex-col  gap-10 '>
+     <div className="p-4 md:p-6 lg:p-10 mt-10 xl:p-20">
      <Banner title={`${subject?.subjectName} Entrance Exams`}><></></Banner>
      </div>
 
@@ -35,8 +35,8 @@ const ExamSubjectPage = async({params}:{params:{subject:string}}) => {
 
 {/* EUEE */}
   <TabsContent value="EUEE">
-  <div className="flex justify-center p-4 py-20">
-        <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  <div className="flex justify-center p-4 py-20 md:py-10">
+        <div className="w-full gap-4 lg:w-10/12 xl:w-8/12 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
          {examsYears.map((year,index)=>{
           return <YearExamCard key={index} year={year} url={`/EUEE/${params.subject}/${year}?`}/>
          })}
