@@ -12,6 +12,7 @@ import AboutComponent from '@/components/about/about';
 import ServicesComponent from '@/components/services/service';
 import DevicesComponent from '@/components/devices/devices';
 import CourseListLayout from '@/components/lists/courseListLayout';
+import InstructorsList from '@/components/lists/instructorsList';
 
 
 
@@ -80,6 +81,8 @@ EXAMS CATEGORY */}
 </div>
 
 </section>
+
+<InstructorsList/>
 
 
 

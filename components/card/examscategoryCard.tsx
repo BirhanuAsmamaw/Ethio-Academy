@@ -8,7 +8,7 @@ interface ExamsCategoryCardProps{
   image: any;
 }
 const ExamsCategoryCard:React.FC<ExamsCategoryCardProps> = ({name,url,image}) => {
-  return ( <Link href={url}  className="z-30 no-underline block w-full md:max-w-sm p-2 md:p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 group">
+  return ( <Link href={url}  className="z-30 hover:border-green-500 hover:dark:border-yellow-400 no-underline block w-full md:max-w-sm p-2 md:p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 group transition duration-300">
     
   <div className="flex h-full flex-col md:flex-row items-center text-center  gap-2">
     <div className="">
