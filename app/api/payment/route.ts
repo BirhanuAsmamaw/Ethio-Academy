@@ -36,25 +36,45 @@ export async function POST(req: Request) {
     }
 
     // Create payment entries for each course
-    const payments = await Promise.all(courses?.map(async (courseId:string) => {
+   
       const newPayment = await prisma.payment.create({
         data: {
           transaction: transaction,
           totalPrice: parseFloat(totalPrice),
           bank: bank,
-          courses: { connect: { id: courseId } },
           customerId: user.id,
           departmentId: departmentId,
         },
       });
-      return newPayment;
-    }));
+
+
+
+      if(courses&&courses?.length){
+      // Create paymentCourse entries for each course
+    const paymentCoursePromises = courses.map(async (course:any) => {
+      await prisma.paymentCourse.create({
+        data: {
+          paymentId: newPayment.id,
+          courseId: course.id,
+        },
+      });
+    });
+
+
+    // Wait for all paymentCourse creation promises to resolve
+    await Promise.all(paymentCoursePromises);
+  }
+
+
+     
+  
 
     // Return the created payment entries
-    return NextResponse.json(payments);
+    return NextResponse.json(newPayment);
   } catch (error) {
     // Handle any errors
     console.error("Error creating payments:", error);
    throw new Error("Failed to create payments");
+   
   }
 }

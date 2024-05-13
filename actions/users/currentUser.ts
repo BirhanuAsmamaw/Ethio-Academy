@@ -35,6 +35,11 @@ export async function getCurrentUser() {
      
      payedCourses:{
       include:{
+        courses:{
+          include:{
+            course:true,
+          }
+        },
         department:{
           include:{
             exam:true

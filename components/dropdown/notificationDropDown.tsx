@@ -3,8 +3,9 @@ import axios from "axios";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Button } from "../ui/button";
+
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuTrigger } from "../ui/dropdown-menu";
+
 
 
   interface NotificationDropDownProps{
@@ -17,7 +18,11 @@ const router=useRouter();
   const unreadNotifications=notifications.filter(notification =>!notification.isRead)
 
   const onRead=() => {
-    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/editread`));
+    console.log(" on read clicked!!")
+    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/editread`).then((res)=>{
+      console.log("message read notification:-",res)
+    })
+  );
     router.refresh();
   };
 
@@ -35,20 +40,22 @@ const router=useRouter();
   
   return (  
     <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-        <button  onClick={onRead} className=" relative">
-    <IoMdNotificationsOutline size={24} />
-    <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
-        </button>
-         
+<button  onClick={onRead} className="l" >
+        <DropdownMenuTrigger asChild className=" relative " >
+          <div>
+        
+        <IoMdNotificationsOutline size={24} />
+        <div className={`absolute -top-2 -right-2   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
+        </div>
         </DropdownMenuTrigger>
+        </button>
         <DropdownMenuContent className="w-56 mt-2">
           <DropdownMenuGroup>
     
           {notifications?.length?<div className=" overflow-y-auto">
           {notifications?.map((notification)=>{
             return <div key={notification.id} id="alert-additional-content-3"
-             className={`p-4  mb-4 border rounded-[5px]  dark:bg-gray-800 
+             className={`px-1 py-2  mb-4 border rounded-[5px]  dark:bg-gray-800 
              ${notification.type==="Success"&&`
              dark:text-green-400 
              dark:border-green-800
@@ -88,9 +95,9 @@ const router=useRouter();
             `} role="alert">
             <div className="flex items-center">
               
-              <h3 className="text-base font-medium">{notification.title}</h3>
+              <h3 className="text-[14px] p-0 m-0 tracking-tight font-medium">{notification.title}</h3>
             </div>
-            <div className="mt-2 mb-4 text-xs">
+            <div className="mt-1 mb-2 text-xs">
              {notification.message}
             </div>
             <div className="flex">

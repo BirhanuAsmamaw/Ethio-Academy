@@ -18,7 +18,8 @@ export async function POST(req:Request){
 
   }
 
-
+  
+ 
 
   if(!user.teacher){
     throw new Error("Unathorized")

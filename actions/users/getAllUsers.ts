@@ -18,7 +18,13 @@ export async function getAllUsers(){
     
     const users = await prisma.user.findMany({
       include:{
-        payedCourses:true
+        payedCourses:true,
+        permissions:{
+          include:{
+            permission:true
+          },
+          
+        },
       }
       
     });

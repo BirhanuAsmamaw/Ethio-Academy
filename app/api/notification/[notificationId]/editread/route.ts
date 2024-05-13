@@ -8,7 +8,7 @@ export async function PUT(req: Request,{ params }: { params: { notificationId: s
 
    
 const notification= await prisma.notification.update({
-where:{id:notificationId,},
+where:{id:notificationId},
 data:{isRead:true}
 
 });

@@ -78,7 +78,7 @@ export const columns: ColumnDef<ExamTaken>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("exam")}</div>,
+    cell: ({ row }) => <div className=" capitalize">{row.getValue("exam")} Exams</div>,
   },
 
 

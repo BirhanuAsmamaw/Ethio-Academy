@@ -312,6 +312,7 @@ model Notification{
 type Customer{
   id String
   name String
+  email String 
 }
 
 

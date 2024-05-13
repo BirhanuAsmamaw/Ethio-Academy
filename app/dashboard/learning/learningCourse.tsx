@@ -46,14 +46,14 @@ interface LearningCourseProps{
 
 type LearningCourse={
   id:string, 
- subject:string;
+ course:string;
  status:string;
 }
 
 export const columns: ColumnDef<LearningCourse>[] = [
 
   {
-    accessorKey: "subject",
+    accessorKey: "course",
     header: ({ column }) => {
       return (
         <Button
@@ -65,7 +65,7 @@ export const columns: ColumnDef<LearningCourse>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="">{row.getValue("subject")}</div>,
+    cell: ({ row }) => <div className="">{row.getValue("course")}</div>,
   },
 
 
@@ -172,10 +172,10 @@ export const LearningCourseClient:React.FC<LearningCourseProps>=({courses})=> {
     <div className="w-full bg-white dark:bg-gray-800  p-4">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter subjects..."
-          value={(table.getColumn("subject")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter courses..."
+          value={(table.getColumn("course")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("subject")?.setFilterValue(event.target.value)
+            table.getColumn("course")?.setFilterValue(event.target.value)
           }
           className="max-w-sm border-gray-200 dark:border-gray-700 ml-2 rounded-[5px]"
         />
