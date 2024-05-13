@@ -13,14 +13,14 @@ const Payment = async() => {
   const users=await getAllUsers();
   const banks=await getAllBanks();
 
-  const admins = users
-  ?.filter(user => user.permissions.some(permission => permission.permission.action === "CanApproveCoursePayment"))
-  .map(user => ({
-    id: user.id,
-    name: user.name,
-    email: user.email
+  const admins = users?.filter(u => u.permissions.some(permission => permission.permission.action === "CanApproveCoursePayment"))
+  .map(us => ({
+    id: us.id,
+    name: us.name,
+    email: us.email
   }));
 
+  
   return ( <>
   <Navbar/>
   <div className="p-2 py-20 flex flex-col gap-10 w-full justify-center pb-20">
