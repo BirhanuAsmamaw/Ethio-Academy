@@ -27,7 +27,7 @@ const examsTaken=user.payedCourses.filter(course=>!course.courses.length).map((c
    status: course.status
 })))
 
-console.log("mypayed exams:-",examsTaken)
+
 
  
   return (<div className="w-full flex justify-center p-4">

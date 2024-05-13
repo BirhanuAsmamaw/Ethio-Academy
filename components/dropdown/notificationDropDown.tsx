@@ -18,10 +18,8 @@ const router=useRouter();
   const unreadNotifications=notifications.filter(notification =>!notification.isRead)
 
   const onRead=() => {
-    console.log(" on read clicked!!")
-    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/editread`).then((res)=>{
-      console.log("message read notification:-",res)
-    })
+
+    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/editread`)
   );
     router.refresh();
   };
@@ -40,15 +38,15 @@ const router=useRouter();
   
   return (  
     <DropdownMenu>
-<button  onClick={onRead} className="l" >
-        <DropdownMenuTrigger asChild className=" relative " >
+
+        <DropdownMenuTrigger asChild  className=" relative " onPointerDown={onRead} >
           <div>
         
         <IoMdNotificationsOutline size={24} />
         <div className={`absolute -top-2 -right-2   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
         </div>
         </DropdownMenuTrigger>
-        </button>
+     
         <DropdownMenuContent className="w-56 mt-2">
           <DropdownMenuGroup>
     

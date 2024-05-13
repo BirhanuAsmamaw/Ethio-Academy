@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { useCart } from "@/hooks/use.cart";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -67,7 +67,7 @@ const PaymentForm:React.FC<FormProps> = ({admins,user,banks}) => {
       customers:admins
   };
 
-  console.log("notifications:-",notificationData)
+
   
 const departmentData={
   id:department?.id,
@@ -80,7 +80,7 @@ const departmentData={
     departmentId:department?departmentData.id:null}
 
 
-    console.log("payment Dta:-",payment)
+
   
     axios.post('/api/payment',payment).then(()=>{
       toast.success("Thank you! Paid successfully")
@@ -90,13 +90,14 @@ const departmentData={
     
   )
     .catch((error)=>{
-     console.log(error)
+    
       toast.error(error.message)
     
     }).finally(()=>{
       setIsLoading(false)
+      removeAllFromCart()
     });
-    removeAllFromCart()
+    
     
 
     

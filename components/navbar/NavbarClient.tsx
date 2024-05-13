@@ -101,9 +101,9 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
       <Link 
       href="/cart" 
       className={` ${pathName==="/cart"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
-       hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>
+       hover:text-rose-400 transition duration-300  relative font-medium ${hoverLink}`}>
         <IoCartOutline size={24}/>
-       <div className={`absolute top-0 right-0   h-4 w-4 flex justify-center items-center rounded-full text-black bg-blue-500 ${carts?.length? 'block':'hidden'}`}><p className="text-[10px]">{carts?.length?`${carts?.length}`:''}</p></div>
+       <div className={`absolute -top-2 -right-2   h-4 w-4 flex justify-center items-center rounded-full text-black bg-blue-500 ${carts?.length? 'block':'hidden'}`}><p className="text-[10px]">{carts?.length?`${carts?.length}`:''}</p></div>
         </Link>
 
         {user&&<div className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
