@@ -1,6 +1,6 @@
 import prisma from "@/lib/prismadb";
 import { NextRequest, NextResponse } from "next/server";
-import { parse } from "path";
+
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
@@ -8,10 +8,11 @@ export async function GET(req: NextRequest) {
   const priceFilter = searchParams.get("price")||'0'; // Optional price filter
   const ratingFilter = searchParams.get("rating") ||'0';
 
-  const page = parseInt(searchParams.get("page") || "1", 10); // Parse page query parameter, default to 1 if not provided
+  const page = parseInt(searchParams.get("page") || "1"); // Parse page query parameter, default to 1 if not provided
+  const pageSize = parseInt(searchParams.get("pageSize") || "4");// Number of courses per page
 
   try {
-    const pageSize = 4; // Number of courses per page
+    
     const skip = (page - 1) * pageSize;
  // Construct the where condition based on searchQuery, priceFilter, and ratingFilter
 
@@ -42,6 +43,9 @@ export async function GET(req: NextRequest) {
         ]:[],
        
       } :{},
+      orderBy: {
+        createdAt: 'desc', // Sort by creation date in descending order
+      },
       include: {
         reviews: true,
         instructor: {

@@ -74,18 +74,18 @@ const Hero:React.FC<HeroProps> = ({banner}) => {
        items-center z-10 justify-center text-center
         overflow-hidden">
           <span>
-            <span className="text-blue-500 dark:text-green-400">Ethio</span>
+            <span className="text-blue-500 dark:text-green-400 tracking-tight !leading-tight">Ethio</span>
             <span className="text-rose-500 dark:text-yellow-400">Academy</span>
           </span>
-          <span>,{banner?.title} </span>
+          <span className="tracking-tight !leading-tight text-gray-800 dark:text-gray-100">,{banner?.title} </span>
           <span className="font-bold text-rose-500 dark:text-yellow-400 text-3xl md:text-5xl">!</span></motion.h1>
       <div className="font-medium md:text-lg flex flex-col gap-1 md:mx-10 ">
       <p className="text-md px-4 font-medium dark:text-gray-400 text-slate-500 flex flex-col "> 
-      <motion.span variants={textVariants}  className="text-rose-700 dark:text-yellow-300 drop-shadow-md">🌟 Ignite Your Brilliance:</motion.span> 
-      <motion.span variants={textVariants} className="pl-6 md:pl-2 drop-shadow-md">Join a community of trailblazers where every individual is a beacon of inspiration.</motion.span></p>
+      <motion.span variants={textVariants}  className="text-green-600 font-semibold !leading-tight tracking-tight dark:text-yellow-300 drop-shadow-md ">🌟 Ignite Your Brilliance:</motion.span> 
+      <motion.span variants={textVariants} className="pl-6 md:pl-2 drop-shadow-md text-gray-800 dark:text-gray-100 tracking-tight ">Join a community of trailblazers where every individual is a beacon of inspiration.</motion.span></p>
       <p className="text-md px-4 font-medium dark:text-gray-400  text-slate-500 flex flex-col "> 
-      <motion.span variants={textVariants} className="text-rose-700 dark:text-yellow-300 drop-shadow-md">💡 Ethio Exams  Academy:</motion.span> 
-      <motion.span  variants={textVariants} className="pl-6 md:pl-2 drop-shadow-md">Is not just a school; its a launchpad for greatness.</motion.span></p>
+      <motion.span variants={textVariants} className="text-green-600 font-semibold tracking-tight !leading-tight dark:text-yellow-300 drop-shadow-md">💡 Ethio Exams  Academy:</motion.span> 
+      <motion.span  variants={textVariants} className=" text-gray-800 dark:text-gray-100 tracking-tight  pl-6 md:pl-2 drop-shadow-md">Is not just a school; its a launchpad for greatness.</motion.span></p>
       </div>
       </div>
     
