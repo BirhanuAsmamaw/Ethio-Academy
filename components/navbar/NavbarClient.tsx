@@ -53,7 +53,9 @@ const {setTheme}=useTheme();
 
 
 const {carts}=useCart()
-const pathName=usePathname();
+const pathName=usePathname()||"";
+const hashPath = pathName.replace("/", "/#");
+console.log("path:-" ,pathName)
 const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-400 hover:text-blue-500 hover:font-medium before:bg-yellow-400  '
 
 //logo
@@ -75,10 +77,12 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
       <Link href="/#about" className={`${pathName==="/#about"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>AboutUs</Link>
 
-<Link href="/#service" className={`${pathName==="/#service"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+<Link href="/#service" className={`${hashPath==="/#service"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Service</Link>
+<Link href="/#contact" className={`${hashPath==="/#contact"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+       hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Contact</Link>
 
-      <Link href="/#courseslist" className={`${pathName==="/#courseslist"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+      <Link href="/#courseslist" className={`${hashPath==="/#courseslist"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Courses</Link>
         <ExamsLists exams={exams}/>
 

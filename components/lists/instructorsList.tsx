@@ -5,7 +5,7 @@ import AccountCard from '../card/accountCard';
 
 const InstructorsList = () => {
   const {data,isLoading,error,isSuccess}=useInstructorlistsQuery();
-  console.log("error",data)
+ 
   
   return (<section id='instructors' className='w-full bg-pink-50 py-20 md:py-32    relative  dark:bg-zinc-800 '>
   <div className="flex   justify-center  py-10">

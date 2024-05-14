@@ -13,6 +13,7 @@ import ServicesComponent from '@/components/services/service';
 import DevicesComponent from '@/components/devices/devices';
 import CourseListLayout from '@/components/lists/courseListLayout';
 import InstructorsList from '@/components/lists/instructorsList';
+import Contact from '@/components/contacts/contact';
 
 
 
@@ -94,6 +95,7 @@ EXAMS CATEGORY */}
 <FAQComponent/>
 
 <DevicesComponent/>
+<Contact/>
     
     </main>
 

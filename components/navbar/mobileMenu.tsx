@@ -56,6 +56,7 @@ const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments,exams}) => 
 
     <hr className="border-gray-100 dark:border-gray-600"/>
     <CLink url="/#courseslist"><p>Courses</p></CLink>
+    <CLink url="/#contact"><p>Contact</p></CLink>
        <CLink url="/#service"><p>Services</p></CLink>
        <CLink url="/#about"><p>About</p></CLink>
       </div>

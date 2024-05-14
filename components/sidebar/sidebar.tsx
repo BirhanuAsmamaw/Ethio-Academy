@@ -1,5 +1,5 @@
 "use client"
-
+import { BiMessageRoundedCheck } from "react-icons/bi";
 import { sidebarData } from "@/lib/sidebarData";
 import SideBarItems from "./sidebarItems";
 import { IoAnalytics } from "react-icons/io5";
@@ -16,6 +16,7 @@ const Sidebar:React.FC<SidebarProps> = ({user}) => {
   const isPermissionsAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManagePermission" ||permission.permission.action === "CanManageRole")
   const isViewAnalytics=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewAalytics")
   const isManageDepartment=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageDepartment")
+  const isViewCustomerData=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewCustomerMessage") 
   return ( <div className="flex flex-col gap-4 pt-10">
      {user? <CLink url="/dashboard/profile"><><p><MdOutlinePersonOutline size={20}/></p><p>My Profile</p></></CLink>:""}
          {user? <CLink url="/dashboard/learning"><><p><MdOutlineLibraryBooks size={20}/></p><p>My Learning</p></></CLink>:""}
@@ -24,6 +25,8 @@ const Sidebar:React.FC<SidebarProps> = ({user}) => {
 
      <SideBarItems sidebarData={sidebarData} user={user}/>
    { isManageDepartment?  <CLink url="/dashboard/departments"><><p><TbCategoryPlus size={20}/></p><p>Department</p> </></CLink>:""}
+
+   {isViewCustomerData?<CLink url="/dashboard/customer-message"><><BiMessageRoundedCheck size={20}/><p>Customer data</p></></CLink>:""}
      
           
 

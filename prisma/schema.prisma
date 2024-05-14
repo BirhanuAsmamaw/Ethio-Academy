@@ -390,4 +390,18 @@ model Hero{
 type File{
   public_key String
   public_url String
+
+}
+
+
+
+ // contacts
+  model Contact{
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+   name String
+   email String
+   message String
+   
 }
