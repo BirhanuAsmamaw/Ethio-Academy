@@ -30,6 +30,8 @@ no_reviews?:number; // Assuming
 
 
 const Card:React.FC<CardProps> = ({instructorId,subjectCat,logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
+
+  const data="Express Js Course Object Oriented Programming in"
   return ( <AnimatePresence>
     <motion.div  
     initial={{opacity: 0,y:15}}
@@ -40,7 +42,7 @@ const Card:React.FC<CardProps> = ({instructorId,subjectCat,logo,instructorName,i
   z-30 
   w-full 
   md:w-72
-   h-auto  
+ h-full
   bg-white border
    border-gray-200 
    dark:border-gray-700
@@ -68,26 +70,26 @@ hover:border-x-rose-500
      duration-300
      "/>
   </Link>
-  <div className="flex flex-col  pt-2 gap-1 md:p-2 md:gap-2 w-full">
+  <div className="flex flex-col pt-2 gap-1 md:p-2 md:gap-2 w-full">
     <div className="flex justify-between px-2">
       <Link href={`/category/${url}`} className=" no-underline md:bg-gray-200 md:dark:bg-gray-700 hover:text-blue-500 hover:underline transition md:py-1 md:px-2 cursor-pointer rounded-full items-center text-center text-[12px] md:text-sm">{category}</Link>
-      <div  className="md:py-1 md:px-2   md:bg-teal-200 md:dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
+      <div  className="md:py-1 md:px-2   md:bg-emerald-100 md:dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
     </div>
-    <div className="flex justify-center py-1 w-full">
-      <h1 className=" w-full text-[14px] md:text-lg  tracking-tight  text-center font-medium md:font-semibold p-1">{subject}</h1>
+    <div className="flex  h-[40px] md:h-[48px]    justify-center flex-grow py-1 w-full overflow-hidden  ">
+      <h1 className=" w-full text-[14px] md:text-lg  tracking-tight !leading-tight text-center font-medium md:font-semibold p-1">{subject.length<=48? subject:subject.substring(0,45)+"..."} </h1>
     </div>
-    {rating?<div className="flex justify-center">
-      <Rating 
+    <div className="flex justify-center h-4 my-1 overflow-hidden ">
+      {rating?<Rating 
       precision={0.5} 
       readOnly value={rating} 
       size="small"
       emptyIcon={
         <StarOutlined fontSize="inherit" className="text-gray-100 dark:text-gray-600" />
       }
-      />
-      <p className="ms-1 text-[10px] md:mt-[2px] font-thin text-gray-500 dark:text-gray-400">{no_reviews} reviews</p>
+      />:""}
+      {rating?<p className="ms-1 text-[10px] md:mt-[2px] font-thin text-gray-500 dark:text-gray-400">{no_reviews} reviews</p>:""}
    
-    </div>:""}
+    </div>
 
     {instructorName?<Link href={`/instructor/${instructorId}`} className="hover:underline no-underline transition px-1 md:px-0 md:py-2 flex gap-1 md:gap-2">
       {logo?<Avatar className={`${!logo&&'hidden'} h-5 w-5 md:h-6 md:w-6  md:mt-1`}>
