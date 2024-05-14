@@ -10,36 +10,36 @@ html{
 }
 
 ul {
-  @apply list-disc pl-4 list-inside; /* Example: Apply Tailwind styles to ul */
+  @apply list-disc  list-inside; /* Example: Apply Tailwind styles to ul */
 }
 
 ol {
-  @apply list-decimal pl-4 ml-2; /* Example: Apply Tailwind styles to ol */
+  @apply list-decimal  ; /* Example: Apply Tailwind styles to ol */
 }
 
 li {
-  @apply mb-2 ml-2; /* Example: Apply Tailwind styles to li */
+  @apply mb-2 ; /* Example: Apply Tailwind styles to li */
 }
 
 h1 {
-  @apply text-5xl  font-bold mb-4; /* Example: Apply Tailwind styles to h1 */
+  @apply text-5xl  font-bold ; /* Example: Apply Tailwind styles to h1 */
 }
 
 h2 {
-  @apply text-4xl font-bold mb-4; /* Example: Apply Tailwind styles to h1 */
+  @apply text-4xl font-bold ; /* Example: Apply Tailwind styles to h1 */
 }
 
 h3 {
-  @apply text-3xl font-bold mb-4; /* Example: Apply Tailwind styles to h1 */
+  @apply text-3xl font-bold ; /* Example: Apply Tailwind styles to h1 */
 }
 h4 {
-  @apply text-2xl font-semibold  mb-4; /* Example: Apply Tailwind styles to h1 */
+  @apply text-2xl font-semibold  ; /* Example: Apply Tailwind styles to h1 */
 }
 h5 {
-  @apply text-xl font-semibold mb-4; /* Example: Apply Tailwind styles to h1 */
+  @apply text-xl font-semibold ; /* Example: Apply Tailwind styles to h1 */
 }
 h6 {
-  @apply text-lg font-medium mb-4; /* Example: Apply Tailwind styles to h1 */
+  @apply text-lg font-medium ; /* Example: Apply Tailwind styles to h1 */
 }
 a{
   @apply text-blue-500;
