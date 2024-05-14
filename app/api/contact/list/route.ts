@@ -6,18 +6,21 @@ export async function GET(req:NextRequest){
     const user=await getCurrentUser();
 
     if(!user){
-      throw new Error("unAuthenticated!")
+      return NextResponse.json({ error: 'unAuthorized' }, { status: 400 });
+     
     }
 
     const isViewCustomerData=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewCustomerMessage") 
 
     if(!isViewCustomerData){
+      
       throw new Error("Forbidden Resource")
     }
     const customersData=await prisma.contact.findMany();
+    
     return NextResponse.json(customersData)
   }
   catch(err:any){
-throw new Error(err.message)
+    return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
