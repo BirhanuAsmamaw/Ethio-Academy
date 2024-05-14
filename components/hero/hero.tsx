@@ -56,7 +56,7 @@ const Hero:React.FC<HeroProps> = ({banner}) => {
   ]
   
   return ( <div
-    className="bg-white dark:bg-gray-900  w-full flex min-h-screen justify-center md:justify-around  flex-wrap px-4 items-center
+    className="bg-white dark:bg-gray-900 pt-20 lg:py-2 w-full flex min-h-screen justify-center md:justify-around  flex-wrap px-4 items-center
     dark:bg-grid-gray-700 bg-grid-gray-300 relative "
   >
     <motion.div  variants={textVariants}

@@ -62,7 +62,7 @@ const banner=await getBanner();
 
     {/* 
 EXAMS CATEGORY */}
-<section id='exams' className='w-full bg-amber-50    relative  dark:bg-slate-800 '>
+<section id='exams' className='w-full bg-amber-50  py-20 md:py-32   relative  dark:bg-slate-800 '>
   <div className="flex   justify-center  py-10">
     <div className="w-full lg:w-11/12 xl:px-20   space-y-4">
 

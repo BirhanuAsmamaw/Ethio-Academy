@@ -68,14 +68,14 @@ hover:border-x-rose-500
      duration-300
      "/>
   </Link>
-  <div className="flex flex-col p-3 gap-4">
+  <div className="flex flex-col p-1 pt-2 gap-1 md:p-3 md:gap-4">
     <div className="flex justify-between px-2">
-      <Link href={`/category/${url}`} className=" no-underline bg-gray-200 dark:bg-gray-700 hover:text-blue-500 hover:underline transition py-1 px-2 cursor-pointer rounded-full items-center text-center text-sm">{category}</Link>
-      <div  className="py-1 px-2   bg-teal-200 dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
+      <Link href={`/category/${url}`} className=" no-underline md:bg-gray-200 md:dark:bg-gray-700 hover:text-blue-500 hover:underline transition md:py-1 md:px-2 cursor-pointer rounded-full items-center text-center text-[14px] md:text-sm">{category}</Link>
+      <div  className="md:py-1 md:px-2   md:bg-teal-200 dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
     </div>
-    <div className="flex justify-center">
-      <h1 className="hidden md:block text-lg font-semibold p-1">{subject.length>21? subject.substring(0,19)+"...":subject}</h1>
-      <h1 className=" md:hidden text-lg font-semibold p-1">{subject.length>30? subject.substring(0,30)+"...":subject}</h1>
+    <div className="flex justify-center w-full">
+      <h1 className=" w-full hidden md:block text-base md:text-lg tracking-tight text-balance text-center  font-medium md:font-semibold p-1">{subject.length>21? subject.substring(0,19)+"...":subject}</h1>
+      <h1 className=" md:hidden w-full text-base md:text-lg  tracking-tight text-balance text-center font-medium md:font-semibold p-1">{subject.length>30? subject.substring(0,30)+"...":subject}</h1>
     </div>
     {rating?<div className="flex justify-center">
       <Rating 
@@ -106,7 +106,7 @@ hover:border-x-rose-500
 
   <div className="m-3">
   <Link href={`/course/${id}`} className="no-underline w-full flex justify-center border border-gray-200  dark:border-gray-600 hover:bg-gray-200  hover:dark:bg-gray-600  rounded  duration-300 p-2">
-    <p className="text-base font-medium ">Get started</p>
+    <p className="text-sm md:text-base font-medium ">Get started</p>
   </Link>
   </div>
 </motion.div>

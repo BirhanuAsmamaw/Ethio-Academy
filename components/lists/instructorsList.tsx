@@ -7,7 +7,7 @@ const InstructorsList = () => {
   const {data,isLoading,error,isSuccess}=useInstructorlistsQuery();
   console.log("error",data)
   
-  return (<section id='instructors' className='w-full bg-pink-50    relative  dark:bg-zinc-800 '>
+  return (<section id='instructors' className='w-full bg-pink-50 py-20 md:py-32    relative  dark:bg-zinc-800 '>
   <div className="flex   justify-center  py-10">
     <div className="w-full lg:w-11/12 xl:px-20   space-y-4">
 
@@ -21,7 +21,7 @@ const InstructorsList = () => {
           accountName
           ||teacher.user.name} 
         url={`/instructor/${teacher.id} `}
-        image={teacher.logo||teacher.user.image}/>
+        image={teacher.logo?.public_url||teacher.user.image}/>
        })}
 
       </div>
