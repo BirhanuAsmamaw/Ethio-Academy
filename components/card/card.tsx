@@ -75,7 +75,7 @@ hover:border-x-rose-500
       <Link href={`/category/${url}`} className=" no-underline md:bg-gray-200 md:dark:bg-gray-700 hover:text-blue-500 hover:underline transition md:py-1 md:px-2 cursor-pointer rounded-full items-center text-center text-[12px] md:text-sm">{category}</Link>
       <div  className="md:py-1 md:px-2   md:bg-emerald-100 md:dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
     </div>
-    <div className="flex  h-[40px] md:h-[48px]    justify-center flex-grow py-1 w-full overflow-hidden  ">
+    <div className="flex  h-[40px] md:h-[48px]   items-center  justify-center flex-grow py-1 w-full overflow-hidden  ">
       <h1 className=" w-full text-[14px] md:text-lg  tracking-tight !leading-tight text-center font-medium md:font-semibold p-1">{subject.length<=48? subject:subject.substring(0,45)+"..."} </h1>
     </div>
     <div className="flex justify-center h-4 my-1 overflow-hidden ">
