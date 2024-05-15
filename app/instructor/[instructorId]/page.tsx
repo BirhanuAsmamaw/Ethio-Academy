@@ -10,6 +10,8 @@ import { SiBookstack } from "react-icons/si";
 import ChannelVerfiedComponent from '@/components/ChannelVerfiedComponent'
 import SubscriberAccount from './subscriberAccount'
 import { getCurrentUser } from '@/actions/users/currentUser'
+import InstructorNewCoursesList from './newCourseFlitered'
+import InstructorOrderByRateCoursesList from './orderByRateCourseFlitered'
 const eb_garamound= EB_Garamond({ subsets: ['latin'] ,weight:['400', '500','600','700']})
 const InstructorPage = async({params}:{params:{instructorId:string}}) => {
   const teacher= await getTeacherById(params.instructorId)
@@ -93,37 +95,8 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
 
 
 {/* COURSES */}
-{(teacher?.courses?.length||0)?<div  id='common-courselist' className="flex justify-center w-full">
-    <div className="w-full  space-y-4">
-      <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double  p-2 dark:text-gray-300 border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
-  <div className="grid 
-   
-    gap-6
-    grid-cols-2 
-    lg:grid-cols-3">
-       {teacher?.courses?.map((course)=>{
-          return course.cover&&<Card
-          key={course.id}
-              id={course.id}
-              no_reviews={course.reviews.length}
-              url={course.subject.department.url}
-              category={course.subject.department.departmentName}
-              price={course.price}
-              subject={course.course}
-              rating={course?.rating??0}
-              cover={course.cover.public_url} 
-              subjectCat={course?.subject.subjectName}
-             
-               />
-      
-        })}
-    </div>
-   
-      {/* {(teacher?.courses?.length||0)>4?<div className="w-full flex p-4 justify-end">
-        <PaginationComponent paginationLength={teacher?.courses?.length||0} page={'1'} pageUrl='page'id='common-courselist'/>
-      </div>:""} */}
-</div>
-</div>:""}
+<InstructorOrderByRateCoursesList instructorId={teacher?.id||""}/>
+<InstructorNewCoursesList instructorId={teacher?.id||""}/>
 
 
           </div>

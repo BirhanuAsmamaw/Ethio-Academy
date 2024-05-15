@@ -18,7 +18,10 @@ const CourseList:React.FC<CourseListProps> = ({ children}) => {
      2xl:grid-cols-4 
      justify-center
       flex-wrap 
-      gap-4 
+      gap-10
+       items-center
+       w-full
+
       p-4
        md:px-10'>
 

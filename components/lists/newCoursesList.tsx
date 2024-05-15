@@ -38,6 +38,7 @@ const NewCoursesList = () => {
                     instructorTitle={course?.instructor?.title || ""}
                     logo={course?.instructor?.logo || course.instructor?.user.image || null}
                     subjectCat={course?.subject.subjectName}
+                    subjectCatId={course?.subject.id}
                     instructorId={course?.instructorId}
                   />
                 );

@@ -13,13 +13,14 @@ import ChannelVerfiedComponent from "../ChannelVerfiedComponent";
 interface CardProps{
   id: string;
   subject: string;
-  category: string;
+  category?: string;
   subjectCat?: string;
+  subjectCatId?:string;
   cover: any; // Assuming cover is the path to the image
   price: number;
 no_reviews?:number; // Assuming
   rating: number;
-  url: string;
+  url?: string;
   instructorName?: string;
   instructorTitle?:string;
   logo?: any;
@@ -29,7 +30,7 @@ no_reviews?:number; // Assuming
 }
 
 
-const Card:React.FC<CardProps> = ({instructorId,subjectCat,logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
+const Card:React.FC<CardProps> = ({instructorId,subjectCatId,subjectCat,logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
 
   const data="Express Js Course Object Oriented Programming in"
   return ( <AnimatePresence>
@@ -57,9 +58,18 @@ hover:border-x-rose-500
    shadow 
    
    ">
-  <Link href={`/course/${id}`} className="no-underline  relative overflow-hidden">
-{subjectCat?    <div className="p-2 absolute bottom-0 -left-4 opacity-0 z-10   group-hover:left-0 bg-white dark:bg-gray-800 leading-5 group-hover:opacity-100 text-sm font-medium shadow-md drop-shadow-md text-gray-600 dark:text-green-400 bg-opacity-80 dark:bg-opacity-80 flex justify-center transition-all duration-300">
-      <p>{subjectCat}</p>
+  <div   className="no-underline  relative overflow-hidden">
+{subjectCat?    <div className="p-2 absolute bottom-0 -left-4 opacity-0 z-10   group-hover:left-0 bg-white dark:bg-gray-800 leading-5 group-hover:opacity-100 font-medium shadow-md drop-shadow-md text-gray-600 dark:text-green-400 bg-opacity-80 dark:bg-opacity-80 flex justify-center transition-all duration-300">
+      <Link href={`/category/${url}/${subjectCatId}`} className=" 
+      no-underline 
+      hover:underline
+       hover:text-blue-500 
+       
+       hover:dark:bg-green-400
+
+       text-gray-800
+       dark:text-gray-300
+       text-[12px] md:text-[14px]">{subjectCat}</Link>
     </div>:""}
     <Image src={cover} alt={subject} 
     height={100}
@@ -69,10 +79,10 @@ hover:border-x-rose-500
      object-contain
      duration-300
      "/>
-  </Link>
+  </div>
   <div className="flex flex-col pt-2 gap-1 md:p-2 md:gap-2 w-full">
     <div className="flex justify-between px-2">
-      <Link href={`/category/${url}`} className=" no-underline md:bg-gray-200 md:dark:bg-gray-700 hover:text-blue-500 hover:underline transition md:py-1 md:px-2 cursor-pointer rounded-full items-center text-center text-[12px] md:text-sm">{category}</Link>
+      {category?<Link href={`/category/${url}`} className=" no-underline md:bg-gray-200 md:dark:bg-gray-700 hover:text-blue-500 hover:underline transition md:py-1 md:px-2 cursor-pointer rounded-full items-center text-center text-[12px] md:text-sm">{category}</Link>:""}
       <div  className="md:py-1 md:px-2   md:bg-emerald-100 md:dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
     </div>
     <div className="flex  h-[40px] md:h-[48px]   items-center  justify-center flex-grow py-1 w-full overflow-hidden  ">

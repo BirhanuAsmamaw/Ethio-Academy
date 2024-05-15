@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
-import CourseList from './courseList';
-import Card from '../card/card';
-import PaginationComponent from '../pagination';
-import { useOrderCourseByRateQuery } from '@/redux/features/course/courseApi';
-import CardSceleton from '../card/cardSceleton';
+"use client"
+import Card from '@/components/card/card';
+import CardSceleton from '@/components/card/cardSceleton';
+import PaginationComponent from '@/components/pagination';
+import { useOrderCourseByRateFilterByInstructorQuery } from '@/redux/features/course/courseApi';
 
-const OrderByRateCourseList = () => {
+
+import React, { useState } from 'react';
+
+
+const InstructorOrderByRateCoursesList = ({instructorId}:{instructorId:string}) => {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(4);
-
-  const { data, isSuccess,isLoading } = useOrderCourseByRateQuery({ page: page.toString(), pageSize: pageSize.toString() });
  
+
+  const { data, isSuccess,isLoading,error } = useOrderCourseByRateFilterByInstructorQuery({ page: page.toString(), pageSize: pageSize.toString(),instructorId:instructorId });
+ console.log(error)
 
   const onPageChange = (pageNumber: number) => {
     setPage(pageNumber);
   };
 
-  return (<div id="common-courseslist" className="flex justify-center w-full">
-          <div className="w-full lg:w-11/12 space-y-4 xl:px-20">
-            <h1 className='w-full tracking-tight  !leading-tight text-xl text-gray-800 dark:text-gray-100 md:text-4xl font-semibold border-b-2 border-double p-2  border-gray-200 dark:border-gray-700 pl-4'>Most common Courses</h1>
+  return (<div  className="flex justify-center w-full ">
+          <div className="w-full ">
+            <h1 className='w-full tracking-tight  !leading-tight text-xl text-gray-800 dark:text-gray-100 md:text-4xl font-semibold border-b-2 border-double p-2  border-gray-200 dark:border-gray-700 pl-4'>Most Common Courses</h1>
       
             <div className="space-y-10">
-            <CourseList>
+             <div 
+              className="grid gap-6
+   grid-cols-2 
+   lg:grid-cols-3">
               {isSuccess&&data.courses.map((course: any, index: number) => {
                 return course.cover && (
                   <Card
@@ -34,24 +41,21 @@ const OrderByRateCourseList = () => {
                     subject={course.course}
                     rating={course?.rating ?? 0}
                     cover={course.cover?.public_url}  
-                    instructorName={course?.instructor?.accountName || course?.instructor?.user.name || ""}
-                    instructorTitle={course?.instructor?.title || ""}
-                    logo={course?.instructor?.logo || course.instructor?.user.image || null}
-                    subjectCat={course?.subject.subjectName}
                     subjectCatId={course?.subject.id}
-                    instructorId={course?.instructorId}
+                    subjectCat={course?.subject.subjectName}
+                   
                   />
                 );
               })}
-               {isLoading&&<>
+              {isLoading&&<>
               <CardSceleton/>
               <CardSceleton/>
               <CardSceleton/>
-              <CardSceleton/>
+              
               </>}
-            </CourseList>
+            </div>
 
-            {data&&data.pagination && (
+            {data&&data?.pagination && (
               <PaginationComponent
                 currentPage={data.pagination.currentPage}
                 totalPages={data.pagination.totalPages}
@@ -63,8 +67,8 @@ const OrderByRateCourseList = () => {
             </div>
           </div>
         </div>
-     
+      
   );
 };
 
-export default OrderByRateCourseList;
+export default InstructorOrderByRateCoursesList;
