@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
+
 export async function POST(req:Request) {
   const body=await req.json();
 
@@ -9,9 +10,21 @@ export async function POST(req:Request) {
   try{
 
     const {lessonId,
+      language,
       content ,
+      code,
      image
        }=body;
+
+
+       let codeExample;
+       if(!code || !language){
+        codeExample=null
+       }
+       codeExample={
+        language:language,
+        code:code
+       }
     // authorization
 const user = await getCurrentUser();
 if(!user){
@@ -58,7 +71,10 @@ const newContent= await prisma.content.create({
   data:{
     lessonId:lesson.id, 
     content:content,
-    image:image
+    image:image,
+    codeExample:codeExample
+    
+    
      }
  })
  return NextResponse.json(newContent);

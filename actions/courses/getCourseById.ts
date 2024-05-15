@@ -8,9 +8,15 @@ export async function GetCourseById(courseId: string){
         id:courseId,
       },
       include:{
+        
         subject:{
           include:{
 department:true
+          }
+        },
+        instructor:{
+          include:{
+            user:true
           }
         },
         chapters:{

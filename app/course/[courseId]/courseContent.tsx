@@ -34,13 +34,13 @@ router.refresh()
   return (<Accordion type="multiple" defaultValue={[chapterId]}  className="w-full " >
 
       {course.chapters.map((chapter:any,index:number) =>{
-        return <AccordionItem key={index} value={chapter.id}className="border my-2 bg-background   w-full  border-slate-200 dark:border-gray-600 px-2 md:px-6  rounded-[6px] ">
+        return <AccordionItem key={index} value={chapter.id}className="border my-2   bg-white dark:bg-transparent  w-full  border-slate-200 dark:border-gray-600 px-2 md:px-6  rounded-[6px] ">
         <AccordionTrigger className="hover:no-underline w-full" ><div className="flex gap-1 text-start w-full text-capitalize  ">
          <span className="h-5 w-5 rounded-full bg-green-400 mt-2  items-center text-center text-sm text-black">{index+1}</span>
         
          <span className="text-[14px]">{chapter.title}</span>
           </div></AccordionTrigger>
-        <AccordionContent className="bg-background w-full p-0">
+        <AccordionContent className=" w-full p-0">
           <ul className="list-none p-0">
             {chapter.lessons.map((lesson:any,ind:number)=>{
 return <li onClick={()=>onLessonRouter(course.id,`${chapter.id}`,`${lesson.id}`)} className={`text-sm  hover:underline  hover:text-teal-500  space-x-2 transition duration-300 text-[12px]

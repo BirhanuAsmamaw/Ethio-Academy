@@ -16,6 +16,7 @@ const CoursePage = async({params}:{params:IPrams}) => {
 
   const user=await getCurrentUser();
   const course=await GetCourseById(params.courseId);
+  
 
   
   return ( <>

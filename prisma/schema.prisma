@@ -48,6 +48,7 @@ model User {
   roles UserRole[]
   permissions UserPermission[]
   teacher  Teacher?
+  subscribers Subscriber[]
 }
 
 
@@ -129,6 +130,17 @@ id            String    @id @default(auto()) @map("_id") @db.ObjectId
    bankAccount String?
    logo File?
    description String?
+   subscribers Subscriber[]
+}
+model Subscriber{
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+   createdAt     DateTime  @default(now())
+   updatedAt     DateTime  @updatedAt
+   teacher           Teacher   @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  teacherId         String     @db.ObjectId
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+   userId String @db.ObjectId
+
 }
 
 model Course {
@@ -219,8 +231,14 @@ model Content{
    lessonId String @db.ObjectId
    image File?
    content String?
+   codeExample CodeExample?
 }
 
+type CodeExample{
+  language String
+  code String
+
+}
 model Question{
   id            String    @id @default(auto()) @map("_id") @db.ObjectId
    createdAt     DateTime  @default(now())

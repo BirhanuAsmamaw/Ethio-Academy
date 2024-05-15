@@ -2,10 +2,11 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import QuizClient from "./lessonQuestionClient";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import CodeHighlighterComponent from "@/components/codeHighlighter";
 
 
 interface LessonClientProps{
@@ -15,10 +16,59 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
   const [feedbackVisible, setFeedbackVisible] = useState(false);
   const [showQuiz,setShowQuiz] = useState(false);
   const router=useRouter();
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <></>;
+
+  
   return ( <Tabs defaultValue="notes" className="w-full">
   <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-4">
-    <TabsTrigger className=" rounded-full" value="notes">Notes</TabsTrigger>
-    <TabsTrigger  className=" rounded-full" value="exam">
+    <TabsTrigger className="
+           border-b-[1.5px]  
+           font-normal
+            border-slate-400 
+           bg-transparent 
+           shadow-none
+           hover:dark:text-white
+           hover:text-gray-900
+           hover:font-medium
+           hover:dark:border-gray-100
+            transition
+              duration-300
+           hover:border-gray-800
+           data-[state=active]:border-blue-500
+           data-[state=active]:dark:border-green-400
+           data-[state=active]:border-b-2
+           data-[state=active]:font-medium
+           data-[state=active]:text-blue-500
+           data-[state=active]:dark:text-green-400
+
+           " value="notes">Notes</TabsTrigger>
+    <TabsTrigger  className="
+           border-b-[1.5px]  
+           font-normal
+            border-slate-400 
+           bg-transparent 
+           shadow-none
+           hover:dark:text-white
+           hover:text-gray-900
+           hover:font-medium
+           hover:dark:border-gray-100
+            transition
+              duration-300
+           hover:border-gray-800
+           data-[state=active]:border-blue-500
+           data-[state=active]:dark:border-green-400
+           data-[state=active]:border-b-2
+           data-[state=active]:font-medium
+           data-[state=active]:text-blue-500
+           data-[state=active]:dark:text-green-400
+
+           " value="exam">
     <Dialog >
   <DialogTrigger className="w-full h-full">
   Exam
@@ -57,7 +107,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
   </TabsList>
 
   <TabsContent value="notes">
- <div className="mt-20">
+ <div className="mt-20 p-4">
  <div className="flex flex-col   gap-20">
   
 
@@ -67,6 +117,11 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
 return <div key={content?.id}  className="space-y-10">
 
   {content?.content?<div className="" dangerouslySetInnerHTML={{ __html: content.content}}></div>:""}
+
+  {content?.codeExample?<div className="flex w-full justify-center">
+  <CodeHighlighterComponent codeString={content?.codeExample.code} language={content?.codeExample.language}/>
+  </div>:""}
+  
  {content?.image? <div className="w-full flex justify-center">
     <Image height={400} width={500} src={content?.image.public_url} alt="content image"/>
   </div>:""}

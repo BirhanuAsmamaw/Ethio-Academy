@@ -38,7 +38,7 @@ const LessonPage = async({params}:{params:IParams}) => {
 
   return (<>
   <Navbar/>
-  {(lesson.chapter.course.price)?<LessonBlur user={user} course={lesson.chapter.course}/>:''}
+  {/* {(lesson.chapter.course.price)?<LessonBlur user={user} course={lesson.chapter.course}/>:''} */}
   <Header
     title={`${lesson.title}`}
     description={`${lesson.title}`}
