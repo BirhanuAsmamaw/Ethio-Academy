@@ -47,10 +47,10 @@ const LessonPage = async({params}:{params:IParams}) => {
   <MainLayout >
    
      
-      <div className=" min-h-screen  lg:hidden fixed right-1 top-14">
+      <div className=" min-h-screen z-50 lg:hidden fixed right-0 top-14">
       <Sheet >
       <SheetTrigger asChild >
-<IoListOutline size={30} className="bg-white rounded-md dark:bg-black shadow-lg z-20 p-1 border mt-6"/>
+<IoListOutline size={40} className="bg-white rounded-l-md dark:bg-black shadow-lg z-20 p-2 border mt-6"/>
       </SheetTrigger>
       <SheetContent className="overflow-y-auto p-1">
         <SheetHeader className="w-full">

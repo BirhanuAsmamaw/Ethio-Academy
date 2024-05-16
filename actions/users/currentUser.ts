@@ -18,7 +18,7 @@ export async function getCurrentUser() {
     include:{
       teacher:{
         include:{
-          
+          subscribers:true,
           courses:true
         }
       },

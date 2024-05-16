@@ -12,7 +12,7 @@ const CodeHighlighterComponent:React.FC<CodeHighlighterComponentProps> = ({codeS
 
   const [copy, setCopy]=useState(false)
 
-  return (<div className=" max-w-2xl min-w-[25rem] bg-[#3a404d] overflow-hidden">
+  return (<div className=" w-full md:max-w-2xl md:min-w-[25rem] bg-[#3a404d] overflow-hidden">
     <div className="flex justify-between px-4  text-xs text-white items-center">
       <p className='text-sm'>Example Code</p>
       {copy? <button      

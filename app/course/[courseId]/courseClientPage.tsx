@@ -35,7 +35,7 @@ const [isExpand,setExpand]=useState(false);
     await subscribeAccount({userId:customer?.id,accountId:course?.instructor.id})
   }
   if(!course){
-    return ( <div className="flex h-screen justify-center py-10 px-2">
+    return ( <div className="flex w-full h-screen justify-center py-10 ">
       <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
         <CourseSceleton/>
         </div> 
@@ -71,9 +71,10 @@ const [isExpand,setExpand]=useState(false);
       </div>
 
       <Tabs defaultValue="about">
-        <TabsList className="w-full gap-3 flex-wrap  items-start text-left justify-evenly">
+        <TabsList className="w-full gap-3  overflow-x-auto overflow-y-hidden items-start text-left justify-evenly">
         <TabsTrigger value="about" className=" 
-           border-b-[1.5px]  
+           border-b-[1.5px]
+            tracking-tight  
            font-normal
             border-slate-400 
            bg-transparent 
@@ -90,11 +91,12 @@ const [isExpand,setExpand]=useState(false);
            data-[state=active]:border-b-2
            data-[state=active]:font-medium
            data-[state=active]:text-blue-500
-           data-[state=active]:dark:text-green-400">About Course</TabsTrigger>
+           data-[state=active]:dark:text-green-400  md:text-lg">About Course</TabsTrigger>
 
 
 
           <TabsTrigger value="content" className=" 
+           tracking-tight  
            border-b-[1.5px]  
            font-normal
             border-slate-400 
@@ -105,6 +107,7 @@ const [isExpand,setExpand]=useState(false);
            hover:font-medium
            hover:dark:border-gray-100
             transition
+            md:text-lg
               duration-300
            hover:border-gray-800
            data-[state=active]:border-blue-500
@@ -117,6 +120,7 @@ const [isExpand,setExpand]=useState(false);
 
 
           <TabsTrigger value="rate" className="
+           tracking-tight  
            border-b-[1.5px]  
            font-normal
             border-slate-400 
@@ -135,7 +139,7 @@ const [isExpand,setExpand]=useState(false);
            data-[state=active]:font-medium
            data-[state=active]:text-blue-500
            data-[state=active]:dark:text-green-400
-
+           md:text-lg
            ">Rating & Reviews</TabsTrigger>
         </TabsList>
 
@@ -143,7 +147,7 @@ const [isExpand,setExpand]=useState(false);
         <TabsContent value="about" className="mt-10 space-y-10">
         <Container
   childern={
-    <div className={`${isExpand? '':'h-72 p-4 overflow-hidden'} space-y-4 p-4 relative`}>
+    <div className={`${isExpand? '':'h-72 overflow-hidden'} space-y-4 p-4 relative`}>
       <Heading title="About Course"/>
       <div className="pb-10 " dangerouslySetInnerHTML={{ __html: course.descriptions}}></div>
       <div className={`absolute ${isExpand? 'bottom-2  left-[50%]':'top-[70%] left-[50%]'}  shadow-lg z-20`}>

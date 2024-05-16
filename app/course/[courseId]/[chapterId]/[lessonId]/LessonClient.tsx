@@ -107,16 +107,16 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
   </TabsList>
 
   <TabsContent value="notes">
- <div className="mt-20 p-4">
+ <div className=" p-2 md:p-4">
  <div className="flex flex-col   gap-20">
   
 
-{lesson?.contents?.length?<div className="space-y-2">
+{lesson?.contents?.length?<div className="w-full space-y-2">
   {
      lesson?.contents?.map((content:any)=>{
-return <div key={content?.id}  className="space-y-10">
+return <div key={content?.id}  className="w-full space-y-10">
 
-  {content?.content?<div className="" dangerouslySetInnerHTML={{ __html: content.content}}></div>:""}
+  {content?.content?<div className="w-full" dangerouslySetInnerHTML={{ __html: content.content}}></div>:""}
 
   {content?.codeExample?<div className="flex w-full justify-center">
   <CodeHighlighterComponent codeString={content?.codeExample.code} language={content?.codeExample.language}/>
@@ -139,19 +139,19 @@ return <div key={content?.id}  className="space-y-10">
 
 
   <TabsContent value="exam">
-  <div className="mt-20">
+  <div className="">
   <QuizClient lesson={lesson} feedbackVisible={feedbackVisible} showQuiz={showQuiz} setFeedbackVisible={()=>setFeedbackVisible(true)}/>
   </div>
   </TabsContent>
 
   <TabsContent className="hidden" value="handout">
-  <div className="mt-20">
+  <div className="">
   <p className="text-2xl font-bold p-2">handouts  like pdf ppt</p>
   </div>
   </TabsContent>
 
   <TabsContent className="hidden" value="Q&A">
-  <div className="mt-20">
+  <div className="">
   <p>Question and Answers</p>
   </div>
   </TabsContent>
