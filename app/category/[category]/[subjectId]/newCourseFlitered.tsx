@@ -2,17 +2,18 @@
 import Card from '@/components/card/card';
 import CardSceleton from '@/components/card/cardSceleton';
 import CourseList from '@/components/lists/courseList';
+import NoCourseFound from '@/components/notification/noCourseFound';
 import PaginationComponent from '@/components/pagination';
 import { useNewCourseFilterBySubjectIdQuery } from '@/redux/features/course/courseApi';
 import React, { useState } from 'react';
 
 
-const SubjectNewCoursesList = ({subjectId}:{subjectId:string}) => {
+const SubjectNewCoursesList = ({subject}:{subject:any}) => {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(4);
  
 
-  const { data, isSuccess,isLoading } = useNewCourseFilterBySubjectIdQuery({ page: page.toString(), pageSize: pageSize.toString(),subjectId:subjectId });
+  const { data, isSuccess,isLoading } = useNewCourseFilterBySubjectIdQuery({ page: page.toString(), pageSize: pageSize.toString(),subjectId:subject.id });
  
 
   const onPageChange = (pageNumber: number) => {
@@ -25,7 +26,7 @@ const SubjectNewCoursesList = ({subjectId}:{subjectId:string}) => {
       
             <div className="space-y-10">
              <CourseList>
-              {isSuccess&&data.courses.map((course: any, index: number) => {
+              {isSuccess&&<>{data&&data.courses.length?data.courses.map((course: any, index: number) => {
                 return course.cover && (
                   <Card
                   key={index}
@@ -42,8 +43,9 @@ const SubjectNewCoursesList = ({subjectId}:{subjectId:string}) => {
                   logo={course?.instructor?.logo || course.instructor?.user.image || null}
                   instructorId={course?.instructorId}
                 />
-                );
-              })}
+                )
+              }):<NoCourseFound title={subject.subjectName}/>
+            }</>}
               {isLoading&&<>
               <CardSceleton/>
               <CardSceleton/>
@@ -53,7 +55,7 @@ const SubjectNewCoursesList = ({subjectId}:{subjectId:string}) => {
               </>}
             </CourseList>
 
-            {data&&data?.pagination && (
+            {data&&data.courses.length&&data?.pagination ? (
               <PaginationComponent
                 currentPage={data.pagination.currentPage}
                 totalPages={data.pagination.totalPages}
@@ -61,7 +63,7 @@ const SubjectNewCoursesList = ({subjectId}:{subjectId:string}) => {
                 hasPreviousPage={data.pagination.hasPreviousPage}
                 onPageChange={onPageChange}
               />
-            )}
+            ):""}
             </div>
           </div>
         </div>

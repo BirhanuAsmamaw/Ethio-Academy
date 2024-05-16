@@ -1,11 +1,7 @@
 
-
-import { getCoursesBySubject } from "@/actions/courses/getCoursesBySubject";
-import { getDepartmentByCode } from "@/actions/departments/getDepartmentByCode";
 import { getSubjectById } from "@/actions/subject/getSubjectById";
 import Banner from "@/components/banner";
 import Navbar from "@/components/navbar/Navbar";
-import Spinning from "@/components/spinning";
 import Link from "next/link";
 import SubjectOrderByRateCoursesList from "./orderByRateCourseFlitered";
 import SubjectNewCoursesList from "./newCourseFlitered";
@@ -32,7 +28,8 @@ const Category =async ({params}:{params:IPrams}) => {
      <Banner title={`${subject?.subjectName} Courses`}>
    
     <div className="flex justify-center md:justify-end   w-full">
-    <Link href={`/category/${subject?.department?.url}`} className=" text-[20px] drop-shadow-lg pb-6 pr-6 text-gray-100 font-sans no-underline hover:underline transition-all duration-300 ">{subject?.department?.departmentName} </Link>
+    <Link href={`/category/${subject?.department?.url}`} 
+    className=" text-[20px] drop-shadow-lg pb-6 pr-6 text-gray-100 font-sans no-underline hover:underline transition-all duration-300 ">{subject?.department?.departmentName} </Link>
     </div>
   
      </Banner>
@@ -43,8 +40,8 @@ const Category =async ({params}:{params:IPrams}) => {
      {/* Courses */}
      <div id="coursesubject" className=" min-h-screen flex flex-col w-full gap-10 overflow-hidden">
 
-<SubjectOrderByRateCoursesList subjectId={subject?.id||""}/>
-<SubjectNewCoursesList subjectId={subject?.id||""}/>
+<SubjectOrderByRateCoursesList subject={subject}/>
+<SubjectNewCoursesList subject={subject}/>
 </div>
 
 </div>

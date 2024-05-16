@@ -10,8 +10,9 @@ const ExamsLists:React.FC<ExamsListsProps> = ({exams}) => {
   return (<NavigationMenu className='w-full'>
     <NavigationMenuList className='w-full'>
       <NavigationMenuItem className='w-full'>
-        <NavigationMenuTrigger className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
-       hover:text-rose-400 transition bg-transparent duration-300 font-medium ${hoverLink}`}>Exams</NavigationMenuTrigger>
+        <NavigationMenuTrigger className='hover:bg-transparent bg-transparent'><p className={`px-2 flex gap-2  no-underline text-gray-500 dark:text-gray-400  group-hover:dark:text-yellow-400
+       hover:dark:text-green-400
+          group-hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Exams</p></NavigationMenuTrigger>
         <NavigationMenuContent className='space-y-2 p-2'>
         {exams?.map((c,index)=>{
             return <CLink key={index} url={`/exams/${c.url}`} >

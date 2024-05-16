@@ -89,14 +89,14 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
 </div>
 </div>
 <div className="md:pr-10">
-<SubscriberAccount accountId={teacher?.id||""} userId={user?.id||""}/>
+<SubscriberAccount accountId={teacher?.id||""} is_subscriber={teacher.is_subscriber||false} userId={user?.id||""}/>
 </div>
          </div>
 
 
 {/* COURSES */}
-<InstructorOrderByRateCoursesList instructorId={teacher?.id||""}/>
-<InstructorNewCoursesList instructorId={teacher?.id||""}/>
+<InstructorOrderByRateCoursesList instructor={teacher}/>
+<InstructorNewCoursesList instructor={teacher}/>
 
 
           </div>

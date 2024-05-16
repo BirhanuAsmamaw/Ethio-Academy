@@ -2,6 +2,7 @@
 import Card from '@/components/card/card';
 import CardSceleton from '@/components/card/cardSceleton';
 import CourseList from '@/components/lists/courseList';
+import NoCourseFound from '@/components/notification/noCourseFound';
 import PaginationComponent from '@/components/pagination';
 import { useOrderCourseByRateFilterDepartmentQuery } from '@/redux/features/course/courseApi';
 
@@ -9,12 +10,12 @@ import { useOrderCourseByRateFilterDepartmentQuery } from '@/redux/features/cour
 import React, { useState } from 'react';
 
 
-const DepartmentOrderByRateCoursesList = ({departmentId}:{departmentId:string}) => {
+const DepartmentOrderByRateCoursesList = ({department}:{department:any}) => {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(4);
  
 
-  const { data, isSuccess,isLoading,error } = useOrderCourseByRateFilterDepartmentQuery({ page: page.toString(), pageSize: pageSize.toString(),departmentId:departmentId });
+  const { data, isSuccess,isLoading,error } = useOrderCourseByRateFilterDepartmentQuery({ page: page.toString(), pageSize: pageSize.toString(),departmentId:department.id });
  console.log(error)
 
   const onPageChange = (pageNumber: number) => {
@@ -27,7 +28,7 @@ const DepartmentOrderByRateCoursesList = ({departmentId}:{departmentId:string}) 
       
             <div className="space-y-10">
              <CourseList>
-              {isSuccess&&data.courses.map((course: any, index: number) => {
+             {isSuccess?<>{data&&data.courses.length?data.courses.map((course: any, index: number) => {
                 return course.cover && (
                   <Card
                     key={index}
@@ -45,7 +46,8 @@ const DepartmentOrderByRateCoursesList = ({departmentId}:{departmentId:string}) 
                     instructorId={course?.instructorId}
                   />
                 );
-              })}
+              }):<NoCourseFound title={department.departmentName}/>}</>:""
+            }
               {isLoading&&<>
               <CardSceleton/>
               <CardSceleton/>
@@ -55,7 +57,7 @@ const DepartmentOrderByRateCoursesList = ({departmentId}:{departmentId:string}) 
               </>}
             </CourseList>
 
-            {data&&data?.pagination && (
+            {data&&data.courses.length&&data?.pagination ?(
               <PaginationComponent
                 currentPage={data.pagination.currentPage}
                 totalPages={data.pagination.totalPages}
@@ -63,7 +65,7 @@ const DepartmentOrderByRateCoursesList = ({departmentId}:{departmentId:string}) 
                 hasPreviousPage={data.pagination.hasPreviousPage}
                 onPageChange={onPageChange}
               />
-            )}
+            ):""}
             </div>
           </div>
         </div>

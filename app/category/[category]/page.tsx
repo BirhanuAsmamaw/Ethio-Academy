@@ -33,8 +33,8 @@ const Category =async ({params}:{params:IPrams}) => {
    {/* Courses */}
    <div id="courseCategory" className="mt-10 md:mt-2 min-h-screen flex justify-center items-center flex-col w-full gap-10 overflow-hidden">
 
-<DepartmentOrderByRateCoursesList departmentId={department?.id||""}/>
-<DepartmentNewCoursesList departmentId={department?.id||""}/>
+<DepartmentOrderByRateCoursesList department={department}/>
+<DepartmentNewCoursesList department={department}/>
 
 
 </div>

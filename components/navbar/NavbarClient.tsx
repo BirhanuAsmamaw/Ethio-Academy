@@ -74,6 +74,11 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
      <div className="flex  space-x-2  justify-center items-center h-full">
     <div className=" hidden md:block ">
       <div className="flex gap-x-4 h-full items-center ">
+        
+      <ExamsLists exams={exams}/>
+      <Link href="/#courseslist" className={`${hashPath==="/#courseslist"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
+       hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Courses</Link>
+
       <Link href="/#about" className={`${pathName==="/#about"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>AboutUs</Link>
 
@@ -82,9 +87,8 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
 <Link href="/#contact" className={`${hashPath==="/#contact"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Contact</Link>
 
-      <Link href="/#courseslist" className={`${hashPath==="/#courseslist"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
-       hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Courses</Link>
-        <ExamsLists exams={exams}/>
+      
+        
 
        {!user&&<Link href="/register" className={`${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Signup</Link>}

@@ -6,14 +6,12 @@ import { CiLogin,CiLogout  } from "react-icons/ci";
 import { SiGnuprivacyguard } from "react-icons/si";
 import { MdOutlineDashboard } from "react-icons/md";
 import Link from "next/link";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 import CustomeSheet from "../customSheet";
 import CLink from "../link";
+import CSheet from "./CSheet";
+import { useFilteredCourseBySubjectQuery } from "@/redux/features/course/courseApi";
+import { useEffect, useState } from "react";
+import TableSkeleton from "../tableSkeleton";
 
  
 
@@ -24,41 +22,87 @@ interface MobileSidebarProps{
 }
 
 const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments,exams}) => {
- 
+  const [subjectId,setSubjectId]=useState("")
+  const [isMounted, setIsMounted] = useState(false);
+  const {data,isError,isLoading,isSuccess,refetch}=useFilteredCourseBySubjectQuery(subjectId);
   
+  useEffect(() => {
+    // Set isMounted to true once the component is mounted
+    setIsMounted(true);
+  }, []);
 
- 
+  useEffect(() => {
+    // Fetch data when subjectId changes
+    if (subjectId) {
+      refetch();
+    }
+  }, [subjectId]);
+
+  if (!isMounted) {
+    // If component is not yet mounted, return null
+    return null;
+  }
  
     return (
      
 
 <CustomeSheet selectedLabel={<IoMdClose size={24}/>} unselectedLabel={<IoIosMenu size={24}/>}>
 <>
-      <div className="space-y-2  px-2">
+      <div className="space-y-2 ">
       
-  
-         <Accordion type="single" collapsible className="w-full  ">
-      <AccordionItem value="item-3" className="hover:no-underline border-none">
-        <AccordionTrigger className="hover:no-underline border-none"><div className="text-sm flex hover:no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-         <p>Exams</p>
-         </div></AccordionTrigger>
-        <AccordionContent>
 
-          {exams?.map((c:any,index:number)=>{
+      {/* // Category */}
+      <CSheet className="mt-10" label="Category">
+          {departments?.map((department,index)=>{
+            return <CSheet key={index}
+             className="border-b text-[14px] pb-1" 
+             url={`/category/${department.url}`}
+             label={department.departmentName}>
+              {
+                department.subject.map((subject:any,sub:number)=>{
+                  return <div onClick={()=>setSubjectId(subject.id)}   key={sub} className="">
+                    <CSheet 
+                    className="border-b text-[14px] pb-1" 
+                    url={`/category/${department.url}/${subject.id}`} 
+                    label={subject.subjectName}>
+                    {isSuccess&&(data.length?data.map((course:any)=>{
+    return <CLink url={`/course/${course.id}`}>
+      <p className="hover:text-rose-500 border-b text-[14px] pb-1 hover:dark:text-green-400 w-full">{course.course}</p>
+    </CLink>
+   }
+  ):<span>No Courses!</span>)}
+  {isLoading&&<TableSkeleton/>}
+  {isError&&<span>Error Occurred!</span>}
+                    </CSheet>
+                  </div>
+                })
+              }
+            </CSheet>
+          })}
+        
+      </CSheet>
+      
+
+      {/* // Exams */}
+      <CSheet label="Exams">
+      {exams?.map((c:any,index:number)=>{
             return <Link key={index} href={`/exams/${c.url}`} className="px-2 divide-y divide-slate-300 dark:divide-gray-600 py-1 text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
             {c.examType}
            </Link>
           })}
         
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+        </CSheet>
+ 
+  
+ 
+        <div className="space-y-2  px-2">
 
     <hr className="border-gray-100 dark:border-gray-600"/>
-    <CLink url="/#courseslist"><p>Courses</p></CLink>
-    <CLink url="/#contact"><p>Contact</p></CLink>
-       <CLink url="/#service"><p>Services</p></CLink>
-       <CLink url="/#about"><p>About</p></CLink>
+    <CLink url="/#courseslist"><p className="pl-2">Courses</p></CLink>
+    <CLink url="/#contact"><p className="pl-2">Contact</p></CLink>
+       <CLink url="/#service"><p className="pl-2">Services</p></CLink>
+       <CLink url="/#about" ><p className="pl-2">About</p></CLink>
+        </div>
       </div>
 
       
