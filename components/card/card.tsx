@@ -82,11 +82,11 @@ hover:border-x-rose-500
   </div>
   <div className="flex flex-col pt-2 gap-1 md:p-2 md:gap-2 w-full">
     <div className="flex justify-between px-2">
-      {category?<Link href={`/category/${url}`} className=" no-underline md:bg-gray-200 md:dark:bg-gray-700 hover:text-blue-500 hover:underline transition md:py-1 md:px-2 cursor-pointer rounded-full items-center text-center text-[12px] md:text-sm">{category}</Link>:""}
-      <div  className="md:py-1 md:px-2   md:bg-emerald-100 md:dark:bg-gray-700  rounded-full items-center text-center text-sm font-medium">{price? price +'ETB':'Free'}</div>
+      {category?<Link href={`/category/${url}`} className="  truncate no-underline md:bg-gray-200 md:dark:bg-gray-700 hover:text-blue-500 hover:underline transition md:py-1 md:px-2 cursor-pointer rounded-full items-center text-center text-[12px] md:text-sm">{category}</Link>:""}
+      <div  className="md:py-1 md:px-2   md:bg-emerald-100 md:dark:bg-gray-700  rounded-full items-center text-center text-[12px] lining-nums text-sm font-mono md:font-medium">{price? price +'ETB':'Free'}</div>
     </div>
-    <div className="flex  h-[40px] md:h-[48px]   items-center  justify-center flex-grow py-1 w-full overflow-hidden  ">
-      <h1 className=" w-full text-[14px] md:text-lg  tracking-tight !leading-tight text-center font-medium md:font-semibold p-1">{subject.length<=48? subject:subject.substring(0,45)+"..."} </h1>
+    <div className="flex  h-[36px] md:h-[48px]   items-center  justify-center flex-grow pt-1 md:pt-4 w-full overflow-hidden  ">
+      <h1 className=" w-full text-[12px] md:text-lg  tracking-tight md:!leading-tight text-center font-medium md:font-semibold p-1">{subject.length<=48? subject:subject.substring(0,45)+"..."} </h1>
     </div>
     <div className="flex justify-center h-4 my-1 overflow-hidden ">
       {rating?<Rating 
@@ -97,7 +97,7 @@ hover:border-x-rose-500
         <StarOutlined fontSize="inherit" className="text-gray-100 dark:text-gray-600" />
       }
       />:""}
-      {rating?<p className="ms-1 text-[10px] md:mt-[2px] font-thin text-gray-500 dark:text-gray-400">{no_reviews} reviews</p>:""}
+      {rating?<p className="ms-1 text-[10px] md:mt-[2px] truncate font-thin text-gray-500 dark:text-gray-400">{no_reviews} reviews</p>:""}
    
     </div>
 
@@ -108,7 +108,7 @@ hover:border-x-rose-500
     </Avatar>:""}
 
       {instructorName?<div className="">
-        <div className=" text-[12px] md:text-[14px]   text-gray-900 dark:text-gray-200  tracking-tight flex gap-2"><p>{instructorName}</p> <ChannelVerfiedComponent/></div>
+        <div className=" text-[12px] md:text-[14px]   text-gray-900 dark:text-gray-200  tracking-tight flex gap-2"><p className="  truncate">{instructorName}</p> <ChannelVerfiedComponent/></div>
   {instructorTitle?      <p className="text-gray-500 dark:text-gray-400 hidden md:block text-xs  tracking-tight">{instructorTitle}</p>:""}
       </div>:""}
     </Link>:""}

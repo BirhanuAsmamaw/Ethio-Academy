@@ -53,7 +53,7 @@ const GoogleMapComponent = () => {
     
   },[]);
 
-  return <div className="h-[600px]" ref={mapRef} />;
+  return <div className="h-[600px] w-full" ref={mapRef} />;
 }
 
 export default GoogleMapComponent

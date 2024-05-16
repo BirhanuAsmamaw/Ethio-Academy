@@ -22,8 +22,8 @@ const CourseList:React.FC<CourseListProps> = ({ children}) => {
       md:gap-10
        items-center
        w-full
-
-      p-4
+p-2
+      md:p-4
        md:px-10'>
 
       { children}

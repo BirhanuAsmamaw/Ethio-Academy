@@ -63,7 +63,7 @@ const Hero:React.FC<HeroProps> = ({banner}) => {
     initial="initial"
     animate="animate"className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></motion.div>
     {/* content */}
-    <div className=" flex flex-col gap-20 justify-center items-center  md:w-2/3">
+    <div className=" flex flex-col gap-20 justify-center items-center w-full md:w-2/3">
       <div className="flex w-full   flex-col gap-6">
       <motion.h1 
       variants={textVariants} 
@@ -71,7 +71,7 @@ const Hero:React.FC<HeroProps> = ({banner}) => {
       drop-shadow-md
         font-bold 
         z-10  text-left
-        overflow-hidden pt-20 pl-10 md:pl-20   flex flex-col w-full">
+        overflow-hidden pt-20 pl-4 md:pl-20   flex flex-col w-full">
           <span  className="text-4xl md:text-5xl lg:text-6xl ">
             <span className="text-blue-500 dark:text-green-400 tracking-tight !leading-tight">Ethio</span>
             <span className="text-rose-500 dark:text-yellow-400">Academy</span>

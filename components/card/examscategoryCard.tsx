@@ -16,7 +16,7 @@ const ExamsCategoryCard:React.FC<ExamsCategoryCardProps> = ({name,url,image}) =>
     </div>
     <div className="h-full w-full p-2 flex justify-center items-center">
     
-    <p className=" text-base md:text-lg text-gray-700 font-semibold tracking-tight   dark:text-gray-400 group-hover:dark:text-white ">{name}</p>
+    <p className=" text-base text-left md:text-lg text-gray-700 font-semibold tracking-tight   dark:text-gray-400 group-hover:dark:text-white ">{name}</p>
     </div>
   </div>
     </Link>
