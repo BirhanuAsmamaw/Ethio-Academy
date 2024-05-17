@@ -139,7 +139,7 @@ return null;
 dark:bg-white
 
  dark:text-black 
- flex
+ 
  justify-center
   w-8/12 
   mx-2 
