@@ -1,4 +1,5 @@
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { getAllUsers } from "@/actions/users/getAllUsers";
 import prisma from "@/lib/prismadb"
 import { NextResponse } from "next/server";
 export async function POST(req: Request, res: Response){
@@ -25,7 +26,25 @@ try{
         description:description
 
       }
-    })
+    });
+
+    const users=await getAllUsers();
+    const admins=users?.filter(user=>user.permissions.some((permission)=>permission.permission.action === "CanApprovedTeacher" )).map((u)=>({
+      id:u.id,
+      name:u.name||"",
+      email:u.email||""
+    }));
+    
+    await prisma.notification.create({
+      data:{
+        url:`/dashboard/user-list/teachers/${newTeacher.id}`,
+        type:"Success",
+        title:"New Instructor Account Created",
+        message:`${user.name} is  created ${newTeacher.accountName||user.name} Account`,
+        userId:user.id,
+        customers:admins
+      }
+    });
   
     return NextResponse.json(newTeacher);
 }

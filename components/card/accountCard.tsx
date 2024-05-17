@@ -24,10 +24,10 @@ const AccountCard:React.FC<AccountCardProps>= ({url,image,name,title}) => {
 
   <div className="mt-2 ">
   <div className=" w-full flex gap-1 items-center">
-  <p className='text-base  text-gray-800 dark:text-gray-100  font-medium p-0'>{name}</p>
+  <p className='text-base truncate  text-gray-800 dark:text-gray-100  font-medium p-0'>{name}</p>
   <ChannelVerfiedComponent/>
   </div>
-    <p className='text-gray-600 tracking-tight  font-light  font-sans text-sm dark:text-gray-300 text-center'>{title}</p>
+    <p className='text-gray-600 tracking-tight h-4   truncate font-light  font-sans text-sm dark:text-gray-300 text-center'>{title}</p>
   </div>
 
   <div className="mt-2 w-full py-2">

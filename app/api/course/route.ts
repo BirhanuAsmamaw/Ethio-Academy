@@ -76,7 +76,7 @@ export async function POST(req:Request){
       userId:user.id,
       customers:subscribers
     }
-  })
+  });
 
   return NextResponse.json(newCourse);
 }

@@ -1,3 +1,4 @@
+import { getAllTeachers } from "@/actions/teacher/getAllTeachers";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import prisma from "@/lib/prismadb"
 import { NextResponse } from "next/server";
@@ -30,7 +31,25 @@ if(!isDataAccessed){
         examId:examId,
         departmentName:department
       }
-    })
+    });
+
+    const teachers=await getAllTeachers();
+    const users=teachers?.map((teacher)=>({
+      id:teacher.user.id,
+      name:teacher.user.name||"",
+      email:teacher.user.email||""
+    }))
+    
+    await prisma.notification.create({
+      data:{
+        url:`/category/${department.url}`,
+        type:"Success",
+        title:"New Category Created",
+        message:`${newDepartment.departmentName} category is created`,
+        userId:user.id,
+        customers:users
+      }
+    });
 
     return NextResponse.json(newDepartment);
 

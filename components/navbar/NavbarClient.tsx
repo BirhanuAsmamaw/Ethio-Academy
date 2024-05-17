@@ -16,6 +16,10 @@ import Logo from "../logo";
 import CategoryNavigation from "./categoryNavigation";
 import ExamsLists from "./examsLists";
 import { usePathname } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { RooState } from "@/redux/store";
+import { setnavigationScroll } from "@/redux/features/navigation/navigationSlice";
+import { TbArrowNarrowRight } from "react-icons/tb";
 
 interface NavbarClientProps{
   user:any;
@@ -25,18 +29,22 @@ interface NavbarClientProps{
  
 }
 const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,departments,exams}) => {
-  const [isFixed, setIsFixed] = useState(false);
+
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const dispatch=useDispatch();
+  const isScroll=useSelector((state:RooState)=>state.navigation.isScroll)
+ 
 
   useEffect(() => {
+    const currentScrollPos = window.scrollY;
     const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
+     
       const isScrollingDown = currentScrollPos > prevScrollPos;
 
       if (currentScrollPos > 100 && isScrollingDown) {
-        setIsFixed(false);
+        dispatch(setnavigationScroll({isScroll:false}))
       } else {
-        setIsFixed(true);
+        dispatch(setnavigationScroll({isScroll:true}))
       }
       
       setPrevScrollPos(currentScrollPos);
@@ -61,7 +69,7 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
 //logo
 //https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png
 
-  return ( <nav className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isFixed? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-900  ":" "} duration-300 z-50 bg-slate-50  dark:bg-black `}>
+  return ( <nav className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isScroll? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-900  ":" "} duration-300 z-50 bg-slate-50  dark:bg-black `}>
    
    <Logo/>
   
@@ -90,8 +98,15 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
       
         
 
-       {!user&&<Link href="/register" className={`${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'}  no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
-       hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Signup</Link>}
+      
+
+{!user&&<Link href="/register"  className={`px-2 py-1 hover:dark:text-green-400
+       hover:text-rose-400 font-medium shadow-sm border-2 border-blue-600 shadow-blue-600 gap-2 hover:scale-105 no-underline hover:bg-blue-700 hover:font-medium  items-center leading-6  rounded-full text-center text-white flex  justify-center bg-blue-600 transition-all duration-300 
+${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'} `}>
+ 
+  <span className=" truncate">Sign up</span>
+  <TbArrowNarrowRight size={20}/>
+   </Link>}
        {!user&&<Link href="/login" className={`${pathName==="/login"&&'text-blue-600 dark:text-green-400 font-semibold'} no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>Login</Link>}
      

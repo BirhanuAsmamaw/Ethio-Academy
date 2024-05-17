@@ -4,7 +4,9 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { Sheet, SheetClose, SheetContent,SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+
+
 
 
 
@@ -37,20 +39,25 @@ const router=useRouter();
 
   
   return (  
-    <DropdownMenu>
+    
 
-        <DropdownMenuTrigger asChild  className=" relative " onPointerDown={onRead} >
-          <div>
+<Sheet>
+      <SheetTrigger asChild onPointerDown={onRead}>
+      <div>
         
         <IoMdNotificationsOutline size={24} />
         <div className={`absolute -top-2 -right-2   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
         </div>
-        </DropdownMenuTrigger>
-     
-        <DropdownMenuContent className="w-56 mt-2">
-          <DropdownMenuGroup>
+      </SheetTrigger>
+      <SheetContent className="px-2 py-6 overflow-y-auto">
+        <SheetHeader>
+          <SheetTitle className="text-left">Notifications</SheetTitle>
+         
+        </SheetHeader>
+        
+          <div className="  w-full  ">
     
-          {notifications?.length?<div className=" overflow-y-auto">
+          {notifications?.length?<div className=" max-h-screen">
           {notifications?.map((notification)=>{
             return <div key={notification.id} id="alert-additional-content-3"
              className={`px-1 py-2  mb-4 border rounded-[5px]  dark:bg-gray-800 
@@ -93,7 +100,7 @@ const router=useRouter();
             `} role="alert">
             <div className="flex items-center">
               
-              <h3 className="text-[14px] p-0 m-0 tracking-tight font-medium">{notification.title}</h3>
+              <h3 className="text-[14px] p-0 m-0 tracking-tight !leading-tight font-medium">{notification.title}</h3>
             </div>
             <div className="mt-1 mb-2 text-xs">
              {notification.message}
@@ -199,13 +206,7 @@ const router=useRouter();
           </div>
           })}
     
-    <div className="flex justify-end w-full py-2 px-4">
-          <button onClick={onClearAll} type="button" className="text-rose-800 bg-transparent border border-rose-800 hover:bg-rose-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-[10px] text-xs px-2 py-1 text-center dark:hover:bg-rose-600 dark:border-rose-600 dark:text-rose-400 dark:hover:text-white dark:focus:ring-rose-800" data-dismiss-target="#alert-additional-content-3" aria-label="Close">
-                Clear All
-              </button>
-             
-          
-          </div>
+   
           </div>:
     
     // no notification
@@ -218,15 +219,17 @@ const router=useRouter();
           }
     
          
-          </DropdownMenuGroup>
+          </div>
          
-        
-        
-          
-         
-          
-        </DropdownMenuContent>
-      </DropdownMenu> );
+          {notifications?.length?<SheetFooter className="p-0">
+          <SheetClose className="p-6" asChild>
+          <button onClick={onClearAll} type="button" className="text-rose-800 bg-transparent border border-rose-800 hover:bg-rose-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-[10px] text-xs px-2 py-1 text-center dark:hover:bg-rose-600 dark:border-rose-600 dark:text-rose-400 dark:hover:text-white dark:focus:ring-rose-800" data-dismiss-target="#alert-additional-content-3" aria-label="Close">
+                Clear All
+              </button>
+          </SheetClose>
+        </SheetFooter>:""}
+      </SheetContent>
+    </Sheet>);
 }
  
 export default NotificationDropDown;

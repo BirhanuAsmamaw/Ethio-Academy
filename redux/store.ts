@@ -5,6 +5,7 @@ import { searchSlice } from "./features/search/searchSlice"
 import {courseApi} from "./features/course/courseApi"
 import {instructorApi} from "./features/instructors/instructorApi"
 import {subscriberApi} from "./features/subscribers/subscriberApi"
+import {navigationSlice} from "./features/navigation/navigationSlice"
 
 export const store=configureStore({
     reducer:{
@@ -12,7 +13,8 @@ export const store=configureStore({
         [instructorApi.reducerPath]:instructorApi.reducer,
         [subscriberApi.reducerPath]:subscriberApi.reducer,
 
-        search:searchSlice.reducer
+        search:searchSlice.reducer,
+        navigation:navigationSlice.reducer
     },
     middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(courseApi.middleware,instructorApi.middleware,subscriberApi.middleware)
 }
