@@ -2,8 +2,9 @@
 import React, { ReactNode, useState } from 'react'
 import {motion} from "framer-motion"
 import { GrClose } from "react-icons/gr";
-import { Button } from './ui/button';
+import { Button, buttonVariants } from './ui/button';
 import { Loader2 } from "lucide-react"
+import { cn } from '@/lib/utils';
 interface ModalProps{
   children:ReactNode;
   title?:string;
@@ -11,16 +12,20 @@ interface ModalProps{
   onClick?:() => void;
   modalName:ReactNode;
   disabled?:boolean;
+  className?:string;
   variant?:"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined;
 }
-const CModal:React.FC<ModalProps> = ({variant,disabled,children,title,buttonLabel,onClick,modalName}) => {
+const CModal:React.FC<ModalProps> = ({className,variant,disabled,children,title,buttonLabel,onClick,modalName}) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
     <>
-      <Button variant={variant} onClick={() => setOpen(prev => !prev)} className='text-lg'>
+      <button  onClick={() => setOpen(prev => !prev)} className={cn(buttonVariants({
+        variant:variant,
+        className:className
+      }))}>
        {modalName}
-      </Button>
+      </button>
       {isOpen && (
         <div  className="fixed z-50 inset-0 overflow-y-auto w-full  ">
           <div className="flex  items-center justify-center min-h-screen w-full pt-4 pb-20 text-center">

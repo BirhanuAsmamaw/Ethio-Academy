@@ -12,24 +12,7 @@ export const sidebarData=[
   //   icon:MdOutlineDashboard,
 
   // },
-  {
-    title:"Course",
-    icon:SiCoursera,
-    items:[
-      {
-        label:"Course List",
-        url:"/dashboard/course"
-      },
-      {
-        label:"Create Course",
-        url:"/dashboard/course/add-course"
-      }, {
-        label:"Approved Course",
-        url:"/dashboard/approved-courses"
-      }
-
-    ]
-  },
+  
   {
     title:"User",
     icon:PiUsersFourLight,

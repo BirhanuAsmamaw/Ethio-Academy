@@ -39,10 +39,16 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import Link from "next/link"
+import { useState } from "react"
+import { useNewCourseFilterByInstructorQuery } from "@/redux/features/course/courseApi"
+import TableSkeleton from "@/components/tableSkeleton"
+import ActionButton from "@/components/button/actionButton"
+import { IoMdAdd } from "react-icons/io"
 
 
-interface CourseListprops{
+interface CourseListProps{
   courses:any[]| null;
+  
 }
 
 
@@ -64,37 +70,7 @@ rating: number,
 
 
 export const columns: ColumnDef<CourseType>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${row.getIsSelected()? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-
-
-
-
-
-
+ 
 
   {
     accessorKey: "course",
@@ -175,23 +151,23 @@ export const columns: ColumnDef<CourseType>[] = [
             <DropdownMenuItem>
              <Link 
              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/course/${course.id}/chapter`}>Chapter</Link>
+             href={`/dashboard/instructor/course/${course.id}/chapter`}>Chapter</Link>
             </DropdownMenuItem>
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/course/${course.id}/edit`}>Edit Course</Link>
+               href={`/dashboard/instructor/course/${course.id}/edit`}>Edit Course</Link>
             </DropdownMenuItem>
 
             <DropdownMenuItem> 
               <Link
                className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-               href={`/dashboard/course/${course.id}/course-file-update`}>Update Course Files</Link>
+               href={`/dashboard/instructor/course/${course.id}/course-file-update`}>Update Course Files</Link>
             </DropdownMenuItem>
             <DropdownMenuItem> 
               <Link 
               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/course/${course.id}/delete`}>Delete</Link>
+              href={`/dashboard/instructor/course/${course.id}/delete`}>Delete</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
@@ -206,7 +182,7 @@ export const columns: ColumnDef<CourseType>[] = [
 
 
 
-export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
+export const CourseListClient:React.FC<CourseListProps>=({courses})=> {
  
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -223,57 +199,13 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
 
 
 
-  if (!courses){
-    return <div className="w-full bg-white dark:bg-gray-800 ">
-
-<div role="status" className="w-full p-4 space-y-4 border border-gray-200 divide-y divide-gray-200 rounded shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
-    <div className="flex items-center justify-between">
-        <div>
-            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-        </div>
-        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
-    </div>
-    <div className="flex items-center justify-between pt-4">
-        <div>
-            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-        </div>
-        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
-    </div>
-    <div className="flex items-center justify-between pt-4">
-        <div>
-            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-        </div>
-        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
-    </div>
-    <div className="flex items-center justify-between pt-4">
-        <div>
-            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-        </div>
-        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
-    </div>
-    <div className="flex items-center justify-between pt-4">
-        <div>
-            <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-24 mb-2.5"></div>
-            <div className="w-32 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-        </div>
-        <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
-    </div>
-    <span className="sr-only">Loading...</span>
-</div>
-
-    </div>
-  }
-
+  
 
 
 
 
   
-  const data:CourseType[]=courses
+  const data:CourseType[]=courses||[]
 
 
 
@@ -304,7 +236,7 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
     },
   })
 
-  return (<div className="w-full bg-white dark:bg-gray-800 p-4">
+  return (<div className="w-full bg-white dark:bg-gray-800 p-1 md:p-4">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter subjects..."
@@ -390,7 +322,14 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                 <div className="space-y-4">
+                 <p className="text-lg md:text-xl">You haven't Created Course Yet!!, Please Create Course Now.</p>
+                  <div className="w-full flex justify-center">
+                  <div className="w-10/12 md:w-[200px]">
+                  <ActionButton url='/dashboard/instructor/course/add-course' label='Course' icon={IoMdAdd}/>
+                  </div>
+                  </div>
+                 </div>
                 </TableCell>
               </TableRow>
             )}
@@ -424,3 +363,23 @@ export const CourseListClient:React.FC<CourseListprops>=({courses})=> {
     </div>
   )
 }
+
+
+
+
+const InstructorCourseListClient = ({instructor}:{instructor:any}) => {
+const [page, setPage] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number>(4);
+  
+   const { data:courseData, isSuccess,isLoading } = useNewCourseFilterByInstructorQuery({ page: page.toString(), pageSize: pageSize.toString(),instructorId:instructor.id });
+
+   const courses=courseData?courseData?.courses:[];
+   if (isLoading){
+    return <TableSkeleton/>
+  }
+
+  return (<>{isSuccess?<CourseListClient  courses={courses}/>:""}</>
+  )
+}
+
+export default InstructorCourseListClient;

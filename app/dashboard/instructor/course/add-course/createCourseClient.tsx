@@ -73,7 +73,7 @@ const router=useRouter()
     
   const course={...data,subjectId:subjectId}
     axios.post('/api/course',course).then(()=>{
-      router.push(`/dashboard/course`)
+      router.push(`/dashboard/instructor/course`)
       
       toast.success("Course created successfully")
     })

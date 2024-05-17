@@ -1,32 +1,15 @@
 "use client"
-import { BiMessageRoundedCheck } from "react-icons/bi";
-import { sidebarData } from "@/lib/sidebarData";
-import SideBarItems from "./sidebarItems";
-import { IoAnalytics } from "react-icons/io5";
-import { FaCriticalRole } from "react-icons/fa";
-import { TbCategoryPlus } from "react-icons/tb";
-import CLink from "../link";
-import { MdOutlinePersonOutline } from "react-icons/md";
-import { MdOutlineLibraryBooks } from "react-icons/md";
-import { useSelector } from "react-redux";
-import { RooState } from "@/redux/store";
-import Logo from "../logo";
+
 import Link from "next/link";
-import { FaChalkboardTeacher } from "react-icons/fa";
-import { TbArrowNarrowRight } from "react-icons/tb";
 import CreateInstructorLink from "../createInstructorLink";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import SidebarContent from "./sidebarContent";
 interface SidebarProps{
   user?:any;
 }
 const Sidebar:React.FC<SidebarProps> = ({user}) => {
 
-  const isScroll=useSelector((state:RooState)=>state.navigation.isScroll)
- 
-  const isPermissionsAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManagePermission" ||permission.permission.action === "CanManageRole")
-  const isViewAnalytics=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewAalytics")
-  const isManageDepartment=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageDepartment")
-  const isViewCustomerData=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewCustomerMessage") 
-
+  const names=user.teacher.accountName.split(" ")||user.name.split(" ")
 
   return ( 
     <div 
@@ -39,29 +22,26 @@ const Sidebar:React.FC<SidebarProps> = ({user}) => {
        shadow
        dark:shadow-black
         p-4
+        z-20
         lg:4/12 xl:w-2/12 
         overflow-y-auto 
         flex 
         flex-col 
         gap-10
-        ${isScroll?'lg:py-20':'top-0 z-0 '}
+        lg:py-20
         `}>
   <div className="flex flex-grow flex-col gap-4 pt-4">
-    {!isScroll?<div className="hidden lg:block"><Logo/></div>:""}
-     {user? <CLink url="/dashboard/profile"><><p><MdOutlinePersonOutline size={20}/></p><p>My Profile</p></></CLink>:""}
-         {user? <CLink url="/dashboard/learning"><><p><MdOutlineLibraryBooks size={20}/></p><p>My Learning</p></></CLink>:""}
-           {isViewAnalytics ?<CLink url="/dashboard/analytics"><><p><IoAnalytics size={20}/></p><p>Analytics</p></></CLink>:""}
-          {isPermissionsAccessed?<CLink url="/dashboard/permission"><><p><FaCriticalRole size={20}/></p><p>Permission</p></></CLink>:""}
-
-     <SideBarItems sidebarData={sidebarData} user={user}/>
-   { isManageDepartment?  <CLink url="/dashboard/departments"><><p><TbCategoryPlus size={20}/></p><p>Department</p> </></CLink>:""}
-
-   {isViewCustomerData?<CLink url="/dashboard/customer-message"><><BiMessageRoundedCheck size={20}/><p>Customer data </p></></CLink>:""}
-     
-          
+  <SidebarContent user={user}/>
    </div>
 
-  <CreateInstructorLink/>
+  
+  {user?.teacher.status?<Link href="/dashboard/instructor/account" className=" text-center items-center border-2 text-lg truncate dark:border-gray-600 border-slate-300  no-underline hover:bg-slate-50 hover:dark:bg-gray-700 p-1 rounded-full  text-gray-800 dark:text-gray-100 justify-center flex  gap-2">
+  <Avatar className={`${!user?.image&&'hidden'} h-7 w-7 `}>
+      <AvatarImage src={user?.teacher.logo? user?.teacher?.logo.public_url:user?.image} alt="image" />
+      <AvatarFallback>{names[0]? names[0][0]:''}{names[1]?names[1][0]:''}</AvatarFallback>
+    </Avatar>
+    <span>{user.teacher.accountName||user.name}</span>
+    </Link>:<CreateInstructorLink/>}
  </div> );
 }
  

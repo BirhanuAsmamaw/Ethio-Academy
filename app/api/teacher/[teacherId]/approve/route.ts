@@ -49,7 +49,7 @@ export async function PUT(req: Request, {params}:{params:{teacherId:string}}){
       }))
       await prisma.notification.create({
         data:{
-          url:`/dashboard/course/add-course`,
+          url:`/dashboard/instructor/account`,
           type:"Success",
           title:"Congratulations; Your Account Approved Successfully!",
           message:`${teacherData.user.name},You are the Instructor of Ethio Academy; Start  Creating Your Own Course for Students!`,
@@ -87,7 +87,7 @@ export async function PUT(req: Request, {params}:{params:{teacherId:string}}){
     }))
     await prisma.notification.create({
       data:{
-        url:`/dashboard/course/add-course`,
+        url:`/dashboard/profile`,
         type:"Danger",
         title:"Sorry, Your Account Has Been Blocked!",
         message:`

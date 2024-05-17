@@ -1,8 +1,8 @@
 'use client'
 import {
-  CreditCard,
+ 
   LogOut,
-  Settings,
+ 
 } from "lucide-react"
 
 import {

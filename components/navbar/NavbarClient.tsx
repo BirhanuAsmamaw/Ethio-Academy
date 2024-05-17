@@ -34,9 +34,9 @@ const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,department
   const dispatch=useDispatch();
   const isScroll=useSelector((state:RooState)=>state.navigation.isScroll)
  
-
+  const currentScrollPos = window.scrollY;
   useEffect(() => {
-    const currentScrollPos = window.scrollY;
+    
     const handleScroll = () => {
      
       const isScrollingDown = currentScrollPos > prevScrollPos;
@@ -55,7 +55,7 @@ const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,department
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [prevScrollPos]);
+  }, [prevScrollPos,currentScrollPos]);
 
 const {setTheme}=useTheme();
 

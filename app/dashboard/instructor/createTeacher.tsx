@@ -68,19 +68,20 @@ return null;
           <span className='text-blue-500 dark:text-green-400 '>Ethio</span>
          <span className='text-rose-500 dark:text-yellow-400 '>Academy</span></Link><span>,  we provide you with the tools and support you need to create high-quality courses that inspire and educate learners everywhere.</span></div>
   </div>
+<div className="space-y-4 w-full text-black dark:text-white">
 <Input
     id="title"
     label="What is Your Teaching Title? (optional)" 
     type="text" 
     register={register}
     errors={errors}  
-    placehoder="eg. Software Developement,Nursing,..." 
+    placehoder="eg. Software Development,Nursing,Medicine, Business,Law..." 
    
      
   />  
   <Input
     id="accountName"
-    label="Channel Name (optional)" 
+    label="Account Name (optional)" 
     type="text" 
     defaultValue={user?.name}
   
@@ -111,6 +112,7 @@ return null;
    
    
   />
+</div>
 </div>
 <div className="mt-4 flex justify-end w-full">
 <Button 

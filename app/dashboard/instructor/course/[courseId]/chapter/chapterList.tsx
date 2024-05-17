@@ -129,20 +129,20 @@ export function ChapterList({course}:{course:CourseType|any}) {
         </DropdownMenuItem>
 
         <DropdownMenuItem >
-        <CLink url={`/dashboard/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/add-questions`}>
+        <CLink url={`/dashboard/instructor/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/add-questions`}>
             <><GoQuestion size={20}/> <p>Add Questions</p></>
           </CLink>
         </DropdownMenuItem>
 
 
         <DropdownMenuItem>
-        <CLink url={`/dashboard/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-content`} >
+        <CLink url={`/dashboard/instructor/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-content`} >
             <><MdContentPaste size={20}/> <p> Contents</p></>
           </CLink>
         </DropdownMenuItem>
 
         <DropdownMenuItem>
-        <CLink url={`/dashboard/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-files`} >
+        <CLink url={`/dashboard/instructor/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-files`} >
             <> <MdEditDocument size={20}/> 
          <p>Edit Lesson Files</p></>
           </CLink>
@@ -150,7 +150,7 @@ export function ChapterList({course}:{course:CourseType|any}) {
 
 
         <DropdownMenuItem>
-        <CLink url={`/dashboard/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-files`} >
+        <CLink url={`/dashboard/instructor/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-files`} >
             <><AiOutlineDelete size={20}/> <p>Delete Lesson</p></>
           </CLink>
 
