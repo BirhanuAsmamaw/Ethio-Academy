@@ -7,7 +7,7 @@ import { GoMoon } from "react-icons/go";
 import { LuSunMedium } from "react-icons/lu";
 import Link from "next/link";
 import { useCart } from "@/hooks/use.cart";
-import Profile from "../Profile";
+import UserProfile from "../Profile";
 import MobileSidebar from "./mobileMenu";
 import NotificationDropDown from "../dropdown/notificationDropDown";
 import Search from "../search/search";
@@ -38,8 +38,7 @@ const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,department
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
-      console.log("current Scroll:-", currentScrollPos);
-      console.log("prevScrollPos:-", prevScrollPos);
+     
 
       const isScrollingDown = currentScrollPos > prevScrollPos;
 
@@ -93,7 +92,7 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
        </div>
     
      <div className="flex  space-x-2  justify-center items-center h-full">
-    <div className=" hidden md:block ">
+    <div className=" hidden  lg:block  ">
       <div className="flex gap-x-4 h-full items-center ">
         
       <ExamsLists exams={exams}/>
@@ -129,7 +128,7 @@ ${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'} `}>
    
     
     {user&&<div className=" no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400 hover:text-rose-400 transition duration-300 font-medium">
-        <Profile user={user}/>
+        < UserProfile  user={user}/>
       </div>}
       <div className={` lg:hidden  `}>
        <Search />
@@ -160,7 +159,7 @@ ${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'} `}>
     </div>
 
     
-    <div className="md:hidden py-2">
+    <div className="xl:hidden py-2">
    <MobileSidebar departments={departments|| null} user={user} exams={exams}/>
     </div>
    

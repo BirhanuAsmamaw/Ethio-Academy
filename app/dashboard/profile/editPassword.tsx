@@ -37,7 +37,7 @@ const EditPassword:React.FC<EditPasswordProps>= ({user}) => {
           redirect:false,
          }).then((callback)=>{
            if (callback?.ok){
-            router.push("/mycourses")
+            router.push("/dashboard/profile")
             router.refresh();
              
              toast.success("account logged in successfully")

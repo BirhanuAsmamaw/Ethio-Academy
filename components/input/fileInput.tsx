@@ -22,6 +22,7 @@ interface InputFileProps{
 
 const FileInput:React.FC<InputFileProps> = ({register,required,errors,id,disabled,file,fileType,onDrop,onCancel}) => {
     
+    
       const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
     

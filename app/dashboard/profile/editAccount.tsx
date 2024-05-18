@@ -40,7 +40,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
       if(user.image&&user.image_key){
         const data = await RemoveFile(user.image_key);
         axios.put(`/api/user/deleteImageKey`).then(()=>{
-          router.push("/settings")
+          router.push("/dashboard/profile")
           router.refresh();
         })
        
@@ -74,7 +74,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
    axios.put(`/api/user/updatePhoto`,{image:imageData.image,image_key:imageData.image_key}).then(()=>{
     setImageUrl(user?.image?user?.image:"");
     setImageKey(user?.image_key?user?.image_key:"");
-    router.push("/settings")
+    router.push("/dashboard/profile")
     router.refresh();
     toast.success("Your Image Updated  successfully")
     }).catch((error)=>{
@@ -88,7 +88,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
       setloading(true);
      
       axios.put('/api/user/updateprofile', {...data}).then(() => {
-        router.push("/settings")
+        router.push("/dashboard/profile")
         router.refresh();
         toast.success("Your profile has been updated successfully")
       
@@ -98,7 +98,7 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
           redirect:false,
          }).then((callback)=>{
            if (callback?.ok){
-            router.push("/mycourses")
+            router.push("/dashboard/profile")
             router.refresh();
              
              toast.success("account logged in successfully")

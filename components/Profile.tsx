@@ -32,9 +32,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
   }
   else{
     const names=user.name.split(" ")
-  return ( 
-
-    <DropdownMenu>
+  return ( <DropdownMenu>
     <DropdownMenuTrigger asChild>
     <Avatar className={`${!user?.image&&'hidden'} h-7 w-7 `}>
       <AvatarImage src={user?.image? user?.image:"/"} alt="image" />

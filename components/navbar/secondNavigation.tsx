@@ -25,8 +25,8 @@ const SecondNavigation = ({ user }:{user:any}) => {
             </Link>
             <FaGripLinesVertical className="text-gray-600 dark:text-gray-400" />
             <span className="text-gray-600 dark:text-gray-300">+25193079311</span>
-            <FaGripLinesVertical className="text-gray-600 dark:text-gray-400" />
-            <Link href="mailto:deribew.tech@gmail.com" className="no-underline text-gray-600 dark:text-gray-300">
+            <FaGripLinesVertical className="text-gray-600 hidden lg:block dark:text-gray-400" />
+            <Link href="mailto:deribew.tech@gmail.com" className="hidden lg:block no-underline text-gray-600 dark:text-gray-300">
               deribew.tech@gmail.com
             </Link>
             <FaGripLinesVertical className="text-gray-600 dark:text-gray-400" />

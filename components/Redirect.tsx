@@ -5,10 +5,10 @@ import { useEffect } from "react";
 
 
 
-const Redirect = () => {
+const Redirect = ({url}:{url?:string}) => {
   const router=useRouter();
   useEffect(()=>{
-router.push("/")
+router.push(`${url? url:"/"}`)
   },[router])
   return null;
 }

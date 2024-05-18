@@ -52,7 +52,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
 
 
 else{
-return <Redirect/>
+return <Redirect url="/login"/>
 }
 }
  

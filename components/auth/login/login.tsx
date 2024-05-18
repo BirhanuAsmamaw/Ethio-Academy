@@ -45,7 +45,7 @@ const router=useRouter();
         
       }
       if (callback?.error){
-        console.log(callback)
+        
         toast.error(callback.error)
       }
     }).catch((error)=>toast.error('something went wrong')).finally(() => {
@@ -58,7 +58,7 @@ const router=useRouter();
   const signInWithGoogle=()=>{
     signIn('google',{redirect:false}).then((callback)=>{
        if (callback?.ok){
-         router.back();
+         router.push("/dashboard/profile");
          router.refresh()
          
          toast.success("account logged in successfully")

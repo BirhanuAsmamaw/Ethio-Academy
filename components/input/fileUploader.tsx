@@ -3,7 +3,7 @@ import { UploadDropzone } from "@/utils/uploadthing";
 import Image from "next/image";
 import React from "react";
 import toast from "react-hot-toast";
-
+import { BiSolidEdit } from "react-icons/bi";
 interface FileUploaderProps{
   label:string;
   endpoint:any;
@@ -28,15 +28,15 @@ const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUploa
 
   return (
     <div>
-      <section className="w-full lg:max-w-4xl mx-auto my-8 p-4  bg-white dark:bg-gray-800">
+      <section className="w-full lg:max-w-4xl mx-auto my-8 p-4  relative bg-white dark:bg-gray-800">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-bold">{label}</h2>
           {file&& (
             <button
               onClick={handleMediaChange}
-              className="bg-slate-800 text-white py-2 px-4 rounded"
+              className="bg-slate-800 absolute top-0 right-0 text-white py-2 px-4 rounded"
             >
-              Change
+              <BiSolidEdit size={20}/>
             </button>
           )}
         </div>

@@ -10,6 +10,7 @@ import { useCreateInstructorMutation } from "@/redux/features/instructors/instru
 
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import toast from "react-hot-toast";
+import Login from "@/components/auth/login/login";
 interface CreateTeacherProps{
   user:any;
 }
@@ -36,11 +37,12 @@ const router=useRouter();
   }
 
 
+  if (!user){
+ 
+    return <Login user={user}/>;
+    }
   
-if (!user){
-  router.push("/login")
-  return null;
-  }
+
 
   if(isSuccess){
     return <div className="h-screen w-full flex justify-center p-2 items-center ">
@@ -63,12 +65,12 @@ if (!user){
 
 
 
-if(user.teacher&&!user.teacher.status){
+if(user&&user.teacher&&!user.teacher.status){
   router.push("/dashboard/profile")
 return null;
 }
 
-if(user.teacher&&user.teacher.status){
+if(user&&user.teacher&&user.teacher.status){
   router.push("/dashboard/instructor/account")
 return null;
 }

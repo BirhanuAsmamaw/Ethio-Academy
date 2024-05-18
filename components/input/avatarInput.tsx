@@ -1,12 +1,13 @@
-
-import { UploadDropzone } from "@/utils/uploadthing";
-import Image from "next/image";
+"use client"
 import React from "react";
-import toast from "react-hot-toast";
+
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { BiSolidEdit } from "react-icons/bi";
+import { UploadDropzone } from "@/utils/uploadthing";
+import toast from "react-hot-toast";
 
 interface FileUploaderProps{
-  label:string;
+  label?:string;
   endpoint:any;
   file:any;
   handleMediaChange:() => void;
@@ -16,28 +17,28 @@ interface FileUploaderProps{
 }
 const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUploadComplete,label,file ,endpoint})=> {
 
-
  
-
- 
-
   const errorHandle=(error: Error) => {
     // Do something with the error.
     toast.error(error.message);
    
   }
+ 
+
+ 
 
   return (
     <div>
-      <section className="w-full lg:max-w-4xl mx-auto my-8 p-4  bg-white dark:bg-gray-800">
+      <section className="  relative ">
         <div className="flex justify-between items-center">
           <h2 className={`${file&&'hidden'} text-lg font-bold`}>{label}</h2>
           {file&& (
             <button
               onClick={handleMediaChange}
-              className="bg-slate-800 text-white py-2 px-4 rounded"
+              className="absolute text-gray-600 hover:text-black
+               dark:text-gray-400 dark:hover:text-white  z-30 bottom-5 right-1 "
             >
-              Change
+              <BiSolidEdit size={24}/>
             </button>
           )}
         </div>
@@ -51,12 +52,32 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
           
         ) : (
          
-            <UploadDropzone
-            className="bg-slate-100 rounded-full   dark:bg-slate-800 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300"
-            endpoint={endpoint}
-            onClientUploadComplete={onClientUploadComplete}
-            onUploadError={errorHandle}
-          />
+          <UploadDropzone
+          className="bg-slate-100 rounded-full text-sm  items-center text-center  text-wrap  dark:bg-slate-800 ut-label:text-sm ut-allowed-content:ut-uploading:text-red-300"
+          endpoint={endpoint}
+          onClientUploadComplete={onClientUploadComplete}
+          onUploadError={errorHandle}
+          appearance={{
+            button:{
+              padding:"1px",
+              fontSize:"12px",
+             
+              zIndex:"10px",
+              position:"absolute",
+              bottom:"2px",
+              right:"0"
+            },
+            container:{
+              height:"120px",
+              padding:"2px",
+              fontSize:"10px",
+              width:"120px"
+            },
+            
+          }}
+        />
+          
+        
          
         )}
       </section>
@@ -65,3 +86,5 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
 }
 
 export default AvatarUploader;
+
+

@@ -25,6 +25,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
     <html lang="en">
       <body className={`${IBM_plex_sans.className} bg-[#F8F4EC] dark:text-gray-300 dark:bg-gray-900 overflow-x-hidden  `}>
