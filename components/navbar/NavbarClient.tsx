@@ -74,7 +74,7 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
   return (<nav>
 
     {/* //second Navbar */}
-    <SecondNavigation user={user}/>
+   { !isScroll?<SecondNavigation user={user}/>:""}
 
 
 
