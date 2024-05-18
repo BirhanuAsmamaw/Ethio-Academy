@@ -17,7 +17,7 @@ const SecondNavigation = ({ user }:{user:any}) => {
   return (
     <>
       {isSecondNavbar ?(
-        <div className="hidden px-6 md:flex h-16 py-1 fixed w-full z-50 bg-slate-100/95 dark:bg-black/95 border-b border-slate-200 dark:border-gray-600 items-center justify-between">
+        <div className="hidden px-6 md:flex h-16 py-1 fixed w-full z-40 bg-slate-100/95 dark:bg-black/95 border-b border-slate-200 dark:border-gray-600 items-center justify-between">
           <div className="flex gap-2 text-center h-full items-center">
             <span>Contact Us:</span>
             <Link href="https://t.me/Derishemi" className="text-blue-500 hover:text-blue-600 no-underline">
@@ -43,7 +43,7 @@ const SecondNavigation = ({ user }:{user:any}) => {
             <AiOutlineClose size={30} />
           </button>
         </div>
-      ):<button onClick={onRemoveSecondNavbar} className='fixed z-50 top-0 right-0 py-1 shadow-md bg-white hover:bg-slate-50 border-2 dark:bg-gray-700 hover:dark:bg-gray-600 px-2 rounded-l-md'>
+      ):<button onClick={onRemoveSecondNavbar} className='fixed z-40 top-0 right-0 py-1 shadow-md bg-white hover:bg-slate-50 border-2 dark:bg-gray-700 hover:dark:bg-gray-600 px-2 rounded-l-md'>
         <TbLayoutNavbarCollapse size={30}/>
         </button>}
     </>

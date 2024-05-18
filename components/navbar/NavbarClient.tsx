@@ -41,7 +41,7 @@ const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,department
      
       const isScrollingDown = currentScrollPos > prevScrollPos;
 
-      if (currentScrollPos > 100 && isScrollingDown) {
+      if (currentScrollPos > 80 && isScrollingDown) {
         dispatch(setnavigationScroll({isScroll:false}))
       } else {
         dispatch(setnavigationScroll({isScroll:true}))
@@ -55,7 +55,7 @@ const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,department
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [prevScrollPos,dispatch]);
+  }, [prevScrollPos,dispatch,setPrevScrollPos]);
 
 const {setTheme}=useTheme();
 
@@ -78,7 +78,7 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
 
 
 
-    <div className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isScroll? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-900  ":" "} duration-300 z-50 bg-slate-50  dark:bg-black `}>
+    <div className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isScroll? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-900  ":"hidden "} duration-300 z-50 bg-slate-50  dark:bg-black `}>
    
    <Logo/>
   

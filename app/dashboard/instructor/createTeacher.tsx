@@ -36,6 +36,11 @@ const router=useRouter();
   }
 
 
+  
+if (!user){
+  router.push("/login")
+  return null;
+  }
 
   if(isSuccess){
     return <div className="h-screen w-full flex justify-center p-2 items-center ">
@@ -57,10 +62,6 @@ const router=useRouter();
  
 
 
-if (!user){
-router.push("/login")
-return null;
-}
 
 if(user.teacher&&!user.teacher.status){
   router.push("/dashboard/profile")

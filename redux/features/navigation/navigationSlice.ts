@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const navigationSlice=createSlice({
     name:"navigation",
     initialState:{
-        isScroll:false
+        isScroll:true
     },
     reducers:{
         setnavigationScroll:(state,action)=>{
