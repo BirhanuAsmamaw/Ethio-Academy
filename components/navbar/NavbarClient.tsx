@@ -36,17 +36,19 @@ const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,department
  
  
   useEffect(() => {
-    const currentScrollPos = window.scrollY;
     const handleScroll = () => {
-     
+      const currentScrollPos = window.scrollY;
+      console.log("current Scroll:-", currentScrollPos);
+      console.log("prevScrollPos:-", prevScrollPos);
+
       const isScrollingDown = currentScrollPos > prevScrollPos;
 
       if (currentScrollPos > 80 && isScrollingDown) {
-        dispatch(setnavigationScroll({isScroll:false}))
+        dispatch(setnavigationScroll({ isScroll: false }));
       } else {
-        dispatch(setnavigationScroll({isScroll:true}))
+        dispatch(setnavigationScroll({ isScroll: true }));
       }
-      
+
       setPrevScrollPos(currentScrollPos);
     };
 
@@ -55,7 +57,7 @@ const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,department
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [prevScrollPos,dispatch,setPrevScrollPos]);
+  }, [prevScrollPos, dispatch]);
 
 const {setTheme}=useTheme();
 

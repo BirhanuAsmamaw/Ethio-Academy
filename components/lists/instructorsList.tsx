@@ -14,7 +14,7 @@ const InstructorsList = () => {
 
 <h1 className='w-full text-xl md:text-4xl font-semibold border-b-2 border-double p-2 border-pink-200 dark:border-gray-700  text-gray-800 dark:text-gray-200 tracking-tight !leading-tight'>Top Instructors</h1>
 
-<div className='grid  grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-center flex-wrap gap-4 p-4 md:px-10'>
+<div className='grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 justify-center  gap-4 p-4 md:px-10'>
        {isSuccess?<>{data&&data.length?data?.map((teacher)=>{
         return <AccountCard key={teacher.id} 
         title={teacher.title}
