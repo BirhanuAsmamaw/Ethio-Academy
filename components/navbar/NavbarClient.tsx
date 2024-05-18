@@ -9,7 +9,6 @@ import Link from "next/link";
 import { useCart } from "@/hooks/use.cart";
 import Profile from "../Profile";
 import MobileSidebar from "./mobileMenu";
-
 import NotificationDropDown from "../dropdown/notificationDropDown";
 import Search from "../search/search";
 import Logo from "../logo";
@@ -20,7 +19,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RooState } from "@/redux/store";
 import { setnavigationScroll } from "@/redux/features/navigation/navigationSlice";
 import { TbArrowNarrowRight } from "react-icons/tb";
-
+import { SiGnuprivacyguard } from "react-icons/si";
+import SecondNavigation from "./secondNavigation";
 interface NavbarClientProps{
   user:any;
   notifications:any[];
@@ -66,15 +66,26 @@ const hashPath = pathName.replace("/", "/#");
 
 const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-400 hover:text-blue-500 hover:font-medium before:bg-yellow-400  '
 
+
+
 //logo
 //https://utfs.io/f/7cffae42-32de-4353-9667-dcbfd533a893-xmr8wu.png
 
-  return ( <nav className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isScroll? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-900  ":" "} duration-300 z-50 bg-slate-50  dark:bg-black `}>
+  return (<nav>
+
+    {/* //second Navbar */}
+    <SecondNavigation user={user}/>
+
+
+
+    <div className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isScroll? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-900  ":" "} duration-300 z-50 bg-slate-50  dark:bg-black `}>
    
    <Logo/>
   
 
      <CategoryNavigation departments={departments}/>
+
+
        <div className="hidden  lg:block  flex-grow px-10">
        <Search />
        </div>
@@ -103,7 +114,7 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
 {!user&&<Link href="/register"  className={`px-2 py-1 hover:dark:text-green-400
        hover:text-rose-400 font-medium shadow-sm border-2 border-blue-600 shadow-blue-600 gap-2 hover:scale-105 no-underline hover:bg-blue-700 hover:font-medium  items-center leading-6  rounded-full text-center text-white flex  justify-center bg-blue-600 transition-all duration-300 
 ${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'} `}>
- 
+  <SiGnuprivacyguard className="pt-1" size={20}/>
   <span className=" truncate">Sign up</span>
   <TbArrowNarrowRight size={20}/>
    </Link>}
@@ -152,7 +163,7 @@ ${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'} `}>
     </div>
    
 
-  </div> </nav>);
+  </div> </div></nav> );
 }
  
 export default NavbarClient;

@@ -6,9 +6,16 @@ export const instructorApi=createApi({
     baseUrl:"/api/teacher"
   }),
   endpoints:(builder)=>({
+    createInstructor:builder.mutation<any,any>({
+      query:(data)=>({
+        url:"",
+        method: "POST",
+        body: data
+      })
+    }),
     instructorlists:builder.query<any[],void>({
       query:()=>`/lists`
     })
   })
 });
-export const {useInstructorlistsQuery}=instructorApi;
+export const {useInstructorlistsQuery,useCreateInstructorMutation}=instructorApi;

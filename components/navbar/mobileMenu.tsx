@@ -12,6 +12,9 @@ import CSheet from "./CSheet";
 import { useFilteredCourseBySubjectQuery } from "@/redux/features/course/courseApi";
 import { useEffect, useState } from "react";
 import TableSkeleton from "../tableSkeleton";
+import { TbArrowNarrowRight } from "react-icons/tb";
+import { usePathname } from "next/navigation";
+import CreateInstructorLink from "../createInstructorLink";
 
  
 
@@ -25,7 +28,7 @@ const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments,exams}) => 
   const [subjectId,setSubjectId]=useState("")
   const [isMounted, setIsMounted] = useState(false);
   const {data,isError,isLoading,isSuccess,refetch}=useFilteredCourseBySubjectQuery(subjectId);
-  
+  const pathName=usePathname();
   useEffect(() => {
     // Set isMounted to true once the component is mounted
     setIsMounted(true);
@@ -107,19 +110,40 @@ const MobileSidebar:React.FC<MobileSidebarProps>= ({user,departments,exams}) => 
 
       
 
-      <div className="space-y-2">
-      {!user&&<Link href="/register" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-          <SiGnuprivacyguard className="pt-1" size={20}/>  <p>Signup</p>
-         </Link>}
-         {!user&&<Link href="/login" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+      <div className="space-y-2 p-2">
+      <hr className="border-gray-100 dark:border-gray-600"/>
+      
+         {!user&&<Link href="/register"  className={`px-2 py-1 hover:dark:text-green-400
+       hover:text-rose-400 font-medium shadow-sm border-2 border-blue-600 shadow-blue-600 gap-2 hover:scale-105 no-underline hover:bg-blue-700 hover:font-medium  items-center leading-6  rounded-full text-center text-white flex  justify-center bg-blue-600 transition-all duration-300 
+${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'} `}>
+ <SiGnuprivacyguard className="pt-1" size={20}/>
+  <span className=" truncate">Sign up</span>
+  <TbArrowNarrowRight size={20}/>
+   </Link>}
+
+   <hr className="border-gray-100 dark:border-gray-600"/>
+         {!user&&<><Link href="/login" className={`text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200
+         ${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'}
+         `}>
           <CiLogin className="pt-1" size={20}/> <p>Login</p>
-         </Link>}
+         </Link>
+         <hr className="border-gray-100 dark:border-gray-600"/>
+         </>}
+
+         
+
          {user&&(user.role==='ADMIN')&&<Link href="/dashboard" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
           <MdOutlineDashboard className="pt-1" size={20}/> <p>Dashboard</p>
          </Link>}
          {user&&<Link href="/logout" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
           <CiLogout className="pt-1" size={20}/> <p>Logout</p>
          </Link>}
+         {user&&user.teacher?"":
+         <div className="mt-6">
+          <CreateInstructorLink/>
+         </div>
+
+         }
       </div>
         
         
