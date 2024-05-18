@@ -1,5 +1,6 @@
 "use client"
 import { RemoveFile } from '@/actions/file/removeFile';
+import AvatarUploader from '@/components/input/avatarInput';
 import FileUploader from '@/components/input/fileUploader'
 import axios from 'axios';
 import React, { useState } from 'react'
@@ -65,21 +66,14 @@ if(!user?.teacher){
 }
 
   
-  return (<div className="w-full p-2 flex justify-center bg-white shadow-md dark:bg-black">
-    <div className="space-y-2 w-full text-center">
-    
-   
-
-      <FileUploader
+  return (<AvatarUploader
       onClientUploadComplete={onuserLogoComplete}
-      label="Upload Channel Logo"
         file={LogoUrl}
         handleMediaChange={handleLogoChange}
         endpoint="imageUploader"
-        mediaType="image"
+        
       />
-       </div>
-      </div>
+      
 
   )
 }

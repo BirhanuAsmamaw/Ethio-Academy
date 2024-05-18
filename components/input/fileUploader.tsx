@@ -28,15 +28,15 @@ const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUploa
 
   return (
     <div>
-      <section className="w-full lg:max-w-4xl mx-auto my-8 p-4  relative bg-white dark:bg-gray-800">
+      <section className="w-full z-0 lg:max-w-4xl mx-auto my-8 p-4  relative bg-white dark:bg-gray-800">
         <div className="flex justify-between items-center">
           <h2 className="text-lg font-bold">{label}</h2>
           {file&& (
             <button
               onClick={handleMediaChange}
-              className="bg-slate-800 absolute top-0 right-0 text-white py-2 px-4 rounded"
+              className=" text-blue-600 dark:text-green-400"
             >
-              <BiSolidEdit size={20}/>
+              <BiSolidEdit size={30}/>
             </button>
           )}
         </div>
@@ -51,10 +51,21 @@ const FileUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUploa
           )
         ) : (
           <UploadDropzone
-            className="bg-slate-100 dark:bg-slate-800 ut-label:text-lg ut-allowed-content:ut-uploading:text-red-300"
+            className=" dark:bg-gray-700 z-0 bg-slate-50 ut-allowed-content:ut-uploading:text-red-300"
             endpoint={endpoint}
             onClientUploadComplete={onClientUploadComplete}
             onUploadError={errorHandle}
+            appearance={{
+              button:{
+                fontSize:"14px",
+                paddingRight:"1px",
+                paddingLeft:"1px"
+
+              },
+              container:{
+               
+              }
+            }}
           />
         )}
       </section>

@@ -20,7 +20,7 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
  
   const errorHandle=(error: Error) => {
     // Do something with the error.
-    toast.error(error.message);
+    toast.error("error occurred!");
    
   }
  
@@ -35,10 +35,10 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
           {file&& (
             <button
               onClick={handleMediaChange}
-              className="absolute text-gray-600 hover:text-black
-               dark:text-gray-400 dark:hover:text-white  z-30 bottom-5 right-1 "
+              className="absolute z-40 text-cyan-600 hover:text-black
+                dark:hover:text-white   bottom-5 right-2 "
             >
-              <BiSolidEdit size={24}/>
+              <BiSolidEdit size={28} className=" drop-shadow-md"/>
             </button>
           )}
         </div>
@@ -47,13 +47,13 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
           
             <Avatar className={` h-28 w-28`}>
             <AvatarImage src={file} alt="image" />
-            <AvatarFallback>Avatar</AvatarFallback>
+            <AvatarFallback className="text-black dark:text-white font-medium text-[12px]">profile</AvatarFallback>
           </Avatar>
           
         ) : (
          
           <UploadDropzone
-          className="bg-slate-100 rounded-full text-sm  items-center text-center  text-wrap  dark:bg-slate-800 ut-label:text-sm ut-allowed-content:ut-uploading:text-red-300"
+          className="bg-slate-100  truncate rounded-full text-sm  items-center text-center  text-wrap  dark:bg-slate-800 ut-label:text-sm ut-allowed-content:ut-uploading:text-red-300"
           endpoint={endpoint}
           onClientUploadComplete={onClientUploadComplete}
           onUploadError={errorHandle}
@@ -61,7 +61,10 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
             button:{
               padding:"1px",
               fontSize:"12px",
-             
+               
+                borderRadius:"5px",
+               
+                 backgroundColor:"#0284c7",
               zIndex:"10px",
               position:"absolute",
               bottom:"2px",

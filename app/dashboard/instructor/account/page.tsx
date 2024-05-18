@@ -12,6 +12,7 @@ import { getCurrentUser } from '@/actions/users/currentUser'
 import ActionButton from '@/components/button/actionButton';
 import AccountEdit from './accountEdit';
 import InstructorCourseListClient from '../course/courseListClient';
+import UpdateTeacherLogo from './updateTeacherLogo';
 
 
 const eb_garamound= EB_Garamond({ subsets: ['latin'] ,weight:['400', '500','600','700']})
@@ -35,10 +36,7 @@ const AccountPage= async() => {
 <div className="">
         
           <div className="flex flex-col md:flex-row text-center items-center w-full md:gap-10 ">
-          <Avatar className={`h-20 w-20 md:h-24 md:w-24 `}>
-      <AvatarImage src={user?.teacher.logo? user.teacher?.logo.public_url: user?.image||""} alt="image" />
-      <AvatarFallback>{names? names[0]:''}</AvatarFallback>
-    </Avatar>
+          <UpdateTeacherLogo user={user} />
             <div className="mt-1">
               <div className='text-xl md:text-2xl  xl:text-3xl  tracking-tight font-semibold flex gap-x-2 w-full'><p>{user?.teacher?.accountName? user?.teacher?.accountName:user?.name}</p> <ChannelVerfiedComponent/></div>
               {user?.teacher?.title?<p className={`

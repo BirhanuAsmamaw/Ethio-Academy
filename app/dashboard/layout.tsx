@@ -25,11 +25,11 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
     <div className="min-h-screen   grid grid-cols-1 lg:grid-cols-12 gap-20 w-full">
 
 
-     <div className="fixed left-0  top-20 lg:hidden">
+     <div className="fixed left-0  z-50 top-20 lg:hidden">
      <DashboardSheet user={user}/>
      </div>
   
-    <div className="hidden lg:block  lg:col-span-3  xl:col-span-2 relative">
+    <div className="hidden lg:block    lg:col-span-3  xl:col-span-2 relative">
      
        
         <Sidebar user={user}/>
