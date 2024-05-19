@@ -253,11 +253,11 @@ model Question{
    title_two String? 
    q_image File?
    chooses Choose[]
-   year String
+   year String ?
    explanation String?
     subject Subject?  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
   subjectId  String? @db.ObjectId
-   isModel Boolean @default(false)
+   isModel Boolean ?
 
 }
 

@@ -106,8 +106,8 @@ const router=useRouter();
     <div className="space-y-10 w-full">
      
     <div className="space-y-2 w-full flex flex-col items-center">
-      <h2 className="text-lg text-gray-600 dark:text-gray-400 font-semibold">{lesson.chapter.title} in {lesson?.chapter.course?.course}</h2>
-    <h1 className="text-xl font-semibold">{lesson?.title} Files</h1>
+      
+    <h1 className="text-xl font-semibold">{lesson.chapter.title} in {lesson?.chapter.course?.course}</h1>
     </div>
 
 <FileUploader

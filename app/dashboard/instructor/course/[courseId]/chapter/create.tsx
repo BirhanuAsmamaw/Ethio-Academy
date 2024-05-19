@@ -45,7 +45,7 @@ setAdd((prev)=>!prev)
   return ( <div className="space-y-2">
     <div className="flex flex-col md:flex-row w-full px-4 justify-between">
       <h2 className="text-lg font-semibold">{course?.course}</h2>
-     <AddButton onAddButton={onAddChapter} label="Add Chapter"/>
+     <AddButton isAdd={isAdd} onAddButton={onAddChapter} label="Chapter"/>
 
     </div>
 
@@ -64,7 +64,9 @@ setAdd((prev)=>!prev)
       />
       </div>
        <div className="flex pt-4 justify-center  items-center">
-      <button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300"><IoIosSend size={40}/></button>
+      <button onClick={handleSubmit(onSubmit)} className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition  duration-300">
+        <IoIosSend size={40}/>
+        </button>
        </div>
       </div>:""
     }

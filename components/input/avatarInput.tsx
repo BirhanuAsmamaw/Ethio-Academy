@@ -25,6 +25,7 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
   }
  
 
+  console.log("file profile:",file)
  
 
   return (
@@ -45,7 +46,7 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
         {file? (
           
           
-            <Avatar className={` h-28 w-28`}>
+            <Avatar className={` h-24 w-24 sm:h-28 sm:w-28`}>
             <AvatarImage src={file} alt="image" />
             <AvatarFallback className="text-black dark:text-white font-medium text-[12px]">profile</AvatarFallback>
           </Avatar>
@@ -53,7 +54,7 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
         ) : (
          
           <UploadDropzone
-          className="bg-slate-100  truncate rounded-full text-sm  items-center text-center  text-wrap  dark:bg-slate-800 ut-label:text-sm ut-allowed-content:ut-uploading:text-red-300"
+          className="bg-slate-100 w-[80px] h-[80px]  sm:w-[120px] sm:h-[120px]  truncate rounded-full text-sm  items-center text-center  text-wrap  dark:bg-slate-800 ut-label:text-sm ut-allowed-content:ut-uploading:text-red-300"
           endpoint={endpoint}
           onClientUploadComplete={onClientUploadComplete}
           onUploadError={errorHandle}
@@ -71,10 +72,10 @@ const AvatarUploader:React.FC<FileUploaderProps>=({handleMediaChange,onClientUpl
               right:"0"
             },
             container:{
-              height:"120px",
+             
               padding:"2px",
               fontSize:"10px",
-              width:"120px"
+              
             },
             
           }}

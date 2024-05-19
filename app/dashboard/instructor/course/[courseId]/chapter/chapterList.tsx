@@ -5,11 +5,9 @@
 "use client"
 
 import * as React from "react"
-import { MdContentPaste } from "react-icons/md";
-import { GrFormView } from "react-icons/gr";
+import { GrChapterAdd } from "react-icons/gr";
 import { AiOutlineDelete } from "react-icons/ai"
 import { Button } from "@/components/ui/button"
-import { MdEditDocument } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 import { MdModeEdit } from "react-icons/md";
 import {
@@ -27,21 +25,19 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
-
+import { PiExam } from "react-icons/pi";
 import { MdDelete } from "react-icons/md";
-import { GoQuestion } from "react-icons/go";
-
+import { RiFileEditLine } from "react-icons/ri";
 import { CourseType } from "@/types";
 
 import UpdateChapter from "./updateChapter";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import DeleteChapter from "./deleteChapter";
-import { useRouter } from "next/navigation";
 import CLink from "@/components/link";
 import CreateLesson from "./createLesson";
 export function ChapterList({course}:{course:CourseType|any}) {
-  const router=useRouter();
+  
   if (!course){
     return <div className="p-4 font-bold text-xl">No Chapter!</div>
   }
@@ -66,14 +62,28 @@ export function ChapterList({course}:{course:CourseType|any}) {
    hover:bg-gray-100 hover:text-blue-700 focus:z-10 
    focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700
     dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600
-     dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center" value="update"><><MdModeEdit size={24}/> <p>Update Chapter</p></></TabsTrigger>
+     dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 
+     items-center
+      justify-center
+      data-[state=active]:text-white data-[state=active]:bg-blue-500 
+      data-[state=active]:dark:text-white data-[state=active]:dark:bg-blue-500 
+      data-[state=active]:border-blue-600 data-[state=active]:dark:border-blue-600
+     " value="update"><><MdModeEdit size={24}/> </></TabsTrigger>
     <TabsTrigger className="py-2 md:py-2.5 px-3 md:px-5 me-2 mb-2
   text-sm font-medium text-gray-900 focus:outline-none
    bg-white rounded-full border border-gray-200 
    hover:bg-gray-100 hover:text-blue-700 focus:z-10 
    focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700
     dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600
-     dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center" value="delete"><><MdDelete size={24}/> <p>Delete Chapter</p></></TabsTrigger>
+     dark:hover:text-white dark:hover:bg-gray-700
+      flex gap-2 items-center
+       justify-center
+       data-[state=active]:text-white data-[state=active]:bg-blue-500 
+       data-[state=active]:dark:text-white data-[state=active]:dark:bg-blue-500 
+       data-[state=active]:border-blue-600 data-[state=active]:dark:border-blue-600
+       
+       " 
+       value="delete"><><MdDelete size={24}/> </></TabsTrigger>
   </TabsList>
 
   <TabsContent value="update" className="pt-10">
@@ -118,40 +128,36 @@ export function ChapterList({course}:{course:CourseType|any}) {
         <Button variant="ghost"><BsThreeDots size={20}/></Button>
       </DropdownMenuTrigger>
       
-      <DropdownMenuContent className="w-56 absolute right-0 top-2 bg-slate-100 dark:bg-slate-700 p-2">
+      <DropdownMenuContent className="w-56 absolute right-0 top-0  ">
         <DropdownMenuLabel>Lesson: {ind+1}</DropdownMenuLabel>
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem >
-          <CLink url={`/course/${course.id}/${chapter.id}/${lesson.id}`}>
-            <><GrFormView size={20}/> <p>View Detail</p></>
-          </CLink>
-        </DropdownMenuItem>
+      
 
         <DropdownMenuItem >
         <CLink url={`/dashboard/instructor/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/add-questions`}>
-            <><GoQuestion size={20}/> <p>Add Questions</p></>
+            <><PiExam size={20}/> <p>Questions</p></>
           </CLink>
         </DropdownMenuItem>
 
 
         <DropdownMenuItem>
         <CLink url={`/dashboard/instructor/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-content`} >
-            <><MdContentPaste size={20}/> <p> Contents</p></>
+            <><GrChapterAdd size={20}/> <p> Contents</p></>
           </CLink>
         </DropdownMenuItem>
 
         <DropdownMenuItem>
         <CLink url={`/dashboard/instructor/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-files`} >
-            <> <MdEditDocument size={20}/> 
-         <p>Edit Lesson Files</p></>
+            <> <RiFileEditLine size={20}/> 
+         <p>Lesson Files</p></>
           </CLink>
         </DropdownMenuItem>
 
 
         <DropdownMenuItem>
         <CLink url={`/dashboard/instructor/course/${course?.id}/chapter/${chapter?.id}/lesson/${lesson?.id}/update-files`} >
-            <><AiOutlineDelete size={20}/> <p>Delete Lesson</p></>
+            <><AiOutlineDelete size={20}/> <p>Lesson</p></>
           </CLink>
 
         </DropdownMenuItem>

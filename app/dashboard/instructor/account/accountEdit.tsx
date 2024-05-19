@@ -29,7 +29,8 @@ const AccountEdit = ({user}:{user:any}) => {
    
     setLoading(true)
     axios.put("/api/teacher/update/content",data).then((response) => {
-      
+      router.push("/dashboard/instructor/account")
+      router.refresh()
       toast.success("Successfully updated");
   
     

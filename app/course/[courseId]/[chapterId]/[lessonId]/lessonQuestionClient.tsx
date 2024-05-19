@@ -64,7 +64,7 @@ const onSubmit=()=>{
 
 <div className="flex border-b border-double border-green-600 justify-between">
         <p className="text-xl font-bold">{index+1}</p>
-        <p className="text-gray-500  dark:text-gray-400 text-sm">{question.year}</p>
+        {question?.year?<p className="text-gray-500  dark:text-gray-400 text-sm">{question?.year}</p>:""}
       </div>
       <p className="p-2">{question.title}</p>
       <div className="p-2 space-y-2">

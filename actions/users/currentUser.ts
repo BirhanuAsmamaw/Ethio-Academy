@@ -19,7 +19,11 @@ export async function getCurrentUser() {
       teacher:{
         include:{
           subscribers:true,
-          courses:true
+          courses:{
+            include:{
+              payments:true
+            }
+          }
         }
       },
       roles:{
@@ -55,7 +59,17 @@ export async function getCurrentUser() {
   }
 
 
+  const learners = currentUser?.teacher?.courses.reduce((total, course) => total + course.payments.length, 0);
+
+  const instructor={...currentUser?.teacher,
+    learner_no:learners,
+    subscribe_no:currentUser?.teacher?.subscribers.length,
+    course_no:currentUser?.teacher?.courses.length}
+
+
+
   return{...currentUser,
+    teacher:instructor,
     createdAt:currentUser.createdAt.toISOString()
     ,updatedAt:currentUser.updatedAt.toISOString(),
     emailVerified:currentUser.emailVerified?.toISOString()||null

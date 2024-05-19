@@ -32,10 +32,10 @@ const AccountPage= async() => {
           <div className='flex flex-col items-center min-h-screen p-1 gap-20  w-full md:w-11/12 '>
 
 
-         <div className=" bg-blue-600 p-4 flex-wrap text-white h-64  w-full rounded-[10px] flex justify-center md:justify-between items-center">
+         <div className=" bg-blue-600 p-4 flex-wrap text-white h-64  w-full rounded-[10px] flex justify-center sm:justify-between items-center">
 <div className="">
         
-          <div className="flex flex-col md:flex-row text-center items-center w-full md:gap-10 ">
+          <div className="flex flex-col sm:flex-row text-center items-center w-full sm:gap-5 md:gap-10 ">
           <UpdateTeacherLogo user={user} />
             <div className="mt-1">
               <div className='text-xl md:text-2xl  xl:text-3xl  tracking-tight font-semibold flex gap-x-2 w-full'><p>{user?.teacher?.accountName? user?.teacher?.accountName:user?.name}</p> <ChannelVerfiedComponent/></div>
@@ -51,17 +51,17 @@ const AccountPage= async() => {
 <ul className='flex  flex-row gap-x-2 w-full text-start items-start text-[16px] font-thin space-y-0 text-gray-300 list-none'>
 <li className='flex gap-1'>
 <SiBookstack size={20}/>
-<span>{233} courses</span>
+<span>{user.teacher.course_no} courses</span>
 </li>
 
 <li className='flex gap-1'>
 <PiStudentLight size={20}/>
-<span>{453} learners</span>
+<span>{user.teacher.learner_no} learners</span>
 </li>
 
 <li className='flex gap-1'>
 <BsPeople size={20}/>
-<span>{3454}  subscribers</span>
+<span>{user.teacher.subscribe_no} subscribers</span>
 </li>
 
 
@@ -75,16 +75,16 @@ const AccountPage= async() => {
 <ul className='flex  flex-row gap-x-2 w-full text-start items-start text-[12px] font-thin space-y-0 text-gray-300 list-none'>
 <li className='flex gap-1'>
 <SiBookstack size={16}/>
-<span>{354} courses</span>
+<span>{user.teacher.course_no} courses</span>
 </li>
 
 <li className='flex gap-1'>
 <PiStudentLight size={16}/>
-<span>{43} learners</span>
+<span>{user.teacher.learner_no} learners</span>
 </li>
 <li className='flex gap-1'>
 <BsPeople size={16}/>
-<span>{34} subscribers</span>
+<span>{user.teacher.subscribe_no} subscribers </span>
 </li>
 
 

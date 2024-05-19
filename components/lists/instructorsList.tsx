@@ -7,7 +7,7 @@ import CardSceleton from '../card/cardSceleton';
 const InstructorsList = () => {
   const {data,isLoading,error,isSuccess}=useInstructorlistsQuery();
  
-  
+  console.log("instructors data:-",data)
   return (<section id='instructors' className='w-full bg-pink-50 py-20 md:py-32    relative  dark:bg-zinc-800 '>
   <div className="flex   justify-center  py-10">
     <div className="w-full lg:w-11/12 xl:px-20   space-y-4">
@@ -18,6 +18,9 @@ const InstructorsList = () => {
        {isSuccess?<>{data&&data.length?data?.map((teacher)=>{
         return <AccountCard key={teacher.id} 
         title={teacher.title}
+        learner_no={teacher?.learner_no}
+        subscribe_no={teacher?.subscribe_no}
+        course_no={teacher?.course_no}
         name={teacher.
           accountName
           ||teacher.user.name} 

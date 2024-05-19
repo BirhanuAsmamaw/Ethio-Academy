@@ -3,13 +3,15 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 import { IoMdAdd } from 'react-icons/io'
 import {motion} from "framer-motion"
-
+import { RiSubtractFill } from "react-icons/ri";
 
 interface AddButtonProps{
   onAddButton?:() => void
   label: string
+  isAdd?:boolean;
+
 }
-const AddButton:React.FC<AddButtonProps> = ({onAddButton,label}) => {
+const AddButton:React.FC<AddButtonProps> = ({onAddButton,isAdd,label}) => {
   const router=useRouter();
  
   return (<motion.button 
@@ -25,7 +27,8 @@ text-sm font-medium text-gray-900 focus:outline-none
  hover:bg-gray-100 hover:text-blue-700 focus:z-10 
  focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700
   dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600
-   dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center"><IoMdAdd size={24}/> <p>{label}</p></motion.button>
+   dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center">
+    {isAdd?(<RiSubtractFill size={24}/>):(<IoMdAdd size={24}/>)} <p>{label}</p></motion.button>
   )
 }
 

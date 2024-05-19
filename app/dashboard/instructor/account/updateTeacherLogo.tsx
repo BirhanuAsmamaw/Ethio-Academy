@@ -52,7 +52,7 @@ const UpdateTeacherLogo:React.FC<UpdateTeacherLogoProps> = ({user}) => {
     }
 
    axios.put(`/api/teacher/update/logo`,{logo:LogoData}).then(()=>{
-    setLogoUrl(user?.teacher?.logo?user?.teacher?.logo.public_url:"");
+    setLogoUrl(user?.teacher?.logo?(user?.teacher?.logo.public_url||user.image):"");
     setLogoKey(user?.teacher?.logo?user?.teacher?.logo.public_key:"");
     toast.success("user Logo uploaded successfully")
     }).catch((error)=>{

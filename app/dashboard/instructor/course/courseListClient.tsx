@@ -146,7 +146,7 @@ export const columns: ColumnDef<CourseType>[] = [
             </Button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
+          <DropdownMenuContent align="end" >
           
             <DropdownMenuItem>
              <Link 
