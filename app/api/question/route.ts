@@ -16,7 +16,7 @@ export async function POST(req:Request) {
   } =body;
   try{
 
-    if( !title || !chooses.length || !year || !explanation) {
+    if( !title || !chooses.length || !explanation) {
       return NextResponse.json({
         status: false,
         message:"Invalid  parameters"
