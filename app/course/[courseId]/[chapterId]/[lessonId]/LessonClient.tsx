@@ -107,7 +107,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
   </TabsList>
 
   <TabsContent value="notes">
- <div className=" p-2 md:p-4">
+ <div className=" p-3 md:p-4">
  <div className="flex flex-col   gap-20">
   
 

@@ -10,7 +10,7 @@ html{
 }
 
 ul {
-  @apply list-disc pl-2 list-inside; /* Example: Apply Tailwind styles to ul */
+  @apply list-disc pl-1 list-inside; /* Example: Apply Tailwind styles to ul */
 }
 
 ol {
