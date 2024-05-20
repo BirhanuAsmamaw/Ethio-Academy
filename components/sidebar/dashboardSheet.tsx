@@ -16,7 +16,7 @@ interface DashboardSheetProps{
 const DashboardSheet:React.FC<DashboardSheetProps>= ({user}) => {
  
   
-  const names=user.teacher.accountName.split(" ")||user.name.split(" ")
+  const names=user.teacher&&user.teacher.accountName?user.teacher.accountName.split(" "):user.name.split(" ")
 
   
     return (
@@ -44,7 +44,7 @@ const DashboardSheet:React.FC<DashboardSheetProps>= ({user}) => {
 
        <SheetFooter>
           <SheetClose asChild>
-          {user?.teacher.status?<Link href="/dashboard/instructor/account" className=" text-center items-center border-2 text-lg truncate dark:border-gray-600 border-slate-300  no-underline hover:bg-slate-50 hover:dark:bg-gray-700 p-1 rounded-full  text-gray-800 dark:text-gray-100 justify-center flex  gap-2">
+          {user?.teacher&&user?.teacher.status?<Link href="/dashboard/instructor/account" className=" text-center items-center border-2 text-lg truncate dark:border-gray-600 border-slate-300  no-underline hover:bg-slate-50 hover:dark:bg-gray-700 p-1 rounded-full  text-gray-800 dark:text-gray-100 justify-center flex  gap-2">
   <Avatar className={`${!user?.image&&'hidden'} h-7 w-7 `}>
       <AvatarImage src={user?.teacher.logo? user?.teacher?.logo.public_url:user?.image} alt="image" />
       <AvatarFallback>{names[0]? names[0][0]:''}{names[1]?names[1][0]:''}</AvatarFallback>

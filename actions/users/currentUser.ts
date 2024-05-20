@@ -65,10 +65,12 @@ export async function getCurrentUser() {
 
   const learners = currentUser?.teacher?.courses.reduce((total, course) => total + course.payments.length, 0);
 
-  const instructor={...currentUser?.teacher,
-    learner_no:learners,
-    subscribe_no:currentUser?.teacher?.subscribers.length,
-    course_no:currentUser?.teacher?.courses.length}
+  const instructor = currentUser?.teacher ? {
+    ...currentUser.teacher,
+    learner_no: learners,
+    subscribe_no: currentUser.teacher.subscribers.length,
+    course_no: currentUser.teacher.courses.length
+  } : null;
 
 
 

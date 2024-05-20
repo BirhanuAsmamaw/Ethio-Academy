@@ -138,10 +138,10 @@ ${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'} `}>
          {user&&<Link href="/logout" className="text-sm flex no-underline  gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
           <CiLogout className="pt-1" size={20}/> <p>Logout</p>
          </Link>}
-         {user&&user.teacher?"":
-         <div className="mt-6">
+         {!user?.teacher?<div className="mt-6">
           <CreateInstructorLink/>
-         </div>
+         </div>:""
+         
 
          }
       </div>
