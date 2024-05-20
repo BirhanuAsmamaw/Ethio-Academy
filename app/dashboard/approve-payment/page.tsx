@@ -7,7 +7,7 @@ import { usePaymentListQuery } from "@/redux/features/payments/paymentApi";
 const PaymentListPage= () => {
     
      const { data:payments, isSuccess,isLoading } = usePaymentListQuery();
-  console.log("payment data:-",payments)
+  
      const paymentsData=payments?payments:[];
      if (isLoading){
       return <TableSkeleton/>

@@ -1,4 +1,5 @@
 "use client"
+import CardSceleton from '@/components/card/cardSceleton'
 import { Button } from '@/components/ui/button'
 import { useApproveStatusMutation, useGetPaymentQuery } from '@/redux/features/payments/paymentApi'
 import { useRouter } from 'next/navigation'
@@ -31,7 +32,10 @@ const PaymentDetail = ({params}:{params:{paymentId:string}}) => {
 
 
   if(isLoading){
-    return(<div>Loading</div>)
+    return(<div className='w-full h-screen flex justify-center items-center p-4'>
+      <CardSceleton/>
+
+    </div>)
 
   }
 

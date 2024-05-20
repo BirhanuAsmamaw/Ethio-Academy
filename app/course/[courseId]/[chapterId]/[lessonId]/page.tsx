@@ -13,7 +13,7 @@ import Header from "@/components/Header";
 import LessonBlur from "./lessonBlur";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import { Sheet,  SheetContent,  SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 

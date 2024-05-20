@@ -49,15 +49,15 @@ const router=useRouter();
         <div className={`absolute -top-2 -right-2   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
         </div>
       </SheetTrigger>
-      <SheetContent className="px-2 py-6 overflow-y-auto">
+      <SheetContent className="px-2 py-6 overflow-y-auto pb-10">
         <SheetHeader>
           <SheetTitle className="text-left">Notifications</SheetTitle>
          
         </SheetHeader>
         
-          <div className="  w-full  ">
+          <div className="  w-full py-10  ">
     
-          {notifications?.length?<div className=" max-h-screen">
+          {notifications?.length?<div className=" ">
           {notifications?.map((notification)=>{
             return <div key={notification.id} id="alert-additional-content-3"
              className={`px-1 py-2  mb-4 border rounded-[5px]  dark:bg-gray-800 
