@@ -1,11 +1,8 @@
-"use client"
-
-import * as React from "react"
+import * as React from "react";
 import {
   CaretSortIcon,
   ChevronDownIcon,
-  DotsHorizontalIcon,
-} from "@radix-ui/react-icons"
+} from "@radix-ui/react-icons";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -17,18 +14,16 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -36,22 +31,21 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import Link from "next/link"
-import TableSkeleton from "@/components/tableSkeleton"
+} from "@/components/ui/table";
+import TableSkeleton from "@/components/tableSkeleton";
+import Link from "next/link";
 
-interface LearningCourseProps{
-  courses:any[] | null;
+interface LearningCourseProps {
+  courses: any[] | null;
 }
 
-type LearningCourse={
-  id:string, 
- course:string;
- status:string;
-}
+type LearningCourse = {
+  id: string;
+  course: string;
+  status: string;
+};
 
 export const columns: ColumnDef<LearningCourse>[] = [
-
   {
     accessorKey: "course",
     header: ({ column }) => {
@@ -60,16 +54,14 @@ export const columns: ColumnDef<LearningCourse>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-        Course Name
+          Course Name
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
-    cell: ({ row }) => <div className="">{row.getValue("course")}</div>,
+    cell: ({ row }) => <div>{row.getValue("course")}</div>,
   },
-
-
-
+ 
   {
     accessorKey: "status",
     header: ({ column }) => {
@@ -81,74 +73,41 @@ export const columns: ColumnDef<LearningCourse>[] = [
           Status
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("status")? <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Approved</span>:
-    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Pending...</span>
- }</div>,
+    cell: ({ row }) => (
+      <div className="text-center">
+        {row.original.status ? (
+          <Link href={`/course/${row.original.id}`} className="bg-blue-500 text-white lg:font-bold px-2 py-1 lg:py-2 lg:px-4 rounded-full no-underline shadow-lg transform transition-transform duration-300 hover:bg-blue-600 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
+            Start Now
+          </Link>
+        ) : (
+          <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2 py-1 lg:py-2 lg:px-4 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
+            Pending...
+          </span>
+        )}
+      </div>
+    ),
   },
+];
 
-
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      const user = row.original
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <DotsHorizontalIcon className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-
-          <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
-          
-            <DropdownMenuItem>
-             <Link 
-             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/user-list/${user.id}/update/role`}>Edit User Role</Link>
-            </DropdownMenuItem>
-            
-            <DropdownMenuItem> 
-              <Link 
-              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/user-list/${user.id}/delete`}>Delete User</Link>
-              </DropdownMenuItem>
-          </DropdownMenuContent>
-
-
-        </DropdownMenu>
-      )
-    },
-  },
-
-
-]
-
-
-
-export const LearningCourseClient:React.FC<LearningCourseProps>=({courses})=> {
- 
-  const [sorting, setSorting] = React.useState<SortingState>([])
+export const LearningCourseClient: React.FC<LearningCourseProps> = ({
+  courses,
+}) => {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
-  )
+  );
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
 
-
-  if (!courses){
-    return <TableSkeleton/>
+  if (!courses) {
+    return <TableSkeleton />;
   }
 
-  const data:LearningCourse[]=courses
+  const data: LearningCourse[] = courses;
 
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const table = useReactTable({
     data,
     columns,
@@ -166,10 +125,10 @@ export const LearningCourseClient:React.FC<LearningCourseProps>=({courses})=> {
       columnVisibility,
       rowSelection,
     },
-  })
+  });
 
   return (
-    <div className="w-full bg-white dark:bg-gray-800  p-4">
+    <div className="w-full bg-white dark:bg-gray-800 p-4">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter courses..."
@@ -181,11 +140,17 @@ export const LearningCourseClient:React.FC<LearningCourseProps>=({courses})=> {
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto border-gray-200 dark:border-gray-600 rounded-[5px]">
+            <Button
+              variant="outline"
+              className="ml-auto border-gray-200 dark:border-gray-600 rounded-[5px]"
+            >
               Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end"  className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
+          <DropdownMenuContent
+            align="end"
+            className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]"
+          >
             {table
               .getAllColumns()
               .filter((column) => column.getCanHide())
@@ -198,24 +163,23 @@ export const LearningCourseClient:React.FC<LearningCourseProps>=({courses})=> {
                     onCheckedChange={(value) =>
                       column.toggleVisibility(!!value)
                     }
-                  
                   >
                     {column.id}
                   </DropdownMenuCheckboxItem>
-                )
+                );
               })}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
 
-
       <div className="rounded-[5px] p-3 w-full overflow-x-auto border border-gray-200 dark:border-gray-700">
         <Table className="w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow 
-              className="border-gray-200 dark:border-gray-700"
-              key={headerGroup.id}>
+              <TableRow
+                className="border-gray-200 dark:border-gray-700"
+                key={headerGroup.id}
+              >
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -226,7 +190,7 @@ export const LearningCourseClient:React.FC<LearningCourseProps>=({courses})=> {
                             header.getContext()
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -235,7 +199,7 @@ export const LearningCourseClient:React.FC<LearningCourseProps>=({courses})=> {
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
-                className="border-gray-200 dark:border-gray-700"
+                  className="border-gray-200 dark:border-gray-700"
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
@@ -287,5 +251,5 @@ export const LearningCourseClient:React.FC<LearningCourseProps>=({courses})=> {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
