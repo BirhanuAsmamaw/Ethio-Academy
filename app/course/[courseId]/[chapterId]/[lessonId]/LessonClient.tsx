@@ -48,7 +48,10 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
            data-[state=active]:dark:text-green-400
 
            " value="notes">Notes</TabsTrigger>
-    <TabsTrigger  className="
+    
+    <Dialog >
+  <DialogTrigger className="w-full h-full">
+  <TabsTrigger  className="
            border-b-[1.5px]  
            font-normal
             border-slate-400 
@@ -69,9 +72,8 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
            data-[state=active]:dark:text-green-400
 
            " value="exam">
-    <Dialog >
-  <DialogTrigger className="w-full h-full">
   Exam
+  </TabsTrigger>
   </DialogTrigger>
   <DialogContent className="bg-white dark:bg-gray-700 rounded-[10px]" >
   <div className="p-10 flex flex-col gap-4">
@@ -101,7 +103,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
       </div>
   </DialogContent>
 </Dialog>
-    </TabsTrigger>
+    
     <TabsTrigger  className=" rounded-full hidden" value="handout">handout</TabsTrigger>
     <TabsTrigger  className=" rounded-full hidden" value="Q&A">Q&A</TabsTrigger>
   </TabsList>

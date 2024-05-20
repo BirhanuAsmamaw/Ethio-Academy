@@ -27,9 +27,12 @@ const LessonPage = async({params}:{params:IParams}) => {
 
   const user=await getCurrentUser();
   
-// const isCoursePayed=user?.payedCourses.some((payedCourse) =>
-// payedCourse.courses.some((course) => course.id === lesson?.chapter.course.id)&&payedCourse.status
-// );
+ 
+
+const isCoursePayed=user?.payedCourses.some((payedCourse) =>{
+
+return payedCourse.courses.some((course) => course.course.id=== lesson?.chapter.course.id)&&payedCourse.status}
+);
 
 
   if(!lesson){
@@ -38,7 +41,7 @@ const LessonPage = async({params}:{params:IParams}) => {
 
   return (<>
   <Navbar/>
-  {(lesson.chapter.course.price)?<LessonBlur user={user} course={lesson.chapter.course}/>:''}
+  {(!isCoursePayed&&lesson.chapter.course.price)?<LessonBlur user={user} course={lesson.chapter.course}/>:''}
   <Header
     title={`${lesson.title}`}
     description={`${lesson.title}`}

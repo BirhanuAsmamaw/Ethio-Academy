@@ -38,11 +38,15 @@ export async function getCurrentUser() {
         
       },
      
+      
      payedCourses:{
       include:{
+        
+        
         courses:{
           include:{
-            course:true,
+           
+            course:true
           }
         },
         department:{
