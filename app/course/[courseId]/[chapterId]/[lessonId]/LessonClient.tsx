@@ -113,10 +113,10 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
  <div className="flex flex-col   gap-20">
   
 
-{lesson?.contents?.length?<div className="w-full space-y-2">
+{lesson?.contents?.length?<div className="w-full space-y-10">
   {
      lesson?.contents?.map((content:any)=>{
-return <div key={content?.id}  className="w-full space-y-10">
+return <div key={content?.id}  className="w-full space-y-6">
 
   {content?.content?<div className="w-full" dangerouslySetInnerHTML={{ __html: content.content}}></div>:""}
 
