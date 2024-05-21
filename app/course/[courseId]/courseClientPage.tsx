@@ -16,6 +16,7 @@ import OnExpand from "@/components/button/onExpand";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import { useSubscribeAccountMutation } from "@/redux/features/subscribers/subscriberApi";
+import SubscriberAccount from "@/app/instructor/[instructorId]/subscriberAccount";
 
 interface ICourseId{
   course:any;
@@ -67,7 +68,7 @@ const [isExpand,setExpand]=useState(false);
         no-underline
         hover:dark:text-green-400
          hover:text-blue-500 transition duration-300 hover:underline font-medium text-black dark:text-white">{course?.instructor.accountName||course?.instructor.user.name}</Link></p>
-        <button onClick={onSubscribeAccount} className="py-1 px-2 bg-rose-500 text-sm  hover:bg-rose-600 hover:dark:text-white hover:text-white transition duration-300 font-mono text-white rounded-full">{isLoading? "Loading...":"subscribe"}</button>
+       <SubscriberAccount is_subscriber={course?.isSubscribe} userId={customer?.id} accountId={course?.instructorId}/>
       </div>
 
       <Tabs defaultValue="about">

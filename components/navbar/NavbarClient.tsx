@@ -63,7 +63,7 @@ const {setTheme}=useTheme();
 
 const {carts}=useCart()
 const pathName=usePathname()||"";
-const hashPath = pathName.replace("/", "/#");
+const hashPath = pathName&&pathName.replace("/", "/#");
 
 const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-400 hover:text-blue-500 hover:font-medium before:bg-yellow-400  '
 

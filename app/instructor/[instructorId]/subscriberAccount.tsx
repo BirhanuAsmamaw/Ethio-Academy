@@ -5,7 +5,7 @@ import { useSubscribeAccountMutation } from '@/redux/features/subscribers/subscr
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
 
-const SubscriberAccount = ({userId,accountId,is_subscriber}:{userId:string,accountId:string,is_subscriber:boolean}) => {
+const SubscriberAccount = ({userId,accountId,is_subscriber,className}:{className?:string,userId:string,accountId:string,is_subscriber:boolean}) => {
 
 
   const [subscribeAccount,{isSuccess,isLoading}]=useSubscribeAccountMutation();
@@ -20,7 +20,7 @@ const onSubscribeAccount=async()=>{
 
 useEffect(()=>{
   if(isSuccess){
-    router.push(`/instructor/${accountId}`)
+   
   router.refresh();
   }
 },[isSuccess])
@@ -34,10 +34,13 @@ useEffect(()=>{
   text-sm transition 
   rounded-full duration-300
   ${is_subscriber?'bg-slate-600 hover:bg-slate-700':'bg-rose-500 hover:bg-rose-600 '}
+  ${className}
   `}>
-    {isLoading? "Loading...":`${is_subscriber?"unsubscribe":"subscribe"}`}</Button>
+    {isLoading? "Loading...":`${is_subscriber?"unsubscribe":"subscribe"}
+    
+    `}</Button>
     
   )
 }
 
-export default SubscriberAccount
+export default SubscriberAccount;
