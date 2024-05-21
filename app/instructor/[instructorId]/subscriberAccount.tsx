@@ -3,22 +3,27 @@
 import { Button } from '@/components/ui/button';
 import { useSubscribeAccountMutation } from '@/redux/features/subscribers/subscriberApi';
 import { useRouter } from 'next/navigation';
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const SubscriberAccount = ({userId,accountId,is_subscriber}:{userId:string,accountId:string,is_subscriber:boolean}) => {
 
 
-  const [subscribeAccount,{data,isLoading}]=useSubscribeAccountMutation();
+  const [subscribeAccount,{isSuccess,isLoading}]=useSubscribeAccountMutation();
   const router=useRouter();
 
-const onSubscribeAccount=()=>{
-  subscribeAccount({userId:userId,accountId:accountId})
-  router.push(`/instructor/${accountId}`)
-  router.refresh();
+const onSubscribeAccount=async()=>{
+  await subscribeAccount({userId:userId,accountId:accountId})
+  
 
 
 }
 
+useEffect(()=>{
+  if(isSuccess){
+    router.push(`/instructor/${accountId}`)
+  router.refresh();
+  }
+},[isSuccess])
 
   return (<Button disabled={isLoading} onClick={onSubscribeAccount} className={`
  

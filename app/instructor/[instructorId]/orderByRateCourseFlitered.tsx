@@ -14,8 +14,8 @@ const InstructorOrderByRateCoursesList = ({instructor}:{instructor:any}) => {
   const [pageSize, setPageSize] = useState<number>(4);
  
 
-  const { data, isSuccess,isLoading,error } = useOrderCourseByRateFilterByInstructorQuery({ page: page.toString(), pageSize: pageSize.toString(),instructorId:instructor.id });
- console.log(error)
+  const { data, isSuccess,isLoading } = useOrderCourseByRateFilterByInstructorQuery({ page: page.toString(), pageSize: pageSize.toString(),instructorId:instructor.id });
+
 
   const onPageChange = (pageNumber: number) => {
     setPage(pageNumber);
