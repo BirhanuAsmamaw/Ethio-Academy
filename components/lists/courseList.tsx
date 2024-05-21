@@ -19,12 +19,13 @@ const CourseList:React.FC<CourseListProps> = ({ children}) => {
      justify-center
       flex-wrap 
       gap-2
+      sm:gap-5
       md:gap-10
        items-center
        w-full
 p-2
-      md:p-4
-       md:px-10'>
+      sm:p-4
+       sm:px-10'>
 
       { children}
     </motion.div>

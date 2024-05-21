@@ -1,7 +1,6 @@
 import React from 'react'
 import CreateTeacher from './createTeacher'
 import { getCurrentUser } from '@/actions/users/currentUser';
-import Login from '@/components/auth/login/login';
 
 const InstructorPage = async() => {
   const user=await getCurrentUser();

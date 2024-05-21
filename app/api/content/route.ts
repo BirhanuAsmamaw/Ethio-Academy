@@ -21,10 +21,10 @@ export async function POST(req:Request) {
        if(!code || !language){
         codeExample=null
        }
-       codeExample={
+       codeExample=language&&code?{
         language:language,
         code:code
-       }
+       }:null
     // authorization
 const user = await getCurrentUser();
 if(!user){

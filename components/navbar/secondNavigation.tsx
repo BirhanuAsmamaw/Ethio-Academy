@@ -10,7 +10,7 @@ import CreateInstructorLink from '../createInstructorLink'
 
 const SecondNavigation = ({ user }:{user:any}) => {
   const [isSecondNavbar, setIsSecondNavbar] = useState(true);
-  console.log("use teacher",user?.teacher)
+  
 
   const onRemoveSecondNavbar=()=>{
     setIsSecondNavbar((prev)=>!prev)

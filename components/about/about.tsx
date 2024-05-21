@@ -2,12 +2,12 @@ import React from 'react'
 import AboutContainer from './aboutContainer';
 
 const AboutComponent = () => {
-  return (<section id='about' className=" z-20 space-y-20 bg-zinc-50 dark:bg-black px-2 py-4 md:px-20 md:py-32">
+  return (<section id='about' className=" z-20 space-y-20 bg-zinc-50 dark:bg-black px-4 md:px-10 py-20  md:py-48">
 
 <h1 className='w-full tracking-tight  !leading-tight text-xl text-gray-800 dark:text-gray-100 md:text-4xl font-semibold border-b-2 border-double p-2  border-zinc-200 dark:border-gray-700 pl-4'>About Us</h1>
 
 
-        <div className="grid mt-32 w-full grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid mt-20 w-full grid-cols-1 md:grid-cols-2 gap-10">
 <AboutContainer title='Mission 🚀'className='bg-green-100 dark:bg-gray-800'>
    <p className='text-[16px] md:text-lg w-full text-left'>
 Ethio Exams Academy is dedicated to providing a large cross-platform where teachers freely create courses,

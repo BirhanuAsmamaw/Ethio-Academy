@@ -9,7 +9,7 @@ const ProfilePage = async() => {
     return null;
   }
   return ( <>
-  <div className="w-full flex justify-center items-center">
+  <div className="w-full py-20 flex justify-center items-center">
     <ProfileClient user={user}/>
   </div></> );
 }

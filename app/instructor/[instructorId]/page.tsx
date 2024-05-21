@@ -16,7 +16,7 @@ const eb_garamound= EB_Garamond({ subsets: ['latin'] ,weight:['400', '500','600'
 const InstructorPage = async({params}:{params:{instructorId:string}}) => {
   const teacher= await getTeacherById(params.instructorId)
   const user=await getCurrentUser();
-  const names=teacher?.user?.name?.split(" ")
+  const names=teacher&&teacher?.user?.name?.split(" ")
   if(!teacher){
     return null;
   }

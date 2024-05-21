@@ -32,7 +32,7 @@ const AccountPage= async() => {
           <div className='flex flex-col items-center min-h-screen p-1 gap-20  w-full md:w-11/12 '>
 
 
-         <div className=" bg-blue-600 p-4 flex-wrap text-white h-64  w-full rounded-[10px] flex justify-center sm:justify-between items-center">
+         <div className=" bg-blue-600 p-4 flex-wrap text-white h-64   w-full rounded-[10px] flex justify-center sm:justify-between items-center">
 <div className="">
         
           <div className="flex flex-col sm:flex-row text-center items-center w-full sm:gap-5 md:gap-10 ">
@@ -93,7 +93,7 @@ const AccountPage= async() => {
 </div>
 
 
-<div className=" flex flex-row md:flex-col gap-2 items-center justify-center">
+<div className=" flex flex-row md:flex-col gap-2 pt-1 items-center justify-center">
 <AccountEdit user={user}/>
 <ActionButton url='/dashboard/instructor/course/add-course' label='Course' icon={IoMdAdd}/>
 

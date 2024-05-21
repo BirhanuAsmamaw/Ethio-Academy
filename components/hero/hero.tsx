@@ -45,6 +45,7 @@ const Hero:React.FC<HeroProps> = ({banner}) => {
       },
     },
   };
+  
   const users=[
     "https://avatars.githubusercontent.com/u/739984?v=4",
     "https://avatars.githubusercontent.com/u/739995?v=4",
@@ -70,13 +71,14 @@ const Hero:React.FC<HeroProps> = ({banner}) => {
       className=" 
       drop-shadow-md
         font-bold 
+       
         z-10  text-left
         overflow-hidden pt-20 pl-4 md:pl-20   flex flex-col w-full">
           <span  className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl ">
-            <span className="text-blue-500 dark:text-green-400 tracking-tight !leading-tight">Ethio</span>
+            <span className="text-blue-500 dark:text-green-400 md:tracking-tight md:!leading-tight">Ethio</span>
             <span className="text-rose-500 dark:text-yellow-400">Academy</span>
           </span>
-          <span className="tracking-tight w-full text-wrap !leading-tight text-gray-700  text-xl sm:text-3xl  md:text-4xl lg:text-5xl dark:text-gray-200">{banner?.title} <span className="font-bold text-rose-500 dark:text-yellow-400 text-3xl md:text-4xl lg:text-5xl">!</span></span>
+          <span className="sm:tracking-tight w-full text-wrap md:!leading-tight text-gray-700  text-xl sm:text-3xl  md:text-4xl lg:text-5xl dark:text-gray-200">{banner?.title} <span className="font-bold text-rose-500 dark:text-yellow-400 text-3xl md:text-4xl lg:text-5xl">!</span></span>
           </motion.h1>
       <div className="md:text-lg py-6 md:pt-10 flex flex-col gap-y-4 lg:mx-10 ">
       <p className="text-md px-4 font-medium dark:text-gray-400 text-slate-500 flex flex-col "> 

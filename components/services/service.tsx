@@ -21,11 +21,11 @@ const ServicesComponent = () => {
     };
   }, []);
   return (
-    <section id='service' className='bg-green-100 z-20 dark:bg-zinc-900 px-2 py-10 md:px-10 md:py-32 flex justify-center w-full'>
+    <section id='service' className='bg-green-100 z-20 dark:bg-zinc-900 px-4 md:px-10 py-20  md:py-48 flex justify-center w-full'>
         <div className="">
   
    <h1 className='w-full tracking-tight  !leading-tight text-xl text-gray-800 dark:text-gray-100 md:text-4xl font-semibold border-b-2 border-double p-2  border-green-300 dark:border-gray-700 pl-4'> Our Services</h1>
-            <div className="flex mt-32 justify-center w-full">
+            <div className="flex mt-20 justify-center w-full">
             <div className="flex flex-col gap-10 w-full md:w-11/12 lg:w-10/12 xl:w-8/12 ">
                 {
                    servicesData.map((service,index) =>{

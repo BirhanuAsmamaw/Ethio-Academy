@@ -8,6 +8,8 @@ export async function PUT(req: Request, {params}:{params:{contentId:string}}){
   const {content,codeExample} = body;
 
   try{
+
+
     // authorization
 const user = await getCurrentUser();
 if(!user){

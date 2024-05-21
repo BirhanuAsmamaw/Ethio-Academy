@@ -28,7 +28,7 @@ const CModal:React.FC<ModalProps> = ({className,variant,disabled,children,title,
       </button>
       {isOpen && (
         <div  className="fixed z-50 inset-0 overflow-y-auto w-full  ">
-          <div className="flex  items-center justify-center min-h-screen w-full pt-4 pb-20 text-center">
+          <div className="flex  items-center justify-center min-h-screen w-full pt-10 pb-20 text-center">
             <div onClick={() => setOpen(prev => !prev)}  className="fixed  inset-0 transition-opacity " aria-hidden="true">
               <div className="absolute inset-0 bg-gray-500 opacity-65"></div>
             </div>
@@ -41,7 +41,7 @@ const CModal:React.FC<ModalProps> = ({className,variant,disabled,children,title,
             exit={{opacity:0 ,y:40}}
             transition={{delay:0.25,duration:0.25}}
             className=" z-40 flex justify-center  align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle m-4   lg:max-w-6xl ">
-              <div className=" bg-white dark:bg-black px-4 pt-5 pb-4 sm:p-6 sm:pb-4 ">
+              <div className=" bg-white dark:bg-black px-4 mt-10 rounded-md md:pt-10 pb-4 sm:p-6 sm:pb-4 ">
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <div className="mt-2">

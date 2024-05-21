@@ -7,6 +7,7 @@ import UpdateContentImage from './updateContentImage'
 import Image from 'next/image'
 import ClearContent from './clearContent'
 import ClearContentImage from './clearContentImage'
+import CodeHighlighterComponent from '@/components/codeHighlighter'
 
 
 interface ContentListProps{
@@ -19,9 +20,11 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
   }
   return (<div className='flex flex-col gap-4 w-full'>
    {lesson?.contents?.map((content:any) =>{
-    return  <div key={content?.id}  className="p-4 relative w-full bg-white dark:bg-gray-800 hover:border-2 rounded-[10px] hover:border-sky-400 hover:border-dashed  transition duration-300 group">
-      <div className="hidden  z-30 group-hover:block  absolute  right-4  top-2  w-full">
- <div className="flex justify-center gap-10 w-full">
+    return  <div key={content?.id}  className="p-4 relative w-full bg-white pl-6 pb-20 dark:bg-gray-800 hover:border-2 rounded-[10px] hover:border-sky-400 hover:border-dashed  transition duration-300 group">
+
+
+      <div className="hidden  z-30 group-hover:block  absolute  left-2 bottom-2  w-full">
+ <div className="flex justify-start md:justify-center gap-2 md:gap-10 w-full">
  
  {!content?.image?<UpdateContentImage 
  isAdd
@@ -43,6 +46,13 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
       {content?.content?<div  
       className="" 
       dangerouslySetInnerHTML={{__html:content.content}}></div>:""}
+
+{content?.codeExample?<div className="flex w-full justify-start mt-10">
+  <CodeHighlighterComponent codeString={content?.codeExample.code} language={content?.codeExample.language}/>
+  </div>:""}
+
+
+
       {content?.image?<div className="relative ">
         <div className="absolute z-30 top-2 left-2 flex gap-2">
         {content?.image?<UpdateContentImage 
