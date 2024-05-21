@@ -1,5 +1,5 @@
 import { getTeacherById } from '@/actions/teacher/getTeacherById'
-import Card from '@/components/card/card'
+
 import Navbar from '@/components/navbar/Navbar'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import React from 'react'

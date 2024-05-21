@@ -12,12 +12,12 @@ export async function PUT(req: Request, { params }: { params: { paymentId: strin
       throw new Error("Unauthorized");
     }
 
-    // const isDataAccessed = user.permissions.some(
-    //   (permission) => permission.permission.action === "CanApprovePayment"
-    // );
-    // if (!isDataAccessed) {
-    //   throw new Error("Forbidden Resource");
-    // }
+    const isDataAccessed = user.permissions.some(
+      (permission) => permission.permission.action === "CanApprovePayment"
+    );
+    if (!isDataAccessed) {
+      throw new Error("Forbidden Resource");
+    }
 
     const payment = await prisma.payment.findUnique({
       where: { id: paymentId },
