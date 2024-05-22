@@ -11,12 +11,12 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 interface FormProps{
-  admins:any[];
+
   user:any;
   banks:any[] | null;
 }
 
-const PaymentForm:React.FC<FormProps> = ({admins,user,banks}) => {
+const PaymentForm:React.FC<FormProps> = ({user,banks}) => {
   const router=useRouter();
   const {carts,department,removeAllFromCart}=useCart();
   const [selectedBank, setSelectedBank] = useState('');
@@ -55,17 +55,7 @@ const PaymentForm:React.FC<FormProps> = ({admins,user,banks}) => {
    
       
     
-    const notificationData = {
-      url:`/dashboard/approved-courses`,
-      type:'Success',
-      title: `🌟 Payment Success!`,
-      message: `🎉 ${user.name} 
-      has successfully purchased 
-      ${courses?.length?`${courses? courses.length:0} exciting courses.`:''},
-      ${department?`${department?.departmentName} exciting Exam.`:''}
-      `,
-      customers:admins
-  };
+  
 
 
   
@@ -84,7 +74,6 @@ const departmentData={
   
     axios.post('/api/payment',payment).then(()=>{
       toast.success("Thank you! Paid successfully")
-      axios.post('/api/notification',notificationData);
     router.push('/dashboard/learning')
     }
     

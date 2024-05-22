@@ -4,21 +4,14 @@ import PaymentForm from "./paymentForm";
 import PaymentCourse from "./paymentCourse";
 import Navbar from "@/components/navbar/Navbar";
 import { getCurrentUser } from "@/actions/users/currentUser";
-import { getAllUsers } from "@/actions/users/getAllUsers";
 import { getAllBanks } from "@/actions/bank/getAllBanks";
 
 const Payment = async() => {
 
   const user=await getCurrentUser();
-  const users=await getAllUsers();
   const banks=await getAllBanks();
 
-  const admins = users?.filter(u => u.permissions.some(permission => permission.permission.action === "CanApproveCoursePayment"))
-  .map(us => ({
-    id: us.id,
-    name: us.name,
-    email: us.email
-  }));
+
 
   
   return ( <>
@@ -40,7 +33,7 @@ const Payment = async() => {
     <div className="w-full   flex justify-center">
       <div className="flex flex-col gap-10">
         <PaymentCourse/>
-      <PaymentForm admins={admins||[]} user={user} banks={banks|| null}/>
+      <PaymentForm  user={user} banks={banks|| null}/>
       </div>
     </div>
   </div> </>);
