@@ -41,11 +41,11 @@ const CModal:React.FC<ModalProps> = ({className,variant,disabled,children,title,
             exit={{opacity:0 ,y:40}}
             transition={{delay:0.25,duration:0.25}}
             className=" z-40 flex justify-center  align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle m-4   lg:max-w-6xl ">
-              <div className=" bg-white dark:bg-black px-4 mt-10 rounded-md md:pt-10 pb-4 sm:p-6 sm:pb-4 ">
+              <div className=" bg-white dark:bg-gray-800 px-4 mt-10 rounded-md md:pt-10 pb-4 sm:p-6 sm:pb-4 ">
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <div className="mt-2">
-                      <div className="w-full flex justify-between p-4">
+                      <div className={`w-full flex ${title?'justify-between':'justify-end'} p-4`}>
                       {title?<h3 className="text-lg leading-6 font-semibold text-gray-900 dark:text-white mt-2">{title}</h3>:""}
                       <Button variant="ghost" onClick={() => setOpen(prev => !prev)} className="text-red-500 hover:text-red-700  font-bold py-2 px-4 rounded">
                         <GrClose size={24}/>

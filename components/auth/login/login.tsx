@@ -38,7 +38,7 @@ const router=useRouter();
     }).then((callback)=>{
     
       if (callback?.ok){
-        router.back();
+        router.push("/dashboard/profile");
         router.refresh()
         
         toast.success("account logged in successfully")

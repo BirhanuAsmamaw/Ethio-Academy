@@ -212,4 +212,4 @@ const UserProfileClient = ({ userId }:{userId:string}) => {
   )
 }
 
-export default UserProfileClient
+export default UserProfileClient;

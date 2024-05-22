@@ -10,8 +10,16 @@ export const userApi=createApi({
     userProfile:builder.query<any,string>({
       query:(profileId)=>`/profile?profileId=${profileId}`
     }),
+
+    updateProfile:builder.mutation<any,any>({
+      query:(data)=>({
+        url:`/profile/update`,
+        method:"PUT",
+        body:data
+      })
+    }),
    
   })
 });
 
-export const {useUserProfileQuery}=userApi;
+export const {useUserProfileQuery,useUpdateProfileMutation}=userApi;

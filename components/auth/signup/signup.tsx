@@ -67,7 +67,7 @@ const router=useRouter();
 
 
 if (user){
-router.back()
+router.push("/dashboard/profile")
 return null;
 }
 

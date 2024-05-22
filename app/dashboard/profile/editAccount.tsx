@@ -17,9 +17,6 @@ interface EditAccountProps{
 const EditAccount:React.FC<EditAccountProps> = ({user}) => {
   const [isLoading,setloading] =useState(false);
   const router=useRouter();
-  const [imageUrl, setImageUrl] = useState((user?.image&&user?.image_key)? user?.image:"");
-  const [imageKey, setImageKey] = useState(user?.image_key? user?.image_key:"");
-
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
   
@@ -31,57 +28,6 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
 
         
     }})
-
-
-
-
-  async function handleCoverChange() {
-    try {
-      if(user.image&&user.image_key){
-        const data = await RemoveFile(user.image_key);
-        axios.put(`/api/user/deleteImageKey`).then(()=>{
-          router.push("/dashboard/profile")
-          router.refresh();
-        })
-       
-      if (data.success) {
-        toast.success(data.message);
-        setImageUrl("");
-        setImageKey("");
-      } else {
-        toast.error(data.message);
-      }
-      }
-    } catch (error) {
-      
-      toast.error("An error occurred while removing the file.");
-    }
-  }
-
-
-
-   const onuserCoverComplete=(res:any[]) => {
-    const url = res[0]?.url || "";
-    const key=res[0]?.key || "";
-    setImageUrl(url);
-    setImageKey(key);
-    const imageData={
-      image_key:key,
-      image:url
-    }
-
-
-   axios.put(`/api/user/updatePhoto`,{image:imageData.image,image_key:imageData.image_key}).then(()=>{
-    setImageUrl(user?.image?user?.image:"");
-    setImageKey(user?.image_key?user?.image_key:"");
-    router.push("/dashboard/profile")
-    router.refresh();
-    toast.success("Your Image Updated  successfully")
-    }).catch((error)=>{
-      toast.error(error.message);
-    });
-   
-  }
 
 
     const onSubmit:SubmitHandler<FieldValues> =async (data) => {
@@ -122,16 +68,6 @@ const EditAccount:React.FC<EditAccountProps> = ({user}) => {
   return ( <div className="p-2 flex flex-col gap-4 w-full md:w-[400px] bg-white dark:bg-black">
   <h1 className="text-lg font-semibold">Edit Your Account</h1>
   <div className="p-2 space-y-3">
-<div className="w-full flex justify-center">
-<AvatarUploader
-      onClientUploadComplete={onuserCoverComplete}
-      label="Upload Your Photo"
-        file={imageUrl?imageUrl:user.image_key&&user.image?user.image:''}
-        handleMediaChange={handleCoverChange}
-        endpoint="imageUploader"
-       
-      />
-</div>
 
     <Input defaultValue={user.name} type="text" label="Edit Your Name" register={register} errors={errors} id="name"/>
     <Input defaultValue={user.email} type="email" label="Edit Your Email" register={register} errors={errors} id="email"/>
