@@ -34,7 +34,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
     const names=user.name.split(" ")
   return ( <DropdownMenu>
     <DropdownMenuTrigger asChild>
-    <Avatar className={`${!user?.image&&'hidden'} h-7 w-7 `}>
+    <Avatar className={`h-7 w-7 `}>
       <AvatarImage src={user?.image? user?.image:"/"} alt="image" />
       <AvatarFallback>{names[0]? names[0][0]:''}{names[1]?names[1][0]:''}</AvatarFallback>
     </Avatar>
