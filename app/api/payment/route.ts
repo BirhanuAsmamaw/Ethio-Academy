@@ -69,7 +69,7 @@ export async function POST(req: Request) {
 
       await prisma.notification.create({
         data: {
-          url: `/dashboard/approve-payment`,
+          url: `/dashboard/approve-payment/${newPayment?.id}`,
           type: "Success",
           title: "Payment Success!",
           message: `${user.name} purchased ${courses.length} course${courses.length > 1 ? 's' : ''} and ${departmentId ? 'exams' : ''}.`,

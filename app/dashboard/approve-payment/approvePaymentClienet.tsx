@@ -298,10 +298,10 @@ export const PaymentListClient:React.FC<PaymentListProps>=({payments})=> {
   return (<div className="w-full bg-white dark:bg-gray-800 p-1 md:p-4">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter subjects..."
-          value={(table.getColumn("subject")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter names..."
+          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("subject")?.setFilterValue(event.target.value)
+            table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm border-gray-200 dark:border-gray-700 ml-2 rounded-[5px]"
         />
