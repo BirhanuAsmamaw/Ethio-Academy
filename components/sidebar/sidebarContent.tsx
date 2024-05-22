@@ -14,7 +14,7 @@ const SidebarContent = ({user}:{user:any}) => {
   
 
   const isPermissionsAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManagePermission" ||permission.permission.action === "CanManageRole")
-  const isViewAnalytics=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewAalytics")
+  const isViewAnalytics=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewAnalytics")
   const isManageDepartment=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageDepartment")
   const isViewCustomerData=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewCustomerMessage") ;
   const isApprovePayment = user.permissions.some(
