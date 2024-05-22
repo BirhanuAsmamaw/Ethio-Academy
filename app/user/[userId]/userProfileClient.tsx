@@ -65,41 +65,14 @@ const UserProfileClient = ({ userId }:{userId:string}) => {
         <div className="flex p-2 justify-end w-full lg:col-span-8">
           {isSuccess && data ? (
             <UserProfileContainer className='space-y-6'>
-              <h1 className='text-lg md:text-xl truncate lg:text-2xl xl:text-3xl font-medium tracking-tight leading-tight p-2'>
-                Web Development in Next.js, React.js, and Node.js
-              </h1>
+              {data?.department?<h1 className='text-lg md:text-xl truncate lg:text-2xl xl:text-3xl font-medium tracking-tight leading-tight p-2'>
+                {data?.department}
+              </h1>:""}
               {/* About me */}
-              <div className="p-2 sm:p-4 space-y-2">
+              {data?.description?<div className="p-2 sm:p-4 space-y-2">
                 <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>About me</h3>
-                <p className='text-wrap'>
-                  👋 Hello! I'm Deribew Shimelis
-                  💻 FullStack Developer specializing in [ReactJs, NextJs, and Express]
-                  
-                  ✨ About Me:
-                  I'm a seasoned Software Engineer passionate about Fullstack development. I excel in crafting dynamic solutions using ReactJs, NextJs, and Express. My diverse portfolio spans Education, Commerce, Entertainment, Social Networking, Self-Help, Retail, Home Selling and Renting, Fitness, and beyond.
-
-                  👨‍💻 What I Do:
-                  I specialize in crafting sleek, high-performing Fullstack (Frontend+Backend) applications that exceed expectations. Utilizing cutting-edge technologies and methodologies, I ensure top-notch performance and user satisfaction. My expertise includes robust security measures such as hashing, authentication, role-based authorization, two-factor authentication (2FA), logging, and JWT for data protection. I also focus on SEO and metadata optimization for maximum visibility. From responsive design to captivating UI, every element is meticulously tailored to enhance the user experience.
-
-                  🔥 Key Skills:
-                  ✓ Node.js Development
-                  ✓ React.js Expertise
-                  ✓ Next.js Proficiency
-                  ✓ SEO & Metadata Optimization
-                  ✓ WebSocket
-                  ✓ Performance Enhancement
-                  ✓ Responsive UI Design
-
-                  💼 Why Choose Me:
-                  With a keen eye for detail, a passion for innovation, and a commitment to excellence, I bring a unique approach to every project, enhancing overall performance and user experience. My innovative techniques ensure your application not only meets but exceeds expectations.
-
-                  🌐 Let's Connect:
-                  ✉️ deribewsoftware@gmail.com
-                  🔗 My Portfolio
-                  🔗 GitHub
-                  🔗 LinkedIn
-                </p>
-              </div>
+               <div className="text-wrap" dangerouslySetInnerHTML={{__html:data?.description}}></div>
+              </div>:""}
 
                 {/* Enrolled Courses */}
                 <div className="p-2 sm:p-4  space-y-2">

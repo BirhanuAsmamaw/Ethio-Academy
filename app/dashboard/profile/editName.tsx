@@ -24,7 +24,7 @@ const router=useRouter();
 
       useEffect(()=>{
         if(isSuccess){
-          router.push("dashboard/profile")
+          router.push("/dashboard/profile")
           router.refresh()
           toast.success("updated your Name success!")
 
@@ -34,7 +34,7 @@ const router=useRouter();
   return (
     <CModal
     disabled={isLoading} 
-    buttonLabel={isLoading?'updating...':'update'}
+    buttonLabel={isLoading?'Updating...':'Update'}
     onClick={handleSubmit(onSubmit)}
     className='bg-transparent p-0 hover:bg-transparent hover:text-black  hover:dark:text-white  text-gray-600 dark:text-gray-200 '
     modalName={<FaEdit size={30} className=''/>}    

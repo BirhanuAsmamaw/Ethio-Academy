@@ -77,7 +77,6 @@ const EditAvatar = ({user}:{user:any}) => {
   return (<div className="relative">
     <AvatarUploader
     onClientUploadComplete={onUserCoverComplete}
-    label="Upload Your Photo"
       file={imageUrl?imageUrl:user.image_key&&user.image?user.image:''}
       handleMediaChange={handleCoverChange}
       endpoint="imageUploader"

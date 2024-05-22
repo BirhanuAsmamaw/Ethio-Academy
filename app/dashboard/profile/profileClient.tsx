@@ -15,6 +15,7 @@ import EditName from "./editName";
 import EditYourDepartment from "./editYourDepartment";
 import EditYourDescription from "./editYourDescription";
 import EnrolledCourses from "./enrolledCourses";
+import TeachingCourses from "./teachingCourses";
 
 
 
@@ -39,25 +40,30 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 
 
   return ( <div className="flex w-full justify-center">
-  <div className='min-h-screen sm:p-4 w-full lg:w-11/12 justify-center gap-x-4 pt-20 lg:pt-40 pb-10 grid grid-cols-1 lg:grid-cols-12'>
+  <div className='sm:p-4 w-full lg:w-11/12 justify-center gap-x-4 py-10 grid grid-cols-1 lg:grid-cols-12'>
     <div className="flex p-2 justify-end w-full lg:col-span-4">
       {user? (
         <UserProfileContainer>
           <div className="flex text-center items-center w-full justify-start gap-x-2">
-            <EditAvatar user={user}/>
+          <Avatar className="h-20 w-20">
+                  <AvatarImage src={user?.image || "/"} alt="User Image" />
+                  <AvatarFallback>
+                    {names[0]?.[0]}{names[1]?.[0]}
+                  </AvatarFallback>
+                </Avatar>
             <h2 className='text-[20px] flex gap-2 items-center text-center sm:text-lg truncate lg:text-xl xl:text-2xl font-medium tracking-tight leading-tight p-2'>
             <span> {user?.name}</span>
             <EditName user={user}/>
             </h2>
           </div>
-          <div className="p-2">
+          {/* <div className="p-2">
             <p className='lg:text-lg font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>Contact Me</p>
             <div>
               {socialData.map((social, index) => (
                 <SocialLink key={index} url={social.url} icon={social.icon} name={social.name} />
               ))}
             </div>
-          </div>
+          </div> */}
           <div className="p-2">
             <p className='lg:text-lg font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
               Enrolled Courses: <span>{courses.length}</span>
@@ -67,16 +73,16 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
               <p className='text-[14px]'>Ongoing: <span>{courses.length}</span></p>
             </div>
           </div>
-          <div className="p-2">
+          {/* <div className="p-2">
             <div className='lg:text-lg gap-2 flex font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
               Exams Taken: <span>1</span>
             </div>
-          </div>
-          <div className="p-2">
+          </div> */}
+          {user?.teacher?<div className="p-2">
             <div className='lg:text-lg gap-2 flex font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
-              My Teaching Courses: <span>23</span>
+              My Teaching Courses: <span>{user?.teacher?.courses?.length}</span>
             </div>
-          </div>
+          </div>:""}
         </UserProfileContainer>
       ) : null}
     </div>
@@ -94,51 +100,15 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 
 
             {/* Exams Taken */}
-            <div className="p-2 sm:p-4  space-y-2">
+            {/* <div className="p-2 sm:p-4  space-y-2">
             <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'> Exams Taken</h3>
             <p >Software Engineering Exit Exams</p>
             
-          </div>
+          </div> */}
 
 
             {/* My Teaching Courses*/}
-            <div className="p-2 sm:p-4  space-y-2">
-            <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>My Teaching Courses</h3>
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-<table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        <tr>
-            <th scope="col" className="px-6 py-3">
-                Course Name
-            </th>
-            <th scope="col" className="px-6 py-3">
-                Subject
-            </th>
-            <th scope="col" className="px-6 py-3">
-                Department
-            </th>
-          
-        </tr>
-    </thead>
-    <tbody>
-        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Biology Grade 12
-            </th>
-            <td className="px-6 py-4">
-                Biology
-            </td>
-            <td className="px-6 py-4">
-                HighSchool
-            </td>
-            
-        </tr>
-       
-    </tbody>
-</table>
-</div>
-            
-          </div>
+            <TeachingCourses user={user}/>
         </UserProfileContainer>
       ) : null}
     </div>

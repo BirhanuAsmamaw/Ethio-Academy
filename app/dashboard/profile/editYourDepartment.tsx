@@ -16,7 +16,7 @@ const EditYourDepartment = ({ user }: { user: any }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      router.push('dashboard/profile');
+      router.push('/dashboard/profile');
       router.refresh();
       toast.success('Updated your field successfully!');
     }

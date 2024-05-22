@@ -1,13 +1,13 @@
 "use client"
 import React from 'react'
 
-const EnrolledCourses = ({user}:{user:any}) => {
-    const courses = user.payedCourses.flatMap((payedCourse: any) =>payedCourse.courses.flatMap((c:any)=>c.course)
-);
+const TeachingCourses = ({user}:{user:any}) => {
+    const courses = user.teacher?.courses
+
 
 
   return ( <>{courses.length?<div className="p-2 sm:p-4  space-y-2">
-  <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>Enrolled Courses</h3>
+  <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>My Teaching Courses</h3>
  
 
 <div className="relative overflow-x-auto ">
@@ -60,4 +60,4 @@ const EnrolledCourses = ({user}:{user:any}) => {
   )
 }
 
-export default EnrolledCourses
+export default TeachingCourses

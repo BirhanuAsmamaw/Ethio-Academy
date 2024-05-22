@@ -19,7 +19,7 @@ const EditYourDescription = ({user}:{user:any}) => {
 
   useEffect(() => {
     if (isSuccess) {
-      router.push('dashboard/profile');
+      router.push('/dashboard/profile');
       router.refresh();
       toast.success('Updated your description successfully!');
     }
@@ -35,10 +35,12 @@ const EditYourDescription = ({user}:{user:any}) => {
           className='bg-transparent p-0 hover:bg-transparent hover:text-black hover:dark:text-white text-gray-600 dark:text-gray-200'
           modalName={<FaEdit size={30} />}
         >
+          <div className=" min-w-[375px] md:min-w-[500px]">
           <TextEditor
             value={description || 'Write about yourself here...'}
             setValue={setDescription}
           />
+          </div>
         </CModal>
       </h3>
       <div className='text-wrap' dangerouslySetInnerHTML={{ __html: description||user?.description }} />
