@@ -18,14 +18,14 @@ const CLink:React.FC<CLinkProps> = ({children,url}) => {
   return ( 
      <Link href={url} className={`
   flex no-underline  
-  text-[14px] 
+  text-sm
   gap-2
    w-full
    hover:scale-y-105
     transition
      duration-300
 ${
-  pathName===url?'text-[#4C6FFF] dark:text-green-400 font-semibold':'font-normal text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+  pathName===url?'text-[#4C6FFF] dark:text-green-400 font-medium':'font-normal text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
 }
 
   `}>
