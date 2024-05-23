@@ -72,7 +72,7 @@ return null;
 }
 
   return (
-<div className="my-10 shadow-md bg-white dark:bg-black px-2 pt-4 pb-10 w-full md:max-w-md flex flex-col gap-2">
+<div className="my-10 shadow-md bg-white dark:bg-gray-800 rounded-md px-2 pt-4 pb-10 w-full md:max-w-md flex flex-col gap-2">
 
 <div className="flex flex-col gap-4">
 <div className="py-4 w-full flex justify-center">

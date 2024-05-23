@@ -13,7 +13,7 @@ const ExamsLists:React.FC<ExamsListsProps> = ({exams}) => {
     
        group-hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}><p >Exams</p> <ChevronDown className='h-4 mt-1  w-4 group-hover:rotate-180 transition duration-300'/></button>
     <div className="absolute  z-50 transform opacity-0 -translate-y-[200%] transition duration-500 group-hover:translate-y-0 group-hover:opacity-100 pt-8 -left-16">
-  <div className="bg-white scroll-y-auto p-2 dark:bg-black relative w-[300px] h-full border shadow-md  rounded-md">
+  <div className="bg-white scroll-y-auto p-2 dark:bg-gray-800  relative w-[300px] h-full border shadow-md  rounded-md">
   
     <div className='mt-4 space-y-2'>
      

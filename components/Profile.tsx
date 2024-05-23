@@ -39,7 +39,7 @@ const UserProfile:React.FC<UserProfileProps>  = ({user}) => {
       <AvatarFallback>{names[0]? names[0][0]:''}{names[1]?names[1][0]:''}</AvatarFallback>
     </Avatar>
     </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56 mt-2">
+    <DropdownMenuContent className="w-56 dark:bg-gray-800 rounded-md mt-2">
       <DropdownMenuLabel className="flex w-full justify-center">
         <div className=" p-1">
         <p className="font-semibold text-gray-500 dark:text-gray-400 text-[16px]">{user.name}</p>
