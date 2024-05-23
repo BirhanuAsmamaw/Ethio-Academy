@@ -33,14 +33,14 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
     </div>
   }
 
-  const courses = user.payedCourses.flatMap((payedCourse: any) =>payedCourse.courses.flatMap((c:any)=>c.course)
+  const courses = user.payedCourses.flatMap((payedCourse: any) =>payedCourse?.courses?.flatMap((c:any)=>c.course)
 );
 
   const names=user?.name.split(" ")
 
 
   return ( <div className="flex w-full justify-center">
-  <div className='sm:p-4 w-full lg:w-11/12 justify-center gap-x-4 py-10 grid grid-cols-1 lg:grid-cols-12'>
+  <div className='sm:p-4 w-full justify-center gap-x-4 py-10 grid grid-cols-1 lg:grid-cols-12'>
     <div className="flex p-2 justify-end w-full lg:col-span-4">
       {user? (
         <UserProfileContainer>
@@ -64,15 +64,18 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
               ))}
             </div>
           </div> */}
-          <div className="p-2">
+
+          {courses&&courses?.length?<div className="p-2">
             <p className='lg:text-lg font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
-              Enrolled Courses: <span>{courses.length}</span>
+              Enrolled Courses: <span>{courses?.length}</span>
             </p>
             <div>
               {/* <p className='text-[14px]'>Completed: <span>20</span></p> */}
               <p className='text-[14px]'>Ongoing: <span>{courses.length}</span></p>
             </div>
-          </div>
+          </div>:""}
+
+
           {/* <div className="p-2">
             <div className='lg:text-lg gap-2 flex font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
               Exams Taken: <span>1</span>

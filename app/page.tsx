@@ -25,11 +25,7 @@ import Contact from '@/components/contacts/contact';
 
 
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams?:{ [key: string]: string | undefined };
-}) {
+export default async function Home() {
 
  
 
@@ -38,17 +34,7 @@ const banner=await getBanner();
 
 
   return (<>
-   <Header
-    title='Ethio Exams Academy'
-    description='Unlock Your Potential with Ethio Exams Academy - Where Learning Meets Success!'
-    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
-/>
 
-
-   
-
-    
-    
     <Navbar/>
 
     <main className="w-full  p-0 overflow-x-hidden">

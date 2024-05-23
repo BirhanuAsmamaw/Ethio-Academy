@@ -12,6 +12,7 @@ import SubscriberAccount from './subscriberAccount'
 import { getCurrentUser } from '@/actions/users/currentUser'
 import InstructorNewCoursesList from './newCourseFlitered'
 import InstructorOrderByRateCoursesList from './orderByRateCourseFlitered'
+import Header from '@/components/Header'
 const eb_garamound= EB_Garamond({ subsets: ['latin'] ,weight:['400', '500','600','700']})
 const InstructorPage = async({params}:{params:{instructorId:string}}) => {
   const teacher= await getTeacherById(params.instructorId)
@@ -22,6 +23,12 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
   }
   return (<>
   <Navbar/>
+  <Header 
+  keywords='learning, education, easy lessons, happy students, engaging content, expert teachers'
+  description={`Join ${teacher?.accountName || teacher?.user?.name || ""} for engaging and easy-to-understand lessons that make learning a joy! Our expert instruction ensures you grasp concepts quickly and enjoy the process.`}
+  title={`${teacher?.accountName || teacher?.user?.name || ""}`}
+/>
+
        <div className="flex py-20 justify-center">
           <div className='flex flex-col items-center min-h-screen gap-20  p-4 w-full md:w-11/12 lg:w-10/12 xl:w-8/12 '>
 

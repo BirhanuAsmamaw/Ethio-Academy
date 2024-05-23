@@ -12,13 +12,12 @@ import FooterClient from '@/components/footer/footerClient'
 const IBM_plex_sans= IBM_Plex_Sans({ subsets: ['latin'] ,weight:['400', '500','600','700']})
 
 export const metadata: Metadata = {
+  title: 'EthioAcademy | Empowering Students and Instructors',
+  description: 'Unlock your potential with EthioAcademy - Where students and instructors thrive together through comprehensive learning resources and expert guidance.',
+  keywords: 'EthioAcademy, Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning, Student Success, Instructor Resources',
  
-    title:'Ethio Exams Academy',
-    description:'Unlock Your Potential with Ethio Exams Academy - Where Learning Meets Success!',
-    keywords:'Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
-
-
 }
+
 
 export default function RootLayout({
   children,

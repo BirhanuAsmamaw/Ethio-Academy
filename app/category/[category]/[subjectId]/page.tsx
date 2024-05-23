@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Link from "next/link";
 import SubjectOrderByRateCoursesList from "./orderByRateCourseFlitered";
 import SubjectNewCoursesList from "./newCourseFlitered";
+import Header from "@/components/Header";
 
 
 
@@ -19,7 +20,16 @@ const Category =async ({params}:{params:IPrams}) => {
 
   const subject = await getSubjectById(params.subjectId);
   
-  return (<><Navbar/> <div className="flex pb-20">
+  return (<>
+  <Navbar/> 
+  <Header
+  keywords='EthioAcademy, top subjects, best course category, [specific department] subjects, most popular subjects, comprehensive learning'
+  description={`Discover the best subjects in the ${subject?.department?.departmentName || ""} department at EthioAcademy. Explore top-rated subjects designed to enhance your skills and knowledge, featuring expert instructors and comprehensive materials.`}
+  title={`${subject?.subjectName || ""} Subjects | Enhance Your Skills Today`}
+/>
+
+
+  <div className="flex pb-20">
 <div className="flex flex-col gap-10 w-full items-center">
 
 

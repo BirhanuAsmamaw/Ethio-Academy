@@ -4,6 +4,7 @@ import Banner from "@/components/banner";
 import Navbar from "@/components/navbar/Navbar";
 import DepartmentOrderByRateCoursesList from "./orderByRateCourseFlitered";
 import DepartmentNewCoursesList from "./newCourseFlitered";
+import Header from "@/components/Header";
 
 
 
@@ -16,7 +17,14 @@ const Category =async ({params}:{params:IPrams}) => {
 
   
   return (<>
-  <Navbar/> <div className="flex p-2 pb-20 w-full">
+  <Navbar/> 
+  <Header
+  keywords='EthioAcademy,top courses, best course category, [specific department] courses, most popular courses, comprehensive learning'
+  description={`Discover the best course category in the ${department?.departmentName || ""} department. Explore top-rated courses designed to enhance your skills and knowledge, with expert instructors and comprehensive materials.`}
+  title={`${department?.departmentName || ""} Courses | Enhance Your Skills Today`}
+/>
+
+  <div className="flex p-2 pb-20 w-full">
 <div className="flex flex-col w-full  gap-10  items-center">
 
 
