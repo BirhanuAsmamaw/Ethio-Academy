@@ -5,12 +5,18 @@ import { useUserProfileQuery } from '@/redux/features/user/userApi'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { socialData } from '@/lib/socialData'
 import SocialLink from './socialLink'
+import Header from '@/components/Header'
 
 const UserProfileClient = ({ userId }:{userId:string}) => {
   const { data, isLoading, isSuccess, isError, error } = useUserProfileQuery(userId)
   const names = data?.name.split(" ") || []
   
-  return (
+  return (<> <Header
+    keywords={`EthioAcademy, ${data?.name} profile, ${data?.teacher&&data?.teacher?.accountName|| ""}, top student, academic achievements, student success, inspiring journey, education excellence`}
+    description={data.description? data?.description:`Discover the inspiring journey of ${data?.name}, a standout student in the ${data?.department || ""} department at EthioAcademy. Dive into their academic achievements, unique skills, and contributions to our vibrant learning community. Be inspired by their dedication and success!`}
+
+    title={`${data?.name} | Top Student  ${data?.department?`in ${data?.department}`:""} at EthioAcademy`}
+  />
     <div className="flex w-full justify-center">
       <div className='min-h-screen sm:p-4 w-full lg:w-11/12 justify-center gap-x-4 pt-20 lg:pt-40 pb-10 grid grid-cols-1 lg:grid-cols-12'>
         <div className="flex p-2 justify-end w-full lg:col-span-4">
@@ -181,7 +187,7 @@ const UserProfileClient = ({ userId }:{userId:string}) => {
           ) : null}
         </div>
       </div>
-    </div>
+    </div></>
   )
 }
 

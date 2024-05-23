@@ -7,16 +7,22 @@ import React, { useEffect } from 'react'
 
 const SubscriberAccount = ({userId,accountId,is_subscriber,className}:{className?:string,userId:string,accountId:string,is_subscriber:boolean}) => {
 
-
+ 
   const [subscribeAccount,{isSuccess,isLoading}]=useSubscribeAccountMutation();
   const router=useRouter();
 
 const onSubscribeAccount=async()=>{
+  if(!userId){
+    router.push("/login")
+  }
   await subscribeAccount({userId:userId,accountId:accountId})
   
 
 
 }
+
+
+
 
 useEffect(()=>{
   if(isSuccess){

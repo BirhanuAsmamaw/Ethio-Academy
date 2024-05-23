@@ -5,6 +5,7 @@ import UserProfileClient from './userProfileClient'
 const UserProfile = ({params}:{params:{userId:string}}) => {
   return (<div>
   <Navbar/>
+
   <UserProfileClient userId={params.userId}/>
   </div>
    
