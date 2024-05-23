@@ -2,11 +2,11 @@
 import React from 'react'
 
 const EnrolledCourses = ({user}:{user:any}) => {
-    const courses = user.payedCourses.flatMap((payedCourse: any) =>payedCourse.courses.flatMap((c:any)=>c.course)
+    const courses = user.payedCourses.flatMap((payedCourse: any) =>payedCourse?.courses?.flatMap((c:any)=>c.course)
 );
 
 
-  return ( <>{courses.length?<div className="p-2 sm:p-4  space-y-2">
+  return ( <>{courses&&courses?.length?<div className="p-2 sm:p-4  space-y-2">
   <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>Enrolled Courses</h3>
  
 
@@ -32,7 +32,7 @@ const EnrolledCourses = ({user}:{user:any}) => {
 </tr>
 </thead>
 <tbody>
-{courses.length&&courses?.map((course:any)=>{
+{courses?.length&&courses?.map((course:any)=>{
     return <tr key={course?.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
        {course?.course}

@@ -81,7 +81,7 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
               Exams Taken: <span>1</span>
             </div>
           </div> */}
-          {user?.teacher?<div className="p-2">
+          {user?.teacher&&user?.teacher?.courses?<div className="p-2">
             <div className='lg:text-lg gap-2 flex font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
               My Teaching Courses: <span>{user?.teacher?.courses?.length}</span>
             </div>
