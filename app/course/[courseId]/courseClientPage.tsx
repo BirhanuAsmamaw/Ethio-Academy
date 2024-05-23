@@ -15,7 +15,6 @@ import SubLayout from "@/components/layouts/subLayout";
 import OnExpand from "@/components/button/onExpand";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
-import { useSubscribeAccountMutation } from "@/redux/features/subscribers/subscriberApi";
 import SubscriberAccount from "@/app/instructor/[instructorId]/subscriberAccount";
 
 interface ICourseId{
@@ -31,10 +30,7 @@ const [isExpand,setExpand]=useState(false);
   }
 
 
-  const [subscribeAccount,{isLoading}]=useSubscribeAccountMutation();
-  const onSubscribeAccount=async()=>{
-    await subscribeAccount({userId:customer?.id,accountId:course?.instructor.id})
-  }
+ 
   if(!course){
     return ( <div className="flex w-full h-screen justify-center py-10 ">
       <div className="w-full md:w-10/12 lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10  pt-10">
@@ -52,14 +48,14 @@ const [isExpand,setExpand]=useState(false);
 
   <SubLayout className="py-20">
 
-  <h1 className="text-xl  font-semibold">{course.course}</h1>
-  {(course.videoThumbnail&&course?.videoUrl)?<div>
+  <h1 className="text-xl  font-semibold">{course?.course}</h1>
+  {(course?.videoThumbnail&&course?.videoUrl)?<div>
     <video
         className="w-full rounded-lg shadow-lg"
         controls
-        poster={course?.videoThumbnail.public_url}
+        poster={course?.videoThumbnail?.public_url}
       >
-        <source src={course?.videoUrl.public_url} type="video/mp4"  />
+        <source src={course?.videoUrl?.public_url} type="video/mp4"  />
         Your browser does not support the video tag.
       </video></div>:""}
 
@@ -67,8 +63,8 @@ const [isExpand,setExpand]=useState(false);
         <p>Course Created By <Link href={`/instructor/${course?.instructor.id}`} className=" 
         no-underline
         hover:dark:text-green-400
-         hover:text-blue-500 transition duration-300 hover:underline font-medium text-black dark:text-white">{course?.instructor.accountName||course?.instructor.user.name}</Link></p>
-       <SubscriberAccount is_subscriber={course?.isSubscribe} userId={customer?.id} accountId={course?.instructorId}/>
+         hover:text-blue-500 transition duration-300 hover:underline font-medium text-black dark:text-white">{course?.instructor?.accountName||course?.instructor?.user?.name}</Link></p>
+       <SubscriberAccount is_subscriber={course?.isSubscribe||false} userId={customer?.id} accountId={course?.instructorId}/>
       </div>
 
       <Tabs defaultValue="about">
@@ -150,7 +146,7 @@ const [isExpand,setExpand]=useState(false);
   childern={
     <div className={`${isExpand? '':'h-72 overflow-hidden'} space-y-4 p-4 relative`}>
       <Heading title="About Course"/>
-      <div className="pb-10 " dangerouslySetInnerHTML={{ __html: course.descriptions}}></div>
+      <div className="pb-10 " dangerouslySetInnerHTML={{ __html: course?.descriptions}}></div>
       <div className={`absolute ${isExpand? 'bottom-2  left-[50%]':'top-[70%] left-[50%]'}  shadow-lg z-20`}>
        <OnExpand isExpand={isExpand} onExpand={onExpanded}/>
       </div>
@@ -160,8 +156,8 @@ const [isExpand,setExpand]=useState(false);
   <Container
   childern={
     <div className="space-y-4 p-4">
-      <Heading title="Requiremets"/>
-      <div className="" dangerouslySetInnerHTML={{ __html: course.requirements}}></div>
+      <Heading title="Requirements"/>
+      <div className="" dangerouslySetInnerHTML={{ __html: course?.requirements}}></div>
       </div>
   }
   />
@@ -169,8 +165,8 @@ const [isExpand,setExpand]=useState(false);
 <Container
   childern={
     <div className="space-y-4 p-4">
-      <Heading title="Who Shuld Use Course?"/>
-      <div className="" dangerouslySetInnerHTML={{ __html: course.whoShouldTake}}></div>
+      <Heading title="Who Should Use Course?"/>
+      <div className="" dangerouslySetInnerHTML={{ __html: course?.whoShouldTake}}></div>
       </div>
   }
   />
@@ -182,7 +178,7 @@ const [isExpand,setExpand]=useState(false);
 
         <TabsContent value="content" className="mt-10">
          {/* course contents or modules */}
-{course.chapters.length?<Container
+{course?.chapters?.length?<Container
   childern={
     <div className="p-4">
       <CourseContent course={course}/>
@@ -197,7 +193,7 @@ const [isExpand,setExpand]=useState(false);
         <TabsContent value="rate" className="mt-10 space-y-10">
         <RatingPage course={course}/>
 <AddReviews course={course} customer={customer}/>
-{course.reviews.length?<Reviews reviews={course.reviews}/>:""}
+{course?.reviews&&course?.reviews?.length?<Reviews reviews={course?.reviews}/>:""}
 
         </TabsContent>
       </Tabs>

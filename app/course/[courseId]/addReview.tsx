@@ -24,7 +24,7 @@ const AddReviews:React.FC<AddReviewsProps> = ({course,customer}) => {
   const router=useRouter();
   const [isLoading,setLoading] =useState(false);
   const [isvalue,setIsValue] = useState(0)
-  const [newrate,setNewRate] = useState(course.rating)
+  const [newrate,setNewRate] = useState(course?.rating)
   const [isRewiew,setReview] = useState();
 const {register,handleSubmit,reset,setValue,formState:{errors}}=useForm<FieldValues>({
   defaultValues:{
