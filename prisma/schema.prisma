@@ -224,16 +224,20 @@ model Lesson{
 }
 
 
-model Content{
-   id            String    @id @default(auto()) @map("_id") @db.ObjectId
-   createdAt     DateTime  @default(now())
-   updatedAt     DateTime  @updatedAt
-   lesson Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
-   lessonId String @db.ObjectId
-   image File?
-   content String?
-   codeExample CodeExample?
+model Content {
+  id           String       @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  lesson       Lesson       @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  lessonId     String       @db.ObjectId
+  image        File?
+  content      String?
+  codeExample  CodeExample?
+  subContents  Content[]    @relation("ParentToSubContent")
+  parent       Content?     @relation("ParentToSubContent", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  parentId     String?      @db.ObjectId
 }
+
 
 type CodeExample{
   language String
@@ -252,6 +256,7 @@ model Question{
    universityId String? @db.ObjectId
    title String
    title_two String? 
+   code  CodeExample?
    q_image File?
    chooses Choose[]
    year String ?

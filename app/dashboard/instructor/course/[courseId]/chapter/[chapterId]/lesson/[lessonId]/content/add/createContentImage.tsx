@@ -4,15 +4,16 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import axios from 'axios'
 
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 
 import toast from 'react-hot-toast'
 import {  IoMdAdd } from 'react-icons/io'
 
 interface  CreateContentImageProps{
-  lesson:any
+  lesson:any;
+  contentId?:string
 }
-const CreateContentImage:React.FC<CreateContentImageProps> = ({lesson}) => {
+const CreateContentImage:React.FC<CreateContentImageProps> = ({lesson,contentId}) => {
   const router=useRouter();
  
   
@@ -25,10 +26,10 @@ const CreateContentImage:React.FC<CreateContentImageProps> = ({lesson}) => {
       public_url:url
     }
 
-   axios.post(`/api/content`,{image:imageData, lessonId:lesson.id}).then(()=>{
-    router.push(`/dashboard/departments/${lesson?.chapter?.course.subject.departmentId}/${lesson?.chapter?.course.subjectId}/course/${lesson?.chapter.courseId}/chapter/${lesson?.chapter.id}/lesson/${lesson?.id}/update-content`)
-    router.refresh();
+   axios.post(`/api/content`,{image:imageData, lessonId:lesson.id,parentId:contentId||null}).then(()=>{
     toast.success("Lesson content image uploaded successfully")
+    redirect(`/dashboard/instructor/course/${lesson?.chapter?.courseId}/chapter/${lesson?.chapterId}/lesson/${lesson?.id}/update-content`)
+    
     }).catch((error)=>{
   
       toast.error(error.message);

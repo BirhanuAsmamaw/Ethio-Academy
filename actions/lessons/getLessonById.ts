@@ -5,7 +5,11 @@ export async function getLessonById(lessonId:string){
     const lesson = await prisma.lesson.findUnique({
       where:{id:lessonId},
       include:{
-        contents:true,
+        contents:{
+          include:{
+            subContents:true
+          }
+        },
         chapter:{
           include:{
             course:{

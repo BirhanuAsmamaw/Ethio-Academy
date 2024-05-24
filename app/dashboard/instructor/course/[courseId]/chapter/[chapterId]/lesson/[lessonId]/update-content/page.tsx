@@ -5,7 +5,7 @@ import UpdateLessonContentClient from './updateContentClient';
 interface IParams{
   lessonId: string;
 }
-const UpdateLessonContent = async({params}:{params:IParams}) => {
+const UpdateLessonContentPage = async({params}:{params:IParams}) => {
   const lesson=await getLessonById(params.lessonId)
  
 
@@ -13,4 +13,4 @@ const UpdateLessonContent = async({params}:{params:IParams}) => {
   )
 }
 
-export default UpdateLessonContent
+export default UpdateLessonContentPage

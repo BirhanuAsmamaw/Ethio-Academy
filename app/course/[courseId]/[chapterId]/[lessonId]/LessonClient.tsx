@@ -115,8 +115,8 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
 
 {lesson?.contents?.length?<div className="w-full space-y-10">
   {
-     lesson?.contents?.map((content:any)=>{
-return <div key={content?.id}  className="w-full space-y-6">
+     lesson?.contents.filter((c:any)=>!c.parentId)?.map((content:any)=>{
+return <div key={content?.id}  className="w-full py-4 space-y-6">
 
   {content?.content?<div className="w-full" dangerouslySetInnerHTML={{ __html: content.content}}></div>:""}
 
@@ -127,6 +127,30 @@ return <div key={content?.id}  className="w-full space-y-6">
  {content?.image? <div className="w-full flex justify-center">
     <Image height={400} width={500} src={content?.image.public_url} alt="content image"/>
   </div>:""}
+
+  {
+     content?.subContents&&content?.subContents?.length? content.subContents?.map((content:any)=>{
+return <div key={content?.id}  className="w-full py-6 space-y-6">
+
+  {content?.content?<div className="w-full" dangerouslySetInnerHTML={{ __html: content.content}}></div>:""}
+
+  {content?.codeExample?<div className="flex w-full justify-center">
+  <CodeHighlighterComponent codeString={content?.codeExample.code} language={content?.codeExample.language}/>
+  </div>:""}
+  
+ {content?.image? <div className="w-full flex justify-center">
+    <Image height={400} width={500} src={content?.image.public_url} alt="content image"/>
+  </div>:""}
+
+
+
+  
+
+</div>
+     }):""
+  }
+
+
 
 </div>
      })

@@ -6,6 +6,7 @@ import {AnimatePresence, motion} from "framer-motion"
 import StarOutlined from "@mui/icons-material/StarOutlined";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import ChannelVerfiedComponent from "../ChannelVerfiedComponent";
+import { cn } from "@/lib/utils";
 
 
 
@@ -16,21 +17,22 @@ interface CardProps{
   category?: string;
   subjectCat?: string;
   subjectCatId?:string;
-  cover: any; // Assuming cover is the path to the image
+  cover?: any; // Assuming cover is the path to the image
   price: number;
 no_reviews?:number; // Assuming
-  rating: number;
+  rating?: number;
   url?: string;
   instructorName?: string;
   instructorTitle?:string;
   logo?: any;
   instructorId?: string;
+  className?:string;
 
   
 }
 
 
-const Card:React.FC<CardProps> = ({instructorId,subjectCatId,subjectCat,logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
+const Card:React.FC<CardProps> = ({className,instructorId,subjectCatId,subjectCat,logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
 
   const data="Express Js Course Object Oriented Programming in"
   return ( <AnimatePresence>
@@ -38,32 +40,13 @@ const Card:React.FC<CardProps> = ({instructorId,subjectCatId,subjectCat,logo,ins
     initial={{opacity: 0,y:15}}
     whileInView={{opacity:1,y:0}} 
     transition={{delay:0.25,duration:0.5}}
-    className="
-  group
-  z-30 
-  w-full 
-  sm:w-72
- h-full
-  bg-white border
-   border-gray-200 
-   dark:border-gray-700
-   dark:bg-gray-800 
-rounded-[5px]
-hover:border-x-rose-500 
-   hover:border-y-blue-500
-   hover:bg-slate-50 
-   hover:dark:border-x-yellow-400 
-   hover:dark:border-y-green-400 
-   hover:dark:bg-gray-700
-   shadow 
-   
-   ">
+    className={cn("group z-30  w-full sm:w-72 h-full bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-800  rounded-[5px]hover:border-x-rose-500 hover:border-y-blue-500hover:bg-slate-50hover:dark:border-x-yellow-400 hover:dark:border-y-green-400 hover:dark:bg-gray-700 shadow overflow-hidden",className)}>
   <div   className="no-underline  relative overflow-hidden">
 {subjectCat?    <div className="p-2 absolute bottom-0 -left-4 opacity-0 z-10   group-hover:left-0 bg-white dark:bg-gray-800 leading-5 group-hover:opacity-100 font-medium shadow-md drop-shadow-md text-gray-600 dark:text-green-400 bg-opacity-80 dark:bg-opacity-80 flex justify-center transition-all duration-300">
       <Link href={`/category/${url}/${subjectCatId}`} className=" 
       no-underline 
       hover:underline
-       hover:text-blue-500 
+       hover:text-blue-600 
         transition-all
          duration-300
        hover:dark:text-green-400
@@ -72,14 +55,16 @@ hover:border-x-rose-500
        dark:text-gray-300
        text-[12px] sm:text-[14px]">{subjectCat}</Link>
     </div>:""}
-    <Image src={cover} alt={subject} 
+    {cover?<Image src={cover} alt={subject} 
     height={100}
     width={200}
     className=" w-full rounded-t-[5px]
     
      object-contain
      duration-300
-     "/>
+     "/>:<div className="w-full items-center flex justify-center h-36 bg-blue-600">
+      <h4 className=" text-left text-xl font-medium text-white">{subject} </h4>
+      </div>}
   </div>
   <div className="flex flex-col pt-2 gap-1 sm:p-2 sm:gap-2 w-full">
     <div className="flex justify-between px-2">

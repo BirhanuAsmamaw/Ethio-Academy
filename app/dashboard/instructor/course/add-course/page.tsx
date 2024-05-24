@@ -16,7 +16,7 @@ const CreateCourse = async() => {
   }
 
  
-  return (  <CreateCourseClient departments={departments}/>);
+  return (  <CreateCourseClient user={user} departments={departments}/>);
 }
  
 export default CreateCourse;

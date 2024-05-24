@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   try {
-    const { lessonId, language, content, code, image } = body;
+    const { lessonId,parentId, language, content, code, image } = body;
 
     let codeExample;
     if (!code || !language) {
@@ -79,6 +79,7 @@ export async function POST(req: Request) {
 
     const newContent = await prisma.content.create({
       data: {
+        parentId:parentId,
         lessonId: lesson.id,
         content: content,
         image: image,

@@ -15,7 +15,7 @@ const SidebarContent = ({user}:{user:any}) => {
 
   const isPermissionsAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManagePermission" ||permission.permission.action === "CanManageRole")
   const isViewAnalytics=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewAnalytics")
-  const isManageDepartment=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageDepartment")
+ 
   const isViewCustomerData=user?.permissions.some((permission:any)=>permission.permission.action === "CanViewCustomerMessage") ;
   const isApprovePayment = user.permissions.some(
     (permission:any) => permission.permission.action === "CanApprovePayment"
@@ -33,7 +33,7 @@ const SidebarContent = ({user}:{user:any}) => {
          {isPermissionsAccessed?<CLink url="/dashboard/permission"><><p><FaCriticalRole size={20}/></p><p>Permission</p></></CLink>:""}
 
     <SideBarItems sidebarData={sidebarData} user={user}/>
-  { isManageDepartment?  <CLink url="/dashboard/departments"><><p><TbCategoryPlus size={20}/></p><p>Department</p> </></CLink>:""}
+
 
   {isViewCustomerData?<CLink url="/dashboard/customer-message"><><BiMessageRoundedCheck size={20}/><p>Customer data </p></></CLink>:""}
     

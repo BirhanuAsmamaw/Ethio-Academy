@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import {  useState } from "react";
 import { FieldValues, SubmitHandler,  useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import ContentList from "../contentList";
-import CreateContent from "../createContent";
+import ContentList from "../content/contentList";
+import CreateContent from "../content/add/createContent";
 import { IoIosSend } from "react-icons/io";
 
 
