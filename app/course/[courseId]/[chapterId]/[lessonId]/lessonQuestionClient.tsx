@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion"
 
 import { useState } from "react";
+import CodeHighlighterComponent from "@/components/codeHighlighter";
 
 
 interface QuizClientProps{
@@ -66,7 +67,8 @@ const onSubmit=()=>{
         <p className="text-xl font-bold">{index+1}</p>
         {question?.year?<p className="text-gray-500  dark:text-gray-400 text-sm">{question?.year}</p>:""}
       </div>
-      <p className="p-2">{question.title}</p>
+      <div className="p-2 pb-4" dangerouslySetInnerHTML={{__html:question?.title}}></div>
+      {question?.code?<CodeHighlighterComponent language={question?.code?.langauge} codeString={question?.code?.code}/>:""}
       <div className="p-2 space-y-2">
         {
           question.chooses.map((choice:any,ind:number) =>{

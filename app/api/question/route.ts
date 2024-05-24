@@ -8,6 +8,7 @@ export async function POST(req:Request) {
     lessonId,
     title ,
     title_two,
+    code,
     isModel,
     chooses ,
     universityId,
@@ -26,7 +27,7 @@ export async function POST(req:Request) {
      const newQuestions= await prisma.question.create({
        data:{
         subjectId:subjectId,
-        
+        code:code,
         departmentId: departmentId,
         universityId:universityId,
         lessonId:lessonId,
