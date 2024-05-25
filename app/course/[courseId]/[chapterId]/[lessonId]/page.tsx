@@ -89,8 +89,8 @@ return payedCourse.courses.some((course:any) => course.course.id=== lesson?.chap
 
       </SubLayout>
 
-  <div className="w-full h-full relative pt-16  pb-24">
-  <div className="fixed right-0 w-[400px] h-screen hidden    overflow-x-hidden  overflow-y-auto 
+  
+  <div className="fixed right-0 w-[400px] pt-16  pb-24 h-[75vh] hidden    overflow-x-hidden  overflow-y-auto 
     lg:block  ">
    <ScrollArea className=" w-full h-full   ">
    
@@ -98,7 +98,7 @@ return payedCourse.courses.some((course:any) => course.course.id=== lesson?.chap
    
     </ScrollArea>
    </div>
-  </div>
+
     </MainLayout></> );
 }
  
