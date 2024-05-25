@@ -66,7 +66,7 @@ const onSubmit=()=>{
         lesson.questions.map((question:any,index:number)=>{
         return <div key={index} className="py-2">
 
-<div className="flex border-b border-double justify-between">
+<div className="flex border-b-2 border-double dark:border-gray-600 justify-between">
         <p className="text-xl font-bold">{index+1}</p>
         {question?.year?<p className="text-gray-500  dark:text-gray-400 text-sm">{question?.year}</p>:""}
       </div>
