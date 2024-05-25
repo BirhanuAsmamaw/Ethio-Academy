@@ -89,14 +89,16 @@ return payedCourse.courses.some((course:any) => course.course.id=== lesson?.chap
 
       </SubLayout>
 
-   <div className="fixed right-0 w-[400px] h-screen hidden  p-6 overflow-x-hidden  overflow-y-auto 
+  <div className="w-full h-full relative pt-16  pb-24">
+  <div className="fixed right-0 w-[400px] h-screen hidden    overflow-x-hidden  overflow-y-auto 
     lg:block  ">
-   <ScrollArea className=" w-full h-full py-20   ">
-     <div className="my-20 pr-4">
+   <ScrollArea className=" w-full h-full   ">
+   
      <CourseContent course={lesson.chapter.course}/>
-     </div>
+   
     </ScrollArea>
    </div>
+  </div>
     </MainLayout></> );
 }
  
