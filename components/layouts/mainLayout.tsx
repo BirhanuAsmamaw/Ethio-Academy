@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 const MainLayout = ({children}:{children:ReactNode}) => {
-  return (    <div className="flex relative justify-center  lg:px-6 xl:px-20 2xl:px-0 2xl:justify-center w-full min-h-screen py-10">
+  return (    <div className="flex relative  mx-auto justify-center p-2 lg:justify-start  lg:px-20 2xl:px-0 2xl:justify-center w-full min-h-screen py-10">
     {children}
   </div>);
 }

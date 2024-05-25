@@ -1,6 +1,7 @@
 "use client"
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog"
@@ -13,18 +14,20 @@ import {
 
 import { useState } from "react";
 import CodeHighlighterComponent from "@/components/codeHighlighter";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/moving-border";
 
 
 interface QuizClientProps{
   lesson:any;
-  setFeedbackVisible:(value:boolean) =>void;
-  showQuiz?:boolean;
-  feedbackVisible?:boolean;
 }
-const QuizClient:React.FC<QuizClientProps> = ({lesson,showQuiz,feedbackVisible,setFeedbackVisible}) => {
+const QuizClient:React.FC<QuizClientProps> = ({lesson}) => {
  
   const [isSelectedAll,setSelectedAll]=useState(false);
   const [score, setScore] = useState(0);
+  const [feedbackVisible, setFeedbackVisible] = useState(false);
+  const [showQuiz,setShowQuiz] = useState(false);
+  const router=useRouter();
  
 const [selectedChoices, setSelectedChoices] = useState<any>({});
 
@@ -55,7 +58,7 @@ const onSubmit=()=>{
 
   return ( <>
  
-  {showQuiz?<div className="py-10" id="quiz">
+  {showQuiz?<div className="py-10 " id="quiz">
     <div className="p-2 ">
       <h4 className="text-lg font-bold border-b p-1">Quizzes of {lesson.title}</h4>
     </div>
@@ -63,7 +66,7 @@ const onSubmit=()=>{
         lesson.questions.map((question:any,index:number)=>{
         return <div key={index} className="py-2">
 
-<div className="flex border-b border-double border-green-600 justify-between">
+<div className="flex border-b border-double justify-between">
         <p className="text-xl font-bold">{index+1}</p>
         {question?.year?<p className="text-gray-500  dark:text-gray-400 text-sm">{question?.year}</p>:""}
       </div>
@@ -136,7 +139,9 @@ const onSubmit=()=>{
      <Dialog >
       <DialogTrigger> <button 
       onClick={onSubmit}
-       className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-[10px] text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit
+       className="text-white
+        bg-blue-700 hover:bg-blue-800 focus:ring-4
+         focus:ring-blue-300 font-medium rounded-[10px] text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit
        </button></DialogTrigger>
        <DialogContent className="bg-white dark:bg-gray-700 rounded-[10px]" >
         <div className="flex justify-center w-full">
@@ -148,8 +153,49 @@ const onSubmit=()=>{
      </Dialog>
 
 
-      </div></div>:""
-     
+      </div></div>:<div className="w-full h-[80vh] flex justify-center items-center">
+      <Dialog >
+  <DialogTrigger className="h-full">
+ 
+  <Button
+        borderRadius="1.75rem"
+        className="bg-slate-100 dark:bg-slate-900 text-blue-600 text-[16px]
+         font-medium dark:text-green-400 border-neutral-200 dark:border-slate-800"
+      >
+        Start Quiz Now!
+      </Button>
+
+  </DialogTrigger>
+  <DialogContent className="bg-white dark:bg-gray-700 rounded-[10px]" >
+  <div className="p-2 md:p-10 flex flex-col gap-4">
+        <DialogClose><button
+          onClick={()=>{
+            setFeedbackVisible(true);
+            setShowQuiz(true);
+            router.push(`/course/${lesson.chapter.course.id}/${lesson.chapter.id}/${lesson.id}#quiz`);
+            router.refresh();
+            
+         }}
+          className="text-white bg-green-500 px-4 py-2 rounded-[5px] mr-2 hover:bg-green-600 focus:outline-none"
+        >
+          Check Right Answer Now!
+        </button></DialogClose>
+       <DialogClose> <button
+          onClick={()=>{
+            setFeedbackVisible(false);
+            setShowQuiz(true);
+            router.push(`/course/${lesson.chapter.course.id}/${lesson.chapter.id}/${lesson.id}#quiz`);
+            router.refresh();
+          }}
+          className="text-white bg-blue-500 px-4 py-2 rounded-[5px] hover:bg-blue-600 focus:outline-none"
+        >
+          Show Answers After Quiz
+        </button></DialogClose>
+      </div>
+  </DialogContent>
+</Dialog>
+
+</div>  
       }
       
   </> );

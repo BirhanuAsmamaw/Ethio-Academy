@@ -3,8 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import QuizClient from "./lessonQuestionClient";
 import { useEffect, useState } from "react";
-import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { useRouter } from "next/navigation";
+
 import Image from "next/image";
 import CodeHighlighterComponent from "@/components/codeHighlighter";
 
@@ -13,9 +12,7 @@ interface LessonClientProps{
   lesson:any;
 }
 const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
-  const [feedbackVisible, setFeedbackVisible] = useState(false);
-  const [showQuiz,setShowQuiz] = useState(false);
-  const router=useRouter();
+  
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -25,7 +22,7 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
   if (!mounted) return <></>;
 
   
-  return ( <Tabs defaultValue="notes" className="w-full">
+  return ( <Tabs defaultValue="notes" className="w-ful">
   <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-4">
     <TabsTrigger className="
            border-b-[1.5px]  
@@ -48,10 +45,8 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
            data-[state=active]:dark:text-green-400
 
            " value="notes">Notes</TabsTrigger>
-    
-    <Dialog >
-  <DialogTrigger className="w-full h-full">
-  <TabsTrigger  className="
+
+<TabsTrigger  className="
            border-b-[1.5px]  
            font-normal
             border-slate-400 
@@ -72,37 +67,10 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
            data-[state=active]:dark:text-green-400
 
            " value="exam">
-  Exam
+ Quizzes
   </TabsTrigger>
-  </DialogTrigger>
-  <DialogContent className="bg-white dark:bg-gray-700 rounded-[10px]" >
-  <div className="p-10 flex flex-col gap-4">
-        <DialogClose><button
-          onClick={()=>{
-            setFeedbackVisible(true);
-            setShowQuiz(true);
-            router.push(`/course/${lesson.chapter.course.id}/${lesson.chapter.id}/${lesson.id}#quiz`);
-            router.refresh();
-            
-         }}
-          className="text-white bg-green-500 px-4 py-2 rounded-[5px] mr-2 hover:bg-green-600 focus:outline-none"
-        >
-          Check Right Answer Now!
-        </button></DialogClose>
-       <DialogClose> <button
-          onClick={()=>{
-            setFeedbackVisible(false);
-            setShowQuiz(true);
-            router.push(`/course/${lesson.chapter.course.id}/${lesson.chapter.id}/${lesson.id}#quiz`);
-            router.refresh();
-          }}
-          className="text-white bg-blue-500 px-4 py-2 rounded-[5px] hover:bg-blue-600 focus:outline-none"
-        >
-          Show Answers After Quiz
-        </button></DialogClose>
-      </div>
-  </DialogContent>
-</Dialog>
+    
+    
     
     <TabsTrigger  className=" rounded-full hidden" value="handout">handout</TabsTrigger>
     <TabsTrigger  className=" rounded-full hidden" value="Q&A">Q&A</TabsTrigger>
@@ -165,8 +133,12 @@ return <div key={content?.id}  className="w-full py-6 space-y-6">
 
 
   <TabsContent value="exam">
-  <div className="">
-  <QuizClient lesson={lesson} feedbackVisible={feedbackVisible} showQuiz={showQuiz} setFeedbackVisible={()=>setFeedbackVisible(true)}/>
+  <div className=" overflow-hidden">
+
+
+  
+
+  <QuizClient lesson={lesson} />
   </div>
   </TabsContent>
 

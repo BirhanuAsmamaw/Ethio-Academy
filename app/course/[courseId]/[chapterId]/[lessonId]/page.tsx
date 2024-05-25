@@ -29,9 +29,9 @@ const LessonPage = async({params}:{params:IParams}) => {
   
  
 
-const isCoursePayed=user?.payedCourses.some((payedCourse) =>{
+const isCoursePayed=user?.payedCourses.some((payedCourse:any) =>{
 
-return payedCourse.courses.some((course) => course.course.id=== lesson?.chapter.course.id)&&payedCourse.status}
+return payedCourse.courses.some((course:any) => course.course.id=== lesson?.chapter.course.id)&&payedCourse.status}
 );
 
 
@@ -68,7 +68,7 @@ return payedCourse.courses.some((course) => course.course.id=== lesson?.chapter.
       </div>
     
 
-<SubLayout className="bg-white my-10 py-10 dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
+<SubLayout className="bg-white my-10 py-10  dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
 <h1 className="text-lg md:xl lg:2xl font-medium md:font-semibold lg:font-bold">{lesson.title}</h1>
 
 {lesson.videoThumbnail?<div className=" my-6">
@@ -89,12 +89,14 @@ return payedCourse.courses.some((course) => course.course.id=== lesson?.chapter.
 
       </SubLayout>
 
-    <ScrollArea className=" w-[400px] h-screen py-20   hidden overflow-x-hidden  overflow-y-auto 
-    lg:block  right-2">
+   <div className="fixed right-0 w-[400px] h-screen hidden  p-6 overflow-x-hidden  overflow-y-auto 
+    lg:block  ">
+   <ScrollArea className=" w-full h-full py-20   ">
      <div className="my-20 pr-4">
      <CourseContent course={lesson.chapter.course}/>
      </div>
     </ScrollArea>
+   </div>
     </MainLayout></> );
 }
  
