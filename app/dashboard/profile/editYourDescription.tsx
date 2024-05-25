@@ -5,7 +5,7 @@ import { useUpdateProfileMutation } from '@/redux/features/user/userApi'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { FaEdit } from 'react-icons/fa'
+import { MdModeEdit } from "react-icons/md";
 
 const EditYourDescription = ({user}:{user:any}) => {
   const router = useRouter();
@@ -26,14 +26,14 @@ const EditYourDescription = ({user}:{user:any}) => {
   }, [isSuccess, router]);
   return (
     <div className="p-2 sm:p-4 space-y-2">
-      <h3 className='text-xl flex gap-2 items-center font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
+      <h3 className='text-xl flex gap-2 justify-between w-full items-center font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
         <span>About Me</span>
         <CModal
           disabled={isLoading}
           buttonLabel={isLoading ? 'Updating...' : 'Update'}
           onClick={onSubmit}
           className='bg-transparent p-0 hover:bg-transparent hover:text-black hover:dark:text-white text-gray-600 dark:text-gray-200'
-          modalName={<FaEdit size={30} />}
+          modalName={<MdModeEdit size={24} />}
         >
           <div className=" min-w-[375px] md:min-w-[500px]">
           <TextEditor

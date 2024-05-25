@@ -18,7 +18,7 @@ const ProfilePage = async() => {
   title={` ${user?.name}`}
 />
 
-  <div className="w-full py-10 flex justify-center items-center">
+  <div className="w-full  py-9 lg:py-0 flex justify-center items-center">
     <ProfileClient user={user}/>
   </div></> );
 }

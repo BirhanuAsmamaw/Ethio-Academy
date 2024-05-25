@@ -2,15 +2,11 @@
 
 
 import Spinning from "@/components/spinning";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import EditAccount from "./editAccount";
 import EditPassword from "./editPassword";
-import EditAvatar from "./editAvatar";
+
 import UserProfileContainer from "@/app/user/[userId]/userProfileContainer";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import SocialLink from "@/app/user/[userId]/socialLink";
-import { socialData } from "@/lib/socialData";
-import { isError } from "util";
+
 import EditName from "./editName";
 import EditYourDepartment from "./editYourDepartment";
 import EditYourDescription from "./editYourDescription";
@@ -40,21 +36,24 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 
 
   return ( <div className="flex w-full justify-center">
-  <div className='sm:p-4 w-full justify-center gap-x-4 py-10 grid grid-cols-1 lg:grid-cols-12'>
+  <div className='sm:p-4 w-full justify-center gap-x-4 py-6 lg:py-0 grid grid-cols-1 lg:grid-cols-12'>
     <div className="flex p-2 justify-end w-full lg:col-span-4">
       {user? (
         <UserProfileContainer>
-          <div className="flex text-center items-center w-full justify-start gap-x-2">
+          <div className="flex text-center items-center w-full justify-start gap-x-4">
           <Avatar className="h-20 w-20">
                   <AvatarImage src={user?.image || "/"} alt="User Image" />
                   <AvatarFallback>
                     {names[0]?.[0]}{names[1]?.[0]}
                   </AvatarFallback>
                 </Avatar>
-            <h2 className='text-[20px] flex gap-2 items-center text-center sm:text-lg truncate lg:text-xl xl:text-2xl font-medium tracking-tight leading-tight p-2'>
+            <div className=" w-full items-center text-left ">
+            <h2 className='text-[16px]  w-full  truncate flex gap-2  justify-between items-center text-center sm:text-lg  lg:text-lg xl:text-xl font-medium tracking-tight leading-tight '>
             <span> {user?.name}</span>
             <EditName user={user}/>
             </h2>
+           <EditPassword user={user}/>
+            </div>
           </div>
           {/* <div className="p-2">
             <p className='lg:text-lg font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>Contact Me</p>
@@ -121,86 +120,3 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
  
 export default ProfileClient;
 
-
-
-{/* <UserProfileContainer>
-
-<div className="">
-
-
-  <EditAvatar user={user}/>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-    <Tabs defaultValue="account" className=" w-full ">
-  <TabsList className=" flex flex-wrap w-full gap-4 p-2 ">
-    <TabsTrigger className="
-           border-b-[1.5px]  
-           font-normal
-            border-slate-400 
-           bg-transparent 
-           shadow-none
-           hover:dark:text-white
-           hover:text-gray-900
-           hover:font-medium
-           hover:dark:border-gray-100
-            transition
-              duration-300
-           hover:border-gray-800
-           data-[state=active]:border-blue-500
-           data-[state=active]:dark:border-green-400
-           data-[state=active]:border-b-2
-           data-[state=active]:font-medium
-           data-[state=active]:text-blue-500
-           data-[state=active]:dark:text-green-400
-
-           " value="account">Account</TabsTrigger>
-    <TabsTrigger className="
-           border-b-[1.5px]  
-           font-normal
-            border-slate-400 
-           bg-transparent 
-           shadow-none
-           hover:dark:text-white
-           hover:text-gray-900
-           hover:font-medium
-           hover:dark:border-gray-100
-            transition
-              duration-300
-           hover:border-gray-800
-           data-[state=active]:border-blue-500
-           data-[state=active]:dark:border-green-400
-           data-[state=active]:border-b-2
-           data-[state=active]:font-medium
-           data-[state=active]:text-blue-500
-           data-[state=active]:dark:text-green-400
-
-           "  value="password">Password</TabsTrigger>
-   
-  </TabsList>
-
-  <TabsContent value="account" className="flex justify-center mt-6">
-  <EditAccount user={user}/>
-  </TabsContent>
-
-
-
-  <TabsContent value="password" className="flex justify-center mt-6">
-  <EditPassword user={user}/>
-  </TabsContent>
-
-
-
-
-
-</Tabs> 
-  </UserProfileContainer> */}

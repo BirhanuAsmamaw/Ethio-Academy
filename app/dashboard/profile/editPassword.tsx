@@ -8,6 +8,8 @@ import {signIn} from 'next-auth/react'
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import axios from "axios";
+import CModal from "@/components/customModal";
+import { TbArrowsExchange } from "react-icons/tb";
 interface EditPasswordProps{
   user:any;
 }
@@ -58,16 +60,23 @@ const EditPassword:React.FC<EditPasswordProps>= ({user}) => {
 
     
 
-  return ( <div className="p-2 flex flex-col gap-4 w-full md:w-[400px] bg-white dark:bg-black">
+  return (<CModal
+          disabled={isLoading}
+          buttonLabel={isLoading ? 'Changing...' : 'Change'}
+          onClick={handleSubmit(onSubmit)}
+          className='bg-transparent p-0 hover:bg-transparent hover:text-black hover:dark:text-white text-gray-600 dark:text-gray-200'
+          modalName={ <h6 className="flex gap-2 text-sm"><TbArrowsExchange size={24}/><span>Password</span></h6>}
+        >
+          
+          <div className=" flex flex-col gap-4 w-full md:w-[400px]">
   <h1 className="text-lg font-semibold">Edit Your Password</h1>
   <div className="p-2 space-y-3">
     <Input type="password" label="Old Password" register={register} errors={errors} id="oldPassword"/>
     <Input type="password" label="New password" register={register} errors={errors} id="newPassword"/>
-    <div className="p-6 flex justify-end">
-      <Button isDisabled={isLoading} title={isLoading? "Loading...":"Submit"} onClick={handleSubmit(onSubmit)}/>
-    </div>
+   
   </div>
-</div> );
+</div>
+        </CModal> );
 }
  
 export default EditPassword;

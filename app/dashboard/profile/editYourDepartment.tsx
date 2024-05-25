@@ -4,8 +4,7 @@ import React, { useEffect } from 'react';
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
-import { FaEdit } from 'react-icons/fa';
-
+import { MdModeEdit } from "react-icons/md";
 import CModal from '@/components/customModal';
 import Input from '@/components/input/input';
 import { useUpdateProfileMutation } from '@/redux/features/user/userApi';
@@ -33,8 +32,8 @@ const EditYourDepartment = ({ user }: { user: any }) => {
   };
 
   return (
-    <div className="flex gap-2 items-center">
-      <h1 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-medium tracking-tight leading-tight p-2 truncate">
+    <div className="flex gap-2 items-center justify-between">
+      <h1 className="text-[16px] md:text-xl lg:text-2xl xl:text-3xl font-medium tracking-tight leading-tight p-2 truncate">
         {user.department || 'What is your field?'}
       </h1>
 
@@ -43,9 +42,9 @@ const EditYourDepartment = ({ user }: { user: any }) => {
         buttonLabel={isLoading ? 'Updating...' : 'Update'}
         onClick={handleSubmit(onSubmit)}
         className="bg-transparent p-0 hover:bg-transparent hover:text-black hover:dark:text-white text-gray-600 dark:text-gray-200"
-        modalName={<FaEdit size={30} />}
+        modalName={<MdModeEdit size={24} />}
       >
-        <div className="w-[300px] p-2 py-4">
+        <div className="w-[300px] p-2  text-left">
           <Input
             defaultValue={user?.department}
             type="text"

@@ -16,12 +16,14 @@ const router=useRouter();
   const [searchQuery,setSearchQuery] = useState<string|null>(null);
   const searchData=useSelector((state:RooState)=>state.search.search);
 
-  useEffect(()=>{
-    if(searchData){
-      router.push("/search")
-    }
-   
-  },[searchData])
+ const onSubmit=()=>{
+  if(searchData){
+    router.push("/search")
+  }
+ }
+
+
+
 
    useEffect(()=>{
     dispatch(setSearch({search:searchQuery}))
@@ -33,7 +35,7 @@ const onSearchOpen=()=>{
   
   return ( <>
     <div className="hidden xl:block w-full relative ">
-    <div className='flex w-full gap-2
+    <form onSubmit={onSubmit} className='flex w-full gap-2
     dark:bg-gray-800
     focus-within:dark:border-green-400
     hover:dark:bg-gray-700
@@ -59,7 +61,7 @@ const onSearchOpen=()=>{
         onChange={(event)=>setSearchQuery(event.target.value)}
         placeholder='Search...'
          className='w-full rounded-full border-none focus:outline-none   p-2 bg-transparent'/>
-    </div>
+    </form>
 
   
    
@@ -69,7 +71,7 @@ const onSearchOpen=()=>{
     {isSearchOpen? <IoMdClose size={24}/>:<IoIosSearch size={24}/>}
     </button>
     <div className={`absolute  z-20 mt-1  top-16 w-11/12 p-3 left-2 right-2 ${!isSearchOpen?'bg-opacity-0 -translate-y-[200%]':'bg-opacity-100 translate-y-0'} transition duration-300`}>
-    <div  className='flex w-full gap-2
+    <form onSubmit={onSubmit} className='flex w-full gap-2
     dark:bg-gray-800
     hover:dark:bg-gray-700
     dark:border-gray-600
@@ -96,7 +98,7 @@ const onSearchOpen=()=>{
         onChange={(event)=>setSearchQuery(event.target.value)}
         placeholder='Search...'
          className='w-full rounded-full border-none focus:outline-none   p-2 bg-transparent'/>
-    </div>
+    </form>
     </div>
    </div>
    </>
