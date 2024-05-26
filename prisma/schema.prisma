@@ -37,6 +37,7 @@ model User {
   image        String?
   image_key String? 
   hash String?
+  accountType  AccountType @default(PRIVATE)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   payedCourses  Payment[]
@@ -428,4 +429,10 @@ type File{
    email String
    message String
    
+}
+
+
+enum AccountType{
+  PRIVATE
+  PUBLIC
 }
