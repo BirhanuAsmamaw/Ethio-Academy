@@ -224,7 +224,7 @@ className="w-full flex gap-2 justify-between text-[14px] p-2 rounded-[5px]   bor
           
        <div className="w-full  lg:w-8/12 flex flex-col md:flex-row px-4  gap-10 items-center justify-between">
        <div className="w-full  ">
-            <Input id="course" register={register} errors={errors}  label="Write Course Name" type="text" required/>
+            <Input id="course" register={register} errors={errors}  label="Title" type="text" required/>
             </div>
 
 
@@ -243,18 +243,18 @@ className="w-full flex gap-2 justify-between text-[14px] p-2 rounded-[5px]   bor
         
           
           <div className="flex flex-col px-2 sm:px-4 w-full gap-1 my-4 lg:w-8/12">
-            <Heading small title="Add Course Description"/>
+            <Heading small title="Description"/>
           <TextEditor value={description} setValue={setDescription}/>
           </div>
 
           <div className="flex flex-col px-2 sm:px-4 w-full gap-1 my-4 lg:w-8/12">
-            <Heading small title="Add Course Requirements"/>
+            <Heading small title="Requirements"/>
           <TextEditor value={requirement} setValue={setRequirement}/>
           </div>
         
 
           <div className="flex flex-col px-2 sm:px-4 w-full  gap-1  pt-2 my-4 lg:w-8/12">
-            <Heading small title="Add who use This Course"/>
+            <Heading small title="Target Odense"/>
           <TextEditor value={courseUsers} setValue={setCourseUsers}/>
           </div>
 
@@ -269,21 +269,21 @@ className="w-full flex gap-2 justify-between text-[14px] p-2 rounded-[5px]   bor
       childern={
         <div className="flex flex-col gap-10 p-2">
  <div className="flex  dark:border-gray-500 pt-5 justify-between w-full border-b-[1.5px]">
-       <Heading title={`Review Course`}/>
+       <Heading title={`Pre-review Course`}/>
        <span className=" text-lg text-gray-600 dark:text-gray-400  diagonal-fractions">{page}/2</span>
        </div>
           <div className="flex flex-col-reverse lg:flex-row items-start justify-between  gap-10 md:p-10">
 
 <div className="space-y-6">
 <div className="flex flex-col gap-2 p-2">
- <Heading title="Course Requirement"/>
+ <Heading title="Requirement"/>
  <div className="pl-2" dangerouslySetInnerHTML={{ __html: courseData.requirements }}></div>
 
  </div>
 
 
  <div className="flex flex-col gap-2 p-2">
- <Heading title="Who Use This Course?"/>
+ <Heading title="Target Odense"/>
  <div className="pl-2" dangerouslySetInnerHTML={{ __html: courseData.whoShouldTake}}></div>
 
  </div>
@@ -308,7 +308,7 @@ className="w-full flex gap-2 justify-between text-[14px] p-2 rounded-[5px]   bor
 
 
  <div className="flex  md:px-10 flex-col gap-2 p-2">
- <Heading title="About Course"/>
+ <Heading title="Course Description"/>
  <div className="pl-2" dangerouslySetInnerHTML={{ __html: courseData.descriptions }}></div>
 
  </div>

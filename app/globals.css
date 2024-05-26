@@ -9,6 +9,12 @@ html{
   scroll-behavior: smooth;
 }
 
+code{
+  @apply text-wrap
+}
+pre{
+  @apply text-wrap
+}
 ul {
   @apply list-disc pl-1 list-inside; /* Example: Apply Tailwind styles to ul */
 }

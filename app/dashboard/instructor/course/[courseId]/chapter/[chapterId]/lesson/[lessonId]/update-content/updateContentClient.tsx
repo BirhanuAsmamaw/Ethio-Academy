@@ -52,7 +52,7 @@ const router=useRouter();
  
     axios.put(`/api/lesson/${lesson.id}/update/content`,data).then(()=>{
       toast.success("Lesson Updated  successfully")
-      router.push(`/dashboard/departments/${lesson?.chapter.course.subject.department.id}/${lesson?.chapter.course.subject.id}/course/${lesson?.chapter.course.id}/chapter/${lesson?.chapter.id}/lesson/${lesson?.id}/update-content`)
+    
       router.refresh();
     })
     .catch((error)=>{
@@ -83,7 +83,7 @@ const router=useRouter();
       <Input
       
       id="title"
-      label="Update Lesson Title"
+      label="Title"
       required
       register={register}
       errors={errors}

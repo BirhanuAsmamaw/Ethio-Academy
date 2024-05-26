@@ -15,7 +15,7 @@ const Sidebar:React.FC<SidebarProps> = ({user}) => {
     <div 
     className={`fixed 
      h-screen
-    
+   
      
       bg-white
       dark:bg-gray-800

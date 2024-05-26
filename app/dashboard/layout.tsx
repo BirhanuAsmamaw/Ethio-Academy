@@ -38,7 +38,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
 
 
 
-    <div className="md:px-6 lg:py-20 lg:col-span-9 xl:col-span-10 ">{children}
+    <div className="md:px-4 lg:py-20 lg:col-span-9 xl:col-span-10 ">{children}
     
     
 

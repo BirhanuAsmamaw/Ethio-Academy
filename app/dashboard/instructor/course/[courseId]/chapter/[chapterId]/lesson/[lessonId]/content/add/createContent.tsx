@@ -3,7 +3,7 @@ import Button from '@/components/button/button'
 import TextEditor from '@/components/editor/editor'
 import Heading from '@/components/Heading/Heading'
 import axios from 'axios'
-import { redirect, useRouter } from 'next/navigation'
+import {useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
@@ -51,7 +51,7 @@ const CreateContent:React.FC<CreateContentProps> = ({lesson,contentId}) => {
     axios.post('/api/content',contentData).then(()=>{
       toast.success("Lesson Content successfully")
       
-      redirect(`/dashboard/instructor/course/${lesson?.chapter?.courseId}/chapter/${lesson?.chapterId}/lesson/${lesson?.id}/update-content`)
+      router.refresh()
       
     })
     .catch((error)=>{
@@ -69,9 +69,9 @@ const CreateContent:React.FC<CreateContentProps> = ({lesson,contentId}) => {
   {showContent?<><Heading small title="Add Lesson Content"/>
 <TextEditor value={description} setValue={setDescription}/></>:""}
 
-{showCode?<div className=" space-y-6 text-left w-full flex flex-col">
+{showCode?<div className=" space-y-6 mt-4 text-left w-full flex flex-col">
 
-  <input type="text" onChange={(event)=>setLanguage(event?.target.value)} className='border outline-none border-slate-400 hover:border-blue-500 focus:border-blue-500 focus:dark:border-green-400  hover:dark:border-green-400 dark:border-gray-500    w-full md:w-1/2 lg:w-1/3 xl:w-2/5 bg-slate-50 rounded-md dark:bg-gray-800' placeholder='add programming language'/>
+  <input type="text" onChange={(event)=>setLanguage(event?.target.value)} className='border p-2  text-wrap outline-none border-slate-400 hover:border-blue-500 focus:border-blue-500 focus:dark:border-green-400  hover:dark:border-green-400 dark:border-gray-500    w-full md:w-1/2 lg:w-1/3 xl:w-2/5 bg-slate-50 rounded-md dark:bg-gray-800' placeholder='add programming language'/>
 
   <textarea
   onChange={(event)=>setCode(event?.target.value)} 

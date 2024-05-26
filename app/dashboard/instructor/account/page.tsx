@@ -28,7 +28,7 @@ const AccountPage= async() => {
   }
   const names=user.teacher.accountName?.split(" ")||user.name?.split(" ")
   return (
-       <div className="flex py-20 justify-center">
+       <div className="flex py-20 lg:py-0 justify-center">
           <div className='flex flex-col items-center min-h-screen p-1 gap-20  w-full md:w-11/12 '>
 
 

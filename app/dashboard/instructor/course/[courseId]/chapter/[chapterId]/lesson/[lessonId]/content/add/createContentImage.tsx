@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import axios from 'axios'
 
-import { redirect, useRouter } from 'next/navigation'
+import {  useRouter } from 'next/navigation'
 
 import toast from 'react-hot-toast'
 import {  IoMdAdd } from 'react-icons/io'
@@ -28,7 +28,7 @@ const CreateContentImage:React.FC<CreateContentImageProps> = ({lesson,contentId}
 
    axios.post(`/api/content`,{image:imageData, lessonId:lesson.id,parentId:contentId||null}).then(()=>{
     toast.success("Lesson content image uploaded successfully")
-    redirect(`/dashboard/instructor/course/${lesson?.chapter?.courseId}/chapter/${lesson?.chapterId}/lesson/${lesson?.id}/update-content`)
+    router.refresh()
     
     }).catch((error)=>{
   
