@@ -22,7 +22,7 @@ const NewCoursesList = () => {
       
             <div className="space-y-10">
               <CourseList>
-              {isSuccess&&data.courses.map((course: any, index: number) => {
+              {isSuccess&&data?.courses?.length&&data?.courses?.map((course: any, index: number) => {
                 return course.cover && (
                   <Card
                     key={index}
