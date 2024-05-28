@@ -28,15 +28,14 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   if (!user) {
     return <h1>No User</h1>;
   } else {
-    const names = user?.name?.split(" ");
+    // const names = user?.name?.split(" ");
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar className="h-7 w-7">
             <AvatarImage src={user?.image ? user?.image : "/"} alt="image" />
             <AvatarFallback>
-              {names[0] ? names[0][0] : ''}
-              {names?.length === 2 ? names[1][0] : ''}
+             {user?.name[0]}
             </AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
