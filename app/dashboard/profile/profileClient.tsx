@@ -36,7 +36,6 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 );
 
 
-console.log("user:-",user)
   const names=user?.name.split(" ")
 
 

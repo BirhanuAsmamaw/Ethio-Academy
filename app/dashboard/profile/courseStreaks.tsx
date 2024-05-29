@@ -44,7 +44,7 @@ const CoursesStreak = ({courses}:{courses:any[]}) => {
     </td>
 
 <td className="px-6 py-2  ">
-       <p className='text-xl  text-center font-medium text-green-600'>{course?.streak?.streak||0}</p>
+       <p className='text-xl  text-center font-medium text-green-600'>{course?.longestStreak?.streak||0}</p>
        {course?.longestStreak?<div className="flex items-center justify-center text-[10px] font-light font-sans">
        <span>{formatDate(course?.longestStreak?.startAt)} </span> 
        <GoDash size={20}/>
