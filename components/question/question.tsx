@@ -1,6 +1,6 @@
 "use client";
 import MainLayout from "@/components/layouts/mainLayout";
-import {AnimatePresence,motion} from "framer-motion"
+import {motion} from "framer-motion"
 import SubLayout from "@/components/layouts/subLayout";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import NoExamNotification from "@/components/notification/noExamNotification";
@@ -17,6 +17,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { useUserStreakMutation } from "@/redux/features/user/userApi";
 
 interface QuestionComponentProps{
     notificationTitle:string,
@@ -37,7 +38,11 @@ const QuestionComponent:React.FC<QuestionComponentProps> = ({university,onPrevio
  const router=useRouter();
   const isVisible=useSearchParams();
   const isVisibleFeedBackQuery=isVisible?.get("right")
+const [userStreak]=useUserStreakMutation();
 
+useEffect(()=>{
+  userStreak()
+},[])
 
   useEffect(() => {
     setFeedbackVisible(isVisibleFeedBackQuery? true: false)

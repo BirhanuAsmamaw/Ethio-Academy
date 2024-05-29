@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 
 import Image from "next/image";
 import CodeHighlighterComponent from "@/components/codeHighlighter";
+import { useCourseStreakMutation } from "@/redux/features/course/courseApi";
+import { useUserStreakMutation } from "@/redux/features/user/userApi";
 
 
 interface LessonClientProps{
@@ -13,6 +15,25 @@ interface LessonClientProps{
 }
 const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
   
+
+
+
+  // User Streak
+  const [userStreak,{isSuccess,isLoading,isError,data,error}]=useUserStreakMutation();
+  
+
+useEffect(()=>{
+  userStreak()
+},[])
+
+
+  // Course Streak
+const [createStrike]=useCourseStreakMutation();
+useEffect(()=>{
+ createStrike(lesson?.chapter?.courseId)
+
+},[])
+
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {

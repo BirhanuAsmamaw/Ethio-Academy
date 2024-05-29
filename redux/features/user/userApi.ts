@@ -18,8 +18,16 @@ export const userApi=createApi({
         body:data
       })
     }),
+
+
+    userStreak:builder.mutation<any,void>({
+      query:()=>({
+        url:`/streak`,
+        method:"PUT"
+      })
+    }),
    
   })
 });
 
-export const {useUserProfileQuery,useUpdateProfileMutation}=userApi;
+export const {useUserStreakMutation,useUserProfileQuery,useUpdateProfileMutation}=userApi;

@@ -43,6 +43,15 @@ export const courseApi=createApi({
     orderCourseByRateFilterBySubjectId: builder.query<any, { page: string, pageSize: string,subjectId:string }>({
       query: ({ page, pageSize ,subjectId}) => `/filterBySubjectId/orderByRate?page=${page}&pageSize=${pageSize}&subjectId=${subjectId}`
     }),
+
+// Course Streak
+    courseStreak: builder.mutation<any, string >({
+      query: (courseId) => ({
+        url:`/courseStreak`,
+        method:"POST",
+        body:{courseId:courseId}
+      })
+    }),
   })
 });
 
@@ -60,7 +69,7 @@ export const {
 // filter By Instructor
   useNewCourseFilterByInstructorQuery,
   useOrderCourseByRateFilterByInstructorQuery,
-
+useCourseStreakMutation,
   useFilteredCourseBySubjectQuery,
   useOrderCourseByRateQuery,
   useNewCourseQuery}=courseApi;

@@ -12,6 +12,9 @@ import EditYourDepartment from "./editYourDepartment";
 import EditYourDescription from "./editYourDescription";
 import EnrolledCourses from "./enrolledCourses";
 import TeachingCourses from "./teachingCourses";
+import CoursesStreak from "./courseStreaks";
+import { formatDate } from "@/lib/formatDate";
+import { GoDash } from "react-icons/go";
 
 
 
@@ -32,6 +35,8 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
   const courses = user.payedCourses.flatMap((payedCourse: any) =>payedCourse?.courses?.flatMap((c:any)=>c.course)
 );
 
+
+console.log("user:-",user)
   const names=user?.name.split(" ")
 
 
@@ -64,6 +69,41 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
             </div>
           </div> */}
 
+
+          {user?.longestStreak?<div className="p-2">
+            <p className='lg:text-lg font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
+              My Streak
+            </p>
+            <div>
+              
+
+              {/* LONGEST STREAK */}
+              <div className='text-[14px]'>
+                <p className=" font-medium">Longest Streak: <span className="text-lg font-medium text-green-500">{user?.longestStreak?.streak}</span></p> 
+                <div className="flex items-center text-gray-500 dark:text-gray-400  text-[10px]  font-light font-serif">
+             <span>{formatDate(user?.longestStreak?.startAt)} </span> 
+             <GoDash size={20}/>
+          <span>{formatDate(user?.longestStreak?.startAt)} </span>
+       </div>
+                </div>
+
+
+                {/* CURRENT STREAK */}
+                <div className='text-[14px]'>
+                <p className=" font-medium">Current Streak: <span className="text-lg font-medium text-green-500">{user?.currentStreak?.streak}</span></p> 
+                <div className="flex items-center text-gray-500 dark:text-gray-400  text-[10px] font-light font-serif">
+             <span>{formatDate(user?.currentStreak?.startAt)} </span> 
+             <GoDash size={20}/>
+          <span>{formatDate(user?.currentStreak?.startAt)} </span>
+       </div>
+                </div>
+            </div>
+          </div>:""}
+
+
+
+
+          {/* Enrolled Courses */}
           {courses&&courses?.length?<div className="p-2">
             <p className='lg:text-lg font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>
               Enrolled Courses: <span>{courses?.length}</span>
@@ -95,7 +135,7 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
           <EditYourDepartment user={user}/>
           {/* About me */}
           <EditYourDescription user={user}/>
-
+          <CoursesStreak courses={user?.courseStreaks}/>
             {/* Enrolled Courses */}
            <EnrolledCourses user={user}/>
 
