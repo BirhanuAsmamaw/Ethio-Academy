@@ -18,7 +18,7 @@ interface AccountCardProps{
 const AccountCard:React.FC<AccountCardProps>= ({url,image,name,title,learner_no,subscribe_no,course_no}) => {
   const names=name&&name?.split(" ")
   return (
-    <Link href={url} className=' min-w-32  sm:min-w-40 xl:min-w-44 2xl:min-w-48 bg-white no-underline shadow border dark:border-gray-500 hover:border-green-500 hover:dark:border-yellow-400 hover:bg-slate-50 hover:dark:bg-gray-700 dark:bg-gray-800 max-w-64 overflow-hidden p-2 h-fit w-fit flex justify-center rounded-lg transition duration-300'>
+    <Link href={url} className='  min-w-40  xl:min-w-44 2xl:min-w-48 bg-white no-underline shadow border dark:border-gray-500 hover:border-green-500 hover:dark:border-yellow-400 hover:bg-slate-50 hover:dark:bg-gray-700 dark:bg-gray-800 max-w-64 overflow-hidden p-2 h-fit w-fit flex justify-center rounded-lg transition duration-300'>
       <div className="flex flex-col  justify-center text-center items-center">
       <Avatar className={`  h-16 w-16 `}>
       <AvatarImage src={image||""} alt="image" />
