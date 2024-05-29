@@ -16,13 +16,14 @@ interface AccountCardProps{
 
 }
 const AccountCard:React.FC<AccountCardProps>= ({url,image,name,title,learner_no,subscribe_no,course_no}) => {
-  const names=name?.split(" ")
+  const names=name&&name?.split(" ")
   return (
     <Link href={url} className='bg-white no-underline shadow border dark:border-gray-500 hover:border-green-500 hover:dark:border-yellow-400 hover:bg-slate-50 hover:dark:bg-gray-700 dark:bg-gray-800 max-w-64 overflow-hidden p-2 h-fit w-fit flex justify-center rounded-lg transition duration-300'>
       <div className="flex flex-col  justify-center text-center items-center">
       <Avatar className={`  h-16 w-16 `}>
       <AvatarImage src={image||""} alt="image" />
-      <AvatarFallback>{names? names[0][0]:''}{names?names[1][0]:''}</AvatarFallback>
+      <AvatarFallback> {names[0] ? names[0][0] : ''}
+              {names?.length === 2 ? names[1][0] : ''}</AvatarFallback>
     </Avatar>
 
   <div className="mt-2 ">
