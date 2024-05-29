@@ -32,7 +32,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Avatar className="h-7 w-7">
+          <Avatar className="h-8 w-8 bg-slate-50 dark:bg-gray-700">
             <AvatarImage src={user?.image ? user?.image : "/"} alt="image" />
             <AvatarFallback>
               {names[0] ? names[0][0] : ''}
