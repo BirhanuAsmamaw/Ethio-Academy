@@ -45,20 +45,20 @@ const CoursesStreak = ({courses}:{courses:any[]}) => {
 
 <td className="px-6 py-2  ">
        <p className='text-xl  text-center font-medium text-green-600'>{course?.streak?.streak||0}</p>
-       <div className="flex items-center justify-center text-[10px] font-light font-sans">
-       <span>{formatDate(course?.streak?.startAt)} </span> 
+       {course?.longestStreak?<div className="flex items-center justify-center text-[10px] font-light font-sans">
+       <span>{formatDate(course?.longestStreak?.startAt)} </span> 
        <GoDash size={20}/>
-       <span>{formatDate(course?.streak?.startAt)} </span>
-       </div>
+       <span>{formatDate(course?.longestStreak?.startAt)} </span>
+       </div>:""}
     </td>
 
     <td className="px-6 py-2  ">
        <p className='text-xl text-center font-medium text-green-600'>{course?.streak?.streak||0}</p>
-       <div className="flex items-center justify-center text-[10px] font-light font-sans">
+       {course?.streak?<div className="flex items-center justify-center text-[10px] font-light font-sans">
        <span>{formatDate(course?.streak?.startAt)} </span> 
        <GoDash size={20}/>
        <span>{formatDate(course?.streak?.startAt)} </span>
-       </div>
+       </div>:""}
     </td>
 
 
