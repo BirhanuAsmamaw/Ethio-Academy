@@ -18,7 +18,7 @@ const ExamsLists:React.FC<ExamsListsProps> = ({exams}) => {
     <div className='mt-4 space-y-2'>
      
      
-    {exams?.map((c,index)=>{
+    {exams&&exams?.length&&exams?.map((c,index)=>{
             return <CLink key={index} url={`/exams/${c.url}`} >
                 
                 <p className=" hover:text-rose-500 hover:dark:text-green-400 w-[300px]">{c.examType}</p>

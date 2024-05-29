@@ -50,10 +50,10 @@ const CategoryNavigation:React.FC<CategoryNavigationProps> = ({departments}) => 
      
       
        
-          {departments?departments?.map((department:any)=>{
-            return <CLink  key={department.id} url={`/category/${department.url}`} >
+          {departments&&departments?.length?departments?.map((department:any)=>{
+            return <CLink  key={department.id} url={`/category/${department?.url}`} >
           <div className="w-full flex justify-between group/subject">
-          <span className='group-hover/subject:dark:text-green-400 group-hover/subject:text-rose-500'>{department.departmentName}</span>
+          <span className='group-hover/subject:dark:text-green-400 group-hover/subject:text-rose-500'>{department?.departmentName}</span>
           
           
           <ChevronRight className="mr-2 h-4 w-4 group-hover/subject:dark:text-green-400 group-hover/subject:text-rose-500 group-hover/subject:-rotate-90 transition duration-300"/>
@@ -69,8 +69,8 @@ const CategoryNavigation:React.FC<CategoryNavigationProps> = ({departments}) => 
      
       
        
-          {department.subject?.length?department.subject?.map((sub:any)=>{
-            return <CLink  key={sub.id} url={`/category/${department.url}/${sub.id}`} >
+          {department?.subject?.length?department?.subject?.map((sub:any)=>{
+            return <CLink  key={sub?.id} url={`/category/${department?.url}/${sub.id}`} >
           <div onMouseEnter={()=>setSubjectId(sub.id)} className="w-full flex justify-between group/course">
           <span className='group-hover/course:dark:text-green-400 group-hover/course:text-rose-500'>{sub?.subjectName}</span>
           
@@ -86,8 +86,8 @@ const CategoryNavigation:React.FC<CategoryNavigationProps> = ({departments}) => 
 
    <div className='mt-4 space-y-2'>
    {isSuccess&&(data.length?data.map((course:any)=>{
-    return <CLink url={`/course/${course.id}`}>
-      <p className="hover:text-rose-500 hover:dark:text-green-400 w-full">{course.course}</p>
+    return <CLink url={`/course/${course?.id}`}>
+      <p className="hover:text-rose-500 hover:dark:text-green-400 w-full">{course?.course}</p>
     </CLink>
    }
   ):<span>No Courses!</span>)}
