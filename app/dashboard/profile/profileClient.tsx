@@ -37,6 +37,9 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 
 
   const names=user?.name.split(" ")
+  const date=new Date();
+  date.setHours(0,0,0,0)
+  console.log("today:",date)
 
 
   return ( <div className="flex w-full justify-center">
@@ -82,7 +85,7 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
                 <div className="flex items-center text-gray-500 dark:text-gray-400  text-[10px]  font-light font-serif">
              <span>{formatDate(user?.longestStreak?.startAt)} </span> 
              <GoDash size={20}/>
-          <span>{formatDate(user?.longestStreak?.startAt)} </span>
+          <span>{formatDate(user?.longestStreak?.endAt)} </span>
        </div>
                 </div>
 
@@ -93,7 +96,7 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
                 <div className="flex items-center text-gray-500 dark:text-gray-400  text-[10px] font-light font-serif">
              <span>{formatDate(user?.currentStreak?.startAt)} </span> 
              <GoDash size={20}/>
-          <span>{formatDate(user?.currentStreak?.startAt)} </span>
+          <span>{formatDate(user?.currentStreak?.endAt)} </span>
        </div>
                 </div>
             </div>
@@ -109,7 +112,7 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
             </p>
             <div>
               {/* <p className='text-[14px]'>Completed: <span>20</span></p> */}
-              <p className='text-[14px]'>Ongoing: <span>{courses.length}</span></p>
+              <p className='text-[14px]'>Ongoing: <span>{courses?.length}</span></p>
             </div>
           </div>:""}
 

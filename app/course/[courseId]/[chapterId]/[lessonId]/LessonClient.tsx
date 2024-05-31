@@ -20,6 +20,11 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
 
   // User Streak
   const [userStreak,{isSuccess,isLoading,isError,data,error}]=useUserStreakMutation();
+  console.log("user data",data)
+  console.log("isSuccess",isSuccess)
+  console.log("isError",isError)
+  console.log("error",error)
+  console.log("isLoading",isLoading)
   
 
 useEffect(()=>{

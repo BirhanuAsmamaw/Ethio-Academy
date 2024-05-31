@@ -48,7 +48,7 @@ const CoursesStreak = ({courses}:{courses:any[]}) => {
        {course?.longestStreak?<div className="flex items-center justify-center text-[10px] font-light font-sans">
        <span>{formatDate(course?.longestStreak?.startAt)} </span> 
        <GoDash size={20}/>
-       <span>{formatDate(course?.longestStreak?.startAt)} </span>
+       <span>{formatDate(course?.longestStreak?.endAt)} </span>
        </div>:""}
     </td>
 
@@ -57,7 +57,7 @@ const CoursesStreak = ({courses}:{courses:any[]}) => {
        {course?.streak?<div className="flex items-center justify-center text-[10px] font-light font-sans">
        <span>{formatDate(course?.streak?.startAt)} </span> 
        <GoDash size={20}/>
-       <span>{formatDate(course?.streak?.startAt)} </span>
+       <span>{formatDate(course?.streak?.endAt)} </span>
        </div>:""}
     </td>
 

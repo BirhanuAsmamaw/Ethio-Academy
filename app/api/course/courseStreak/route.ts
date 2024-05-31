@@ -53,20 +53,20 @@ export async function POST(req: Request) {
 
       // Handle potential undefined value for longestStreak.endAt
       const longestStreakEndAt = existingStreak.longestStreak?.endAt
-        ? new Date(existingStreak.longestStreak.endAt)
-        : today;
+        ? existingStreak.longestStreak.endAt
+        : new Date();
 
         const currentStreakEndAt = existingStreak.streak?.endAt
-        ? new Date(existingStreak.streak.endAt)
-        : today;
+        ? existingStreak.streak.endAt
+        : new Date();
 
       // Increment the existing streak by 1 or reset to 1
       const updatedStreak = await prisma.courseStreak.update({
         where: { id: existingStreak.id },
         data: {
           longestStreak: {
-            streak: newLongestStreak,
-            startAt: newLongestStreak > longestStreakCount 
+            streak: newLongestStreak >= longestStreakCount ? newLongestStreak:longestStreakCount,
+            startAt: newLongestStreak >= longestStreakCount 
                      ? existingStreak.streak?.startAt 
                      : existingStreak.longestStreak?.startAt,
             endAt: newLongestStreak > longestStreakCount ?currentStreakEndAt : longestStreakEndAt,
@@ -74,7 +74,7 @@ export async function POST(req: Request) {
           streak: {
             endAt: new Date(),
             streak: newStreakCount,
-            startAt: newStreakCount === 1 ? today : existingStreak.streak?.startAt,
+            startAt: newStreakCount == 1 ? new Date() : existingStreak.streak?.startAt,
           },
         },
       });
@@ -88,13 +88,13 @@ export async function POST(req: Request) {
           userId: user.id,
           longestStreak: {
             streak: 1,
-            startAt: today,
-            endAt: today,
+            startAt: new Date(),
+            endAt: new Date(),
           },
           streak: {
             streak: 1,
-            startAt: today,
-            endAt: today,
+            startAt: new Date(),
+            endAt: new Date(),
           },
         },
       });

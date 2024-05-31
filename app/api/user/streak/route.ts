@@ -20,10 +20,10 @@ export async function PUT(req: Request) {
       }, { status: 401 });
     }
 
-    const currentStreak = user?.currentStreak ?? { streak: 0, endAt: new Date(0) };
-    const longestStreak = user?.longestStreak ?? { streak: 0, endAt: new Date(0) };
+    const currentStreak = user?.currentStreak ?user?.currentStreak:{ streak: 0, endAt: new Date() };
+    const longestStreak = user?.longestStreak ?user?.longestStreak:{ streak: 0, endAt: new Date() };
 
-    const lastUpdated = new Date(currentStreak.endAt);
+    const lastUpdated = new Date(currentStreak?.endAt);
     lastUpdated.setHours(0, 0, 0, 0);
 
     // Check if the last update was today
@@ -40,7 +40,7 @@ export async function PUT(req: Request) {
     }
 
     // Determine the new longest streak
-    const longestStreakCount = longestStreak.streak ?? 0;
+    const longestStreakCount = longestStreak?.streak ?? 0;
     const newLongestStreak = Math.max(longestStreakCount, newStreakCount);
 
     // Update streaks
@@ -49,13 +49,13 @@ export async function PUT(req: Request) {
       data: {
         currentStreak: {
           streak: newStreakCount,
-          startAt: newStreakCount === 1 ? today : currentStreak.startAt,
+          startAt: newStreakCount == 1 ? new Date() : currentStreak?.startAt,
           endAt: new Date()
         },
         longestStreak: {
-          streak: newLongestStreak,
-          startAt: newLongestStreak > longestStreakCount ? currentStreak?.startAt : longestStreak.startAt,
-          endAt: newLongestStreak > longestStreakCount ? currentStreak?.endAt : longestStreak.endAt
+          streak:newLongestStreak,
+          startAt: newLongestStreak >= longestStreakCount ? currentStreak?.startAt : longestStreak?.startAt,
+          endAt: newLongestStreak >= longestStreakCount ? currentStreak?.endAt : longestStreak?.endAt
         }
       }
     });
