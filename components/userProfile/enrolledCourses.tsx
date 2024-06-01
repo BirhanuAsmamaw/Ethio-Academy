@@ -2,16 +2,12 @@
 import { formatDate } from '@/lib/formatDate'
 import React from 'react'
 import { GoDash } from "react-icons/go";
-const CoursesStreak = ({courses}:{courses:any[]}) => {
+const EnrolledCourses = ({courses}:{courses:any[]}) => {
    
 
 
 
-  return ( <>{courses&&courses?.length?<div className="p-2 sm:p-4  space-y-2">
-  <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>Courses Streak</h3>
- 
-
-<div className="relative overflow-x-auto ">
+  return ( <>{courses&&courses?.length?<div className="relative overflow-x-auto ">
 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 <tr>
@@ -29,6 +25,10 @@ const CoursesStreak = ({courses}:{courses:any[]}) => {
   </th>
   <th scope="col" className="px-6 py-3 text-center">
       Current Streak
+  </th>
+
+  <th scope="col" className="px-6 py-3 text-center">
+      Status
   </th>
 </tr>
 </thead>
@@ -61,17 +61,18 @@ const CoursesStreak = ({courses}:{courses:any[]}) => {
        </div>:""}
     </td>
 
-
+    <td className="px-6 py-4 ">
+    ongoing 
+    </td>
    
   </tr>
 })}
 
 </tbody>
 </table>
-</div>
 
 </div>:""}</>
   )
 }
 
-export default CoursesStreak
+export default EnrolledCourses

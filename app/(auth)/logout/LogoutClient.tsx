@@ -3,9 +3,8 @@ import toast from 'react-hot-toast';
 import {signOut} from 'next-auth/react'
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-
-import DeleteComponent from '@/components/deleteComponent';
 import { Button } from '@/components/ui/button';
+import Container from '@/components/container/container';
 interface LogoutClientProps{
   user:any;
 }
@@ -47,7 +46,7 @@ const LogoutClient:React.FC<LogoutClientProps> = ({user}) => {
     router.back();
   };
   return (<div className="h-screen w-full flex justify-center items-center">
-  <div className="mx-4 w-full md:max-w-md py-4 px-2 border bg-white border-gray-200 rounded-[10px] space-y-4 dark:bg-gray-800 dark:border-gray-700 ">
+  <Container className='p-4  sm:px-10 md:max-w-4xl lg:max-w-2xl'>
     <h5 className="text-[20px] font-normal text-gray-600 dark:text-gray-400  ">Are Sure To Logout ?</h5>
 
 
@@ -72,7 +71,7 @@ onClick={onLogout}>
 
 
     </div>
-  </div>
+  </Container>
 </div> );
 }
  

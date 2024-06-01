@@ -17,8 +17,8 @@ import {
 
 import React from "react";
 import { MdOutlineDashboard } from "react-icons/md";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import CLink from "./link";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import CLink from "../link";
 
 interface UserProfileProps {
   user: any;

@@ -6,11 +6,7 @@ const TeachingCourses = ({user}:{user:any}) => {
 
 
 
-  return ( <>{courses&&courses?.length?<div className="p-2 sm:p-4  space-y-2">
-  <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>My Teaching Courses</h3>
- 
-
-<div className="relative overflow-x-auto ">
+  return ( <>{courses&&courses?.length?<div className="relative overflow-x-auto ">
 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 <tr>
@@ -54,7 +50,6 @@ const TeachingCourses = ({user}:{user:any}) => {
 
 </tbody>
 </table>
-</div>
 
 </div>:""}</>
   )

@@ -69,7 +69,7 @@ export async function POST(req: Request) {
             startAt: newLongestStreak >= longestStreakCount 
                      ? existingStreak.streak?.startAt 
                      : existingStreak.longestStreak?.startAt,
-            endAt: newLongestStreak > longestStreakCount ?currentStreakEndAt : longestStreakEndAt,
+            endAt: newLongestStreak >= longestStreakCount ?currentStreakEndAt : longestStreakEndAt,
           },
           streak: {
             endAt: new Date(),

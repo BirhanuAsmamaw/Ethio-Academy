@@ -22,7 +22,7 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
   if(user){
   return ( <>
    <Navbar/>
-    <div className="min-h-screen   grid grid-cols-1 lg:grid-cols-12 gap-20 w-full">
+    <div className="  grid grid-cols-1 lg:grid-cols-12 gap-20 w-full">
 
 
      <div className="fixed left-0  z-50 top-20 lg:hidden">
@@ -38,7 +38,10 @@ const DashboardLayout:React.FC<DashboardLayoutProbs> =async ({children}) => {
 
 
 
-    <div className="md:px-4 lg:py-20 lg:col-span-9 xl:col-span-10 ">{children}
+    <div className="md:px-4 lg:col-span-9 min-h-screen flex flex-col  xl:col-span-10 ">
+      <div className="lg:py-20  flex-grow">
+      {children}
+      </div>
     
     
 

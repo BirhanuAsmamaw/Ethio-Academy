@@ -3,7 +3,7 @@ import Container from "@/components/container/container";
 const CourseSceleton = () => {
   return ( <div className="w-full flex flex-col gap-10">
     <Container
-    childern={
+    children={
 
 <div role="status" className="flex items-center justify-center h-56  w-full bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700">
     <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
@@ -16,7 +16,7 @@ const CourseSceleton = () => {
     />
 
 
- <Container childern={<div role="status" className="space-y-2.5 animate-pulse w-full">
+ <Container children={<div role="status" className="space-y-2.5 animate-pulse w-full">
       <div className="flex items-center w-full">
           <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
           <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
@@ -55,7 +55,7 @@ const CourseSceleton = () => {
 
 
 
-<Container childern={<div role="status" className="space-y-2.5 animate-pulse w-full">
+<Container children={<div role="status" className="space-y-2.5 animate-pulse w-full">
       <div className="flex items-center w-full">
           <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
           <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
@@ -93,7 +93,7 @@ const CourseSceleton = () => {
 
 
 
-<Container childern={<div role="status" className="space-y-2.5 animate-pulse w-full">
+<Container children={<div role="status" className="space-y-2.5 animate-pulse w-full">
       <div className="flex items-center w-full">
           <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
           <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>

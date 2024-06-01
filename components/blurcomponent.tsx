@@ -41,7 +41,7 @@ const BlurComponent:React.FC<BlurProps> = ({department,user,buyLabel}) => {
 
   return ( <>{reloadPage&&<div className="fixed z-50 flex justify-center items-center h-screen w-full bg-black bg-opacity-80">
     <Container
-    childern={
+    children={
       <div className="px-2 py-6 flex flex-col gap-6 w-72">
         <button
          onClick={onPayment}

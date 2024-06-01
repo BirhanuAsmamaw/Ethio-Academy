@@ -10,7 +10,7 @@ const ProfilePage = async() => {
     return null;
   }
   
- 
+
   return ( <>
   <Header
   keywords={`EthioAcademy, ${user?.name},${user?.teacher?user?.teacher?.accountName:""}student profiles, instructor profiles, top subjects, best course,subjects, most popular subjects, comprehensive learning`}

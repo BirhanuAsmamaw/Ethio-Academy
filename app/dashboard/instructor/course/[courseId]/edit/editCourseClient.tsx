@@ -86,7 +86,7 @@ const router=useRouter();
     </div>
       
       {!isnext&&<Container
-      childern={
+      children={
         <div className="flex flex-col gap-10 w-full  lg:mt-20   justify-center items-center p-2">
        <div className="py-5">
        <Heading title="Update Course"/>
@@ -137,7 +137,7 @@ const router=useRouter();
 
     {
       isnext&&<Container
-      childern={
+      children={
         <div className="flex flex-col gap-10 p-2">
  <Heading title={courseData?.course}/>
 

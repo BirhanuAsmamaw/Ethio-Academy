@@ -7,7 +7,7 @@ import { GoMoon } from "react-icons/go";
 import { LuSunMedium } from "react-icons/lu";
 import Link from "next/link";
 import { useCart } from "@/hooks/use.cart";
-import UserProfile from "../Profile";
+import UserProfile from "../userProfile/Profile";
 import MobileSidebar from "./mobileMenu";
 import NotificationDropDown from "../dropdown/notificationDropDown";
 import Search from "../search/search";
@@ -79,7 +79,7 @@ const hoverLink='z-50 link decoration-none relative pb-1 hover:dark:text-green-4
 
 
 
-    <div className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isScroll? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-900  ":"hidden "} duration-300 z-50 bg-slate-50  dark:bg-black `}>
+    <div className={`  w-full px-2 md:px-6 z-50 h-16 items-center gap-4  flex justify-between   ${isScroll? " border-b border-slate-200 dark:border-gray-700  fixed dark:bg-gray-800  ":"hidden "} duration-300 z-50 bg-white dark:bg-gray-800 `}>
    
    <Logo/>
   

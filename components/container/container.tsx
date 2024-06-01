@@ -1,18 +1,20 @@
 "use client"
 import React, { ReactNode } from "react";
 import {motion,AnimatePresence} from "framer-motion"
+import { cn } from "@/lib/utils";
 interface ContainerProps{
-  childern: ReactNode;
+  children: ReactNode;
+  className?:string;
 }
 
-const Container:React.FC<ContainerProps> = ({childern}) => {
+const Container:React.FC<ContainerProps> = ({ children,className}) => {
   return ( <AnimatePresence><motion.div 
     initial={{opacity: 0,y:15}}
     whileInView={{opacity:1,y:0}}
     exit={{opacity:0,y:15}}
     transition={{delay:0.25}}
-  className="bg-white dark:bg-gray-800 border-slate-200 dark:border-gray-600 border-[1.5px] rounded-[5px]">
-    {childern}
+    className={cn("bg-white dark:bg-gray-800 w-full dark:shadow-black py-8 px-2 sm:px-4 shadow sm:rounded-lg ",className)}>
+    {children}
   </motion.div></AnimatePresence> );
 }
  

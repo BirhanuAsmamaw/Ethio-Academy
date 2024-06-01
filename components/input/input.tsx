@@ -98,23 +98,20 @@ peer
     className={`
     
     ${userFrom? inputClass:`
-     border 
-    border-gray-300 
+   
     text-gray-900 
     text-sm 
     
      focus:ring-blue-500 
-     focus:border-blue-500
-      block 
-      w-full 
+     
       p-2.5 
-      bg-gray-900/10
-      dark:bg-white/10
+      
+      
       dark:border-gray-600 
       dark:placeholder-gray-400
        dark:text-white 
        dark:focus:ring-blue-500 
-       dark:focus:border-blue-500  rounded-[5px]`}
+       dark:focus:border-blue-500  bg-transparent  appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5`}
     ${errors[id]? 'border-rose-400 dark:border-rose-600':''}
     `} 
   

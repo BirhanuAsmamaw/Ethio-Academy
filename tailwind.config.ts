@@ -24,6 +24,10 @@ const config = {
     },
     extend: {
       colors: {
+        
+          'top-color': '#8e4d57',
+          'heading': '#fcfbfc',
+       
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

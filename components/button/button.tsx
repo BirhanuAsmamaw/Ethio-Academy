@@ -2,14 +2,15 @@ interface ButtonProps{
   outline?:boolean;
   small?:boolean;
   title:string;
-  onClick:() => void;
+  onClick?:() => void;
   className?:string;
   isDisabled?:boolean;
+  type?:"submit" | "reset" | "button";
 }
 
-const Button:React.FC<ButtonProps> = ({outline,small,title,onClick,className,isDisabled}) => {
+const Button:React.FC<ButtonProps> = ({outline, type,small,title,onClick,className,isDisabled}) => {
   return ( 
-  <button disabled={isDisabled} type="button" 
+  <button disabled={isDisabled} type={type} 
   onClick={onClick}
   className={`
   text-white 

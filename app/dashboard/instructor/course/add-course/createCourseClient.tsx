@@ -110,7 +110,7 @@ const router=useRouter()
     <div className="flex flex-col gap-10 w-full pb-6 mb-10">
 
       {page==1&&<Container
-      childern={
+      children={
         <div className="flex flex-col gap-10 w-full sm:px-4 lg:mt-20   justify-center items-center px-2">
        <div className="flex  dark:border-gray-500 pt-5 justify-between w-full border-b-[1.5px]">
        <Heading title={`Add Course`}/>
@@ -266,7 +266,7 @@ className="w-full flex gap-2 justify-between text-[14px] p-2 rounded-[5px]   bor
     />}
 
     {page==2&&<Container
-      childern={
+      children={
         <div className="flex flex-col gap-10 p-2">
  <div className="flex  dark:border-gray-500 pt-5 justify-between w-full border-b-[1.5px]">
        <Heading title={`Pre-review Course`}/>

@@ -16,7 +16,7 @@ interface ReviewsProps{
 }
 
 const Reviews:React.FC<ReviewsProps> = ({reviews}) => {
-  return (  <Container childern={<div className="p-3">
+  return (  <Container children={<div className="p-3">
     <Heading title="Reviews" />
     <div className="mt-4 " >{
     reviews.map((review,index)=> <div key={index} className="flex flex-col md:flex-row  w-full md:gap-4  border-b py-3 md:py-6 border-gray-200 dark:border-gray-600">

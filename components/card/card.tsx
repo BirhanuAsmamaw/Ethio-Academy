@@ -63,17 +63,17 @@ const Card:React.FC<CardProps> = ({className,instructorId,subjectCatId,subjectCa
      object-contain
      duration-300
      "/>:<div className="w-full items-center flex justify-center h-36 bg-blue-600">
-      <h4 className=" text-left text-xl font-medium text-white">{subject} </h4>
+      <h4 className=" text-left text-lg sm:text-xl font-medium text-white">{subject} </h4>
       </div>}
   </div>
   <div className="flex flex-col pt-2 gap-1 sm:p-2 sm:gap-2 w-full">
-    <div className="flex justify-between px-2">
+    <div className="flex justify-between gap-x-4 px-2">
       {category?<Link href={`/category/${url}`} className="  truncate no-underline md:bg-gray-200 md:dark:bg-gray-700 hover:text-blue-500 hover:underline transition sm:py-1 sm:px-2 cursor-pointer rounded-full items-center text-center text-[12px] sm:text-[14px] md:text-[16px]">{category}</Link>:""}
 
       <div  className="sm:py-1 sm:px-2   md:bg-emerald-100 md:dark:bg-gray-700  rounded-full items-center text-center text-[12px] sm:text-[18px] lining-nums  font-mono md:font-medium">{price? price +'ETB':'Free'}</div>
     </div>
     <div className="flex  h-[36px] sm:h-[48px]   items-center  justify-center flex-grow pt-1 sm:pt-4 w-full overflow-hidden  ">
-      <h1 className=" w-full text-[14px] sm:text-lg  tracking-tight sm:!leading-tight text-center font-medium md:font-semibold p-1">{subject.length<=48? subject:subject.substring(0,45)+"..."} </h1>
+      <h1 className=" w-full text-[14px] sm:text-lg  tracking-tight !leading-tight text-center font-medium md:font-semibold p-1">{subject.length<=48? subject:subject.substring(0,45)+"..."} </h1>
     </div>
     <div className="flex justify-center h-4 my-1 overflow-hidden ">
       {rating?<Rating 

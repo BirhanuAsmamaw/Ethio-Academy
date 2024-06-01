@@ -5,6 +5,7 @@ import { GrClose } from "react-icons/gr";
 import { Button, buttonVariants } from './ui/button';
 import { Loader2 } from "lucide-react"
 import { cn } from '@/lib/utils';
+import Container from './container/container';
 interface ModalProps{
   children:ReactNode;
   title?:string;
@@ -41,7 +42,7 @@ const CModal:React.FC<ModalProps> = ({className,variant,disabled,children,title,
             exit={{opacity:0 ,y:40}}
             transition={{delay:0.25,duration:0.25}}
             className=" z-40 flex justify-center  align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle m-4   lg:max-w-6xl ">
-              <div className=" bg-white dark:bg-gray-800 px-4 mt-10 rounded-md md:pt-10 pb-4 sm:p-6 sm:pb-4 ">
+              <Container>
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <div className="mt-2">
@@ -60,7 +61,7 @@ const CModal:React.FC<ModalProps> = ({className,variant,disabled,children,title,
                     </div>
                   </div>
                 </div>
-              </div>
+              </Container>
             </motion.div>
           </div>
         </div>

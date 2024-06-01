@@ -81,7 +81,7 @@ const onSubmit:SubmitHandler<FieldValues>=(data)=>{
 if (!course){
   return null;
 }
-  return (<>{!isRewiew&&<Container childern={
+  return (<>{!isRewiew&&<Container children={
      <div className="p-4">
     <Heading title="Rating This Course" />
     <div className="flex flex-col mt-4 gap-2">

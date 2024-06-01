@@ -16,7 +16,23 @@ export async function GET(req: NextRequest) {
     const user = await prisma.user.findUnique({
       where:{
         id:userId
-      }
+      },
+      include:{
+        courseStreaks:{
+          include:{
+            course:true
+          }
+        },
+        teacher:{
+          include:{
+            subscribers:true,
+            courses:{
+              include:{
+                payments:true
+              }
+            }
+          }
+        }}
       
     });
 

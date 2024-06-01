@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useState } from 'react'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import Container from '../container/container'
 
 interface ResetPasswordClientProps{
   user:any;
@@ -45,7 +46,7 @@ if (user){
   }
   return (<div className="h-screen w-full flex justify-center items-center">
   
-  <div className="m-2 border border-gray-200 dark:border-gray-600   bg-white dark:bg-gray-800 rounded-md px-2 py-6 w-full md:max-w-md flex flex-col items-center gap-4">
+  <Container>
    <h1 className='text-lg font-bold p-4'>Reset Your Password</h1>
   <div className="w-full">
   <Input
@@ -74,7 +75,7 @@ if (user){
       <div className="w-full flex justify-end p-4">
         <Button isDisabled={isLoading} title={isLoading? "Loading...":"Submit"} onClick={handleSubmit(onSubmit)}/>
       </div>
-    </div>
+    </Container>
   
     </div>
   

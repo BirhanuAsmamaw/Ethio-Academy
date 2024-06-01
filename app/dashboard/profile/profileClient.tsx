@@ -4,17 +4,16 @@
 import Spinning from "@/components/spinning";
 import EditPassword from "./editPassword";
 
-import UserProfileContainer from "@/app/user/[userId]/userProfileContainer";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import EditName from "./editName";
 import EditYourDepartment from "./editYourDepartment";
 import EditYourDescription from "./editYourDescription";
-import EnrolledCourses from "./enrolledCourses";
-import TeachingCourses from "./teachingCourses";
-import CoursesStreak from "./courseStreaks";
+import EnrolledCourses from "../../../components/userProfile/enrolledCourses";
+import TeachingCourses from "../../../components/userProfile/teachingCourses";
 import { formatDate } from "@/lib/formatDate";
 import { GoDash } from "react-icons/go";
+import Container from "@/components/container/container";
 
 
 
@@ -31,22 +30,22 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
       <Spinning/>
     </div>
   }
+  
 
   const courses = user.payedCourses.flatMap((payedCourse: any) =>payedCourse?.courses?.flatMap((c:any)=>c.course)
 );
 
 
   const names=user?.name.split(" ")
-  const date=new Date();
-  date.setHours(0,0,0,0)
-  console.log("today:",date)
+
+  
 
 
   return ( <div className="flex w-full justify-center">
   <div className='sm:p-4 w-full justify-center gap-x-4 py-6 lg:py-0 grid grid-cols-1 lg:grid-cols-12'>
     <div className="flex p-2 justify-end w-full lg:col-span-4">
       {user? (
-        <UserProfileContainer>
+        <Container>
           <div className="flex text-center items-center w-full justify-start gap-x-4">
           <Avatar className="h-20 w-20">
                   <AvatarImage src={user?.image || "/"} alt="User Image" />
@@ -127,19 +126,23 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
               My Teaching Courses: <span>{user?.teacher?.courses?.length}</span>
             </div>
           </div>:""}
-        </UserProfileContainer>
+        </Container>
       ) : null}
     </div>
 
     <div className="flex p-2 justify-end w-full lg:col-span-8">
       {user ? (
-        <UserProfileContainer className='space-y-6'>
+        <Container>
           <EditYourDepartment user={user}/>
           {/* About me */}
           <EditYourDescription user={user}/>
-          <CoursesStreak courses={user?.courseStreaks}/>
+        
             {/* Enrolled Courses */}
-           <EnrolledCourses user={user}/>
+            {user?.courseStreaks&&user?.courseStreaks?.length?<div className="mt-4 space-y-2">
+            <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>Enrolled Courses</h3>
+            <EnrolledCourses courses={user?.courseStreaks}/>
+            </div>:""}
+           
 
 
 
@@ -152,8 +155,12 @@ const ProfileClient:React.FC<ProfileClientProps> = ({user}) => {
 
 
             {/* My Teaching Courses*/}
+            { user?.teacher?.courses&& user?.teacher?.courses?.length?<div className="mt-4 space-y-2">
+            <h3 className='text-xl font-medium leading-10 border-b-2 border-slate-200 dark:border-gray-600'>My Teaching Courses</h3>
             <TeachingCourses user={user}/>
-        </UserProfileContainer>
+            </div>:""}
+
+        </Container>
       ) : null}
     </div>
   </div>

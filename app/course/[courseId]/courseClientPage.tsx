@@ -143,7 +143,7 @@ const [isExpand,setExpand]=useState(false);
 
         <TabsContent value="about" className="mt-10 space-y-10">
         <Container
-  childern={
+  children={
     <div className={`${isExpand? '':'h-72 overflow-hidden'} space-y-4 p-4 relative`}>
       <Heading title="About Course"/>
       <div className="pb-10 " dangerouslySetInnerHTML={{ __html: course?.descriptions}}></div>
@@ -154,7 +154,7 @@ const [isExpand,setExpand]=useState(false);
   }
   />
   <Container
-  childern={
+  children={
     <div className="space-y-4 p-4">
       <Heading title="Requirements"/>
       <div className="" dangerouslySetInnerHTML={{ __html: course?.requirements}}></div>
@@ -163,7 +163,7 @@ const [isExpand,setExpand]=useState(false);
   />
 
 <Container
-  childern={
+  children={
     <div className="space-y-4 p-4">
       <Heading title="Who Should Use Course?"/>
       <div className="" dangerouslySetInnerHTML={{ __html: course?.whoShouldTake}}></div>
@@ -179,7 +179,7 @@ const [isExpand,setExpand]=useState(false);
         <TabsContent value="content" className="mt-10">
          {/* course contents or modules */}
 {course?.chapters?.length?<Container
-  childern={
+  children={
     <div className="p-4">
       <CourseContent course={course}/>
       </div>
