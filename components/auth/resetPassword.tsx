@@ -45,7 +45,7 @@ if (user){
   return null;
   }
   return (<div className="h-screen w-full flex justify-center items-center">
-  
+  <div className="my-8 border-b dark:border-gray-600 text-center">
   <Container>
    <h1 className='text-lg font-bold p-4'>Reset Your Password</h1>
   <div className="w-full">
@@ -76,7 +76,7 @@ if (user){
         <Button isDisabled={isLoading} title={isLoading? "Loading...":"Submit"} onClick={handleSubmit(onSubmit)}/>
       </div>
     </Container>
-  
+    </div>
     </div>
   
     )

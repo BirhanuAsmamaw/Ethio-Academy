@@ -80,6 +80,7 @@ export async function getCurrentUser() {
 
 
   return{...currentUser,
+    username:currentUser.username!==currentUser.email?currentUser.username:null,
     teacher:instructor,
     createdAt:currentUser.createdAt.toISOString()
     ,updatedAt:currentUser.updatedAt.toISOString(),

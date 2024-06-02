@@ -9,10 +9,21 @@ import TeachingCourses from '@/components/userProfile/teachingCourses'
 import { formatDate } from '@/lib/formatDate'
 import { GoDash } from 'react-icons/go'
 
-const UserProfileClient = ({ userId }:{userId:string}) => {
-  const { data, isLoading, isSuccess, isError} = useUserProfileQuery(userId)
+const UserProfileClient = ({ username }:{username:string}) => {
+  const { data, isLoading, isSuccess, isError,error} = useUserProfileQuery(username)
   const names = data?.name.split(" ") || []
+  
 
+  if (isError) {
+    const errorMessage = (error as any)?.data?.message || "An error occurred"
+    return (
+      <div className='w-full h-screen flex justify-center items-center'>
+        <div className="">
+          <p className='text-xl font-bold leading-10 text-red-600 dark:text-rose-400'>{errorMessage}</p>
+        </div>
+      </div>
+    )
+  }
   if(isLoading){
     return (<div className='w-full h-screen flex justify-center items-center'>
         <div className=""> <p className='text-xl font-bold leading-10 text-blue-600 dark:text-green-400'>Loading...</p></div>

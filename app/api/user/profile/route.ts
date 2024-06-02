@@ -1,3 +1,4 @@
+import { getCurrentUser } from "@/actions/users/currentUser";
 import prisma from "@/lib/prismadb";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -6,16 +7,24 @@ export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   
 
-  const userId =searchParams.get("profileId") || ""; 
+  const username =searchParams.get("username") || ""; 
 
 
   try {
    
 
+    const myProfile: any = await getCurrentUser();
+    if (!myProfile) {
+      return NextResponse.json({
+        status: false,
+        message: "Unauthorized"
+      }, { status: 401 });
+    }
+   
 
     const user = await prisma.user.findUnique({
       where:{
-        id:userId
+        username:username
       },
       include:{
         courseStreaks:{
@@ -36,9 +45,16 @@ export async function GET(req: NextRequest) {
       
     });
 
+
+    if(user?.accountType==='PRIVATE'&&user?.id!==myProfile?.id){
+      return NextResponse.json({ message: "Unauthorized! This is a protected profile." }, { status: 400 });
+    }else{
+      return NextResponse.json(user);
+    }
+
     
 
-    return NextResponse.json(user);
+    
   } catch (e) {
     
     return NextResponse.json({message:"Something went wrong"},{status:500});

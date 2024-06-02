@@ -34,6 +34,9 @@ export async function POST(req: Request) {
       const lastUpdated = new Date(existingStreak?.streak?.endAt||0);
       lastUpdated.setHours(0, 0, 0, 0);
 
+      const currentStreak = existingStreak?.streak?existingStreak?.streak:{ streak: 0, endAt: new Date() };
+    
+
       // Check if the last update was today
       if (lastUpdated.getTime() === today.getTime()) {
         return NextResponse.json({ message: 'Streak already updated today' }, { status: 200 });
@@ -42,13 +45,15 @@ export async function POST(req: Request) {
       // Determine if the streak should reset
       let newStreakCount = 0;
       if (lastUpdated.getTime() === yesterday.getTime()) {
-        newStreakCount = existingStreak?.streak?.streak||0 + 1;
+        newStreakCount = currentStreak.streak+ 1;
       } else {
         newStreakCount = 1; // Reset streak if dates are not consecutive
       }
 
       // Determine the new longest streak
-      const longestStreakCount = existingStreak.longestStreak?.streak ?? 0;
+      
+    
+      const longestStreakCount = existingStreak.longestStreak?.streak ? existingStreak.longestStreak?.streak:0;
       const newLongestStreak = Math.max(longestStreakCount, newStreakCount);
 
       // Handle potential undefined value for longestStreak.endAt
@@ -56,9 +61,7 @@ export async function POST(req: Request) {
         ? existingStreak.longestStreak.endAt
         : new Date();
 
-        const currentStreakEndAt = existingStreak.streak?.endAt
-        ? existingStreak.streak.endAt
-        : new Date();
+       
 
       // Increment the existing streak by 1 or reset to 1
       const updatedStreak = await prisma.courseStreak.update({
@@ -69,7 +72,7 @@ export async function POST(req: Request) {
             startAt: newLongestStreak >= longestStreakCount 
                      ? existingStreak.streak?.startAt 
                      : existingStreak.longestStreak?.startAt,
-            endAt: newLongestStreak >= longestStreakCount ?currentStreakEndAt : longestStreakEndAt,
+            endAt: newLongestStreak >= longestStreakCount ?new Date() : longestStreakEndAt,
           },
           streak: {
             endAt: new Date(),

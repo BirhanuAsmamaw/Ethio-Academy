@@ -55,7 +55,7 @@ export async function PUT(req: Request) {
         longestStreak: {
           streak:newLongestStreak,
           startAt: newLongestStreak >= longestStreakCount ? currentStreak?.startAt : longestStreak?.startAt,
-          endAt: newLongestStreak >= longestStreakCount ? currentStreak?.endAt : longestStreak?.endAt
+          endAt: newLongestStreak >= longestStreakCount ? new Date(): longestStreak?.endAt
         }
       }
     });

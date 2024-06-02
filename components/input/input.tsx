@@ -12,10 +12,11 @@ interface InputProps{
   id:string;
   userFrom?:boolean;
   defaultValue?:string;
+  className?:string
 
 }
 
-const Input:React.FC<InputProps> = ({defaultValue,userFrom,type,label,disabled,required,id,register,placehoder,errors}) => {
+const Input:React.FC<InputProps> = ({className,defaultValue,userFrom,type,label,disabled,required,id,register,placehoder,errors}) => {
 
   const labelClass=`
   flex w-full h-full 
@@ -113,6 +114,8 @@ peer
        dark:focus:ring-blue-500 
        dark:focus:border-blue-500  bg-transparent  appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5`}
     ${errors[id]? 'border-rose-400 dark:border-rose-600':''}
+
+    ${className}
     `} 
   
     />

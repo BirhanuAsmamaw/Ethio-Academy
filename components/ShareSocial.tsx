@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import {
   
   LinkedinShareButton,
@@ -12,8 +13,8 @@ import {
   WhatsappIcon,
   FacebookIcon,
 } from 'react-share';
-import { HiOutlineShare } from "react-icons/hi";
-
+import { IoCheckmarkOutline, IoCopyOutline } from "react-icons/io5";
+import { IoShareSocialOutline } from "react-icons/io5";
 
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
 
@@ -24,28 +25,47 @@ interface CustomShareButtonProps {
 
 const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
  
-  
+  const [copy, setCopy]=useState(false)
   return (
     <div>
      <Dialog >
-      <DialogTrigger asChild  >
-        <div className="
-       text-xl
-      
-       dark:bg-gray-700 
-       border
-        bg-gray-100 
-       border-gray-200 
-       hover:border-blue-600 
-       hover:text-blue-600 
-       dark:border-gray-600
-        px-3 py-2 rounded-[5px] 
-       hover:dark:border-green-400 
-       hover:dark:text-green-400 transition
-        duration-300">
-          <HiOutlineShare size={40}/>
+
+      <div className=" flex w-full items-center gap-x-1">
+        <div className="w-full flex gap-x-2">
+          <input type="text" className=' outline-none text-sm border-none drop-shadow-md bg-transparent  w-full select-all overflow-x-auto' value={url} readOnly/>
+         
+
+         {copy?<button      
+       className=' inline-flex gap-1 items-center py-1'>
+        <IoCheckmarkOutline size={14}/>
+        <span>Copied!</span></button>:
+        <button
+           onClick={()=>{
+          navigator.clipboard.writeText(url);
+          setCopy(true);
+          setTimeout(()=>{
+            setCopy(false)
+          },3000)
+        }}
+                 className="
+                  p-1 rounded-md
+                  text-gray-500 dark:text-gray-400
+                  hover:bg-gray-900/5
+                  hover:dark:bg-gray-50/5"
+                  > <IoCopyOutline size={20}/></button>
+         }
         </div>
+      
+      <DialogTrigger asChild  >
+        <button className="
+        p-1 rounded-md
+        text-gray-500 dark:text-gray-400
+        hover:bg-gray-900/5
+        hover:dark:bg-gray-50/5">
+          <IoShareSocialOutline size={20}/>
+        </button>
       </DialogTrigger>
+      </div>
       <DialogContent className="sm:max-w-[325px] bg-white dark:bg-gray-700 p-2 font-bold rounded-[10px]">
         <div className="flex flex-wrap gap-2 justify-center ">
         <TelegramShareButton url={url}>

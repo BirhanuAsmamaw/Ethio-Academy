@@ -65,7 +65,7 @@ const EditPassword:React.FC<EditPasswordProps>= ({user}) => {
           buttonLabel={isLoading ? 'Changing...' : 'Change'}
           onClick={handleSubmit(onSubmit)}
           className='bg-transparent p-0 hover:bg-transparent hover:text-black hover:dark:text-white text-gray-600 dark:text-gray-200'
-          modalName={ <h6 className="flex gap-2 text-sm"><TbArrowsExchange size={24}/><span>Password</span></h6>}
+          modalName={ <h6 className="flex gap-2 text-sm"><TbArrowsExchange size={20} className='text-gray-500 dark:text-gray-400'/><span>Password</span></h6>}
         >
           
           <div className=" flex flex-col gap-4 w-full md:w-[400px]">

@@ -2,11 +2,11 @@ import Navbar from '@/components/navbar/Navbar'
 import React from 'react'
 import UserProfileClient from './userProfileClient'
 
-const UserProfile = ({params}:{params:{userId:string}}) => {
+const UserProfile = ({params}:{params:{username:string}}) => {
   return (<div>
   <Navbar/>
 
-  <UserProfileClient userId={params.userId}/>
+  <UserProfileClient username={params.username}/>
   </div>
    
   )
