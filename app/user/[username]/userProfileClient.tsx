@@ -33,7 +33,7 @@ const UserProfileClient = ({ username }:{username:string}) => {
   }
   
   return (<> <Header
-    keywords={`EthioAcademy, ${data?.name} profile, ${data?.teacher&&data?.teacher?.accountName|| ""}, top student, academic achievements, student success, inspiring journey, education excellence`}
+    keywords={`EthioAcademy, ${data?.name} profile, ${data?.teacher&&data?.teacher?.accountName|| ""}, top student, academic achievements,${username}`}
     description={data?.description? data?.description:`Discover the inspiring journey of ${data?.name}, a standout student in the ${data?.department || ""} department at EthioAcademy. Dive into their academic achievements, unique skills, and contributions to our vibrant learning community. Be inspired by their dedication and success!`}
 
     title={`${data?.name} | Top Student  ${data?.department?`in ${data?.department}`:""} at EthioAcademy`}
