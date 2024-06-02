@@ -78,9 +78,9 @@ useEffect(()=>{
             </p>
 
             {/*  PROFILE Username*/}
-            {user?.accountType==='PUBLIC'?<div className="flex gap-x-4 items-center">
+            <div className="flex gap-x-4 items-center">
             {user?.username?<Link target="_blank" href={`https://ethio-exams-academy.vercel.app/user/${user?.username}`} className="text-sm text-blue-500 dark:text-green-400 no-underline hover:underline">@{user?.username}</Link>:null}<UpdateUserNameClient user={user}/>
-            </div>:""}
+            </div>
            <EditPassword user={user}/>
             </div>
           </div>
