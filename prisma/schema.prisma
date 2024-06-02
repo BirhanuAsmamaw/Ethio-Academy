@@ -55,6 +55,7 @@ model User {
   courseStreaks CourseStreak[]
   longestStreak Streak?
   currentStreak Streak?
+  certificates CourseCertificate[]
 }
 
 
@@ -83,7 +84,38 @@ model CourseStreak{
 
 }
 
+// CERTIFICATES
 
+//COURSE CERTIFICATES
+model CourseCertificate{
+   id            String    @id @default(auto()) @map("_id") @db.ObjectId
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @updatedAt
+
+    course  Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+      courseId String @db.ObjectId
+
+    user  User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @db.ObjectId
+    
+    lessonCertificates  LessonCertificate[]
+
+
+}
+
+
+// LESSON CERTIFICATES
+
+model LessonCertificate{
+   id            String    @id @default(auto()) @map("_id") @db.ObjectId
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @updatedAt
+       courseCertificate  CourseCertificate    @relation(fields: [courseCertificateId], references: [id], onDelete: Cascade)
+  courseCertificateId String @db.ObjectId
+  lesson       Lesson       @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  lessonId     String       @db.ObjectId
+
+}
 
 
 
@@ -202,6 +234,7 @@ model Course {
   instructorId      String     @db.ObjectId
   reviews           Review[]
   streaks         CourseStreak[]
+  certificates   CourseCertificate[]
 }
 
 model Payment {
@@ -257,6 +290,7 @@ model Lesson{
    videoThumbnail File?
    contents Content[]
    questions Question []
+   certificates LessonCertificate[]
 
 }
 

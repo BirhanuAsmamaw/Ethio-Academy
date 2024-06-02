@@ -30,7 +30,7 @@ const EditYourDescription = ({user}:{user:any}) => {
         <span>About Me</span>
         <CModal
           disabled={isLoading}
-          buttonLabel={isLoading ? 'Updating...' : 'Update'}
+          buttonLabel={isLoading?'Saving...':'Save'}
           onClick={onSubmit}
           className='bg-transparent p-0 hover:bg-transparent hover:text-black hover:dark:text-white text-gray-600 dark:text-gray-200'
           modalName={<MdModeEdit size={20} className='text-gray-500 dark:text-gray-400'/>}

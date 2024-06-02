@@ -23,7 +23,7 @@ const Sidebar:React.FC<SidebarProps> = ({user}) => {
        dark:shadow-black
         p-4
         z-20
-        lg:4/12 xl:w-2/12 
+        lg:w-4/12 xl:w-2/12 
         overflow-y-auto 
         flex 
         flex-col 

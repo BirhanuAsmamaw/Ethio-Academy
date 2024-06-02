@@ -27,7 +27,7 @@ const UpdateUserNameClient = ({user}:{user:any}) => {
       const errorMessage =isError&&(error as any)?.data?.message || "An error occurred"
   return (<CModal
     disabled={isLoading} 
-    buttonLabel={isLoading?'Updating...':'Update'}
+    buttonLabel={isLoading?'Saving...':'Save'}
     onClick={handleSubmit(onSubmit)}
     className='bg-transparent p-0 hover:bg-transparent hover:text-black  hover:dark:text-white  text-gray-600 dark:text-gray-200 '
     modalName={user?.username?<MdOutlineChangeCircle className='text-gray-500 dark:text-gray-400'/>:<button type="button" className=" rounded-full  text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 px-1  py-0.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 flex items-center"> <IoIosAdd size={15}/> <span className='  font-sans text-[10px]'>Username</span></button>}    
@@ -39,7 +39,7 @@ const UpdateUserNameClient = ({user}:{user:any}) => {
        {isError?<p className='text-sm  text-red-500'>{errorMessage}</p>:""}
     
       
-      <div className="mt-4 text-gray-500 text-xs font-light dark:text-gray-500 ">
+      <div className="mt-4 text-gray-500 text-sm font-light dark:text-gray-400 ">
         <p>You can use letters from 'a' to 'z', numbers from '0' to '9', underscores.</p>
         <p>Minimum length of 4 characters</p>
       </div>

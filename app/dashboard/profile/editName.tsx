@@ -34,14 +34,14 @@ const router=useRouter();
   return (
     <CModal
     disabled={isLoading} 
-    buttonLabel={isLoading?'Updating...':'Update'}
+    buttonLabel={isLoading?'Saving...':'Save'}
     onClick={handleSubmit(onSubmit)}
     className='bg-transparent p-0 hover:bg-transparent hover:text-black  hover:dark:text-white  text-gray-600 dark:text-gray-200 '
     modalName={<MdModeEdit size={20} className='text-gray-500 dark:text-gray-400'/>}    
     >
 
       <div className=" w-[300px] p-2  text-left">   
-      <Input defaultValue={user?.name} type="text" label="Edit Your Name" register={register} errors={errors} id="name"/></div>
+      <Input defaultValue={user?.name} type="text" label="Full Name" register={register} errors={errors} id="name"/></div>
     </CModal>
   )
 }

@@ -22,7 +22,7 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
   if(!teacher){
     return null;
   }
-  
+  else{
   return (<>
   <Navbar/>
   <Header 
@@ -130,7 +130,7 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
 
           </div>
        </div></>
-  )
+  )}
 }
 
 export default InstructorPage

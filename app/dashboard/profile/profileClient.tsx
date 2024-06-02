@@ -65,7 +65,7 @@ useEffect(()=>{
       {user? (
         <Container className=" space-y-4">
           <div className="flex text-center items-center w-full justify-start gap-x-4">
-          <Avatar className="h-20 w-20">
+          <Avatar className="h-20 w-20 dark:bg-gray-700 border dark:border-gray-700">
                   <AvatarImage src={user?.image || "/"} alt="User Image" />
                   <AvatarFallback>
                     {names[0]?.[0]}{names[1]?.[0]}

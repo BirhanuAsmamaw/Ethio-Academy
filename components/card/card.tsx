@@ -34,13 +34,12 @@ no_reviews?:number; // Assuming
 
 const Card:React.FC<CardProps> = ({className,instructorId,subjectCatId,subjectCat,logo,instructorName,instructorTitle,id,subject,category,cover,price,rating,no_reviews,url}) => {
 
-  const data="Express Js Course Object Oriented Programming in"
   return ( <AnimatePresence>
     <motion.div  
     initial={{opacity: 0,y:15}}
     whileInView={{opacity:1,y:0}} 
     transition={{delay:0.25,duration:0.5}}
-    className={cn("group z-30  w-full sm:w-72 h-full bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-800  rounded-[5px]hover:border-x-rose-500 hover:border-y-blue-500hover:bg-slate-50hover:dark:border-x-yellow-400 hover:dark:border-y-green-400 hover:dark:bg-gray-700 shadow overflow-hidden",className)}>
+    className={cn("group z-30  w-full hover:scale-105 hover:shadow-sm sm:w-72 h-full bg-white border border-gray-200 dark:border-gray-700 dark:bg-gray-800  rounded-[5px] hover:border-x-rose-500 hover:border-y-blue-500 hover:bg-slate-50 hover:dark:border-x-yellow-400 hover:dark:border-y-green-400 hover:dark:bg-gray-700 shadow-sm overflow-hidden",className)}>
   <div   className="no-underline  relative overflow-hidden">
 {subjectCat?    <div className="p-2 absolute bottom-0 -left-4 opacity-0 z-10   group-hover:left-0 bg-white dark:bg-gray-800 leading-5 group-hover:opacity-100 font-medium shadow-md drop-shadow-md text-gray-600 dark:text-green-400 bg-opacity-80 dark:bg-opacity-80 flex justify-center transition-all duration-300">
       <Link href={`/category/${url}/${subjectCatId}`} className=" 

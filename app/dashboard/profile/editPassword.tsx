@@ -69,7 +69,7 @@ const EditPassword:React.FC<EditPasswordProps>= ({user}) => {
         >
           
           <div className=" flex flex-col gap-4 w-full md:w-[400px]">
-  <h1 className="text-lg font-semibold">Edit Your Password</h1>
+  <h1 className="text-lg font-semibold">Password</h1>
   <div className="p-2 space-y-3">
     <Input type="password" label="Old Password" register={register} errors={errors} id="oldPassword"/>
     <Input type="password" label="New password" register={register} errors={errors} id="newPassword"/>

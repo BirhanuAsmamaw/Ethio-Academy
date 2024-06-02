@@ -39,7 +39,7 @@ const EditYourDepartment = ({ user }: { user: any }) => {
 
       <CModal
         disabled={isLoading}
-        buttonLabel={isLoading ? 'Updating...' : 'Update'}
+        buttonLabel={isLoading?'Saving...':'Save'}
         onClick={handleSubmit(onSubmit)}
         className="bg-transparent p-0 hover:bg-transparent hover:text-black hover:dark:text-white text-gray-600 dark:text-gray-200"
         modalName={<MdModeEdit size={20} className='text-gray-500 dark:text-gray-400'/>}
@@ -48,7 +48,7 @@ const EditYourDepartment = ({ user }: { user: any }) => {
           <Input
             defaultValue={user?.department}
             type="text"
-            label="Edit Your Department"
+            label="Department"
             register={register}
             errors={errors}
             id="department"
