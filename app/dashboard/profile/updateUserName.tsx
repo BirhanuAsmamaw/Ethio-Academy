@@ -10,10 +10,8 @@ import { MdOutlineChangeCircle } from 'react-icons/md'
 
 const UpdateUserNameClient = ({user}:{user:any}) => {
   const router=useRouter();
-  const [updateUserName,{isSuccess,isError,data,error,isLoading}]=useUpdateUsernameMutation()
+  const [updateUserName,{isError,data,error,isLoading}]=useUpdateUsernameMutation()
 
-  console.log("user data",data)
-  console.log("error",error)
 
 
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
@@ -22,6 +20,7 @@ const UpdateUserNameClient = ({user}:{user:any}) => {
       username:user?.username}})
 
       const onSubmit:SubmitHandler<FieldValues> =async (data) => {
+        router.refresh()
         await updateUserName(data)
       }
 
