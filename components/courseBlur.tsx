@@ -40,9 +40,10 @@ const CourseBlur:React.FC<CourseBlurProps> = ({course,user}) => {
 
   
   return ( <>{reloadPage&&<div className="fixed z-50 flex justify-center items-center h-screen w-full bg-black bg-opacity-80">
+    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <Container
     children={
-      <div className="px-2 py-6 flex flex-col items-center justify-center gap-6 w-72">
+      <div className="px-2 py-6 flex flex-col items-center justify-center gap-6 w-full">
         <button
          onClick={onPayment}
           className="text-white bg-green-500 px-4 py-2 rounded-[5px] mr-2 hover:bg-green-600 focus:outline-none"
@@ -54,8 +55,9 @@ const CourseBlur:React.FC<CourseBlurProps> = ({course,user}) => {
         
       </div>
     }/>
-
-  </div>}</> );
+    </div>
+    </div>
+ }</> );
 }
  
 export default CourseBlur;

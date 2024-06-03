@@ -16,6 +16,7 @@ import { Sheet,  SheetContent,  SheetHeader, SheetTitle, SheetTrigger } from "@/
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import CourseBlur from "@/components/courseBlur";
+import Container from "@/components/container/container";
 
 
 interface IParams{
@@ -54,7 +55,7 @@ const isCoursePayed = CoursesPayed?.some((c:any) => c.id === lesson?.chapter?.co
     description={`${lesson.title}`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
-  <MainLayout >
+<MainLayout className="w-full lg:px-4 xl:w-11/12 2xl:w-10/12  xl:px-10 2xl:px-20 lg:gap-10 lg:grid lg:grid-cols-12">
    
      
       <div className=" min-h-screen z-50 lg:hidden fixed right-0 top-14">
@@ -75,7 +76,7 @@ const isCoursePayed = CoursesPayed?.some((c:any) => c.id === lesson?.chapter?.co
       </div>
     
 
-<SubLayout className="bg-white my-10 py-10  dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double">
+<Container className="bg-white col-span-8 my-10 py-10  dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double w-full">
 <h1 className="text-lg md:xl lg:2xl font-medium md:font-semibold lg:font-bold">{lesson.title}</h1>
 
 {lesson.videoThumbnail?<div className=" my-6">
@@ -91,19 +92,21 @@ const isCoursePayed = CoursesPayed?.some((c:any) => c.id === lesson?.chapter?.co
 
 
 
-<LessonClient lesson={lesson}/>
+<LessonClient lesson={lesson} isNotPayed={!isCoursePayed&&(lesson.chapter.course.price!=0)}/>
 
 
-      </SubLayout>
+      </Container>
 
   
-  <div className="fixed right-0 w-[400px] pt-16  pb-24 h-[75vh] hidden    overflow-x-hidden  overflow-y-auto 
+  <div className="col-span-4 right-0  pt-16  pb-24 relative hidden    overflow-x-hidden  overflow-y-auto 
     lg:block  ">
-   <ScrollArea className=" w-full h-full   ">
+      <div className="fixed right-1 xl:right-10 2xl:right-16  lg:w-[350px] xl:w-[400px]">
+   <ScrollArea className=" w-full   max-h-[75vh]  ">
    
      <CourseContent course={lesson.chapter.course}/>
    
     </ScrollArea>
+   </div>
    </div>
 
     </MainLayout></> );

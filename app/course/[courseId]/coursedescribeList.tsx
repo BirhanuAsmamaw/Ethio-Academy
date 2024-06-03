@@ -32,7 +32,7 @@ const ContentList:React.FC<ContentListProps>=({icon:Icon,title,content})=>{
     <div className="flex gap-4 justify-between  text-sm mx-2  py-2">
       <div className="flex text-sm text-gray-500 dark:text-gray-400 gap-2"><Icon size={22}/>
       <p>{title}</p></div>
-      <p className="font-medium text-blue-600 dark:text-green-400 ">{content}</p>
+      <p className="font-medium text-base text-blue-600 dark:text-green-400 ">{content}</p>
 
     </div>
   )
@@ -110,15 +110,15 @@ const onPayment=()=>{
   
     {(!isCoursePayed&&course.price)?
       // COURSE BUYING 
-    <div className="p-2 flex justify-end gap-6">
+    <div className="p-2 flex  justify-end gap-6">
       <button 
       onClick={onAddToCart}
-      className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2"
+      className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-full text-sm px-5 md:px-2 md:text-xs  lg:text-sm lg:px-5 py-2.5 md:py-1 lg:py-2.5 text-center me-2 mb-2"
        >Add to cart</button>
       <button
 
       onClick={onPayment}
-      className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2"
+      className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-full text-sm px-5 md:px-2 lg:px-5 md:text-xs  lg:text-sm  py-2.5 md:py-1 lg:py-2.5 text-center me-2 mb-2"
       >Buy Now!!</button>
     </div>:
 

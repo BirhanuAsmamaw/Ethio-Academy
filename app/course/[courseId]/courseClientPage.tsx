@@ -144,7 +144,7 @@ const [isExpand,setExpand]=useState(false);
         </TabsList>
 
 
-        <TabsContent value="about" className="mt-10 space-y-4">
+        <TabsContent value="about" className="mt-10 ">
        
     <div className={`${isExpand? '':'h-72 overflow-hidden'}  p-4 relative`}>
       <Heading title="About Course"/>
@@ -157,14 +157,14 @@ const [isExpand,setExpand]=useState(false);
   
     <div className=" p-4">
       <Heading title="Requirements"/>
-      <div className="" dangerouslySetInnerHTML={{ __html: course?.requirements}}></div>
+      <div className="p-0" dangerouslySetInnerHTML={{ __html: course?.requirements}}></div>
       </div>
   
 
 
     <div className=" p-4">
       <Heading title="Who Should Use Course?"/>
-      <div className="" dangerouslySetInnerHTML={{ __html: course?.whoShouldTake}}></div>
+      <div className="p-0" dangerouslySetInnerHTML={{ __html: course?.whoShouldTake}}></div>
       </div>
  
   
