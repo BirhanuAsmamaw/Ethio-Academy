@@ -52,10 +52,28 @@ export const courseApi=createApi({
         body:{courseId:courseId}
       })
     }),
+
+
+    // COURSE CERTIFICATES
+    courseCertificate: builder.mutation<any, string >({
+      query: (lessonId) => ({
+        url:`/certificates`,
+        method:"POST",
+        body:{lessonId:lessonId}
+      })
+    }),
+
+    getCourseCertificate: builder.query<any, string >({
+      query: (courseId) => `/certificates/findById?courseId=${courseId}`
+    }),
+
   })
 });
 
 export const {
+  // COURSE CERTIFICATES
+  useCourseCertificateMutation,
+  useGetCourseCertificateQuery,
   // filter By Department
   useNewCourseFilterByDepartmentQuery,
   useOrderCourseByRateFilterDepartmentQuery,

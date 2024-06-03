@@ -1,6 +1,5 @@
 import { Avatar, Rating } from "@mui/material";
 import Moment from 'react-moment';
-import Container from "@/components/container/container";
 import Heading from "@/components/Heading/Heading";
 import StarOutlined from "@mui/icons-material/StarOutlined";
 type Review={
@@ -16,7 +15,7 @@ interface ReviewsProps{
 }
 
 const Reviews:React.FC<ReviewsProps> = ({reviews}) => {
-  return (  <Container children={<div className="p-3">
+  return (<div className="p-3">
     <Heading title="Reviews" />
     <div className="mt-4 " >{
     reviews.map((review,index)=> <div key={index} className="flex flex-col md:flex-row  w-full md:gap-4  border-b py-3 md:py-6 border-gray-200 dark:border-gray-600">
@@ -54,7 +53,7 @@ const Reviews:React.FC<ReviewsProps> = ({reviews}) => {
     
   </div>)
   }</div>
-</div>}/> );
+</div>);
 }
  
 export default Reviews;

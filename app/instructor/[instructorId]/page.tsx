@@ -8,7 +8,7 @@ import { PiStudentLight } from "react-icons/pi";
 import { BsPeople } from "react-icons/bs";
 import { SiBookstack } from "react-icons/si";
 import ChannelVerfiedComponent from '@/components/ChannelVerfiedComponent'
-import SubscriberAccount from './subscriberAccount'
+import SubscriberAccount from '../../../components/subscriberAccount'
 import { getCurrentUser } from '@/actions/users/currentUser'
 import InstructorNewCoursesList from './newCourseFlitered'
 import InstructorOrderByRateCoursesList from './orderByRateCourseFlitered'

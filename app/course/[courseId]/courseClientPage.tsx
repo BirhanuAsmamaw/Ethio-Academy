@@ -9,13 +9,14 @@ import Reviews from "./reviews";
 import CourseContent from "./courseContent";
 import CourseSceleton from "./[chapterId]/courseSceleton";
 
-import CourseDescribeList from "../coursedescribeList";
+import CourseDescribeList from "./coursedescribeList";
 import MainLayout from "@/components/layouts/mainLayout";
-import SubLayout from "@/components/layouts/subLayout";
 import OnExpand from "@/components/button/onExpand";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
-import SubscriberAccount from "@/app/instructor/[instructorId]/subscriberAccount";
+import SubscriberAccount from "@/components/subscriberAccount";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 
 interface ICourseId{
   course:any;
@@ -44,11 +45,13 @@ const [isExpand,setExpand]=useState(false);
   
   return ( <>
  
-<MainLayout>
+<MainLayout className="w-full lg:px-4 xl:w-11/12 2xl:w-10/12  xl:px-10 2xl:px-20 md:gap-10 md:grid md:grid-cols-12">
 
-  <SubLayout className="py-20">
+  <ScrollArea className="h-max-screen md:col-span-8 mt-10 w-full">
+<Container className=" w-full">
+ 
 
-  <h1 className="text-xl  font-semibold">{course?.course}</h1>
+  <h1 className="text-xl mb-10  font-semibold">{course?.course}</h1>
   {(course?.videoThumbnail&&course?.videoUrl)?<div>
     <video
         className="w-full rounded-lg shadow-lg"
@@ -59,7 +62,7 @@ const [isExpand,setExpand]=useState(false);
         Your browser does not support the video tag.
       </video></div>:""}
 
-      <div className="flex gap-4 flex-wrap text-balance tracking-tight">
+      <div className="flex gap-4 my-10 flex-wrap text-balance tracking-tight">
         <p>Course Created By <Link href={`/instructor/${course?.instructor.id}`} className=" 
         no-underline
         hover:dark:text-green-400
@@ -141,35 +144,29 @@ const [isExpand,setExpand]=useState(false);
         </TabsList>
 
 
-        <TabsContent value="about" className="mt-10 space-y-10">
-        <Container
-  children={
-    <div className={`${isExpand? '':'h-72 overflow-hidden'} space-y-4 p-4 relative`}>
+        <TabsContent value="about" className="mt-10 space-y-4">
+       
+    <div className={`${isExpand? '':'h-72 overflow-hidden'}  p-4 relative`}>
       <Heading title="About Course"/>
       <div className="pb-10 " dangerouslySetInnerHTML={{ __html: course?.descriptions}}></div>
-      <div className={`absolute ${isExpand? 'bottom-2  left-[50%]':'top-[70%] left-[50%]'}  shadow-lg z-20`}>
+      <div className={`absolute ${isExpand? 'bottom-2  left-[50%]':'top-[70%] left-[50%]'}  shadow-sm z-20`}>
        <OnExpand isExpand={isExpand} onExpand={onExpanded}/>
       </div>
       </div>
-  }
-  />
-  <Container
-  children={
-    <div className="space-y-4 p-4">
+  
+  
+    <div className=" p-4">
       <Heading title="Requirements"/>
       <div className="" dangerouslySetInnerHTML={{ __html: course?.requirements}}></div>
       </div>
-  }
-  />
+  
 
-<Container
-  children={
-    <div className="space-y-4 p-4">
+
+    <div className=" p-4">
       <Heading title="Who Should Use Course?"/>
       <div className="" dangerouslySetInnerHTML={{ __html: course?.whoShouldTake}}></div>
       </div>
-  }
-  />
+ 
   
         </TabsContent>
 
@@ -178,13 +175,10 @@ const [isExpand,setExpand]=useState(false);
 
         <TabsContent value="content" className="mt-10">
          {/* course contents or modules */}
-{course?.chapters?.length?<Container
-  children={
-    <div className="p-4">
+{course?.chapters?.length?<div className="p-4">
       <CourseContent course={course}/>
       </div>
-  }
-  />:""}
+  :""}
         </TabsContent>
 
 
@@ -198,21 +192,19 @@ const [isExpand,setExpand]=useState(false);
         </TabsContent>
       </Tabs>
 
-      <div className=" lg:hidden">
-<CourseDescribeList course={course}/>
+      <div className=" md:hidden">
+<CourseDescribeList course={course} user={customer}/>
 </div>
 
 
-
-
-</SubLayout>
-
+</Container>
+</ScrollArea>
 
 
 
 {/* course contents lits for above md */}
-<div className="hidden lg:block fixed right-10 top-28 w-[300px] ">
-  <CourseDescribeList course={course}/>
+<div className="hidden mt-10 md:block h-full md:col-span-4 w-full ">
+  <CourseDescribeList course={course} user={customer}/>
 
 </div>
 

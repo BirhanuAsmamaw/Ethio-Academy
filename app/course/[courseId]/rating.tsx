@@ -1,5 +1,4 @@
 
-import Container from "@/components/container/container";
 import StarOutlined from "@mui/icons-material/StarOutlined";
 import {  Rating } from "@mui/material";
 
@@ -32,8 +31,7 @@ const RatingPage:React.FC<RatingPageProps> = ({course}) => {
   const stars=[
     0,1,2,3,4,5
     ]
-  return (<Container children={
-    <div className="flex gap-10 flex-col md:flex-row justify-center ">
+  return (<div className="flex gap-10 flex-col md:flex-row justify-center ">
      {course.rating?<div className="flex flex-col justify-center gap-4 border-r border-gray-200 dark:border-gray-700  p-4 items-center">
         <h1 className="text-6xl font-bold text-center text-yellow-500">{roundToNearestInteger(course.rating)}</h1>
         <Rating readOnly  value={course.rating} precision={0.5} 
@@ -63,7 +61,7 @@ const RatingPage:React.FC<RatingPageProps> = ({course}) => {
       </div>
     </div>
 
-} />);
+);
 }
  
 export default RatingPage;

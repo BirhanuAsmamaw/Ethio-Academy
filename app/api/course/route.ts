@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const user = await getCurrentUser();
 
     if (!user) {
-      return NextResponse.json({ status: false, message: "Unauthorized" });
+      return NextResponse.json({ status: false, message: "Unauthorized" },{status:404});
     }
 
     const isDataAccessed = user.permissions.some((permission) =>

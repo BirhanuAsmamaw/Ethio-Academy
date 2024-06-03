@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { Button } from '../ui/button'
-import { IoChevronDown, IoChevronUp } from 'react-icons/io5'
+import {  IoChevronUp } from 'react-icons/io5'
 
 interface OnExpandProps{
   onExpand:() => void;
@@ -9,9 +9,9 @@ interface OnExpandProps{
 }
 const OnExpand:React.FC<OnExpandProps> = ({onExpand,isExpand}) => {
   return ( <Button 
-    className="bg-black  hover:bg-opacity-20  bg-opacity-10 p-2"
+    className="bg-gray-700/5 text-gray-500 dark:text-gray-400 border-none shadow-sm dark:bg-gray-100/5 p-2"
     variant="outline" 
-    onClick={onExpand}>{isExpand? <IoChevronUp size={30}/>:<IoChevronDown size={30}/>}</Button>
+    onClick={onExpand}>{ <IoChevronUp size={30} className={`${!isExpand&&' -rotate-180'} transition duration-300`}/>}</Button>
   )
 }
 

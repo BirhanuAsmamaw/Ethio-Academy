@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import Image from "next/image";
 import CodeHighlighterComponent from "@/components/codeHighlighter";
-import { useCourseStreakMutation } from "@/redux/features/course/courseApi";
+import { useCourseCertificateMutation, useCourseStreakMutation } from "@/redux/features/course/courseApi";
 import { useUserStreakMutation } from "@/redux/features/user/userApi";
 
 
@@ -19,13 +19,29 @@ const LessonClient:React.FC<LessonClientProps> = ({lesson}) => {
 
 
   // User Streak
-  const [userStreak,{isSuccess,isLoading,isError,data,error}]=useUserStreakMutation();
-  console.log("user data",data)
-  console.log("isSuccess",isSuccess)
-  console.log("isError",isError)
-  console.log("error",error)
-  console.log("isLoading",isLoading)
-  
+  const [userStreak]=useUserStreakMutation();
+
+  const [certificate, { data: cerData, error: cerErr }] = useCourseCertificateMutation();
+
+  useEffect(() => {
+    if (lesson?.id) {
+      const timer = setTimeout(() => {
+        certificate(lesson.id);
+      }, 60000); // 60000 ms = 1 minute
+
+      return () => clearTimeout(timer); // Clear the timer if the component unmounts or lesson.id changes
+    }
+  }, [lesson?.id, certificate]);
+
+  useEffect(() => {
+    if (cerData) {
+      console.log('cert data', cerData);
+    }
+
+    if (cerErr) {
+      console.log('cert Err', cerErr);
+    }
+  }, [cerData, cerErr]);
 
 useEffect(()=>{
   userStreak()

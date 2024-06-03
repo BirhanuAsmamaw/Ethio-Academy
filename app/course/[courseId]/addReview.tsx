@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { useRouter } from "next/navigation";
-import Container from "@/components/container/container";
 import toast from "react-hot-toast";
 import Heading from "@/components/Heading/Heading";
 import Input from "@/components/input/input";
@@ -81,7 +80,7 @@ const onSubmit:SubmitHandler<FieldValues>=(data)=>{
 if (!course){
   return null;
 }
-  return (<>{!isRewiew&&<Container children={
+  return (<>{!isRewiew&&
      <div className="p-4">
     <Heading title="Rating This Course" />
     <div className="flex flex-col mt-4 gap-2">
@@ -117,7 +116,7 @@ if (!course){
 
     
   </div>
-  </div>}/> }</>);
+  </div>}</>);
 }
  
 export default AddReviews;

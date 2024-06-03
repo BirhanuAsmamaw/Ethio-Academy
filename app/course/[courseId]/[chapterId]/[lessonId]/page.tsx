@@ -10,11 +10,12 @@ import MainLayout from "@/components/layouts/mainLayout";
 import SubLayout from "@/components/layouts/subLayout";
 import CourseContent from "../../courseContent";
 import Header from "@/components/Header";
-import LessonBlur from "./lessonBlur";
+
 import { getCurrentUser } from "@/actions/users/currentUser";
 import { Sheet,  SheetContent,  SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
+import CourseBlur from "@/components/courseBlur";
 
 
 interface IParams{
@@ -29,10 +30,16 @@ const LessonPage = async({params}:{params:IParams}) => {
   
  
 
-const isCoursePayed=user?.payedCourses.some((payedCourse:any) =>{
+  const CoursesPayed = user?.payedCourses
+  .filter((ps:any) => ps.status)
+  .flatMap((payedCourse:any) => 
+    payedCourse.courses.map((course:any) => {
+      
+      return course.course;
+    })
+  );
 
-return payedCourse.courses.some((course:any) => course.course.id=== lesson?.chapter.course.id)&&payedCourse.status}
-);
+const isCoursePayed = CoursesPayed?.some((c:any) => c.id === lesson?.chapter?.course.id);
 
 
   if(!lesson){
@@ -41,7 +48,7 @@ return payedCourse.courses.some((course:any) => course.course.id=== lesson?.chap
 
   return (<>
   <Navbar/>
-  {(!isCoursePayed&&lesson.chapter.course.price)?<LessonBlur user={user} course={lesson.chapter.course}/>:''}
+  {(!isCoursePayed&&lesson.chapter.course.price)?<CourseBlur user={user} course={lesson.chapter.course}/>:''}
   <Header
     title={`${lesson.title}`}
     description={`${lesson.title}`}

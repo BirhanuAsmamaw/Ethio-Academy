@@ -5,11 +5,11 @@ import Container from "@/components/container/container";
 import { useCart } from "@/hooks/use.cart";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-interface LessonBlurProps{
+interface CourseBlurProps{
   course:any;
   user:any;
 }
-const LessonBlur:React.FC<LessonBlurProps> = ({course,user}) => {
+const CourseBlur:React.FC<CourseBlurProps> = ({course,user}) => {
   const router=useRouter();
   const [reloadPage, setReloadPage] = useState(false);
   const {addToCart}=useCart();
@@ -58,4 +58,4 @@ const LessonBlur:React.FC<LessonBlurProps> = ({course,user}) => {
   </div>}</> );
 }
  
-export default LessonBlur;
+export default CourseBlur;

@@ -30,9 +30,22 @@ const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
     <div>
      <Dialog >
 
-      <div className=" flex w-full items-center gap-x-1">
-        <div className="w-full flex gap-x-2">
-          <input type="text" className=' outline-none text-sm border-none drop-shadow-md bg-transparent  w-full select-all overflow-x-auto' value={url} readOnly/>
+     
+      
+      <DialogTrigger asChild  >
+        <button className="
+        p-1 rounded-md
+        text-gray-700 dark:text-gray-200
+        hover:bg-gray-900/5
+        hover:dark:bg-gray-50/5">
+          <IoShareSocialOutline size={26}/>
+        </button>
+      </DialogTrigger>
+      
+      <DialogContent className="sm:max-w-[325px] bg-white dark:bg-gray-700 p-2 font-bold rounded-[10px]">
+        
+      <div className="w-full  mt-6 pt-10 text-gray-700 dark:text-gray-100 px-4 flex gap-x-2">
+          <input type="text" className=' outline-none text-sm border-none drop-shadow-lg bg-transparent  w-full select-all overflow-x-auto' value={url} readOnly/>
          
 
          {copy?<button      
@@ -49,25 +62,13 @@ const ShareSocialMedia:React.FC<CustomShareButtonProps> = ({url}) => {
         }}
                  className="
                   p-1 rounded-md
-                  text-gray-500 dark:text-gray-400
+                  text-gray-600 dark:text-gray-200
                   hover:bg-gray-900/5
                   hover:dark:bg-gray-50/5"
-                  > <IoCopyOutline size={20}/></button>
+                  > <IoCopyOutline size={22}/></button>
          }
         </div>
-      
-      <DialogTrigger asChild  >
-        <button className="
-        p-1 rounded-md
-        text-gray-500 dark:text-gray-400
-        hover:bg-gray-900/5
-        hover:dark:bg-gray-50/5">
-          <IoShareSocialOutline size={20}/>
-        </button>
-      </DialogTrigger>
-      </div>
-      <DialogContent className="sm:max-w-[325px] bg-white dark:bg-gray-700 p-2 font-bold rounded-[10px]">
-        <div className="flex flex-wrap gap-2 justify-center ">
+        <div className="flex flex-wrap gap-4 py-6 justify-center ">
         <TelegramShareButton url={url}>
         <TelegramIcon size={40} round={true} />
       </TelegramShareButton>
