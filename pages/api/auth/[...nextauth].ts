@@ -7,7 +7,27 @@ import bcrypt from 'bcrypt'
 import { getUserById } from "@/actions/tokens/getUserbyd"
 import { generateVerificationToken } from "@/actions/tokens/generateToken"
 import { sendVerificationEmail } from "@/lib/mail"
-import { NextResponse } from "next/server"
+
+declare module "next-auth" {
+  interface User {
+    id: string;
+    username?: string;
+  }
+
+  interface Session {
+    user: {
+      id: string;
+      username?: string;
+      email: string;
+    };
+  }
+
+  interface JWT {
+    id: string;
+    username?: string;
+  }
+}
+
 
 export const authOptions:AuthOptions={
   adapter: PrismaAdapter(prisma),
@@ -91,15 +111,57 @@ CredentialsProvider({
     }
   },
   callbacks:{
-    
-    async signIn({user,account}){
-      const existingUser = await getUserById(user.id as string)
-      if(account?.provider==="credentials"){
-        if(!existingUser?.emailVerified){
-          return false
+    async signIn({ user, account }) {
+      const existingUser = await getUserById(user.id as string);
+      if (account?.provider === "credentials") {
+        if (!existingUser?.emailVerified) {
+          return false;
+        }
+      }
+      if (account?.provider === "google") {
+        if (!user.username) {
+          if (user.email) {  // Check if user.email is defined
+            let username = user.email.split('@')[0];
+            let usernameExists = await prisma.user.findUnique({
+              where: { username }
+            });
+            let suffix = 1;
+            while (usernameExists) {
+              username = `${user.email.split('@')[0]}${suffix}`;
+              usernameExists = await prisma.user.findUnique({
+                where: { username }
+              });
+              suffix += 1;
+            }
+            await prisma.user.update({
+              where: { id: user.id },
+              data: { username }
+            });
+            user.username = username; // Update the user object
+          } else {
+            throw new Error("Email is required for Google sign-in.");
+          }
         }
       }
       return true;
+    },
+
+    async session({ session, token }) {
+      session.user = {
+        id: token.id as string,
+        username: token.username as string | undefined,
+        email: token.email as string,
+      };
+      return session;
+    },
+
+
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.username = user.username;
+      }
+      return token;
     },
   },
 

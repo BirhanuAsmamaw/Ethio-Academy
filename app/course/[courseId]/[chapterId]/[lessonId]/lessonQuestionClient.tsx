@@ -124,18 +124,10 @@ const onSubmit=()=>{
   ) : (
     ''
   )
-}
-
-
-
-
-        </div>
+} </div>
         })
       }
-
-
-      <div className="flex justify-end p-4 ">
-     
+<div className="flex justify-end p-4 ">
      <Dialog >
       <DialogTrigger> <button 
       onClick={onSubmit}

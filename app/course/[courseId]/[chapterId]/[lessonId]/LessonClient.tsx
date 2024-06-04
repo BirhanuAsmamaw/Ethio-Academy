@@ -19,6 +19,7 @@ import CourseSceleton from "../courseSceleton";
 import { useGetPaymentCourseQuery } from "@/redux/features/payments/paymentApi";
 import { useGetLessonQuery } from "@/redux/features/lesson/lessonApi";
 import CourseBlur from "@/components/courseBlur";
+import { useRouter } from "next/navigation";
 
 
 
@@ -31,8 +32,8 @@ const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
   const [mounted, setMounted] = useState(false);
   const [userStreak] = useUserStreakMutation();
   const [certificate] = useCourseCertificateMutation();
-  const [createStreak] = useCourseStreakMutation();
-
+  const [courseStreak] = useCourseStreakMutation();
+ const router=useRouter()
   
   useEffect(() => {
     setMounted(true);
@@ -40,34 +41,50 @@ const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
 
   
 
-  const {data,isSuccess,isError,error,isUninitialized,isLoading}=useGetLessonQuery(lessonId)
+  const {data,isSuccess,isError,isUninitialized,isLoading}=useGetLessonQuery(lessonId)
+
+  const {data:payedCourse,isSuccess:payedSuccess,isError:paymentError}=useGetPaymentCourseQuery(data&&data?.chapter?.courseId);
+
  
 
-  const {data:payedCourse,isSuccess:payedSuccess,}=useGetPaymentCourseQuery(data&&data?.chapter?.courseId);
 
-  console.log("is course lesson buyer",payedCourse?.isCoursePayed)
 
+
+// COURSE CERTIFICATE POINT
   useEffect(() => {
-    if (payedSuccess&&payedCourse&&payedCourse?.isPayedCourse && isSuccess&&data?.id) {
+    
+    if (payedSuccess&&payedCourse?.isCoursePayed && isSuccess) {
+      
       const timer = setTimeout(() => {
         certificate(data.id);
+        router.refresh()
       }, 60000); // 60000 ms = 1 minute
 
       return () => clearTimeout(timer); // Clear the timer if the component unmounts or data.id changes
     }
-  }, [payedCourse&&payedCourse?.isPayedCourse, data?.id, certificate]);
+  }, [payedCourse?.isCoursePayed,isSuccess, data?.id, certificate]);
 
+
+
+  // USER STREAK 
   useEffect(() => {
-    if (payedSuccess&&payedCourse&&payedCourse?.isPayedCourse) {
+    if (payedSuccess&&payedCourse?.isCoursePayed && isSuccess) {
       userStreak();
+      router.refresh()
     }
-  }, [payedCourse&&payedCourse?.isPayedCourse, userStreak]);
+  }, [payedCourse?.isCoursePayed,isSuccess, userStreak]);
 
+
+
+
+
+  // COURSE STREAK 
   useEffect(() => {
-    if (data?.chapter?.courseId) {
-      createStreak(data.chapter.courseId);
+    if (payedSuccess&&payedCourse?.isCoursePayed && isSuccess&&data?.chapter?.courseId) {
+      courseStreak(data.chapter.courseId);
+      router.refresh()
     }
-  }, [data?.chapter?.courseId, createStreak]);
+  }, [payedCourse?.isCoursePayed,isSuccess,data?.chapter?.courseId, courseStreak]);
 
   if (!mounted) return <></>;
 
@@ -88,15 +105,16 @@ const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
     </div>
   }
 
-  return (<>
+  return (<div className="">
+   {((payedSuccess&&!payedCourse.isCoursePayed)||paymentError)?<CourseBlur isUser={payedCourse?.isUser} course={data&&data?.chapter?.course}/>:""}
   <Header
    title={`${data&&data?.title}`}
    description={`${data&&data?.title}`}
    keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
-  {data&&isSuccess&&payedSuccess?<MainLayout className="w-full lg:px-4 xl:w-11/12 2xl:w-10/12  xl:px-10 2xl:px-20 lg:gap-10 lg:grid lg:grid-cols-12">
+  {data&&isSuccess?<MainLayout className="w-full lg:px-4 xl:w-11/12 2xl:w-10/12  xl:px-10 2xl:px-20 lg:gap-10 lg:grid lg:grid-cols-12">
 
-   {payedCourse.isCoursePayed?<CourseBlur isUser={payedCourse?.isUser} course={data&&data?.chapter?.course}/>:""}
+  
      
   <div className=" min-h-screen z-50 lg:hidden fixed right-0 top-14">
   <Sheet>
@@ -220,7 +238,7 @@ const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
                      ):null}
 
                      {content?.subContents &&
-                       content.subContents.length &&
+                       content.subContents.length ?
                        content.subContents.map((subContent: any) => (
                          <div key={subContent?.id} className="w-full py-6 space-y-6">
                            {subContent?.content? (
@@ -242,7 +260,7 @@ const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
                              </div>
                            ):null}
                          </div>
-                       ))}
+                       )):null}
                    </div>
                  ))}
              </div>
@@ -287,7 +305,7 @@ lg:block  ">
 </div>
 
 </MainLayout>:""}
-</>
+</div>
   );
 };
 

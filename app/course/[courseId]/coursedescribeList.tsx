@@ -56,8 +56,8 @@ const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
   const [lessonNo,setLessonNo]=useState(0)
   
 
-const {data:payedCourse,isSuccess:payedSuccess}=useGetPaymentCourseQuery(course?.id);
-console.log("is course buyed",payedCourse?.isCoursePayed)
+const {data:payedCourse,isSuccess:payedSuccess,isError:paymentError,isLoading:paymentLoading}=useGetPaymentCourseQuery(course?.id);
+
  
   useEffect(() => {
     let lessonCount = 0; // Initialize a counter outside the loops
@@ -97,8 +97,8 @@ const onPayment=()=>{
 
 </div>
 
-{payedCourse&&payedSuccess?
-    <>{!payedCourse?.isCoursePayed?
+
+    <>{((payedSuccess&&(!payedCourse?.isCoursePayed))||paymentError)?
       // COURSE BUYING 
     <div className="p-2 flex  justify-end gap-6">
       <button 
@@ -110,10 +110,12 @@ const onPayment=()=>{
       onClick={onPayment}
       className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-full text-sm px-5 md:px-2 lg:px-5 md:text-xs  lg:text-sm  py-2.5 md:py-1 lg:py-2.5 text-center me-2 mb-2"
       >Buy Now!!</button>
-    </div>:
+    </div>:null}
 
+  
+{
   //  COURSE PROGRESSES 
-<>{isSuccess&&data?<div className="w-full px-2 py-10 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-center items-center">
+  payedCourse&&isSuccess&&data&&payedSuccess&&payedCourse?.isCoursePayed?<div className="w-full px-2 py-10 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-center items-center">
       <div className="flex flex-col items-center justify-center w-full p-4">
         <div className="flex items-center justify-center w-full gap-x-2">
           <div className="relative w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-full overflow-hidden">
@@ -139,10 +141,8 @@ const onPayment=()=>{
         )}
       </div>
     </div>:""}</>
-    }</>:<div>Loading...</div>
-    
-    }
-    {isLoading?<Skeleton className="bg-gray-200  dark:bg-gray-600 h-3 w-full" />:""}
+   
+    {paymentLoading?<Skeleton className="bg-gray-200  dark:bg-gray-600 h-3 w-full" />:""}
   <h5 className="px-2 text-base mt-6 text-gray-900 font-medium dark:text-gray-50">Course Content</h5>
  <div className="flex flex-col  ">
 

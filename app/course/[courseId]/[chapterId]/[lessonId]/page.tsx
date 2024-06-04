@@ -7,18 +7,9 @@ interface IParams{
   lessonId: string
 }
 const LessonPage = ({params}:{params:IParams}) => {
-
- 
-  
- 
-
-
-  return (<>
+return (<>
   <Navbar/>
- <div className=" min-h-screen flex justify-center items-center w-full">
  <LessonClient lessonId={params.lessonId}/>
- </div>
- 
 </> );
 }
  

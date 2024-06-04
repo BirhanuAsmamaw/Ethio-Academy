@@ -33,7 +33,7 @@ export async function GET(req: NextRequest){
         })
       );
     
-    const isCoursePayed = CoursesPayed?.some((c:any) => c.id === course.id)||course?.price!=0;
+    const isCoursePayed = CoursesPayed?.some((c:any) => c.id === course.id)||course?.price==0;
 
    
     return NextResponse.json({isCoursePayed:isCoursePayed,isUser:user?true:false},{status:200});

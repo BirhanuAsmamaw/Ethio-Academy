@@ -55,7 +55,7 @@ const CModal:React.FC<ModalProps> = ({className,variant,disabled,children,title,
                       </div>
                     <div className=" text-wrap"> {children}</div>
                       <div className="mt-2 p-2 w-full flex justify-end gap-6">
-                        <Button className='text-sms' onClick={() => setOpen(prev => !prev)} variant="destructive">Cancel</Button>
+                        <Button className='text-sm text-white' onClick={() => setOpen(prev => !prev)} variant="destructive">Cancel</Button>
                       {buttonLabel?  <Button className='text-sm' disabled={disabled} onClick={onClick}>{disabled? <Loader2 className="mr-2 h-4 w-4 animate-spin" />:""}{buttonLabel}</Button>:""}
                       </div>
                    
