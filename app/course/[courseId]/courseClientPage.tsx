@@ -14,7 +14,7 @@ import MainLayout from "@/components/layouts/mainLayout";
 import OnExpand from "@/components/button/onExpand";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
-import SubscriberAccount from "@/components/subscriberAccount";
+// import SubscriberAccount from "@/components/subscriberAccount";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 
@@ -67,7 +67,7 @@ const [isExpand,setExpand]=useState(false);
         no-underline
         hover:dark:text-green-400
          hover:text-blue-500 transition duration-300 hover:underline font-medium text-black dark:text-white">{course?.instructor?.accountName||course?.instructor?.user?.name}</Link></p>
-       <SubscriberAccount is_subscriber={course?.isSubscribe||false} userId={customer?.id} accountId={course?.instructorId}/>
+       {/* <SubscriberAccount is_subscriber={course?.isSubscribe||false} userId={customer?.id} accountId={course?.instructorId}/> */}
       </div>
 
       <Tabs defaultValue="about">
