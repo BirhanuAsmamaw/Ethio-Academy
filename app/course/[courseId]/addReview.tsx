@@ -11,15 +11,15 @@ import StarOutlined from "@mui/icons-material/StarOutlined";
 
 interface AddReviewsProps {
   course: any | null;
-  customer: any;
+  
 }
 
-const AddReviews: React.FC<AddReviewsProps> = ({ course, customer }) => {
+const AddReviews: React.FC<AddReviewsProps> = ({ course }) => {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   const [ratingValue, setRatingValue] = useState<number | null>(0);
   const [newRating, setNewRating] = useState(course?.rating);
-  const [hasReviewed, setHasReviewed] = useState(false);
+
 
   const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm<FieldValues>({
     defaultValues: {
@@ -32,12 +32,7 @@ const AddReviews: React.FC<AddReviewsProps> = ({ course, customer }) => {
     setValue(id, value);
   }
 
-  useEffect(() => {
-    if (customer && course) {
-      const userHasReviewed = course.reviews.some((review: any) => review.customer.id === customer.id);
-      setHasReviewed(userHasReviewed);
-    }
-  }, [customer, course]);
+  
 
   useEffect(() => {
     if (ratingValue && course?.reviews.length) {
@@ -47,7 +42,7 @@ const AddReviews: React.FC<AddReviewsProps> = ({ course, customer }) => {
   }, [ratingValue, course]);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    if (!hasReviewed) {
+    if (!course?.isReviewed) {
       setLoading(true);
       try {
         await axios.post('/api/reviews', data);
@@ -69,7 +64,7 @@ const AddReviews: React.FC<AddReviewsProps> = ({ course, customer }) => {
 
   return (
     <>
-      {!hasReviewed &&
+      {!course?.isReviewed &&
         <div className="p-4 ">
           <Heading title="Rate This Course" />
           <div className="flex flex-col mt-4 gap-2">
@@ -98,7 +93,7 @@ const AddReviews: React.FC<AddReviewsProps> = ({ course, customer }) => {
                   />
                 </div>
                 <div className="flex pt-4 justify-center items-center">
-                  {customer ?
+                  {course?.isUser ?
                     <button
                       onClick={handleSubmit(onSubmit)}
                       className="text-gray-500 dark:text-gray-400 font-bold hover:text-blue-500 hover:dark:text-blue-400 transition duration-300"

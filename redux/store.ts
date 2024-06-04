@@ -8,6 +8,7 @@ import {subscriberApi} from "./features/subscribers/subscriberApi"
 import {navigationSlice} from "./features/navigation/navigationSlice"
 import { userApi } from "./features/user/userApi"
 import { paymentApi } from "./features/payments/paymentApi"
+import { LessonApi } from "./features/lesson/lessonApi"
 
 export const store=configureStore({
     reducer:{
@@ -16,12 +17,13 @@ export const store=configureStore({
         [subscriberApi.reducerPath]:subscriberApi.reducer,
         [userApi.reducerPath]:userApi.reducer,
         [paymentApi.reducerPath]:paymentApi.reducer,
+        [LessonApi.reducerPath]:LessonApi.reducer,
 
         search:searchSlice.reducer,
         navigation:navigationSlice.reducer,
 
     },
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(courseApi.middleware,instructorApi.middleware,subscriberApi.middleware,userApi.middleware,paymentApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(courseApi.middleware,instructorApi.middleware,subscriberApi.middleware,userApi.middleware,paymentApi.middleware,LessonApi.middleware)
 }
 )
 

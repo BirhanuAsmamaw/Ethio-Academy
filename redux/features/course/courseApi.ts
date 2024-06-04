@@ -1,3 +1,4 @@
+import { CourseType } from '@/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const courseApi=createApi({
@@ -43,6 +44,12 @@ export const courseApi=createApi({
     orderCourseByRateFilterBySubjectId: builder.query<any, { page: string, pageSize: string,subjectId:string }>({
       query: ({ page, pageSize ,subjectId}) => `/filterBySubjectId/orderByRate?page=${page}&pageSize=${pageSize}&subjectId=${subjectId}`
     }),
+
+    // GET COURSE BY ID
+    courseDetail:builder.query<any,string>({
+      query:(courseId)=>`${courseId}/byId`
+    }),
+
 
 // Course Streak
     courseStreak: builder.mutation<any, string >({
@@ -90,4 +97,9 @@ export const {
 useCourseStreakMutation,
   useFilteredCourseBySubjectQuery,
   useOrderCourseByRateQuery,
-  useNewCourseQuery}=courseApi;
+  useNewCourseQuery,
+//get course by id
+useCourseDetailQuery
+
+
+}=courseApi;

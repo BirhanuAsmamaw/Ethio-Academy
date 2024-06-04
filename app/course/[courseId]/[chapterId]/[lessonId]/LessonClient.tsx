@@ -1,198 +1,297 @@
 'use client';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import QuizClient from "./lessonQuestionClient";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import CodeHighlighterComponent from "@/components/codeHighlighter";
 import { useCourseCertificateMutation, useCourseStreakMutation } from "@/redux/features/course/courseApi";
 import { useUserStreakMutation } from "@/redux/features/user/userApi";
+import QuizClient from "./lessonQuestionClient";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import CourseContent from "../../courseContent";
+import Header from "@/components/Header";
+import Container from "@/components/container/container";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { IoListOutline } from "react-icons/io5";
+import MainLayout from "@/components/layouts/mainLayout";
+import CourseSceleton from "../courseSceleton";
+import { useGetPaymentCourseQuery } from "@/redux/features/payments/paymentApi";
+import { useGetLessonQuery } from "@/redux/features/lesson/lessonApi";
+import CourseBlur from "@/components/courseBlur";
 
-interface LessonClientProps {
-  lesson: any;
-  isNotPayed: boolean;
+
+
+interface dataClientProps {
+  lessonId: string;
+ 
 }
 
-const LessonClient: React.FC<LessonClientProps> = ({ lesson, isNotPayed }) => {
+const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
   const [mounted, setMounted] = useState(false);
   const [userStreak] = useUserStreakMutation();
   const [certificate] = useCourseCertificateMutation();
   const [createStreak] = useCourseStreakMutation();
 
+  
   useEffect(() => {
     setMounted(true);
   }, []);
 
   
 
+  const {data,isSuccess,isError,error,isUninitialized,isLoading}=useGetLessonQuery(lessonId)
+ 
+
+  const {data:payedCourse,isSuccess:payedSuccess,}=useGetPaymentCourseQuery(data&&data?.chapter?.courseId);
+
   useEffect(() => {
-    if (!isNotPayed && lesson?.id) {
+    if (payedSuccess&&payedCourse&&payedCourse?.isPayedCourse && isSuccess&&data?.id) {
       const timer = setTimeout(() => {
-        certificate(lesson.id);
+        certificate(data.id);
       }, 60000); // 60000 ms = 1 minute
 
-      return () => clearTimeout(timer); // Clear the timer if the component unmounts or lesson.id changes
+      return () => clearTimeout(timer); // Clear the timer if the component unmounts or data.id changes
     }
-  }, [isNotPayed, lesson?.id, certificate]);
+  }, [payedCourse&&payedCourse?.isPayedCourse, data?.id, certificate]);
 
   useEffect(() => {
-    if (!isNotPayed) {
+    if (payedSuccess&&payedCourse&&payedCourse?.isPayedCourse) {
       userStreak();
     }
-  }, [isNotPayed, userStreak]);
+  }, [payedCourse&&payedCourse?.isPayedCourse, userStreak]);
 
   useEffect(() => {
-    if (lesson?.chapter?.courseId) {
-      createStreak(lesson.chapter.courseId);
+    if (data?.chapter?.courseId) {
+      createStreak(data.chapter.courseId);
     }
-  }, [lesson?.chapter?.courseId, createStreak]);
+  }, [data?.chapter?.courseId, createStreak]);
 
   if (!mounted) return <></>;
 
-  return (
-    <Tabs defaultValue="notes" className="w-full">
-      <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-4">
-        <TabsTrigger
-          className="
-            border-b-[1.5px]  
-            font-normal
-            border-slate-400 
-            bg-transparent 
-            shadow-none
-            hover:dark:text-white
-            hover:text-gray-900
-            hover:font-medium
-            hover:dark:border-gray-100
-            transition
-            duration-300
-            hover:border-gray-800
-            data-[state=active]:border-blue-500
-            data-[state=active]:dark:border-green-400
-            data-[state=active]:border-b-2
-            data-[state=active]:font-medium
-            data-[state=active]:text-blue-500
-            data-[state=active]:dark:text-green-400
-          "
-          value="notes"
-        >
-          Notes
-        </TabsTrigger>
 
-        <TabsTrigger
-          className="
-            border-b-[1.5px]  
-            font-normal
-            border-slate-400 
-            bg-transparent 
-            shadow-none
-            hover:dark:text-white
-            hover:text-gray-900
-            hover:font-medium
-            hover:dark:border-gray-100
-            transition
-            duration-300
-            hover:border-gray-800
-            data-[state=active]:border-blue-500
-            data-[state=active]:dark:border-green-400
-            data-[state=active]:border-b-2
-            data-[state=active]:font-medium
-            data-[state=active]:text-blue-500
-            data-[state=active]:dark:text-green-400
-          "
-          value="exam"
-        >
-          Quizzes
-        </TabsTrigger>
-
-        <TabsTrigger className="rounded-full hidden" value="handout">
-          Handout
-        </TabsTrigger>
-        <TabsTrigger className="rounded-full hidden" value="Q&A">
-          Q&A
-        </TabsTrigger>
-      </TabsList>
-
-      <TabsContent value="notes">
-        <div className="p-3 md:p-4">
-          <div className="flex flex-col gap-20">
-            {lesson?.contents?.length ? (
-              <div className="w-full space-y-10">
-                {lesson?.contents
-                  .filter((c: any) => !c.parentId)
-                  .map((content: any) => (
-                    <div key={content?.id} className="w-full py-4 space-y-6">
-                      {content?.content && (
-                        <div className="w-full" dangerouslySetInnerHTML={{ __html: content.content }}></div>
-                      )}
-
-                      {content?.codeExample && (
-                        <div className="flex w-full justify-center">
-                          <CodeHighlighterComponent
-                            codeString={content?.codeExample.code}
-                            language={content?.codeExample.language}
-                          />
-                        </div>
-                      )}
-
-                      {content?.image && (
-                        <div className="w-full flex justify-center">
-                          <Image height={400} width={500} src={content?.image.public_url} alt="content image" />
-                        </div>
-                      )}
-
-                      {content?.subContents &&
-                        content.subContents.length &&
-                        content.subContents.map((subContent: any) => (
-                          <div key={subContent?.id} className="w-full py-6 space-y-6">
-                            {subContent?.content && (
-                              <div className="w-full" dangerouslySetInnerHTML={{ __html: subContent.content }}></div>
-                            )}
-
-                            {subContent?.codeExample && (
-                              <div className="flex w-full justify-center">
-                                <CodeHighlighterComponent
-                                  codeString={subContent?.codeExample.code}
-                                  language={subContent?.codeExample.language}
-                                />
-                              </div>
-                            )}
-
-                            {subContent?.image && (
-                              <div className="w-full flex justify-center">
-                                <Image height={400} width={500} src={subContent?.image.public_url} alt="content image" />
-                              </div>
-                            )}
-                          </div>
-                        ))}
-                    </div>
-                  ))}
-              </div>
-            ) : (
-              <div>No Contents</div>
-            )}
-          </div>
+  if (isLoading || isUninitialized) {
+    return (
+      <div className="flex w-full min-h-screen justify-center py-10">
+        <div className="w-full md:w-10/12  lg:w-8/12 xl:w-7/12 2xl:w-6/12 flex flex-col gap-10 pt-10">
+          <CourseSceleton />
         </div>
-      </TabsContent>
+      </div>
+    );
+  }
 
-      <TabsContent value="exam">
-        <div className="overflow-hidden">
-          <QuizClient lesson={lesson} />
-        </div>
-      </TabsContent>
+  if(isError){
+    return <div className="flex justify-center items-center h-screen">
+      <h1> Oops! Something went wrong</h1>
+    </div>
+  }
 
-      <TabsContent className="hidden" value="handout">
-        <div>
-          <p className="text-2xl font-bold p-2">Handouts like PDF, PPT</p>
-        </div>
-      </TabsContent>
+  return (<>
+  <Header
+   title={`${data&&data?.title}`}
+   description={`${data&&data?.title}`}
+   keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
+/>
+  {data&&isSuccess&&payedSuccess?<MainLayout className="w-full lg:px-4 xl:w-11/12 2xl:w-10/12  xl:px-10 2xl:px-20 lg:gap-10 lg:grid lg:grid-cols-12">
 
-      <TabsContent className="hidden" value="Q&A">
-        <div>
-          <p>Question and Answers</p>
-        </div>
-      </TabsContent>
-    </Tabs>
+   {!payedCourse.isCoursePayed?<CourseBlur isUser={payedCourse?.isUser} course={data&&data?.chapter?.course}/>:""}
+     
+  <div className=" min-h-screen z-50 lg:hidden fixed right-0 top-14">
+  <Sheet>
+  <SheetTrigger asChild >
+<IoListOutline size={40} className="bg-white rounded-l-md dark:bg-black shadow-lg z-20 p-2 border mt-6"/>
+  </SheetTrigger>
+  <SheetContent className="overflow-y-auto p-1">
+    <SheetHeader className="w-full">
+      <SheetTitle><p className="text-[14px] pt-8 text-start">{data?.chapter?.course.course}</p></SheetTitle>
+     
+    </SheetHeader>
+  
+  <CourseContent course={data?.chapter.course}/>
+  
+  </SheetContent>
+</Sheet>
+  </div>
+
+
+<Container className="bg-white col-span-8 my-10 py-10  dark:bg-gray-800 dark:border-gray-700 border-gray-300 border-x-2 border-double w-full">
+<h1 className="text-lg md:xl lg:2xl font-medium md:font-semibold lg:font-bold">{data?.title}</h1>
+
+{data?.videoThumbnail?<div className=" my-6">
+<video
+ className="w-full h-auto max-w-full"
+ controls
+ poster={data?.videoThumbnail?.public_url || ''}
+>
+ <source src={data?.videoUrl?.public_url || ''} type="video/mp4"  />
+ Your browser does not support the video tag.
+</video></div>:""}
+
+<Tabs defaultValue="notes" className="w-full">
+     <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-4">
+       <TabsTrigger
+         className="
+           border-b-[1.5px]  
+           font-normal
+           border-slate-400 
+           bg-transparent 
+           shadow-none
+           hover:dark:text-white
+           hover:text-gray-900
+           hover:font-medium
+           hover:dark:border-gray-100
+           transition
+           duration-300
+           hover:border-gray-800
+           data-[state=active]:border-blue-500
+           data-[state=active]:dark:border-green-400
+           data-[state=active]:border-b-2
+           data-[state=active]:font-medium
+           data-[state=active]:text-blue-500
+           data-[state=active]:dark:text-green-400
+         "
+         value="notes"
+       >
+         Notes
+       </TabsTrigger>
+
+       <TabsTrigger
+         className="
+           border-b-[1.5px]  
+           font-normal
+           border-slate-400 
+           bg-transparent 
+           shadow-none
+           hover:dark:text-white
+           hover:text-gray-900
+           hover:font-medium
+           hover:dark:border-gray-100
+           transition
+           duration-300
+           hover:border-gray-800
+           data-[state=active]:border-blue-500
+           data-[state=active]:dark:border-green-400
+           data-[state=active]:border-b-2
+           data-[state=active]:font-medium
+           data-[state=active]:text-blue-500
+           data-[state=active]:dark:text-green-400
+         "
+         value="exam"
+       >
+         Quizzes
+       </TabsTrigger>
+
+       <TabsTrigger className="rounded-full hidden" value="handout">
+         Handout
+       </TabsTrigger>
+       <TabsTrigger className="rounded-full hidden" value="Q&A">
+         Q&A
+       </TabsTrigger>
+     </TabsList>
+
+     <TabsContent value="notes">
+       <div className="p-3 md:p-4">
+         <div className="flex flex-col gap-20">
+           {data?.contents?.length ? (
+             <div className="w-full space-y-10">
+               {data?.contents
+                 .filter((c: any) => !c.parentId)
+                 .map((content: any) => (
+                   <div key={content?.id} className="w-full py-4 space-y-6">
+                     {content?.content ? (
+                       <div className="w-full" dangerouslySetInnerHTML={{ __html: content.content }}></div>
+                     ):null}
+
+                     {content?.codeExample ? (
+                       <div className="flex w-full justify-center">
+                         <CodeHighlighterComponent
+                           codeString={content?.codeExample.code}
+                           language={content?.codeExample.language}
+                         />
+                       </div>
+                     ):null}
+
+                     {content?.image? (
+                       <div className="w-full flex justify-center">
+                         <Image height={400} width={500} src={content?.image.public_url} alt="content image" />
+                       </div>
+                     ):null}
+
+                     {content?.subContents &&
+                       content.subContents.length &&
+                       content.subContents.map((subContent: any) => (
+                         <div key={subContent?.id} className="w-full py-6 space-y-6">
+                           {subContent?.content? (
+                             <div className="w-full" dangerouslySetInnerHTML={{ __html: subContent.content }}></div>
+                           ):null}
+
+                           {subContent?.codeExample ? (
+                             <div className="flex w-full justify-center">
+                               <CodeHighlighterComponent
+                                 codeString={subContent?.codeExample.code}
+                                 language={subContent?.codeExample.language}
+                               />
+                             </div>
+                           ):null}
+
+                           {subContent?.image ? (
+                             <div className="w-full flex justify-center">
+                               <Image height={400} width={500} src={subContent?.image.public_url} alt="content image" />
+                             </div>
+                           ):null}
+                         </div>
+                       ))}
+                   </div>
+                 ))}
+             </div>
+           ) : (
+             <div>No Contents</div>
+           )}
+         </div>
+       </div>
+     </TabsContent>
+
+     <TabsContent value="exam">
+       <div className="overflow-hidden">
+         <QuizClient lesson={data} />
+       </div>
+     </TabsContent>
+
+     <TabsContent className="hidden" value="handout">
+       <div>
+         <p className="text-2xl font-bold p-2">Handouts like PDF, PPT</p>
+       </div>
+     </TabsContent>
+
+     <TabsContent className="hidden" value="Q&A">
+       <div>
+         <p>Question and Answers</p>
+       </div>
+     </TabsContent>
+   </Tabs>
+
+  </Container>
+
+
+<div className="col-span-4 right-0  pt-16  pb-24 relative hidden    overflow-x-hidden  overflow-y-auto 
+lg:block  ">
+  <div className="fixed right-1 xl:right-10 2xl:right-16  lg:w-[350px] xl:w-[400px]">
+<ScrollArea className=" w-full   max-h-[75vh]  ">
+
+ <CourseContent course={data?.chapter.course}/>
+
+</ScrollArea>
+</div>
+</div>
+
+</MainLayout>:""}
+</>
   );
 };
 
 export default LessonClient;
+
+
+
+
+

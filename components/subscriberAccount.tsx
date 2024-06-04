@@ -2,20 +2,21 @@
 
 import { Button } from '@/components/ui/button';
 import { useSubscribeAccountMutation } from '@/redux/features/subscribers/subscriberApi';
+import { AnyARecord } from 'dns';
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
 
-const SubscriberAccount = ({userId,accountId,is_subscriber,className}:{className?:string,userId:string,accountId:string,is_subscriber:boolean}) => {
+const SubscriberAccount = ({user,accountId,is_subscriber,className}:{className?:string,user?:any,accountId:string,is_subscriber:boolean}) => {
 
  
   const [subscribeAccount,{isSuccess,isLoading}]=useSubscribeAccountMutation();
   const router=useRouter();
 
 const onSubscribeAccount=async()=>{
-  if(!userId){
+  if(!user){
     router.push("/login")
   }
-  await subscribeAccount({userId:userId,accountId:accountId})
+  await subscribeAccount({user:user,accountId:accountId})
   
 
 

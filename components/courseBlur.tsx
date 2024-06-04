@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 interface CourseBlurProps{
   course:any;
-  user:any;
+isUser:any;
 }
-const CourseBlur:React.FC<CourseBlurProps> = ({course,user}) => {
+const CourseBlur:React.FC<CourseBlurProps> = ({course,isUser}) => {
   const router=useRouter();
   const [reloadPage, setReloadPage] = useState(false);
   const {addToCart}=useCart();
@@ -28,9 +28,9 @@ const CourseBlur:React.FC<CourseBlurProps> = ({course,user}) => {
     router.push('/payment')
   }
 
-  if (!user&&reloadPage){
+  if (!isUser&&reloadPage){
     return (<div className="fixed z-50 flex justify-center items-center h-screen w-full bg-black bg-opacity-80">
-      <Login user={user}/>
+      <Login user={isUser}/>
     </div>
 
     )

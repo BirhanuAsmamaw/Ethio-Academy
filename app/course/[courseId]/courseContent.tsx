@@ -7,7 +7,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useGetCourseCertificateQuery } from "@/redux/features/course/courseApi";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 // Function to check if a lesson has a certificate
 
@@ -22,14 +23,10 @@ interface CourseContentProps {
 }
 
 const CourseContent: React.FC<CourseContentProps> = ({ course }) => {
-  const router = useRouter();
+
   const pathName = usePathname();
 
-  const onLessonRouter = (courseId: string, chapterId: string, lessonId: string) => {
-    router.push(`/course/${courseId}/${chapterId}/${lessonId}`);
-    router.refresh();
-  };
-
+  
   const chapterId = pathName?.split("/")[3] || '0';
 
   if (!course) {
@@ -40,8 +37,7 @@ const CourseContent: React.FC<CourseContentProps> = ({ course }) => {
   const { data: certificatesData } = useGetCourseCertificateQuery(course?.id);
   const certificates = certificatesData?.lessonCertificates || [];
 
-  return (
-    <Accordion type="multiple" defaultValue={[chapterId]} className="w-full">
+  return (<Accordion type="multiple" defaultValue={[chapterId]} className="w-full">
       {course?.chapters?.length && course?.chapters.map((chapter: any, index: number) => (
         <AccordionItem
           key={index}
@@ -57,13 +53,14 @@ const CourseContent: React.FC<CourseContentProps> = ({ course }) => {
             </div>
           </AccordionTrigger>
           <AccordionContent className="w-full p-0">
-            <ul className="list-none p-0">
+            <div className="list-none p-0">
               {chapter?.lessons?.length && chapter.lessons.map((lesson: any, ind: number) => (
-                <li
+                <Link
+                href={`/course/${course.id}/${chapter.id}/${lesson.id}`}
                   key={ind}
-                  onClick={() => onLessonRouter(course.id, chapter.id, lesson.id)}
-                  className={`text-base flex gap-x-2 items-center border-b hover:underline hover:text-teal-500 pt-1 pb-2 transition duration-300 cursor-pointer 
-                    ${pathName === `/course/${course.id}/${chapter.id}/${lesson.id}` && 'text-blue-500 dark:text-green-400 font-semibold'} text-start py-1`}
+                
+                  className={` text-gray-700 dark:text-gray-300 no-underline text-base flex gap-x-2 items-center border-b hover:underline hover:text-blue-600 hover:dark:text-blue-400 pt-1 pb-2 transition duration-300 
+                    ${pathName === `/course/${course.id}/${chapter.id}/${lesson.id}` && 'text-green-600 dark:text-green-400 font-semibold'} text-start py-1`}
                 ><span className={` 
                 ${lessonHasCertificate(certificates, lesson.id) ? ' text-green-500' : 'opacity-0'}`}>
                 {lessonHasCertificate(certificates, lesson.id) ?<GiCheckMark size={18}/>:<div className="ml-4"/> }
@@ -73,9 +70,9 @@ const CourseContent: React.FC<CourseContentProps> = ({ course }) => {
                     <span>{lesson.title}</span>
                     
                   </div>
-                </li>
+                </Link>
               ))}
-            </ul>
+            </div>
           </AccordionContent>
         </AccordionItem>
       ))}

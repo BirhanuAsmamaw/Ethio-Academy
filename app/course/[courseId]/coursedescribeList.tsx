@@ -13,6 +13,7 @@ import Container from "@/components/container/container";
 import { FaCertificate } from "react-icons/fa";
 import { useGetCourseCertificateQuery } from "@/redux/features/course/courseApi";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useGetPaymentCourseQuery } from "@/redux/features/payments/paymentApi";
 
 interface ContentListProps{
   icon:IconType;
@@ -23,7 +24,7 @@ interface ContentListProps{
 
   interface CourseDescriptionListprops{
     course:any;
-    user:any
+    
   }
 
 const ContentList:React.FC<ContentListProps>=({icon:Icon,title,content})=>{
@@ -49,23 +50,13 @@ const ContentList:React.FC<ContentListProps>=({icon:Icon,title,content})=>{
 
 
 
-const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course,user}) => {
+const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
 
   const {data,isSuccess}=useGetCourseCertificateQuery(course?.id)
   const [lessonNo,setLessonNo]=useState(0)
   
-  const CoursesPayed = user?.payedCourses
-  .filter((ps:any) => ps.status)
-  .flatMap((payedCourse:any) => 
-    payedCourse.courses.map((course:any) => {
- 
-      return course.course;
-    })
-  );
 
-const isCoursePayed = CoursesPayed?.some((c:any) => c.id === course.id);
-
-
+const {data:payedCourse,isSuccess:payedSuccess}=useGetPaymentCourseQuery(course?.id);
 
  
   useEffect(() => {
@@ -106,9 +97,8 @@ const onPayment=()=>{
 
 </div>
 
-
-  
-    {(!isCoursePayed&&course.price)?
+{payedCourse&&payedSuccess?
+    <>{(!payedCourse?.isCoursePayed&&course.price)?
       // COURSE BUYING 
     <div className="p-2 flex  justify-end gap-6">
       <button 
@@ -149,6 +139,7 @@ const onPayment=()=>{
         )}
       </div>
     </div>:<Skeleton className="bg-gray-200  dark:bg-gray-600 h-4 w-[300px]" />}</>
+    }</>:<div>Loading...</div>
     }
   <h5 className="px-2 text-base mt-6 text-gray-900 font-medium dark:text-gray-50">Course Content</h5>
  <div className="flex flex-col  ">

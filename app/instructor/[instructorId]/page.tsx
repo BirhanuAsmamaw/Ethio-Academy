@@ -118,7 +118,7 @@ const InstructorPage = async({params}:{params:{instructorId:string}}) => {
 </div>
 
 <div className=" w-full flex justify-end m-4 pr-10">
-<SubscriberAccount accountId={teacher?.id||""} is_subscriber={teacher?.is_subscriber||false} userId={user?.id||""}/>
+<SubscriberAccount accountId={teacher?.id||""} is_subscriber={teacher?.is_subscriber||false} user={user}/>
 </div>
          
          </Container>
