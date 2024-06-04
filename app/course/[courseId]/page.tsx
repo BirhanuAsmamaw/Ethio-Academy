@@ -26,8 +26,9 @@ const CoursePage = async({params}:{params:IPrams}) => {
     description={`${course?.descriptions}`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
 />
+<h1>Course Details Page</h1>
 
-<CourseClientPage course={course} customer={user}/>
+{/* <CourseClientPage course={course} customer={user}/> */}
  </>);
 }
  
