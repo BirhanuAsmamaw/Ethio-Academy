@@ -1,10 +1,10 @@
 
 
-import { getCurrentUser } from "@/actions/users/currentUser";
-import CourseClientPage from "./courseClientPage";
-import Navbar from "@/components/navbar/Navbar";
-import Header from "@/components/Header";
-import { GetCourseById } from "@/actions/courses/getCourseById";
+// import { getCurrentUser } from "@/actions/users/currentUser";
+// import CourseClientPage from "./courseClientPage";
+// import Navbar from "@/components/navbar/Navbar";
+// import Header from "@/components/Header";
+// import { GetCourseById } from "@/actions/courses/getCourseById";
 
 
 interface IPrams{
@@ -12,21 +12,21 @@ interface IPrams{
 }
 
 
-const CoursePage = async({params}:{params:IPrams}) => {
+const CoursePage = ({params}:{params:IPrams}) => {
 
-  const user=await getCurrentUser();
-  const course=await GetCourseById(params.courseId);
+  // const user=await getCurrentUser();
+  // const course=await GetCourseById(params.courseId);
   
 
   
   return ( <>
-  <Navbar/>
+  {/* <Navbar/>
   <Header
     title={`EthioAcademy|| ${course?.course}`}
     description={`${course?.descriptions}`}
     keywords='Programming, High School Courses, Freshman Courses, Entrance Exams, Exit Exams, Online Education, Lifelong Learning'
-/>
-<h1>Course Details Page</h1>
+/> */}
+<h1 className="p-20">Course Details Page</h1>
 
 {/* <CourseClientPage course={course} customer={user}/> */}
  </>);
