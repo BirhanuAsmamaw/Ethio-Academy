@@ -45,6 +45,8 @@ const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
 
   const {data:payedCourse,isSuccess:payedSuccess,}=useGetPaymentCourseQuery(data&&data?.chapter?.courseId);
 
+  console.log("is course lesson buyer",payedCourse?.isCoursePayed)
+
   useEffect(() => {
     if (payedSuccess&&payedCourse&&payedCourse?.isPayedCourse && isSuccess&&data?.id) {
       const timer = setTimeout(() => {
@@ -94,7 +96,7 @@ const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
 />
   {data&&isSuccess&&payedSuccess?<MainLayout className="w-full lg:px-4 xl:w-11/12 2xl:w-10/12  xl:px-10 2xl:px-20 lg:gap-10 lg:grid lg:grid-cols-12">
 
-   {!payedCourse.isCoursePayed?<CourseBlur isUser={payedCourse?.isUser} course={data&&data?.chapter?.course}/>:""}
+   {payedCourse.isCoursePayed?<CourseBlur isUser={payedCourse?.isUser} course={data&&data?.chapter?.course}/>:""}
      
   <div className=" min-h-screen z-50 lg:hidden fixed right-0 top-14">
   <Sheet>

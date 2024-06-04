@@ -57,7 +57,7 @@ const CourseDescribeList:React.FC<CourseDescriptionListprops> = ({course}) => {
   
 
 const {data:payedCourse,isSuccess:payedSuccess}=useGetPaymentCourseQuery(course?.id);
-
+console.log("is course buyed",payedCourse?.isCoursePayed)
  
   useEffect(() => {
     let lessonCount = 0; // Initialize a counter outside the loops
@@ -98,7 +98,7 @@ const onPayment=()=>{
 </div>
 
 {payedCourse&&payedSuccess?
-    <>{(!payedCourse?.isCoursePayed)?
+    <>{!payedCourse?.isCoursePayed?
       // COURSE BUYING 
     <div className="p-2 flex  justify-end gap-6">
       <button 
@@ -113,7 +113,7 @@ const onPayment=()=>{
     </div>:
 
   //  COURSE PROGRESSES 
-<>{isSuccess?<div className="w-full px-2 py-10 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-center items-center">
+<>{isSuccess&&data?<div className="w-full px-2 py-10 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-center items-center">
       <div className="flex flex-col items-center justify-center w-full p-4">
         <div className="flex items-center justify-center w-full gap-x-2">
           <div className="relative w-full h-2 bg-gray-300 dark:bg-gray-600 rounded-full overflow-hidden">
