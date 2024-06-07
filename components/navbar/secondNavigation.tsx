@@ -18,7 +18,7 @@ const SecondNavigation = ({ user }:{user:any}) => {
   return (
     <>
       {isSecondNavbar ?(
-        <div className="hidden px-6 md:flex h-16 py-1 fixed w-full z-40 bg-white dark:bg-gray-800 border-b border-slate-200 dark:border-gray-600 items-center justify-between">
+        <div className="hidden px-6 md:flex h-16 py-1 fixed w-full z-50 bg-white dark:bg-gray-800 border-b border-slate-200 dark:border-gray-600 items-center justify-between">
           <div className="flex gap-2 text-center h-full items-center">
             <span>Contact Us:</span>
             <Link href="https://t.me/Derishemi" className="text-blue-500 hover:text-blue-600 no-underline">

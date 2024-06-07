@@ -34,11 +34,11 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
 
   return (<div className='flex flex-col gap-4 w-full'>
    {lesson?.contents?.filter((c:any)=>!c.parentId).map((content:any) =>{
-    return  <div key={content?.id}  className="p-4 relative w-full bg-white pl-6 pb-20 dark:bg-gray-800 hover:border-2 rounded-[10px] hover:border-sky-400 hover:border-dashed  transition duration-300 group">
+    return  <div key={content?.id}  className="p-4 border dark:border-gray-700 relative w-full bg-white pl-6 pb-20 dark:bg-gray-800 hover:border-2 rounded-[10px] hover:border-sky-400 hover:border-dashed  transition duration-300 group">
 
 
       <div className="hidden  z-30 group-hover:block  absolute  left-2 bottom-2  w-full">
- <div className="flex justify-start md:justify-center gap-2 md:gap-10 w-full">
+ <div className="flex justify-start md:justify-center  w-full">
  
  {!content?.image?<UpdateContentImage 
  isAdd
@@ -53,8 +53,8 @@ const ContentList:React.FC<ContentListProps> = ({lesson}) => {
  </div>
       </div>
 
-      {content?<div className=" z-30 absolute bottom-2 right-2 flex justify-end gap-4 p-2">
-        <AddButton isAdd={contentId===content?.id} label='' onAddButton={()=>onAdd(content?.id)}/>
+      {content?<div className=" z-30 absolute bottom-2 right-2 flex justify-end  p-2">
+        <AddButton className=' rounded-none px-0 py-0 border-none' isAdd={contentId===content?.id} label='' onAddButton={()=>onAdd(content?.id)}/>
      <DeleteContent content={content}/>
      
       </div>:""}
@@ -103,11 +103,11 @@ departmentId={lesson?.chapter.course.subject.departmentId}
 {/* SUBCONTENTS LIST */}
 
 {content?.subContents&&content?.subContents.length? content?.subContents?.map((content:any) =>{
-    return  <div key={content?.id}  className="pt-10 pb-16 my-4 relative w-full bg-white   dark:bg-gray-800 hover:border-2 rounded-[10px] hover:border-sky-400 hover:border-dashed  transition duration-300 group">
+    return  <div key={content?.id}  className="pt-10 pb-16 my-4 border dark:border-gray-700  p-1 relative w-full bg-white   dark:bg-gray-800 hover:border-2 rounded-[10px] hover:border-yellow-400 hover:border-dashed  transition duration-300 group">
 
 
       <div className="hidden  z-30 group-hover:block  absolute  left-2 bottom-2  w-full">
- <div className="flex justify-start md:justify-center gap-2 md:gap-10 w-full">
+ <div className="flex justify-start md:justify-center   w-full">
  
  {!content?.image?<UpdateContentImage 
  isAdd

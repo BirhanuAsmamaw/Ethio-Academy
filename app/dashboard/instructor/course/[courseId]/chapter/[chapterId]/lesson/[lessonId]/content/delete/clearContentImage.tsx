@@ -49,9 +49,11 @@ const ClearContentImage:React.FC<ClearcontentFileProps> = ({isAdd,content,depart
     variant="secondary"
 title="Clear Content Image"
 disabled={isLoading}
-buttonLabel={isLoading? "Loading...":"Clear"}
+buttonLabel={isLoading? "Cleaning...":"Clear"}
 onClick={onSubmit}
-modalName={<MdDelete size={24} 
+className=" rounded-none
+   p-2"
+modalName={<MdDelete size={18} 
 className='text-gray-600
  dark:text-gray-400
  hover:text-gray-900

@@ -10,8 +10,9 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 interface EditorProps{
     value: string;
     setValue:(data:any) => any;
+    className?:string;
 }
-const TextEditor:React.FC<EditorProps> = ({value,setValue}) => {
+const TextEditor:React.FC<EditorProps> = ({value,setValue,className}) => {
   const  modules  = {
     toolbar: [
         
@@ -48,8 +49,8 @@ const formats = [
 
     return (
         
-          <div className="">
-            <ReactQuill className="border-dotted border-2 
+          <div className="z-40 text-wrap">
+            <ReactQuill className={`border-dotted border-2 
             border-gray-200
             dark:border-gray-600
             rounded-[10px] p-4
@@ -60,7 +61,7 @@ const formats = [
             bg-white
             transition
             duration-300
-             dark:text-white  w-full "
+             dark:text-white  w-full  ${className}`}
               modules={modules} 
               formats={formats} 
                theme="bubble"

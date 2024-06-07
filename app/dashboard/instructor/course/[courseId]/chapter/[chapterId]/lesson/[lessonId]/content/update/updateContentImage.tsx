@@ -75,6 +75,8 @@ const UpdateContentImage:React.FC<UpdatecontentFileProps> = ({isAdd,content,depa
   
   return ( <CModal 
 variant="secondary"
+className=" rounded-none
+   p-2"
 modalName={isAdd?<BiImageAdd size={24} 
 className='text-gray-600
  dark:text-gray-400
@@ -86,7 +88,7 @@ className='text-gray-600
     hover:dark:text-gray-100 transition'/>}>
  <FileUploader
       onClientUploadComplete={oncontentimageComplete}
-      label={`${isAdd?"Upload":"Edit"} content image`}
+      label={`${isAdd?"Upload":"Edit"}  image`}
         file={imageUrl}
         handleMediaChange={handleimageChange}
         endpoint="imageUploader"

@@ -53,9 +53,11 @@ const router=useRouter();
     variant="secondary"
 title="Clear Content"
 disabled={isLoading}
+className=" rounded-none
+   p-2"
 buttonLabel={isLoading? "Loading...":"Clear"}
 onClick={handleSubmit(onSubmit)}
-modalName={<MdDelete size={24} 
+modalName={<MdDelete size={18} 
 className='text-gray-600
  dark:text-gray-400
  hover:text-gray-900

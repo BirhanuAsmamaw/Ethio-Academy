@@ -72,16 +72,19 @@ console.log("content:",content)
       
   return (<CModal 
     variant="secondary"
-title={`${isAdd?"Add":"Update"}Lesson Content`}
+title={`${isAdd?"Add":"Update"} Content`}
 disabled={isLoading}
-buttonLabel={isLoading? "Loading...":"Update"}
+buttonLabel={isLoading? "Updating...":"Update"}
 onClick={handleSubmit(onSubmit)}
+className=" rounded-none
+   p-2"
 modalName={isAdd?<IoMdAdd 
   className='text-gray-600
+  
   dark:text-gray-400
   hover:text-gray-900
    hover:dark:text-gray-100 transition'
-size={24}/>:<MdModeEditOutline
+size={18}/>:<MdModeEditOutline
 className='text-gray-600
 dark:text-gray-400
 hover:text-gray-900

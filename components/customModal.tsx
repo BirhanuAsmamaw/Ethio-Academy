@@ -23,6 +23,7 @@ const CModal:React.FC<ModalProps> = ({className,variant,disabled,children,title,
     <>
       <button  onClick={() => setOpen(prev => !prev)} className={cn(buttonVariants({
         variant:variant,
+       
         className:className
       }))}>
        {modalName}
@@ -41,7 +42,7 @@ const CModal:React.FC<ModalProps> = ({className,variant,disabled,children,title,
             animate={{opacity:1,y:0}}
             exit={{opacity:0 ,y:40}}
             transition={{delay:0.25,duration:0.25}}
-            className=" z-40 flex justify-center  align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle m-4   lg:max-w-6xl ">
+            className=" z-40 flex justify-center  align-bottom rounded-lg text-left  shadow-xl transform transition-all sm:my-8 sm:align-middle m-4   lg:max-w-6xl ">
               <Container className='pt-2'>
                 <div className="sm:flex sm:items-start">
                   <div className=" text-center sm:mt-0 sm:ml-4 sm:text-left">
