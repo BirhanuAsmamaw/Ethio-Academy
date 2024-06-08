@@ -47,7 +47,7 @@ const CourseRow: React.FC<CourseRowProps> = ({ course }) => {
         )}
       </td>
       <td className="px-6 py-4 text-center">
-        {isSuccess && data ? `${data?.coursePercent}%` : '0%'}
+        {isSuccess && data ? `${data?.coursePercent.tofixed(2)}%` : '0%'}
       </td>
       <td className="px-6 py-4 text-center">
         {isSuccess && data ? (data?.coursePercent >= 100 ? 'Completed' : 'Ongoing') : 'Ongoing'}
@@ -75,7 +75,7 @@ const EnrolledCourses: React.FC<EnrolledCoursesProps> = ({ courses }) => {
   return (
     <>
       {courses && courses.length ? (
-        <div className="relative overflow-x-auto">
+        <div className="relative overflow-x-auto custom-scrollbar">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>

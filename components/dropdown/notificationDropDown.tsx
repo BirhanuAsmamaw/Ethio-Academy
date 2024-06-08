@@ -49,7 +49,7 @@ const router=useRouter();
         <div className={`absolute -top-2 -right-2   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
         </div>
       </SheetTrigger>
-      <SheetContent className="px-2 py-6 overflow-y-auto pb-10">
+      <SheetContent className="px-2 py-6 custom-scrollbar overflow-y-auto pb-10">
         <SheetHeader>
           <SheetTitle className="text-left">Notifications</SheetTitle>
          
