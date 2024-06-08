@@ -46,10 +46,10 @@ const CourseContent: React.FC<CourseContentProps> = ({ course }) => {
         >
           <AccordionTrigger className="w-full hover:no-underline">
             <div className="flex gap-2 text-start w-full capitalize">
-              <span className="h-6 w-6 rounded-full bg-green-400 mt-2 flex items-center justify-center text-sm text-black">
+              <span className="h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-green-400 mt-3 sm:mt-2 flex items-center justify-center text-[12px] sm:text-sm text-black">
                 {index + 1}
               </span>
-              <span className="text-lg mt-2 font-semibold">{chapter.title}</span>
+              <span className="text-[14px] sm:text-[16px] mt-1 font-medium">{chapter.title}</span>
             </div>
           </AccordionTrigger>
           <AccordionContent className="w-full p-0">
@@ -60,14 +60,14 @@ const CourseContent: React.FC<CourseContentProps> = ({ course }) => {
                   key={ind}
                 
                   className={` text-gray-700 dark:text-gray-300 no-underline text-base flex gap-x-2 items-center border-b hover:underline hover:text-blue-600 hover:dark:text-blue-400 pt-1 pb-2 transition duration-300 
-                    ${pathName === `/course/${course.id}/${chapter.id}/${lesson.id}` && 'text-green-600 dark:text-green-400 font-semibold'} text-start py-1`}
+                    ${pathName === `/course/${course.id}/${chapter.id}/${lesson.id}` && 'text-green-600 dark:text-green-400 font-medium'} text-start py-1`}
                 ><span className={` 
                 ${lessonHasCertificate(certificates, lesson.id) ? ' text-green-500' : 'opacity-0'}`}>
                 {lessonHasCertificate(certificates, lesson.id) ?<GiCheckMark size={18}/>:<div className="ml-4"/> }
               </span>
-                  <div className=" items-center  ">
+                  <div className=" items-center text-[14px] sm:text-[16px]  ">
                     <span className="font-medium">Lesson {ind + 1}:</span>
-                    <span>{lesson.title}</span>
+                    <span className="">{lesson.title}</span>
                     
                   </div>
                 </Link>

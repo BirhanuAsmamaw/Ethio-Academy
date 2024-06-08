@@ -6,7 +6,7 @@ import { PiStudentLight } from "react-icons/pi";
 import { BsPeople } from "react-icons/bs";
 import { SiBookstack } from "react-icons/si";
 import ChannelVerfiedComponent from '@/components/ChannelVerfiedComponent'
-import { MdEdit } from "react-icons/md";
+
 import { IoMdAdd } from "react-icons/io";
 import { getCurrentUser } from '@/actions/users/currentUser'
 import ActionButton from '@/components/button/actionButton';

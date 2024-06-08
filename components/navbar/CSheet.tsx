@@ -30,7 +30,7 @@ const CSheet = ({className,url,children,label, onClick}:{
   <IoChevronForward size={20}/>
   </button>:""}
 
- <div className={`h-screen overflow-y-auto overflow-x-hidden absolute top-0 w-full   bg-white dark:bg-gray-800 ${isOpen?' opacity-100 translate-x-0 bg-gray-800 ':' translate-x-full opacity-0'} transition-all duration-300`}>
+ <div className={`h-screen overflow-y-auto custom-scrollbar overflow-x-hidden absolute top-0 w-full   bg-white dark:bg-gray-800 ${isOpen?' opacity-100 translate-x-0 bg-gray-800 ':' translate-x-full opacity-0 right-0 left-0'} transition-all duration-300`}>
 
   <div className="flex gap-2 px-2 py-4 bg-gray-50 dark:bg-gray-700 w-full text-sm  tracking-tight font-medium text-gray-700 dark:text-gray-300"> 
   <button 
@@ -40,7 +40,7 @@ const CSheet = ({className,url,children,label, onClick}:{
     
     <Link href={url||"#"} className='text-blue-600 hover:underline no-underline dark:text-green-400 '>{label}</Link>
     </div>
-  <div className={`space-y-2 overflow-y-auto h-full p-2 pt-4 `}>
+  <div className={`space-y-2 overflow-y-auto custom-scrollbar h-full p-2 pt-4 `}>
     {children}
   </div>
  </div>

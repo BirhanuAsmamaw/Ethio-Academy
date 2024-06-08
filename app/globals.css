@@ -3,6 +3,24 @@
 @tailwind utilities;
  
 
+@layer utilities {
+  /* Custom scrollbar styles */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-lg px-1 dark:bg-gray-700; /* Track color */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-blue-500 rounded-lg; /* Thumb color and rounded corners */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-blue-700; /* Thumb color on hover */
+  }
+}
 
 html{
   scroll-snap-type: y mandatory;

@@ -27,7 +27,7 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      <body className={`${IBM_plex_sans.className} bg-[#F8F4EC] dark:text-gray-300 dark:bg-gray-900 overflow-x-hidden  `}>
+      <body className={`${IBM_plex_sans.className} bg-[#F8F4EC] custom-scrollbar dark:text-gray-300 dark:bg-gray-900 overflow-x-hidden  `}>
       <Toaster
   position="top-center"
   reverseOrder={false}

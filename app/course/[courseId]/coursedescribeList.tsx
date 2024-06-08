@@ -124,7 +124,7 @@ const onPayment=()=>{
               style={{ width: `${data?.coursePercent}%` }}
             ></div>
           </div>
-          <p className="font-bold text-blue-600 dark:text-blue-400">{data?.coursePercent}%</p>
+          <p className="font-bold text-blue-600 dark:text-blue-400">{data?.coursePercent.toFixed(2)}%</p>
         </div>
         <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
           <span className="font-semibold text-gray-800 dark:text-gray-200">

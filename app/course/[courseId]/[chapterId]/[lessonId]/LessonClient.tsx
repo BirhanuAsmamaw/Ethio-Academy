@@ -121,7 +121,7 @@ const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
   <SheetTrigger asChild >
 <IoListOutline size={40} className="bg-white rounded-l-md dark:bg-black shadow-lg z-20 p-2 border mt-6"/>
   </SheetTrigger>
-  <SheetContent className="overflow-y-auto p-1">
+  <SheetContent className="overflow-y-auto custom-scrollbar p-1">
     <SheetHeader className="w-full">
       <SheetTitle><p className="text-[14px] pt-8 text-start">{data?.chapter?.course.course}</p></SheetTitle>
      
@@ -293,15 +293,15 @@ const LessonClient: React.FC<dataClientProps> = ({ lessonId }) => {
   </Container>
 
 
-<div className="col-span-4 right-0  pt-16  pb-24 relative hidden    overflow-x-hidden  overflow-y-auto 
+<div className="col-span-4 right-0  pt-16  pb-24 relative hidden    overflow-x-hidden  
 lg:block  ">
-  <div className="fixed right-1 xl:right-10 2xl:right-16  lg:w-[350px] xl:w-[400px]">
-<ScrollArea className=" w-full   max-h-[75vh]  ">
+  
+<div className=" overflow-y-auto  custom-scrollbar fixed right-1 xl:right-10 2xl:right-16  lg:w-[350px] xl:w-[400px] w-full p-1   max-h-[75vh]  ">
 
  <CourseContent course={data?.chapter.course}/>
 
-</ScrollArea>
 </div>
+
 </div>
 
 </MainLayout>:""}

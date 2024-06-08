@@ -15,7 +15,16 @@ export const instructorApi=createApi({
     }),
     instructorlists:builder.query<any[],void>({
       query:()=>`/lists`
-    })
+    }),
+
+
+    // get Instructor by Id
+    getInstructor:builder.query<any,string>({
+      query:(teacherId)=>`/getById?teacherId=${teacherId}`
+    }),
   })
 });
-export const {useInstructorlistsQuery,useCreateInstructorMutation}=instructorApi;
+export const {
+  useGetInstructorQuery,
+  useInstructorlistsQuery,
+  useCreateInstructorMutation}=instructorApi;
