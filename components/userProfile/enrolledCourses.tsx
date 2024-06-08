@@ -47,7 +47,7 @@ const CourseRow: React.FC<CourseRowProps> = ({ course }) => {
         )}
       </td>
       <td className="px-6 py-4 text-center">
-        {isSuccess && data ? `${data?.coursePercent.tofixed(2)}%` : '0%'}
+        {isSuccess && data ? `${data?.coursePercent.toFixed(2)}%` : '0%'}
       </td>
       <td className="px-6 py-4 text-center">
         {isSuccess && data ? (data?.coursePercent >= 100 ? 'Completed' : 'Ongoing') : 'Ongoing'}
