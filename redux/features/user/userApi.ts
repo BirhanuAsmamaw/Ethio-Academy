@@ -7,6 +7,14 @@ export const userApi=createApi({
   }),
   
   endpoints:(builder)=>({
+
+
+    // USER LISTS
+    userLists:builder.query<any,{ page: string, pageSize: string}>({
+      query:({ page, pageSize})=>`/list?page=${page}&pageSize=${pageSize}`
+    }),
+    
+
     userProfile:builder.query<any,string>({
       query:(username)=>`/profile?username=${username}`
     }),
@@ -46,4 +54,10 @@ export const userApi=createApi({
   })
 });
 
-export const {useUpdateUsernameMutation,useUpdateAccountTypeMutation,useUserStreakMutation,useUserProfileQuery,useUpdateProfileMutation}=userApi;
+export const {
+  useUserListsQuery,
+  useUpdateUsernameMutation,
+  useUpdateAccountTypeMutation,
+  useUserStreakMutation,
+  useUserProfileQuery,
+  useUpdateProfileMutation}=userApi;

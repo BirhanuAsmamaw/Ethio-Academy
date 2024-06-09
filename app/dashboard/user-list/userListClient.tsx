@@ -47,6 +47,7 @@ import TableSkeleton from "@/components/tableSkeleton"
 
 interface UserListProps{
   users:any[] | null;
+  pagination:any
 }
 
 type UserType={
@@ -196,7 +197,9 @@ export const columns: ColumnDef<UserType>[] = [
 
 
 
-export const UserListClient:React.FC<UserListProps>=({users})=> {
+export const UserListClient:React.FC<UserListProps>=({users,pagination})=> {
+  const [page, setPage] = React.useState<number>(1);
+  const [pageSize, setPageSize] = React.useState<number>(4);
  
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
