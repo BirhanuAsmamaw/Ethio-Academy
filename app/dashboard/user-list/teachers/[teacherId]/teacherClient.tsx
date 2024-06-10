@@ -1,36 +1,80 @@
 "use client"
 
-import axios from 'axios';
+import { useInstructorStatusMutation } from '@/redux/features/instructors/instructorApi';
+
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { IoMdAdd } from 'react-icons/io';
 import { RiSubtractFill } from 'react-icons/ri';
 interface TeacherClientProps{
 teacher:any;
-permission:any;
+
 }
-const TeacherClient:React.FC<TeacherClientProps> = ({teacher,permission}) => {
-  const [isLoading,setLoading]=useState(false)
+const TeacherClient:React.FC<TeacherClientProps> = ({teacher}) => {
+ 
   const [showReson,setShowReason]=useState(false)
   const [reason,setReason]=useState("")
 const router=useRouter();
-  const onApproved=() => {
-    setLoading(true)
-    axios.put(`/api/teacher/${teacher.id}/approve`,{reason:reason}).
-    then(() => {
-      axios.post("/api/authorization/userPermission",{userId:teacher?.user.id,
-        permissionId:permission?.id})
-        toast.success(`Approved successfully `);
-      router.push("/dashboard/user-list/teachers")
-    }).
-    catch((err:any) => {
-      toast.error(err?.message)
-    }).
-    finally(() => {
-      setLoading(false);
-    })
+
+const [onApprove,{isError:appErr,isSuccess:appSuc,isLoading:appLoad}]=useInstructorStatusMutation()
+const [onReject,{isError:rejectErr,isSuccess:rejectSuc,isLoading:rejectLoad}]=useInstructorStatusMutation()
+
+
+
+useEffect(()=>{
+  if(appSuc){
+    toast.success("Instructor Approved Success! ")
+    router.push("/dashboard/user-list/teachers")
+    router.refresh()
   }
+},[appSuc])
+
+
+
+
+useEffect(()=>{
+  if(rejectSuc){
+    toast.success("Instructor Rejected Success! ")
+    router.push("/dashboard/user-list/teachers")
+    router.refresh()
+  }
+},[rejectSuc]);
+
+
+// ERROR
+
+useEffect(()=>{
+  if(rejectErr){
+    toast.error("Instructor Rejected error Occurred! please Try again! ")
+    
+  }
+},[rejectErr]);
+
+useEffect(()=>{
+  if(appErr){
+    toast.error("Instructor Approved error Occurred! please Try again!")
+
+  }
+},[appErr])
+
+
+
+
+
+
+
+// APPROVED
+  const onApproved=async() => {
+    await onApprove({instructorId:teacher?.id,status:true,reason:reason})
+  }
+
+  // REJECT
+  const onRejected=async() => {
+    await onReject({instructorId:teacher?.id,status:false,reason:reason})
+  }
+
+
 
 
 
@@ -47,7 +91,7 @@ const router=useRouter();
             Verify the Instructor Account
         
         </caption>
-        <tbody >
+        <tbody className='bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700'>
 
           {/* User Name */}
             <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -97,7 +141,7 @@ const router=useRouter();
                 Description
                 </th>
                 <td scope="col" className="px-6 py-3">
-                {teacher.description}
+                <div dangerouslySetInnerHTML={{__html:teacher.description}}/>
                 </td>
                 
             </tr>:""}
@@ -107,13 +151,13 @@ const router=useRouter();
         
     </table>
 
-    {showReson&&teacher.status?<div className="p-4">
-    <input disabled={isLoading} onChange={(event)=>setReason(event.target.value)} className=' p-2 w-full bg-slate-100 dark:bg-gray-900 border  focus:border-2 focus:dark:border-green-400 focus:border-blue-500  hover:dark:border-green-400 hover:border-blue-500 outline-none rounded-md ' placeholder='what reasons...'/>
+    {showReson?<div className="p-4">
+    <input disabled={appLoad||rejectLoad} onChange={(event)=>setReason(event.target.value)} className=' p-2 w-full bg-slate-100 dark:bg-gray-900 border  focus:border-2 focus:dark:border-green-400 focus:border-blue-500  hover:dark:border-green-400 hover:border-blue-500 outline-none rounded-md ' placeholder='what reasons...'/>
     </div>:""}
     <div className='flex mt-4 p-4 w-full justify-end gap-4'>       
    
-{teacher.status?<button
-disabled={isLoading}
+<button
+disabled={appLoad||rejectLoad}
      onClick={()=>{
       setReason("")
       
@@ -126,18 +170,29 @@ text-sm font-medium text-gray-900 focus:outline-none
  focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700
   dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600
    dark:hover:text-white dark:hover:bg-gray-700 flex gap-2 items-center justify-center`}>
-    {showReson? <RiSubtractFill size={24}/>:<IoMdAdd size={24}/>} <p>Reason</p></button>:""}
+    {showReson? <RiSubtractFill size={24}/>:<IoMdAdd size={24}/>} <p>Reason</p></button>
 
 
     <button
-    disabled={isLoading}
+    disabled={rejectLoad}
+     onClick={onRejected}
+    className={`py-1 md:py-2 px-3 md:px-5 me-2 mb-2
+text-sm font-medium focus:outline-none
+ rounded-full border focus:z-10 
+ focus:ring-4 text-gray-50 bg-red-500 hover:bg-red-600 hover:text-white   focus:ring-red-500 dark:focus:ring-red-400   dark:border-red-400     border-red-500 
+   flex gap-2 items-center justify-center`}>{rejectLoad? "Loading...":"Reject"}</button>
+
+
+
+<button
+    disabled={appLoad}
      onClick={onApproved}
     className={`py-1 md:py-2 px-3 md:px-5 me-2 mb-2
 text-sm font-medium focus:outline-none
  rounded-full border focus:z-10 
- focus:ring-4
-   ${teacher.status?'text-gray-50 bg-red-500 hover:bg-red-600 hover:text-white   focus:ring-red-500 dark:focus:ring-red-400   dark:border-red-400     border-red-500 ':'text-gray-50 bg-blue-500 hover:bg-blue-600 hover:text-white   focus:ring-blue-500 dark:focus:ring-blue-400   dark:border-blue-400     border-blue-500 '}
-   flex gap-2 items-center justify-center`}>{isLoading?"Loading...":`${teacher.status?'Block':'Approve'}`}</button>
+ focus:ring-4 text-gray-50 bg-blue-500 hover:bg-blue-600 hover:text-white   focus:ring-blue-500 dark:focus:ring-blue-400   dark:border-blue-400     border-blue-500 
+   flex gap-2 items-center justify-center`}>{appLoad?"Loading...":"Approve"}</button>
+
 
 </div>
 </div>

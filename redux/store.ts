@@ -9,6 +9,7 @@ import {navigationSlice} from "./features/navigation/navigationSlice"
 import { userApi } from "./features/user/userApi"
 import { paymentApi } from "./features/payments/paymentApi"
 import { LessonApi } from "./features/lesson/lessonApi"
+import { notificationApi } from "./features/notifications/notification"
 
 export const store=configureStore({
     reducer:{
@@ -18,12 +19,13 @@ export const store=configureStore({
         [userApi.reducerPath]:userApi.reducer,
         [paymentApi.reducerPath]:paymentApi.reducer,
         [LessonApi.reducerPath]:LessonApi.reducer,
+        [notificationApi.reducerPath]:notificationApi.reducer,
 
         search:searchSlice.reducer,
         navigation:navigationSlice.reducer,
 
     },
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(courseApi.middleware,instructorApi.middleware,subscriberApi.middleware,userApi.middleware,paymentApi.middleware,LessonApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(courseApi.middleware,instructorApi.middleware,subscriberApi.middleware,userApi.middleware,paymentApi.middleware,LessonApi.middleware,notificationApi.middleware)
 }
 )
 

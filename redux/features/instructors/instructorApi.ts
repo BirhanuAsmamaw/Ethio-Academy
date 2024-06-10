@@ -13,8 +13,19 @@ export const instructorApi=createApi({
         body: data
       })
     }),
-    instructorlists:builder.query<any[],void>({
-      query:()=>`/lists`
+
+    // instructor status
+    instructorStatus:builder.mutation<any,{instructorId:string,status:boolean,reason:string}>({
+      query:({instructorId,status,reason})=>({
+        url:`/${instructorId}/approve`,
+        method:"PUT",
+        body:{status:status,reason:reason}
+      })
+    }),
+
+
+    instructorlists:builder.query<any[],boolean | void>({
+      query: (status) => status ? `/lists?status=${status}` : `/lists`
     }),
 
 
@@ -25,6 +36,7 @@ export const instructorApi=createApi({
   })
 });
 export const {
+  useInstructorStatusMutation,
   useGetInstructorQuery,
   useInstructorlistsQuery,
   useCreateInstructorMutation}=instructorApi;

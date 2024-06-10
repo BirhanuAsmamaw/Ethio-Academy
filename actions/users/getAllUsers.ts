@@ -6,7 +6,7 @@ export async function getAllUsers(){
     const user=await  getCurrentUser();
    
     if(!user){
-      throw new Error("Unathorized")
+      throw new Error("Unauthorized")
     }
     
     

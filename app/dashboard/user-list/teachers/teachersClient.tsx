@@ -6,18 +6,7 @@ import {
   ChevronDownIcon,
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table"
+
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -29,19 +18,13 @@ import {
 
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+
 import Link from "next/link"
 import { FaRegUserCircle } from "react-icons/fa"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import TableSkeleton from "@/components/tableSkeleton"
+import Container from "@/components/container/container"
+import { formatDate } from "@/lib/formatDate"
 
 
 
@@ -49,133 +32,58 @@ interface TeacherListProps{
   teachers:any[] | null;
 }
 
-type teacherType={
-  id:string, 
- image:string,
- name: string,
 
+
+
+
+
+
+
+
+export const TeacherListClient:React.FC<TeacherListProps>=({teachers})=> {
  
- email: string,
- 
- status:boolean;
+  return <Container>
 
- 
- }
+    <div className="overflow-x-auto custom-scrollbar">
+      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
+        <thead className="bg-gray-50 py-2 dark:bg-gray-700">
+          <tr >
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Academy</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created Date</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+            
+          </tr>
+        </thead>
 
-
-
-
-export const columns: ColumnDef<teacherType>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-        className={`border-gray-200 dark:border-gray-500 rounded-[5px] ${row.getIsSelected()? 'border-rose-600 dark:border-green-400':''} `}
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-
-
-
-  {
-    accessorKey: "image",
-    header: "Avatar",
-    cell: ({ row }) => (
-      <>{
-        row.getValue("image")?<Avatar className={`${!row.getValue("image")&&'hidden'} h-7 w-7`}>
-        <AvatarImage src={row.getValue("image")? row.getValue("image"):"/"} alt="image" />
-        <AvatarFallback>Im</AvatarFallback>
-      </Avatar>:<div className="h-7 w-7 rounded-full flex items-center justify-center">
-       <FaRegUserCircle size={24}/>
-
-      </div>
-      }</>
-    ),
-  },
+        <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+          {teachers?.length?teachers?.map((teacher)=>{
+            return <tr key={teacher?.id}>
+            <td scope="col" className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">{teacher?.name}</td>
+            <td scope="col" className="px-6 py-4 whitespace-nowrap text-sm  text-gray-700 dark:text-gray-200">{teacher?.email}</td>
+            <td scope="col" className="px-6 py-4 whitespace-nowrap text-sm  text-gray-700 dark:text-gray-200">{teacher?.accountName}</td>
+            <td scope="col" className="px-6 py-4 whitespace-nowrap text-sm  text-gray-700 dark:text-gray-200">{formatDate(teacher?.createdAt)}</td>
+         
+            <td scope="col" className="px-6 py-4 whitespace-nowrap text-sm  text-gray-700 dark:text-gray-200">{teacher?.status?  <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 border border-green-400 dark:border-green-700">
+            <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" d="M16.707 4.293a1 1 0 010 1.414l-9 9a1 1 0 01-1.414 0l-5-5a1 1 0 011.414-1.414L7 12.586l8.293-8.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+            </svg>
+            Approved
+          </span>:
+          <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300 border border-yellow-400 dark:border-yellow-700">
+            <svg className="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" d="M8 2a2 2 0 00-2 2v12a2 2 0 002 2h4a2 2 0 002-2V4a2 2 0 00-2-2H8zM8 0h4a4 4 0 014 4v12a4 4 0 01-4 4H8a4 4 0 01-4-4V4a4 4 0 014-4z" clipRule="evenodd"></path>
+            </svg>
+            Pending
+          </span>
+        }</td>
 
 
 
-  {
-    accessorKey: "name",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-         Full Name
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
-  },
-
-
-
-  {
-    accessorKey: "email",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Email
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
-  },
-
- 
-
-  {
-    accessorKey: "status",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Status
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("status")? <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">Approved</span>:
-    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Pending...</span>
- }</div>,
-  },
-
-
-
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      const teacher = row.original
-
-      return (
-        <DropdownMenu>
+        {/* DROP DOWN */}
+        <td scope="col" className="px-6 py-4 whitespace-nowrap text-sm  text-gray-700 dark:text-gray-200"><DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>
@@ -183,206 +91,29 @@ export const columns: ColumnDef<teacherType>[] = [
             </Button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end" className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
+          <DropdownMenuContent align="end" className="border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 ">
           
             <DropdownMenuItem>
              <Link 
-             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-             href={`/dashboard/user-list/teachers/${teacher.id}`}>Approve Status</Link>
+             className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200" 
+             href={`/dashboard/user-list/teachers/${teacher?.id}`}>Approve Status</Link>
             </DropdownMenuItem>
             
             <DropdownMenuItem> 
               <Link 
-              className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200" 
-              href={`/dashboard/teacher-list/${teacher.id}/delete`}>Delete teacher</Link>
+               className="no-underline text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+              href={`/dashboard/user-list/teachers/${teacher?.id}/delete`}>Delete Instructor</Link>
               </DropdownMenuItem>
           </DropdownMenuContent>
 
 
-        </DropdownMenu>
-      )
-    },
-  },
-
-
-]
-
-
-
-export const TeacherListClient:React.FC<TeacherListProps>=({teachers})=> {
- 
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
-
-
-
-
-
-
-
-
-  if (!teachers){
-    return <TableSkeleton/>
-  }
-
-
-
-
-
-  
- 
-
-  const data:teacherType[]=teachers
-
-
-
-
-
-
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const table = useReactTable({
-    data,
-    columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-    },
-  })
-
-  return (
-    <div className="w-full bg-white dark:bg-gray-800  p-4">
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm border-gray-200 dark:border-gray-700 ml-2 rounded-[5px]"
-        />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto border-gray-200 dark:border-gray-600 rounded-[5px]">
-              Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end"  className="border-gray-200 bg-gray-100 dark:bg-gray-700 dark:border-gray-600 rounded-[5px]">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                )
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-
-
-      <div className="rounded-[5px] p-3 w-full overflow-x-auto border border-gray-200 dark:border-gray-700">
-        <Table className="w-full">
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow 
-              className="border-gray-200 dark:border-gray-700"
-              key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  )
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                className="border-gray-200 dark:border-gray-700"
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-        <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
-      </div>
+        </DropdownMenu></td>
+            
+          </tr>
+          }):<p>No Instructors Found!!</p>}
+          
+          </tbody>
+      </table>
     </div>
-  )
+  </Container>
 }

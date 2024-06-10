@@ -23,12 +23,12 @@ import { SiGnuprivacyguard } from "react-icons/si";
 import SecondNavigation from "./secondNavigation";
 interface NavbarClientProps{
   user:any;
-  notifications:any[];
+ 
   departments:any[]| null;
   exams:any[]|null;
  
 }
-const NavbarClient:React.FC<NavbarClientProps> = ({user,notifications,departments,exams}) => {
+const NavbarClient:React.FC<NavbarClientProps> = ({user,departments,exams}) => {
 
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const dispatch=useDispatch();
@@ -143,7 +143,7 @@ ${pathName==="/register"&&'text-blue-600 dark:text-green-400 font-semibold'} `}>
 
         {user&&<div className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400
        hover:text-rose-400 transition duration-300 font-medium ${hoverLink}`}>
-        <NotificationDropDown notifications={notifications}/>
+        <NotificationDropDown/>
       </div>}
     <div>
     <button className={` no-underline text-gray-500 dark:text-gray-400  hover:dark:text-green-400

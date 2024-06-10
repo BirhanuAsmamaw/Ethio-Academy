@@ -5,29 +5,28 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { Sheet, SheetClose, SheetContent,SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+import { useNotificationListQuery } from "@/redux/features/notifications/notification";
 
 
 
 
 
-  interface NotificationDropDownProps{
-    notifications:any[];
 
- 
-  } 
-const NotificationDropDown:React.FC<NotificationDropDownProps> = ({notifications}) => {
+  
+const NotificationDropDown = () => {
 const router=useRouter();
-  const unreadNotifications=notifications.filter(notification =>!notification.isRead)
+const {data:notifications,isLoading,isSuccess}=useNotificationListQuery()
+  const unreadNotifications=isSuccess?notifications.filter(notification =>!notification.isRead):[]
 
   const onRead=() => {
 
-    notifications.forEach(notification =>axios.put(`/api/notification/${notification.id}/editread`)
+    isSuccess&&notifications?.forEach(notification =>axios.put(`/api/notification/${notification.id}/editread`)
   );
     router.refresh();
   };
 
   const onClearAll=() => {
-    notifications.forEach(notification =>axios.delete(`/api/notification/${notification.id}/delete`));
+    isSuccess&&notifications?.forEach(notification =>axios.delete(`/api/notification/${notification.id}/delete`));
     router.refresh();
     
   };
@@ -46,7 +45,7 @@ const router=useRouter();
       <div>
         
         <IoMdNotificationsOutline size={24} />
-        <div className={`absolute -top-2 -right-2   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
+        <div className={`absolute -top-2 -right-2   h-4 w-4 flex justify-center items-center rounded-full text-black bg-green-500 ${isSuccess&&unreadNotifications?.length? 'block':'hidden'}`}><p className="text-[10px]">{isSuccess&&unreadNotifications?.length?`${unreadNotifications?.length}`:''}</p></div>
         </div>
       </SheetTrigger>
       <SheetContent className="px-2 py-6 custom-scrollbar overflow-y-auto pb-10">
@@ -57,7 +56,7 @@ const router=useRouter();
         
           <div className="  w-full py-10  ">
     
-          {notifications?.length?<div className=" ">
+          {isSuccess&&notifications?.length?<div className=" ">
           {notifications?.map((notification)=>{
             return <div key={notification.id} id="alert-additional-content-3"
              className={`px-1 py-2  mb-4 border rounded-[5px]  dark:bg-gray-800 
@@ -208,11 +207,13 @@ const router=useRouter();
     
    
           </div>:
-    
-    // no notification
+    <>
+   
           <div className="py-4 flex justify-center hover:text-gray-600  font-semibold">
            <p className="text-md text-gray-5000 dark:text-gray-400">No Notification</p>
           </div>
+
+          {isLoading?<h6>Loading...</h6>:""}</>
     
     
     

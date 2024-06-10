@@ -8,8 +8,7 @@ import {  useState } from "react";
 import { useForm, FieldValues, SubmitHandler} from "react-hook-form";
 import toast from "react-hot-toast";
 import {signIn} from 'next-auth/react'
-import { RemoveFile } from "@/actions/file/removeFile";
-import AvatarUploader from "@/components/input/avatarInput";
+
 
 interface EditAccountProps{
   user:any;

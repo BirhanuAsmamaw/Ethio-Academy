@@ -6,15 +6,16 @@ import { IconType } from "react-icons";
   label: string;
   content: string;
   icon: IconType;
+  className?:string;
  }
-const DashboardCard :React.FC<DashboardCardProbs>= ({label,content,icon:Icon}) => {
+const DashboardCard :React.FC<DashboardCardProbs>= ({label,content,icon:Icon,className}) => {
   return ( 
-    <div  className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div  className={`block min-w-sm max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 ${className}`}>
     
-  <div className="flex justify-around gap-2">
-    <div className=""><Icon size={60}/></div>
+  <div className="flex justify-around gap-4">
+    <div className=""><Icon size={40}/></div>
     <div className="">
-    <h5 className="mb-2 text-5xl font-bold tracking-tight text-gray-900 dark:text-white"> {content}</h5>
+    <h5 className="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white"> {content}</h5>
     <p className="font-medium text-2xl text-gray-700 dark:text-gray-400">{label}</p>
     </div>
   </div>

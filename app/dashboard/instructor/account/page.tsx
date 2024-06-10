@@ -1,18 +1,18 @@
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import React from 'react'
 import { EB_Garamond } from 'next/font/google'
 import { PiStudentLight } from "react-icons/pi";
 import { BsPeople } from "react-icons/bs";
 import { SiBookstack } from "react-icons/si";
 import ChannelVerfiedComponent from '@/components/ChannelVerfiedComponent'
-
+import { RxDashboard } from "react-icons/rx";
 import { IoMdAdd } from "react-icons/io";
 import { getCurrentUser } from '@/actions/users/currentUser'
 import ActionButton from '@/components/button/actionButton';
 import AccountEdit from './accountEdit';
 import InstructorCourseListClient from '../course/courseListClient';
 import UpdateTeacherLogo from './updateTeacherLogo';
+import Link from 'next/link';
 
 
 const eb_garamound= EB_Garamond({ subsets: ['latin'] ,weight:['400', '500','600','700']})
@@ -32,7 +32,9 @@ const AccountPage= async() => {
           <div className='flex flex-col items-center min-h-screen p-1 gap-20  w-full md:w-11/12 '>
 
 
-         <div className=" bg-blue-600 p-4 flex-wrap text-white h-64   w-full rounded-[10px] flex justify-center sm:justify-between items-center">
+         <div className=" bg-blue-600 p-4 relative flex-wrap text-white h-64   w-full rounded-[10px] flex justify-center sm:justify-between items-center">
+
+          <Link href="/dashboard/instructor/analysis" className=' absolute top-3 right-3'><RxDashboard size={26} className=' font-extrabold text-white'/></Link>
 <div className="">
         
           <div className="flex flex-col sm:flex-row text-center items-center w-full sm:gap-5 md:gap-10 ">
