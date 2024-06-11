@@ -87,22 +87,8 @@ export async function POST(req: Request) {
       }
     });
 
-    const learners = lesson.chapter.course.payments?.map((payment) => ({
-      id: payment.payment.customer.id || "",
-      name: payment.payment.customer.name || "",
-      email: payment.payment.customer.email || ""
-    }));
-
-    await prisma.notification.create({
-      data: {
-        url: `/course/${lesson?.chapter?.courseId}/${lesson?.chapterId}/${lesson.id}`,
-        type: "Info",
-        title: `New Content Added to ${lesson.chapter.course.course}!`,
-        message: `Hi students! 🎉 We've just added exciting new content to your course: "${newContent.content?.substring(0, 20) + '...'}". Log in now to check it out and keep learning!`,
-        userId: user.id,
-        customers: learners
-      },
-    });
+   
+   
 
     return NextResponse.json(newContent);
   } catch (err) {

@@ -1,3 +1,4 @@
+
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb";
 import { getCurrentUser } from "@/actions/users/currentUser";
@@ -10,7 +11,7 @@ export async function POST(req: Request) {
     const user = await getCurrentUser();
 
     if (!user) {
-      return NextResponse.json({ status: false, message: "Unauthorized" },{status:404});
+      return NextResponse.json({ status: false, message: "Unauthorized" },{ status: 404 });
     }
 
     const isDataAccessed = user.permissions.some((permission) =>
@@ -18,12 +19,11 @@ export async function POST(req: Request) {
     );
 
     if (!isDataAccessed) {
-      return NextResponse.json({ status: false, message:"Unauthorized"},{status:400});
+      return NextResponse.json({ status: false, message: "Unauthorized" },{ status: 400 });
     }
 
     if (!user.teacher || !user.teacher.status) {
-      return NextResponse.json({ status: false, message:"Unauthorized"},{status:400});
-      
+      return NextResponse.json({ status: false, message: "Unauthorized" },{ status: 400 });
     }
 
     const {
@@ -36,14 +36,13 @@ export async function POST(req: Request) {
     } = body;
 
     if (!subjectId || !descriptions || !requirements || !whoShouldTake || !course) {
-      return NextResponse.json({ status: false, message:"Invalid parameters"},{status:400});
-      
+      return NextResponse.json({ status: false, message: "Invalid parameters" },{ status: 400 });
     }
 
     const newCourse = await prisma.course.create({
       data: {
         subjectId: subjectId,
-        instructorId: user.teacher.id||"",
+        instructorId: user.teacher?.id || "",
         course: course,
         price: parseFloat(price),
         rating: 0,
@@ -54,26 +53,26 @@ export async function POST(req: Request) {
     });
 
     const users = await getAllUsers();
-    const subscribers = users?.filter((u) =>user?.teacher?.subscribers?.some((sub) => sub.userId === u.id)
-    ).map((subscriber) => ({
-      id: subscriber.id,
-      name: subscriber.name || "",
-      email: subscriber.email || ""
-    }));
+    const subscriberNotifications = users?.filter(async(u) => user.teacher?.subscribers?.some((sub) => sub.userId === u.id))
+      .map(async (subscriber) => {
+        await prisma.notification.create({
+          data: {
+            url: `/course/${newCourse.id}`,
+            type: "Success",
+            title: "New Course Created",
+            message: `${user.teacher?.accountName || user.name} has created the ${newCourse.course} course`,
+            senderId: user.id,
+            userId: subscriber.id
+          }
+        });
+      });
 
-    await prisma.notification.create({
-      data: {
-        url: `/course/${newCourse.id}`,
-        type: "Success",
-        title: "New Course Created",
-        message: `${user.teacher.accountName || user.name} has created the ${newCourse.course} course`,
-        userId: user.id,
-        customers: subscribers
-      }
-    });
+    if (subscriberNotifications) {
+      await Promise.all(subscriberNotifications);
+    }
 
     return NextResponse.json(newCourse);
   } catch (error:any) {
-    return NextResponse.json({ status: false, message: error.message },{status:500});
+    return NextResponse.json({ status: false, message: error.message },{ status: 500 });
   }
 }

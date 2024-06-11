@@ -73,6 +73,8 @@ const CreateTeacher: React.FC<CreateTeacherProps> = ({ user }) => {
   }
 
   if (isSuccess) {
+    router.push("/dashboard/instructor/account");
+    router.refresh()
     return (
       <div className="h-screen w-full flex justify-center p-2 items-center">
         <div className="w-full md:max-w-md p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
@@ -97,13 +99,11 @@ const CreateTeacher: React.FC<CreateTeacherProps> = ({ user }) => {
 
   
 
-  if (user && user.teacher && !user.teacher.status) {
-    router.push("/dashboard/profile");
-    return null;
-  }
+ 
 
-  if (user && user.teacher && user.teacher.status) {
+  if (user && user.teacher && user.teacher) {
     router.push("/dashboard/instructor/account");
+    router.refresh()
     return null;
   }
 

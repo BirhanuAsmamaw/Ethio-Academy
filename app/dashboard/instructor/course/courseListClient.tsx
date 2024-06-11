@@ -44,10 +44,12 @@ import { useNewCourseFilterByInstructorQuery } from "@/redux/features/course/cou
 import TableSkeleton from "@/components/tableSkeleton"
 import ActionButton from "@/components/button/actionButton"
 import { IoMdAdd } from "react-icons/io"
+import AccountSuspended from "../account/accountSuspended"
 
 
 interface CourseListProps{
   courses:any[]| null;
+  instructor:any;
   
 }
 
@@ -182,7 +184,7 @@ export const columns: ColumnDef<CourseType>[] = [
 
 
 
-export const CourseListClient:React.FC<CourseListProps>=({courses})=> {
+export const CourseListClient:React.FC<CourseListProps>=({courses,instructor})=> {
  
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -326,7 +328,7 @@ export const CourseListClient:React.FC<CourseListProps>=({courses})=> {
                  <p className="text-lg md:text-xl">You haven't Created Course Yet!!, Please Create Course Now.</p>
                   <div className="w-full flex justify-center">
                   <div className="w-10/12 md:w-[200px]">
-                  <ActionButton url='/dashboard/instructor/course/add-course' label='Course' icon={IoMdAdd}/>
+                  {instructor?.status?<ActionButton url='/dashboard/instructor/course/add-course' label='Course' icon={IoMdAdd}/>:""}
                   </div>
                   </div>
                  </div>
@@ -378,7 +380,13 @@ const [page, setPage] = useState<number>(1);
     return <TableSkeleton/>
   }
 
-  return (<>{isSuccess?<CourseListClient  courses={courses}/>:""}</>
+
+  if(!instructor?.status){
+
+    return <AccountSuspended/>
+
+  }
+  return (<>{isSuccess?<CourseListClient instructor={instructor} courses={courses}/>:""}</>
   )
 }
 

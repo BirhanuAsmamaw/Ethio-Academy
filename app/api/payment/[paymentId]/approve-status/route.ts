@@ -41,14 +41,8 @@ export async function PUT(req: Request, { params }: { params: { paymentId: strin
         type: "Success",
         title: "Congratulations! Payment Approved!",
         message: `Dear ${payment.customer.name}, we're thrilled to inform you that your payment has been successfully approved! You now have full access to all your paid courses. Get ready to dive into your learning journey! Thank you for choosing us.`,
-        userId: user.id,
-        customers: [
-          {
-            id: payment.customer.id || "",
-            name: payment.customer.name || "",
-            email: payment.customer.email || "",
-          },
-        ],
+        senderId: user.id,
+        userId:payment.customerId
       },
     });
 

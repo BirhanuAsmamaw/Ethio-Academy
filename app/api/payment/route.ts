@@ -1,3 +1,4 @@
+
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb";
 import { getCurrentUser } from "@/actions/users/currentUser";
@@ -36,7 +37,7 @@ export async function POST(req: Request) {
       });
     }
 
-    // Create payment entries for each course
+    // Create payment entry
     const newPayment = await prisma.payment.create({
       data: {
         transaction: transaction,
@@ -47,9 +48,9 @@ export async function POST(req: Request) {
       },
     });
 
+    // Create paymentCourse entries for each course
     if (courses && courses.length) {
-      // Create paymentCourse entries for each course
-      const paymentCoursePromises = courses.map(async (course:any) => {
+      const paymentCoursePromises = courses.map(async (course: any) => {
         await prisma.paymentCourse.create({
           data: {
             paymentId: newPayment.id,
@@ -58,31 +59,39 @@ export async function POST(req: Request) {
         });
       });
 
-      const users = await getAllUsers();
-      const approvePaymentUsers = users?.filter((usr) => usr.permissions.some(
-        (permission) => permission.permission.action === "CanApprovePayment"
-      )).map((u) => ({
-        id: u.id || "",
-        name: u.name || "",
-        email: u.email || ""
-      }));
+    
+// Fetch users who can approve payments and notify them
+const users = await getAllUsers();
+const approvePaymentUsers = (users || []).filter((usr) =>
+  usr.permissions.some(
+    (permission) => permission.permission.action === "CanApprovePayment"
+  )
+);
 
-      await prisma.notification.create({
-        data: {
-          url: `/dashboard/approve-payment/${newPayment?.id}`,
-          type: "Success",
-          title: "Payment Success!",
-          message: `${user.name} purchased ${courses.length} course${courses.length > 1 ? 's' : ''} and ${departmentId ? 'exams' : ''}.`,
-          userId: user.id,
-          customers: approvePaymentUsers
-        },
-      });
+      await Promise.all(
+        approvePaymentUsers.map(async (u) => {
+          await prisma.notification.create({
+            data: {
+              url: `/dashboard/approve-payment/${newPayment.id}`,
+              type: "Success",
+              title: "Payment Success!",
+              message: `${user.name} purchased ${
+                courses.length
+              } course${courses.length > 1 ? "s" : ""} and ${
+                departmentId ? "exams" : ""
+              }.`,
+              senderId: user.id,
+              userId: u.id,
+            },
+          });
+        })
+      );
 
       // Wait for all paymentCourse creation promises to resolve
       await Promise.all(paymentCoursePromises);
     }
 
-    // Return the created payment entries
+    // Return the created payment entry
     return NextResponse.json(newPayment);
   } catch (error) {
     // Handle any errors

@@ -23,7 +23,7 @@ const AccountPage= async() => {
   const isDataAccessed=user?.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse"||permission.permission.action === "CanManageCourse" || permission.permission.action === "CanCreateCourse")
 
  
-  if(!isDataAccessed || !user?.teacher || !user?.teacher.status){
+  if(!isDataAccessed || !user?.teacher ){
     return null;
   }
   const names=user.teacher.accountName?.split(" ")||user.name?.split(" ")
@@ -97,7 +97,20 @@ const AccountPage= async() => {
 
 <div className=" flex flex-row md:flex-col gap-2 pt-1 items-center justify-center">
 <AccountEdit user={user}/>
-<ActionButton url='/dashboard/instructor/course/add-course' label='Course' icon={IoMdAdd}/>
+{user?.teacher?.status?<ActionButton url='/dashboard/instructor/course/add-course' label='Course' icon={IoMdAdd}/>:""}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </div>
