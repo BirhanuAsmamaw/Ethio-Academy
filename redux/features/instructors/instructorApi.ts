@@ -29,6 +29,12 @@ export const instructorApi=createApi({
     }),
 
 
+    // instructor Summary
+    instructorSummary:builder.query<any,void>({
+    query:()=>`/dashboard/summary`
+    }),
+
+
     // get Instructor by Id
     getInstructor:builder.query<any,string>({
       query:(teacherId)=>`/getById?teacherId=${teacherId}`
@@ -36,6 +42,7 @@ export const instructorApi=createApi({
   })
 });
 export const {
+  useInstructorSummaryQuery,
   useInstructorStatusMutation,
   useGetInstructorQuery,
   useInstructorlistsQuery,

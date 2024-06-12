@@ -1,14 +1,14 @@
+"use client"
 import DashboardCard from '@/components/card/summaryCard'
 import React from 'react'
 import { IoIosPricetags } from "react-icons/io";
 import { FaPeopleRoof } from "react-icons/fa6";
 import { SiCoursera } from "react-icons/si";
-import { Chart as ChartJs,
-  Legend
-}
- from "chart.js"
- import { Doughnut,Bar } from "react-chartjs-2";
+import { useInstructorSummaryQuery } from '@/redux/features/instructors/instructorApi';
+
 const InstructorAnalysisPage = () => {
+
+  const {data,isSuccess,isLoading}= useInstructorSummaryQuery()
   return (
     <div className='min-h-screen w-full justify-center pt-20'>
       <div className=" flex flex-col gap-y-10 lg:gap-y-20">
@@ -16,9 +16,9 @@ const InstructorAnalysisPage = () => {
 
 {/* Card List */}
         <div className=" flex flex-wrap gap-6 justify-center w-full">
-        <DashboardCard className='w-[300px] truncate' label={'Learners'} content={'323'} icon={FaPeopleRoof } />
-        <DashboardCard className='w-[300px] truncate' label={'Courses'} content={'32'} icon={SiCoursera} />
-        <DashboardCard className='w-[300px] truncate' label={'Total Price'} content={'129,376,000'} icon={IoIosPricetags} />
+        <DashboardCard className='w-[300px] truncate' label={'Learners'} content={isSuccess&&data?.learners} icon={FaPeopleRoof } />
+        <DashboardCard className='w-[300px] truncate' label={'Courses'} content={isSuccess&&data?.courses} icon={SiCoursera} />
+        <DashboardCard className='w-[300px] truncate' label={'Total Price'} content={isSuccess&&data?.price} icon={IoIosPricetags} />
         </div>
 
 
