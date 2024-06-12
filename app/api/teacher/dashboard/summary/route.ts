@@ -12,7 +12,7 @@ export async function GET(req: Request) {
 
     const user = await getCurrentUser();
     if (!user) {
-      throw new Error("Access denied");
+      return NextResponse.json({message:"Access denied"},{status:400})
     }
 
     const teacher = await prisma.teacher.findUnique({
@@ -59,7 +59,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json(summaryData);
   } catch (err) {
-    console.error(err);
+    
     return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }
