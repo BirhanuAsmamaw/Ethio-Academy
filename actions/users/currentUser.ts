@@ -26,7 +26,18 @@ export async function getCurrentUser() {
           subscribers:true,
           courses:{
             include:{
-              payments:true
+              payments:{
+
+                select:{
+                  
+                  payment:{
+                    
+                    select:{
+                      totalPrice:true,
+                      customer:true}
+                  }
+                }
+              }
             }
           }
         }

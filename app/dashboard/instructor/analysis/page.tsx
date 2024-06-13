@@ -8,7 +8,9 @@ import { useInstructorSummaryQuery } from '@/redux/features/instructors/instruct
 
 const InstructorAnalysisPage = () => {
 
-  const {data,isSuccess,isLoading}= useInstructorSummaryQuery()
+  const {data,isSuccess,isLoading,error}= useInstructorSummaryQuery();
+  console.log(" dashboard",data)
+  console.log(" dashboard Error",error)
   return (
     <div className='min-h-screen w-full justify-center pt-20'>
       <div className=" flex flex-col gap-y-10 lg:gap-y-20">
