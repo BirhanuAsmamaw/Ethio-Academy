@@ -19,6 +19,11 @@ export const userApi=createApi({
       query:(username)=>`/profile?username=${username}`
     }),
 
+
+    // MY PROFILE
+    myProfile:builder.query<any,void>({
+      query:()=>'/myprofile'
+    }),
     updateProfile:builder.mutation<any,any>({
       query:(data)=>({
         url:`/profile/update`,
@@ -55,6 +60,8 @@ export const userApi=createApi({
 });
 
 export const {
+
+  useMyProfileQuery,
   useUserListsQuery,
   useUpdateUsernameMutation,
   useUpdateAccountTypeMutation,

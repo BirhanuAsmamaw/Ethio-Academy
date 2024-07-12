@@ -10,6 +10,8 @@ import { userApi } from "./features/user/userApi"
 import { paymentApi } from "./features/payments/paymentApi"
 import { LessonApi } from "./features/lesson/lessonApi"
 import { notificationApi } from "./features/notifications/notification"
+import { permissionApi } from "./features/permission/permissionApi"
+import { departmentApi } from "./features/department/departmentApi"
 
 export const store=configureStore({
     reducer:{
@@ -20,12 +22,24 @@ export const store=configureStore({
         [paymentApi.reducerPath]:paymentApi.reducer,
         [LessonApi.reducerPath]:LessonApi.reducer,
         [notificationApi.reducerPath]:notificationApi.reducer,
+        [permissionApi.reducerPath]:permissionApi.reducer,
+        [departmentApi.reducerPath]:departmentApi?.reducer,
 
         search:searchSlice.reducer,
         navigation:navigationSlice.reducer,
 
     },
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(courseApi.middleware,instructorApi.middleware,subscriberApi.middleware,userApi.middleware,paymentApi.middleware,LessonApi.middleware,notificationApi.middleware)
+    middleware:(getDefaultMiddleware)=>getDefaultMiddleware().concat(
+        departmentApi?.middleware,
+        courseApi.middleware,
+        instructorApi.middleware,
+        subscriberApi.middleware,
+        userApi.middleware,
+        paymentApi.middleware,
+        LessonApi.middleware,
+        notificationApi.middleware,
+        permissionApi.middleware
+    )
 }
 )
 

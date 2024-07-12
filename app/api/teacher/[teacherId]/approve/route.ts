@@ -2,18 +2,27 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import { getTeacherPermission } from "@/actions/authorization/getTeacherPermission";
+import { myPermissions } from "@/actions/authorization/myPermission";
 
 export async function PUT(req: Request, { params }: { params: { teacherId: string } }) {
   const teacherId = params.teacherId;
   const { reason, status } = await req.json();
 
   try {
+    
+    // authorization
     const user = await getCurrentUser();
-    if (!user) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    if(!user){
+      return NextResponse.json({message:"Unauthorized"},{status:400})
+      
     }
-
-    const hasPermission = user.permissions.some((permission) => permission.permission.action === "CanApprovedTeacher");
+    
+    
+    const permissions=await myPermissions();
+        if(!permissions){
+          return NextResponse.json({message:"permissions not found"},{status:404})
+        }
+    const hasPermission = permissions?.some((permission) => permission?.action === "CanApprovedTeacher");
     if (!hasPermission) {
       return NextResponse.json({ message: "Forbidden Resource" }, { status: 403 });
     }

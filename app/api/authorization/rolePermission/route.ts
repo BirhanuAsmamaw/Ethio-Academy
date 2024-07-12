@@ -1,3 +1,4 @@
+import { myPermissions } from "@/actions/authorization/myPermission";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import prisma from "@/lib/prismadb"
 import { NextResponse } from "next/server";
@@ -9,13 +10,12 @@ const {
   permissionId
 }=body;
 
-// authorization
-const user = await getCurrentUser();
-if(!user){
-  throw new Error("Unathorized")
-}
+const permissions=await myPermissions();
+    if(!permissions){
+      return NextResponse.json({message:"permissions not found"},{status:404})
+    }
 
-const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanGroupPermission" )
+const isDataAccessed=permissions?.some((permission)=>permission?.action === "CanGroupPermission" )
 if(!isDataAccessed){
   throw new Error("Forbidden Resourse")
 }
@@ -24,7 +24,7 @@ if(!roleId || !permissionId){
   throw new Error("Invalid role and permission passed")
 }
 
-//create ROLEPERMISSION
+//create ROLE PERMISSION
 const newRolePermission=await prisma.rolePermission.create({
   data:{
     roleId:roleId,
@@ -37,7 +37,7 @@ return NextResponse.json(newRolePermission)
 
 
   catch(err:any){
-    throw new Error(err?.message)
+    return NextResponse.json({message:"Something went wrong!"},{status:500})
   }
 
 }

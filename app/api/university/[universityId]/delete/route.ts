@@ -2,21 +2,29 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myPermissions } from "@/actions/authorization/myPermission";
 export async function DELETE(req: Request, {params}:{params:{universityId:string}}){
   const universityId=params.universityId;
  
 
   try{
-    const user=await  getCurrentUser();
+  
+ // authorization
+ const user = await getCurrentUser();
+ if(!user){
+   return NextResponse.json({message:"Unauthorized"},{status:400})
    
-    if(!user){
-      throw new Error("Unathorized")
-    }
+ }
+ 
+ 
+ const permissions=await myPermissions();
+     if(!permissions){
+       return NextResponse.json({message:"permissions not found"},{status:404})
+     }
     
-    
-    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageUniversity" )
+    const isDataAccessed=permissions.some((permission)=>permission?.action === "CanManageUniversity" )
     if(!isDataAccessed){
-      throw new Error("Forbidden Resourse")
+      throw new Error("Forbidden Resources")
     }
     
     const university=await prisma.university.findUnique({

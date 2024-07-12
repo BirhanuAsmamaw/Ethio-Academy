@@ -23,8 +23,18 @@ export async function GET(req: NextRequest){
       if (!course) {
         return NextResponse.json({ message: "Course does not exist" }, { status: 404 });
       }
+
+      const payedCourses=await prisma.payment.findMany({
+        where:{
+          customerId:user?.id
+        }
+      });
+
+      if(!payedCourses){
+        return NextResponse.json({message:"Payed Course not found!"},{status:404})
+      }
   
-      const CoursesPayed = user?.payedCourses
+      const CoursesPayed = payedCourses
       .filter((ps:any) => ps.status)
       .flatMap((payedCourse:any) => 
         payedCourse.courses.map((course:any) => {

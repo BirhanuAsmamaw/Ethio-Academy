@@ -3,26 +3,37 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import { getAllUsers } from "@/actions/users/getAllUsers";
+import { myTeacherAccount } from "@/actions/teacher/myAccount";
+import { myPermissions } from "@/actions/authorization/myPermission";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const user = await getCurrentUser();
+    const myAccount:any=await myTeacherAccount()
+ // authorization
+ const user = await getCurrentUser();
+ if(!user){
+   return NextResponse.json({message:"Unauthorized"},{status:400})
+   
+ }
+ 
+ 
+ const permissions=await myPermissions();
+     if(!permissions){
+       return NextResponse.json({message:"permissions not found"},{status:404})
+     }
 
-    if (!user) {
-      return NextResponse.json({ status: false, message: "Unauthorized" },{ status: 404 });
-    }
 
-    const isDataAccessed = user.permissions.some((permission) =>
-      ["CanManageCourse", "CanCreateCourse", "CanManageOwnCourse"].includes(permission.permission.action)
+    const isDataAccessed = permissions?.some((permission) =>
+      ["CanManageCourse", "CanCreateCourse", "CanManageOwnCourse"].includes(permission?.action)
     );
 
     if (!isDataAccessed) {
       return NextResponse.json({ status: false, message: "Unauthorized" },{ status: 400 });
     }
 
-    if (!user.teacher || !user.teacher.status) {
+    if (!myAccount || !myAccount?.status) {
       return NextResponse.json({ status: false, message: "Unauthorized" },{ status: 400 });
     }
 
@@ -42,7 +53,7 @@ export async function POST(req: Request) {
     const newCourse = await prisma.course.create({
       data: {
         subjectId: subjectId,
-        instructorId: user.teacher?.id || "",
+        instructorId: myAccount?.id || "",
         course: course,
         price: parseFloat(price),
         rating: 0,
@@ -53,14 +64,14 @@ export async function POST(req: Request) {
     });
 
     const users = await getAllUsers();
-    const subscriberNotifications = users?.filter(async(u) => user.teacher?.subscribers?.some((sub) => sub.userId === u.id))
+    const subscriberNotifications = users?.filter(async(u) => myAccount?.subscribers?.some((sub:any) => sub.userId === u.id))
       .map(async (subscriber) => {
         await prisma.notification.create({
           data: {
             url: `/course/${newCourse.id}`,
             type: "Success",
             title: "New Course Created",
-            message: `${user.teacher?.accountName || user.name} has created the ${newCourse.course} course`,
+            message: `${myAccount?.accountName || user.name} has created the ${newCourse.course} course`,
             senderId: user.id,
             userId: subscriber.id
           }

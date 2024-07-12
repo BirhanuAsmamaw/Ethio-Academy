@@ -17,6 +17,12 @@ export const paymentApi=createApi({
     getPaymentCourse:builder.query<any,string>({
       query:(courseId)=>`/paymentCourse?courseId=${courseId}`
     }),
+
+    // EXAM BOUGHT
+    getPaymentExam:builder.query<any,string>({
+      query:(url)=>`/paymentExam?url=${url}`
+    }),
+
    approveStatus:builder.mutation<any,string>({
       query:(paymentId)=>({
         url:`/${paymentId}/approve-status`,
@@ -27,4 +33,9 @@ export const paymentApi=createApi({
   })
 });
 
-export const {useGetPaymentCourseQuery,usePaymentListQuery,useApproveStatusMutation,useGetPaymentQuery}=paymentApi;
+export const {
+  useGetPaymentExamQuery,
+  useGetPaymentCourseQuery,
+  usePaymentListQuery,
+  useApproveStatusMutation,
+  useGetPaymentQuery}=paymentApi;

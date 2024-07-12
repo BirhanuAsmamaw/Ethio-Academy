@@ -2,6 +2,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myTeacherAccount } from "@/actions/teacher/myAccount";
+import { myPermissions } from "@/actions/authorization/myPermission";
 export async function PUT(req: Request, {params}:{params:{contentId:string}}){
   const contentId=params.contentId;
   const body = await req.json();
@@ -10,27 +12,39 @@ export async function PUT(req: Request, {params}:{params:{contentId:string}}){
   try{
 
 
+    const myAccount:any=await myTeacherAccount()
     // authorization
-const user = await getCurrentUser();
-if(!user){
-  throw new Error("Unauthorized")
-}
+    const user = await getCurrentUser();
+    if(!user){
+      return NextResponse.json({message:"Unauthorized"},{status:400})
+      
+    }
+    
+    
+    const permissions=await myPermissions();
+        if(!permissions){
+          return NextResponse.json({message:"permissions not found"},{status:404})
+        }
+
 
 if(!contentId ) {
-throw new Error("Invalid  parameters");
+  return NextResponse.json({message:"Invalid  parameters"},{status:400})
+
  }
 
-const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
+const isDataAccessed=permissions?.some((permission)=>permission?.action === "CanManageOwnCourse" )
 if(!isDataAccessed){
-  throw new Error("Forbidden Recourse")
+  return NextResponse.json({message:"Forbidden Recourse"},{status:400})
+  
 }
 
-if(!user.teacher){
-  throw new Error("Unauthorized")
+if(!myAccount){
+  return NextResponse.json({message:"Unauthorized"},{status:400})
+
 }
 
-if(!user.teacher.status){
-  throw new Error("Unauthorized")
+if(!myAccount?.status){
+  return NextResponse.json({message:"Unauthorized"},{status:400})
 } 
 const contentData=await prisma.content.findFirst({
   where:{
@@ -38,7 +52,7 @@ const contentData=await prisma.content.findFirst({
     lesson:{
       chapter:{
         course:{
-          instructorId:user.teacher.id
+          instructorId:myAccount?.id
         }
       }
     }
@@ -47,7 +61,8 @@ const contentData=await prisma.content.findFirst({
 
 
 if(!contentData){
-  throw new Error("No content Found!")
+  return NextResponse.json({message:"No content Found!"},{status:404})
+
 }
 
     const updatedcontent=await prisma.content.update({
@@ -61,6 +76,7 @@ if(!contentData){
     return NextResponse.json(updatedcontent);
   }
   catch(err){
-    throw new Error("Something went wrong")
+    return NextResponse.json({message:"Something went wrong"},{status:500})
+   
   }
 }

@@ -2,6 +2,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myPermissions } from "@/actions/authorization/myPermission";
+import { myTeacherAccount } from "@/actions/teacher/myAccount";
 export async function PUT(req: Request, {params}:{params:{id:string}}){
   const id=params.id;
   const body = await req.json();
@@ -13,29 +15,42 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
      whoShouldTake,} = body;
 
   try{
-    const user=await  getCurrentUser();
-
+    const myAccount:any=await myTeacherAccount()
+    // authorization
+    const user = await getCurrentUser();
     if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
+      return NextResponse.json({message:"Unauthorized"},{status:400})
+      
     }
-    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
+    
+    
+    const permissions=await myPermissions();
+        if(!permissions){
+          return NextResponse.json({message:"permissions not found"},{status:404})
+        }
+
+        
+    const isDataAccessed=permissions.some((permission)=>permission?.action === "CanManageOwnCourse" )
 if(!isDataAccessed){
   throw new Error(" forbidden resource")
 }
 
-if(!user.teacher){
-  throw new Error("Unathorized")
+if(!myAccount){
+  return NextResponse.json({message:"Unauthorized"},{status:400})
+ 
 }
 
-if(!user.teacher.status){
-  throw new Error("Unathorized")
+if(!myAccount.status){
+  return NextResponse.json({message:"Unauthorized"},{status:400})
 }
+
     const courseData=await prisma.course.findUnique({
-      where: {id:id,instructorId:user.teacher.id},
+      where: {id:id,instructorId:myAccount?.id}
     })
     if(!courseData){
-      return NextResponse.json({status:false, message:"course not found"});
+      return NextResponse.json({status:false, message:"course not found"},{status:404});
     }
+
 
     const updatedCourse=await prisma.course.update({
       where: {id:id},
@@ -50,7 +65,6 @@ if(!user.teacher.status){
     return NextResponse.json(updatedCourse);
   }
   catch(err:any){
-    console.log(err)
-    throw new Error(err)
+    return NextResponse.json({status:false, message:"somethingwent wrong"},{status:500});
   }
 }

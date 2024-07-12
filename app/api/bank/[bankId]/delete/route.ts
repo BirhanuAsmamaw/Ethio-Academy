@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myPermissions } from "@/actions/authorization/myPermission";
 export async function DELETE(req: Request, {params}:{params:{bankId:string}}){
   const bankId=params.bankId;
  
@@ -13,7 +14,14 @@ if(!user){
   throw new Error("Unathorized")
 }
 
-const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageBank" )
+
+const permissions=await myPermissions();
+    if(!permissions){
+      return NextResponse.json({message:"permissions not found"},{status:404})
+    }
+
+
+const isDataAccessed=permissions?.some((permission)=>permission?.action === "CanManageBank" )
 if(!isDataAccessed){
   throw new Error("Forbidden Resourse")
 }

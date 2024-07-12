@@ -19,6 +19,8 @@ import { useUpdateAccountTypeMutation} from "@/redux/features/user/userApi";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import UpdateUserNameClient from "./updateUserName";
+import { useEnrolledCoursesQuery } from "@/redux/features/course/courseApi";
+
 
 
 
@@ -37,7 +39,11 @@ const router=useRouter()
   }
   
 
-  const courses = user.payedCourses.flatMap((payedCourse: any) =>payedCourse?.courses?.flatMap((c:any)=>c.course)
+  const {data:enrolledCourses}=useEnrolledCoursesQuery();
+
+  console.log("enrolled courses",enrolledCourses)
+
+  const courses = user?.payedCourses?.flatMap((payedCourse: any) =>payedCourse?.courses?.flatMap((c:any)=>c?.course)
 );
 
 

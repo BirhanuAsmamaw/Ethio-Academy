@@ -11,14 +11,14 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
     const user=await  getCurrentUser();
 
     if(!user){
-      return NextResponse.json({status:false, message:"unathorized"});
+      return NextResponse.json({status:false, message:"unauthorized"},{status:400});
     }
 
     const course=await prisma.course.findUnique({
       where: {id:id}
     })
     if(!course){
-      return NextResponse.json({status:false, message:"course not found"});
+      return NextResponse.json({status:false, message:"course not found"},{status:404});
     }
 
     const updatedCourse=await prisma.course.update({
@@ -27,5 +27,7 @@ export async function PUT(req: Request, {params}:{params:{id:string}}){
     })
     return NextResponse.json(updatedCourse);
   }
-  catch(err){}
+  catch(err){
+    return NextResponse.json({message:"something went wrong!"},{status:500})
+  }
 }

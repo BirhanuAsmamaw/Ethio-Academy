@@ -2,6 +2,7 @@
 import { RemoveFile } from '@/actions/file/removeFile';
 import AvatarUploader from '@/components/input/avatarInput';
 import FileUploader from '@/components/input/fileUploader'
+import { useMyAccountQuery } from '@/redux/features/instructors/instructorApi';
 import axios from 'axios';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
@@ -11,8 +12,10 @@ interface UpdateTeacherLogoProps{
   user: any;
 }
 const UpdateTeacherLogo:React.FC<UpdateTeacherLogoProps> = ({user}) => {
-  const [LogoUrl, setLogoUrl] = useState(user?.teacher.logo?user?.teacher.logo.public_url:"");
-  const [LogoKey, setLogoKey] = useState(user?.teacher.logo?user?.teacher.logo.public_key:"");
+
+  const {data:myAccount,isSuccess:accountSucc,isLoading:accountLoad}=useMyAccountQuery();
+  const [LogoUrl, setLogoUrl] = useState(myAccount?.logo?myAccount.logo.public_url:"");
+  const [LogoKey, setLogoKey] = useState(myAccount.logo?myAccount.logo.public_key:"");
 
   
 
@@ -35,13 +38,15 @@ const UpdateTeacherLogo:React.FC<UpdateTeacherLogoProps> = ({user}) => {
   }
 
 
+
+  
   
 
 
 
  
  
-  const onuserLogoComplete=(res:any[]) => {
+  const onUserLogoComplete=(res:any[]) => {
     const url = res[0]?.url || "";
     const key=res[0]?.key || "";
     setLogoUrl(url);
@@ -52,8 +57,8 @@ const UpdateTeacherLogo:React.FC<UpdateTeacherLogoProps> = ({user}) => {
     }
 
    axios.put(`/api/teacher/update/logo`,{logo:LogoData}).then(()=>{
-    setLogoUrl(user?.teacher?.logo?(user?.teacher?.logo.public_url||user.image):"");
-    setLogoKey(user?.teacher?.logo?user?.teacher?.logo.public_key:"");
+    setLogoUrl(myAccount?.logo?(myAccount?.logo.public_url||user.image):"");
+    setLogoKey(myAccount?.logo?myAccount?.logo.public_key:"");
     toast.success("user Logo uploaded successfully")
     }).catch((error)=>{
       toast.error(error.message);
@@ -61,13 +66,11 @@ const UpdateTeacherLogo:React.FC<UpdateTeacherLogoProps> = ({user}) => {
    
   }
 
-if(!user?.teacher){
-  return null;
-}
+
 
   
   return (<AvatarUploader
-      onClientUploadComplete={onuserLogoComplete}
+      onClientUploadComplete={onUserLogoComplete}
         file={LogoUrl}
         handleMediaChange={handleLogoChange}
         endpoint="imageUploader"

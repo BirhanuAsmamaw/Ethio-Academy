@@ -1,4 +1,5 @@
 
+import { myPermissions } from "@/actions/authorization/myPermission";
 import { getAllTeachers } from "@/actions/teacher/getAllTeachers";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import prisma from "@/lib/prismadb";
@@ -9,14 +10,22 @@ export async function POST(req: Request, res: Response) {
   try {
     const { examId, department, url } = body;
 
-    // Authorization
-    const user = await getCurrentUser();
-    if (!user) {
-      throw new Error("Unauthorized");
-    }
+  
+ // authorization
+ const user = await getCurrentUser();
+ if(!user){
+   return NextResponse.json({message:"Unauthorized"},{status:400})
+   
+ }
+ 
+ 
+ const permissions=await myPermissions();
+     if(!permissions){
+       return NextResponse.json({message:"permissions not found"},{status:404})
+     }
 
-    const isDataAccessed = user.permissions.some((permission) =>
-      permission.permission.action === "CanManageDepartment"
+    const isDataAccessed = permissions.some((permission) =>
+      permission?.action === "CanManageDepartment"
     );
     if (!isDataAccessed) {
       throw new Error("Forbidden Resource");

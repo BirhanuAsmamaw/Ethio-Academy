@@ -9,25 +9,27 @@ export async function POST(req: Request, res: Response){
   const{email}=body;
   try{
     if(!email){
-      throw new Error('email is not empty');
+      return NextResponse.json({message:'email is not empty'},{status:400});
+     
 
     }
   
     const user=await getUserByEmail(email)
     if(!user){
-      throw new Error('email is not existing');
+      return NextResponse.json({message:'email is not existing'},{status:400});
+     
     }
     const verificationToken=await generateVerificationToken(email)
 
     const confirmLink=`https://ethio-exams-academy.vercel.app/resetPassword?token=${verificationToken.token}`
   
   
-   await sendVerificationEmail(verificationToken.email,confirmLink)
+   await sendVerificationEmail(verificationToken.email,confirmLink,user?.name||"")
      
   return NextResponse.json({succes:"confirmation email sent successfully"});
    
   }
   catch(e){
-    throw new Error('something went wrong');
+    return NextResponse.json({message:'something went wrong'},{status:500});
   }
 }

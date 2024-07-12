@@ -95,7 +95,7 @@ const approvePaymentUsers = (users || []).filter((usr) =>
     return NextResponse.json(newPayment);
   } catch (error) {
     // Handle any errors
-    console.error("Error creating payments:", error);
+    
     throw new Error("Failed to create payments");
   }
 }

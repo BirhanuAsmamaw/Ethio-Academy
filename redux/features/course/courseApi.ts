@@ -50,6 +50,15 @@ export const courseApi=createApi({
       query:(courseId)=>`${courseId}/byId`
     }),
 
+    // ENROLLED COURSES
+  
+    enrolledCourses:builder.query<any[],void>({
+      query:()=>({
+        url:`/enrolledCourses`,
+        method:"GET"
+      })
+    }),
+
 
 // Course Streak
     courseStreak: builder.mutation<any, string >({
@@ -73,6 +82,8 @@ export const courseApi=createApi({
     getCourseCertificate: builder.query<any, string >({
       query: (courseId) => `/certificates/findById?courseId=${courseId}`
     }),
+
+
 
   })
 });
@@ -99,7 +110,11 @@ useCourseStreakMutation,
   useOrderCourseByRateQuery,
   useNewCourseQuery,
 //get course by id
-useCourseDetailQuery
+useCourseDetailQuery,
+
+// enrolled courses
+useEnrolledCoursesQuery
+
 
 
 }=courseApi;

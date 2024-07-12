@@ -1,3 +1,4 @@
+import { myPermissions } from "@/actions/authorization/myPermission";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import prisma from "@/lib/prismadb"
 import { NextResponse } from "next/server";
@@ -12,12 +13,17 @@ const {
 // authorization
 const user = await getCurrentUser();
 if(!user){
-  throw new Error("Unathorized")
+  throw new Error("Unauthorized")
 }
 
-const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanAssignPermission" )
+const permissions=await myPermissions();
+if(!permissions){
+  return NextResponse.json({message:"Forbidden Resources"},{status:404})
+}
+
+const isDataAccessed=permissions?.some((permission)=>permission?.action === "CanAssignPermission" )
 if(!isDataAccessed){
-  throw new Error("Forbidden Resourse")
+  throw new Error("Forbidden Resources")
 }
 if(!userId || !permissionId){
   throw new Error("Invalid user and permission passed")

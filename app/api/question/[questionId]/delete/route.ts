@@ -2,20 +2,29 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myPermissions } from "@/actions/authorization/myPermission";
 export async function DELETE(req: Request, {params}:{params:{questionId:string}}){
   const questionId=params.questionId;
  
 
   try{
-       // authorization
-const user = await getCurrentUser();
-if(!user){
-  throw new Error("Unathorized")
-}
+    
+    // authorization
+    const user = await getCurrentUser();
+    if(!user){
+      return NextResponse.json({message:"Unauthorized"},{status:400})
+      
+    }
+    
+    
+    const permissions=await myPermissions();
+        if(!permissions){
+          return NextResponse.json({message:"permissions not found"},{status:404})
+        }
 
-const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" || permission.permission.action === "CanManageSubject" ||permission.permission.action === "CanManageDepartment"  )
+const isDataAccessed=permissions?.some((permission)=>permission?.action === "CanManageOwnCourse" || permission?.action === "CanManageSubject" ||permission?.action === "CanManageDepartment"  )
 if(!isDataAccessed){
-  throw new Error("Forbidden Resourse")
+  throw new Error("Forbidden Resources")
 }
     const question=await prisma.question.findUnique({
       where: {id:questionId}
@@ -34,6 +43,6 @@ if(!isDataAccessed){
     });
   }
   catch(err){
-    console.log(err);
+    return NextResponse.json({message:"Something went wrong"},{status:500})
   }
 }

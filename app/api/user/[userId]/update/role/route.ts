@@ -2,22 +2,30 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myPermissions } from "@/actions/authorization/myPermission";
 export async function PUT(req: Request, {params}:{params:{userId:string}}){
   const userId=params.userId;
   const body = await req.json();
   const {role} = body;
 
   try{
-    const user=await  getCurrentUser();
    
-    if(!user){
-      throw new Error("Unathorized")
-    }
+ // authorization
+ const user = await getCurrentUser();
+ if(!user){
+   return NextResponse.json({message:"Unauthorized"},{status:400})
+   
+ }
+ 
+ 
+ const permissions=await myPermissions();
+     if(!permissions){
+       return NextResponse.json({message:"permissions not found"},{status:404})
+     }
     
-    
-    const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageUser" )
+    const isDataAccessed=permissions?.some((permission)=>permission?.action === "CanManageUser" )
     if(!isDataAccessed){
-      throw new Error("Forbidden Resourse")
+      throw new Error("Forbidden Resources")
     }
 
     const UserData=await prisma.user.findUnique({
@@ -34,5 +42,7 @@ export async function PUT(req: Request, {params}:{params:{userId:string}}){
     })
     return NextResponse.json(updatedUser);
   }
-  catch(err){}
+  catch(err){
+    return NextResponse.json({message:"Something Went wrong"})
+  }
 }

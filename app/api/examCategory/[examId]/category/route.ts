@@ -9,5 +9,7 @@ export async function GET(req:Request,{params}:{params:{examId:string}}){
     })
     return  NextResponse.json(departments)
   }
-  catch(err){}
+  catch(err){
+    return NextResponse.json({message:"something went wrong"})
+  }
 }

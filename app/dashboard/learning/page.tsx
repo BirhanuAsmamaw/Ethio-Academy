@@ -1,37 +1,44 @@
+"use client"
 
-import { getCurrentUser } from "@/actions/users/currentUser";
 import LearningClient from "./learningClient";
+import { useEnrolledCoursesQuery } from "@/redux/features/course/courseApi";
 
 
 
-const MyLearning = async() => {
+const MyLearning = () => {
 
-
-const user=await getCurrentUser();
-
-
-
-if (!user) {
-  return null;
-}
-
-const myPayedCourses=user.payedCourses.flatMap((course=>course.courses.map(c=>({...c.course,status:course.status}
-))))
+  const {data:enrolledCourses,isSuccess,isLoading}=useEnrolledCoursesQuery();
 
 
 
 
-const examsTaken=user.payedCourses.filter(course=>!course.courses.length).map((course=>({
-   id: course.id,
-   exam: course.department?.departmentName,
-   status: course.status
-})))
+  if(isLoading){
+    return <div className="w-full h-screen flex justify-center items-center">
+      <p>Loading ...</p>
+    </div>
+  }
+
+const myPayedCourses=isSuccess&&enrolledCourses?.map((c:any)=>({course
+:c.course.course
+  ,status:true}
+))
+
+console.log("courses enrolled",myPayedCourses)
+
+
+
+
+// const examsTaken=user.payedCourses.filter(course=>!course.courses.length).map((course=>({
+//    id: course.id,
+//    exam: course.department?.departmentName,
+//    status: course.status
+// })))
 
 
 
  
   return (<div className="w-full flex justify-center p-4">
-    <LearningClient  exams={examsTaken} courses={myPayedCourses}/>
+    <LearningClient  exams={[]} courses={[]}/>
   </div>);
 }
  

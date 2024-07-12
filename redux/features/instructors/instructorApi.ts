@@ -29,9 +29,13 @@ export const instructorApi=createApi({
     }),
 
 
+   myAccount:builder.query<any,void>({
+      query: (status) => `/myAccount` 
+    }),
+
     // instructor Summary
     instructorSummary:builder.query<any,void>({
-    query:()=>`/dashboard/summary`
+    query:()=>`/summary`
     }),
 
 
@@ -42,6 +46,7 @@ export const instructorApi=createApi({
   })
 });
 export const {
+  useMyAccountQuery,
   useInstructorSummaryQuery,
   useInstructorStatusMutation,
   useGetInstructorQuery,

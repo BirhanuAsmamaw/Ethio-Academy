@@ -2,35 +2,46 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb";
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myPermissions } from "@/actions/authorization/myPermission";
+import { myTeacherAccount } from "@/actions/teacher/myAccount";
 
 export async function POST(req: Request) {
   const body = await req.json();
 
   try {
     const { chapterId, title } = body;
+    const myAccount:any=await myTeacherAccount()
+   
+ // authorization
+ const user = await getCurrentUser();
+ if(!user){
+   return NextResponse.json({message:"Unauthorized"},{status:400})
+   
+ }
+ 
+ 
+ const permissions=await myPermissions();
+     if(!permissions){
+       return NextResponse.json({message:"permissions not found"},{status:404})
+     }
 
-    // Authorization
-    const user = await getCurrentUser();
-    if (!user) {
-      throw new Error("Unauthorized");
-    }
 
     if (!chapterId || !title) {
       throw new Error("Invalid parameters");
     }
 
-    const isDataAccessed = user.permissions.some(
-      (permission) => permission.permission.action === "CanManageOwnCourse"
+    const isDataAccessed = permissions.some(
+      (permission) => permission?.action === "CanManageOwnCourse"
     );
     if (!isDataAccessed) {
       throw new Error("Forbidden Resource");
     }
 
-    if (!user.teacher) {
+    if (!myAccount) {
       throw new Error("Unauthorized");
     }
 
-    if (!user.teacher.status) {
+    if (!myAccount?.status) {
       throw new Error("Unauthorized");
     }
 
@@ -38,7 +49,7 @@ export async function POST(req: Request) {
       where: {
         id: chapterId,
         course: {
-          instructorId: user.teacher.id,
+          instructorId: myAccount?.id,
         },
       },
       include: {

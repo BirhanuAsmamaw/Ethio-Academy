@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myPermissions } from "@/actions/authorization/myPermission";
 export async function DELETE(req: Request, {params}:{params:{departmentId:string}}){
   const departmentId=params.departmentId;
  
@@ -10,13 +11,17 @@ export async function DELETE(req: Request, {params}:{params:{departmentId:string
         // authorization
 const user = await getCurrentUser();
 if(!user){
-  throw new Error("Unathorized")
+  throw new Error("Unauthorized")
 }
 
+const permissions=await myPermissions();
+if(!permissions){
+  return NextResponse.json({message:"Forbidden Resources"},{status:404})
+}
 
-const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageDepartment" )
+const isDataAccessed=permissions?.some((permission)=>permission?.action === "CanManageDepartment" )
 if(!isDataAccessed){
-  throw new Error("Forbidden Resourse")
+  throw new Error("Forbidden Resources")
 }
 
     const department=await prisma.department.findUnique({

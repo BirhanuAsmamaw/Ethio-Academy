@@ -1,4 +1,5 @@
 
+import { myPermissions } from "@/actions/authorization/myPermission";
 import { getCurrentUser } from "@/actions/users/currentUser";
 import prisma from "@/lib/prismadb"
 import { NextResponse } from "next/server";
@@ -7,13 +8,17 @@ export async function POST(req: Request, res: Response){
   try{
     const {name, account,bank_name}=body
 
-    // authorization
+   // authorization
 const user = await getCurrentUser();
 if(!user){
-  throw new Error("Unathorized")
+  throw new Error("Unauthorized")
 }
 
-const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageBank" )
+const permissions=await myPermissions();
+if(!permissions){
+  return NextResponse.json({message:"Forbidden Resources"},{status:404})
+}
+const isDataAccessed=permissions?.some((permission)=>permission?.action === "CanManageBank" )
 if(!isDataAccessed){
   throw new Error("Forbidden Resourse")
 }

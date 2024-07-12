@@ -1,4 +1,4 @@
-
+"use client"
 import {
   Accordion,
   AccordionContent,
@@ -6,19 +6,21 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import CLink from "../link";
+import { useMyPermissionQuery } from "@/redux/features/permission/permissionApi";
 
 interface SideBarItemsPops{
   sidebarData:any[];
   user?:any;
 }
 const SideBarItems:React.FC<SideBarItemsPops> = ({sidebarData,user}) => {
+  const {data:permissions,isSuccess,isLoading}=useMyPermissionQuery()
   
 
-  const isBannerAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageBanner")
-  const isBankAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageBank")
-  const isUniversityAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageUniversity")
-  const isUserAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageUser")
-  const isExamsAccessed=user?.permissions.some((permission:any)=>permission.permission.action === "CanManageExamType")
+  const isBannerAccessed=isSuccess&&permissions.some((permission:any)=>permission.action === "CanManageBanner")
+  const isBankAccessed=isSuccess&&permissions.some((permission:any)=>permission.action === "CanManageBank")
+  const isUniversityAccessed=isSuccess&&permissions.some((permission:any)=>permission.action === "CanManageUniversity")
+  const isUserAccessed=isSuccess&&permissions.some((permission:any)=>permission.action === "CanManageUser")
+  const isExamsAccessed=isSuccess&&permissions.some((permission:any)=>permission.action === "CanManageExamType")
  
 
  

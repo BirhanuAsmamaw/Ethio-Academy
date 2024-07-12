@@ -1,22 +1,26 @@
-
+"use client"
 
 import CreateCourseClient from "./createCourseClient";
-import { getAllDepartments } from "@/actions/departments/getAllDepartments";
-import { getCurrentUser } from "@/actions/users/currentUser";
+import { useDepartmentListQuery } from "@/redux/features/department/departmentApi";
+import { useMyPermissionQuery } from "@/redux/features/permission/permissionApi";
+import { useMyProfileQuery } from "@/redux/features/user/userApi";
 
 
-const CreateCourse = async() => {
-  const departments=await  getAllDepartments();
-  const user=await getCurrentUser();
-  const isDataAccessed=user?.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse"||permission.permission.action === "CanManageCourse" || permission.permission.action === "CanCreateCourse")
+const CreateCourse = () => {
+ 
+  const {data:user,isSuccess:userSucc}=useMyProfileQuery();
+  const {data:permissions,isSuccess:permissionSucc}=useMyPermissionQuery();
+  const isDataAccessed=permissionSucc&&permissions?.some((permission)=>permission?.action === "CanManageOwnCourse"||permission?.action === "CanManageCourse" || permission?.action === "CanCreateCourse")
+
+  const {data:departments,isSuccess:deptSucc}=useDepartmentListQuery();
 
  
-  if(!isDataAccessed || !user?.teacher || !user?.teacher.status){
+  if((!isDataAccessed)&&permissionSucc){
     return null;
   }
 
  
-  return (  <CreateCourseClient user={user} departments={departments}/>);
+  return (  <CreateCourseClient user={userSucc&&user} departments={deptSucc?departments:[]}/>);
 }
  
 export default CreateCourse;

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb";
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myPermissions } from "@/actions/authorization/myPermission";
+import { myTeacherAccount } from "@/actions/teacher/myAccount";
 
 export async function POST(req: Request) {
   const body = await req.json();
@@ -18,29 +20,40 @@ export async function POST(req: Request) {
       };
     }
 
-    // Authorization
-    const user = await getCurrentUser();
-    if (!user) {
-      throw new Error("Unauthorized");
-    }
+    const myAccount:any=await myTeacherAccount()
+ // authorization
+ const user = await getCurrentUser();
+ if(!user){
+   return NextResponse.json({message:"Unauthorized"},{status:400})
+   
+ }
+ 
+ 
+ const permissions=await myPermissions();
+     if(!permissions){
+       return NextResponse.json({message:"permissions not found"},{status:404})
+     }
 
     if (!lessonId) {
-      throw new Error("Invalid parameters");
+      return NextResponse.json({message:"Invalid parameters"},{status:400})
+     
     }
 
-    const isDataAccessed = user.permissions.some(
-      (permission) => permission.permission.action === "CanManageOwnCourse"
+    const isDataAccessed = permissions?.some(
+      (permission) => permission?.action === "CanManageOwnCourse"
     );
     if (!isDataAccessed) {
-      throw new Error("Forbidden Resource");
+      return NextResponse.json({message:"Forbidden Resource"},{status:400})
+      
     }
 
-    if (!user.teacher) {
-      throw new Error("Unauthorized");
+    if (!myAccount) {
+      return NextResponse.json({message:"Unauthorized"},{status:400})
+      
     }
 
-    if (!user.teacher.status) {
-      throw new Error("Unauthorized");
+    if (!myAccount?.status) {
+      return NextResponse.json({message:"Unauthorized"},{status:400})
     }
 
     const lesson = await prisma.lesson.findFirst({
@@ -48,7 +61,7 @@ export async function POST(req: Request) {
         id: lessonId,
         chapter: {
           course: {
-            instructorId: user.teacher.id,
+            instructorId: myAccount?.id,
           },
         },
       },
@@ -74,7 +87,8 @@ export async function POST(req: Request) {
     });
 
     if (!lesson) {
-      throw new Error("No lesson Found!");
+      return NextResponse.json({message:"No lesson Found!"},{status:400})
+     
     }
 
     const newContent = await prisma.content.create({
@@ -92,6 +106,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(newContent);
   } catch (err) {
-    throw new Error("Something went wrong");
+    return NextResponse.json({message:"Something went wrong"},{status:500})
+   
   }
 }

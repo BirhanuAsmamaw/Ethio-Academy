@@ -31,15 +31,17 @@ const router=useRouter();
    
     setLoading(true)
     axios.post("/api/user/register",data).then((response) => {
-      
-      toast.success("Send to Email  Successfully  and Check your email address!");
+      console.log("response",response)
       window.open('https://mail.google.com/mail/u/0/#inbox', '_blank');
+      toast.success("Send to Email  Successfully  and Check your email address!");
+      
     
        
     }).catch((error:any) => {
       toast.error(error.message)
     }).finally(()=>{
       setLoading(false)
+     
       
     });
     

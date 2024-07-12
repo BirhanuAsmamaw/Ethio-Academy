@@ -9,18 +9,21 @@ import ActionButton from '@/components/button/actionButton'
 import CModal from '@/components/customModal'
 
 import { MdEdit } from 'react-icons/md'
+import { useMyAccountQuery } from "@/redux/features/instructors/instructorApi";
 
 
 const AccountEdit = ({user}:{user:any}) => {
 
   const router=useRouter();
+
+  const {data:myAccount,isSuccess:accountSucc,isLoading:accountLoad}=useMyAccountQuery();
   const [Loading,setLoading]=useState(false);
   const {register,handleSubmit,formState:{errors}}=useForm<FieldValues>({
     defaultValues:{
-     title:user?.teacher?.title,
-     accountName:user?.teacher?.accountName,
-     bankAccount:user?.teacher?.bankAccount,
-     description:user?.teacher?.description,
+     title:accountSucc&&myAccount?.title,
+     accountName:accountSucc&&myAccount?.accountName,
+     bankAccount:accountSucc&&myAccount?.bankAccount,
+     description:accountSucc&&myAccount?.description,
     }
 
   })
@@ -50,7 +53,7 @@ const AccountEdit = ({user}:{user:any}) => {
  
 
 
-if (!user || !user.teacher){
+if (!user || !myAccount){
 router.back()
 return null;
 }
@@ -67,7 +70,7 @@ return null;
     type="text" 
     register={register}
     errors={errors}  
-    defaultValue={user?.teacher?.title}
+    defaultValue={accountSucc&&myAccount?.title}
     placehoder="eg. Software Development,Nursing,Medicine, Business,Law..." 
    
      
@@ -76,7 +79,7 @@ return null;
     id="accountName"
     label="Account Name (optional)" 
     type="text" 
-    defaultValue={user?.teacher?.accountName}
+    defaultValue={accountSucc&&myAccount?.accountName}
     register={register}
     errors={errors} 
    
@@ -88,7 +91,7 @@ return null;
     label="write some description about your Channel (optional)" 
     type="text" 
     register={register}
-   defaultValue={user?.teacher?.description}
+   defaultValue={accountSucc&&myAccount?.description}
     errors={errors} 
    
   />
@@ -98,7 +101,7 @@ return null;
     id="bankAccount"
     label="Enter Your CBE Bank Account (optional)" 
     type="text" 
-    defaultValue={user?.teacher?.bankAccount}
+    defaultValue={accountSucc&&myAccount?.bankAccount}
     register={register}
     errors={errors} 
    

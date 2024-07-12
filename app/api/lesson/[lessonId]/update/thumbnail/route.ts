@@ -2,40 +2,49 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb"
 import { getCurrentUser } from "@/actions/users/currentUser";
+import { myTeacherAccount } from "@/actions/teacher/myAccount";
+import { myPermissions } from "@/actions/authorization/myPermission";
 export async function PUT(req: Request, {params}:{params:{lessonId:string}}){
   const lessonId=params.lessonId;
   const body = await req.json();
   const {thumbnail} = body;
 
   try{
-      // authorization
-const user = await getCurrentUser();
-if(!user){
-  throw new Error("Unathorized")
-}
-
+    const myAccount:any=await myTeacherAccount()
+    // authorization
+    const user = await getCurrentUser();
+    if(!user){
+      return NextResponse.json({message:"Unauthorized"},{status:400})
+      
+    }
+    
+    
+    const permissions=await myPermissions();
+        if(!permissions){
+          return NextResponse.json({message:"permissions not found"},{status:404})
+        }
 if(!lessonId ) {
 throw new Error("Invalid  parameters");
  }
 
-const isDataAccessed=user.permissions.some((permission)=>permission.permission.action === "CanManageOwnCourse" )
+const isDataAccessed=permissions.some((permission)=>permission?.action === "CanManageOwnCourse" )
 if(!isDataAccessed){
-  throw new Error("Forbidden Resourse")
+  throw new Error("Forbidden Resources")
 }
 
-if(!user.teacher){
-  throw new Error("Unathorized")
+if(!myAccount){
+  throw new Error("Unauthorized")
 }
 
-if(!user.teacher.status){
-  throw new Error("Unathorized")
+if(!myAccount?.status){
+  throw new Error("Unauthorized")
 } 
 const lesson=await prisma.lesson.findFirst({
   where:{
     id:lessonId,
     chapter:{
       course:{
-        instructorId:user.teacher.id,
+        instructorId:myAccount?.id,
       }
     }
   }

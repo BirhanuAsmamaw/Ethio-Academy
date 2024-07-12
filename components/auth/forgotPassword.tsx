@@ -40,9 +40,10 @@ if (user){
   }
   return (<div className="h-screen w-full flex justify-center items-center">
 <div className="my-8 border-b dark:border-gray-600 text-center">
-<Container>
-<div className="w-full">
+<Container className='w-[350px] sm:w-[400px]'>
+<div className="w-full text-left py-10">
 <Input
+
     id="email"
     label="Enter Your Email" 
     type="email" 

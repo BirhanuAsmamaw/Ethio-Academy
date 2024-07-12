@@ -43,5 +43,6 @@ export async function POST(req:Request) {
     }
     catch(err) {
      
+      return NextResponse.json({message:"Something went wrong"},{status:500})
     }
 }

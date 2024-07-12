@@ -50,6 +50,7 @@ export const authOptions: AuthOptions = {
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
+        const name=user?.name||""
 
         if (!user || !user.hash) {
           throw new Error("Invalid email or password");
@@ -64,7 +65,7 @@ export const authOptions: AuthOptions = {
         if (user && !user.emailVerified) {
           const verificationToken = await generateVerificationToken(credentials.email);
           const confirmLink = `https://ethio-exams-academy.vercel.app/account-verification?token=${verificationToken.token}`;
-          await sendVerificationEmail(verificationToken.email, confirmLink);
+          await sendVerificationEmail(verificationToken.email, confirmLink,name);
           throw new Error("Your account is not verified. Please check your email and verify your account!");
         }
 
@@ -85,8 +86,9 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     async signIn({ user, account }) {
+      const existingUser = await getUserById(user.id as string);
       if (account?.provider === "credentials") {
-        const existingUser = await getUserById(user.id as string);
+        
         if (!existingUser?.emailVerified) {
           return false;
         }
@@ -97,10 +99,9 @@ export const authOptions: AuthOptions = {
          
           
             user.username = user.email; // Update the user object
+          
           }
-        } else {
-          throw new Error("Email is required for Google sign-in."); // Throw error if user.email is null or undefined
-        }
+        } 
       
     
       return true;
@@ -114,6 +115,8 @@ export const authOptions: AuthOptions = {
       };
       return session;
     },
+
+
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
